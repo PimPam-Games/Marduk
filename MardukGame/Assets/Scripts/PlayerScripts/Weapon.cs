@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour {
 	//private bool enemyDamaged;
 	private float attackTimer; 
 	public AudioSource hitEnemySound;
+
 	
 	// Use this for initialization
 	void Start () {

@@ -14,6 +14,8 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float lightRes = 0;
 	[SerializeField] private float poisonRes = 1;
 	[SerializeField] public Types.Element elem ;
+
+	public GameObject blood;
 	public bool isDead = false;
 
 
@@ -43,6 +45,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	public void Hit(float dmg, Types.Element type){
+		Instantiate (blood, transform.position, transform.rotation);
 		GetComponent<EnemyMovement> ().Knock (0.3f); // tiempo que el enemigo deja de caminar cuando se lo golpea
 		GetComponent<Animator> ().SetBool ("hit",true);
 		float realDmg = dmg;

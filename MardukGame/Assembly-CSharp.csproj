@@ -46,13 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GenerateInitWeapon.cs" />
-     <Compile Include="Assets\PlayDelay.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\ChangeLevel.cs" />
      <Compile Include="Assets\Scripts\DesplazamientoScript.cs" />
+     <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyBarController.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyMovement.cs" />
@@ -60,12 +59,14 @@
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyStats.cs" />
      <Compile Include="Assets\Scripts\Fading.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GenerateInitWeapon.cs" />
      <Compile Include="Assets\Scripts\GroundDetect.cs" />
      <Compile Include="Assets\Scripts\InputControllerGui.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\Scripts\ItemGenerator.cs" />
      <Compile Include="Assets\Scripts\MyGUI.cs" />
      <Compile Include="Assets\Scripts\Parallaxing.cs" />
+     <Compile Include="Assets\Scripts\PlayDelay.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\Platformer2DUserControl.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerItems.cs" />
