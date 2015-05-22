@@ -47,6 +47,8 @@ GameObject:
   - 114: {fileID: 11422576}
   - 50: {fileID: 5065860}
   - 61: {fileID: 6163272}
+  - 114: {fileID: 11462328}
+  - 114: {fileID: 11469094}
   m_Layer: 0
   m_Name: Fire Spray
   m_TagString: Untagged
@@ -115,11 +117,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .283226967, y: .135323167}
+  m_Offset: {x: -3.64437079, y: .135323048}
   serializedVersion: 2
-  m_Size: {x: 9.11001968, y: .947248936}
+  m_Size: {x: 10.0786572, y: .947248936}
 --- !u!114 &11422576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +133,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b17625653bc8e4394f4b625ec86b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elem: 1
+  dmg: 5
+--- !u!114 &11462328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25dd57cf72679c40869e4b01208cc9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2
+--- !u!114 &11469094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25dd57cf72679c40869e4b01208cc9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 2
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2112,7 +2140,7 @@ ParticleSystem:
   startDelay: 0
   speed: 1
   randomSeed: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
