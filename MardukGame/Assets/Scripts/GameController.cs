@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 	private int currentLevel = 0;
 	private CameraController cameraController;
 
+	public AudioSource music1;
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
 		deadEnemies = new List<string>();
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour {
 			Debug.LogError ("HUDCanvas not found");
 		Application.LoadLevel ("Level1");
 		currentLevel = Application.loadedLevel;
+		music1.Play ();
 
 	}
 	// Use this for initialization
