@@ -4,8 +4,6 @@ using p = PlayerStats;
 
 public class ItemGenerator :MonoBehaviour{
 
-	private const int CantWeapons = 5;
-
 	private Object[] weaponList;
 
 	void Awake(){
@@ -16,7 +14,7 @@ public class ItemGenerator :MonoBehaviour{
 	}
 
 	public void createInitWeapon(Vector3 position, Quaternion rotation){
-		GameObject newWeapon = (GameObject)Instantiate (weaponList [0],position,rotation);
+		GameObject newWeapon = (GameObject)Instantiate (weaponList [1],position,rotation);
 		Item newItem = newWeapon.GetComponent<Item> ();
 		newItem.Rarity = RarityTypes.Normal;
 		newItem.type = ItemTypes.Weapon;

@@ -14,7 +14,7 @@ public class PlayerItems: MonoBehaviour {
 	private static Item equipedArmour;
 	private static Item equipedWeapon;
 	private static Item equipedHelmet;
-
+	private static Item equipedShield;
 	public static List<Item> Inventory{
 		get {return inventory;}
 	}
@@ -110,6 +110,36 @@ public class PlayerItems: MonoBehaviour {
 			else
 				reSkin.ReSkinHelmet(equipedHelmet.Name);
 			UpdateStats(oldHelmet,equipedHelmet);
+		}
+	}
+
+	public static Item EquipedShield{
+		get{return equipedShield;}
+		set{
+			Item oldShield = equipedShield;
+			equipedShield = value;
+
+			for(int i = 0; i<p.offensives.Length; i++){ //el arreglo mas largo es offensives
+				if(oldShield!=null) p.offensives[i] -= oldShield.Offensives[i];
+				if(equipedShield!=null) p.offensives[i] += equipedShield.Offensives[i];
+				if(i<p.atributes.Length){
+					if(oldShield!=null) p.atributes[i] -= oldShield.Atributes[i];
+					if(equipedShield!=null) p.atributes[i] += equipedShield.Atributes[i];
+				}
+				if(i<p.CantDefensives){
+					if(oldShield!=null) p.defensives[i] -= oldShield.Defensives[i];
+					if(equipedShield!=null)p.defensives[i] += equipedShield.Defensives[i];
+				}
+				if(i< p.CantUtils){
+					if(oldShield!=null) p.utils[i] -= oldShield.Utils[i];
+					if(equipedShield!=null)p.utils[i] += equipedShield.Utils[i];
+				}
+			}
+			if(equipedShield==null)
+				reSkin.ReSkinShield("none");
+			else
+				reSkin.ReSkinShield(equipedShield.Name);
+			UpdateStats(oldShield,equipedShield);
 		}
 	}
 
