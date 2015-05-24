@@ -31,13 +31,18 @@ public class PlayerStats : MonoBehaviour {
 
 	public AudioSource playerDeathSound;
 
+	public static bool ghostMode;
+	public float ghostModeTime = 1f;
+	private float ghostModeCount;
+
+	private SpriteRenderer[] renders;
+
 	void Awake(){
 		atributes = new float[CantAtributes];
 		offensives = new float[CantOffensives];
 		defensives = new float[CantDefensives];
 		utils = new float[CantUtils];
 		anim = GetComponent<Animator> ();
-
 	}
 
 	// Use this for initialization
@@ -45,13 +50,29 @@ public class PlayerStats : MonoBehaviour {
 		intialStats ();
 		isDead = false;
 		ui = this.GetComponent<PlayerUIController> ();
+		renders = GetComponentsInChildren<SpriteRenderer> ();
+
 		currentHealth = defensives [MaxHealth];
 		StartCoroutine(LifeRegeneration());
+		//StartCoroutine (GhostModeRender());
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (ghostMode);
+		if (ghostMode) {
+			for(int i=0 ; i<renders.Length-1;i++){
+				renders[i].color = new Color (1f, 1f, 1f, 0.3f);
+			}
 
+		} else {
+			foreach (var renderer in renders) {
+				renderer.color =  new Color(1f,1f,1f,1f);
+			}
+		}
+		ghostModeCount -= Time.deltaTime;
+		if (ghostModeCount <= 0 && ghostMode)
+			ghostMode = false;			
 		if (currentHealth <= 0 && !isDead) {
 			isDead = true;
 			StartCoroutine(PlayerDying());
@@ -62,7 +83,6 @@ public class PlayerStats : MonoBehaviour {
 
 
 	IEnumerator PlayerDying () {
-
 		anim.SetBool("IsDead", true);
 		playerDeathSound.Play ();
 		yield return new WaitForSeconds (2.5f);
@@ -72,13 +92,15 @@ public class PlayerStats : MonoBehaviour {
 
 	}
 
+
 	IEnumerator LifeRegeneration () {
-		while (true) {
+		while (!isDead) {
 			if (currentHealth < defensives [MaxHealth])
 				currentHealth += defensives [LifePerSecond];
 			if (currentHealth > defensives [MaxHealth])
 				currentHealth = defensives [MaxHealth];
 			yield return new WaitForSeconds (1);
+
 		}
 	}
 
@@ -97,6 +119,11 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public void Hit(float dmg, Types.Element type){ //se llama cuando un enemigo le pega al jugador
+		if (ghostMode == true) {
+			return;
+		}
+		ghostMode = true;
+		ghostModeCount = ghostModeTime;
 		float realDmg = dmg;
 		switch (type){
 		case Types.Element.None:

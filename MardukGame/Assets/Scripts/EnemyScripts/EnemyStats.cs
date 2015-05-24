@@ -36,11 +36,14 @@ public class EnemyStats : MonoBehaviour {
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		if (col.gameObject.tag == "Player" && !PlayerStats.isDead) {
 			float dmgDealt = Random.Range(damage.First,damage.Second);
-			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem);
-			if(col.transform.position.x < this.transform.position.x)
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-			else
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+			//if(!PlayerStats.ghostMode){
+				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem);
+
+				if(col.transform.position.x < this.transform.position.x)
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+				else
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+			//}
 		}
 	}
 

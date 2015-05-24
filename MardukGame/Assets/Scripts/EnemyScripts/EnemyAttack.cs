@@ -39,8 +39,6 @@ public class EnemyAttack : MonoBehaviour {
 	}
 
 
-
-
 	void MeleeAttackAI(){
 		var dir = (target.transform.position - transform.position).normalized;
 		var dot = Vector2.Dot(dir, transform.right); //negativo si player esta a su izquierda
