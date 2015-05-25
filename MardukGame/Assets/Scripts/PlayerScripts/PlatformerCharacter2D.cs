@@ -88,6 +88,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void Attack(){
+			if (MyGUI.CharacterWindowOpen () || MyGUI.InventoryOpen ())
+				return;
 			if (weaponScript == null)
 				return;
 			if (weaponScript.canAttack) {

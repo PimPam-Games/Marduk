@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour {
 			Debug.LogError ("HUDCanvas not found");
 		Application.LoadLevel ("Level1");
 		currentLevel = Application.loadedLevel;
+		Cursor.visible = false;
+
 		music1.Play ();
 
 	}

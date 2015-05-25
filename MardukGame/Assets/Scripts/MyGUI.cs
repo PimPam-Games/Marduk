@@ -10,7 +10,7 @@ public class MyGUI : MonoBehaviour {
 	private float dif = 1;
 
 	/*Variables del inventario */
-	private bool  displayInventoryWindow = true;
+	private static bool  displayInventoryWindow = false;
 	private const int INVENTORY_WINDOW_ID = 1;
 	private Rect inventoryWindowRect =  new Rect(1000,150,252,400);
 	private int inventoryRows = 4;
@@ -18,7 +18,7 @@ public class MyGUI : MonoBehaviour {
 
 
 	/*variables de la ventana del personaje*/
-	private bool  displayCharacterWindow = true;
+	private static bool  displayCharacterWindow = false;
 	private const int CHARACTER_WINDOW_ID = 2;
 	private Rect characterWindowRect =  new Rect(100,150,252,400);
 	private int characterPanel = 0;
@@ -29,7 +29,15 @@ public class MyGUI : MonoBehaviour {
 	private Item selectedItem;
 	private string toolTip = "";
 	//private Vector2 inventoryWindowSlider = Vector2.zero
-	
+
+	public static bool InventoryOpen(){
+		return displayInventoryWindow;
+	}
+
+	public static bool CharacterWindowOpen(){
+		return displayCharacterWindow;
+	}
+
 	void OnGUI(){
 		//GUI.skin = mySkin;
 		if (displayCharacterWindow) {
