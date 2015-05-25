@@ -38,6 +38,15 @@ public class EnemyMovement : MonoBehaviour {
 		Move ();
 	}
 
+	void OnCollisionEnter2D (Collision2D col){
+		if (col.gameObject.tag == "Border") {
+			if(col.transform.position.x < transform.position.x)
+				move = 1;
+			else
+				move = -1;
+		}
+	}
+
 	private void Move(){
 		if (!followPlayer) {
 			if (Time.time > delayTime) {
@@ -60,7 +69,6 @@ public class EnemyMovement : MonoBehaviour {
 	public void StopWalk(float attackTime){
 		move = 0;
 		stopTime = attackTime;
-
 	}
 
 	public void Knock(float knockTime){

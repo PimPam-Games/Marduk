@@ -20,33 +20,33 @@ public class ParticleCollision : MonoBehaviour {
 		if(transform.rotation.eulerAngles.y == 270)
 			direction = "Left";
 		transform.rotation = Quaternion.Euler (0,0,0);
-		StartCoroutine (RemoveColAfterTime(1.7f));
+		StartCoroutine (RemoveColAfterTime(1.4f));
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (direction == "Left") { //agranda el collider dinamicamente hacia la izquierda
 			if(col.size.x < 20 ){
-				col.size += new Vector2(0.6f,0);
-				col.offset += new Vector2 (-0.25f,0);
+				col.size += new Vector2(0.5f,0);
+				col.offset += new Vector2 (-0.30f,0);
 			}
 		}
 		if (direction == "Right") {
 			if(col.size.x < 20 ){
-				col.size += new Vector2(0.6f,0);
-				col.offset += new Vector2 (0.25f,0);
+				col.size += new Vector2(0.5f,0);
+				col.offset += new Vector2 (0.30f,0);
 			}
 		}
 		if (direction == "Up") {
 			if(col.size.y < 20 ){
-				col.size += new Vector2(0,0.6f);
-				col.offset += new Vector2 (0,0.25f);
+				col.size += new Vector2(0,0.5f);
+				col.offset += new Vector2 (0,0.30f);
 			}
 		}
 		if (direction == "Down") {
 			if(col.size.y < 20 ){
-				col.size += new Vector2(0,0.6f);
-				col.offset += new Vector2 (0,-0.25f);
+				col.size += new Vector2(0,0.5f);
+				col.offset += new Vector2 (0,-0.30f);
 			}
 		}
 	}
