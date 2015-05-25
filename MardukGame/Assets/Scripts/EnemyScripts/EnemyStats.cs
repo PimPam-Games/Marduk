@@ -31,7 +31,7 @@ public class EnemyStats : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter2D(Collision2D col){ //si le pego al jugador le resto la vida
+	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		if(col.gameObject.tag == "Player" && PlayerStats.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		if (col.gameObject.tag == "Player" && !PlayerStats.isDead) {

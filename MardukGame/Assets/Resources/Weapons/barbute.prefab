@@ -12,7 +12,6 @@ GameObject:
   - 50: {fileID: 5068322}
   - 61: {fileID: 6195334}
   - 212: {fileID: 21251192}
-  - 114: {fileID: 11424552}
   m_Layer: 0
   m_Name: barbute
   m_TagString: Item
@@ -28,10 +27,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430990}
-  m_Layer: 0
-  m_Name: ItemGroundCheck
+  - 61: {fileID: 6184570}
+  m_Layer: 15
+  m_Name: ItemGroundCol
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109602}
   m_LocalRotation: {x: 0, y: 0, z: .0283580832, w: -.999597847}
-  m_LocalPosition: {x: -2.26999998, y: -.560000002, z: 0}
+  m_LocalPosition: {x: -14.5936394, y: 3.74176383, z: 0}
   m_LocalScale: {x: .400000006, y: .400000006, z: 1}
   m_Children:
   - {fileID: 430990}
@@ -75,6 +75,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6184570
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114914}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .0931798145, y: -.653697312}
+  serializedVersion: 2
+  m_Size: {x: 1.18618929, y: 1.31224585}
 --- !u!61 &6195334
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -88,20 +101,6 @@ BoxCollider2D:
   m_Offset: {x: .0184472576, y: -.059397012}
   serializedVersion: 2
   m_Size: {x: 1.66347384, y: 1.89497137}
---- !u!114 &11424552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!114 &11443244
 MonoBehaviour:
   m_ObjectHideFlags: 1

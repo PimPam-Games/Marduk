@@ -12,7 +12,6 @@ GameObject:
   - 50: {fileID: 5042278}
   - 61: {fileID: 6140264}
   - 212: {fileID: 21290008}
-  - 114: {fileID: 11481880}
   m_Layer: 0
   m_Name: armingsword
   m_TagString: Item
@@ -28,10 +27,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486172}
-  m_Layer: 0
+  - 61: {fileID: 6180086}
+  m_Layer: 15
   m_Name: ItemGroundCheck
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125232}
   m_LocalRotation: {x: 0, y: 0, z: -.999989331, w: .00462490274}
-  m_LocalPosition: {x: 3.97000003, y: -.850000024, z: 0}
+  m_LocalPosition: {x: -17.2519112, y: 3.62414122, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 486172}
@@ -88,6 +88,19 @@ BoxCollider2D:
   m_Offset: {x: .590503991, y: .517819405}
   serializedVersion: 2
   m_Size: {x: 1.58661544, y: 1.49797153}
+--- !u!61 &6180086
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189550}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .0314073563, y: .729232371}
+  serializedVersion: 2
+  m_Size: {x: 1.496719, y: 1.52779603}
 --- !u!114 &11418950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,20 +116,6 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 2800000, guid: fb7c3703b28cd3244b2a00d544f1bced, type: 3}
   sprite: {fileID: 21300000, guid: fb7c3703b28cd3244b2a00d544f1bced, type: 3}
---- !u!114 &11481880
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!212 &21290008
 SpriteRenderer:
   m_ObjectHideFlags: 1

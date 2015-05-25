@@ -59,20 +59,13 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (ghostMode);
-		if (ghostMode) {
+		ghostModeCount -= Time.deltaTime;
+		if (ghostModeCount <= 0 && ghostMode) {
+			ghostMode = false;
 			for(int i=0 ; i<renders.Length-1;i++){
-				renders[i].color = new Color (1f, 1f, 1f, 0.3f);
-			}
-
-		} else {
-			foreach (var renderer in renders) {
-				renderer.color =  new Color(1f,1f,1f,1f);
+				renders[i].color = new Color (1f, 1f, 1f, 1f);
 			}
 		}
-		ghostModeCount -= Time.deltaTime;
-		if (ghostModeCount <= 0 && ghostMode)
-			ghostMode = false;			
 		if (currentHealth <= 0 && !isDead) {
 			isDead = true;
 			StartCoroutine(PlayerDying());
@@ -123,6 +116,9 @@ public class PlayerStats : MonoBehaviour {
 			return;
 		}
 		ghostMode = true;
+		for(int i=0 ; i<renders.Length-1;i++){
+			renders[i].color = new Color (1f, 1f, 1f, 0.3f);
+		}
 		ghostModeCount = ghostModeTime;
 		float realDmg = dmg;
 		switch (type){

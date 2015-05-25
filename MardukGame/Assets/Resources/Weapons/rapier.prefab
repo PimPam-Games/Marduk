@@ -1,17 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &120974
+--- !u!1 &117002
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 440252}
-  m_Layer: 0
-  m_Name: ItemGroundCheck
+  - 4: {fileID: 464174}
+  - 61: {fileID: 6167808}
+  m_Layer: 15
+  m_Name: ItemGroundCol
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -27,7 +28,6 @@ GameObject:
   - 61: {fileID: 6124096}
   - 212: {fileID: 21292092}
   - 114: {fileID: 11402988}
-  - 114: {fileID: 11458480}
   m_Layer: 0
   m_Name: rapier
   m_TagString: Item
@@ -42,21 +42,21 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188796}
   m_LocalRotation: {x: 0, y: 0, z: -.999958038, w: .00916273054}
-  m_LocalPosition: {x: -2.6500001, y: 3.61999989, z: 0}
+  m_LocalPosition: {x: -7.90999985, y: .610000014, z: 0}
   m_LocalScale: {x: .699999988, y: .699999988, z: 1}
   m_Children:
-  - {fileID: 440252}
+  - {fileID: 464174}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &440252
+--- !u!4 &464174
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120974}
-  m_LocalRotation: {x: 0, y: 0, z: -.00453792419, w: .999989748}
-  m_LocalPosition: {x: .5, y: -.230000004, z: 0}
-  m_LocalScale: {x: .857142985, y: .857142985, z: 1}
+  m_GameObject: {fileID: 117002}
+  m_LocalRotation: {x: 0, y: 0, z: .999958038, w: .00916273054}
+  m_LocalPosition: {x: .649999976, y: .180000007, z: 0}
+  m_LocalScale: {x: .857142866, y: .857142746, z: 1}
   m_Children: []
   m_Father: {fileID: 422184}
   m_RootOrder: 0
@@ -88,6 +88,19 @@ BoxCollider2D:
   m_Offset: {x: .676042855, y: .471298784}
   serializedVersion: 2
   m_Size: {x: 1.53876829, y: 1.27359915}
+--- !u!61 &6167808
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117002}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .165446565, y: -.350891739}
+  serializedVersion: 2
+  m_Size: {x: 1.40486336, y: 1.70178092}
 --- !u!114 &11402988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,20 +116,6 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 2800000, guid: 50a16a182727f23469f70e94c27eb0a7, type: 3}
   sprite: {fileID: 21300000, guid: 50a16a182727f23469f70e94c27eb0a7, type: 3}
---- !u!114 &11458480
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!212 &21292092
 SpriteRenderer:
   m_ObjectHideFlags: 1

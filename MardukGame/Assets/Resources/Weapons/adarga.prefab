@@ -12,7 +12,6 @@ GameObject:
   - 50: {fileID: 5051628}
   - 61: {fileID: 6185574}
   - 212: {fileID: 21284796}
-  - 114: {fileID: 11468784}
   m_Layer: 0
   m_Name: adarga
   m_TagString: Item
@@ -28,10 +27,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413126}
-  m_Layer: 0
-  m_Name: ItemGroundCheck
+  - 61: {fileID: 6100216}
+  m_Layer: 15
+  m_Name: ItemGroundCol
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 157496}
   m_LocalRotation: {x: 0, y: 0, z: -.999989331, w: .00462490274}
-  m_LocalPosition: {x: -11.6881123, y: .763602316, z: 0}
+  m_LocalPosition: {x: -20.5453453, y: 3.45946932, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 413126}
@@ -75,6 +75,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6100216
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195034}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .019608913, y: 1.27294004}
+  serializedVersion: 2
+  m_Size: {x: 1.58808589, y: 1.90209281}
 --- !u!61 &6185574
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -103,20 +116,6 @@ MonoBehaviour:
   type: 3
   icon: {fileID: 2800000, guid: 06ae476e2caafc445b3dd958f52571f5, type: 3}
   sprite: {fileID: 21300000, guid: 06ae476e2caafc445b3dd958f52571f5, type: 3}
---- !u!114 &11468784
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!212 &21284796
 SpriteRenderer:
   m_ObjectHideFlags: 1

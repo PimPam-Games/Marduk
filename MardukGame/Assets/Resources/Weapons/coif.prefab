@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &140210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 456988}
+  - 61: {fileID: 6174880}
+  m_Layer: 15
+  m_Name: ItemGroundCol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &162218
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,26 +28,10 @@ GameObject:
   - 61: {fileID: 6154390}
   - 212: {fileID: 21214482}
   - 114: {fileID: 11454316}
-  - 114: {fileID: 11485336}
   m_Layer: 0
   m_Name: coif
   m_TagString: Item
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &167530
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 480088}
-  m_Layer: 0
-  m_Name: ItemGroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,18 +45,18 @@ Transform:
   m_LocalPosition: {x: -5.46999979, y: 3.4000001, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
-  - {fileID: 480088}
+  - {fileID: 456988}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &480088
+--- !u!4 &456988
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167530}
-  m_LocalRotation: {x: 0, y: 0, z: -.00453792419, w: .999989748}
-  m_LocalPosition: {x: -.0199999996, y: -.769999981, z: 0}
-  m_LocalScale: {x: .857142985, y: .857142985, z: 1}
+  m_GameObject: {fileID: 140210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.100000001, y: -.0299999993, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 440582}
   m_RootOrder: 0
@@ -88,6 +88,19 @@ BoxCollider2D:
   m_Offset: {x: .676042855, y: .471298784}
   serializedVersion: 2
   m_Size: {x: 1.53876829, y: 1.27359915}
+--- !u!61 &6174880
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140210}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .0396054275, y: .00792039838}
+  serializedVersion: 2
+  m_Size: {x: .794050813, y: .920789242}
 --- !u!114 &11454316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,20 +116,6 @@ MonoBehaviour:
   type: 1
   icon: {fileID: 2800000, guid: 5cb4a303442d91b43b2d89ac2db980d1, type: 3}
   sprite: {fileID: 21300000, guid: 5cb4a303442d91b43b2d89ac2db980d1, type: 3}
---- !u!114 &11485336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!212 &21214482
 SpriteRenderer:
   m_ObjectHideFlags: 1

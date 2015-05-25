@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &134716
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 401626}
-  m_Layer: 0
-  m_Name: ItemGroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &136950
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +12,6 @@ GameObject:
   - 61: {fileID: 6166596}
   - 212: {fileID: 21213574}
   - 114: {fileID: 11499870}
-  - 114: {fileID: 11419550}
   m_Layer: 0
   m_Name: closed_sallet
   m_TagString: Item
@@ -35,15 +19,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &401626
+--- !u!1 &191874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406304}
+  - 61: {fileID: 6167734}
+  m_Layer: 15
+  m_Name: ItemGroundCol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &406304
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134716}
-  m_LocalRotation: {x: 0, y: 0, z: -.00453792419, w: .999989748}
-  m_LocalPosition: {x: -.0199999996, y: -.769999981, z: 0}
-  m_LocalScale: {x: .857142985, y: .857142985, z: 1}
+  m_GameObject: {fileID: 191874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0299999993, y: .100000001, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 447104}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ Transform:
   m_LocalPosition: {x: -2.51999998, y: 3.50999999, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
-  - {fileID: 401626}
+  - {fileID: 406304}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5015908
@@ -88,20 +88,19 @@ BoxCollider2D:
   m_Offset: {x: .676042855, y: .471298784}
   serializedVersion: 2
   m_Size: {x: 1.53876829, y: 1.27359915}
---- !u!114 &11419550
-MonoBehaviour:
+--- !u!61 &6167734
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 136950}
+  m_GameObject: {fileID: 191874}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -.0396055132, y: -.0950537175}
+  serializedVersion: 2
+  m_Size: {x: .762366176, y: .873263359}
 --- !u!114 &11499870
 MonoBehaviour:
   m_ObjectHideFlags: 1

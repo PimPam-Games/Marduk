@@ -27,7 +27,6 @@ GameObject:
   - 50: {fileID: 5069682}
   - 61: {fileID: 6163080}
   - 212: {fileID: 21213324}
-  - 114: {fileID: 11448734}
   m_Layer: 0
   m_Name: axe
   m_TagString: Item
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180896}
   m_LocalRotation: {x: 0, y: 0, z: -.999989331, w: .00462490274}
-  m_LocalPosition: {x: -6.01811934, y: 1.58531034, z: 0}
+  m_LocalPosition: {x: -10.3900003, y: -.0700000003, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 424982}
@@ -103,20 +102,6 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 2800000, guid: c8f724f7c15050645b616544dc00500c, type: 3}
   sprite: {fileID: 21300000, guid: c8f724f7c15050645b616544dc00500c, type: 3}
---- !u!114 &11448734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!212 &21213324
 SpriteRenderer:
   m_ObjectHideFlags: 1

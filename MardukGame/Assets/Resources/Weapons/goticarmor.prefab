@@ -12,7 +12,6 @@ GameObject:
   - 50: {fileID: 5067386}
   - 61: {fileID: 6113002}
   - 212: {fileID: 21235592}
-  - 114: {fileID: 11429642}
   m_Layer: 0
   m_Name: goticarmor
   m_TagString: Item
@@ -20,30 +19,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &153544
+--- !u!1 &192686
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 484944}
-  m_Layer: 0
-  m_Name: ItemGroundCheck
+  - 4: {fileID: 462258}
+  - 61: {fileID: 6110614}
+  m_Layer: 15
+  m_Name: ItemGroundCol
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &484944
+--- !u!4 &462258
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153544}
-  m_LocalRotation: {x: 0, y: -0, z: .999456048, w: -.0329808258}
-  m_LocalPosition: {x: -.00999999978, y: -1.02999997, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 192686}
+  m_LocalRotation: {x: 0, y: 0, z: -.0283580832, w: -.999597847}
+  m_LocalPosition: {x: -.159999996, y: .910000026, z: 0}
+  m_LocalScale: {x: 1.50000024, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 486764}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ Transform:
   m_LocalPosition: {x: -12.9300003, y: -.180000007, z: 0}
   m_LocalScale: {x: .400000006, y: .400000006, z: 1}
   m_Children:
-  - {fileID: 484944}
+  - {fileID: 462258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5067386
@@ -75,6 +75,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6110614
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192686}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .0431284979, y: -.576632857}
+  serializedVersion: 2
+  m_Size: {x: 1.31138217, y: 1.91175222}
 --- !u!61 &6113002
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -88,20 +101,6 @@ BoxCollider2D:
   m_Offset: {x: .0333368592, y: .0590858161}
   serializedVersion: 2
   m_Size: {x: 1.65599561, y: 2.04595208}
---- !u!114 &11429642
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ba6ea5310471408958be61d540688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!114 &11487894
 MonoBehaviour:
   m_ObjectHideFlags: 1

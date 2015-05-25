@@ -56,6 +56,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &183924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 453286}
+  - 61: {fileID: 6136240}
+  m_Layer: 15
+  m_Name: EnemyGroudCol
+  m_TagString: EnemyGroundCol
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &428340
 Transform:
   m_ObjectHideFlags: 1
@@ -80,6 +96,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 465018}
   m_RootOrder: 1
+--- !u!4 &453286
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 465018}
+  m_RootOrder: 2
 --- !u!4 &465018
 Transform:
   m_ObjectHideFlags: 1
@@ -87,11 +115,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.3900003, y: 1.62399995, z: 0}
+  m_LocalPosition: {x: -1.10000002, y: -.0799999982, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428340}
   - {fileID: 450806}
+  - {fileID: 453286}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5002978
@@ -117,11 +146,24 @@ BoxCollider2D:
   m_GameObject: {fileID: 117550}
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: .0105568171, y: .0605071262}
   serializedVersion: 2
   m_Size: {x: .44439736, y: .641014099}
+--- !u!61 &6136240
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183924}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .0534179211, y: -8.033216e-05}
+  serializedVersion: 2
+  m_Size: {x: .426282525, y: .516184926}
 --- !u!95 &9502460
 Animator:
   serializedVersion: 3
