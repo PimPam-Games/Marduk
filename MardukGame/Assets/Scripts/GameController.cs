@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
+	public static int CantLevels = 6;
+
 	public int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
@@ -11,6 +13,7 @@ public class GameController : MonoBehaviour {
 	private PlayerStats playerStats;
 	private int currentLevel = 0;
 	private CameraController cameraController;
+	public static List<string> notVisitedLevels;
 
 	public AudioSource music1;
 	void Awake(){
@@ -31,6 +34,10 @@ public class GameController : MonoBehaviour {
 		Application.LoadLevel ("Level1");
 		currentLevel = Application.loadedLevel;
 		Cursor.visible = false;
+		notVisitedLevels = new List<string>();
+		for (int i = 2; i <= CantLevels; i++) {
+			notVisitedLevels.Add("level" + i);
+		}
 
 		music1.Play ();
 

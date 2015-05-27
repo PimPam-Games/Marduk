@@ -6,7 +6,7 @@ public class ChangeLevel : MonoBehaviour {
 	private GameController gameMainController;
 	public int exitNumber;
 	public Fading fading;
-	public string levelToLoad;
+	private string levelToLoad;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,6 +23,12 @@ public class ChangeLevel : MonoBehaviour {
 			DestroyItems(); //destruye los items que no hayan sido agarrados por el player
 			Fade ();
 			gameMainController.previousExit = exitNumber;
+			if(GameController.notVisitedLevels.Count == 0)
+				return;
+			int nextLevel = Random.Range(0,GameController.notVisitedLevels.Count); //random de todos lo levels que no hayan suido visitados
+			levelToLoad = GameController.notVisitedLevels[nextLevel];
+			GameController.notVisitedLevels.RemoveAt(nextLevel);
+			Debug.Log(levelToLoad);
 			Application.LoadLevel(levelToLoad);
 
 		}

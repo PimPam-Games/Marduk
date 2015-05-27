@@ -93,7 +93,6 @@ public class PlayerStats : MonoBehaviour {
 			if (currentHealth > defensives [MaxHealth])
 				currentHealth = defensives [MaxHealth];
 			yield return new WaitForSeconds (1);
-
 		}
 	}
 
@@ -108,6 +107,7 @@ public class PlayerStats : MonoBehaviour {
 	public void RespawnStats(){ //Restaura los valores predeterminados del jugador
 		currentHealth = defensives [MaxHealth];
 		isDead = false;
+		StartCoroutine (LifeRegeneration ());
 		gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
 	}
 
