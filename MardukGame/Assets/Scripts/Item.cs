@@ -88,8 +88,11 @@ public class Item :MonoBehaviour {
 					"Type: " + Type + "\n";
 		if (type == ItemTypes.Weapon)
 			tooltip += "damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n";
-		if (type == ItemTypes.Armour || type == ItemTypes.Helmet)
+		if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Shield)
 			tooltip += "defense: " + defensives [p.Defense] + "\n";
+		if(type == ItemTypes.Shield)
+			tooltip += "block chance: " + defensives[p.BlockChance] + "% \n";
+
 		tooltip += "<color=red>----------------- </color> \n";
 
 		if (atributes [p.Strength] > 0)
@@ -118,6 +121,8 @@ public class Item :MonoBehaviour {
 			tooltip +=  defensives[p.LifePerHit] + " Life Gained Per Hit" + "\n";
 		if(defensives[p.LifePerSecond] > 0)
 			tooltip +=  defensives[p.LifePerSecond] + " Life Regenerated Per Second" + "\n";
+		if(utils[p.MovementSpeed] > 0)
+			tooltip +=  utils[p.MovementSpeed] + "% To Movement Speed" + "\n";
 		return tooltip;
 	}
 

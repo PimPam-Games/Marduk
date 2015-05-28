@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
-	public static int CantLevels = 6;
+	public static int CantLevels = 7;
 
 	public int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
@@ -72,12 +72,6 @@ public class GameController : MonoBehaviour {
 			playerStats.readyToRespawn = false;
 		}
 	}
-
-
-	/*IEnumerator PlayerDying() {
-		yield return new WaitForSeconds (3);
-
-	}*/
 
 	private void RepositionPlayerAndCamera(){//posiciona al jugador y a la camara en la entrada del nuevo nivel
 		BoxCollider2D newBounds = GameObject.FindGameObjectWithTag("CameraBounds").GetComponent<BoxCollider2D>();

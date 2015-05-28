@@ -231,7 +231,7 @@ public class MyGUI : MonoBehaviour {
 
 	private void DisplayTooltip(){
 		if(toolTip != "" && displayInventoryWindow)
-			GUI.Box (new Rect (752*dif,200*dif,160*dif,170*dif),toolTip);
+			GUI.Box (new Rect (735*dif,200*dif,185*dif,180*dif),toolTip);
 	}
 	// Use this for initialization
 	void Start () {
