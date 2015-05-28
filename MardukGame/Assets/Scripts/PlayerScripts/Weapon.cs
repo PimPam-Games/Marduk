@@ -53,6 +53,8 @@ public class Weapon : MonoBehaviour {
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
 			hitEnemySound.Play();
+			if(p.LifePerHit > 0 )
+				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
 			

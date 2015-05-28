@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using p = PlayerStats;
 
 public class EnemyStats : MonoBehaviour {
 
@@ -32,18 +33,19 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
-		if(col.gameObject.tag == "Player" && PlayerStats.isDead)
+		if(col.gameObject.tag == "Player" && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-		if (col.gameObject.tag == "Player" && !PlayerStats.isDead) {
+		if (col.gameObject.tag == "Player" && !p.isDead) {
 			float dmgDealt = Random.Range(damage.First,damage.Second);
-			//if(!PlayerStats.ghostMode){
+				if(p.defensives[p.Thorns] > 0)
+					Hit (p.defensives[p.Thorns], Types.Element.None);
 				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem);
 
 				if(col.transform.position.x < this.transform.position.x)
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 				else
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-			//}
+
 		}
 	}
 

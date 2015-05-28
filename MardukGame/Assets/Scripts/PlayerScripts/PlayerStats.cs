@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitMaxDmg = 2;
 	public const float InitMana = 45; // esto no se va a ver en la barra de mana todavia
 
-	public float currentHealth;
+	public static float currentHealth;
 	public static bool isDead;
 	public bool readyToRespawn = false;
 	public static float[] atributes;

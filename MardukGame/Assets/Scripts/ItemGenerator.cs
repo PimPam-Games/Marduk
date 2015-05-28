@@ -45,11 +45,21 @@ public class ItemGenerator :MonoBehaviour{
 
 		}
 		if (newItem.Rarity == RarityTypes.Magic || newItem.Rarity == RarityTypes.Rare) {
-			newItem.Defensives [Random.Range(0,p.CantDefensives)] = Random.Range (2, 10);
-			newItem.Atributes[p.Vitality] = Random.Range (5, 10);
-			newItem.Defensives [Random.Range(0,p.CantDefensives)] = Random.Range (5, 15);
-			if(newItem.Defensives[p.LifePerSecond]>0)
-				newItem.Defensives[p.LifePerSecond] = (float)System.Math.Round(Random.Range (0.2f, 1f),2);
+			int optionDef = Random.Range(0,p.CantDefensives);
+			int optionAtr = Random.Range(0,p.CantAtributes);
+			newItem.Atributes[optionAtr] = Random.Range (5, 10);
+
+			if(optionDef == p.LifePerSecond)
+				newItem.Defensives[optionDef] = (float)System.Math.Round(Random.Range (0.1f, 1f),2);
+			if(optionDef == p.Thorns)
+				newItem.Defensives[optionDef] = (float)System.Math.Round(Random.Range (0.2f, 2f),2);
+			if(optionDef >= p.ColdRes && optionDef <= p.PoisonRes)
+				newItem.Defensives[optionDef] = Random.Range(5,16);
+			if(optionDef == p.MaxHealth)
+				newItem.Defensives[optionDef] = Random.Range(5,21);
+			if(optionDef == p.LifePerHit)
+				newItem.Defensives[optionDef] = (float)System.Math.Round(Random.Range (0.5f, 2f),2);
+
 		}
 		if(newItem.Rarity == RarityTypes.Rare)
 			newItem.Defensives [Random.Range(0,p.CantDefensives)] = Random.Range (5, 15);
