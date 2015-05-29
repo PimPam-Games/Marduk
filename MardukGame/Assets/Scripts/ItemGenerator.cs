@@ -61,8 +61,8 @@ public class ItemGenerator :MonoBehaviour{
 				newItem.Defensives[optionDef] = (float)System.Math.Round(Random.Range (0.5f, 2f),2);
 
 		}
-		if(newItem.Rarity == RarityTypes.Rare)
-			newItem.Defensives [Random.Range(0,p.CantDefensives)] = Random.Range (5, 15);
+		/*if(newItem.Rarity == RarityTypes.Rare)
+			newItem.Defensives [Random.Range(0,p.CantDefensives)] = Random.Range (5, 15);*/
 
 		DontDestroyOnLoad (newWeapon);
 
