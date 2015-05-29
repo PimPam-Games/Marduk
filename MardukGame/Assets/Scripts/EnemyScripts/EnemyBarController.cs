@@ -26,7 +26,11 @@ public class EnemyBarController : MonoBehaviour {
 		camTransform = cam.transform;
 	
 	}
-	
+
+	public void Hide(){
+		gameObject.SetActive (false);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (clampToScreen) {

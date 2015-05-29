@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using g = GameController;
 
 public class ChangeLevel : MonoBehaviour {
 
@@ -23,14 +24,24 @@ public class ChangeLevel : MonoBehaviour {
 			DestroyItems(); //destruye los items que no hayan sido agarrados por el player
 			Fade ();
 			gameMainController.previousExit = exitNumber;
+			foreach(string[] connection in g.levelConnections){
+				if(connection[0] == "level" + g.currentLevel && connection[1] == exitNumber.ToString()){
+					Application.LoadLevel(connection[2]);
+					return;
+				}
+			}
 			if(GameController.notVisitedLevels.Count == 0)
 				return;
-			int nextLevel = Random.Range(0,GameController.notVisitedLevels.Count); //random de todos lo levels que no hayan suido visitados
-			levelToLoad = GameController.notVisitedLevels[nextLevel];
-			GameController.notVisitedLevels.RemoveAt(nextLevel);
+			int nextLevel = Random.Range(0,g.notVisitedLevels.Count); //random de todos lo levels que no hayan suido visitados
+			levelToLoad = g.notVisitedLevels[nextLevel];
+			g.notVisitedLevels.RemoveAt(nextLevel);
 			Debug.Log(levelToLoad);
-			Application.LoadLevel(levelToLoad);
+			string[] c1 = {"level"+g.currentLevel, exitNumber.ToString(), levelToLoad};
+			string[] c2 = {levelToLoad, (exitNumber + 1).ToString(), "level"+g.currentLevel};
 
+			g.levelConnections.Add(c1);
+			g.levelConnections.Add(c2);
+			Application.LoadLevel(levelToLoad);
 		}
 	}
 

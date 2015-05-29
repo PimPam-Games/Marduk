@@ -115,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.10000002, y: -.0799999982, z: 0}
+  m_LocalPosition: {x: 26.7199993, y: 1.59000003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428340}
@@ -148,9 +148,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .0105568171, y: .0605071262}
+  m_Offset: {x: .0105522871, y: .00911978632}
   serializedVersion: 2
-  m_Size: {x: .44439736, y: .641014099}
+  m_Size: {x: .44439736, y: .640871286}
 --- !u!61 &6136240
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -161,9 +161,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0534175634, y: .00400652736}
+  m_Offset: {x: .0177010298, y: -.0531657189}
   serializedVersion: 2
-  m_Size: {x: .426282525, y: .508011222}
+  m_Size: {x: .410426795, y: .519795656}
 --- !u!95 &9502460
 Animator:
   serializedVersion: 3
@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 11432308}
+  healthBarbg: {fileID: 11416638}
   currHealth: 0
   maxHealth: 10
   armour: 4
@@ -262,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2
-  flipDelay: 2
+  flipDelay: 99999
   followPlayer: 0
   move: 1
 --- !u!131 &13166362

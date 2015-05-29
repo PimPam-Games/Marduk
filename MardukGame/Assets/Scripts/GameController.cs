@@ -11,9 +11,11 @@ public class GameController : MonoBehaviour {
 	private GameObject hudCanvas, mainCamera, gui;
 	public List<string> deadEnemies;
 	private PlayerStats playerStats;
-	private int currentLevel = 0;
+	public static int currentLevel = 0;
 	private CameraController cameraController;
 	public static List<string> notVisitedLevels;
+	public static List<string[]> levelConnections;
+
 
 	public AudioSource music1;
 	void Awake(){
@@ -35,6 +37,8 @@ public class GameController : MonoBehaviour {
 		currentLevel = Application.loadedLevel;
 		Cursor.visible = false;
 		notVisitedLevels = new List<string>();
+		levelConnections = new List<string[]>();
+
 		for (int i = 2; i <= CantLevels; i++) {
 			notVisitedLevels.Add("level" + i);
 		}
@@ -61,6 +65,7 @@ public class GameController : MonoBehaviour {
 			}
 			RepositionPlayerAndCamera();
 			currentLevel = Application.loadedLevel;
+
 		}
 		if (playerStats.readyToRespawn) {
 			deadEnemies.Clear();

@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.1099997, y: 1.71000004, z: 0}
+  m_LocalPosition: {x: 3.69000006, y: 1.61000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 467302}
@@ -119,9 +119,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 6.91413879e-06, y: -.132959843}
   serializedVersion: 2
-  m_Size: {x: .810000002, y: .360000014}
+  m_Size: {x: .810000002, y: .329979956}
 --- !u!95 &9580618
 Animator:
   serializedVersion: 3
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 11466146}
+  healthBarbg: {fileID: 11428418}
   currHealth: 0
   maxHealth: 10
   armour: 0

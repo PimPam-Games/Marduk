@@ -10,16 +10,19 @@ public class EnemyRangedAttack : MonoBehaviour {
 	private float castTimer =0;
 	[SerializeField] private float offsetY = 0; // offset para cambiar la posicion del eje y
 	[SerializeField] private float maxDistance = 999; //distancia maxima que tiene que estar player para que comience a atacar
+	private EnemyStats stats;
 
 	
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player");		
+		stats = GetComponent<EnemyStats> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		if (stats.isDead)
+			return;
 		castTimer -= Time.deltaTime;
 		RangedAttack ();
 	}

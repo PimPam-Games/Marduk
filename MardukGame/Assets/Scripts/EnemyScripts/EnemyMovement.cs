@@ -5,10 +5,10 @@ public class EnemyMovement : MonoBehaviour {
 
 
 	private bool facingRight = false;
-	[SerializeField] private float maxSpeed = 10f;
+	public float maxSpeed = 10f;
 	private Rigidbody2D rb;
-	[SerializeField] private float flipDelay = 2;
-	[SerializeField] private bool followPlayer = false;
+	public float flipDelay = 2;
+	public bool followPlayer = false;
 	private float delayTime;
 	public int move = 1;
 	private float stopTime;
@@ -25,17 +25,22 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 		stopTime -= Time.deltaTime;
 
 		LookAtPlayer ();
 		if (stopTime < 0 && move == 0) {
-			GetComponent<Animator>().SetBool("hit",false);
-			if(facingRight)
+			GetComponent<Animator> ().SetBool ("hit", false);
+			if (facingRight)
 				move = 1;
 			else
 				move = -1;
 		}
+
+
 		Move ();
+		
 	}
 
 	void OnCollisionEnter2D (Collision2D col){

@@ -5,6 +5,7 @@ using p = PlayerStats;
 public class EnemyStats : MonoBehaviour {
 
 	public EnemyBarController healthBar;
+	public EnemyBarController healthBarbg;
 	[SerializeField] public float currHealth;
 	[SerializeField] public float maxHealth = 10;
 	[SerializeField] public Tuple<float,float> damage;
@@ -15,6 +16,7 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float lightRes = 0;
 	[SerializeField] private float poisonRes = 1;
 	[SerializeField] public Types.Element elem ;
+	private Animator anim;
 
 	public GameObject blood;
 	public bool isDead = false;
@@ -25,6 +27,7 @@ public class EnemyStats : MonoBehaviour {
 		damage = new Tuple<float, float> (2, 5);
 		//magicDmg = new Tuple<float, float> (0,0);
 		currHealth = maxHealth;
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -87,9 +90,29 @@ public class EnemyStats : MonoBehaviour {
 			isDead = true;
 			GetComponent<ItemGenerator>().CreateItem(transform.position, transform.rotation);
 			GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
-			this.gameObject.SetActive (false);
+
+			anim.SetBool("IsDead", true);
+			GetComponent<BoxCollider2D>().enabled = false;
+			healthBar.Hide();
+			healthBarbg.Hide();
+			GetComponent<EnemyMovement>().maxSpeed = 0;
+			GetComponent<EnemyMovement>().followPlayer = false;
+			GetComponent<EnemyMovement>().flipDelay = 99999999;
+			StartCoroutine(EnemyDying());
 			//Destroy (this.gameObject);
 		}
+	}
+
+	IEnumerator EnemyDying () {
+		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
+		yield return new WaitForSeconds (0.5f);
+		while (sprite.color.a > 0) {
+			sprite.color = new Color (1f, 1f, 1f, sprite.color.a - 0.1f);
+			yield return new WaitForSeconds (0.2f);
+		}
+		
+		Destroy (this.gameObject);
+		
 	}
 
 	private void UpdateHealthBar(){

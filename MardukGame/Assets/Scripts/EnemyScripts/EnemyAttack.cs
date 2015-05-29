@@ -26,6 +26,8 @@ public class EnemyAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (stats.isDead)
+			return;
 		attackTimer -= Time.deltaTime;
 		if (hasMeleeAttack) {
 			MeleeAttackAI ();
