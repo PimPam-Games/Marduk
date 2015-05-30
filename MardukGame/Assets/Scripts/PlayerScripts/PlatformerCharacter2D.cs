@@ -44,7 +44,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             groundCheck = transform.Find("GroundCheck");
             ceilingCheck = transform.Find("CeilingCheck");
             anim = GetComponent<Animator>();
-			
+			walkGrassSound.pitch = 1.2f;
 			rb = GetComponent<Rigidbody2D> ();
 			if(weapon != null)
 				weaponScript = weapon.GetComponent<Weapon> ();
@@ -139,6 +139,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 
                 // The Speed animator parameter is set to the absolute value of the horizontal input.
                 anim.SetFloat("Speed", Mathf.Abs(move));
+
+				if(!walkGrassSound.isPlaying && anim.GetFloat("Speed") > 0 && grounded)
+					walkGrassSound.Play();
+				if(walkGrassSound.isPlaying && (anim.GetFloat("Speed") == 0 || !grounded))
+					walkGrassSound.Stop();
                 // Move the character
 				if(knockbackTimer <= 0){
                 	rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);

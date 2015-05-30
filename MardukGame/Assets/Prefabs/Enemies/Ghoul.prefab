@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &137372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 444040}
+  m_Layer: 11
+  m_Name: enemyGroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &155156
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,10 +61,10 @@ GameObject:
   - 50: {fileID: 5070282}
   - 61: {fileID: 6183038}
   - 95: {fileID: 9580230}
-  - 114: {fileID: 11435552}
   - 114: {fileID: 11441426}
   - 114: {fileID: 11466732}
   - 114: {fileID: 11451364}
+  - 114: {fileID: 11415242}
   m_Layer: 11
   m_Name: Ghoul
   m_TagString: Enemy
@@ -73,6 +88,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &444040
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.00100000005, y: -.559000015, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 499632}
+  m_RootOrder: 3
 --- !u!4 &445854
 Transform:
   m_ObjectHideFlags: 1
@@ -116,12 +143,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.07999992, y: 3.41000009, z: 0}
+  m_LocalPosition: {x: -3.76999998, y: .310000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 474596}
   - {fileID: 471078}
   - {fileID: 445854}
+  - {fileID: 444040}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5070282
@@ -133,10 +161,10 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_FixedAngle: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
 --- !u!61 &6151868
@@ -182,7 +210,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11435552
+--- !u!114 &11415242
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -190,13 +218,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 169870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a195b040495db22488a53a778f6c561f, type: 3}
+  m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2
-  flipDelay: 99999
-  followPlayer: 1
-  move: 1
+  groundCheck: {fileID: 444040}
+  smartFollow: 1
+  flipDelay: 5
+  moveDir: 1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &11441426
 MonoBehaviour:
   m_ObjectHideFlags: 1

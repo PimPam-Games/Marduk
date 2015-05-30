@@ -10,7 +10,7 @@ public class EnemyAttack : MonoBehaviour {
 	[SerializeField] private Animator anim;
 	[SerializeField] private GameObject target;
 	private PlayerStats playerStats;
-	private EnemyMovement movement;
+	private EnemyIAMovement movement;
 	private EnemyStats stats;
 
 	void Awake(){
@@ -19,7 +19,7 @@ public class EnemyAttack : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player");
-		movement = GetComponent<EnemyMovement> ();
+		movement = GetComponent<EnemyIAMovement> ();
 		playerStats = target.GetComponent<PlayerStats> ();
 		stats = GetComponent<EnemyStats> ();
 	}
