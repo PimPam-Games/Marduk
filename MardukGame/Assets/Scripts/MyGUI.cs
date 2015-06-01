@@ -99,8 +99,12 @@ public class MyGUI : MonoBehaviour {
 		if (PlayerItems.EquipedWeapon != null) { //Slot del arma
 			if (GUI.Button (new Rect (59 *dif , 181 * dif, 60 * dif, 129 * dif), new GUIContent(PlayerItems.EquipedWeapon.Icon,PlayerItems.EquipedWeapon.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
-					PlayerItems.Inventory.Add(PlayerItems.EquipedWeapon);
-					PlayerItems.EquipedWeapon = null;
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedWeapon);
+						PlayerItems.EquipedWeapon = null;
+						PlayerItems.inventoryCantItems++;
+
+					}
 				}
 			}
 			SetTooltip();
@@ -108,8 +112,12 @@ public class MyGUI : MonoBehaviour {
 		if (PlayerItems.EquipedArmour != null) { //Slot de la armadura
 			if (GUI.Button (new Rect (150 *dif , 181 * dif, 60 * dif, 129 * dif), new GUIContent(PlayerItems.EquipedArmour.Icon,PlayerItems.EquipedArmour.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
-					PlayerItems.Inventory.Add(PlayerItems.EquipedArmour);
-					PlayerItems.EquipedArmour = null;
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedArmour);
+						PlayerItems.EquipedArmour = null;
+						PlayerItems.inventoryCantItems++;
+
+					}
 				}
 			}
 			SetTooltip();
@@ -117,8 +125,12 @@ public class MyGUI : MonoBehaviour {
 		if (PlayerItems.EquipedHelmet != null) { //Slot del casco
 			if (GUI.Button (new Rect (159 *dif , 93 * dif, 41 * dif, 58 * dif), new GUIContent(PlayerItems.EquipedHelmet.Icon,PlayerItems.EquipedHelmet.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
-					PlayerItems.Inventory.Add(PlayerItems.EquipedHelmet);
-					PlayerItems.EquipedHelmet = null;
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedHelmet);
+						PlayerItems.EquipedHelmet = null;
+						PlayerItems.inventoryCantItems++;
+						Debug.Log(PlayerItems.inventoryCantItems);
+					}
 				}
 			}
 			SetTooltip();
@@ -126,8 +138,11 @@ public class MyGUI : MonoBehaviour {
 		if (PlayerItems.EquipedShield != null) { //Slot del escudo
 			if (GUI.Button (new Rect (240 *dif , 181 * dif, 60 * dif, 129 * dif), new GUIContent(PlayerItems.EquipedShield.Icon,PlayerItems.EquipedShield.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
-					PlayerItems.Inventory.Add(PlayerItems.EquipedShield);
-					PlayerItems.EquipedShield = null;
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedShield);
+						PlayerItems.EquipedShield = null;
+						PlayerItems.inventoryCantItems++;
+					}
 				}
 			}
 			SetTooltip();
@@ -143,10 +158,12 @@ public class MyGUI : MonoBehaviour {
 						//if(doubleClickTimer != 0 && selectedItem != null){
 						//	if(Time.time - doubleClickTimer < DBCLICK_TIMER_THRESHOLD){
 						if(Input.GetMouseButtonUp(0)) {
+
 							if(PlayerItems.Inventory[cnt].Type == ItemTypes.Weapon){ // arma equipada
 								if(PlayerItems.EquipedWeapon == null){
 									PlayerItems.EquipedWeapon = PlayerItems.Inventory[cnt];
-									PlayerItems.Inventory.RemoveAt(cnt);	
+									PlayerItems.Inventory.RemoveAt(cnt);
+									PlayerItems.inventoryCantItems--;
 								}
 								else{
 									Item temp = PlayerItems.EquipedWeapon;
@@ -158,7 +175,8 @@ public class MyGUI : MonoBehaviour {
 								if(PlayerItems.Inventory[cnt].Type == ItemTypes.Armour){ // armadura equipada
 									if(PlayerItems.EquipedArmour == null){
 										PlayerItems.EquipedArmour = PlayerItems.Inventory[cnt];
-										PlayerItems.Inventory.RemoveAt(cnt);	
+										PlayerItems.Inventory.RemoveAt(cnt);
+										PlayerItems.inventoryCantItems--;
 									}
 									else{
 										Item temp = PlayerItems.EquipedArmour;
@@ -170,7 +188,8 @@ public class MyGUI : MonoBehaviour {
 									if(PlayerItems.Inventory[cnt].Type == ItemTypes.Helmet){ // casco equipado
 										if(PlayerItems.EquipedHelmet == null){  
 											PlayerItems.EquipedHelmet = PlayerItems.Inventory[cnt];
-											PlayerItems.Inventory.RemoveAt(cnt);	
+											PlayerItems.Inventory.RemoveAt(cnt);
+											PlayerItems.inventoryCantItems--;
 										}
 										else{
 											Item temp = PlayerItems.EquipedHelmet;
@@ -182,7 +201,8 @@ public class MyGUI : MonoBehaviour {
 										if(PlayerItems.Inventory[cnt].Type == ItemTypes.Shield){ // escudo equipado
 											if(PlayerItems.EquipedShield == null){  
 												PlayerItems.EquipedShield = PlayerItems.Inventory[cnt];
-												PlayerItems.Inventory.RemoveAt(cnt);	
+												PlayerItems.Inventory.RemoveAt(cnt);
+												PlayerItems.inventoryCantItems--;
 											}
 											else{
 												Item temp = PlayerItems.EquipedShield;
@@ -194,10 +214,13 @@ public class MyGUI : MonoBehaviour {
 								}
 
 							}
+
 						}
 
 						if(Input.GetMouseButtonUp(1)) {
-							PlayerItems.Inventory.RemoveAt(cnt);	
+							PlayerItems.Inventory.RemoveAt(cnt);
+							PlayerItems.inventoryCantItems--;
+
 						}
 								//doubleClickTimer = 0;
 								//selectedItem = null;

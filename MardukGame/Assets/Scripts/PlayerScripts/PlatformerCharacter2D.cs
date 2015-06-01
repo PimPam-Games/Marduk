@@ -108,7 +108,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (grabbing) {
 				GameObject item = col.gameObject;
 				if (item.tag == "Item") {
+					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
+						return;
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
+					PlayerItems.inventoryCantItems++;
+					Debug.Log(PlayerItems.inventoryCantItems);
 					item.SetActive(false);
 				}
 			}
