@@ -18,6 +18,13 @@ public class EnemyIAMovement : MonoBehaviour {
 	public int moveDir = 1;
 	private float stopTime = 0;
 	private Animator anim;
+	private EnemyStats enemyStats;
+
+	public bool knockable = true;
+	public float knockbackLength = 0.3f;
+	private float knockbackTimer = 0;
+	private bool knockFromRight = true;
+	public float knockback = 2.5f;
 
 	[SerializeField] private LayerMask whatIsGround;
 
@@ -26,6 +33,7 @@ public class EnemyIAMovement : MonoBehaviour {
 		target = GameObject.FindGameObjectWithTag ("Player");
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
+		enemyStats = GetComponent<EnemyStats> ();
 	}
 
 	private void FixedUpdate()
@@ -35,10 +43,14 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (enemyStats.isDead) {
+			rb.velocity = new Vector2 (0, rb.velocity.y);
+			return;
+		}
 		stopTime -= Time.deltaTime;
 
 		if (stopTime <= 0) { // time the enemy will be stopped
-			anim.SetBool("hit",false);
+
 			if (smartFollow)
 				FollowPlayer ();
 			else
@@ -87,7 +99,20 @@ public class EnemyIAMovement : MonoBehaviour {
 	
 
 	private void Move(){ //move the enemy
-		rb.velocity = new Vector2(moveDir*maxSpeed, rb.velocity.y);
+		if (knockbackTimer <= 0) {
+			anim.SetBool ("hit", false);
+			rb.velocity = new Vector2 (moveDir * maxSpeed, rb.velocity.y);
+		}
+		else{
+			if(knockable){
+				if(knockFromRight)
+					rb.velocity = new Vector2(-knockback, rb.velocity.y);
+				else
+					rb.velocity = new Vector2(knockback, rb.velocity.y);
+				knockbackTimer -= Time.deltaTime;
+			}
+			return;
+		}
 		
 		// If the input is moving the player right and the player is facing left...
 		if (moveDir > 0 && !facingRight) 
@@ -115,10 +140,17 @@ public class EnemyIAMovement : MonoBehaviour {
 	public void StopWalk(float attackTime){
 		stopTime = attackTime;
 	}
-	
-	public void Knock(float knockTime){
+
+	public void setKnockbackTimer(float knockTimer){
+		this.knockbackTimer = knockTimer;
+	}
+
+
+	public void Knock(bool knockFromRight){
 		anim.SetBool("hit",true);
-		stopTime = knockTime;
+		stopTime = 0;
+		knockbackTimer = knockbackLength;
+		this.knockFromRight = knockFromRight;
 	}
 
 	public bool IsFacingRight(){

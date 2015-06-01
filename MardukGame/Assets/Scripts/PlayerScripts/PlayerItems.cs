@@ -153,7 +153,7 @@ public class PlayerItems: MonoBehaviour {
 		if (oldItem != null) {
 			p.defensives [p.MaxHealth] -= oldItem.Atributes [p.Vitality] * 3; //resta la vitalidad vieja
 			p.offensives [p.MinDmg] -= oldItem.Atributes [p.Strength] * 0.5f;
-			p.offensives [p.MaxDamge] -= oldItem.Atributes [p.Strength] * 0.5f;
+			p.offensives [p.MaxDamge] -= oldItem.Atributes [p.Strength] * 0.25f;
 			p.offensives [p.MaxMana] -= oldItem.Atributes [p.Spirit] * 3;
 		}
 		if (newItem != null) {

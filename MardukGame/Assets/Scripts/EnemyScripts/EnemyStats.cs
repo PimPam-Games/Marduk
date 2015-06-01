@@ -54,8 +54,6 @@ public class EnemyStats : MonoBehaviour {
 
 	public void Hit(float dmg, Types.Element type){
 		Instantiate (blood, transform.position, transform.rotation);
-		GetComponent<EnemyIAMovement> ().Knock (0.3f); // tiempo que el enemigo deja de caminar cuando se lo golpea
-
 		float realDmg = dmg;
 		switch (type){
 			case Types.Element.None:
@@ -95,7 +93,6 @@ public class EnemyStats : MonoBehaviour {
 			GetComponent<BoxCollider2D>().enabled = false;
 			healthBar.Hide();
 			healthBarbg.Hide();
-			GetComponent<EnemyIAMovement>().StopWalk(int.MaxValue);
 			StartCoroutine(EnemyDying());
 			//Destroy (this.gameObject);
 		}

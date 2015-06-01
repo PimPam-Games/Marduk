@@ -57,6 +57,11 @@ public class Weapon : MonoBehaviour {
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+			if(enemy.transform.position.x < this.transform.position.x)
+				enemy.GetComponent<EnemyIAMovement>().Knock(true);
+			else
+				enemy.GetComponent<EnemyIAMovement>().Knock(false);
+
 			
 		}
 		isAttacking = false;
