@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
+using UnityEditor;
 
 public class MyGUI : MonoBehaviour {
 
 	public float buttonWidth = 35;
 	public float buttonHeight = 35;
-	public GUIStyle myStyle;
+	public GUIStyle inventoryStyle;
+	public GUIStyle characterStyle;
 	private float dif = 1;
 
 	/*Variables del inventario */
@@ -22,7 +24,7 @@ public class MyGUI : MonoBehaviour {
 	private const int CHARACTER_WINDOW_ID = 2;
 	private Rect characterWindowRect =  new Rect(100,150,252,400);
 	private int characterPanel = 0;
-	private string[] characterPanelNames = new string[] {"Offensives","Defensives","Misc"};
+	private string[] characterPanelNames = new string[] {" "," "," "};
 
 	//private float doubleClickTimer = 0;
 //	private const float DBCLICK_TIMER_THRESHOLD =  0.5f;
@@ -41,13 +43,13 @@ public class MyGUI : MonoBehaviour {
 	void OnGUI(){
 		//GUI.skin = mySkin;
 		if (displayCharacterWindow) {
-			characterWindowRect.Set(100*dif,1*dif,360*dif,500*dif);
-			characterWindowRect = GUI.Window (CHARACTER_WINDOW_ID, characterWindowRect, CharacterWindow,"Chracter window");
+			characterWindowRect.Set(100*dif,1*dif,360*dif,600*dif);
+			characterWindowRect = GUI.Window (CHARACTER_WINDOW_ID, characterWindowRect, CharacterWindow,"",characterStyle);
 			
 		}
 		if (displayInventoryWindow) {
 			inventoryWindowRect.Set(900*dif,1*dif,360*dif,600*dif);
-			inventoryWindowRect = GUI.Window (INVENTORY_WINDOW_ID, inventoryWindowRect, InventoryWindow,"",myStyle );
+			inventoryWindowRect = GUI.Window (INVENTORY_WINDOW_ID, inventoryWindowRect, InventoryWindow,"",inventoryStyle );
 
 		}
 		DisplayTooltip ();
@@ -55,7 +57,11 @@ public class MyGUI : MonoBehaviour {
 
 
 	public void CharacterWindow(int id){
-		characterPanel = GUI.Toolbar (new Rect(5*dif,200*dif,characterWindowRect.width -10,30*dif),characterPanel,characterPanelNames);
+		GUIStyle toolbarStyle = new GUIStyle();
+
+		toolbarStyle.margin = new RectOffset(25, 25, 10, 10);
+		characterPanel = GUI.Toolbar (new Rect(50*dif,250*dif,250*dif,20*dif),characterPanel,characterPanelNames,toolbarStyle);
+
 		switch (characterPanel) {
 		case 0:
 			DisplayOffensives();
@@ -71,24 +77,24 @@ public class MyGUI : MonoBehaviour {
 	}
 
 	private void DisplayOffensives(){
-		GUI.Label (new Rect (10*dif, 250*dif, 100*dif, 20*dif), "Physical Damage");
-		GUI.Label (new Rect (250*dif, 250*dif, 100*dif, 20*dif), p.offensives[p.MinDmg]+" - "+p.offensives[p.MaxDamge]);
+		GUI.Label (new Rect (65*dif, 270*dif, 100*dif, 20*dif), "Physical Damage");
+		GUI.Label (new Rect (265*dif, 270*dif, 100*dif, 20*dif), p.offensives[p.MinDmg]+" - "+p.offensives[p.MaxDamge]);
 
 	}
 
 	private void DisplayDfensives(){
-		GUI.Label (new Rect (10*dif, 250*dif, 200*dif, 20*dif), "Defense");
-		GUI.Label (new Rect (250*dif, 250*dif, 100*dif, 20*dif), (string)p.defensives[p.Defense].ToString());
-		GUI.Label (new Rect (10*dif, 265*dif, 200*dif, 20*dif), "Life Regenerated Per Second");
-		GUI.Label (new Rect (250*dif, 265*dif, 100*dif, 20*dif), (string)p.defensives[p.LifePerSecond].ToString());
-		GUI.Label (new Rect (10*dif, 280*dif, 200*dif, 20*dif), "Cold Resistance");
-		GUI.Label (new Rect (250*dif, 280*dif, 100*dif, 20*dif), (string)p.defensives[p.ColdRes].ToString());
-		GUI.Label (new Rect (10*dif, 295*dif, 200*dif, 20*dif), "Fire Resistance");
-		GUI.Label (new Rect (250*dif, 295*dif, 100*dif, 20*dif), (string)p.defensives[p.FireRes].ToString());
-		GUI.Label (new Rect (10*dif, 310*dif, 200*dif, 20*dif), "Lightning Resistance");
-		GUI.Label (new Rect (250*dif, 310*dif, 100*dif, 20*dif), (string)p.defensives[p.LightRes].ToString());
-		GUI.Label (new Rect (10*dif, 325*dif, 200*dif, 20*dif), "Poison Resistance");
-		GUI.Label (new Rect (250*dif, 325*dif, 100*dif, 20*dif), (string)p.defensives[p.PoisonRes].ToString());
+		GUI.Label (new Rect (65*dif, 270*dif, 200*dif, 20*dif), "Defense");
+		GUI.Label (new Rect (265*dif, 270*dif, 100*dif, 20*dif), (string)p.defensives[p.Defense].ToString());
+		GUI.Label (new Rect (65*dif, 285*dif, 200*dif, 20*dif), "Life Regenerated Per Second");
+		GUI.Label (new Rect (265*dif, 285*dif, 100*dif, 20*dif), (string)p.defensives[p.LifePerSecond].ToString());
+		GUI.Label (new Rect (65*dif, 300*dif, 200*dif, 20*dif), "Cold Resistance");
+		GUI.Label (new Rect (265*dif, 300*dif, 100*dif, 20*dif), (string)p.defensives[p.ColdRes].ToString());
+		GUI.Label (new Rect (65*dif, 315*dif, 200*dif, 20*dif), "Fire Resistance");
+		GUI.Label (new Rect (265*dif, 315*dif, 100*dif, 20*dif), (string)p.defensives[p.FireRes].ToString());
+		GUI.Label (new Rect (65*dif, 330*dif, 200*dif, 20*dif), "Lightning Resistance");
+		GUI.Label (new Rect (265*dif, 330*dif, 100*dif, 20*dif), (string)p.defensives[p.LightRes].ToString());
+		GUI.Label (new Rect (65*dif, 345*dif, 200*dif, 20*dif), "Poison Resistance");
+		GUI.Label (new Rect (265*dif, 345*dif, 100*dif, 20*dif), (string)p.defensives[p.PoisonRes].ToString());
 	}
 
 	private void DisplayMisc(){

@@ -112,7 +112,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						return;
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
 					PlayerItems.inventoryCantItems++;
-					Debug.Log(PlayerItems.inventoryCantItems);
+					
 					item.SetActive(false);
 				}
 			}

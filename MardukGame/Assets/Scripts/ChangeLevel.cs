@@ -42,6 +42,7 @@ public class ChangeLevel : MonoBehaviour {
 			g.levelConnections.Add(c1);
 			g.levelConnections.Add(c2);
 			Application.LoadLevel(levelToLoad);
+
 		}
 	}
 

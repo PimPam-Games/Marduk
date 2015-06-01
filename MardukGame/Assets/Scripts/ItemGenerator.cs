@@ -20,6 +20,7 @@ public class ItemGenerator :MonoBehaviour{
 		newItem.type = ItemTypes.Weapon;
 		newItem.Offensives [p.MinDmg] = 1;
 		newItem.Offensives [p.MaxDamge] = 2;	
+
 		DontDestroyOnLoad (newWeapon);
 	}
 
@@ -44,6 +45,7 @@ public class ItemGenerator :MonoBehaviour{
 			}
 
 		}
+
 		if (newItem.Rarity == RarityTypes.Magic || newItem.Rarity == RarityTypes.Rare) {
 			int optionDef = Random.Range(0,p.CantDefensives);
 			int optionAtr = Random.Range(0,p.CantAtributes);
@@ -59,6 +61,7 @@ public class ItemGenerator :MonoBehaviour{
 				newItem.Defensives[optionDef] = Random.Range(5,21);
 			if(optionDef == p.LifePerHit)
 				newItem.Defensives[optionDef] = (float)System.Math.Round(Random.Range (0.5f, 2f),2);
+
 
 		}
 		/*if(newItem.Rarity == RarityTypes.Rare)
