@@ -45,7 +45,6 @@ public class ItemGenerator :MonoBehaviour{
 			}
 
 		}
-
 		if (newItem.Rarity == RarityTypes.Magic || newItem.Rarity == RarityTypes.Rare) {
 			int optionDef = Random.Range(0,p.CantDefensives);
 			int optionAtr = Random.Range(0,p.CantAtributes);

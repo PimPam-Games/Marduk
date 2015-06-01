@@ -159,7 +159,7 @@ public class PlayerItems: MonoBehaviour {
 		if (newItem != null) {
 			p.defensives [p.MaxHealth] += newItem.Atributes [p.Vitality] * 3; //un putno de vitalidad son 3 de vida
 			p.offensives [p.MinDmg] += newItem.Atributes [p.Strength] * 0.5f;
-			p.offensives [p.MaxDamge] += newItem.Atributes [p.Strength] * 0.5f; //2 de fuerza aumenta uno de daño fisico
+			p.offensives [p.MaxDamge] += newItem.Atributes [p.Strength] * 0.25f; //4 de fuerza aumenta uno de daño fisico
 			p.offensives [p.MaxMana] += newItem.Atributes [p.Spirit] * 3; // uno de espiritu da 3 de mana
 			//utils [MovementSpeed] = InitMoveSpeed + (InitMoveSpeed * porcentaje / 100 )
 		}
