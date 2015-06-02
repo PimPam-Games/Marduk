@@ -17,6 +17,7 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float poisonRes = 1;
 	[SerializeField] public Types.Element elem ;
 	private Animator anim;
+	private Rigidbody2D rb;
 
 	public GameObject blood;
 	public bool isDead = false;
@@ -28,6 +29,7 @@ public class EnemyStats : MonoBehaviour {
 		//magicDmg = new Tuple<float, float> (0,0);
 		currHealth = maxHealth;
 		anim = GetComponent<Animator> ();
+		rb = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
@@ -86,6 +88,7 @@ public class EnemyStats : MonoBehaviour {
 		UpdateHealthBar ();
 		if (currHealth < 0) {
 			isDead = true;
+			rb.gravityScale = 3;
 			GetComponent<ItemGenerator>().CreateItem(transform.position, transform.rotation);
 			GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 

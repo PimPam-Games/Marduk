@@ -121,7 +121,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         public void Move(float move, bool crouch, bool jump)
         {
-
+			
+			
             // If crouching, check to see if the character can stand up
             if (!crouch && anim.GetBool("Crouch"))
             {
@@ -175,9 +176,10 @@ public class PlatformerCharacter2D : MonoBehaviour
             if (grounded && jump && anim.GetBool("Ground"))
             {
                 // Add a vertical force to the player.
-
+				
                 grounded = false;
                 anim.SetBool("Ground", false);
+				rb.velocity = new Vector2(rb.velocity.x,0);
                 rb.AddForce(new Vector2(0f, jumpForce));
             }
         }

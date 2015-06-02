@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	public static List<string[]> levelConnections;
 
 
+
 	public AudioSource music1;
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
@@ -69,6 +70,7 @@ public class GameController : MonoBehaviour {
 		}
 		if (playerStats.readyToRespawn) {
 			deadEnemies.Clear();
+			ChangeLevel.DestroyItems();
 			Application.LoadLevel("Level1");
 			previousExit = 1; //la proxima entrada tiene que ser la 1, la de la izquierda del nivel
 			playerStats.RespawnStats();
@@ -85,7 +87,10 @@ public class GameController : MonoBehaviour {
 		else
 			Debug.LogError("CameraBounds not found");
 		GameObject levelEntry = GameObject.Find("LevelEntry" + previousExit); 
-		mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x, levelEntry.transform.position.y, mainCamera.transform.position.z);
 		player.transform.position = levelEntry.transform.position;
+		if(levelEntry.transform.position.x<=0)
+			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x + 10, levelEntry.transform.position.y, mainCamera.transform.position.z);
+		else
+			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x - 10, levelEntry.transform.position.y, mainCamera.transform.position.z);
 	}
 }

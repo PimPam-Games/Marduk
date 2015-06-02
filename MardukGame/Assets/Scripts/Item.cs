@@ -13,6 +13,7 @@ public class Item :MonoBehaviour {
 	private float[] offensives;
 	private float[] defensives;
 	private float[] utils;
+	private Rigidbody2D rb;
 
 	void Awake(){
 
@@ -22,6 +23,19 @@ public class Item :MonoBehaviour {
 		utils = new float[p.CantUtils];
 		//offensives [p.MaxDamge] = 4;
 		//offensives [p.MinDmg] = 1;
+		rb = GetComponent<Rigidbody2D> ();
+		StartCoroutine (StopMove ());
+	}
+
+	IEnumerator StopMove(){
+		yield return new WaitForSeconds (3f);
+		while (rb.velocity.x > 0.3f) {
+
+			yield return new WaitForSeconds (0.3f);
+			rb.velocity = new Vector2 (rb.velocity.x / 2, rb.velocity.y);
+		}
+		rb.velocity = new Vector2 (0,rb.velocity.y);
+		rb.isKinematic = true;
 	}
 
 	public float[] Atributes{

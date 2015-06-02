@@ -46,7 +46,7 @@ public class ChangeLevel : MonoBehaviour {
 		}
 	}
 
-	private void DestroyItems(){
+	public static void DestroyItems(){
 		GameObject[] items = GameObject.FindGameObjectsWithTag ("Item");
 		foreach(GameObject item in items ){
 			if(item.activeSelf)
