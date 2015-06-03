@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour {
 
 	public static int CantLevels = 7;
 
-	public int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
+	public static int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
 	public List<string> deadEnemies;
@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	private CameraController cameraController;
 	public static List<string> notVisitedLevels;
 	public static List<string[]> levelConnections;
-
+	public static bool testlevel = false;
 
 
 	public AudioSource music1;

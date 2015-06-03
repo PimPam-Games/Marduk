@@ -4,26 +4,35 @@ using g = GameController;
 
 public class ChangeLevel : MonoBehaviour {
 
-	private GameController gameMainController;
 	public int exitNumber;
 	public Fading fading;
 	private string levelToLoad;
-	
+	private BoxCollider2D box;
+	private float boxTimeCount = 1;
+
+	void Awake(){
+		box = GetComponent<BoxCollider2D> ();
+		box.enabled = false;
+		boxTimeCount = 1;
+	}
+
 	// Use this for initialization
 	void Start () {
-		gameMainController = GameObject.Find ("GameMainController").GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (boxTimeCount < 0)
+			box.enabled = true; //espero un poco para habilitar el colisionador de las salidas del nuevo nivel. (es para arregla el problema de la parada)
+		boxTimeCount -= Time.deltaTime;
 		
 	}
-	
-	void OnCollisionEnter2D(Collision2D coll){
+
+	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.tag == "Player") {
 			DestroyItems(); //destruye los items que no hayan sido agarrados por el player
 			Fade ();
-			gameMainController.previousExit = exitNumber;
+			g.previousExit = exitNumber;
 			foreach(string[] connection in g.levelConnections){
 				if(connection[0] == "level" + g.currentLevel && connection[1] == exitNumber.ToString()){
 					Application.LoadLevel(connection[2]);
@@ -41,8 +50,8 @@ public class ChangeLevel : MonoBehaviour {
 
 			g.levelConnections.Add(c1);
 			g.levelConnections.Add(c2);
-			Application.LoadLevel(levelToLoad);
 
+			Application.LoadLevel(levelToLoad);
 		}
 	}
 
