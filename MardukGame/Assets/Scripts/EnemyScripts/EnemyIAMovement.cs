@@ -21,10 +21,17 @@ public class EnemyIAMovement : MonoBehaviour {
 	private EnemyStats enemyStats;
 
 	public bool knockable = true;
+	public bool jumper = false;
+
+	private float jumpTime = 0;
+	public float jumpDelay = 2;
+	private float groundCheckTime = 0;
+
 	public float knockbackLength = 0.3f;
 	private float knockbackTimer = 0;
 	private bool knockFromRight = true;
 	public float knockback = 2.5f;
+
 
 	[SerializeField] private LayerMask whatIsGround;
 
@@ -43,18 +50,23 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
 		if (enemyStats.isDead) {
 			rb.velocity = new Vector2 (0, rb.velocity.y);
 			return;
 		}
 		stopTime -= Time.deltaTime;
 
-		if (stopTime <= 0) { // time the enemy will be stopped
 
-			if (smartFollow)
-				FollowPlayer ();
-			else
-				Patrol ();
+		if (stopTime <= 0) { // time the enemy will be stopped
+			if(jumper)
+				jumpPatrol();
+			else{
+				if (smartFollow)
+					FollowPlayer ();
+				else
+					Patrol ();
+			}
 		} else {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 		}
@@ -84,6 +96,34 @@ public class EnemyIAMovement : MonoBehaviour {
 			flipDelayCount = flipDelay;
 		}
 		Move ();
+	}
+
+	private void jumpPatrol(){
+		anim.SetBool ("Ground",grounded);
+		flipDelayCount -= Time.deltaTime;
+		groundCheckTime -= Time.deltaTime;
+		if (groundCheckTime <= 0)
+			if(grounded)
+				rb.velocity = new Vector2 (0,rb.velocity.y);
+		if (flipDelayCount <= 0) {
+			moveDir *= -1;
+			flipDelayCount = flipDelay;
+		}
+		if (jumpTime <= 0)
+			if (grounded) {
+				rb.AddForce (new Vector2 (moveDir * 100, jumpForce));
+				jumpTime = jumpDelay;
+				groundCheckTime = 0.5f;
+			}
+		jumpTime -= Time.deltaTime;
+		// If the input is moving the player right and the player is facing left...
+		if (moveDir > 0 && !facingRight) 
+			// ... flip the player.
+			Flip();
+		// Otherwise if the input is moving the player left and the player is facing right...
+		else if (moveDir < 0 && facingRight)
+			// ... flip the player.
+			Flip();
 	}
 
 	private void FollowPlayer(){
