@@ -80,6 +80,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 453286}
   - 61: {fileID: 6136240}
+  - 68: {fileID: 6815022}
   m_Layer: 15
   m_Name: EnemyGroudCol
   m_TagString: EnemyGroundCol
@@ -142,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.7700005, y: -2.86999989, z: 0}
+  m_LocalPosition: {x: 5.71999979, y: 2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428340}
@@ -189,9 +190,23 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0177010298, y: -.0531657189}
+  m_Offset: {x: .017701149, y: -.0381624699}
   serializedVersion: 2
-  m_Size: {x: .410426795, y: .519795656}
+  m_Size: {x: .410426795, y: .489787012}
+--- !u!68 &6815022
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183924}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -.185624599, y: -.312472582}
+  - {x: .219552517, y: -.313110352}
 --- !u!95 &9502460
 Animator:
   serializedVersion: 3
@@ -295,6 +310,9 @@ MonoBehaviour:
   smartFollow: 0
   flipDelay: 2
   moveDir: 1
+  knockable: 1
+  knockbackLength: .300000012
+  knockback: 2.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024

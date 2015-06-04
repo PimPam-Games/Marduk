@@ -320,6 +320,7 @@ GameObject:
   - 82: {fileID: 8251618}
   - 82: {fileID: 8210794}
   - 82: {fileID: 8267136}
+  - 68: {fileID: 6866954}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -821,9 +822,23 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.23315832, y: .28658545}
+  m_Offset: {x: -.23315832, y: .335920483}
   serializedVersion: 2
-  m_Size: {x: .911682367, y: 3.08193898}
+  m_Size: {x: .911682427, y: 2.9832716}
+--- !u!68 &6866954
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174082}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -.674393892, y: -1.24240315}
+  - {x: .233151391, y: -1.24013531}
 --- !u!82 &8206302
 AudioSource:
   m_ObjectHideFlags: 1

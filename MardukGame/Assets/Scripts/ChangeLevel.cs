@@ -8,12 +8,12 @@ public class ChangeLevel : MonoBehaviour {
 	public Fading fading;
 	private string levelToLoad;
 	private BoxCollider2D box;
-	private float boxTimeCount = 1;
+	private float boxTimeCount = 0.5f;
 
 	void Awake(){
 		box = GetComponent<BoxCollider2D> ();
 		box.enabled = false;
-		boxTimeCount = 1;
+		boxTimeCount = 0.5f;
 	}
 
 	// Use this for initialization
