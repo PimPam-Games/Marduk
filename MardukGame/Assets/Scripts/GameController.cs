@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
-	public static int CantLevels = 7;
+	public static int CantLevels = 11;
 
 	public static int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
