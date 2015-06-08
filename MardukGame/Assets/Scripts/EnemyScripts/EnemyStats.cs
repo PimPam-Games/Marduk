@@ -16,12 +16,15 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float lightRes = 0;
 	[SerializeField] private float poisonRes = 1;
 	[SerializeField] public Types.Element elem ;
+
+	public AudioSource alertSound;
 	private Animator anim;
 	private Rigidbody2D rb;
 
 	public GameObject blood;
 	public bool isDead = false;
 
+	private Renderer rend;
 
 	// Use this for initialization
 	void Start () {
@@ -30,8 +33,21 @@ public class EnemyStats : MonoBehaviour {
 		currHealth = maxHealth;
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+		rend = GetComponent<Renderer> ();
+		StartCoroutine (AlertSoundPlay ());
+
 	}
-	
+
+	IEnumerator AlertSoundPlay(){
+		while (true) {
+			yield return new WaitForSeconds (0.4f);
+			if(rend.isVisible){
+				alertSound.Play();
+				yield return new WaitForSeconds (2f);
+			}
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		
