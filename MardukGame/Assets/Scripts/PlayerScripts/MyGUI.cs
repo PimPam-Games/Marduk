@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
-using UnityEditor;
 
 public class MyGUI : MonoBehaviour {
 
