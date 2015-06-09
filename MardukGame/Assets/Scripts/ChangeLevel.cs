@@ -44,7 +44,6 @@ public class ChangeLevel : MonoBehaviour {
 			int nextLevel = Random.Range(0,g.notVisitedLevels.Count); //random de todos lo levels que no hayan suido visitados
 			levelToLoad = g.notVisitedLevels[nextLevel];
 			g.notVisitedLevels.RemoveAt(nextLevel);
-			Debug.Log(levelToLoad);
 			string[] c1 = {"level"+g.currentLevel, exitNumber.ToString(), levelToLoad};
 			string[] c2 = {levelToLoad, (exitNumber + 1).ToString(), "level"+g.currentLevel};
 

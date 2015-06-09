@@ -15,40 +15,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &155156
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 471078}
-  - 131: {fileID: 13163932}
-  - 114: {fileID: 11483964}
-  m_Layer: 11
-  m_Name: EnemyHealthBarbg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &163590
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 474596}
-  - 131: {fileID: 13166844}
-  - 114: {fileID: 11442566}
-  m_Layer: 0
-  m_Name: EnemyHealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &169870
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +67,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 499632}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!4 &445854
 Transform:
   m_ObjectHideFlags: 1
@@ -111,30 +77,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.8000069, y: 1.42800057, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 499632}
-  m_RootOrder: 2
---- !u!4 &471078
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 499632}
-  m_RootOrder: 1
---- !u!4 &474596
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163590}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.7399998, y: -1.19000006, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 499632}
   m_RootOrder: 0
@@ -148,8 +90,6 @@ Transform:
   m_LocalPosition: {x: 16.5200005, y: -2.28999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 474596}
-  - {fileID: 471078}
   - {fileID: 445854}
   - {fileID: 444040}
   m_Father: {fileID: 0}
@@ -330,8 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 11442566}
-  healthBarbg: {fileID: 11483964}
   currHealth: 0
   maxHealth: 10
   armour: 4
@@ -341,26 +279,9 @@ MonoBehaviour:
   poisonRes: 1
   elem: 4
   alertSound: {fileID: 8286894}
+  enemyName: Ghoul
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
---- !u!114 &11442566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c34fde20c1a8d44b34263f81ea83a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpTexture: {fileID: 13166844}
-  target: {fileID: 499632}
-  offset: {x: 0, y: .699999988, z: 0}
-  clampToScreen: 0
-  clampBorderSize: .5
-  useMainCamera: 1
-  cameraToUse: {fileID: 0}
 --- !u!114 &11451364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,62 +308,6 @@ MonoBehaviour:
   attackDelay: 3
   anim: {fileID: 9580230}
   target: {fileID: 0}
---- !u!114 &11483964
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c34fde20c1a8d44b34263f81ea83a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpTexture: {fileID: 13163932}
-  target: {fileID: 499632}
-  offset: {x: 0, y: .699999988, z: 0}
-  clampToScreen: 0
-  clampBorderSize: .5
-  useMainCamera: 1
-  cameraToUse: {fileID: 0}
---- !u!131 &13163932
-GUITexture:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155156}
-  m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 44f7ec0de2f04304a9d1514272ce1b33, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
-  m_PixelInset:
-    serializedVersion: 2
-    x: -50
-    y: 5
-    width: 100
-    height: 10
-  m_LeftBorder: 0
-  m_RightBorder: 0
-  m_TopBorder: 0
-  m_BottomBorder: 0
---- !u!131 &13166844
-GUITexture:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163590}
-  m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 217177094ee1bdf4ea87ec1b7e1dec3f, type: 3}
-  m_Color: {r: .0205449685, g: .558823526, b: .224719614, a: .501960814}
-  m_PixelInset:
-    serializedVersion: 2
-    x: -50
-    y: 5
-    width: 100
-    height: 10
-  m_LeftBorder: 0
-  m_RightBorder: 0
-  m_TopBorder: 0
-  m_BottomBorder: 0
 --- !u!212 &21264822
 SpriteRenderer:
   m_ObjectHideFlags: 1

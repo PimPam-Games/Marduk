@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
+using ui = EnemyHealthUiController;
 
 public class EnemyStats : MonoBehaviour {
 
-	public EnemyBarController healthBar;
-	public EnemyBarController healthBarbg;
 	[SerializeField] public float currHealth;
 	[SerializeField] public float maxHealth = 10;
 	[SerializeField] public Tuple<float,float> damage;
@@ -20,6 +19,7 @@ public class EnemyStats : MonoBehaviour {
 	public AudioSource alertSound;
 	private Animator anim;
 	private Rigidbody2D rb;
+	public string enemyName;
 
 	public GameObject blood;
 	public bool isDead = false;
@@ -101,7 +101,7 @@ public class EnemyStats : MonoBehaviour {
 		if (realDmg < 0)
 			realDmg = 0;
 		currHealth -= realDmg;
-		UpdateHealthBar ();
+		//UpdateHealthBar ();
 		if (currHealth < 0) {
 			isDead = true;
 			rb.gravityScale = 3;
@@ -110,11 +110,12 @@ public class EnemyStats : MonoBehaviour {
 
 			anim.SetBool("IsDead", true);
 			GetComponent<BoxCollider2D>().enabled = false;
-			healthBar.Hide();
-			healthBarbg.Hide();
 			StartCoroutine(EnemyDying());
 			//Destroy (this.gameObject);
 		}
+		if (currHealth < 0)
+			currHealth = 0;
+		ui.UpdateHealthBar (currHealth,maxHealth,enemyName);
 	}
 
 	IEnumerator EnemyDying () {
@@ -124,16 +125,15 @@ public class EnemyStats : MonoBehaviour {
 			sprite.color = new Color (1f, 1f, 1f, sprite.color.a - 0.1f);
 			yield return new WaitForSeconds (0.2f);
 		}
-		
 		Destroy (this.gameObject);
 		
 	}
 
-	private void UpdateHealthBar(){
+	/*private void UpdateHealthBar(){
 
 		float porcentOfHp = currHealth / maxHealth;
 		float hpBarLength = porcentOfHp * 100;
 		healthBar.hpTexture.pixelInset = new Rect(healthBar.hpTexture.pixelInset.x,healthBar.hpTexture.pixelInset.y, hpBarLength, healthBar.hpTexture.pixelInset.height);
-	}
+	}*/
 
 }

@@ -15,40 +15,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &148748
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 480554}
-  - 131: {fileID: 13176982}
-  - 114: {fileID: 11428418}
-  m_Layer: 11
-  m_Name: EnemyHealthBarbg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &158018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 467302}
-  - 131: {fileID: 13142194}
-  - 114: {fileID: 11466146}
-  m_Layer: 0
-  m_Name: EnemyHealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &169616
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +65,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 495082}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!4 &458484
 Transform:
   m_ObjectHideFlags: 1
@@ -112,30 +78,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495082}
   m_RootOrder: 0
---- !u!4 &467302
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.1400003, y: -1.19000006, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 495082}
-  m_RootOrder: 1
---- !u!4 &480554
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148748}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.0200005, y: -4.69000006, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 495082}
-  m_RootOrder: 2
 --- !u!4 &495082
 Transform:
   m_ObjectHideFlags: 1
@@ -147,8 +89,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458484}
-  - {fileID: 467302}
-  - {fileID: 480554}
   - {fileID: 402900}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -279,24 +219,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11428418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c34fde20c1a8d44b34263f81ea83a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpTexture: {fileID: 13176982}
-  target: {fileID: 495082}
-  offset: {x: 0, y: .600000024, z: 0}
-  clampToScreen: 0
-  clampBorderSize: .5
-  useMainCamera: 1
-  cameraToUse: {fileID: 0}
 --- !u!114 &11446244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,24 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83292b4168fca94dae2a95979c7f424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11466146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c34fde20c1a8d44b34263f81ea83a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hpTexture: {fileID: 13142194}
-  target: {fileID: 495082}
-  offset: {x: 0, y: .600000024, z: 0}
-  clampToScreen: 0
-  clampBorderSize: .5
-  useMainCamera: 1
-  cameraToUse: {fileID: 0}
 --- !u!114 &11492448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,8 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 11466146}
-  healthBarbg: {fileID: 11428418}
   currHealth: 0
   maxHealth: 10
   armour: 0
@@ -372,46 +274,9 @@ MonoBehaviour:
   poisonRes: 1
   elem: 0
   alertSound: {fileID: 8280366}
+  enemyName: Crow
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
---- !u!131 &13142194
-GUITexture:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158018}
-  m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 217177094ee1bdf4ea87ec1b7e1dec3f, type: 3}
-  m_Color: {r: .0237889122, g: .647058845, b: .33757323, a: .501960814}
-  m_PixelInset:
-    serializedVersion: 2
-    x: -50
-    y: 5
-    width: 100
-    height: 10
-  m_LeftBorder: 0
-  m_RightBorder: 0
-  m_TopBorder: 0
-  m_BottomBorder: 0
---- !u!131 &13176982
-GUITexture:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148748}
-  m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 44f7ec0de2f04304a9d1514272ce1b33, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
-  m_PixelInset:
-    serializedVersion: 2
-    x: -50
-    y: 5
-    width: 100
-    height: 10
-  m_LeftBorder: 0
-  m_RightBorder: 0
-  m_TopBorder: 0
-  m_BottomBorder: 0
 --- !u!212 &21223436
 SpriteRenderer:
   m_ObjectHideFlags: 1
