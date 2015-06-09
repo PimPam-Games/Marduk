@@ -6,13 +6,14 @@ using pi = PlayerItems;
 public class PlayerStats : MonoBehaviour {
 
 
-	public const int CantAtributes = 4, CantOffensives = 12, CantDefensives = 11, CantUtils = 2;
+	public const int CantAtributes = 4, CantOffensives = 13, CantDefensives = 11, CantUtils = 2;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
-	public const int MinDmg = 0, MaxDamge = 1, MinMgDmg = 2, MaxMgDmg = 3 ,CritChance = 4, CritDmgMultiplier = 5, Accuracy = 6, StunChance = 7, BleedChance = 8, CertainStrChance = 9, ManaPerSec = 10, MaxMana = 11; //offensives
+	public const int MinDmg = 0, MaxDamge = 1, MinMgDmg = 2, MaxMgDmg = 3 ,CritChance = 4, CritDmgMultiplier = 5, Accuracy = 6, StunChance = 7, BleedChance = 8, CertainStrChance = 9, ManaPerSec = 10, MaxMana = 11, AttackRate = 12; //offensives
 	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, Evasiveness = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10;  //defensives
 	public const int MovementSpeed = 0, MagicFind = 1;//utils
 
 	public const float InitMoveSpeed = 5;
+	public const float InitAttackRate = 0.8f;
 	public const float InitMaxHealth = 45;
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;
@@ -102,6 +103,7 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MaxDamge] = InitMaxDmg;
 		defensives [MaxHealth] = InitMaxHealth;
 		utils [MovementSpeed] = InitMoveSpeed;
+		offensives [AttackRate] = InitAttackRate;
 	}
 
 	public void RespawnStats(){ //Restaura los valores predeterminados del jugador

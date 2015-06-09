@@ -149,7 +149,6 @@ public class MyGUI : MonoBehaviour {
 						PlayerItems.Inventory.Add(PlayerItems.EquipedHelmet);
 						PlayerItems.EquipedHelmet = null;
 						PlayerItems.inventoryCantItems++;
-						Debug.Log(PlayerItems.inventoryCantItems);
 					}
 				}
 			}

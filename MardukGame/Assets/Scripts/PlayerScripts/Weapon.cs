@@ -5,7 +5,8 @@ using p = PlayerStats;
 
 public class Weapon : MonoBehaviour {
 
-	[SerializeField] private float attackDelay = 5f;
+	private float attackDelay; // tiempo de espera entre cada ataque
+	private float maxAttackingTime = 0.5f; // tiempo que dura el ataque
 	public bool canAttack = false;
 	private bool isAttacking = false;
 	[SerializeField] private Types.Element elem = Types.Element.None; // falta agregar esto a los arreglos de playerStats
@@ -18,12 +19,13 @@ public class Weapon : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		attackTimer = 0;
+		attackDelay = p.offensives [p.AttackRate];
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		attackDelay = p.offensives [p.AttackRate];
 		attackingTime -= Time.deltaTime;
 		attackTimer -= Time.deltaTime;
 		if(attackingTime <=0) // si no esta atacando no le pego a ningun enemigo
@@ -43,7 +45,7 @@ public class Weapon : MonoBehaviour {
 			isAttacking = true;
 			attackTimer = attackDelay;
 			canAttack = false;
-			attackingTime = 0.7f;
+			attackingTime = maxAttackingTime;
 
 		}
 	}
