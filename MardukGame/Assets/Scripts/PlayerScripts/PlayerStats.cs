@@ -2,6 +2,7 @@
 using System.Collections;
 using System;
 using pi = PlayerItems;
+using expUi = ExpUiController;
 
 public class PlayerStats : MonoBehaviour {
 
@@ -30,7 +31,13 @@ public class PlayerStats : MonoBehaviour {
 	private Animator anim;
 	private PlayerUIController ui;
 
+	private static double currentExp;
+	public static int lvl;
+	private static double nextLevelExp;
+	private static double oldNextLevelExp;
+
 	public AudioSource playerDeathSound;
+
 
 	public static bool ghostMode;
 	public float ghostModeTime = 1f;
@@ -70,7 +77,6 @@ public class PlayerStats : MonoBehaviour {
 		if (currentHealth <= 0 && !isDead) {
 			isDead = true;
 			StartCoroutine(PlayerDying());
-
 			//gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false ;//esto es provisorio HAY QUE CAMBIARLO!
 		}
 	}
@@ -104,6 +110,11 @@ public class PlayerStats : MonoBehaviour {
 		defensives [MaxHealth] = InitMaxHealth;
 		utils [MovementSpeed] = InitMoveSpeed;
 		offensives [AttackRate] = InitAttackRate;
+		lvl = 1;
+		currentExp = 0;
+		oldNextLevelExp = 0;
+		nextLevelExp = ExpFormula ();
+
 	}
 
 	public void RespawnStats(){ //Restaura los valores predeterminados del jugador
@@ -111,6 +122,22 @@ public class PlayerStats : MonoBehaviour {
 		isDead = false;
 		StartCoroutine (LifeRegeneration ());
 		gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+	}
+
+	public static double ExpFormula(){
+		return oldNextLevelExp + Math.Pow(1.2,lvl);
+	}
+
+	public static void UpdateExp(double exp){
+		 
+		currentExp += exp;
+		if (currentExp >= nextLevelExp) {
+			lvl++;
+			oldNextLevelExp = nextLevelExp;
+			nextLevelExp = ExpFormula();
+		}
+		expUi.UpdateExpBar (currentExp,oldNextLevelExp,nextLevelExp);
+		Debug.Log ("currExp " + currentExp + ", " + "nextLevelExp " + nextLevelExp + ", " + "lvl " + lvl );
 	}
 
 	public void Hit(float dmg, Types.Element type){ //se llama cuando un enemigo le pega al jugador

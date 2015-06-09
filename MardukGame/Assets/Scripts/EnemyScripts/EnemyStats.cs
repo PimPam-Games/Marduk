@@ -5,6 +5,7 @@ using ui = EnemyHealthUiController;
 
 public class EnemyStats : MonoBehaviour {
 
+	public int lvl;
 	[SerializeField] public float currHealth;
 	[SerializeField] public float maxHealth = 10;
 	[SerializeField] public Tuple<float,float> damage;
@@ -24,6 +25,7 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject blood;
 	public bool isDead = false;
 
+	public double exp;
 	private Renderer rend;
 
 	// Use this for initialization
@@ -110,6 +112,7 @@ public class EnemyStats : MonoBehaviour {
 
 			anim.SetBool("IsDead", true);
 			GetComponent<BoxCollider2D>().enabled = false;
+			p.UpdateExp(exp);
 			StartCoroutine(EnemyDying());
 			//Destroy (this.gameObject);
 		}
