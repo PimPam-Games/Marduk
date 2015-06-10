@@ -79,12 +79,14 @@ public class Persistence : MonoBehaviour {
 		UnityEngine.Object obj  = Resources.Load("Weapons/" + i.itemName, typeof(UnityEngine.Object));
 		GameObject newWeapon = (GameObject)Instantiate (obj,new Vector3(-500,-500,500),new Quaternion(1,1,1,1));
 		Item newItem = newWeapon.GetComponent<Item> ();
+
 		newItem.Rarity = i.rarity;
 		newItem.Type = i.type;
 		newItem.Atributes = i.atributes;
 		newItem.Defensives = i.defensives;
 		newItem.Offensives = i.offensives;
 		newItem.Utils = i.utils;
+		DontDestroyOnLoad (newItem);
 		newWeapon.SetActive (false);
 		return newItem;
 	}
