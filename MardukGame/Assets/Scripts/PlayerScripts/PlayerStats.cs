@@ -125,7 +125,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public static double ExpFormula(){
-		return oldNextLevelExp + Math.Pow(1.2,lvl);
+		return oldNextLevelExp + Math.Pow(1.2,lvl)*100;
 	}
 
 	public static void UpdateExp(double exp){

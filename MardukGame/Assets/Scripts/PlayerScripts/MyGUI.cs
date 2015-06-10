@@ -61,6 +61,7 @@ public class MyGUI : MonoBehaviour {
 		toolbarStyle.margin = new RectOffset(25, 25, 10, 10);
 		characterPanel = GUI.Toolbar (new Rect(50*dif,250*dif,250*dif,20*dif),characterPanel,characterPanelNames,toolbarStyle);
 
+		GUI.Label (new Rect (225*dif, 75*dif, 100*dif, 20*dif), p.lvl.ToString());
 		GUI.Label (new Rect (180*dif, 127*dif, 100*dif, 20*dif), p.atributes[p.Strength].ToString());
 		GUI.Label (new Rect (180*dif, 155*dif, 100*dif, 20*dif),  p.atributes[p.Dextery].ToString());
 		GUI.Label (new Rect (180*dif, 184*dif, 100*dif, 20*dif),p.atributes[p.Vitality].ToString());
@@ -101,10 +102,12 @@ public class MyGUI : MonoBehaviour {
 		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), p.defensives[p.LightRes].ToString());
 		GUI.Label (new Rect (65*dif, 345*dif, 200*dif, 20*dif), "Poison Resistance");
 		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), p.defensives[p.PoisonRes].ToString());
-		GUI.Label (new Rect (65*dif, 360*dif, 200*dif, 20*dif), "Block chance");
+		GUI.Label (new Rect (65*dif, 360*dif, 200*dif, 20*dif), "Block Chance");
 		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.defensives[p.BlockChance].ToString());
 		GUI.Label (new Rect (65*dif, 375*dif, 200*dif, 20*dif), "Evasiveness");
 		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.defensives[p.Evasiveness].ToString());
+		GUI.Label (new Rect (65*dif, 390*dif, 200*dif, 20*dif), "Life Gained Per Hit");
+		GUI.Label (new Rect (250*dif, 390*dif, 100*dif, 20*dif), p.defensives[p.LifePerHit].ToString());
 	}
 
 	private void DisplayMisc(){

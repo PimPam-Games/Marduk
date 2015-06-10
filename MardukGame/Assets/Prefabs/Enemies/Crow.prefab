@@ -265,9 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvl: 0
   currHealth: 0
   maxHealth: 10
-  armour: 0
+  armour: 1
   coldRes: 0
   fireRes: 0
   lightRes: 0
@@ -277,6 +278,7 @@ MonoBehaviour:
   enemyName: Crow
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
+  exp: 10
 --- !u!212 &21223436
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -299,7 +301,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -354108773
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b613efc1fab7f0148bb5791ecc41c89f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
