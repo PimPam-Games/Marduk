@@ -58,12 +58,20 @@ public class Persistence : MonoBehaviour {
 			ExpUiController.UpdateExpBar(p.currentExp,p.oldNextLevelExp,p.nextLevelExp);
 			if(data.equipedArmour != null)
 				pItems.EquipedArmour = GenerateItem(data.equipedArmour);
+			else
+				pItems.EquipedArmour = null;
 			if(data.equipedHelmet != null)
 				pItems.EquipedHelmet= GenerateItem(data.equipedHelmet);
+			else
+				pItems.EquipedHelmet = null;
 			if(data.equipedShield != null)
 				pItems.EquipedShield = GenerateItem (data.equipedShield);
+			else
+				pItems.EquipedShield = null;
 			if(data.equipedWeapon!= null)
 				pItems.EquipedWeapon = GenerateItem (data.equipedWeapon);
+			else
+				pItems.EquipedWeapon = null;
 			List<Item> inv = new List<Item>();
 			foreach(SerializableItem it in data.inventory){
 				inv.Add(GenerateItem(it));
