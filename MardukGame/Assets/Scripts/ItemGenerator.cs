@@ -14,7 +14,8 @@ public class ItemGenerator :MonoBehaviour{
 	}
 
 	public void createInitWeapon(Vector3 position, Quaternion rotation){
-		GameObject newWeapon = (GameObject)Instantiate (weaponList [1],position,rotation);
+		Object weap =  Resources.Load("Weapons/Arming Sword", typeof(UnityEngine.Object));
+		GameObject newWeapon = (GameObject)Instantiate (weap,position,rotation);
 		Item newItem = newWeapon.GetComponent<Item> ();
 		newItem.Rarity = RarityTypes.Normal;
 		newItem.type = ItemTypes.Weapon;

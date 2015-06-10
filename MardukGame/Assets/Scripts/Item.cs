@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
 
-public class Item :MonoBehaviour {
+public class Item : MonoBehaviour {
 
 	public string itemName;
 	private RarityTypes rarity;
@@ -40,18 +41,22 @@ public class Item :MonoBehaviour {
 
 	public float[] Atributes{
 		get {return atributes;}
+		set {atributes = value;}
 	}
 
 	public float[] Offensives{
 		get {return offensives;}
+		set {offensives = value;}
 	}
 
 	public float[] Defensives{
 		get {return defensives;}
+		set {defensives = value;}
 	}
 
 	public float[] Utils{
 		get {return utils;}
+		set {utils = value;}
 	}
 
 	public Item(){

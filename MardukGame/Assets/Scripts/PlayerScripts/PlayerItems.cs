@@ -21,6 +21,7 @@ public class PlayerItems: MonoBehaviour {
 	public static List<Item> Inventory{
 
 		get {return inventory;}
+		set{inventory = value;}
 	}
 
 

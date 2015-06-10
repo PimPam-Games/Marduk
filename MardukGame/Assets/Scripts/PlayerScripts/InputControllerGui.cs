@@ -21,6 +21,14 @@ public class InputControllerGui : MonoBehaviour {
 			gui.ToggleCharacterWindow();
 			SetMouseVisible();
 		}
+		if(Input.GetButtonUp ("Save")){
+			Persistence.Save();
+			Debug.Log("Save Data");
+		}
+		if (Input.GetButtonUp ("Load")) {
+			Persistence.Load();
+			Debug.Log("Load Data");
+		}
 	}
 
 	private void SetMouseVisible(){

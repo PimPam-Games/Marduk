@@ -31,10 +31,10 @@ public class PlayerStats : MonoBehaviour {
 	private Animator anim;
 	private PlayerUIController ui;
 
-	private static double currentExp;
+	public static double currentExp;
 	public static int lvl;
-	private static double nextLevelExp;
-	private static double oldNextLevelExp;
+	public static double nextLevelExp;
+	public static double oldNextLevelExp;
 
 	public AudioSource playerDeathSound;
 
@@ -62,6 +62,7 @@ public class PlayerStats : MonoBehaviour {
 
 		currentHealth = defensives [MaxHealth];
 		StartCoroutine(LifeRegeneration());
+
 		//StartCoroutine (GhostModeRender());
 	}
 	
