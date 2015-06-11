@@ -60,6 +60,32 @@ public class MyGUI : MonoBehaviour {
 
 		toolbarStyle.margin = new RectOffset(25, 25, 10, 10);
 		characterPanel = GUI.Toolbar (new Rect(50*dif,250*dif,250*dif,20*dif),characterPanel,characterPanelNames,toolbarStyle);
+		if (p.atributesPoints > 0) {
+			if(GUI.Button (new Rect (220 * dif, 127 * dif, 20 * dif, 20 * dif), "+")){ //fuerza
+				p.atributesPoints--;
+				p.strAddedPoints++;
+				p.AddAtribute(0);
+
+			}
+			if(GUI.Button (new Rect (220 * dif, 155 * dif, 20 * dif, 20 * dif), "+")){ 
+				p.atributesPoints--;
+				p.dexAddedPoints++;
+				p.AddAtribute(1);
+
+			}
+			if(GUI.Button (new Rect (220 * dif, 184 * dif, 20 * dif, 20 * dif), "+")){
+				p.atributesPoints--;
+				p.vitAddedPoints++;
+				p.AddAtribute(2);
+
+			}
+			if(GUI.Button (new Rect (220 * dif, 210 * dif, 20 * dif, 20 * dif), "+")){
+				p.atributesPoints--;
+				p.spiAddedPoints++;
+				p.AddAtribute(3);
+
+			}	
+		}
 
 		GUI.Label (new Rect (225*dif, 75*dif, 100*dif, 20*dif), p.lvl.ToString());
 		GUI.Label (new Rect (180*dif, 127*dif, 100*dif, 20*dif), p.atributes[p.Strength].ToString());

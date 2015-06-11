@@ -35,6 +35,12 @@ public class PlayerStats : MonoBehaviour {
 	public static int lvl;
 	public static double nextLevelExp;
 	public static double oldNextLevelExp;
+	public static int atributesPoints = 0; //puntos de atributos que quedan por poner cada vez que se pasa de nivel
+
+	public static int strAddedPoints = 0;
+	public static int vitAddedPoints = 0;
+	public static int spiAddedPoints = 0;
+	public static int dexAddedPoints = 0;
 
 	public AudioSource playerDeathSound;
 
@@ -80,6 +86,39 @@ public class PlayerStats : MonoBehaviour {
 			StartCoroutine(PlayerDying());
 			//gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false ;//esto es provisorio HAY QUE CAMBIARLO!
 		}
+	}
+
+	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
+		atributes [Strength] = strAddedPoints;
+		atributes [Vitality] = vitAddedPoints;
+		atributes [Spirit] = spiAddedPoints;
+		atributes [Dextery] = dexAddedPoints;
+
+		defensives [MaxHealth] = atributes [Vitality] * 3 + InitMaxHealth; 
+		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
+		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
+		offensives [MaxMana] = atributes [Spirit] * 3;
+	}
+
+	public static void AddAtribute(int atribute){
+		switch (atribute) {
+			case 0:
+				atributes [Strength]++;
+				offensives [MinDmg] += 0.25f;
+				offensives [MaxDamge] += 0.25f;
+				break;
+			case 1:
+				atributes [Dextery]++;
+				break;
+			case 2:
+				atributes [Vitality]++;
+				defensives [MaxHealth] += 3;
+				break;
+			case 3:
+				atributes [Spirit]++;
+				break;
+		}
+
 	}
 
 
@@ -136,6 +175,7 @@ public class PlayerStats : MonoBehaviour {
 			lvl++;
 			oldNextLevelExp = nextLevelExp;
 			nextLevelExp = ExpFormula();
+			atributesPoints += 5;
 		}
 		expUi.UpdateExpBar (currentExp,oldNextLevelExp,nextLevelExp);
 		Debug.Log ("currExp " + currentExp + ", " + "nextLevelExp " + nextLevelExp + ", " + "lvl " + lvl );

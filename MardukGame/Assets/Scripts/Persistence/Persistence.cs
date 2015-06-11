@@ -22,6 +22,12 @@ public class Persistence : MonoBehaviour {
 		data.oldNextLevelExp = p.oldNextLevelExp;
 		data.nextLevelExp = p.nextLevelExp;
 
+		data.strAddedPoints = p.strAddedPoints;
+		data.spiAddedPoints = p.spiAddedPoints;
+		data.dexAddedPoints = p.dexAddedPoints;
+		data.vitAddedPoints = p.vitAddedPoints;
+		data.atributesPoints = p.atributesPoints;
+
 		if(pItems.EquipedWeapon != null)
 			data.equipedWeapon = new SerializableItem(pItems.EquipedWeapon);
 		if(pItems.EquipedHelmet != null)
@@ -50,7 +56,15 @@ public class Persistence : MonoBehaviour {
 			/*p.atributes = data.atributes ;
 			p.defensives = data.defensives;
 			p.offensives = data.offensives;*/
-			p.utils = data.utils;
+			//p.utils = data.utils;
+			p.strAddedPoints = data.strAddedPoints;
+			p.spiAddedPoints = data.spiAddedPoints;
+			p.dexAddedPoints = data.dexAddedPoints;
+			p.vitAddedPoints = data.vitAddedPoints;
+			p.atributesPoints = data.atributesPoints;
+
+			p.LoadAtributes();
+
 			p.lvl = data.lvl;
 			p.currentExp = data.currentExp;
 			p.oldNextLevelExp = data.oldNextLevelExp;

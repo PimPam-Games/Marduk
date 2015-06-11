@@ -28,6 +28,7 @@ public class EnemyStats : MonoBehaviour {
 	public double exp;
 	private Renderer rend;
 
+
 	// Use this for initialization
 	void Start () {
 		damage = new Tuple<float, float> (2, 5);

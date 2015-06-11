@@ -191,6 +191,8 @@ public class EnemyIAMovement : MonoBehaviour {
 		stopTime = 0;
 		knockbackTimer = knockbackLength;
 		this.knockFromRight = knockFromRight;
+		/*if(grounded)
+			rb.AddForce (new Vector2(0,250));*/
 	}
 
 	public bool IsFacingRight(){

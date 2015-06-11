@@ -6,6 +6,11 @@ using System;
 [Serializable]
 public class PlayerData{
 
+	public  int atributesPoints;
+	public  int strAddedPoints;
+	public  int vitAddedPoints;
+	public  int spiAddedPoints;
+	public  int dexAddedPoints;
 
 	public  double currentExp;
 	public  int lvl;
