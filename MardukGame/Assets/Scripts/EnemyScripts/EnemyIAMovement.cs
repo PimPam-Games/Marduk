@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyIAMovement : MonoBehaviour {
 
+
+	private const int MaxDistanceFollow = 11;
 	public float maxSpeed = 2f;
 	private bool facingRight = false;
 	private Rigidbody2D rb;
@@ -13,15 +15,18 @@ public class EnemyIAMovement : MonoBehaviour {
 	private bool grounded;
 	private float groundedRadius = .2f;
 	private float jumpForce = 800f;
-	public float flipDelay = 888f ;
+	private float flipDelay = 1.5f ;
 	private float flipDelayCount = 0;
-	public int moveDir = 1;
+	private int moveDir = 1, moveDirY;
+
 	private float stopTime = 0;
 	private Animator anim;
 	private EnemyStats enemyStats;
 
 	public bool knockable = true;
-	public bool jumper = false;
+	public bool jumper = false; 
+	public bool flying = false; //true si el enemigo es volador
+	public bool common = true; // enemigo terrestre comun
 
 	private float jumpTime = 0;
 	public float jumpDelay = 2;
@@ -32,6 +37,9 @@ public class EnemyIAMovement : MonoBehaviour {
 	private bool knockFromRight = true;
 	public float knockback = 2.5f;
 
+	private Vector3 dir;
+	private float dotX,dotY;
+	private float calcDirTime, calcDirDelay = 0.6f;
 
 	[SerializeField] private LayerMask whatIsGround;
 
@@ -59,14 +67,15 @@ public class EnemyIAMovement : MonoBehaviour {
 
 
 		if (stopTime <= 0) { // time the enemy will be stopped
-			if(jumper)
-				jumpPatrol();
-			else{
-				if (smartFollow)
-					FollowPlayer ();
-				else
-					Patrol ();
-			}
+			//if(jumper)
+			//	jumpPatrol();
+			//else{
+			//	if (smartFollow)
+
+			FollowPlayer ();
+			//	else
+			//		Patrol ();
+			//}
 		} else {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 		}
@@ -100,15 +109,10 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	private void jumpPatrol(){
 		anim.SetBool ("Ground",grounded);
-		flipDelayCount -= Time.deltaTime;
 		groundCheckTime -= Time.deltaTime;
 		if (groundCheckTime <= 0)
 			if(grounded)
 				rb.velocity = new Vector2 (0,rb.velocity.y);
-		if (flipDelayCount <= 0) {
-			moveDir *= -1;
-			flipDelayCount = flipDelay;
-		}
 		if (jumpTime <= 0)
 			if (grounded) {
 				rb.AddForce (new Vector2 (moveDir * 100, jumpForce));
@@ -127,16 +131,88 @@ public class EnemyIAMovement : MonoBehaviour {
 	}
 
 	private void FollowPlayer(){
-
-		var dir = (target.transform.position - transform.position).normalized;
-		var dot = Vector2.Dot (dir, transform.right); //negativo si player esta a su izquierda
-		if (dot < 0)
-			moveDir = -1;
-		if (dot > 0)
-			moveDir = 1;
-		Move ();
+		float dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));
+		 // calcula la direccion donde esta el jugador respecto del enemigo
+		if (common) {
+			if (dist < MaxDistanceFollow){
+				CalculateDir ();
+				Move ();
+			}
+			else
+				Patrol();
+				//rb.velocity = new Vector2 (0, rb.velocity.y); //aca hay que poner la animacion en idle
+		} 
+		if(jumper){
+			if (dist < MaxDistanceFollow){
+				CalculateDir ();
+				jumpPatrol();
+			}
+			else
+				rb.velocity = new Vector2 (0, rb.velocity.y);
+		}
+		if (flying) {
+			if (dist < MaxDistanceFollow){
+				CalculateDir ();
+				Fly();
+			}
+			else
+				FlyPatrol();
+		}
 	}
-	
+
+	private void FlyPatrol(){
+		flipDelayCount -= Time.deltaTime;
+		moveDirY = 0;
+		if (flipDelayCount <= 0) {
+			moveDir *= -1;
+			flipDelayCount = flipDelay;
+		}
+		Fly ();
+	}
+
+	private void Fly(){
+		if (knockbackTimer <= 0) {
+			anim.SetBool ("hit", false);
+			rb.velocity = new Vector2 (moveDir * maxSpeed, moveDirY * maxSpeed);
+		}
+		else{
+			if(knockable){
+				if(knockFromRight)
+					rb.velocity = new Vector2(-knockback, rb.velocity.y);
+				else
+					rb.velocity = new Vector2(knockback, rb.velocity.y);
+				knockbackTimer -= Time.deltaTime;
+			}
+			return;
+		}
+		
+		// If the input is moving the player right and the player is facing left...
+		if (moveDir > 0 && !facingRight) 
+			// ... flip the player.
+			Flip();
+		// Otherwise if the input is moving the player left and the player is facing right...
+		else if (moveDir < 0 && facingRight)
+			// ... flip the player.
+			Flip();
+	}
+
+	private void CalculateDir(){
+		calcDirTime -= Time.deltaTime;
+		if (calcDirTime < 0) {
+			calcDirTime = calcDirDelay;
+			dir = (target.transform.position - transform.position).normalized;
+			dotX = Vector2.Dot (dir, transform.right); //negativo si player esta a su izquierda
+			dotY = Vector2.Dot(dir,transform.up); //negativo si player esta arriba?
+			if (dotX < 0)
+				moveDir = -1;
+			else
+				moveDir = 1;
+			if(dotY < 0)
+				moveDirY = -1;
+			else
+				moveDirY = 1;
+		}
+	}
 
 	private void Move(){ //move the enemy
 		if (knockbackTimer <= 0) {
