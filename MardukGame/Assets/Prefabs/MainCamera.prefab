@@ -13,6 +13,7 @@ GameObject:
   - 124: {fileID: 12459216}
   - 81: {fileID: 8115316}
   - 114: {fileID: 11418298}
+  - 114: {fileID: 11492088}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -90,9 +91,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  margin: {x: 1, y: 0}
+  margin: {x: 1, y: .5}
   smoothing: {x: 4, y: 2}
   bounds: {fileID: 0}
+--- !u!114 &11492088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b7cf332705a374092c6a63abf9351f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 3b2de559f777c694db85930a969c32ee, type: 3}
+  cursorTextureDown: {fileID: 2800000, guid: 5653f3e1f31526747990abbb405d5299, type: 3}
+  ccEnabled: 0
 --- !u!124 &12459216
 Behaviour:
   m_ObjectHideFlags: 1
