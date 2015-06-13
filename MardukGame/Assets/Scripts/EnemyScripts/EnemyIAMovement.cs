@@ -216,7 +216,8 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	private void Move(){ //move the enemy
 		if (knockbackTimer <= 0) {
-			anim.SetBool ("hit", false);
+			if(knockable)
+				anim.SetBool ("hit", false);
 			rb.velocity = new Vector2 (moveDir * maxSpeed, rb.velocity.y);
 		}
 		else{

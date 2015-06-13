@@ -109,7 +109,7 @@ public class EnemyStats : MonoBehaviour {
 			isDead = true;
 			rb.gravityScale = 3;
 			GetComponent<ItemGenerator>().CreateItem(transform.position, transform.rotation);
-			GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
+			//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 
 			anim.SetBool("IsDead", true);
 			GetComponent<BoxCollider2D>().enabled = false;
@@ -130,7 +130,6 @@ public class EnemyStats : MonoBehaviour {
 			yield return new WaitForSeconds (0.2f);
 		}
 		Destroy (this.gameObject);
-		
 	}
 
 	/*private void UpdateHealthBar(){

@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 117550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.73999977, y: -.50999999, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 453286}
   - {fileID: 448278}
@@ -284,10 +284,10 @@ MonoBehaviour:
   maxSpeed: 1.5
   groundCheck: {fileID: 448278}
   smartFollow: 0
-  flipDelay: 2
-  moveDir: 1
   knockable: 1
   jumper: 0
+  flying: 0
+  common: 1
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5

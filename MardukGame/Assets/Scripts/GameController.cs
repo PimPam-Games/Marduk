@@ -9,19 +9,21 @@ public class GameController : MonoBehaviour {
 	public static int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
-	public List<string> deadEnemies;
+	//public List<string> deadEnemies;
 	private PlayerStats playerStats;
 	public static int currentLevel = 0;
 	private CameraController cameraController;
 	public static List<string> notVisitedLevels;
 	public static List<string[]> levelConnections;
-	public static bool testlevel = false;
-
+	//public static bool newLevel = true;
+	public static Object[] enemyList;
+	public static Dictionary<string,List<GameObject>> enemiesPerLevel = new Dictionary<string,List<GameObject>>();
+	public static string currLevelName;
 
 	public AudioSource music1;
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
-		deadEnemies = new List<string>();
+		//deadEnemies = new List<string>();
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (player);
 		playerStats = player.GetComponent<PlayerStats> ();
@@ -34,16 +36,16 @@ public class GameController : MonoBehaviour {
 			DontDestroyOnLoad(hudCanvas);
 		else
 			Debug.LogError ("HUDCanvas not found");
-		Application.LoadLevel ("Level1");
+		currLevelName = "level1";
+		Application.LoadLevel (currLevelName);
 		currentLevel = Application.loadedLevel;
 		Cursor.visible = false;
 		notVisitedLevels = new List<string>();
 		levelConnections = new List<string[]>();
-
+		enemyList = Resources.LoadAll("Enemies/Zone1", typeof(Object));
 		for (int i = 2; i <= CantLevels; i++) {
 			notVisitedLevels.Add("level" + i);
 		}
-
 		music1.Play ();
 
 	}
@@ -56,22 +58,24 @@ public class GameController : MonoBehaviour {
 	void Update () {
 
 		if (currentLevel != Application.loadedLevel) {
-			GameObject[] enemies;
+			/*GameObject[] enemies;
 			enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			foreach(string deadEnemy in deadEnemies){ //Destruye enemigos muertos de esta scena
 				foreach(GameObject enemy in enemies){
 					if(enemy.name == deadEnemy)
 						Destroy(enemy);
 				}
-			}
+			}*/
 			RepositionPlayerAndCamera();
 			currentLevel = Application.loadedLevel;
 
 		}
 		if (playerStats.readyToRespawn) {
-			deadEnemies.Clear();
+			DestroyEnemies();
 			ChangeLevel.DestroyItems();
-			Application.LoadLevel("Level1");
+			enemiesPerLevel.Clear ();
+			currLevelName = "level1";
+			Application.LoadLevel(currLevelName);
 			previousExit = 1; //la proxima entrada tiene que ser la 1, la de la izquierda del nivel
 			playerStats.RespawnStats();
 			player.GetComponent<PlatformerCharacter2D>().RespawnPosition(); //hace que el jugador mire a la derecha
@@ -92,5 +96,36 @@ public class GameController : MonoBehaviour {
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x + 10, levelEntry.transform.position.y, mainCamera.transform.position.z);
 		else
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x - 10, levelEntry.transform.position.y, mainCamera.transform.position.z);
+	}
+
+	private void DestroyEnemies(){
+		//GameObject[] enems = enemiesPerLevel.Values;
+		Dictionary<string, List<GameObject>>.ValueCollection values = enemiesPerLevel.Values;
+		foreach (List<GameObject> enems in values)
+		{
+			foreach(GameObject e in enems){
+				Destroy(e.gameObject);
+			}
+		}
+		//GameObject[] enems = GameObject.FindGameObjectsWithTag("Enemy");
+		//foreach (GameObject e in enems)
+		//	Destroy (e.gameObject);
+		enemiesPerLevel.Clear ();
+
+	}
+
+	public static void SetActiveEnemies(string levelName, bool active){
+		//Debug.Log ("Busco la key: " + levelName);
+		if (!enemiesPerLevel.ContainsKey (levelName)) {
+			//Debug.LogError(levelName + " No encontrado!");
+			return;
+		}
+		List<GameObject> enemList = enemiesPerLevel [levelName];
+		foreach(GameObject e in enemList){
+			if(e!=null)
+				e.SetActive(active);
+			//else
+			//	enemList.Remove(e);
+		}
 	}
 }
