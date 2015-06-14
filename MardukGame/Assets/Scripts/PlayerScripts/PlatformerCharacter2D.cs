@@ -53,7 +53,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 
 		void Update(){
-			Debug.Log (rb.velocity.y);
+			
 			grabbingTime -= Time.deltaTime;
 			if (p.isDead)
 				maxSpeed = 0;
