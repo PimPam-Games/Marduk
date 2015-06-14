@@ -31,5 +31,8 @@ public class ProjectileStats : MonoBehaviour {
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
 			Destroy(this.gameObject);
 		}
+		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+			Destroy(this.gameObject);
+		}
 	}
 }

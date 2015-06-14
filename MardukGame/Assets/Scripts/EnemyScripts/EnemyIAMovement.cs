@@ -65,7 +65,10 @@ public class EnemyIAMovement : MonoBehaviour {
 		}
 		stopTime -= Time.deltaTime;
 
-
+		if(knockbackTimer>0){
+			knocking();
+			return;
+		}
 		if (stopTime <= 0) { // time the enemy will be stopped
 			//if(jumper)
 			//	jumpPatrol();
@@ -214,11 +217,10 @@ public class EnemyIAMovement : MonoBehaviour {
 		}
 	}
 
-	private void Move(){ //move the enemy
+	private void knocking(){
 		if (knockbackTimer <= 0) {
 			if(knockable)
 				anim.SetBool ("hit", false);
-			rb.velocity = new Vector2 (moveDir * maxSpeed, rb.velocity.y);
 		}
 		else{
 			if(knockable){
@@ -230,7 +232,11 @@ public class EnemyIAMovement : MonoBehaviour {
 			}
 			return;
 		}
-		
+	}
+
+	private void Move(){ //move the enemy
+
+		rb.velocity = new Vector2 (moveDir * maxSpeed, rb.velocity.y);
 		// If the input is moving the player right and the player is facing left...
 		if (moveDir > 0 && !facingRight) 
 			// ... flip the player.
@@ -255,7 +261,12 @@ public class EnemyIAMovement : MonoBehaviour {
 	/* Public Methods */
 
 	public void StopWalk(float attackTime){
+
 		stopTime = attackTime;
+	}
+
+	public void Walk(){
+		stopTime = 0;
 	}
 
 	public void setKnockbackTimer(float knockTimer){
@@ -264,12 +275,12 @@ public class EnemyIAMovement : MonoBehaviour {
 
 
 	public void Knock(bool knockFromRight){
-		anim.SetBool("hit",true);
-		stopTime = 0;
-		knockbackTimer = knockbackLength;
-		this.knockFromRight = knockFromRight;
-		/*if(grounded)
-			rb.AddForce (new Vector2(0,250));*/
+		//anim.SetBool("hit",true);
+		//stopTime = 0;
+		if (knockable) {
+			knockbackTimer = knockbackLength;
+			this.knockFromRight = knockFromRight;
+		}
 	}
 
 	public bool IsFacingRight(){

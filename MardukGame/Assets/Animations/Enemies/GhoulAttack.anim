@@ -19,9 +19,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300010, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
-    - time: .100000001
+    - time: .5
+      value: {fileID: 21300010, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
+    - time: .600000024
       value: {fileID: 21300008, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
-    - time: .200000003
+    - time: .699999988
       value: {fileID: 21300010, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
     attribute: m_Sprite
     path: 
@@ -42,12 +44,13 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300010, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
+    - {fileID: 21300010, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
     - {fileID: 21300008, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
     - {fileID: 21300010, guid: 62aa6b8fcc6379d4b89952dbdff307c6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .219999999
+    m_StopTime: .719999969
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -67,7 +70,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: .200000003
+  - time: .5
+    functionName: MeleeAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: .699999988
     functionName: Idle
     data: 
     objectReferenceParameter: {fileID: 0}

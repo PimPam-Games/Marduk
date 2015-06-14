@@ -30,7 +30,7 @@ public class EnemyAttack : MonoBehaviour {
 			return;
 		attackTimer -= Time.deltaTime;
 		if (hasMeleeAttack) {
-			MeleeAttackAI ();
+			MeleeAttackPrepare ();
 		} else {
 			if(attackTimer <= 0){
 				attackTimer = attackDelay;
@@ -41,24 +41,32 @@ public class EnemyAttack : MonoBehaviour {
 	}
 
 
-	void MeleeAttackAI(){
+	void MeleeAttackPrepare(){
 		var dir = (target.transform.position - transform.position).normalized;
 		var dot = Vector2.Dot(dir, transform.right); //negativo si player esta a su izquierda
 		float distance = Vector3.Distance (target.transform.position, transform.position);
-		if (distance < 1.5 && attackTimer <= 0 ) {
+		if (distance < 1.7 && attackTimer <= 0 ) {
 			if((dot < 0 && !movement.IsFacingRight()) || (dot > 0 && movement.IsFacingRight())){
 				attackTimer = attackDelay;
 				anim.SetBool("Attacking", true);
-				movement.StopWalk(0.5f);
-				float damage = Random.Range(stats.damage.First,stats.damage.Second);
-				playerStats.Hit(damage,stats.elem); 
+				movement.StopWalk(99);
 			}
 		}
 	}
 
-
+	void MeleeAttack(){
+		var dir = (target.transform.position - transform.position).normalized;
+		var dot = Vector2.Dot(dir, transform.right); //negativo si player esta a su izquierda
+		float distance = Vector3.Distance (target.transform.position, transform.position);
+		if (distance < 1.9)
+			if ((dot < 0 && !movement.IsFacingRight ()) || (dot > 0 && movement.IsFacingRight ())) {
+				float damage = Random.Range (stats.damage.First, stats.damage.Second);
+				playerStats.Hit (damage, stats.elem); 
+			}
+	}
 
 	void Idle(){
+		movement.Walk ();
 		anim.SetBool("Attacking", false);
 	}
 }

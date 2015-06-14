@@ -42,7 +42,7 @@ public class EnemyRangedAttack : MonoBehaviour {
 			else
 				projectile.GetComponent<EnemyMovement>().move = 1;
 			anim.SetBool("Attacking",true);
-			Instantiate(projectile, new Vector3 (transform.position.x , transform.position.y + offsetY, transform.position.z), transform.rotation);
+			Instantiate(projectile, new Vector3 (transform.position.x , transform.position.y + offsetY, transform.position.z-4), transform.rotation);
 		}
 	}
 }

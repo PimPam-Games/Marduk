@@ -74,7 +74,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	public void Hit(float dmg, Types.Element type){
-		Instantiate (blood, transform.position, transform.rotation);
+		Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
 		float realDmg = dmg;
 		switch (type){
 			case Types.Element.None:
