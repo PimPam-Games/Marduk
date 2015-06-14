@@ -53,15 +53,16 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 
 		void Update(){
-		grabbingTime -= Time.deltaTime;
-		if (p.isDead)
-			maxSpeed = 0;
-		else
-			maxSpeed = p.utils [p.MovementSpeed];
+			Debug.Log (rb.velocity.y);
+			grabbingTime -= Time.deltaTime;
+			if (p.isDead)
+				maxSpeed = 0;
+			else
+				maxSpeed = p.utils [p.MovementSpeed];
 
 
-		if (grabbingTime < 0)
-			grabbing = false;		
+			if (grabbingTime < 0)
+				grabbing = false;		
 		}
 
 		public void knockBackPlayer(bool knockFromRight){
@@ -183,6 +184,12 @@ public class PlatformerCharacter2D : MonoBehaviour
                 rb.AddForce(new Vector2(0f, jumpForce));
             }
         }
+
+		public void Fall(){ //si el jugador suelta boton de saltar se llama este metodo
+			//Debug.Log ("Fall");
+			if(rb.velocity.y > 0)
+				rb.velocity = new Vector2 (rb.velocity.x,rb.velocity.y/2);
+		}
 
 		public void Idle(){
 			anim.SetBool ("Attacking",false);

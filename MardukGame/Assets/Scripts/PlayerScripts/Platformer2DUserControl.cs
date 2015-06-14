@@ -18,12 +18,11 @@
 			if (!PlayerStats.isDead) {
 				if (Input.GetButtonUp ("Grab"))
 					character.Grab ();
-
-				
-
-					if (!jump)
-				        // Read the jump input in Update so button presses aren't missed.
-						jump = Input.GetButtonDown ("Jump");
+				if (!jump)
+					jump = Input.GetButtonDown ("Jump");
+				if(Input.GetButtonUp("Jump"))
+					character.Fall();
+					
 			}
 
         }
