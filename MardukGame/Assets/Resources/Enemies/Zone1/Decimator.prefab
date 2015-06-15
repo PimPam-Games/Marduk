@@ -63,8 +63,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.9099998, y: -.479999989, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -6.8499999, y: .100000001, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 465962}
   - {fileID: 492214}
@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasMeleeAttack: 1
+  attackRange: 2.5999999
   attackDelay: 3
   anim: {fileID: 9543386}
   target: {fileID: 0}
@@ -298,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 0
   currHealth: 0
-  maxHealth: 15
+  maxHealth: 20
   armour: 4
   coldRes: 0
   fireRes: 0
@@ -309,7 +310,7 @@ MonoBehaviour:
   enemyName: Decimator
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
-  exp: 18
+  exp: 25
 --- !u!212 &21256404
 SpriteRenderer:
   m_ObjectHideFlags: 1

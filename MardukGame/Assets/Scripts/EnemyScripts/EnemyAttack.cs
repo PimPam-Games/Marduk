@@ -5,6 +5,7 @@ public class EnemyAttack : MonoBehaviour {
 
 	
 	public bool hasMeleeAttack;
+	public float attackRange = 1.9f;
 	private float attackTimer = 0;
 	[SerializeField] private float attackDelay = 3f;
 	[SerializeField] private Animator anim;
@@ -12,6 +13,7 @@ public class EnemyAttack : MonoBehaviour {
 	private PlayerStats playerStats;
 	private EnemyIAMovement movement;
 	private EnemyStats stats;
+
 
 	void Awake(){
 
@@ -45,7 +47,7 @@ public class EnemyAttack : MonoBehaviour {
 		var dir = (target.transform.position - transform.position).normalized;
 		var dot = Vector2.Dot(dir, transform.right); //negativo si player esta a su izquierda
 		float distance = Vector3.Distance (target.transform.position, transform.position);
-		if (distance < 1.7 && attackTimer <= 0 ) {
+		if (distance < (attackRange - 0.2) && attackTimer <= 0 ) {
 			if((dot < 0 && !movement.IsFacingRight()) || (dot > 0 && movement.IsFacingRight())){
 				attackTimer = attackDelay;
 				anim.SetBool("Attacking", true);
@@ -58,7 +60,7 @@ public class EnemyAttack : MonoBehaviour {
 		var dir = (target.transform.position - transform.position).normalized;
 		var dot = Vector2.Dot(dir, transform.right); //negativo si player esta a su izquierda
 		float distance = Vector3.Distance (target.transform.position, transform.position);
-		if (distance < 1.9)
+		if (distance < attackRange)
 			if ((dot < 0 && !movement.IsFacingRight ()) || (dot > 0 && movement.IsFacingRight ())) {
 				float damage = Random.Range (stats.damage.First, stats.damage.Second);
 				playerStats.Hit (damage, stats.elem); 
