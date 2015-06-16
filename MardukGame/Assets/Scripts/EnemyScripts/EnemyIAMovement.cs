@@ -4,9 +4,10 @@ using System.Collections;
 public class EnemyIAMovement : MonoBehaviour {
 
 
-	private const int MaxDistanceFollow = 11;
+	public int MaxDistanceFollow = 11;
 	public float maxSpeed = 2f;
 	private bool facingRight = false;
+	private float currentSpeed;
 	private Rigidbody2D rb;
 	private GameObject target;
 	public Transform groundCheck;
@@ -27,6 +28,8 @@ public class EnemyIAMovement : MonoBehaviour {
 	public bool jumper = false; 
 	public bool flying = false; //true si el enemigo es volador
 	public bool common = true; // enemigo terrestre comun
+	public bool runner = false;
+	public bool hasIdleInstance = false;
 
 	private float jumpTime = 0;
 	public float jumpDelay = 2;
@@ -49,6 +52,9 @@ public class EnemyIAMovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		enemyStats = GetComponent<EnemyStats> ();
+		currentSpeed = maxSpeed;
+		if (hasIdleInstance)
+			anim.SetFloat ("Speed", currentSpeed);
 	}
 
 	private void FixedUpdate()
@@ -70,15 +76,7 @@ public class EnemyIAMovement : MonoBehaviour {
 			return;
 		}
 		if (stopTime <= 0) { // time the enemy will be stopped
-			//if(jumper)
-			//	jumpPatrol();
-			//else{
-			//	if (smartFollow)
-
 			FollowPlayer ();
-			//	else
-			//		Patrol ();
-			//}
 		} else {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 		}
@@ -101,11 +99,15 @@ public class EnemyIAMovement : MonoBehaviour {
 	}
 
 	private void Patrol(){
-
-		flipDelayCount -= Time.deltaTime;
-		if (flipDelayCount <= 0) {
-			moveDir *= -1;
-			flipDelayCount = flipDelay;
+		if (!hasIdleInstance) {
+			flipDelayCount -= Time.deltaTime;
+			if (flipDelayCount <= 0) {
+				moveDir *= -1;
+				flipDelayCount = flipDelay;
+			}
+		} else {
+			currentSpeed = 0;
+			anim.SetFloat("Speed",currentSpeed);
 		}
 		Move ();
 	}
@@ -139,6 +141,11 @@ public class EnemyIAMovement : MonoBehaviour {
 		if (common) {
 			if (dist < MaxDistanceFollow){
 				CalculateDir ();
+
+				if(hasIdleInstance){
+					currentSpeed = maxSpeed;
+					anim.SetFloat("Speed",currentSpeed);
+				}
 				Move ();
 			}
 			else
@@ -236,7 +243,7 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	private void Move(){ //move the enemy
 
-		rb.velocity = new Vector2 (moveDir * maxSpeed, rb.velocity.y);
+		rb.velocity = new Vector2 (moveDir * currentSpeed, rb.velocity.y);
 		// If the input is moving the player right and the player is facing left...
 		if (moveDir > 0 && !facingRight) 
 			// ... flip the player.
