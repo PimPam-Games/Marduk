@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.7900009, y: -1.82000005, z: 0}
+  m_LocalPosition: {x: -8.53999996, y: -.930000007, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 464520}
@@ -118,9 +118,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .017701149, y: -.0381624699}
+  m_Offset: {x: .0613341331, y: -.0250322223}
   serializedVersion: 2
-  m_Size: {x: .410426795, y: .489787012}
+  m_Size: {x: .870715737, y: .54908216}
 --- !u!61 &6195406
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -131,9 +131,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .0105522871, y: .00911978632}
+  m_Offset: {x: .0328416824, y: -.0176270604}
   serializedVersion: 2
-  m_Size: {x: .44439736, y: .640871286}
+  m_Size: {x: 1.07740712, y: .587377548}
 --- !u!68 &6896854
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -146,8 +146,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -.185624599, y: -.312472582}
-  - {x: .219552517, y: -.313110352}
+  - {x: -.261909008, y: -.312472582}
+  - {x: .339944363, y: -.312956512}
 --- !u!82 &8247286
 AudioSource:
   m_ObjectHideFlags: 1
@@ -158,7 +158,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b608e958cdeb7ed49a17c05499512a96, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: .610000014
   m_Pitch: 1
   Loop: 0
@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1.5
+  maxSpeed: 2.5
   groundCheck: {fileID: 479904}
-  smartFollow: 0
+  smartFollow: 1
   knockable: 1
   jumper: 0
   flying: 0
