@@ -11,11 +11,10 @@ public class EnemyIAMovement : MonoBehaviour {
 	private Rigidbody2D rb;
 	private GameObject target;
 	public Transform groundCheck;
-	public bool smartFollow;
 	private bool isFollowingPlayer;
 	private bool grounded;
 	private float groundedRadius = .2f;
-	private float jumpForce = 800f;
+	public float jumpForce = 800f;
 	private float flipDelay = 1.5f ;
 	private float flipDelayCount = 0;
 	private int moveDir = 1, moveDirY;
@@ -28,7 +27,6 @@ public class EnemyIAMovement : MonoBehaviour {
 	public bool jumper = false; 
 	public bool flying = false; //true si el enemigo es volador
 	public bool common = true; // enemigo terrestre comun
-	public bool runner = false;
 	public bool hasIdleInstance = false;
 
 	private float jumpTime = 0;
@@ -95,7 +93,6 @@ public class EnemyIAMovement : MonoBehaviour {
 		if(grounded){
 			rb.AddForce (new Vector2(0,jumpForce));
 		}
-
 	}
 
 	private void Patrol(){
@@ -115,7 +112,7 @@ public class EnemyIAMovement : MonoBehaviour {
 	private void jumpPatrol(){
 		anim.SetBool ("Ground",grounded);
 		groundCheckTime -= Time.deltaTime;
-		if (groundCheckTime <= 0)
+		if (groundCheckTime <= 0 && !common)
 			if(grounded)
 				rb.velocity = new Vector2 (0,rb.velocity.y);
 		if (jumpTime <= 0)
