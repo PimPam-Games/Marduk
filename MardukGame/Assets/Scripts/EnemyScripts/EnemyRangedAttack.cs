@@ -37,26 +37,9 @@ public class EnemyRangedAttack : MonoBehaviour {
 		anim.SetBool ("Attacking", false);
 	}
 
-	public void MultipleRangedAttack(){
-		for (int i = 0; i<pLaunchers.Length; i++) {
-			pLaunchers[i].GetComponent<ProjectileLauncher>().LaunchProjectile();
-		}
-	}
-
 	private void RangedAttack(){
-		//float distance = Vector3.Distance (target.transform.position, transform.position);
-		//if (castTimer < 0 && distance <= maxDistance) {
-	/*	for (int i = 0; i<pLaunchers.Length; i++) {
-			pLaunchers[i].GetComponent<ProjectileLauncher>().LaunchProjectile();
-		}*/	
-			var dir = (target.transform.position - transform.position).normalized;
-			var dot = Vector2.Dot(dir, transform.right);
-			if(dot < 0)
-				projectile.GetComponent<EnemyMovement>().move = -1;
-			else
-				projectile.GetComponent<EnemyMovement>().move = 1;
-			anim.SetBool("Attacking",true);
-			Instantiate(projectile, pLaunchers[0].transform.position, transform.rotation);
-		//}
+		for (int i = 0; i<pLaunchers.Length; i++) {
+			pLaunchers[i].GetComponent<ProjectileLauncher>().LaunchProjectile(target);
+		}
 	}
 }
