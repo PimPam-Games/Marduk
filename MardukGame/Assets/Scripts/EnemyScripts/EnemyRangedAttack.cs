@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyRangedAttack : MonoBehaviour {
@@ -8,9 +8,11 @@ public class EnemyRangedAttack : MonoBehaviour {
 	[SerializeField] private float castDelay = 3f;
 	private GameObject target;
 	private float castTimer =0;
-	[SerializeField] private float offsetY = 0; // offset para cambiar la posicion del eje y
+	//[SerializeField] private float offsetY = 0; // offset para cambiar la posicion del eje y
 	[SerializeField] private float maxDistance = 999; //distancia maxima que tiene que estar player para que comience a atacar
 	private EnemyStats stats;
+	public bool multipleProjectiles;
+	public GameObject[] pLaunchers;
 
 	
 	// Use this for initialization
@@ -24,17 +26,29 @@ public class EnemyRangedAttack : MonoBehaviour {
 		if (stats.isDead)
 			return;
 		castTimer -= Time.deltaTime;
-		RangedAttack ();
+		float distance = Vector3.Distance (target.transform.position, transform.position);
+		if (castTimer < 0 && distance <= maxDistance) {
+			castTimer = castDelay;
+			anim.SetBool ("Attacking", true);
+		}
 	}
 
 	public void StopAttackAmin(){
 		anim.SetBool ("Attacking", false);
 	}
 
+	public void MultipleRangedAttack(){
+		for (int i = 0; i<pLaunchers.Length; i++) {
+			pLaunchers[i].GetComponent<ProjectileLauncher>().LaunchProjectile();
+		}
+	}
+
 	private void RangedAttack(){
-		float distance = Vector3.Distance (target.transform.position, transform.position);
-		if (castTimer < 0 && distance <= maxDistance) {
-			castTimer = castDelay;
+		//float distance = Vector3.Distance (target.transform.position, transform.position);
+		//if (castTimer < 0 && distance <= maxDistance) {
+	/*	for (int i = 0; i<pLaunchers.Length; i++) {
+			pLaunchers[i].GetComponent<ProjectileLauncher>().LaunchProjectile();
+		}*/	
 			var dir = (target.transform.position - transform.position).normalized;
 			var dot = Vector2.Dot(dir, transform.right);
 			if(dot < 0)
@@ -42,7 +56,7 @@ public class EnemyRangedAttack : MonoBehaviour {
 			else
 				projectile.GetComponent<EnemyMovement>().move = 1;
 			anim.SetBool("Attacking",true);
-			Instantiate(projectile, new Vector3 (transform.position.x , transform.position.y + offsetY, transform.position.z-4), transform.rotation);
-		}
+			Instantiate(projectile, pLaunchers[0].transform.position, transform.rotation);
+		//}
 	}
 }

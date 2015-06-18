@@ -40,6 +40,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &151518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 409398}
+  - 114: {fileID: 11472164}
+  m_Layer: 11
+  m_Name: ProjectileLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 2270504221434485236, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &152434
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +71,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &409398
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151518}
+  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106709}
+  m_LocalPosition: {x: -.00400000019, y: -.301999986, z: 0}
+  m_LocalScale: {x: 1.50000012, y: 1.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 432362}
+  m_RootOrder: 2
 --- !u!4 &432362
 Transform:
   m_ObjectHideFlags: 1
@@ -62,11 +90,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.9399996, y: .180000007, z: 0}
+  m_LocalPosition: {x: -11.3155994, y: -.657253742, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 443328}
   - {fileID: 469170}
+  - {fileID: 409398}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &443328
@@ -234,8 +263,10 @@ MonoBehaviour:
   projectile: {fileID: 174960, guid: a307a58dce45c394983ba05743a04cb8, type: 2}
   anim: {fileID: 9512272}
   castDelay: 3
-  offsetY: -.5
   maxDistance: 10
+  multipleProjectiles: 0
+  pLaunchers:
+  - {fileID: 151518}
 --- !u!114 &11434510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,13 +278,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxDistanceFollow: 11
   maxSpeed: 0
   groundCheck: {fileID: 469170}
-  smartFollow: 1
+  jumpForce: 800
   knockable: 0
   jumper: 0
   flying: 0
   common: 1
+  hasIdleInstance: 0
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
@@ -296,6 +329,20 @@ MonoBehaviour:
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 25
+--- !u!114 &11472164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a07d04a949b20547a985fedd30a89d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: {x: 0, y: 0}
+  projectile: {fileID: 174960, guid: a307a58dce45c394983ba05743a04cb8, type: 2}
+  velocity: {x: 0, y: 0}
 --- !u!212 &21255006
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,14 +8,22 @@ public class ProjectileStats : MonoBehaviour {
 	private float duration = 6;
 	private float lifeTime = 0;
 	public float particleSpeed;
+	public bool isParticle;
+	private float rotationChange;
+	//private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
+	//	rb = GetComponent<Rigidbody2D> ();
+		if(isParticle)
+			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/*Vector2 v = rb.velocity;
+		float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
 		lifeTime += Time.deltaTime;
 		if(lifeTime >= duration)
 			Destroy(this.gameObject);
