@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-using g = GameController;
 using System.Collections.Generic;
+using g = GameController;
+using f = ChunkFactory;
 
-public class NextChunkGenerator : MonoBehaviour {
+public class Chunk : MonoBehaviour {
 
-
-	public GameObject[] chunkPool;
+	//public GameObject[] chunkPool;
 	public List<Transform> enemies;
 	public Transform chunkStart;
 	public Transform chunkEnd;
@@ -25,15 +25,13 @@ public class NextChunkGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
-
+	
 	void OnTriggerEnter2D(Collider2D col){
-		int r = Random.Range (0,chunkPool.Length);
 		if (col.gameObject.tag == "Player" && !alreadyGenerated) {
 			alreadyGenerated = true;
-			Instantiate(chunkPool[r],chunkEnd.position,chunkEnd.rotation);
-			Debug.Log ("Generar Chunk");
+			f.GenerateChunk(chunkEnd.position,chunkEnd.rotation);
 		}
 	}
 }

@@ -42,6 +42,7 @@ public class Weapon : MonoBehaviour {
 
 	public void Attack(){
 		if (canAttack) {
+			alreadyAttacked = false;
 			isAttacking = true;
 			attackTimer = attackDelay;
 			canAttack = false;
@@ -74,7 +75,7 @@ public class Weapon : MonoBehaviour {
 
 			
 		}
-		alreadyAttacked = false;
+		//alreadyAttacked = false;
 		isAttacking = false;
 	}
 
@@ -102,7 +103,7 @@ public class Weapon : MonoBehaviour {
 			
 			
 		}
-		alreadyAttacked = false;
+		//alreadyAttacked = false;
 		isAttacking = false;
 	}
 	/*private void DoDammage(){ // se fija si colisiona con enemigos y les saca vida
