@@ -111,8 +111,10 @@ public class MyGUI : MonoBehaviour {
 		GUI.Label (new Rect (250*dif, 270*dif, 100*dif, 20*dif), p.offensives[p.MinDmg]+" - "+p.offensives[p.MaxDamge]);
 		GUI.Label (new Rect (65*dif, 285*dif, 100*dif, 20*dif), "Thorns");
 		GUI.Label (new Rect (250*dif, 285*dif, 100*dif, 20*dif), p.defensives[p.Thorns].ToString());
-
-
+		GUI.Label (new Rect (65*dif, 300*dif, 100*dif, 20*dif), "Critical Chance");
+		GUI.Label (new Rect (250*dif, 300*dif, 100*dif, 20*dif), (p.offensives[p.CritChance]*100).ToString() + "%");
+		GUI.Label (new Rect (65*dif, 315*dif, 100*dif, 20*dif), "Crit Dmg Multiplier");
+		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), p.offensives[p.CritDmgMultiplier].ToString());
 	}
 
 	private void DisplayDfensives(){

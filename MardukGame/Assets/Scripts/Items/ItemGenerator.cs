@@ -32,7 +32,7 @@ public class ItemGenerator :MonoBehaviour{
 		newWeapon.GetComponent<Rigidbody2D> ().AddForce (new Vector2(0,250));
 		Item newItem = newWeapon.GetComponent<Item> ();
 		float[] rarityProb = {0.6f,0.3f,0.09f,0.01f}; // 60% normal, %30 magico, %9 raro , %1 unico hay que ver que onda aca
-		int newRarity = Choose(rarityProb); 
+		int newRarity = Utils.Choose(rarityProb); 
 		newItem.Rarity = (RarityTypes) newRarity; // 0 = normal, 1 = magico , 2 = raro , 3 = unico
 		if (newItem.type == ItemTypes.Weapon) { //el item es un arma
 			newItem.Offensives [p.MinDmg] = Random.Range (1, 3);
@@ -72,24 +72,5 @@ public class ItemGenerator :MonoBehaviour{
 		//crea una nueva armadura
 	}
 
-	int Choose (float[] probs) {
-		
-		float total = 0;
-		
-		foreach (float elem in probs) {
-			total += elem;
-		}
-		
-		float randomPoint = Random.value * total;
-		
-		for (int i= 0; i < probs.Length; i++) {
-			if (randomPoint < probs[i]) {
-				return i;
-			}
-			else {
-				randomPoint -= probs[i];
-			}
-		}
-		return probs.Length - 1;
-	}
+
 }

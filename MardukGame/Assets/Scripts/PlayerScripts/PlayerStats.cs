@@ -19,6 +19,8 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;
 	public const float InitMana = 45; // esto no se va a ver en la barra de mana todavia
+	public const float InitCritChance = 0.05f;
+	public const float InitCritDmgMult = 2f;
 
 	public static float currentHealth;
 	public static bool isDead;
@@ -150,6 +152,8 @@ public class PlayerStats : MonoBehaviour {
 		defensives [MaxHealth] = InitMaxHealth;
 		utils [MovementSpeed] = InitMoveSpeed;
 		offensives [AttackRate] = InitAttackRate;
+		offensives [CritChance] = InitCritChance;
+		offensives [CritDmgMultiplier] = InitCritDmgMult;
 		lvl = 1;
 		currentExp = 0;
 		oldNextLevelExp = 0;

@@ -142,6 +142,8 @@ public class Item : MonoBehaviour {
 			tooltip +=  defensives[p.LifePerSecond] + " Life Regenerated Per Second" + "\n";
 		if(utils[p.MovementSpeed] > 0)
 			tooltip +=  utils[p.MovementSpeed] + "% To Movement Speed" + "\n";
+		if(offensives[p.CritChance]>0)
+			tooltip +=  offensives[p.CritChance] + "% To Critical Chance" + "\n";
 		return tooltip;
 	}
 
