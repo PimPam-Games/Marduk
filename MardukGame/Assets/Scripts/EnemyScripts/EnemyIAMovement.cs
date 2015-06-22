@@ -10,7 +10,7 @@ public class EnemyIAMovement : MonoBehaviour {
 	private float currentSpeed;
 	private Rigidbody2D rb;
 	private GameObject target;
-	public Transform groundCheck;
+	public Transform[] groundChecks;
 	private bool isFollowingPlayer;
 	private bool grounded;
 	private float groundedRadius = .2f;
@@ -57,7 +57,14 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
-		grounded = Physics2D.OverlapCircle (groundCheck.position, groundedRadius, whatIsGround);
+		bool g = false;
+		foreach (Transform groundCheck in groundChecks) {
+			if (Physics2D.OverlapCircle (groundCheck.position, groundedRadius, whatIsGround)){
+				g = true;
+				break;
+			}
+		}
+		grounded = g;
 	}
 
 	// Update is called once per frame

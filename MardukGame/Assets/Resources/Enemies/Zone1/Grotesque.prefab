@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasMeleeAttack: 1
+  attackRange: 1.89999998
   attackDelay: 3
   anim: {fileID: 9534150}
   target: {fileID: 0}
@@ -297,13 +298,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxDistanceFollow: 11
   maxSpeed: 2
-  groundCheck: {fileID: 497066}
-  smartFollow: 0
+  groundChecks:
+  - {fileID: 497066}
+  jumpForce: 800
   knockable: 1
   jumper: 1
   flying: 0
   common: 0
+  hasIdleInstance: 0
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
