@@ -8,7 +8,6 @@ public class Chunk : MonoBehaviour {
 
 	//public GameObject[] chunkPool;
 	public List<Transform> enemies;
-	public Transform chunkStart;
 	public Transform chunkEnd;
 	private bool alreadyGenerated = false;
 	// Use this for initialization

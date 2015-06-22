@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.9399996, y: -.0399999991, z: 0}
+  m_LocalPosition: {x: -6.26999998, y: .779999971, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 465962}
@@ -119,9 +119,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.084095642, y: -.103121907}
+  m_Offset: {x: -.0781285018, y: -.103121921}
   serializedVersion: 2
-  m_Size: {x: .593408823, y: 1.04281163}
+  m_Size: {x: .63716501, y: 1.04281163}
 --- !u!61 &6165652
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -265,12 +265,11 @@ MonoBehaviour:
   MaxDistanceFollow: 10
   maxSpeed: 1
   groundCheck: {fileID: 492214}
-  smartFollow: 1
+  jumpForce: 800
   knockable: 1
   jumper: 0
   flying: 0
   common: 1
-  runner: 0
   hasIdleInstance: 1
   jumpDelay: 2
   knockbackLength: .300000012

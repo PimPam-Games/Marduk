@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour {
 	//private bool enemyDamaged;
 	private float attackTimer; 
 	public AudioSource hitEnemySound;
-	private bool alreadyAttacked; // para ver si le pego en OnEnterTrigger
+	//private bool alreadyAttacked; // para ver si le pego en OnEnterTrigger
 	
 	// Use this for initialization
 	void Start () {
@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour {
 
 	public void Attack(){
 		if (canAttack) {
-			alreadyAttacked = false;
+
 			isAttacking = true;
 			attackTimer = attackDelay;
 			canAttack = false;
@@ -53,11 +53,10 @@ public class Weapon : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		GameObject enemy = col.gameObject;
-		if (alreadyAttacked)
-			return;
+
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
-			alreadyAttacked = true;
+		
 			hitEnemySound.Play();
 			if(p.LifePerHit > 0 )
 				p.currentHealth += p.defensives[p.LifePerHit];
@@ -73,19 +72,18 @@ public class Weapon : MonoBehaviour {
 			else
 				enemy.GetComponent<EnemyIAMovement>().Knock(false);
 
-			
+			isAttacking = false;
 		}
 		//alreadyAttacked = false;
-		isAttacking = false;
+
 	}
 
 	void OnTriggerStay2D(Collider2D col){
 		GameObject enemy = col.gameObject;
-		if (alreadyAttacked)
-			return;
+
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
-			alreadyAttacked = true;
+
 			hitEnemySound.Play();
 			if(p.LifePerHit > 0 )
 				p.currentHealth += p.defensives[p.LifePerHit];
@@ -101,10 +99,37 @@ public class Weapon : MonoBehaviour {
 			else
 				enemy.GetComponent<EnemyIAMovement>().Knock(false);
 			
-			
+			isAttacking = false;
 		}
 		//alreadyAttacked = false;
-		isAttacking = false;
+
+	}
+
+	void OnTriggerExit2D(Collider2D col){
+		GameObject enemy = col.gameObject;
+		
+		if (enemy.tag == "Enemy" && isAttacking) {
+			//Debug.Log ("Le pegue a " + enemy.name);
+			
+			hitEnemySound.Play();
+			if(p.LifePerHit > 0 )
+				p.currentHealth += p.defensives[p.LifePerHit];
+			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
+			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+			if(Utils.Choose(critDmgProb) != 0){
+				damage *= p.offensives[p.CritDmgMultiplier];
+				Debug.Log("Critical Dmg: " + damage);
+			}
+			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+			if(enemy.transform.position.x < this.transform.position.x)
+				enemy.GetComponent<EnemyIAMovement>().Knock(true);
+			else
+				enemy.GetComponent<EnemyIAMovement>().Knock(false);
+			
+			isAttacking = false;
+		}
+		//alreadyAttacked = false;
+
 	}
 	/*private void DoDammage(){ // se fija si colisiona con enemigos y les saca vida
 		int enemyLayerMask = 1 << LayerMask.NameToLayer ("Enemy");
