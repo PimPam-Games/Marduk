@@ -6,7 +6,7 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	public int MaxDistanceFollow = 11;
 	public float maxSpeed = 2f;
-	private bool facingRight = false;
+	public bool facingRight = false;
 	private float currentSpeed;
 	private Rigidbody2D rb;
 	private GameObject target;

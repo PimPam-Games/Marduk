@@ -23,7 +23,11 @@ public class ChunkFactory : MonoBehaviour {
 		}
 
 	}
-	
+
+	public static void Initialize(){
+		isEntry = false;
+	}
+
 	public static void GenerateChunk(Vector3 pos, Quaternion rot){
 		if (isEntry) {
 			int r = Random.Range (0,castleChunks.Count);

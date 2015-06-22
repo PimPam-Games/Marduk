@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour {
 
 	void FindPlayer(){
 		if(nextTimeToSearch <= Time.time){
-			GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
+			GameObject searchResult = GameObject.FindGameObjectWithTag("CameraCenter");
 			if(searchResult != null){
 				player = searchResult.transform;
 			}

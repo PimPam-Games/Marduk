@@ -76,6 +76,7 @@ public class GameController : MonoBehaviour {
 			enemiesPerLevel.Clear ();
 			currLevelName = "level1";
 			Application.LoadLevel(currLevelName);
+			ChunkFactory.Initialize();
 			previousExit = 1; //la proxima entrada tiene que ser la 1, la de la izquierda del nivel
 			playerStats.RespawnStats();
 			player.GetComponent<PlatformerCharacter2D>().RespawnPosition(); //hace que el jugador mire a la derecha
