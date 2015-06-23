@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using g = GameController;
 
 public class ChunkFactory : MonoBehaviour {
 
 	public int zone = 1;
 	public string bgName = "Mountain";
+	public string sceneName = "Level1";
 
 	private static Object[] chunkPool;
 	private static List<Object> commonChunks = new List<Object>();
@@ -17,6 +19,8 @@ public class ChunkFactory : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		if(!g.chunksPerZone.ContainsKey(sceneName))
+			g.chunksPerZone.Add (sceneName,new List<GameObject>());
 		chunkPool = Resources.LoadAll("Level/ChunksZone" + zone, typeof(Object));
 		bg = Resources.Load ("Level/Background/" + bgName);
 		for (int i = 0; i< chunkPool.Length; i++) {
@@ -32,25 +36,31 @@ public class ChunkFactory : MonoBehaviour {
 
 	public static void Initialize(){
 		isEntry = false;
+		bgCount = 0;
 	}
 
-	public static void GenerateChunk(Vector3 pos, Quaternion rot){
+	public void GenerateChunk(Vector3 pos, Quaternion rot){
 		bgCount++;
 		if (isEntry) {
 			int r = Random.Range (0,castleChunks.Count);
 			GameObject newChunk = (GameObject)Instantiate (castleChunks [r], pos, rot);
 			if(newChunk.name.Contains("Exit"))
 				isEntry = false;
+			DontDestroyOnLoad(newChunk);
+			g.chunksPerZone[sceneName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 		} else {
 			int r = Random.Range (0,commonChunks.Count);
 			GameObject newChunk = (GameObject)Instantiate (commonChunks [r], pos, rot);
 			if(newChunk.name.Contains("Entry"))
 				isEntry = true;
+			g.chunksPerZone[sceneName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
+			DontDestroyOnLoad(newChunk);
 		}
 		if (bgCount >= bgPerChunk) {
-			Debug.Log("Cree un bg");
 			bgCount = 0;
-			Instantiate(bg,new Vector3(pos.x + 35,pos.y - 2,35),rot);
+			GameObject go = (GameObject)Instantiate(bg,new Vector3(pos.x + 35,pos.y - 2,35),rot);
+			DontDestroyOnLoad(go);
+			g.chunksPerZone[sceneName].Add(go); //agrego el chunk a la lista de chunks de este nivel
 		}
 	}
 }

@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
 	//public static bool newLevel = true;
 	public static Object[] enemyList;
 	public static Dictionary<string,List<GameObject>> enemiesPerLevel = new Dictionary<string,List<GameObject>>();
+	public static Dictionary<string,List<GameObject>> chunksPerZone = new Dictionary<string,List<GameObject>> ();
 	public static string currLevelName;
 
 	public AudioSource music1;
@@ -125,6 +126,20 @@ public class GameController : MonoBehaviour {
 		foreach(GameObject e in enemList){
 			if(e!=null)
 				e.SetActive(active);
+			//else
+			//	enemList.Remove(e);
+		}
+	}
+
+	public static void SetActiveChunks(string levelName, bool active){
+		if (!chunksPerZone.ContainsKey (levelName)) {
+			//Debug.LogError(levelName + " No encontrado!");
+			return;
+		}
+		List<GameObject> chunkList = chunksPerZone [levelName];
+		foreach(GameObject c in chunkList){
+			if(c!=null)
+				c.SetActive(active);
 			//else
 			//	enemList.Remove(e);
 		}

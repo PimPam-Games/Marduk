@@ -113,9 +113,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 1383.28943, y: -15.9386292}
+  m_Offset: {x: 3040.67261, y: -15.9386292}
   serializedVersion: 2
-  m_Size: {x: 2800.28198, y: 1005.28839}
+  m_Size: {x: 6115.04834, y: 1005.28839}
 --- !u!4 &39128695
 Transform:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
 --- !u!1001 &537714568
 Prefab:
   m_ObjectHideFlags: 0
@@ -440,11 +440,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 189104, guid: 61f85360f187f8f469305a6730ef4f92, type: 2}
       propertyPath: m_Name
-      value: Chunk
+      value: InitialChunk
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6155398, guid: 61f85360f187f8f469305a6730ef4f92, type: 2}
+    - {fileID: 11442168, guid: 61f85360f187f8f469305a6730ef4f92, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 61f85360f187f8f469305a6730ef4f92, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &768061801
+GameObject:
+  m_PrefabParentObject: {fileID: 189104, guid: 61f85360f187f8f469305a6730ef4f92, type: 2}
+  m_PrefabInternal: {fileID: 768061800}
+--- !u!114 &768061802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768061801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []
+  chunkEnd: {fileID: 768061803}
+  isFirst: 1
+--- !u!4 &768061803
+Transform:
+  m_PrefabParentObject: {fileID: 426728, guid: 61f85360f187f8f469305a6730ef4f92, type: 2}
+  m_PrefabInternal: {fileID: 768061800}
 --- !u!1 &1157494010
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,3 +890,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zone: 1
   bgName: Mountain
+  sceneName: Level1
