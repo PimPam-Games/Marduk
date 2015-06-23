@@ -245,7 +245,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 04084bb187bd30f4eaad999da7925a12, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2193c003fbe8e3342a92285b420303ff, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .610000014
   m_Pitch: 1
@@ -416,7 +416,7 @@ MonoBehaviour:
   poisonRes: 1
   elem: 4
   alertSound: {fileID: 8291022}
-  enemyName: Stump
+  enemyName: Stinger
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 10
@@ -433,7 +433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
   maxSpeed: .699999988
-  groundCheck: {fileID: 445156}
+  facingRight: 0
+  groundChecks: []
   jumpForce: 800
   knockable: 1
   jumper: 0
