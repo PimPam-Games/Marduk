@@ -53,7 +53,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 
 		void Update(){
-			
 			grabbingTime -= Time.deltaTime;
 			if (p.isDead)
 				maxSpeed = 0;

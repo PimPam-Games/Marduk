@@ -5,16 +5,17 @@ using g = GameController;
 public class ChangeLevel : MonoBehaviour {
 
 	public int exitNumber;
-	public Fading fading;
-	private string levelToLoad;
+	public string levelToLoad = "level2";
 	private BoxCollider2D box;
 	private float boxTimeCount = 0.5f;
 	public GameObject enemyGenerator;
+	private Rigidbody2D rb;
 
 	void Awake(){
 		box = GetComponent<BoxCollider2D> ();
 		box.enabled = false;
 		boxTimeCount = 0.5f;
+		rb = GetComponent<Rigidbody2D> ();
 	}
 
 	// Use this for initialization
@@ -26,10 +27,11 @@ public class ChangeLevel : MonoBehaviour {
 		if (boxTimeCount < 0)
 			box.enabled = true; //espero un poco para habilitar el colisionador de las salidas del nuevo nivel. (es para arreglar el problema de la parada)
 		boxTimeCount -= Time.deltaTime;
-
+		rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
+		rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y - 00000001);
 	}
 
-	void OnTriggerEnter2D(Collider2D coll){
+	/*void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.tag == "Player") {
 			Debug.Log("Cambie de level");
 			DestroyItems(); //destruye los items que no hayan sido agarrados por el player
@@ -56,7 +58,27 @@ public class ChangeLevel : MonoBehaviour {
 			g.currLevelName = levelToLoad;
 			Application.LoadLevel(levelToLoad);
 		}
+	}*/
+
+	void OnTriggerStay2D(Collider2D coll){
+		if (coll.gameObject.tag == "Player" && Input.GetButtonUp("UP")) {
+			/*g.SetActiveEnemies(g.currLevelName,false);
+			g.SetActiveChunks(g.currLevelName,false);
+			g.currLevelName = levelToLoad;
+			//Application.LoadLevel(levelToLoad);
+			if(g.chunksPerZone.ContainsKey(g.currLevelName))
+				g.SetActiveChunks(g.currLevelName,true);
+			if(g.enemiesPerLevel.ContainsKey(g.currLevelName))
+				g.SetActiveEnemies(g.currLevelName,true);*/
+			Fading.BeginFadeIn(levelToLoad); //esto se encarga de cargar el nivel y hacer todo el trabajo sucio
+		}
 	}
+
+	/*IEnumerator Fade(){
+		while (Fading.fadeImage.color.a < 240) {
+			Fading.fadeImage.color = new Color(0,0,0,Fading.fadeImage.color.a +10);
+		}
+	}*/
 
 	public static void DestroyItems(){
 		GameObject[] items = GameObject.FindGameObjectsWithTag ("Item");
@@ -64,9 +86,5 @@ public class ChangeLevel : MonoBehaviour {
 			if(item.activeSelf)
 				Destroy(item.gameObject);
 		}
-	}
-	IEnumerator Fade(){
-		float fadeTime = fading.BeginFade (1);
-		yield return new WaitForSeconds (fadeTime);
 	}
 }

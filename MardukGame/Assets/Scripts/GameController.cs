@@ -95,9 +95,9 @@ public class GameController : MonoBehaviour {
 		GameObject levelEntry = GameObject.Find("LevelEntry" + previousExit); 
 		player.transform.position = levelEntry.transform.position;
 		if(levelEntry.transform.position.x<=0)
-			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x + 10, levelEntry.transform.position.y, mainCamera.transform.position.z);
+			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x + 4, levelEntry.transform.position.y, mainCamera.transform.position.z);
 		else
-			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x - 10, levelEntry.transform.position.y, mainCamera.transform.position.z);
+			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x - 4, levelEntry.transform.position.y, mainCamera.transform.position.z);
 	}
 
 	private void DestroyEnemies(){
@@ -133,7 +133,7 @@ public class GameController : MonoBehaviour {
 
 	public static void SetActiveChunks(string levelName, bool active){
 		if (!chunksPerZone.ContainsKey (levelName)) {
-			//Debug.LogError(levelName + " No encontrado!");
+			Debug.LogError(levelName + " No encontrado!");
 			return;
 		}
 		List<GameObject> chunkList = chunksPerZone [levelName];

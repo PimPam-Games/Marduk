@@ -18,20 +18,20 @@ public class Chunk : MonoBehaviour {
 	}
 
 	void Start () {
-		if (g.chunksPerZone.ContainsKey(cf.sceneName)) {
-			if(g.chunksPerZone[cf.sceneName].Count == 0)
+		if (g.chunksPerZone.ContainsKey(g.currLevelName)) {
+			if(g.chunksPerZone[g.currLevelName].Count == 0) //si esta en la lista pero no hay ningun chunk, crea el primero
 				cf.GenerateChunk(chunkEnd.position,chunkEnd.rotation);
 		}
 		else
-			cf.GenerateChunk(chunkEnd.position,chunkEnd.rotation);
+			cf.GenerateChunk(chunkEnd.position,chunkEnd.rotation); //si  no esta en la lista  crea el primero
 		foreach(Transform enemyPos in enemies){
 			int index = Random.Range(0,g.enemyList.Length); //slecciona un enemigo aleatorio de la lista de enemigos
 			GameObject newEnemy = (GameObject)Instantiate (g.enemyList[index],enemyPos.position,enemyPos.rotation);
 			DontDestroyOnLoad(newEnemy);
-			//enemies.Add(newEnemy);
+			g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
 		}
 		//Debug.Log ("meto la key: " + g.currLevelName);
-		//g.enemiesPerLevel.Add (g.currLevelName, enemies);		
+		//g.enemiesPerLevel.Add (g.currLevelName, enems);		
 	}
 	
 	// Update is called once per frame
