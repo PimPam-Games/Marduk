@@ -64,11 +64,18 @@ public class EnemyAttack : MonoBehaviour {
 			if ((dot < 0 && !movement.IsFacingRight ()) || (dot > 0 && movement.IsFacingRight ())) {
 				float damage = Random.Range (stats.damage.First, stats.damage.Second);
 				playerStats.Hit (damage, stats.elem); 
+				if(target.transform.position.x < this.transform.position.x)
+					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+				else
+					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
 			}
 	}
 
 	void Idle(){
 		movement.Walk ();
+
+		anim.SetBool ("Blocking", false);
 		anim.SetBool("Attacking", false);
+
 	}
 }

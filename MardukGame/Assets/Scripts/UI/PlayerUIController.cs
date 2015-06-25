@@ -9,9 +9,9 @@ public class PlayerUIController : MonoBehaviour {
 
 	private float startingHealth;
 	//private float currentHealth;
-	public Text healthBarText; 
-	public Slider healthSlider;
-	public Image damageImage;
+	private Text healthBarText; 
+	private Slider healthSlider;
+	private Image damageImage;
 	public float flashSpeed = 5f;
 	public Color flashColour = new Color(1f,0f,0f,0.1f);
 	
@@ -22,8 +22,10 @@ public class PlayerUIController : MonoBehaviour {
 		damageImage = (Image)GameObject.Find ("DamageImage").GetComponent<Image>();
 		healthSlider = (Slider)GameObject.Find ("HealthSlider").GetComponent<Slider>();
 		//currentHealth = playerStats.defensives[MaxHealth];
-		healthSlider.value = p.defensives[p.MaxHealth];
-		healthBarText.text = Math.Round(p.currentHealth,1) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
+		if(healthSlider != null)
+			healthSlider.value = p.defensives[p.MaxHealth];
+		if(healthBarText != null)
+			healthBarText.text = Math.Round(p.currentHealth,1) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
 	}
 	void Start () {
 	

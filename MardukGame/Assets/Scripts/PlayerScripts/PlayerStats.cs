@@ -189,11 +189,20 @@ public class PlayerStats : MonoBehaviour {
 		if (ghostMode == true) {
 			return;
 		}
-		ghostMode = true;
+
+		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
+		if (Utils.Choose (blockProb) != 0) { 
+			anim.SetBool ("Blocking", true);
+			Debug.Log ("Bloqueaste el ataque! " );
+			return;
+		}
+
+		ghostMode = true; //ghost mode
 		for(int i=0 ; i<renders.Length-1;i++){
 			renders[i].color = new Color (1f, 1f, 1f, 0.3f);
 		}
 		ghostModeCount = ghostModeTime;
+
 		float realDmg = dmg;
 		switch (type){
 		case Types.Element.None:
@@ -225,5 +234,9 @@ public class PlayerStats : MonoBehaviour {
 			realDmg = 0;
 		currentHealth -= realDmg;
 		ui.TakeDamage (realDmg);
+	}
+
+	public void stopBlocking(){
+		anim.SetBool ("Blocking",false);
 	}
 }

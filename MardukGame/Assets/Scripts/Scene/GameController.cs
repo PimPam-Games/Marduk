@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour {
 		currLevelName = "level1";
 		Application.LoadLevel (currLevelName);
 		currentLevel = Application.loadedLevel;
-		Cursor.visible = false;
+		//Cursor.visible = false;
 		notVisitedLevels = new List<string>();
 		levelConnections = new List<string[]>();
 		enemyList = Resources.LoadAll("Enemies/Zone1", typeof(Object));

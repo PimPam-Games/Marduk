@@ -16,6 +16,7 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float lightRes = 0;
 	[SerializeField] private float poisonRes = 1;
 	[SerializeField] public Types.Element elem ;
+	public float blockChance = 0;
 
 	public AudioSource alertSound;
 	private Animator anim;
@@ -75,50 +76,56 @@ public class EnemyStats : MonoBehaviour {
 
 	public void Hit(float dmg, Types.Element type){
 		Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
-		float realDmg = dmg;
-		switch (type){
+		float[] blockProb = {1 - blockChance, blockChance};
+		if (Utils.Choose (blockProb) != 0) { 
+			anim.SetBool ("Blocking", true);
+			Debug.Log ("El enemigo Bloqueo el ataque! ");
+		} else {
+			float realDmg = dmg;
+			switch (type) {
 			case Types.Element.None:
 				realDmg -= (armour / (armour + 8 * realDmg));	
-			//	Debug.Log("noneeee");
+				//	Debug.Log("noneeee");
 				break;
 			case Types.Element.Cold:
-				Debug.Log("cold damage");
-				realDmg -= Mathf.Abs((realDmg * coldRes));
+				Debug.Log ("cold damage");
+				realDmg -= Mathf.Abs ((realDmg * coldRes));
 				break;
 			case Types.Element.Fire:
-				realDmg -= Mathf.Abs((realDmg * fireRes));
-				Debug.Log("fire damage");
+				realDmg -= Mathf.Abs ((realDmg * fireRes));
+				Debug.Log ("fire damage");
 				break;
 			case Types.Element.Poison:
-				realDmg -= Mathf.Abs((realDmg * poisonRes));
-				Debug.Log("poison damage");
+				realDmg -= Mathf.Abs ((realDmg * poisonRes));
+				Debug.Log ("poison damage");
 				break;
 			case Types.Element.Lightning:
-				realDmg -= Mathf.Abs((realDmg * lightRes));
-				Debug.Log("lightning damage");
+				realDmg -= Mathf.Abs ((realDmg * lightRes));
+				Debug.Log ("lightning damage");
 				break;
 			default:
-				Debug.LogError("todo maaaal");
+				Debug.LogError ("todo maaaal");
 				break;
-		}
-		if (realDmg < 0)
-			realDmg = 0;
-		currHealth -= realDmg;
-		//UpdateHealthBar ();
-		if (currHealth < 0) {
-			isDead = true;
-			rb.gravityScale = 3;
-			GetComponent<ItemGenerator>().CreateItem(transform.position, transform.rotation);
-			//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
+			}
+			if (realDmg < 0)
+				realDmg = 0;
+			currHealth -= realDmg;
+			//UpdateHealthBar ();
+			if (currHealth < 0) {
+				isDead = true;
+				rb.gravityScale = 3;
+				GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
+				//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 
-			anim.SetBool("IsDead", true);
-			GetComponent<BoxCollider2D>().enabled = false;
-			p.UpdateExp(exp);
-			StartCoroutine(EnemyDying());
-			//Destroy (this.gameObject);
+				anim.SetBool ("IsDead", true);
+				GetComponent<BoxCollider2D> ().enabled = false;
+				p.UpdateExp (exp);
+				StartCoroutine (EnemyDying ());
+				//Destroy (this.gameObject);
+			}
+			if (currHealth < 0)
+				currHealth = 0;
 		}
-		if (currHealth < 0)
-			currHealth = 0;
 		ui.UpdateHealthBar (currHealth,maxHealth,enemyName);
 	}
 
