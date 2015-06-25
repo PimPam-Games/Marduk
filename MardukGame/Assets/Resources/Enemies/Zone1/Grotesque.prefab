@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.5868702, y: -.00815570354, z: 0}
+  m_LocalPosition: {x: -14.3022852, y: .235800624, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 420082}
@@ -160,7 +160,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a1652ab7933bff446bedace25cf3598b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .579999983
+  m_Volume: .635999978
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
   maxSpeed: 2
+  facingRight: 0
   groundChecks:
   - {fileID: 497066}
   jumpForce: 800

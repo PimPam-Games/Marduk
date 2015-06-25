@@ -49,9 +49,6 @@
      <Compile Include="Assets\Prefabs\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\ChangeLevel.cs" />
-     <Compile Include="Assets\Scripts\Chunk.cs" />
-     <Compile Include="Assets\Scripts\ChunkFactory.cs" />
      <Compile Include="Assets\Scripts\CreateObject.cs" />
      <Compile Include="Assets\Scripts\DesplazamientoScript.cs" />
      <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
@@ -61,14 +58,11 @@
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyIAMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyRangedAttack.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyStats.cs" />
-     <Compile Include="Assets\Scripts\Fading.cs" />
-     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GroundDetect.cs" />
      <Compile Include="Assets\Scripts\Items\GenerateInitWeapon.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Items\ItemGenerator.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Parallaxing.cs" />
      <Compile Include="Assets\Scripts\ParticleCollision.cs" />
      <Compile Include="Assets\Scripts\ParticlePlaybackTime.cs" />
      <Compile Include="Assets\Scripts\Persistence\Persistence.cs" />
@@ -84,6 +78,12 @@
      <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\ProjectileStats.cs" />
      <Compile Include="Assets\Scripts\ReSkinAnimation.cs" />
+     <Compile Include="Assets\Scripts\Scene\ChangeLevel.cs" />
+     <Compile Include="Assets\Scripts\Scene\Chunk.cs" />
+     <Compile Include="Assets\Scripts\Scene\ChunkFactory.cs" />
+     <Compile Include="Assets\Scripts\Scene\Fading.cs" />
+     <Compile Include="Assets\Scripts\Scene\GameController.cs" />
+     <Compile Include="Assets\Scripts\Scene\Parallaxing.cs" />
      <Compile Include="Assets\Scripts\SimpleCCD.cs" />
      <Compile Include="Assets\Scripts\Tiling.cs" />
      <Compile Include="Assets\Scripts\Tuple.cs" />

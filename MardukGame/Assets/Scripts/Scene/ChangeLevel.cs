@@ -70,15 +70,10 @@ public class ChangeLevel : MonoBehaviour {
 				g.SetActiveChunks(g.currLevelName,true);
 			if(g.enemiesPerLevel.ContainsKey(g.currLevelName))
 				g.SetActiveEnemies(g.currLevelName,true);*/
+			DestroyItems();
 			Fading.BeginFadeIn(levelToLoad); //esto se encarga de cargar el nivel y hacer todo el trabajo sucio
 		}
 	}
-
-	/*IEnumerator Fade(){
-		while (Fading.fadeImage.color.a < 240) {
-			Fading.fadeImage.color = new Color(0,0,0,Fading.fadeImage.color.a +10);
-		}
-	}*/
 
 	public static void DestroyItems(){
 		GameObject[] items = GameObject.FindGameObjectsWithTag ("Item");

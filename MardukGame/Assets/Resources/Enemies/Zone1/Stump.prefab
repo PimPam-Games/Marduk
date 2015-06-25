@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.73999977, y: -.50999999, z: 0}
+  m_LocalPosition: {x: -10.0985785, y: .03734231, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 453286}
@@ -159,7 +159,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 04084bb187bd30f4eaad999da7925a12, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .610000014
+  m_Volume: .675000012
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -281,13 +281,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxDistanceFollow: 11
   maxSpeed: 1.5
-  groundCheck: {fileID: 448278}
-  smartFollow: 0
+  facingRight: 0
+  groundChecks: []
+  jumpForce: 800
   knockable: 1
   jumper: 0
   flying: 0
   common: 1
+  hasIdleInstance: 0
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5

@@ -271,9 +271,9 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	/* Public Methods */
 
-	public void StopWalk(float attackTime){
+	public void StopWalk(){
 
-		stopTime = attackTime;
+		stopTime = 999999;
 	}
 
 	public void Walk(){

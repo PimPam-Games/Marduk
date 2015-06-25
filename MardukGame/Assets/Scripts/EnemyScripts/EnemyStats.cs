@@ -46,7 +46,7 @@ public class EnemyStats : MonoBehaviour {
 			yield return new WaitForSeconds (0.4f);
 			if(rend.isVisible){
 				alertSound.Play();
-				yield return new WaitForSeconds (2f);
+				yield return new WaitForSeconds (2.4f);
 			}
 		}
 	}

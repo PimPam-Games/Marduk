@@ -51,7 +51,7 @@ public class EnemyAttack : MonoBehaviour {
 			if((dot < 0 && !movement.IsFacingRight()) || (dot > 0 && movement.IsFacingRight())){
 				attackTimer = attackDelay;
 				anim.SetBool("Attacking", true);
-				movement.StopWalk(99);
+				movement.StopWalk();
 			}
 		}
 	}
