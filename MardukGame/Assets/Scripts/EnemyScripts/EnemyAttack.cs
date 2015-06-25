@@ -13,7 +13,7 @@ public class EnemyAttack : MonoBehaviour {
 	private PlayerStats playerStats;
 	private EnemyIAMovement movement;
 	private EnemyStats stats;
-
+	public bool canBlock;
 
 	void Awake(){
 
@@ -73,8 +73,8 @@ public class EnemyAttack : MonoBehaviour {
 
 	void Idle(){
 		movement.Walk ();
-
-		anim.SetBool ("Blocking", false);
+		if(canBlock)
+			anim.SetBool ("Blocking", false);
 		anim.SetBool("Attacking", false);
 
 	}

@@ -8,10 +8,11 @@ public class ChunkFactory : MonoBehaviour {
 	public int zone = 1;
 	public string bgName = "Mountain";
 	public string sceneName = "level1";
+	public bool generateBackground;
 
-	private static Object[] chunkPool;
-	private static List<Object> commonChunks = new List<Object>();
-	private static List<Object> castleChunks = new List<Object>();
+	private Object[] chunkPool;
+	private  List<Object> commonChunks = new List<Object>();
+	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
 	private static bool isEntry = false;
 	public static float bgCount = 0;
@@ -41,32 +42,35 @@ public class ChunkFactory : MonoBehaviour {
 		bgCount = 0;
 	}
 
-	public void GenerateChunk(Vector3 pos, Quaternion rot){
+	public GameObject GenerateChunk(Vector3 pos, Quaternion rot){
 		bgCount++;
+		GameObject newChunk;
 		if (!g.chunksPerZone.ContainsKey (g.currLevelName)) {
 			Debug.LogError(g.currLevelName + " No encontrado!");
-			return;
+			return null;
 		}
 		if (isEntry) {
 			int r = Random.Range (0,castleChunks.Count);
-			GameObject newChunk = (GameObject)Instantiate (castleChunks [r], pos, rot);
+			newChunk = (GameObject)Instantiate (castleChunks [r], pos, rot);
 			if(newChunk.name.Contains("Exit"))
 				isEntry = false;
 			DontDestroyOnLoad(newChunk);
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 		} else {
 			int r = Random.Range (0,commonChunks.Count);
-			GameObject newChunk = (GameObject)Instantiate (commonChunks [r], pos, rot);
+			newChunk = (GameObject)Instantiate (commonChunks [r], pos, rot);
 			if(newChunk.name.Contains("Entry"))
 				isEntry = true;
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 			DontDestroyOnLoad(newChunk);
 		}
-		if (bgCount >= bgPerChunk) {
-			bgCount = 0;
-			GameObject go = (GameObject)Instantiate(bg,new Vector3(pos.x + 35,pos.y - 2,35),rot);
-			DontDestroyOnLoad(go);
-			g.chunksPerZone[g.currLevelName].Add(go); //agrego el chunk a la lista de chunks de este nivel
-		}
+		if(generateBackground)
+			if (bgCount >= bgPerChunk) {
+				bgCount = 0;
+				GameObject go = (GameObject)Instantiate(bg,new Vector3(pos.x + 35,pos.y - 2,35),rot);
+				DontDestroyOnLoad(go);
+				g.chunksPerZone[g.currLevelName].Add(go); //agrego el chunk a la lista de chunks de este nivel
+			}
+		return newChunk;
 	}
 }
