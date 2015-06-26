@@ -129,9 +129,8 @@ public class PlayerStats : MonoBehaviour {
 		playerDeathSound.Play ();
 		yield return new WaitForSeconds (2.5f);
 		anim.SetBool("IsDead", false);
-		isDead = false;
 		readyToRespawn = true;
-
+		Fading.BeginFadeIn("level1");
 	}
 
 

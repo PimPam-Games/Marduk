@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
 	//public List<string> deadEnemies;
-	private PlayerStats playerStats;
+	public PlayerStats playerStats;
 	public static int currentLevel = 0;
 	private CameraController cameraController;
 	public static List<string> notVisitedLevels;
@@ -25,12 +25,14 @@ public class GameController : MonoBehaviour {
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
 		//deadEnemies = new List<string>();
+
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (player);
 		playerStats = player.GetComponent<PlayerStats> ();
 		hudCanvas = GameObject.Find("HUDCanvas");
 		gui = GameObject.Find("GUI");
 		mainCamera = GameObject.Find("MainCamera");
+		cameraController = mainCamera.GetComponent<CameraController> ();	
 		DontDestroyOnLoad (mainCamera);
 		DontDestroyOnLoad (gui);
 		if (hudCanvas != null)
@@ -48,17 +50,17 @@ public class GameController : MonoBehaviour {
 			notVisitedLevels.Add("level" + i);
 		}
 		music1.Play ();
-
 	}
 	// Use this for initialization
 	void Start () {
-		cameraController = mainCamera.GetComponent<CameraController> ();
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (currentLevel != Application.loadedLevel) {
+		//if (currentLevel != Application.loadedLevel) {
 			/*GameObject[] enemies;
 			enemies = GameObject.FindGameObjectsWithTag("Enemy");
 			foreach(string deadEnemy in deadEnemies){ //Destruye enemigos muertos de esta scena
@@ -67,26 +69,33 @@ public class GameController : MonoBehaviour {
 						Destroy(enemy);
 				}
 			}*/
-			RepositionPlayerAndCamera();
-			currentLevel = Application.loadedLevel;
+		//	RepositionPlayerAndCamera();
+		//	currentLevel = Application.loadedLevel;
 
-		}
-		if (playerStats.readyToRespawn) {
-			DestroyEnemies();
-			ChangeLevel.DestroyItems();
-			enemiesPerLevel.Clear ();
-			currLevelName = "level1";
-			Application.LoadLevel(currLevelName);
+		//}
+		/*if (playerStats.readyToRespawn) {
+			//DestroyEnemies();
+
+			//enemiesPerLevel.Clear ();
+			//currLevelName = "level1";
+			//Application.LoadLevel(currLevelName);
+			Fading.BeginFadeIn("level1");
+			currentLevel = 0;
 			ChunkFactory.Initialize();
 			previousExit = 1; //la proxima entrada tiene que ser la 1, la de la izquierda del nivel
 			playerStats.RespawnStats();
 			player.GetComponent<PlatformerCharacter2D>().RespawnPosition(); //hace que el jugador mire a la derecha
 			currentLevel = 0; //cambio al nivel 0 para que se reposicione el jugador entrando por el otro if despues
 			playerStats.readyToRespawn = false;
-		}
+		}*/
 	}
 
-	private void RepositionPlayerAndCamera(){//posiciona al jugador y a la camara en la entrada del nuevo nivel
+	void OnLevelWasLoaded (int level) {
+		Debug.Log ("level cargado;: " + level);
+		RepositionPlayerAndCamera();
+	}
+
+	public void RepositionPlayerAndCamera(){//posiciona al jugador y a la camara en la entrada del nuevo nivel
 		BoxCollider2D newBounds = GameObject.FindGameObjectWithTag("CameraBounds").GetComponent<BoxCollider2D>();
 		if(newBounds!=null)
 			cameraController.SetBounds(newBounds);

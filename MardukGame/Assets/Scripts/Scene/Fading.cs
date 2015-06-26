@@ -8,10 +8,13 @@ public class Fading : MonoBehaviour {
 	public static Image fadeImage;
 	private static Animator anim;
 	private static string sceneToLoad;
+	public GameObject gameCtrlObj;
+	private GameController gameCtrl;
 
 	void Awake(){
 		anim = GetComponent<Animator> ();
 		fadeImage = GetComponent<Image> ();
+		gameCtrl = gameCtrlObj.GetComponent<GameController> ();
 	}
 
 	public static void BeginFadeIn (string newScene)
@@ -28,6 +31,7 @@ public class Fading : MonoBehaviour {
 	}
 
 	public void LoadScene(){
+		DestroyItems();
 		g.SetActiveEnemies(g.currLevelName,false);
 		g.SetActiveChunks(g.currLevelName,false);
 		g.currLevelName = sceneToLoad;
@@ -36,13 +40,23 @@ public class Fading : MonoBehaviour {
 			g.SetActiveChunks(g.currLevelName,true);
 		if(g.enemiesPerLevel.ContainsKey(g.currLevelName))
 			g.SetActiveEnemies(g.currLevelName,true);
+		if (gameCtrl.playerStats.readyToRespawn) {
+			gameCtrl.playerStats.RespawnStats ();
+			gameCtrl.player.GetComponent<PlatformerCharacter2D> ().RespawnPosition (); //hace que el jugador mire a la derecha
+			//gameCtrl.currentLevel = 0; //cambio al nivel 0 para que se reposicione el jugador entrando por el otro if despues
+			gameCtrl.playerStats.readyToRespawn = false;
+		}
+
 		BeginFadeOut ();
 	}
 
-	// OnLevelWasLoaded is called when a level is loaded. It takes loaded level index (int) as a parameter so you can limit the fade in to certain scenes.
-	//void OnLevelWasLoaded()
-	//{
-		// alpha = 1;		// use this if the alpha is not set to 1 by default
-	//	BeginFade(-1);		// call the fade in function
-	//}
+
+	public static void DestroyItems(){
+		GameObject[] items = GameObject.FindGameObjectsWithTag ("Item");
+		foreach(GameObject item in items ){
+			if(item.activeSelf)
+				Destroy(item.gameObject);
+		}
+	}
+
 }
