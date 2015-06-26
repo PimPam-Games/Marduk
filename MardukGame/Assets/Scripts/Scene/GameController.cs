@@ -90,10 +90,7 @@ public class GameController : MonoBehaviour {
 		}*/
 	}
 
-	void OnLevelWasLoaded (int level) {
-		Debug.Log ("level cargado;: " + level);
-		RepositionPlayerAndCamera();
-	}
+
 
 	public void RepositionPlayerAndCamera(){//posiciona al jugador y a la camara en la entrada del nuevo nivel
 		BoxCollider2D newBounds = GameObject.FindGameObjectWithTag("CameraBounds").GetComponent<BoxCollider2D>();

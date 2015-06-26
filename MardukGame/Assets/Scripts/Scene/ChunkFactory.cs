@@ -12,6 +12,10 @@ public class ChunkFactory : MonoBehaviour {
 
 	private Object[] chunkPool;
 	private  List<Object> commonChunks = new List<Object>();
+	public List<Object> LeftExitChunks = new List<Object>();
+	public List<Object> RightExitChunks = new List<Object>();
+	public List<Object> UpExitChunks = new List<Object>();
+	public List<Object> DownExitChunks = new List<Object>();
 	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
 	private static bool isEntry = false;
@@ -42,9 +46,9 @@ public class ChunkFactory : MonoBehaviour {
 		bgCount = 0;
 	}
 
-	public GameObject GenerateChunk(Vector3 pos, Quaternion rot){
+	public GameObject GenerateChunk(Vector3 pos, Quaternion rot, Exits exit){ //entry: "left", "right" , "up" , "down" , null para cualquiera
 		bgCount++;
-		GameObject newChunk;
+		GameObject newChunk = null;
 		if (!g.chunksPerZone.ContainsKey (g.currLevelName)) {
 			Debug.LogError(g.currLevelName + " No encontrado!");
 			return null;
@@ -57,8 +61,28 @@ public class ChunkFactory : MonoBehaviour {
 			DontDestroyOnLoad(newChunk);
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 		} else {
-			int r = Random.Range (0,commonChunks.Count);
-			newChunk = (GameObject)Instantiate (commonChunks [r], pos, rot);
+			int r;
+			switch(exit){
+			case Exits.Left:
+				r = Random.Range (0,LeftExitChunks.Count);
+				newChunk = (GameObject)Instantiate (LeftExitChunks [r], pos, rot);
+				break;
+		
+			case Exits.Right:
+				r = Random.Range (0,RightExitChunks.Count);
+				newChunk = (GameObject)Instantiate (RightExitChunks [r], pos, rot);
+				break;
+
+			case Exits.Up:
+				r = Random.Range (0,UpExitChunks.Count);
+				newChunk = (GameObject)Instantiate (UpExitChunks [r], pos, rot);
+				break;
+
+			case Exits.Down:
+				r = Random.Range (0,DownExitChunks.Count);
+				newChunk = (GameObject)Instantiate (DownExitChunks [r], pos, rot);
+				break;
+			}
 			if(newChunk.name.Contains("Entry"))
 				isEntry = true;
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
@@ -72,5 +96,12 @@ public class ChunkFactory : MonoBehaviour {
 				g.chunksPerZone[g.currLevelName].Add(go); //agrego el chunk a la lista de chunks de este nivel
 			}
 		return newChunk;
+	}
+
+	public enum Exits{
+		Right,
+		Left,
+		Up,
+		Down
 	}
 }

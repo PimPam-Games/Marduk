@@ -14,12 +14,18 @@ public class Chunk : MonoBehaviour {
 	public bool leftUsed, rightUsed, upUsed, downUsed; //salidas usadas
 	public bool isFirst = false;
 	private bool alreadyGenerated = false;
+	private float collisionDetectCount;
 
 	private ChunkFactory cf;
 	// Use this for initialization
 
 	void Awake(){
 		cf = GameObject.Find ("LevelController").GetComponent<ChunkFactory>();
+		collisionDetectCount = 1;
+	}
+
+	void Update(){
+		collisionDetectCount -= Time.deltaTime;
 	}
 
 	void Start () {
@@ -44,30 +50,38 @@ public class Chunk : MonoBehaviour {
 			return;
 		alreadyGenerated = true;
 		if (hasRightEnd && !rightUsed) {
-			GameObject g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation);
+			GameObject g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left);
 			if(g!=null)
 				g.GetComponent<Chunk>().leftUsed = true;
 		}
 		if (hasLeftEnd && !leftUsed ) {
-			GameObject g = cf.GenerateChunk(transform.position,transform.rotation);
+			GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right);
 			if(g != null){
 				g.GetComponent<Chunk>().rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
 				g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
 			}
 		}
 		if (hasUpEnd) {
+			GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Down);
+			if(g != null){
+				g.GetComponent<Chunk>().downUsed = true;
+				g.transform.position = new Vector3( g.transform.position.x,g.transform.position.y + (g.transform.FindChild("ChunkEndUp").position.y - g.transform.FindChild("ChunkEndDown").position.y),g.transform.position.z);
+			}
 		}
 		if (hasDownEnd) {
+			GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Up);
+			if(g != null){
+				g.GetComponent<Chunk>().upUsed = true;
+				g.transform.position = new Vector3( g.transform.position.x,g.transform.position.y - (g.transform.FindChild("ChunkEndUp").position.y - g.transform.FindChild("ChunkEndDown").position.y),g.transform.position.z);
+			}
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	
 	void OnTriggerEnter2D(Collider2D col){
+		if (collisionDetectCount > 0)
+			return;
 		if (col.gameObject.tag == "Player" && !alreadyGenerated) {
+			Debug.Log("Genero");
 			GenerateChunks();
 		}
 	}

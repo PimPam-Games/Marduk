@@ -36,6 +36,13 @@ public class Fading : MonoBehaviour {
 		g.SetActiveChunks(g.currLevelName,false);
 		g.currLevelName = sceneToLoad;
 		Application.LoadLevel (sceneToLoad);
+
+
+
+	}
+
+	void OnLevelWasLoaded (int level) {
+		Debug.Log ("level cargado;: " + level);
 		if(g.chunksPerZone.ContainsKey(g.currLevelName))
 			g.SetActiveChunks(g.currLevelName,true);
 		if(g.enemiesPerLevel.ContainsKey(g.currLevelName))
@@ -46,10 +53,9 @@ public class Fading : MonoBehaviour {
 			//gameCtrl.currentLevel = 0; //cambio al nivel 0 para que se reposicione el jugador entrando por el otro if despues
 			gameCtrl.playerStats.readyToRespawn = false;
 		}
-
-		BeginFadeOut ();
+		gameCtrl.RepositionPlayerAndCamera();
+		Fading.BeginFadeOut ();
 	}
-
 
 	public static void DestroyItems(){
 		GameObject[] items = GameObject.FindGameObjectsWithTag ("Item");
