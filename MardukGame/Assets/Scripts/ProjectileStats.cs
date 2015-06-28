@@ -9,7 +9,9 @@ public class ProjectileStats : MonoBehaviour {
 	private float lifeTime = 0;
 	public float particleSpeed;
 	public bool isParticle;
+	public bool dontDestroy = false;
 	private float rotationChange;
+
 	//private Rigidbody2D rb;
 
 	// Use this for initialization
@@ -29,6 +31,10 @@ public class ProjectileStats : MonoBehaviour {
 			Destroy(this.gameObject);
 	}
 
+	void DestroyProjectile(){
+		Destroy (this.gameObject);
+	}
+
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		if (col.gameObject.tag == "Player") {
 			float dmgDealt = Random.Range(minDmg,maxDmg);
@@ -37,10 +43,12 @@ public class ProjectileStats : MonoBehaviour {
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 			else
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-			Destroy(this.gameObject);
+			if(!dontDestroy)
+				Destroy(this.gameObject);
 		}
 		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-			Destroy(this.gameObject);
+			if(!dontDestroy)
+				Destroy(this.gameObject);
 		}
 	}
 }

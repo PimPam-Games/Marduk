@@ -42,6 +42,8 @@ public class EnemyIAMovement : MonoBehaviour {
 	private float dotX,dotY;
 	private float calcDirTime, calcDirDelay = 0.6f;
 
+	public bool dontFlip = false;
+
 	[SerializeField] private LayerMask whatIsGround;
 
 	// Use this for initialization
@@ -260,6 +262,8 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	private void Flip()
 	{
+		if (dontFlip)
+			return;
 		// Switch the way the player is labelled as facing.
 		facingRight = !facingRight;
 		

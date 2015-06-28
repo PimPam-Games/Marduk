@@ -6,18 +6,21 @@ public class ProjectileLauncher : MonoBehaviour {
 	public Vector2 force; //fuerza que se le aplica al proyectil cuando se crea
 	public GameObject projectile;
 	public bool toTargetDir; // si debe apuntar a la direccion del objetivo o no
+	public bool staticProjectile;
 
+	private GameObject p;
 	// Use this for initialization
 	void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(staticProjectile && p != null)
+			p.transform.position = this.transform.position;
 	}
 
 	public void LaunchProjectile(GameObject target){
-		GameObject p = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
+		p = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
 		if (toTargetDir && target != null) {
 			/*var dir = (target.transform.position - transform.position).normalized;
 			var dot = Vector2.Dot(dir, transform.right);*/
