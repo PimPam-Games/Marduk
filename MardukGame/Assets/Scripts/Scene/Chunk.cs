@@ -8,10 +8,10 @@ public class Chunk : MonoBehaviour {
 	//public GameObject[] chunkPool;
 	public List<Transform> enemies;
 	public Transform chunkEndRight; // chunkEndLeft es la posicion del chunk
-	public Transform chunkEndUp;
-	public Transform chunkEndDown;
-	public bool hasLeftEnd, hasRightEnd, hasUpEnd, hasDownEnd; //que salidas tiene el chunk
-	public bool leftUsed, rightUsed, upUsed, downUsed; //salidas usadas
+	public Transform chunkEndDownR;
+	public Transform chunkEndDownL;
+	public bool hasLeftEnd, hasRightEnd; //que salidas tiene el chunk
+	public bool leftUsed, rightUsed; //salidas usadas
 	public bool isFirst = false;
 	private bool alreadyGenerated = false;
 	private float collisionDetectCount;
@@ -61,19 +61,17 @@ public class Chunk : MonoBehaviour {
 				g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
 			}
 		}
-		if (hasUpEnd) {
-			GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Down);
+		if (chunkEndDownL != null) {
+			GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right);
 			if(g != null){
-				g.GetComponent<Chunk>().downUsed = true;
-				g.transform.position = new Vector3( g.transform.position.x,g.transform.position.y + (g.transform.FindChild("ChunkEndUp").position.y - g.transform.FindChild("ChunkEndDown").position.y),g.transform.position.z);
+				g.GetComponent<Chunk>().rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
+				g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
 			}
 		}
-		if (hasDownEnd) {
-			GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Up);
-			if(g != null){
-				g.GetComponent<Chunk>().upUsed = true;
-				g.transform.position = new Vector3( g.transform.position.x,g.transform.position.y - (g.transform.FindChild("ChunkEndUp").position.y - g.transform.FindChild("ChunkEndDown").position.y),g.transform.position.z);
-			}
+		if (chunkEndDownR != null) {
+			GameObject g = cf.GenerateChunk (chunkEndDownR.position, chunkEndDownR.rotation,ChunkFactory.Exits.Left);
+			if(g!=null)
+				g.GetComponent<Chunk>().leftUsed = true;
 		}
 	}
 

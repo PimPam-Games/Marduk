@@ -14,8 +14,6 @@ public class ChunkFactory : MonoBehaviour {
 	private  List<Object> commonChunks = new List<Object>();
 	public List<Object> LeftExitChunks = new List<Object>();
 	public List<Object> RightExitChunks = new List<Object>();
-	public List<Object> UpExitChunks = new List<Object>();
-	public List<Object> DownExitChunks = new List<Object>();
 	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
 	private static bool isEntry = false;
@@ -71,16 +69,6 @@ public class ChunkFactory : MonoBehaviour {
 			case Exits.Right:
 				r = Random.Range (0,RightExitChunks.Count);
 				newChunk = (GameObject)Instantiate (RightExitChunks [r], pos, rot);
-				break;
-
-			case Exits.Up:
-				r = Random.Range (0,UpExitChunks.Count);
-				newChunk = (GameObject)Instantiate (UpExitChunks [r], pos, rot);
-				break;
-
-			case Exits.Down:
-				r = Random.Range (0,DownExitChunks.Count);
-				newChunk = (GameObject)Instantiate (DownExitChunks [r], pos, rot);
 				break;
 			}
 			if(newChunk.name.Contains("Entry"))

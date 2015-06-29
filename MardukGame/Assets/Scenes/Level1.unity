@@ -362,7 +362,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 455584, guid: ceb0f0b0f37cd3d49916611bd823b976, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 11403540, guid: ceb0f0b0f37cd3d49916611bd823b976, type: 2}
       propertyPath: enemyPositions.Array.data[0]
@@ -544,16 +544,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   chunkEndRight: {fileID: 768061803}
-  chunkEndUp: {fileID: 0}
-  chunkEndDown: {fileID: 0}
+  chunkEndDownR: {fileID: 0}
+  chunkEndDownL: {fileID: 0}
   hasLeftEnd: 0
   hasRightEnd: 1
-  hasUpEnd: 0
-  hasDownEnd: 0
   leftUsed: 0
   rightUsed: 0
-  upUsed: 0
-  downUsed: 0
   isFirst: 1
 --- !u!4 &768061803
 Transform:
@@ -1109,7 +1105,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 457172, guid: fb106d1af88ac9d419effef448e7e2b3, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 148376, guid: fb106d1af88ac9d419effef448e7e2b3, type: 2}
       propertyPath: m_Name
@@ -1155,7 +1151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486578, guid: c36b422858131ca408e56767aa6f80e7, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c36b422858131ca408e56767aa6f80e7, type: 2}
