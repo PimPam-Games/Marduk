@@ -6,9 +6,11 @@ using g = GameController;
 public class ChunkFactory : MonoBehaviour {
 
 	public int zone = 1;
+	public int  MatrixSize = 61;
 	public string bgName = "Mountain";
 	public string sceneName = "level1";
 	public bool generateBackground;
+	public bool[,] cmatrix;
 
 	private Object[] chunkPool;
 	private  List<Object> commonChunks = new List<Object>();
@@ -22,6 +24,7 @@ public class ChunkFactory : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		cmatrix = new bool[MatrixSize,MatrixSize];
 		if (!g.chunksPerZone.ContainsKey (g.currLevelName)) {
 			g.chunksPerZone.Add (g.currLevelName, new List<GameObject> ());
 			g.enemiesPerLevel.Add(g.currLevelName, new List<GameObject>());

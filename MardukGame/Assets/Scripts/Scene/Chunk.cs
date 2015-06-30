@@ -10,9 +10,11 @@ public class Chunk : MonoBehaviour {
 	public Transform chunkEndRight; // chunkEndLeft es la posicion del chunk
 	public Transform chunkEndDownR;
 	public Transform chunkEndDownL;
+	public bool isDouble;
 	public bool hasLeftEnd, hasRightEnd; //que salidas tiene el chunk
 	public bool leftUsed, rightUsed; //salidas usadas
 	public bool isFirst = false;
+	public int[] position = new int[2]; // posision en la matriz
 	private bool alreadyGenerated = false;
 	private float collisionDetectCount;
 
@@ -29,12 +31,19 @@ public class Chunk : MonoBehaviour {
 	}
 
 	void Start () {
-		if (g.chunksPerZone.ContainsKey(g.currLevelName)) {
-			if(g.chunksPerZone[g.currLevelName].Count == 0) //si esta en la lista pero no hay ningun chunk, crea el primero
-				GenerateChunks();
+		if (g.chunksPerZone.ContainsKey (g.currLevelName)) {
+			if (g.chunksPerZone [g.currLevelName].Count == 0){ //si esta en la lista pero no hay ningun chunk, crea el primero
+				cf.cmatrix[0,cf.MatrixSize/2] = true; 
+				this.position[0] = 0;
+				this.position[1] = cf.MatrixSize/2;
+				GenerateChunks ();
+			}
+		} else {
+			cf.cmatrix[0,cf.MatrixSize/2] = true; 
+			this.position[0] = 0;
+			this.position[1] = cf.MatrixSize/2;
+			GenerateChunks (); //si  no esta en la lista  crea el primero
 		}
-		else
-			GenerateChunks(); //si  no esta en la lista  crea el primero
 		foreach(Transform enemyPos in enemies){
 			int index = Random.Range(0,g.enemyList.Length); //slecciona un enemigo aleatorio de la lista de enemigos
 			GameObject newEnemy = (GameObject)Instantiate (g.enemyList[index],enemyPos.position,enemyPos.rotation);
@@ -50,28 +59,67 @@ public class Chunk : MonoBehaviour {
 			return;
 		alreadyGenerated = true;
 		if (hasRightEnd && !rightUsed) {
-			GameObject g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left);
-			if(g!=null)
-				g.GetComponent<Chunk>().leftUsed = true;
+			if(this.position[1] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0],this.position[1]+1]){
+				cf.cmatrix[this.position[0],this.position[1]+1] = true; //marco como ucupada la posision de la derecha de este chunk
+
+				GameObject g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left);
+				if(g!=null){
+					Chunk nchunk = g.GetComponent<Chunk>();
+					nchunk.leftUsed = true;
+					nchunk.position[0] = this.position[0]; //la posicion del nuevo chunk es la derecha del actual
+					nchunk.position[1] = this.position[1]+1;
+					if(nchunk.isDouble){
+						cf.cmatrix[this.position[0]+1,this.position[1]+1] = true;
+					}
+				}
+			}
 		}
 		if (hasLeftEnd && !leftUsed ) {
-			GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right);
-			if(g != null){
-				g.GetComponent<Chunk>().rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
-				g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
+			if(this.position[1] > 0 && !cf.cmatrix[this.position[0],this.position[1]-1] ){
+				cf.cmatrix[this.position[0],this.position[1]-1] = true; //marco como ucupada la posision de la izq de este chunk
+				GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right);
+				if(g != null){
+					Chunk nchunk = g.GetComponent<Chunk>();
+					nchunk.rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
+					nchunk.position[0] = this.position[0]; //la posicion del nuevo chunk es la izq del actual
+					nchunk.position[1] = this.position[1]-1;
+					if(nchunk.isDouble){
+						cf.cmatrix[this.position[0]+1,this.position[1]-1] = true;
+					}
+					g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
+				}
 			}
 		}
 		if (chunkEndDownL != null) {
-			GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right);
-			if(g != null){
-				g.GetComponent<Chunk>().rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
-				g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
+			if(this.position[1] > 0 && this.position[0] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0]+1,this.position[1]-1]){
+				cf.cmatrix[this.position[0]+1,this.position[1]-1] = true; //la posicion del nuevo es abajo a la iaq
+				GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right);
+				if(g != null){
+					Chunk nchunk = g.GetComponent<Chunk>();
+					nchunk.rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
+					nchunk.position[0] = this.position[0]+1; //la posicion del nuevo chunk es la izq del actual
+					nchunk.position[1] = this.position[1]-1;
+					if(nchunk.isDouble){
+						cf.cmatrix[this.position[0]+2,this.position[1]-1] = true;
+					}
+					g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
+				}
 			}
 		}
 		if (chunkEndDownR != null) {
-			GameObject g = cf.GenerateChunk (chunkEndDownR.position, chunkEndDownR.rotation,ChunkFactory.Exits.Left);
-			if(g!=null)
-				g.GetComponent<Chunk>().leftUsed = true;
+			if(this.position[1] < cf.MatrixSize-1 && this.position[0] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0]+1,this.position[1]+1]){
+				cf.cmatrix[this.position[0]+1,this.position[1]+1] = true;
+				GameObject g = cf.GenerateChunk (chunkEndDownR.position, chunkEndDownR.rotation,ChunkFactory.Exits.Left);
+				if(g!=null){
+					Chunk nchunk = g.GetComponent<Chunk>();
+					nchunk.leftUsed = true;
+					nchunk.position[0] = this.position[0]+1; //la posicion del nuevo chunk es la der del actual
+					nchunk.position[1] = this.position[1]+1;
+					if(nchunk.isDouble){
+						cf.cmatrix[this.position[0]+2,this.position[1]+1] = true;
+					}
+				}
+			}
 		}
 	}
 
