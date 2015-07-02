@@ -55,13 +55,13 @@ public class Chunk : MonoBehaviour {
 	}
 
 	void GenerateChunks(){
+		Debug.Log ("x: " + position[0] + "y: " + position[1]);
 		if (alreadyGenerated)
 			return;
 		alreadyGenerated = true;
 		if (hasRightEnd && !rightUsed) {
 			if(this.position[1] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0],this.position[1]+1]){
 				cf.cmatrix[this.position[0],this.position[1]+1] = true; //marco como ucupada la posision de la derecha de este chunk
-
 				GameObject g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left);
 				if(g!=null){
 					Chunk nchunk = g.GetComponent<Chunk>();

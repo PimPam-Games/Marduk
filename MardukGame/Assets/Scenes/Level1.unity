@@ -546,11 +546,13 @@ MonoBehaviour:
   chunkEndRight: {fileID: 768061803}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}
+  isDouble: 0
   hasLeftEnd: 0
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
   isFirst: 1
+  position: 0000000000000000
 --- !u!4 &768061803
 Transform:
   m_ObjectHideFlags: 0
@@ -1307,6 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zone: 1
+  MatrixSize: 61
   bgName: Mountain
   sceneName: Level1
   generateBackground: 1
