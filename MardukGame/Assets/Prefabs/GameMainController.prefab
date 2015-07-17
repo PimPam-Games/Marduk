@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 415176}
   - 114: {fileID: 11496998}
   - 82: {fileID: 8241982}
+  - 114: {fileID: 11433672}
   m_Layer: 0
   m_Name: GameMainController
   m_TagString: Untagged
@@ -98,6 +99,17 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11433672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3a8ba1775f9f2418b2bd0b27ab05df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11496998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 174082, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
-  deadEnemies: []
+  playerStats: {fileID: 0}
   music1: {fileID: 8241982}
 --- !u!1001 &100100000
 Prefab:
