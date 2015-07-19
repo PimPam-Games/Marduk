@@ -16,6 +16,8 @@ public class ChunkFactory : MonoBehaviour {
 	private  List<Object> commonChunks = new List<Object>();
 	public List<Object> LeftExitChunks = new List<Object>();
 	public List<Object> RightExitChunks = new List<Object>();
+	public List<Object> LeftEndChunks = new List<Object>();
+	public List<Object> RightEndChunks = new List<Object>();
 	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
 	private static bool isEntry = false;
@@ -45,6 +47,28 @@ public class ChunkFactory : MonoBehaviour {
 	public static void Initialize(){
 		isEntry = false;
 		bgCount = 0;
+	}
+
+	public GameObject GenerateEnd (Vector3 pos, Quaternion rot, Exits exit){
+		GameObject newChunk = null;
+		if (!g.chunksPerZone.ContainsKey (g.currLevelName)) {
+			Debug.LogError(g.currLevelName + " No encontrado!");
+			return null;
+		}
+		int r;
+		switch (exit) {
+		case Exits.Left:
+			r = Random.Range (0,LeftEndChunks.Count);
+			newChunk = (GameObject)Instantiate (LeftEndChunks [r], pos, rot);
+			break;
+		case Exits.Right:
+			r = Random.Range (0,RightEndChunks.Count);
+			newChunk = (GameObject)Instantiate (RightEndChunks [r], pos, rot);
+			break;
+		}
+		g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
+		DontDestroyOnLoad(newChunk);
+		return newChunk;
 	}
 
 	public GameObject GenerateChunk(Vector3 pos, Quaternion rot, Exits exit){ //entry: "left", "right" , "up" , "down" , null para cualquiera

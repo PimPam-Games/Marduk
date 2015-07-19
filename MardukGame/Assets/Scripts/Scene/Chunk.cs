@@ -62,7 +62,12 @@ public class Chunk : MonoBehaviour {
 		if (hasRightEnd && !rightUsed) {
 			if(this.position[1] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0],this.position[1]+1]){
 				cf.cmatrix[this.position[0],this.position[1]+1] = true; //marco como ucupada la posision de la derecha de este chunk
-				GameObject g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left);
+				GameObject g;
+				if(this.position[1] == cf.MatrixSize-2){
+					g = cf.GenerateEnd (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Right);
+				}
+				else
+					g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left);
 				if(g!=null){
 					Chunk nchunk = g.GetComponent<Chunk>();
 					nchunk.leftUsed = true;
@@ -77,7 +82,11 @@ public class Chunk : MonoBehaviour {
 		if (hasLeftEnd && !leftUsed ) {
 			if(this.position[1] > 0 && !cf.cmatrix[this.position[0],this.position[1]-1] ){
 				cf.cmatrix[this.position[0],this.position[1]-1] = true; //marco como ucupada la posision de la izq de este chunk
-				GameObject g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right);
+				GameObject g;
+				if(this.position[1] == 1){
+					g = cf.GenerateEnd (transform.position,transform.rotation,ChunkFactory.Exits.Left);
+				}else
+					g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right);
 				if(g != null){
 					Chunk nchunk = g.GetComponent<Chunk>();
 					nchunk.rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
