@@ -118,6 +118,16 @@ public class EnemyIAMovement : MonoBehaviour {
 		Move ();
 	}
 
+	private void FlyPatrol(){
+		flipDelayCount -= Time.deltaTime;
+		moveDirY = 0;
+		if (flipDelayCount <= 0) {
+			moveDir *= -1;
+			flipDelayCount = flipDelay;
+		}
+		Fly ();
+	}
+
 	private void jumpPatrol(){
 		anim.SetBool ("Ground",grounded);
 		groundCheckTime -= Time.deltaTime;
@@ -176,15 +186,7 @@ public class EnemyIAMovement : MonoBehaviour {
 		}
 	}
 
-	private void FlyPatrol(){
-		flipDelayCount -= Time.deltaTime;
-		moveDirY = 0;
-		if (flipDelayCount <= 0) {
-			moveDir *= -1;
-			flipDelayCount = flipDelay;
-		}
-		Fly ();
-	}
+
 
 	private void Fly(){
 		if (knockbackTimer <= 0) {
