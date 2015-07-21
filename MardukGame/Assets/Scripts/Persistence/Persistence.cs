@@ -36,6 +36,14 @@ public class Persistence : MonoBehaviour {
 			data.equipedShield = new SerializableItem(pItems.EquipedShield);
 		if(pItems.EquipedArmour != null)
 			data.equipedArmour = new SerializableItem(pItems.EquipedArmour);
+		if(pItems.EquipedBelt != null)
+			data.equipedBelt = new SerializableItem(pItems.EquipedBelt);
+		if(pItems.EquipedAmulet != null)
+			data.equipedAmulet = new SerializableItem(pItems.EquipedAmulet);
+		if(pItems.EquipedRingL != null)
+			data.equipedRingL = new SerializableItem(pItems.EquipedRingL);
+		if(pItems.EquipedRingR != null)
+			data.equipedRingR = new SerializableItem(pItems.EquipedRingR);
 		List<SerializableItem> inv = new List<SerializableItem>();
 		foreach(Item it in pItems.Inventory){
 			inv.Add(new SerializableItem(it));
@@ -86,6 +94,22 @@ public class Persistence : MonoBehaviour {
 				pItems.EquipedWeapon = GenerateItem (data.equipedWeapon);
 			else
 				pItems.EquipedWeapon = null;
+			if(data.equipedBelt!= null)
+				pItems.EquipedBelt = GenerateItem (data.equipedBelt);
+			else
+				pItems.EquipedBelt = null;
+			if(data.equipedAmulet!= null)
+				pItems.EquipedAmulet = GenerateItem (data.equipedAmulet);
+			else
+				pItems.EquipedAmulet = null;
+			if(data.equipedRingR!= null)
+				pItems.EquipedRingR = GenerateItem (data.equipedRingR);
+			else
+				pItems.EquipedRingR = null;
+			if(data.equipedRingL!= null)
+				pItems.EquipedRingL = GenerateItem (data.equipedRingL);
+			else
+				pItems.EquipedRingL = null;
 			List<Item> inv = new List<Item>();
 			foreach(SerializableItem it in data.inventory){
 				inv.Add(GenerateItem(it));

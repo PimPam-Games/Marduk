@@ -25,6 +25,10 @@ public class PlayerData{
 	public  SerializableItem equipedWeapon;
 	public  SerializableItem equipedHelmet;
 	public  SerializableItem equipedShield;
+	public  SerializableItem equipedBelt;
+	public  SerializableItem equipedAmulet;
+	public  SerializableItem equipedRingL;
+	public  SerializableItem equipedRingR;
 
 	public  List<SerializableItem> inventory;
 	public  int inventoryCantItems;
