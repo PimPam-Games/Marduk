@@ -15,7 +15,7 @@ public class PlayerItems: MonoBehaviour {
 	private static Item equipedWeapon;
 	private static Item equipedHelmet;
 	private static Item equipedShield;
-	public static int InventoryMaxSize = 28;
+	public static int InventoryMaxSize = 30;
 	public static int inventoryCantItems = 0;
 
 	public static List<Item> Inventory{

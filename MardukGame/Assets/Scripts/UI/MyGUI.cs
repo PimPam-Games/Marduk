@@ -4,8 +4,8 @@ using p = PlayerStats;
 
 public class MyGUI : MonoBehaviour {
 
-	public float buttonWidth = 35;
-	public float buttonHeight = 35;
+	public float buttonWidth = 36;
+	public float buttonHeight = 36;
 	public GUIStyle inventoryStyle;
 	public GUIStyle characterStyle;
 	private float dif = 1;
@@ -14,8 +14,8 @@ public class MyGUI : MonoBehaviour {
 	private static bool  displayInventoryWindow = false;
 	private const int INVENTORY_WINDOW_ID = 1;
 	private Rect inventoryWindowRect =  new Rect(1000,150,252,400);
-	private int inventoryRows = 4;
-	private int inventoryCols = 7;
+	private int inventoryRows = 5;
+	private int inventoryCols = 6;
 
 
 	/*variables de la ventana del personaje*/
@@ -148,7 +148,7 @@ public class MyGUI : MonoBehaviour {
 	public void InventoryWindow(int id){
 		int cnt = 0;
 		if (PlayerItems.EquipedWeapon != null) { //Slot del arma
-			if (GUI.Button (new Rect (59 *dif , 181 * dif, 60 * dif, 129 * dif), new GUIContent(PlayerItems.EquipedWeapon.Icon,PlayerItems.EquipedWeapon.ToolTip()))) {
+			if (GUI.Button (new Rect (85 *dif , 140 * dif, 50 * dif, 90 * dif), new GUIContent(PlayerItems.EquipedWeapon.Icon,PlayerItems.EquipedWeapon.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
 					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
 						PlayerItems.Inventory.Add(PlayerItems.EquipedWeapon);
@@ -161,7 +161,7 @@ public class MyGUI : MonoBehaviour {
 			SetTooltip();
 		}
 		if (PlayerItems.EquipedArmour != null) { //Slot de la armadura
-			if (GUI.Button (new Rect (150 *dif , 181 * dif, 60 * dif, 129 * dif), new GUIContent(PlayerItems.EquipedArmour.Icon,PlayerItems.EquipedArmour.ToolTip()))) {
+			if (GUI.Button (new Rect (152 *dif , 140 * dif, 50 * dif, 90 * dif), new GUIContent(PlayerItems.EquipedArmour.Icon,PlayerItems.EquipedArmour.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
 					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
 						PlayerItems.Inventory.Add(PlayerItems.EquipedArmour);
@@ -174,7 +174,7 @@ public class MyGUI : MonoBehaviour {
 			SetTooltip();
 		}
 		if (PlayerItems.EquipedHelmet != null) { //Slot del casco
-			if (GUI.Button (new Rect (159 *dif , 93 * dif, 41 * dif, 58 * dif), new GUIContent(PlayerItems.EquipedHelmet.Icon,PlayerItems.EquipedHelmet.ToolTip()))) {
+			if (GUI.Button (new Rect (153 *dif , 75 * dif, 49 * dif, 51 * dif), new GUIContent(PlayerItems.EquipedHelmet.Icon,PlayerItems.EquipedHelmet.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
 					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
 						PlayerItems.Inventory.Add(PlayerItems.EquipedHelmet);
@@ -186,7 +186,7 @@ public class MyGUI : MonoBehaviour {
 			SetTooltip();
 		}
 		if (PlayerItems.EquipedShield != null) { //Slot del escudo
-			if (GUI.Button (new Rect (240 *dif , 181 * dif, 60 * dif, 129 * dif), new GUIContent(PlayerItems.EquipedShield.Icon,PlayerItems.EquipedShield.ToolTip()))) {
+			if (GUI.Button (new Rect (221 *dif , 140 * dif, 50 * dif, 90 * dif), new GUIContent(PlayerItems.EquipedShield.Icon,PlayerItems.EquipedShield.ToolTip()))) {
 				if(Input.GetMouseButtonUp(0)) {
 					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
 						PlayerItems.Inventory.Add(PlayerItems.EquipedShield);
@@ -197,14 +197,18 @@ public class MyGUI : MonoBehaviour {
 			}
 			SetTooltip();
 		}
-		GUI.Button (new Rect (159 *dif , 93 * dif, 41 * dif, 58 * dif), "", "box"); // casco
-		GUI.Button (new Rect (59 *dif , 181 * dif, 60 * dif, 129 * dif), "", "box"); //arma
-		GUI.Button (new Rect (240 *dif , 181 * dif, 60 * dif, 129 * dif), "", "box"); // escudo
-		GUI.Button (new Rect (150 *dif , 181 * dif, 60 * dif, 129 * dif), "", "box"); //armadura
+		GUI.Button (new Rect (153 *dif , 75 * dif, 49 * dif, 51 * dif), "", "box"); // casco
+		GUI.Button (new Rect (221 *dif , 100 * dif, 26 * dif, 26 * dif), "", "box"); // amuleto
+		GUI.Button (new Rect (152 *dif , 245 * dif, 51 * dif, 26 * dif), "", "box"); // cinturon
+		GUI.Button (new Rect (108 *dif , 245 * dif, 26 * dif, 26 * dif), "", "box"); // anilloL
+		GUI.Button (new Rect (221 *dif , 245 * dif, 26 * dif, 26 * dif), "", "box"); // anilloRs
+		GUI.Button (new Rect (85 *dif , 140 * dif, 50 * dif, 90 * dif), "", "box"); //arma
+		GUI.Button (new Rect (221 *dif , 140 * dif, 50 * dif, 90 * dif), "", "box"); // escudo
+		GUI.Button (new Rect (152 *dif , 140 * dif, 50 * dif, 90 * dif), "", "box"); //armadura
 		for (int y =0; y<inventoryRows; y++) {
 			for(int x=0; x <inventoryCols; x++){
 				if(cnt < PlayerItems.Inventory.Count){
-					if(GUI.Button(new Rect((60+(x*buttonWidth))*dif,(348+(y*buttonHeight))*dif, buttonWidth*dif,buttonHeight*dif), new GUIContent(PlayerItems.Inventory[cnt].Icon,PlayerItems.Inventory[cnt].ToolTip()))){
+					if(GUI.Button(new Rect((60+(x*buttonWidth))*dif,(287+(y*buttonHeight))*dif, buttonWidth*dif,buttonHeight*dif), new GUIContent(PlayerItems.Inventory[cnt].Icon,PlayerItems.Inventory[cnt].ToolTip()))){
 						//if(doubleClickTimer != 0 && selectedItem != null){
 						//	if(Time.time - doubleClickTimer < DBCLICK_TIMER_THRESHOLD){
 						if(Input.GetMouseButtonUp(0)) {
@@ -283,7 +287,7 @@ public class MyGUI : MonoBehaviour {
 					SetTooltip();
 				}
 				else{
-					GUI.Button(new Rect((60+(x*buttonWidth))*dif,(348+(y*buttonHeight))*dif, buttonWidth*dif,buttonHeight*dif),"","box");//(x+y*inventoryCols).ToString());
+					GUI.Button(new Rect((60+(x*buttonWidth))*dif,(287+(y*buttonHeight))*dif, buttonWidth*dif,buttonHeight*dif),"","box");//(x+y*inventoryCols).ToString());
 				}
 				//Debug.Log(cnt);
 				cnt++;
