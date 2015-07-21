@@ -15,6 +15,11 @@ public class PlayerItems: MonoBehaviour {
 	private static Item equipedWeapon;
 	private static Item equipedHelmet;
 	private static Item equipedShield;
+	private static Item equipedBelt;
+	private static Item equipedAmulet;
+	private static Item equipedRingL;
+	private static Item equipedRingR;
+
 	public static int InventoryMaxSize = 30;
 	public static int inventoryCantItems = 0;
 
@@ -117,6 +122,126 @@ public class PlayerItems: MonoBehaviour {
 			else
 				reSkin.ReSkinHelmet(equipedHelmet.Name);
 			UpdateStats(oldHelmet,equipedHelmet);
+		}
+	}
+
+	public static Item EquipedAmulet{
+		get{return equipedAmulet;}
+		set{
+			Item oldAmulet = equipedAmulet;
+			equipedAmulet = value;
+			
+			for(int i = 0; i<p.offensives.Length; i++){ //el arreglo mas largo es offensives
+				if(oldAmulet!=null) p.offensives[i] -= oldAmulet.Offensives[i];
+				if(equipedAmulet!=null) p.offensives[i] += equipedAmulet.Offensives[i];
+				if(i<p.atributes.Length){
+					if(oldAmulet!=null) p.atributes[i] -= oldAmulet.Atributes[i];
+					if(equipedAmulet!=null) p.atributes[i] += equipedAmulet.Atributes[i];
+				}
+				if(i<p.CantDefensives){
+					if(oldAmulet!=null) p.defensives[i] -= oldAmulet.Defensives[i];
+					if(equipedAmulet!=null)p.defensives[i] += equipedAmulet.Defensives[i];
+				}
+				if(i< p.CantUtils){
+					if(oldAmulet!=null) p.utils[i] -= oldAmulet.Utils[i];
+					if(equipedAmulet!=null)p.utils[i] += equipedAmulet.Utils[i];
+				}
+			}
+			/*if(equipedAmulet==null)
+				reSkin.ReSkinHelmet("head");
+			else
+				reSkin.ReSkinHelmet(equipedAmulet.Name);*/
+			UpdateStats(oldAmulet,equipedAmulet);
+		}
+	}
+
+	public static Item EquipedRingR{
+		get{return equipedRingR;}
+		set{
+			Item oldRingR = equipedRingR;
+			equipedRingR = value;
+			
+			for(int i = 0; i<p.offensives.Length; i++){ //el arreglo mas largo es offensives
+				if(oldRingR!=null) p.offensives[i] -= oldRingR.Offensives[i];
+				if(equipedRingR!=null) p.offensives[i] += equipedRingR.Offensives[i];
+				if(i<p.atributes.Length){
+					if(oldRingR!=null) p.atributes[i] -= oldRingR.Atributes[i];
+					if(equipedRingR!=null) p.atributes[i] += equipedRingR.Atributes[i];
+				}
+				if(i<p.CantDefensives){
+					if(oldRingR!=null) p.defensives[i] -= oldRingR.Defensives[i];
+					if(equipedRingR!=null)p.defensives[i] += equipedRingR.Defensives[i];
+				}
+				if(i< p.CantUtils){
+					if(oldRingR!=null) p.utils[i] -= oldRingR.Utils[i];
+					if(equipedRingR!=null)p.utils[i] += equipedRingR.Utils[i];
+				}
+			}
+			/*if(equipedAmulet==null)
+				reSkin.ReSkinHelmet("head");
+			else
+				reSkin.ReSkinHelmet(equipedAmulet.Name);*/
+			UpdateStats(oldRingR,equipedRingR);
+		}
+	}
+
+	public static Item EquipedRingL{
+		get{return equipedRingL;}
+		set{
+			Item oldRingL = equipedRingL;
+			equipedRingL = value;
+			
+			for(int i = 0; i<p.offensives.Length; i++){ //el arreglo mas largo es offensives
+				if(oldRingL!=null) p.offensives[i] -= oldRingL.Offensives[i];
+				if(equipedRingL!=null) p.offensives[i] += equipedRingL.Offensives[i];
+				if(i<p.atributes.Length){
+					if(oldRingL!=null) p.atributes[i] -= oldRingL.Atributes[i];
+					if(equipedRingL!=null) p.atributes[i] += equipedRingL.Atributes[i];
+				}
+				if(i<p.CantDefensives){
+					if(oldRingL!=null) p.defensives[i] -= oldRingL.Defensives[i];
+					if(equipedRingL!=null)p.defensives[i] += equipedRingL.Defensives[i];
+				}
+				if(i< p.CantUtils){
+					if(oldRingL!=null) p.utils[i] -= oldRingL.Utils[i];
+					if(equipedRingL!=null)p.utils[i] += equipedRingL.Utils[i];
+				}
+			}
+			/*if(equipedAmulet==null)
+				reSkin.ReSkinHelmet("head");
+			else
+				reSkin.ReSkinHelmet(equipedAmulet.Name);*/
+			UpdateStats(oldRingL,equipedRingL);
+		}
+	}
+
+	public static Item EquipedBelt{
+		get{return equipedBelt;}
+		set{
+			Item oldBelt = equipedBelt;
+			equipedBelt = value;
+			
+			for(int i = 0; i<p.offensives.Length; i++){ //el arreglo mas largo es offensives
+				if(oldBelt!=null) p.offensives[i] -= oldBelt.Offensives[i];
+				if(equipedBelt!=null) p.offensives[i] += equipedBelt.Offensives[i];
+				if(i<p.atributes.Length){
+					if(oldBelt!=null) p.atributes[i] -= oldBelt.Atributes[i];
+					if(equipedBelt!=null) p.atributes[i] += equipedBelt.Atributes[i];
+				}
+				if(i<p.CantDefensives){
+					if(oldBelt!=null) p.defensives[i] -= oldBelt.Defensives[i];
+					if(equipedBelt!=null)p.defensives[i] += equipedBelt.Defensives[i];
+				}
+				if(i< p.CantUtils){
+					if(oldBelt!=null) p.utils[i] -= oldBelt.Utils[i];
+					if(equipedBelt!=null)p.utils[i] += equipedBelt.Utils[i];
+				}
+			}
+			/*if(equipedBelt==null)
+				reSkin.ReSkinHelmet("head");
+			else
+				reSkin.ReSkinHelmet(equipedBelt.Name);*/
+			UpdateStats(oldBelt,equipedBelt);
 		}
 	}
 

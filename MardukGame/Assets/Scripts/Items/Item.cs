@@ -23,7 +23,6 @@ public class Item : MonoBehaviour {
 		defensives = new float[p.CantDefensives];
 		utils = new float[p.CantUtils];
 		//offensives [p.MaxDamge] = 4;
-		//offensives [p.MinDmg] = 1;
 		rb = GetComponent<Rigidbody2D> ();
 		StartCoroutine (StopMove ());
 	}
@@ -163,6 +162,5 @@ public enum ItemTypes{
 	Shield,
 	Ring,
 	Amulet,
-	Gloves,
-	Boots
+	Belt
 }

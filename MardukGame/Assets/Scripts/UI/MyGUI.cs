@@ -197,11 +197,59 @@ public class MyGUI : MonoBehaviour {
 			}
 			SetTooltip();
 		}
+		if (PlayerItems.EquipedBelt != null) { //Slot del cinturon
+			if (GUI.Button (new Rect (152 *dif , 245 * dif, 51 * dif, 26 * dif), new GUIContent(PlayerItems.EquipedBelt.Icon,PlayerItems.EquipedBelt.ToolTip()))) {
+				if(Input.GetMouseButtonUp(0)) {
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedBelt);
+						PlayerItems.EquipedBelt = null;
+						PlayerItems.inventoryCantItems++;
+					}
+				}
+			}
+			SetTooltip();
+		}
+		if (PlayerItems.EquipedAmulet != null) { //Slot del Amuleto
+			if (GUI.Button (new Rect (221 *dif , 100 * dif, 26 * dif, 26 * dif), new GUIContent(PlayerItems.EquipedAmulet.Icon,PlayerItems.EquipedAmulet.ToolTip()))) {
+				if(Input.GetMouseButtonUp(0)) {
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedAmulet);
+						PlayerItems.EquipedAmulet = null;
+						PlayerItems.inventoryCantItems++;
+					}
+				}
+			}
+			SetTooltip();
+		}
+		if (PlayerItems.EquipedRingL != null) { //Slot del AnilloL
+			if (GUI.Button (new Rect (108 *dif , 245 * dif, 26 * dif, 26 * dif), new GUIContent(PlayerItems.EquipedRingL.Icon,PlayerItems.EquipedRingL.ToolTip()))) {
+				if(Input.GetMouseButtonUp(0)) {
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedRingL);
+						PlayerItems.EquipedRingL = null;
+						PlayerItems.inventoryCantItems++;
+					}
+				}
+			}
+			SetTooltip();
+		}
+		if (PlayerItems.EquipedRingR != null) { //Slot del AnilloR
+			if (GUI.Button (new Rect (221 *dif , 245 * dif, 26 * dif, 26 * dif), new GUIContent(PlayerItems.EquipedRingR.Icon,PlayerItems.EquipedRingR.ToolTip()))) {
+				if(Input.GetMouseButtonUp(0)) {
+					if(PlayerItems.InventoryMaxSize > PlayerItems.inventoryCantItems){
+						PlayerItems.Inventory.Add(PlayerItems.EquipedRingR);
+						PlayerItems.EquipedRingR = null;
+						PlayerItems.inventoryCantItems++;
+					}
+				}
+			}
+			SetTooltip();
+		}
 		GUI.Button (new Rect (153 *dif , 75 * dif, 49 * dif, 51 * dif), "", "box"); // casco
 		GUI.Button (new Rect (221 *dif , 100 * dif, 26 * dif, 26 * dif), "", "box"); // amuleto
 		GUI.Button (new Rect (152 *dif , 245 * dif, 51 * dif, 26 * dif), "", "box"); // cinturon
 		GUI.Button (new Rect (108 *dif , 245 * dif, 26 * dif, 26 * dif), "", "box"); // anilloL
-		GUI.Button (new Rect (221 *dif , 245 * dif, 26 * dif, 26 * dif), "", "box"); // anilloRs
+		GUI.Button (new Rect (221 *dif , 245 * dif, 26 * dif, 26 * dif), "", "box"); // anilloR
 		GUI.Button (new Rect (85 *dif , 140 * dif, 50 * dif, 90 * dif), "", "box"); //arma
 		GUI.Button (new Rect (221 *dif , 140 * dif, 50 * dif, 90 * dif), "", "box"); // escudo
 		GUI.Button (new Rect (152 *dif , 140 * dif, 50 * dif, 90 * dif), "", "box"); //armadura
@@ -262,6 +310,54 @@ public class MyGUI : MonoBehaviour {
 												Item temp = PlayerItems.EquipedShield;
 												PlayerItems.EquipedShield = PlayerItems.Inventory[cnt];
 												PlayerItems.Inventory[cnt] = temp;
+											}
+										}
+										else{
+											if(PlayerItems.Inventory[cnt].Type == ItemTypes.Belt){ // cinturon equipado
+												if(PlayerItems.EquipedBelt == null){  
+													PlayerItems.EquipedBelt = PlayerItems.Inventory[cnt];
+													PlayerItems.Inventory.RemoveAt(cnt);
+													PlayerItems.inventoryCantItems--;
+												}
+												else{
+													Item temp = PlayerItems.EquipedBelt;
+													PlayerItems.EquipedBelt = PlayerItems.Inventory[cnt];
+													PlayerItems.Inventory[cnt] = temp;
+												}
+											}
+											else{
+												if(PlayerItems.Inventory[cnt].Type == ItemTypes.Amulet){ // amuleto equipado
+													if(PlayerItems.EquipedAmulet == null){  
+														PlayerItems.EquipedAmulet = PlayerItems.Inventory[cnt];
+														PlayerItems.Inventory.RemoveAt(cnt);
+														PlayerItems.inventoryCantItems--;
+													}
+													else{
+														Item temp = PlayerItems.EquipedAmulet;
+														PlayerItems.EquipedAmulet = PlayerItems.Inventory[cnt];
+														PlayerItems.Inventory[cnt] = temp;
+													}
+												}
+												else{
+													if(PlayerItems.Inventory[cnt].Type == ItemTypes.Ring){ // Anillo equipado
+														if(PlayerItems.EquipedRingL == null){  
+															PlayerItems.EquipedRingL = PlayerItems.Inventory[cnt];
+															PlayerItems.Inventory.RemoveAt(cnt);
+															PlayerItems.inventoryCantItems--;
+														}
+														else{
+															if(PlayerItems.EquipedRingR == null){  
+																PlayerItems.EquipedRingR = PlayerItems.Inventory[cnt];
+																PlayerItems.Inventory.RemoveAt(cnt);
+																PlayerItems.inventoryCantItems--;
+															}else{
+																Item temp = PlayerItems.EquipedRingR;
+																PlayerItems.EquipedRingR = PlayerItems.Inventory[cnt];
+																PlayerItems.Inventory[cnt] = temp;
+															}
+														}
+													}
+												}
 											}
 										}
 									}
