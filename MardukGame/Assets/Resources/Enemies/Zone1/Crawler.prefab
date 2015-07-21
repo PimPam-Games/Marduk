@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6400003, y: .310000002, z: 0}
+  m_LocalPosition: {x: -5.46999979, y: .189999998, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 433054}
@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102934}
   m_LocalRotation: {x: 0, y: 0, z: .707106888, w: .707106769}
-  m_LocalPosition: {x: -.143000007, y: -.00999999978, z: 0}
+  m_LocalPosition: {x: -.0820000023, y: -.0120000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 466892}
@@ -275,10 +275,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a07d04a949b20547a985fedd30a89d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 0, y: 0}
-  projectile: {fileID: 161618, guid: f381298fb86239c40a93e3796f1febab, type: 2}
-  toTargetDir: 1
+  force: {x: -225, y: 210}
+  projectile: {fileID: 171128, guid: 0744a8c3dc3ebcf4aaea01323a109a54, type: 2}
+  toTargetDir: 0
   staticProjectile: 0
+  ia: {fileID: 11437880}
+  flipProjectile: 1
 --- !u!114 &11417600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,7 +306,7 @@ MonoBehaviour:
   anim: {fileID: 9569844}
   castDelay: 3
   stopWalkWhenAttack: 1
-  maxDistance: 10
+  maxDistance: 999
   pLaunchers:
   - {fileID: 102934}
 --- !u!114 &11437880
@@ -319,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
-  maxSpeed: 3.5
+  maxSpeed: 2.5
   facingRight: 0
   groundChecks: []
   jumpForce: 800

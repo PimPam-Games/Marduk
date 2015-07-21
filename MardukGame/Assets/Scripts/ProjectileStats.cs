@@ -10,13 +10,15 @@ public class ProjectileStats : MonoBehaviour {
 	public float particleSpeed;
 	public bool isParticle;
 	public bool dontDestroy = false;
+	public bool hasSplashAnim = false;
 	private float rotationChange;
-
-	//private Rigidbody2D rb;
+	public Animator anim;
+	private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
-	//	rb = GetComponent<Rigidbody2D> ();
+		rb = GetComponent<Rigidbody2D> ();
+
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
 	}
@@ -43,12 +45,26 @@ public class ProjectileStats : MonoBehaviour {
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 			else
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-			if(!dontDestroy)
-				Destroy(this.gameObject);
+			if(!dontDestroy){
+				if(hasSplashAnim){
+
+					anim.SetBool("hit",true);
+					rb.isKinematic = true;
+				}else{
+					Destroy(this.gameObject);
+				}
+			}
 		}
 		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-			if(!dontDestroy)
-				Destroy(this.gameObject);
+			if(!dontDestroy){
+				if(hasSplashAnim){
+
+					anim.SetBool("hit",true);
+					rb.isKinematic = true;
+				}else{
+					Destroy(this.gameObject);
+				}
+			}	
 		}
 	}
 }

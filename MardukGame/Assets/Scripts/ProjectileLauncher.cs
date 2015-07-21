@@ -7,7 +7,8 @@ public class ProjectileLauncher : MonoBehaviour {
 	public GameObject projectile;
 	public bool toTargetDir; // si debe apuntar a la direccion del objetivo o no
 	public bool staticProjectile;
-
+	public EnemyIAMovement ia;
+	public bool flipProjectile = false;
 	private GameObject p;
 	// Use this for initialization
 	void Start () {
@@ -30,6 +31,9 @@ public class ProjectileLauncher : MonoBehaviour {
 			else
 				p.GetComponent<ProjectileMovement>().moveDirX = 1;
 		}
-		p.GetComponent<Rigidbody2D> ().AddForce (force);
+		if (flipProjectile && ia.facingRight)
+			p.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));
+		else
+			p.GetComponent<Rigidbody2D> ().AddForce (force);
 	}
 }
