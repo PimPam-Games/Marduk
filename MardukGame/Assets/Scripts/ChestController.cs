@@ -4,15 +4,16 @@ using System.Collections;
 public class ChestController : MonoBehaviour {
 
 	private Rigidbody2D rb;
-	private Animator anim;
 	private ItemGenerator itGen;
 	private bool firstTimeOpen;
+	private SpriteRenderer sprite;
+	public Sprite openSprite;
 
 	void Awake(){
 		itGen = GetComponent<ItemGenerator> ();
 		rb = GetComponent<Rigidbody2D> ();
-		anim = GetComponent<Animator> ();
 		firstTimeOpen = true;
+		sprite = GetComponent<SpriteRenderer> ();
 	}
 
 	// Use this for initialization
@@ -22,8 +23,8 @@ public class ChestController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
-		rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y - 00000001);
+		rb.velocity = new Vector2 (0, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
+		rb.velocity = new Vector2 (0, rb.velocity.y - 00000001);
 	}
 
 	void OnTriggerStay2D(Collider2D coll){
@@ -32,7 +33,8 @@ public class ChestController : MonoBehaviour {
 			if(anim.GetBool("Open"))
 				anim.SetBool("Open", false);
 			else{*/
-				anim.SetBool("Open", true);
+				sprite.sprite = openSprite;
+				//anim.SetBool("Open", true);
 				DropItem();
 			//}
 		}

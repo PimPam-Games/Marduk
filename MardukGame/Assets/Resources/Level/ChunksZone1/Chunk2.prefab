@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &116888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 411530}
+  m_Layer: 0
+  m_Name: chest 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &126154
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +26,7 @@ GameObject:
   - 50: {fileID: 5082976}
   - 61: {fileID: 6165562}
   - 114: {fileID: 11405406}
+  - 114: {fileID: 11499408}
   m_Layer: 0
   m_Name: Chunk2
   m_TagString: Untagged
@@ -229,6 +245,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &168396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 423292}
+  m_Layer: 0
+  m_Name: chest 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &177286
 GameObject:
   m_ObjectHideFlags: 1
@@ -260,6 +291,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &189188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472790}
+  m_Layer: 0
+  m_Name: chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400846
 Transform:
   m_ObjectHideFlags: 1
@@ -273,6 +319,18 @@ Transform:
   - {fileID: 456976}
   m_Father: {fileID: 438566}
   m_RootOrder: 5
+--- !u!4 &411530
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1769, y: 59, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438566}
+  m_RootOrder: 8
 --- !u!4 &412636
 Transform:
   m_ObjectHideFlags: 1
@@ -350,6 +408,18 @@ Transform:
   - {fileID: 479970}
   m_Father: {fileID: 438566}
   m_RootOrder: 2
+--- !u!4 &423292
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 857, y: 124, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438566}
+  m_RootOrder: 7
 --- !u!4 &428630
 Transform:
   m_ObjectHideFlags: 1
@@ -381,7 +451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.8263054, y: -.235530853, z: 0}
+  m_LocalPosition: {x: 7.94153166, y: -.478550911, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 412690}
@@ -390,6 +460,9 @@ Transform:
   - {fileID: 437896}
   - {fileID: 455652}
   - {fileID: 400846}
+  - {fileID: 472790}
+  - {fileID: 423292}
+  - {fileID: 411530}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &455652
@@ -430,6 +503,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 417984}
   m_RootOrder: 0
+--- !u!4 &472790
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1155, y: -274, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438566}
+  m_RootOrder: 6
 --- !u!4 &473358
 Transform:
   m_ObjectHideFlags: 1
@@ -763,6 +848,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1874989c5e2da094ea00112c6a895694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11499408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f79c837ee1c944083c06d9b6b19da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestsPositions:
+  - {fileID: 472790}
+  - {fileID: 423292}
+  - {fileID: 411530}
 --- !u!198 &19826224
 ParticleSystem:
   m_ObjectHideFlags: 1

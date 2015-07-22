@@ -68,6 +68,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &133558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 407322}
+  m_Layer: 0
+  m_Name: chest 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &134028
 GameObject:
   m_ObjectHideFlags: 1
@@ -175,6 +190,7 @@ GameObject:
   - 50: {fileID: 5074346}
   - 61: {fileID: 6182074}
   - 114: {fileID: 11428288}
+  - 114: {fileID: 11496654}
   m_Layer: 0
   m_Name: Chunk5
   m_TagString: Untagged
@@ -244,6 +260,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &196694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 442412}
+  m_Layer: 0
+  m_Name: chest
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400638
 Transform:
   m_ObjectHideFlags: 1
@@ -256,6 +287,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 425728}
   m_RootOrder: 0
+--- !u!4 &407322
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1693, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 425728}
+  m_RootOrder: 6
 --- !u!4 &413328
 Transform:
   m_ObjectHideFlags: 1
@@ -301,7 +344,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 158.275024, y: 5.63235331, z: 0}
+  m_LocalPosition: {x: 19.5149841, y: 5.22309732, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 400638}
@@ -310,6 +353,8 @@ Transform:
   - {fileID: 461352}
   - {fileID: 434662}
   - {fileID: 494662}
+  - {fileID: 407322}
+  - {fileID: 442412}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &434662
@@ -338,6 +383,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 416616}
   m_RootOrder: 0
+--- !u!4 &442412
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196694}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 889, y: 56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 425728}
+  m_RootOrder: 7
 --- !u!4 &450396
 Transform:
   m_ObjectHideFlags: 1
@@ -719,6 +776,20 @@ MonoBehaviour:
   TileWidth: 64
   TileHeight: 64
   ExportScale: 1
+--- !u!114 &11496654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f79c837ee1c944083c06d9b6b19da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestsPositions:
+  - {fileID: 407322}
+  - {fileID: 442412}
 --- !u!198 &19808586
 ParticleSystem:
   m_ObjectHideFlags: 1
