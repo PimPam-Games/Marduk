@@ -567,7 +567,6 @@ MonoBehaviour:
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
-  isFirst: 1
   position: 0000000000000000
 --- !u!61 &1291336263
 BoxCollider2D:
@@ -923,42 +922,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zone: 2
   MatrixSize: 41
+  matrixDepth: 10
   bgName: Mountain
   sceneName: level2
   generateBackground: 0
-  LeftExitChunks:
-  - {fileID: 162140, guid: 0e72a7eb2839f0c4c8f308944de5b77f, type: 2}
-  - {fileID: 106530, guid: 330ff95edd435d948a747eea8ceea735, type: 2}
+  doubleChunks:
   - {fileID: 143532, guid: af270d8d0c949ab4685f317423652373, type: 2}
+  - {fileID: 139388, guid: e5b8bb25ab202aa468ed352fc99db3bf, type: 2}
+  - {fileID: 165318, guid: 7f94dc42297aec743b21240acd9481f5, type: 2}
+  normalChunks:
+  - {fileID: 106530, guid: 330ff95edd435d948a747eea8ceea735, type: 2}
   - {fileID: 151024, guid: 4fb870ff75239ea41b71b77ecd39fcf2, type: 2}
   - {fileID: 134928, guid: 1921f18d7db16a24195ffee5f4c248d0, type: 2}
   - {fileID: 113032, guid: d9b84354830a0ac4abb06501ea92d4f0, type: 2}
   - {fileID: 190618, guid: f50ae5b98aa41ef42b974a5d8706dc8a, type: 2}
   - {fileID: 106986, guid: 8dd87d609b67c4540bab36d857346776, type: 2}
   - {fileID: 101140, guid: 578d51cd062d34543aef9561a5b22e47, type: 2}
-  - {fileID: 193144, guid: 064920bee2538674da3b1e3b43a45df5, type: 2}
-  - {fileID: 115082, guid: 28a01f31d38f19b4daa360ce342863b3, type: 2}
   - {fileID: 168440, guid: a08b4b912dcb0f449a07d37a3bd3aa22, type: 2}
-  - {fileID: 139388, guid: e5b8bb25ab202aa468ed352fc99db3bf, type: 2}
-  - {fileID: 165318, guid: 7f94dc42297aec743b21240acd9481f5, type: 2}
-  RightExitChunks:
-  - {fileID: 162566, guid: 9681c00f3ac4af44782c3b486b2450aa, type: 2}
-  - {fileID: 106530, guid: 330ff95edd435d948a747eea8ceea735, type: 2}
-  - {fileID: 143532, guid: af270d8d0c949ab4685f317423652373, type: 2}
-  - {fileID: 151024, guid: 4fb870ff75239ea41b71b77ecd39fcf2, type: 2}
-  - {fileID: 134928, guid: 1921f18d7db16a24195ffee5f4c248d0, type: 2}
-  - {fileID: 113032, guid: d9b84354830a0ac4abb06501ea92d4f0, type: 2}
-  - {fileID: 190618, guid: f50ae5b98aa41ef42b974a5d8706dc8a, type: 2}
-  - {fileID: 106986, guid: 8dd87d609b67c4540bab36d857346776, type: 2}
-  - {fileID: 101140, guid: 578d51cd062d34543aef9561a5b22e47, type: 2}
-  - {fileID: 109140, guid: 8703cf8bded89fc4d99f3efea5f651bc, type: 2}
-  - {fileID: 165318, guid: 7f94dc42297aec743b21240acd9481f5, type: 2}
-  - {fileID: 168440, guid: a08b4b912dcb0f449a07d37a3bd3aa22, type: 2}
-  - {fileID: 139388, guid: e5b8bb25ab202aa468ed352fc99db3bf, type: 2}
-  LeftEndChunks:
+  leftEndChunks:
   - {fileID: 162566, guid: 9681c00f3ac4af44782c3b486b2450aa, type: 2}
   - {fileID: 109140, guid: 8703cf8bded89fc4d99f3efea5f651bc, type: 2}
-  RightEndChunks:
+  rightEndChunks:
   - {fileID: 162140, guid: 0e72a7eb2839f0c4c8f308944de5b77f, type: 2}
   - {fileID: 193144, guid: 064920bee2538674da3b1e3b43a45df5, type: 2}
   - {fileID: 115082, guid: 28a01f31d38f19b4daa360ce342863b3, type: 2}

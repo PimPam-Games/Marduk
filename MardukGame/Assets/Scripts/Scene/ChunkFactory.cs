@@ -7,6 +7,7 @@ public class ChunkFactory : MonoBehaviour {
 
 	public int zone = 1;
 	public int  MatrixSize = 61;
+	public int matrixDepth = 15;
 	public string bgName = "Mountain";
 	public string sceneName = "level1";
 	public bool generateBackground;
@@ -14,10 +15,10 @@ public class ChunkFactory : MonoBehaviour {
 
 	private Object[] chunkPool;
 	private  List<Object> commonChunks = new List<Object>();
-	public List<Object> LeftExitChunks = new List<Object>();
-	public List<Object> RightExitChunks = new List<Object>();
-	public List<Object> LeftEndChunks = new List<Object>();
-	public List<Object> RightEndChunks = new List<Object>();
+	public List<Object> doubleChunks = new List<Object>();
+	public List<Object> normalChunks = new List<Object>();
+	public List<Object> leftEndChunks = new List<Object>();
+	public List<Object> rightEndChunks = new List<Object>();
 	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
 	private static bool isEntry = false;
@@ -58,12 +59,12 @@ public class ChunkFactory : MonoBehaviour {
 		int r;
 		switch (exit) {
 		case Exits.Left:
-			r = Random.Range (0,LeftEndChunks.Count);
-			newChunk = (GameObject)Instantiate (LeftEndChunks [r], pos, rot);
+			r = Random.Range (0,leftEndChunks.Count);
+			newChunk = (GameObject)Instantiate (leftEndChunks [r], pos, rot);
 			break;
 		case Exits.Right:
-			r = Random.Range (0,RightEndChunks.Count);
-			newChunk = (GameObject)Instantiate (RightEndChunks [r], pos, rot);
+			r = Random.Range (0,rightEndChunks.Count);
+			newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
 			break;
 		}
 		g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
@@ -71,7 +72,7 @@ public class ChunkFactory : MonoBehaviour {
 		return newChunk;
 	}
 
-	public GameObject GenerateChunk(Vector3 pos, Quaternion rot, Exits exit){ //entry: "left", "right" , "up" , "down" , null para cualquiera
+	public GameObject GenerateChunk(Vector3 pos, Quaternion rot, Exits exit, int[] chunkPos){ //entry: "left", "right" , "up" , "down" , null para cualquiera
 		bgCount++;
 		GameObject newChunk = null;
 		if (!g.chunksPerZone.ContainsKey (g.currLevelName)) {
@@ -87,23 +88,35 @@ public class ChunkFactory : MonoBehaviour {
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 		} else {
 			int r;
-			switch(exit){
-			case Exits.Left:
-				r = Random.Range (0,LeftExitChunks.Count);
-				if(r >= LeftExitChunks.Count){
-					Debug.LogError("problema al generar chunk");
-					return null;
-				}
-				newChunk = (GameObject)Instantiate (LeftExitChunks [r], pos, rot);
+			float[] chunksProb = {0.5f,0.3f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
+
+			int choice = Utils.Choose(chunksProb);
+			if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1
+				choice = 0;
+			if((chunkPos[1] == 1 && exit == Exits.Right) ||(chunkPos[1] == MatrixSize-2 && exit == Exits.Left)){ //si llego a algun borde horizontal hay que poner un final
+				choice = 2;
+			}
+			if(chunkPos[0] == matrixDepth && choice == 1){ // si llego al limite de la profundidad no puede tocar un doble
+				choice = 0;
+			}
+			switch(choice){
+			case 0:
+				r = Random.Range (0,normalChunks.Count);
+				newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
 				break;
-		
-			case Exits.Right:
-				r = Random.Range (0,RightExitChunks.Count);
-				if(r >= RightExitChunks.Count){
-					Debug.LogError("problema al generar chunk");
-					return null;
+			case 1:
+				r = Random.Range (0,doubleChunks.Count);
+				newChunk = (GameObject)Instantiate (doubleChunks [r], pos, rot);
+				break;
+			case 2:
+				if(exit == Exits.Right){
+					r = Random.Range (0,leftEndChunks.Count);
+					newChunk = (GameObject)Instantiate (leftEndChunks [r], pos, rot);
 				}
-				newChunk = (GameObject)Instantiate (RightExitChunks [r], pos, rot);
+				else{
+					r = Random.Range (0,rightEndChunks.Count);
+					newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
+				}
 				break;
 			}
 			if(newChunk.name.Contains("Entry"))

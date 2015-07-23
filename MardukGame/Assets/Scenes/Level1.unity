@@ -4546,7 +4546,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
 --- !u!1001 &537714568
 Prefab:
   m_ObjectHideFlags: 0
@@ -5922,7 +5922,6 @@ MonoBehaviour:
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
-  isFirst: 1
   position: 0000000000000000
 --- !u!4 &768061803
 Transform:
@@ -6019,7 +6018,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
 --- !u!1001 &1031328886
 Prefab:
   m_ObjectHideFlags: 0
@@ -6767,10 +6766,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zone: 1
   MatrixSize: 101
+  matrixDepth: 15
   bgName: Mountain
   sceneName: Level1
   generateBackground: 1
-  LeftExitChunks:
+  doubleChunks: []
+  normalChunks:
   - {fileID: 189104, guid: 61f85360f187f8f469305a6730ef4f92, type: 2}
   - {fileID: 126154, guid: 50e07eea23b56e241b0028981a44a4cd, type: 2}
   - {fileID: 127968, guid: 829bc21f8c8b4944ba8c90993f17ae0c, type: 2}
@@ -6782,9 +6783,8 @@ MonoBehaviour:
   - {fileID: 168704, guid: 2451b792d6a44604fa09aa2055fef56c, type: 2}
   - {fileID: 110992, guid: 45e1df431d297d745b6ba49ee600bfc4, type: 2}
   - {fileID: 108800, guid: 50e5131fab692ec41a0c355507ec2a99, type: 2}
-  RightExitChunks: []
-  LeftEndChunks: []
-  RightEndChunks: []
+  leftEndChunks: []
+  rightEndChunks: []
 --- !u!82 &2081052186
 AudioSource:
   m_ObjectHideFlags: 0

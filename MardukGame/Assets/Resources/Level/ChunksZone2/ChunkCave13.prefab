@@ -59,6 +59,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 488064}
   - 114: {fileID: 11485858}
+  - 61: {fileID: 6170194}
   m_Layer: 0
   m_Name: caveChunk13
   m_TagString: Untagged
@@ -262,7 +263,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.2265472, y: 25.6398144, z: 0}
+  m_LocalPosition: {x: -31.611084, y: -23.494297, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 423222}
@@ -505,6 +506,19 @@ BoxCollider2D:
   m_Offset: {x: 1120.75024, y: 301.987061}
   serializedVersion: 2
   m_Size: {x: 37.215332, y: 746.887207}
+--- !u!61 &6170194
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125168}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 613.160889, y: -1054.27722}
+  serializedVersion: 2
+  m_Size: {x: 55.8334961, y: 833.979797}
 --- !u!114 &11429312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -559,7 +573,6 @@ MonoBehaviour:
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
-  isFirst: 0
   position: 0000000000000000
 --- !u!114 &11485858
 MonoBehaviour:
