@@ -78,7 +78,7 @@ public class ChunkFactory : MonoBehaviour {
 			Debug.LogError(g.currLevelName + " No encontrado!");
 			return null;
 		}
-		if (isEntry) {
+		if (isEntry && castleChunks.Count > 0) {
 			int r = Random.Range (0,castleChunks.Count);
 			newChunk = (GameObject)Instantiate (castleChunks [r], pos, rot);
 			if(newChunk.name.Contains("Exit"))
@@ -90,11 +90,19 @@ public class ChunkFactory : MonoBehaviour {
 			switch(exit){
 			case Exits.Left:
 				r = Random.Range (0,LeftExitChunks.Count);
+				if(r >= LeftExitChunks.Count){
+					Debug.LogError("problema al generar chunk");
+					return null;
+				}
 				newChunk = (GameObject)Instantiate (LeftExitChunks [r], pos, rot);
 				break;
 		
 			case Exits.Right:
 				r = Random.Range (0,RightExitChunks.Count);
+				if(r >= RightExitChunks.Count){
+					Debug.LogError("problema al generar chunk");
+					return null;
+				}
 				newChunk = (GameObject)Instantiate (RightExitChunks [r], pos, rot);
 				break;
 			}

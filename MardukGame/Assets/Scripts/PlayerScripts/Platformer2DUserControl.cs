@@ -16,8 +16,6 @@
         private void Update()
         {
 			if (!PlayerStats.isDead) {
-				if (Input.GetButtonUp ("Grab"))
-					character.Grab ();
 				if (!jump)
 					jump = Input.GetButtonDown ("Jump");
 				if(Input.GetButtonUp("Jump"))

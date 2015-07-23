@@ -27,6 +27,11 @@ public class Item : MonoBehaviour {
 		StartCoroutine (StopMove ());
 	}
 
+	void Update(){
+		rb.velocity = new Vector2 (0, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
+		rb.velocity = new Vector2 (0, rb.velocity.y - 00000001);
+	}
+
 	IEnumerator StopMove(){
 		yield return new WaitForSeconds (3f);
 		while (rb.velocity.x > 0.3f) {

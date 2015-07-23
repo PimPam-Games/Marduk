@@ -13,8 +13,8 @@ public class Chunk : MonoBehaviour {
 	public bool isDouble;
 	public bool hasLeftEnd, hasRightEnd; //que salidas tiene el chunk
 	public bool leftUsed, rightUsed; //salidas usadas
-	public bool isFirst = false;
-	public int[] position = new int[2]; // posision en la matriz
+	//public bool isFirst = false;
+	public int[] position = new int[2]; // posicion en la matriz
 	private bool alreadyGenerated = false;
 	private float collisionDetectCount;
 
@@ -46,6 +46,8 @@ public class Chunk : MonoBehaviour {
 		}
 		foreach(Transform enemyPos in enemies){
 			int index = Random.Range(0,g.enemyList.Length); //slecciona un enemigo aleatorio de la lista de enemigos
+			if(index >= g.enemyList.Length)
+				Debug.LogError("Arreglo de enemigos fuera de rango");
 			GameObject newEnemy = (GameObject)Instantiate (g.enemyList[index],enemyPos.position,enemyPos.rotation);
 			DontDestroyOnLoad(newEnemy);
 			g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
@@ -61,7 +63,7 @@ public class Chunk : MonoBehaviour {
 		alreadyGenerated = true;
 		if (hasRightEnd && !rightUsed) {
 			if(this.position[1] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0],this.position[1]+1]){
-				cf.cmatrix[this.position[0],this.position[1]+1] = true; //marco como ucupada la posision de la derecha de este chunk
+				cf.cmatrix[this.position[0],this.position[1]+1] = true; //marco como ucupada la posicion de la derecha de este chunk
 				GameObject g;
 				if(this.position[1] == cf.MatrixSize-2){
 					g = cf.GenerateEnd (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Right);

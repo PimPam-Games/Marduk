@@ -25,7 +25,6 @@ public class PlatformerCharacter2D : MonoBehaviour
         private float ceilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator anim; // Reference to the player's animator component.
 		private Rigidbody2D rb;
-		private bool grabbing = false;
 		private Weapon weaponScript;
 		public AudioSource attackSound;
 		public AudioSource walkGrassSound;
@@ -35,7 +34,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public float knockbackLength = 0.4f;
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
-		private float grabbingTime = 0;	
+
 
         private void Awake()
         {
@@ -53,15 +52,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 
 		void Update(){
-			grabbingTime -= Time.deltaTime;
 			if (p.isDead)
 				maxSpeed = 0;
 			else
-				maxSpeed = p.utils [p.MovementSpeed];
-
-
-			if (grabbingTime < 0)
-				grabbing = false;		
+				maxSpeed = p.utils [p.MovementSpeed];	
 		}
 
 		public void knockBackPlayer(bool knockFromRight){
@@ -99,13 +93,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 
-		public void Grab(){
-			grabbing = true;
-			grabbingTime = 0.4f;
-		}
-
 		void OnTriggerStay2D(Collider2D col){
-			if (grabbing) {
+			if (Input.GetButtonUp("Grab") && !PlayerStats.isDead) {
 				GameObject item = col.gameObject;
 				if (item.tag == "Item") {
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
@@ -116,7 +105,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 					item.SetActive(false);
 				}
 			}
-			grabbing = false;
 		}
 
         public void Move(float move, bool crouch, bool jump)

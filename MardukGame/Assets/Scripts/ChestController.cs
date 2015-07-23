@@ -7,6 +7,7 @@ public class ChestController : MonoBehaviour {
 	private ItemGenerator itGen;
 	private bool firstTimeOpen;
 	private SpriteRenderer sprite;
+	private BoxCollider2D boxCol;
 	public Sprite openSprite;
 
 	void Awake(){
@@ -14,6 +15,7 @@ public class ChestController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		firstTimeOpen = true;
 		sprite = GetComponent<SpriteRenderer> ();
+		boxCol = GetComponent<BoxCollider2D> ();
 	}
 
 	// Use this for initialization
@@ -29,14 +31,9 @@ public class ChestController : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D coll){
 		if (coll.gameObject.tag == "Player" && Input.GetButtonUp("Grab")) {
-			/*Debug.Log(anim.GetBool("Open"));
-			if(anim.GetBool("Open"))
-				anim.SetBool("Open", false);
-			else{*/
 				sprite.sprite = openSprite;
-				//anim.SetBool("Open", true);
 				DropItem();
-			//}
+				boxCol.enabled = false;
 		}
 	}
 
