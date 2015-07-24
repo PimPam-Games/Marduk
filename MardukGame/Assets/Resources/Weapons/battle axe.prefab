@@ -28,6 +28,7 @@ GameObject:
   - 50: {fileID: 5074718}
   - 61: {fileID: 6138978}
   - 212: {fileID: 21243266}
+  - 82: {fileID: 8280208}
   m_Layer: 0
   m_Name: battle axe
   m_TagString: Item
@@ -42,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193968}
   m_LocalRotation: {x: 0, y: 0, z: -.999989331, w: .00462490274}
-  m_LocalPosition: {x: -52.372612, y: 3.20998502, z: 0}
+  m_LocalPosition: {x: -15.5681868, y: 1.87623227, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 464132}
@@ -85,9 +86,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .590503991, y: .517819405}
+  m_Offset: {x: .59055692, y: .431896925}
   serializedVersion: 2
-  m_Size: {x: 1.58661544, y: 1.49797153}
+  m_Size: {x: 1.5866152, y: 1.98536527}
 --- !u!61 &6161698
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -101,6 +102,75 @@ BoxCollider2D:
   m_Offset: {x: .540667355, y: .413598657}
   serializedVersion: 2
   m_Size: {x: 1.57908666, y: 1.67758393}
+--- !u!82 &8280208
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193968}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9d49fcaf7bf99b54b94d4a839cba9884, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .600000024
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11489242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,6 +186,7 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 2800000, guid: 5c29207d52cfc224ba1c20b7feaecd01, type: 3}
   sprite: {fileID: 21300000, guid: 5c29207d52cfc224ba1c20b7feaecd01, type: 3}
+  itemSound: {fileID: 8280208}
 --- !u!212 &21243266
 SpriteRenderer:
   m_ObjectHideFlags: 1

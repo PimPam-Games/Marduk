@@ -40,9 +40,11 @@ public class ItemGenerator :MonoBehaviour{
 		} else {
 			if(newItem.type == ItemTypes.Armour || newItem.type == ItemTypes.Helmet) //el item es amour o casco
 				newItem.Defensives [p.Defense] = Random.Range (5, 21);
-			else{ // el item es un escudo
-				newItem.Defensives[p.Defense] =  Random.Range(1,10);
-				newItem.Defensives[p.BlockChance] = Random.Range(5,11);
+			else{ 
+				if(newItem.type == ItemTypes.Shield){// el item es un escudo
+					newItem.Defensives[p.Defense] =  Random.Range(1,10);
+					newItem.Defensives[p.BlockChance] = Random.Range(5,11);
+				}
 			}
 
 		}

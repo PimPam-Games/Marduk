@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour {
 	//private bool enemyDamaged;
 	private float attackTimer; 
 	public AudioSource hitEnemySound;
+	public AudioSource criticalHitSound;
 	//private bool alreadyAttacked; // para ver si le pego en OnEnterTrigger
 	
 	// Use this for initialization
@@ -57,14 +58,18 @@ public class Weapon : MonoBehaviour {
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
 		
-			hitEnemySound.Play();
+
 			if(p.LifePerHit > 0 )
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
+				criticalHitSound.Play();
 				Debug.Log("Critical Dmg: " + damage);
+			}
+			else{
+				hitEnemySound.Play();
 			}
 			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
 			if(enemy.transform.position.x < this.transform.position.x)
@@ -84,14 +89,17 @@ public class Weapon : MonoBehaviour {
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
 
-			hitEnemySound.Play();
 			if(p.LifePerHit > 0 )
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
+				criticalHitSound.Play();
 				Debug.Log("Critical Dmg: " + damage);
+			}
+			else{
+				hitEnemySound.Play();
 			}
 			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
 			if(enemy.transform.position.x < this.transform.position.x)
@@ -110,15 +118,18 @@ public class Weapon : MonoBehaviour {
 		
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
-			
-			hitEnemySound.Play();
+
 			if(p.LifePerHit > 0 )
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
+				criticalHitSound.Play();
 				Debug.Log("Critical Dmg: " + damage);
+			}
+			else{
+				hitEnemySound.Play();
 			}
 			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
 			if(enemy.transform.position.x < this.transform.position.x)

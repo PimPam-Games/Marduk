@@ -34,7 +34,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public float knockbackLength = 0.4f;
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
-
+		private int a = 0;
 
         private void Awake()
         {
@@ -52,6 +52,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 
 		void Update(){
+			a = 0;
 			if (p.isDead)
 				maxSpeed = 0;
 			else
@@ -94,15 +95,17 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		void OnTriggerStay2D(Collider2D col){
+			a++;
 			if (Input.GetButtonUp("Grab") && !PlayerStats.isDead) {
+				if(a >1)
+					return;
 				GameObject item = col.gameObject;
 				if (item.tag == "Item") {
+					item.SetActive(false);
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
 						return;
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
-					PlayerItems.inventoryCantItems++;
-					
-					item.SetActive(false);
+					PlayerItems.inventoryCantItems++;					
 				}
 			}
 		}

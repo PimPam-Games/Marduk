@@ -45,7 +45,7 @@ public class PlayerStats : MonoBehaviour {
 	public static int dexAddedPoints = 0;
 
 	public AudioSource playerDeathSound;
-
+	public AudioSource blockSound;
 
 	public static bool ghostMode;
 	public float ghostModeTime = 1f;
@@ -192,6 +192,7 @@ public class PlayerStats : MonoBehaviour {
 		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);
+			blockSound.Play();
 			Debug.Log ("Bloqueaste el ataque! " );
 			return;
 		}

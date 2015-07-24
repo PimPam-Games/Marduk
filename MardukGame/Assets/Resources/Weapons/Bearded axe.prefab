@@ -12,6 +12,7 @@ GameObject:
   - 50: {fileID: 5069682}
   - 61: {fileID: 6163080}
   - 212: {fileID: 21213324}
+  - 82: {fileID: 8244782}
   m_Layer: 0
   m_Name: Bearded axe
   m_TagString: Item
@@ -42,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180896}
   m_LocalRotation: {x: 0, y: 0, z: -.999989331, w: .00462490274}
-  m_LocalPosition: {x: -14, y: 4.61999989, z: 0}
+  m_LocalPosition: {x: -13.9156322, y: 1.79124367, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 470166}
@@ -85,9 +86,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .590503991, y: .517819405}
+  m_Offset: {x: .590534508, y: .418470442}
   serializedVersion: 2
-  m_Size: {x: 1.58661544, y: 1.49797153}
+  m_Size: {x: 1.5866152, y: 1.92616665}
 --- !u!61 &6189456
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -101,6 +102,75 @@ BoxCollider2D:
   m_Offset: {x: .540667355, y: .413598657}
   serializedVersion: 2
   m_Size: {x: 1.57908666, y: 1.67758393}
+--- !u!82 &8244782
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180896}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9d49fcaf7bf99b54b94d4a839cba9884, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .600000024
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11422950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,6 +186,7 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 2800000, guid: bc4e5eecb7603fc4593ce9ee5a6549a6, type: 3}
   sprite: {fileID: 21300000, guid: bc4e5eecb7603fc4593ce9ee5a6549a6, type: 3}
+  itemSound: {fileID: 8244782}
 --- !u!212 &21213324
 SpriteRenderer:
   m_ObjectHideFlags: 1

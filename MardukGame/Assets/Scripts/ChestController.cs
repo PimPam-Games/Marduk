@@ -9,6 +9,7 @@ public class ChestController : MonoBehaviour {
 	private SpriteRenderer sprite;
 	private BoxCollider2D boxCol;
 	public Sprite openSprite;
+	public AudioSource chestOpenSound;
 
 	void Awake(){
 		itGen = GetComponent<ItemGenerator> ();
@@ -31,6 +32,7 @@ public class ChestController : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D coll){
 		if (coll.gameObject.tag == "Player" && Input.GetButtonUp("Grab")) {
+				chestOpenSound.Play();
 				sprite.sprite = openSprite;
 				DropItem();
 				boxCol.enabled = false;

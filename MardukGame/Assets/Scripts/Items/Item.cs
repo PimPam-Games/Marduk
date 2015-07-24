@@ -15,9 +15,13 @@ public class Item : MonoBehaviour {
 	private float[] defensives;
 	private float[] utils;
 	private Rigidbody2D rb;
+	private int soundCount = 0; //para que el sonido no se reproduzca 2 veces
+
+	public AudioSource itemSound;
 
 	void Awake(){
 
+		itemSound = GetComponent<AudioSource> ();
 		atributes = new float[p.CantAtributes];
 		offensives = new float[p.CantOffensives];
 		defensives = new float[p.CantDefensives];
@@ -41,6 +45,13 @@ public class Item : MonoBehaviour {
 		}
 		rb.velocity = new Vector2 (0,rb.velocity.y);
 		rb.isKinematic = true;
+	}
+
+	void OnTriggerEnter2D(Collider2D col){
+		if (col.gameObject.layer == LayerMask.NameToLayer ("Ground") && soundCount == 0) {
+			soundCount++;
+			itemSound.Play();
+		}
 	}
 
 	public float[] Atributes{
