@@ -27,7 +27,7 @@ public class InputControllerGui : MonoBehaviour {
 			Debug.Log("Save Data");
 		}
 		if (Input.GetButtonUp ("Load")) {
-			Persistence.Load();
+			Persistence.Load("Hola");
 			Debug.Log("Load Data");
 		}
 		if (Input.GetButtonUp ("Escape")) {

@@ -293,9 +293,11 @@ public class PlayerItems: MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-
+		reSkin = transform.Find ("Graphics").GetComponent<ReSkinAnimation>();
 	}
-	
+
+
+
 	// Update is called once per frame
 	void Update () {
 		if (reSkin == null) {

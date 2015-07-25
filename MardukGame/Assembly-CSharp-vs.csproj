@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\DragHandeler.cs" />
+     <Compile Include="Assets\LoadCurrentPlayer.cs" />
+     <Compile Include="Assets\PlayMenu.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -70,6 +72,7 @@
      <Compile Include="Assets\Scripts\ParticlePlaybackTime.cs" />
      <Compile Include="Assets\Scripts\Persistence\Persistence.cs" />
      <Compile Include="Assets\Scripts\Persistence\PlayerData.cs" />
+     <Compile Include="Assets\Scripts\Persistence\SavedGamesData.cs" />
      <Compile Include="Assets\Scripts\Persistence\SerializableItem.cs" />
      <Compile Include="Assets\Scripts\PlayDelay.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\Platformer2DUserControl.cs" />

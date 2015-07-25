@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameController : MonoBehaviour {
 
 	public static int CantLevels = 11;
-
+	public static string nameToLoad; //nombre del personaje a cargar, null si es un nuevo personaje
 	public static int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
@@ -49,6 +49,10 @@ public class GameController : MonoBehaviour {
 		for (int i = 2; i <= CantLevels; i++) {
 			notVisitedLevels.Add("level" + i);
 		}
+		//Debug.Log ("voy a cargar " + nameToLoad);
+		//if (nameToLoad != null) {
+			
+		//}
 		music1.Play ();
 	}
 	// Use this for initialization
@@ -93,11 +97,16 @@ public class GameController : MonoBehaviour {
 
 
 	public void RepositionPlayerAndCamera(){//posiciona al jugador y a la camara en la entrada del nuevo nivel
-		BoxCollider2D newBounds = GameObject.FindGameObjectWithTag("CameraBounds").GetComponent<BoxCollider2D>();
-		if(newBounds!=null)
-			cameraController.SetBounds(newBounds);
-		else
-			Debug.LogError("CameraBounds not found");
+		GameObject camerab = GameObject.FindGameObjectWithTag ("CameraBounds");
+		BoxCollider2D newBounds = null;
+		if(camerab != null)
+			 newBounds = camerab.GetComponent<BoxCollider2D>();
+		if (newBounds != null)
+			cameraController.SetBounds (newBounds);
+		else {
+			//Debug.LogError ("CameraBounds not found");
+			return;
+		}
 		GameObject levelEntry = GameObject.Find("LevelEntry" + previousExit); 
 		player.transform.position = levelEntry.transform.position;
 		if(levelEntry.transform.position.x<=0)

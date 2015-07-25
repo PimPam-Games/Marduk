@@ -9,9 +9,58 @@ using pItems = PlayerItems;
 
 public class Persistence : MonoBehaviour {
 
+	public const int CantSlots = 5;
+
+	public static int CantSavedGames(){
+		if (File.Exists (Application.persistentDataPath + "/savedGames.dat")) {
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream file =  File.Open(Application.persistentDataPath + "/savedGames.dat", FileMode.Open);
+			SavedGamesData data = (SavedGamesData)bf.Deserialize(file);
+			file.Close();
+			return data.cantSavedGames;
+		}
+		return -1;
+	}
+
+	public static void AddSavedGame(string newName ){
+		BinaryFormatter bf = new BinaryFormatter ();
+		SavedGamesData data;
+		SavedGamesData dataAux;
+		FileStream file;
+		data = new SavedGamesData ();
+		data.slots = new string[CantSlots];
+		if (!File.Exists (Application.persistentDataPath + "/savedGames.dat")) {
+			file = File.Create (Application.persistentDataPath + "/savedGames.dat");
+		} else {
+			file =  File.Open(Application.persistentDataPath + "/savedGames.dat", FileMode.Open);
+			dataAux = (SavedGamesData)bf.Deserialize(file);
+			file.Close ();
+			file = File.Create (Application.persistentDataPath + "/savedGames.dat");
+			data.slots = dataAux.slots;
+			data.cantSavedGames = dataAux.cantSavedGames;
+		}
+
+		data.slots [data.cantSavedGames] = newName;
+		data.cantSavedGames++;
+		Debug.Log (data.cantSavedGames);
+		bf.Serialize (file,data);
+		file.Close ();
+	}
+
+	public static string[] GetSavedGames(){
+		if (File.Exists (Application.persistentDataPath + "/savedGames.dat")) {
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream file =  File.Open(Application.persistentDataPath + "/savedGames.dat", FileMode.Open);
+			SavedGamesData data = (SavedGamesData)bf.Deserialize(file);
+			file.Close();
+			return data.slots;
+		}
+		return null;
+	}
+
 	public static void Save(){
 		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
+		FileStream file = File.Create (Application.persistentDataPath + "/"+p.playerName + ".dat");
 		PlayerData data = new PlayerData ();
 		data.atributes = p.atributes;
 		data.defensives = p.defensives;
@@ -22,6 +71,7 @@ public class Persistence : MonoBehaviour {
 		data.oldNextLevelExp = p.oldNextLevelExp;
 		data.nextLevelExp = p.nextLevelExp;
 
+		data.playerName = p.playerName;
 		data.strAddedPoints = p.strAddedPoints;
 		data.spiAddedPoints = p.spiAddedPoints;
 		data.dexAddedPoints = p.dexAddedPoints;
@@ -55,16 +105,17 @@ public class Persistence : MonoBehaviour {
 		file.Close ();
 	}
 
-	public static void Load(){
-		if(File.Exists(Application.persistentDataPath + "/playerInfo.dat")){
+	public static void Load(string characterName){
+		if(File.Exists(Application.persistentDataPath + "/"+characterName + ".dat")){
 			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file =  File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+			FileStream file =  File.Open(Application.persistentDataPath + "/"+characterName + ".dat", FileMode.Open);
 			PlayerData data = (PlayerData)bf.Deserialize(file);
 			file.Close();
 			/*p.atributes = data.atributes ;
 			p.defensives = data.defensives;
 			p.offensives = data.offensives;*/
 			//p.utils = data.utils;
+			p.playerName = data.playerName;
 			p.strAddedPoints = data.strAddedPoints;
 			p.spiAddedPoints = data.spiAddedPoints;
 			p.dexAddedPoints = data.dexAddedPoints;

@@ -51,6 +51,8 @@ public class PlayerStats : MonoBehaviour {
 	public float ghostModeTime = 1f;
 	private float ghostModeCount;
 
+	public static string playerName;
+
 	private SpriteRenderer[] renders;
 
 	void Awake(){

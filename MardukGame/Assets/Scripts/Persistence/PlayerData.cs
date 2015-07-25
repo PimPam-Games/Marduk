@@ -6,6 +6,7 @@ using System;
 [Serializable]
 public class PlayerData{
 
+	public string playerName;
 	public  int atributesPoints;
 	public  int strAddedPoints;
 	public  int vitAddedPoints;
