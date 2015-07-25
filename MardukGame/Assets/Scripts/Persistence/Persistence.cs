@@ -22,6 +22,11 @@ public class Persistence : MonoBehaviour {
 		return -1;
 	}
 
+	public static void Delete(string nameToDelete){
+		if(File.Exists (Application.persistentDataPath + "/" + nameToDelete + ".dat"))
+			File.Delete (Application.persistentDataPath + "/" + nameToDelete + ".dat");
+	}
+
 	public static void AddSavedGame(string newName ){
 		BinaryFormatter bf = new BinaryFormatter ();
 		SavedGamesData data;

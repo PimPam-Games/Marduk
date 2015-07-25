@@ -47,8 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\DragHandeler.cs" />
-     <Compile Include="Assets\LoadCurrentPlayer.cs" />
-     <Compile Include="Assets\PlayMenu.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -67,7 +65,7 @@
      <Compile Include="Assets\Scripts\Items\GenerateInitWeapon.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Items\ItemGenerator.cs" />
-     <Compile Include="Assets\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\LoadCurrentPlayer.cs" />
      <Compile Include="Assets\Scripts\ParticleCollision.cs" />
      <Compile Include="Assets\Scripts\ParticlePlaybackTime.cs" />
      <Compile Include="Assets\Scripts\Persistence\Persistence.cs" />
@@ -98,7 +96,10 @@
      <Compile Include="Assets\Scripts\UI\EnemyHealthUiController.cs" />
      <Compile Include="Assets\Scripts\UI\ExpUiController.cs" />
      <Compile Include="Assets\Scripts\UI\InputControllerGui.cs" />
+     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuInGame.cs" />
      <Compile Include="Assets\Scripts\UI\MyGUI.cs" />
+     <Compile Include="Assets\Scripts\UI\PlayMenu.cs" />
      <Compile Include="Assets\Scripts\UI\PlayerUIController.cs" />
      <Compile Include="Assets\Scripts\Utils.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />

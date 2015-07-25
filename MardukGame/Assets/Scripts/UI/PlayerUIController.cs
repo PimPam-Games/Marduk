@@ -22,9 +22,9 @@ public class PlayerUIController : MonoBehaviour {
 		damageImage = (Image)GameObject.Find ("DamageImage").GetComponent<Image>();
 		healthSlider = (Slider)GameObject.Find ("HealthSlider").GetComponent<Slider>();
 		//currentHealth = playerStats.defensives[MaxHealth];
-		if(healthSlider != null)
+		if(healthSlider != null && p.defensives != null)
 			healthSlider.value = p.defensives[p.MaxHealth];
-		if(healthBarText != null)
+		if(healthBarText != null && p.defensives != null)
 			healthBarText.text = Math.Round(p.currentHealth,1) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
 	}
 	void Start () {

@@ -55,10 +55,13 @@ public class GameController : MonoBehaviour {
 		//}
 		music1.Play ();
 	}
-	// Use this for initialization
-	void Start () {
 
+	void OnApplicationQuit(){
+		Persistence.Save ();
+	}
 
+	public void stopMusic(){
+		music1.Stop ();
 	}
 	
 	// Update is called once per frame
