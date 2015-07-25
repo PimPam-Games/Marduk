@@ -189,6 +189,7 @@ public class Persistence : MonoBehaviour {
 		newItem.Offensives = i.offensives;
 		newItem.Utils = i.utils;
 		DontDestroyOnLoad (newItem);
+		PlatformerCharacter2D.playerItemsGO.Add (newWeapon);
 		newWeapon.SetActive (false);
 		return newItem;
 	}

@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using p = PlayerStats;
+using System.Collections.Generic;
 
 
 
 public class PlatformerCharacter2D : MonoBehaviour
     {
+
+		public static List<GameObject> playerItemsGO = new List<GameObject>();	
+
         private bool facingRight = true; // For determining which way the player is currently facing.
 
         public float maxSpeed; // The fastest the player can travel in the x axis.
@@ -100,6 +104,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 				if(a >1)
 					return;
 				GameObject item = col.gameObject;
+				if(item == null)
+					return;
+				playerItemsGO.Add(item);
 				if (item.tag == "Item") {
 					item.SetActive(false);
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)

@@ -85,7 +85,6 @@ public class EnemyStats : MonoBehaviour {
 			switch (type) {
 			case Types.Element.None:
 				realDmg -= (armour / (armour + 8 * realDmg));	
-				//	Debug.Log("noneeee");
 				break;
 			case Types.Element.Cold:
 				Debug.Log ("cold damage");

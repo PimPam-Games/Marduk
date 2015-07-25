@@ -96,7 +96,7 @@ public class Chunk : MonoBehaviour {
 		}
 		if (chunkEndDownL != null) {
 			if(this.position[1] > 0 && this.position[0] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0]+1,this.position[1]-1]){
-				cf.cmatrix[this.position[0]+1,this.position[1]-1] = true; //la posicion del nuevo es abajo a la iaq
+				cf.cmatrix[this.position[0]+1,this.position[1]-1] = true; //la posicion del nuevo es abajo a la izq
 				GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right,this.position);
 				if(g != null){
 					Chunk nchunk = g.GetComponent<Chunk>();
