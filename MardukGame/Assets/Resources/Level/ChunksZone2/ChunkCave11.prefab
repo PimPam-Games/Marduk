@@ -238,10 +238,9 @@ GameObject:
   - 50: {fileID: 5052430}
   - 61: {fileID: 6184960}
   - 114: {fileID: 11497074}
-  - 61: {fileID: 6106086}
   m_Layer: 0
   m_Name: ChunkCave11
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -78.1954575, y: -9.57308006, z: 0}
+  m_LocalPosition: {x: -190.015778, y: -53.8731232, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 497888}
@@ -672,19 +671,6 @@ PolygonCollider2D:
       - {x: 2240, y: -1152}
       - {x: 2240, y: -1184}
       - {x: 2432, y: -1184}
---- !u!61 &6106086
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193144}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 1120.75024, y: 301.987061}
-  serializedVersion: 2
-  m_Size: {x: 37.215332, y: 746.887207}
 --- !u!61 &6158600
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -704,13 +690,13 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193144}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 22.6981201, y: 340.563568}
+  m_Offset: {x: 583.208984, y: 340.563477}
   serializedVersion: 2
-  m_Size: {x: 38.8723755, y: 750.157593}
+  m_Size: {x: 684.63269, y: 750.157593}
 --- !u!114 &11408686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -810,6 +796,8 @@ MonoBehaviour:
   leftUsed: 0
   rightUsed: 0
   position: 0000000000000000
+  isFirstChunk: 0
+  lifeTime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

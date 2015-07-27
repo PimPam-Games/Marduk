@@ -47,7 +47,7 @@ GameObject:
   - 61: {fileID: 6171572}
   m_Layer: 0
   m_Name: ChunkCave7
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &164966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 479164}
+  - 58: {fileID: 5831830}
+  m_Layer: 0
+  m_Name: circle
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &167700
 GameObject:
   m_ObjectHideFlags: 1
@@ -267,7 +283,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.0558701, y: 22.2106171, z: 0}
+  m_LocalPosition: {x: -289.430756, y: -63.3218536, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 455564}
@@ -275,6 +291,7 @@ Transform:
   - {fileID: 453196}
   - {fileID: 466364}
   - {fileID: 480410}
+  - {fileID: 479164}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &425150
@@ -417,6 +434,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 464180}
   m_RootOrder: 0
+--- !u!4 &479164
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 582, y: 360, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 421336}
+  m_RootOrder: 5
 --- !u!4 &479704
 Transform:
   m_ObjectHideFlags: 1
@@ -606,6 +635,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!58 &5831830
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164966}
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 330
 --- !u!60 &6081050
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -687,16 +729,16 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 22.6981201, y: 340.563568}
+  m_Offset: {x: 564.039062, y: 340.563477}
   serializedVersion: 2
-  m_Size: {x: 38.8723755, y: 750.157593}
+  m_Size: {x: 831.097656, y: 750.157593}
 --- !u!61 &6171572
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113032}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
@@ -774,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 479164}
   enemies:
   - {fileID: 453196}
   - {fileID: 445094}
@@ -785,8 +828,9 @@ MonoBehaviour:
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
-  isFirst: 0
   position: 0000000000000000
+  isFirstChunk: 0
+  chunkId: 0
 --- !u!114 &11476298
 MonoBehaviour:
   m_ObjectHideFlags: 1

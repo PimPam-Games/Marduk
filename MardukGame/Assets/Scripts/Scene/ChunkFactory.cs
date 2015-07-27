@@ -7,12 +7,13 @@ public class ChunkFactory : MonoBehaviour {
 
 	public int zone = 1;
 	public int  MatrixSize = 61;
-	public int matrixDepth = 15;
+	public int matrixDepth = 10;
 	public string bgName = "Mountain";
 	public string sceneName = "level1";
 	public bool generateBackground;
 	public bool[,] cmatrix;
 
+	private int currentChunkId = 0;
 	private Object[] chunkPool;
 	private  List<Object> commonChunks = new List<Object>();
 	public List<Object> doubleChunks = new List<Object>();
@@ -88,7 +89,7 @@ public class ChunkFactory : MonoBehaviour {
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 		} else {
 			int r;
-			float[] chunksProb = {0.5f,0.3f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
+			float[] chunksProb = {0.4f,0.4f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
 
 			int choice = Utils.Choose(chunksProb);
 			if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1
@@ -96,19 +97,30 @@ public class ChunkFactory : MonoBehaviour {
 			if((chunkPos[1] == 1 && exit == Exits.Right) ||(chunkPos[1] == MatrixSize-2 && exit == Exits.Left)){ //si llego a algun borde horizontal hay que poner un final
 				choice = 2;
 			}
-			if(chunkPos[0] == matrixDepth && choice == 1){ // si llego al limite de la profundidad no puede tocar un doble
+			if(chunkPos[0] >= matrixDepth && choice == 1){ // si llego al limite de la profundidad no puede tocar un doble
+				choice = 0;
+			}
+			if((cmatrix[chunkPos[0]+1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]+1, chunkPos[1]+1] && exit == Exits.Left)){
+				//Debug.Log("este doble no deberia ir baby");
 				choice = 0;
 			}
 			switch(choice){
 			case 0:
+				currentChunkId++;
 				r = Random.Range (0,normalChunks.Count);
 				newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
+				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			case 1:
+				/*if(exit == Exits.Right)
+					cmatrix[pos[0]+2,pos[1]-1] = true;*/
+				currentChunkId++;
 				r = Random.Range (0,doubleChunks.Count);
 				newChunk = (GameObject)Instantiate (doubleChunks [r], pos, rot);
+				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			case 2:
+				currentChunkId++;
 				if(exit == Exits.Right){
 					r = Random.Range (0,leftEndChunks.Count);
 					newChunk = (GameObject)Instantiate (leftEndChunks [r], pos, rot);
@@ -117,8 +129,10 @@ public class ChunkFactory : MonoBehaviour {
 					r = Random.Range (0,rightEndChunks.Count);
 					newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
 				}
+				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			}
+			//Debug.Log("Id" + currentChunkId);
 			if(newChunk.name.Contains("Entry"))
 				isEntry = true;
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel

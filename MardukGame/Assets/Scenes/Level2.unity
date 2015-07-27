@@ -202,7 +202,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &374658903
 Prefab:
   m_ObjectHideFlags: 0
@@ -395,7 +395,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 7
 --- !u!1 &1114711997
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 0}
   enemies: []
   chunkEndRight: {fileID: 1841294751}
   chunkEndDownR: {fileID: 0}
@@ -568,6 +569,9 @@ MonoBehaviour:
   leftUsed: 0
   rightUsed: 0
   position: 0000000000000000
+  esprueba: 0
+  isFirstChunk: 1
+  chunkId: 0
 --- !u!61 &1291336263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -922,7 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zone: 2
   MatrixSize: 41
-  matrixDepth: 10
+  matrixDepth: 5
   bgName: Mountain
   sceneName: level2
   generateBackground: 0
