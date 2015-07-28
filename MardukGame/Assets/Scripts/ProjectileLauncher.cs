@@ -6,7 +6,7 @@ public class ProjectileLauncher : MonoBehaviour {
 	public Vector2 force; //fuerza que se le aplica al proyectil cuando se crea
 	public GameObject projectile;
 	public bool toTargetDir; // si debe apuntar a la direccion del objetivo o no
-	public bool staticProjectile;
+	public bool staticProjectile; // si el ataque sigue al jugador que lo tira, ej: un lanzallamas
 	public EnemyIAMovement ia;
 	public bool flipProjectile = false;
 	private GameObject p;

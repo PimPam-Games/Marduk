@@ -115,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.03999996, y: .180000007, z: 0}
+  m_LocalPosition: {x: -1.61789334, y: .133392185, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 453892}
@@ -295,6 +295,9 @@ MonoBehaviour:
   force: {x: 0, y: 0}
   projectile: {fileID: 161618, guid: f381298fb86239c40a93e3796f1febab, type: 2}
   toTargetDir: 1
+  staticProjectile: 0
+  ia: {fileID: 11459556}
+  flipProjectile: 0
 --- !u!114 &11439518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,6 +333,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  dontFlip: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
@@ -353,6 +357,7 @@ MonoBehaviour:
   lightRes: 5
   poisonRes: 0
   elem: 2
+  blockChance: 0
   alertSound: {fileID: 8292254}
   enemyName: Struggler
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}

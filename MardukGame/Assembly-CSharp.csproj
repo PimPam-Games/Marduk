@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DragHandeler.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\Prefabs\Elementals\Scripts\TestParticles.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -76,6 +75,8 @@
      <Compile Include="Assets\Scripts\PlayerScripts\Platformer2DUserControl.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerItems.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\PlayerProjLauncher.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\PlayerProjStats.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\ProjectileLauncher.cs" />
@@ -93,14 +94,17 @@
      <Compile Include="Assets\Scripts\Tuple.cs" />
      <Compile Include="Assets\Scripts\Types.cs" />
      <Compile Include="Assets\Scripts\UI\CustomCursor.cs" />
+     <Compile Include="Assets\Scripts\UI\DragHandeler.cs" />
      <Compile Include="Assets\Scripts\UI\EnemyHealthUiController.cs" />
      <Compile Include="Assets\Scripts\UI\ExpUiController.cs" />
      <Compile Include="Assets\Scripts\UI\InputControllerGui.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\ManaUiController.cs" />
      <Compile Include="Assets\Scripts\UI\MenuInGame.cs" />
      <Compile Include="Assets\Scripts\UI\MyGUI.cs" />
      <Compile Include="Assets\Scripts\UI\PlayMenu.cs" />
      <Compile Include="Assets\Scripts\UI\PlayerUIController.cs" />
+     <Compile Include="Assets\Scripts\UI\Slot.cs" />
      <Compile Include="Assets\Scripts\Utils.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />

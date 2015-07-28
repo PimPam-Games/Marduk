@@ -20,6 +20,14 @@
 					jump = Input.GetButtonDown ("Jump");
 				if(Input.GetButtonUp("Jump"))
 					character.Fall();
+				if(Input.GetButtonUp("Spell1"))
+					character.Spell1();
+				if(Input.GetButtonUp("Spell2"))
+					character.Spell2();
+				if(Input.GetButtonUp("Spell3"))
+					character.Spell3();
+				if(Input.GetButtonUp("Spell4"))
+					character.Spell4();
 					
 			}
 

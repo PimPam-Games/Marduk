@@ -87,20 +87,20 @@ public class EnemyStats : MonoBehaviour {
 				realDmg -= (armour / (armour + 8 * realDmg));	
 				break;
 			case Types.Element.Cold:
-				Debug.Log ("cold damage");
-				realDmg -= Mathf.Abs ((realDmg * coldRes));
+				//Debug.Log ("cold damage");
+				realDmg -= Mathf.Abs ((realDmg * (coldRes/100)));
 				break;
 			case Types.Element.Fire:
-				realDmg -= Mathf.Abs ((realDmg * fireRes));
-				Debug.Log ("fire damage");
+				realDmg -= Mathf.Abs ((realDmg * (fireRes/100)));
+				//Debug.Log ("fire damage");
 				break;
 			case Types.Element.Poison:
-				realDmg -= Mathf.Abs ((realDmg * poisonRes));
-				Debug.Log ("poison damage");
+				realDmg -= Mathf.Abs ((realDmg * (poisonRes/100)));
+				//Debug.Log ("poison damage");
 				break;
 			case Types.Element.Lightning:
-				realDmg -= Mathf.Abs ((realDmg * lightRes));
-				Debug.Log ("lightning damage");
+				realDmg -= Mathf.Abs ((realDmg * (lightRes/100)));
+				//Debug.Log ("lightning damage" + realDmg);
 				break;
 			default:
 				Debug.LogError ("todo maaaal");

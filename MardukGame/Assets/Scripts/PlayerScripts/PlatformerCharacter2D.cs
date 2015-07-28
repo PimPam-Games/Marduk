@@ -20,6 +20,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask whatIsGround; // A mask determining what is ground to the character
 		[SerializeField] private GameObject weapon;
+		public PlayerProjLauncher projLauncher;
 
 		private Transform backforeArm;
         private Transform groundCheck; // A position marking where to check if the player is grounded.
@@ -117,6 +118,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 
+		public bool isFacingRight(){
+			return facingRight;
+		}
+
         public void Move(float move, bool crouch, bool jump)
         {
 			
@@ -188,6 +193,18 @@ public class PlatformerCharacter2D : MonoBehaviour
 				rb.velocity = new Vector2 (rb.velocity.x,rb.velocity.y/2);
 		}
 
+		public void Spell1(){
+			projLauncher.LaunchProjectile ();
+		}
+		
+		public void Spell2(){
+		}	
+
+		public void Spell3(){
+		}
+
+		public void Spell4(){
+		}
 		public void Idle(){
 			anim.SetBool ("Attacking",false);
 		}

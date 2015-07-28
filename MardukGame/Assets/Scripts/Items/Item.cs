@@ -178,5 +178,6 @@ public enum ItemTypes{
 	Shield,
 	Ring,
 	Amulet,
-	Belt
+	Belt,
+	Spell
 }

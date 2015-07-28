@@ -19,10 +19,12 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;
 	public const float InitMana = 45; // esto no se va a ver en la barra de mana todavia
+	public const float InitManaRegen = 0.2f;
 	public const float InitCritChance = 0.05f;
 	public const float InitCritDmgMult = 2f;
 
 	public static float currentHealth;
+	public static float currentMana;
 	public static bool isDead;
 	public bool readyToRespawn = false;
 	public static float[] atributes;
@@ -71,8 +73,10 @@ public class PlayerStats : MonoBehaviour {
 		renders = GetComponentsInChildren<SpriteRenderer> ();
 
 		currentHealth = defensives [MaxHealth];
+		currentMana = offensives [MaxMana];
+		UpdateMana ();
 		StartCoroutine(LifeRegeneration());
-
+		StartCoroutine (ManaRegeneration());
 		//StartCoroutine (GhostModeRender());
 	}
 	
@@ -101,7 +105,10 @@ public class PlayerStats : MonoBehaviour {
 		defensives [MaxHealth] = atributes [Vitality] * 3 + InitMaxHealth; 
 		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
 		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
-		offensives [MaxMana] = atributes [Spirit] * 3;
+		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
+		currentHealth = defensives[MaxHealth];
+		currentMana = offensives [MaxMana];
+		UpdateMana ();
 	}
 
 	public static void AddAtribute(int atribute){
@@ -135,6 +142,16 @@ public class PlayerStats : MonoBehaviour {
 		Fading.BeginFadeIn("level1");
 	}
 
+	IEnumerator ManaRegeneration () {
+		while (!isDead) {
+			if (currentMana < offensives [MaxMana])
+				currentMana += offensives [ManaPerSec];
+			if (currentMana > offensives [MaxMana])
+				currentMana = offensives [MaxMana];
+			UpdateMana();
+			yield return new WaitForSeconds (1);
+		}
+	}
 
 	IEnumerator LifeRegeneration () {
 		while (!isDead) {
@@ -155,6 +172,8 @@ public class PlayerStats : MonoBehaviour {
 		offensives [AttackRate] = InitAttackRate;
 		offensives [CritChance] = InitCritChance;
 		offensives [CritDmgMultiplier] = InitCritDmgMult;
+		offensives [MaxMana] = InitMana;
+		offensives [ManaPerSec] = InitManaRegen;
 		lvl = 1;
 		currentExp = 0;
 		oldNextLevelExp = 0;
@@ -164,9 +183,12 @@ public class PlayerStats : MonoBehaviour {
 
 	public void RespawnStats(){ //Restaura los valores predeterminados del jugador
 		currentHealth = defensives [MaxHealth];
+		currentMana = offensives [MaxMana];
+		StartCoroutine (ManaRegeneration());
 		isDead = false;
 		StartCoroutine (LifeRegeneration ());
 		gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+		UpdateMana ();
 	}
 
 	public static double ExpFormula(){
@@ -184,6 +206,10 @@ public class PlayerStats : MonoBehaviour {
 		}
 		expUi.UpdateExpBar (currentExp,oldNextLevelExp,nextLevelExp);
 		Debug.Log ("currExp " + currentExp + ", " + "nextLevelExp " + nextLevelExp + ", " + "lvl " + lvl );
+	}
+
+	public static void UpdateMana(){
+		ManaUiController.UpdateManaBar (currentMana,offensives[MaxMana]);
 	}
 
 	public void Hit(float dmg, Types.Element type){ //se llama cuando un enemigo le pega al jugador

@@ -6,14 +6,16 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
 	public static GameObject itemBeingDragged;
 	Vector3 startPosition;
+	public static Transform startParent;
 
 	#region IBeginDragHandler implementation
 
 	public void OnBeginDrag (PointerEventData eventData)
 	{
-		Debug.Log ("asdasdasdasdasdasdasd");
 		itemBeingDragged = gameObject;
 		startPosition = transform.position;
+		startParent = transform.parent;
+		GetComponent<CanvasGroup>().blocksRaycasts = false;
 	}
 
 	#endregion
@@ -22,7 +24,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
 	public void OnDrag (PointerEventData eventData)
 	{
-		Debug.Log ("asdgggggggggggggasdasdasd");
 		transform.position = Input.mousePosition;
 	}
 
@@ -33,7 +34,9 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 	public void OnEndDrag (PointerEventData eventData)
 	{
 		itemBeingDragged = null;
-		transform.position = startPosition;
+		GetComponent<CanvasGroup>().blocksRaycasts = true;
+		if(transform.parent == startParent)
+			transform.position = startPosition;
 	}
 
 	#endregion
