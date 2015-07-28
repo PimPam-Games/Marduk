@@ -8,7 +8,7 @@ public class MenuInGame : MonoBehaviour {
 	public void SaveAndQuit(){
 		Persistence.Save ();
 		g.stopMusic ();
-		Debug.Log (PlatformerCharacter2D.playerItemsGO.Count);
+		//Debug.Log (PlatformerCharacter2D.playerItemsGO.Count);
 		foreach (GameObject it in PlatformerCharacter2D.playerItemsGO) {
 			Destroy(it);
 		}

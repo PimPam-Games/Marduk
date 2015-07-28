@@ -20,7 +20,7 @@ public class PlayerProjStats : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		PlayerStats.currentMana -= manaCost;
-		PlayerStats.UpdateMana ();
+		//PlayerStats.UpdateMana ();
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
 	}

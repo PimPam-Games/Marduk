@@ -24,7 +24,7 @@ public class ChunkFactory : MonoBehaviour {
 	private static Object bg;
 	private static bool isEntry = false;
 	public static float bgCount = 0;
-	public static float bgPerChunk = 7; //cada cuantos chunks debe generar el fondo
+	public static float bgPerChunk = 4; //cada cuantos chunks debe generar el fondo
 
 	// Use this for initialization
 	void Awake () {
@@ -141,7 +141,7 @@ public class ChunkFactory : MonoBehaviour {
 		if(generateBackground)
 			if (bgCount >= bgPerChunk) {
 				bgCount = 0;
-				GameObject go = (GameObject)Instantiate(bg,new Vector3(pos.x + 35,pos.y - 2,35),rot);
+				GameObject go = (GameObject)Instantiate(bg,new Vector3(pos.x + 35,pos.y - 4,35),rot);
 				DontDestroyOnLoad(go);
 				g.chunksPerZone[g.currLevelName].Add(go); //agrego el chunk a la lista de chunks de este nivel
 			}

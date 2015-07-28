@@ -94,6 +94,7 @@ public class PlayerStats : MonoBehaviour {
 			StartCoroutine(PlayerDying());
 			//gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false ;//esto es provisorio HAY QUE CAMBIARLO!
 		}
+		UpdateMana ();
 	}
 
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
@@ -148,7 +149,7 @@ public class PlayerStats : MonoBehaviour {
 				currentMana += offensives [ManaPerSec];
 			if (currentMana > offensives [MaxMana])
 				currentMana = offensives [MaxMana];
-			UpdateMana();
+			//UpdateMana();
 			yield return new WaitForSeconds (1);
 		}
 	}
