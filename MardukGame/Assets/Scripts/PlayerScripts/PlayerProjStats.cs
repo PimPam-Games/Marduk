@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using p = PlayerStats;
 
 public class PlayerProjStats : MonoBehaviour {
 	
@@ -42,6 +43,7 @@ public class PlayerProjStats : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		if (col.gameObject.tag == "Enemy") {
 			float dmgDealt = Random.Range(minDmg,maxDmg);
+			dmgDealt += p.offensives[p.MgDmg];
 			col.gameObject.GetComponent<EnemyStats>().Hit(dmgDealt, elem);
 			/*if(col.transform.position.x < this.transform.position.x)
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);

@@ -7,9 +7,9 @@ using expUi = ExpUiController;
 public class PlayerStats : MonoBehaviour {
 
 
-	public const int CantAtributes = 4, CantOffensives = 13, CantDefensives = 11, CantUtils = 2;
+	public const int CantAtributes = 4, CantOffensives = 12, CantDefensives = 11, CantUtils = 2;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
-	public const int MinDmg = 0, MaxDamge = 1, MinMgDmg = 2, MaxMgDmg = 3 ,CritChance = 4, CritDmgMultiplier = 5, Accuracy = 6, StunChance = 7, BleedChance = 8, CertainStrChance = 9, ManaPerSec = 10, MaxMana = 11, AttackRate = 12; //offensives
+	public const int MinDmg = 0, MaxDamge = 1, MgDmg = 2 ,CritChance = 3, CritDmgMultiplier = 4, Accuracy = 5, StunChance = 6, BleedChance = 7, CertainStrChance = 8, ManaPerSec = 9, MaxMana = 10, AttackRate = 11; //offensives
 	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, Evasiveness = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10;  //defensives
 	public const int MovementSpeed = 0, MagicFind = 1;//utils
 
@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitMaxHealth = 45;
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;
+	public const float InitMgDmg = 1;
 	public const float InitMana = 45; // esto no se va a ver en la barra de mana todavia
 	public const float InitManaRegen = 0.2f;
 	public const float InitCritChance = 0.05f;
@@ -40,7 +41,6 @@ public class PlayerStats : MonoBehaviour {
 	public static double nextLevelExp;
 	public static double oldNextLevelExp;
 	public static int atributesPoints = 0; //puntos de atributos que quedan por poner cada vez que se pasa de nivel
-
 	public static int strAddedPoints = 0;
 	public static int vitAddedPoints = 0;
 	public static int spiAddedPoints = 0;
@@ -107,6 +107,8 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
 		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
 		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
+		offensives[MgDmg] = atributes[Spirit] * 0.25f + InitMgDmg;
+		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
 		currentHealth = defensives[MaxHealth];
 		currentMana = offensives [MaxMana];
 		UpdateMana ();
@@ -128,6 +130,9 @@ public class PlayerStats : MonoBehaviour {
 				break;
 			case 3:
 				atributes [Spirit]++;
+				offensives[MaxMana] += 3;
+				offensives[MgDmg] += 0.25f;
+				offensives[ManaPerSec] += 0.1f;
 				break;
 		}
 

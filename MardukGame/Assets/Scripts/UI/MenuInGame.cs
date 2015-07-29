@@ -15,7 +15,8 @@ public class MenuInGame : MonoBehaviour {
 		foreach (GameObject o in Object.FindObjectsOfType<GameObject>()) {
 			Destroy(o);
 		}
-
+		g.DestroyEnemies ();
+		GameController.DestroyAllChunks ();
 		this.gameObject.SetActive (false);
 		Time.timeScale = 1.0f;
 		Application.LoadLevel("MainMenu");

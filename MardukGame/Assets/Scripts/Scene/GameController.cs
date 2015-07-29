@@ -118,7 +118,7 @@ public class GameController : MonoBehaviour {
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x - 4, levelEntry.transform.position.y, mainCamera.transform.position.z);
 	}
 
-	private void DestroyEnemies(){
+	public void DestroyEnemies(){
 		//GameObject[] enems = enemiesPerLevel.Values;
 		Dictionary<string, List<GameObject>>.ValueCollection values = enemiesPerLevel.Values;
 		foreach (List<GameObject> enems in values)
@@ -132,6 +132,17 @@ public class GameController : MonoBehaviour {
 		//	Destroy (e.gameObject);
 		enemiesPerLevel.Clear ();
 
+	}
+
+	public static void DestroyAllChunks(){
+		Dictionary<string, List<GameObject>>.ValueCollection values = chunksPerZone.Values;
+		foreach (List<GameObject> chunks in values)
+		{
+			foreach(GameObject e in chunks){
+				Destroy(e.gameObject);
+			}
+		}
+		chunksPerZone.Clear ();
 	}
 
 	public static void SetActiveEnemies(string levelName, bool active){

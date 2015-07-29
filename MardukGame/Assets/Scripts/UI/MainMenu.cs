@@ -6,6 +6,14 @@ public class MainMenu : MonoBehaviour {
 
 	public Image playMenuImage;
 
+	void Awake(){
+		/*foreach (GameObject o in Object.FindObjectsOfType<GameObject>()) {
+			if(!o.activeSelf){
+				Destroy(o);
+			}
+		}*/
+	}
+
 	public void NewGame(){
 
 		playMenuImage.gameObject.SetActive(true);
