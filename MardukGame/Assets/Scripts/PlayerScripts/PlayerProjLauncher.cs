@@ -28,12 +28,12 @@ public class PlayerProjLauncher : MonoBehaviour {
 
 			/*var dir = (target.transform.position - transform.position).normalized;
 			var dot = Vector2.Dot(dir, transform.right);*/
-			
-			if(character.isFacingRight())
-				proj.GetComponent<ProjectileMovement>().moveDirX = 1;
+		if (!flipProjectile) {	
+			if (character.isFacingRight ())
+				proj.GetComponent<ProjectileMovement> ().moveDirX = 1;
 			else
-				proj.GetComponent<ProjectileMovement>().moveDirX = -1;
-
+				proj.GetComponent<ProjectileMovement> ().moveDirX = -1;
+		}
 		if (flipProjectile && character.isFacingRight())
 			proj.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));
 		else
