@@ -20,7 +20,9 @@ public class PlatformerCharacter2D : MonoBehaviour
         [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask whatIsGround; // A mask determining what is ground to the character
 		[SerializeField] private GameObject weapon;
+
 		public PlayerProjLauncher[] projLaunchers;
+		private SpellsPanel spellsPanel;
 
 		private Transform backforeArm;
         private Transform groundCheck; // A position marking where to check if the player is grounded.
@@ -55,6 +57,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         }
 
+		void Start(){
+			spellsPanel = GameObject.Find ("SpellsPanel").GetComponent<SpellsPanel> ();
+		}
 
 		void Update(){
 			a = 0;
@@ -107,13 +112,20 @@ public class PlatformerCharacter2D : MonoBehaviour
 				GameObject item = col.gameObject;
 				if(item == null)
 					return;
-				playerItemsGO.Add(item);
+				
 				if (item.tag == "Item") {
+					playerItemsGO.Add(item);
 					item.SetActive(false);
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
 						return;
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
 					PlayerItems.inventoryCantItems++;					
+				}
+				else{
+					if(item.tag == "Spell"){
+						spellsPanel.AddSpell(item.name);
+						Destroy(item);
+					}
 				}
 			}
 		}

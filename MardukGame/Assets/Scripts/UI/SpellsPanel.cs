@@ -32,7 +32,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	public void HasChanged(){
 		int i = 0;
 		foreach (Transform slot in slots) {
-			GameObject spell = slot.GetComponent<Slot>().spell;;
+			GameObject spell = slot.GetComponent<Slot>().spell;
 			if(spell != null){
 				SpellStats stats =  spell.GetComponent<SpellStats>();
 				projectiles[i] = stats.projectile;
@@ -48,6 +48,21 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		}
 	}
 
+	public void AddSpell(string spellName){
+		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + spellName);
+		if (newSpellPrefab == null)
+			return;
+		GameObject newSpell = (GameObject)Instantiate (newSpellPrefab, newSpellPrefab.transform.position, newSpellPrefab.transform.rotation);
+		foreach(Transform slot in slots){
+			GameObject spell = slot.GetComponent<Slot>().spell;
+			if(spell == null){
+				newSpell.transform.SetParent(slot);
+				newSpell.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+				HasChanged();
+				return;
+			}
+		}
+	}
 
 }
 
