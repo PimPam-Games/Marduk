@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0199999996, y: -.289999992, z: 0}
+  m_LocalPosition: {x: -22.8899994, y: -.0700000003, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 484538}
@@ -202,6 +202,8 @@ MonoBehaviour:
   force: {x: 0, y: 0}
   flipProjectile: 0
   projectile: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
+  spellName: LightningBall
+  castDelay: .400000006
 --- !u!212 &21217008
 SpriteRenderer:
   m_ObjectHideFlags: 1

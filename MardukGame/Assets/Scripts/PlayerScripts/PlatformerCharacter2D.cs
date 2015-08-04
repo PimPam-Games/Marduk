@@ -41,7 +41,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public float knockbackLength = 0.4f;
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
-		private int a = 0;
 
         private void Awake()
         {
@@ -62,7 +61,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		void Update(){
-			a = 0;
+			
 			if (p.isDead)
 				maxSpeed = 0;
 			else
@@ -105,30 +104,72 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		void OnTriggerStay2D(Collider2D col){
-			a++;
+			
 			if (Input.GetButtonUp("Grab") && !PlayerStats.isDead) {
-				if(a >1)
-					return;
+
 				GameObject item = col.gameObject;
-				if(item == null)
+				Debug.Log("lo tendria que agarrar");
+				if(item == null){
+					Debug.Log("es null");
 					return;
-				
+				}
 				if (item.tag == "Item") {
+					Debug.Log("ok, lo tiene que agarrar!!!!");
 					playerItemsGO.Add(item);
 					item.SetActive(false);
-					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
+					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems){
+						Debug.Log("Inventario lleno?");
 						return;
+					}
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
-					PlayerItems.inventoryCantItems++;					
+					PlayerItems.inventoryCantItems++;
+					Debug.Log("ya lo agarro supuestamente");
+					checkInventory();
 				}
 				else{
 					if(item.tag == "Spell"){
-						spellsPanel.AddSpell(item.name);
+						spellsPanel.AddSpell(item.GetComponent<SpellStats>().spellName);
 						Destroy(item);
 					}
 				}
+		
 			}
 		}
+
+		private void checkInventory(){ //para que no se dupliquen los putos items
+			bool b = true;
+			bool c = true;
+			bool d = true;
+			if (PlayerItems.inventoryCantItems < 2)
+				return;
+			b = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Name == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 2].Name;
+			b = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Rarity == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 2].Rarity;
+			b = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Atributes == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 2].Atributes;
+			b = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Defensives == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 2].Defensives;
+			
+			if (PlayerItems.inventoryCantItems > 2) {
+				c = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Name == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 3].Name;
+				c = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Rarity == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 3].Rarity;
+				c = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Atributes == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 3].Atributes;
+				c = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Defensives == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 3].Defensives;
+			} else 
+				c = false;
+			
+			if (PlayerItems.inventoryCantItems > 3) {
+				d = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Name == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 4].Name;
+				d = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Rarity == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 4].Rarity;
+				d = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Atributes == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 4].Atributes;
+				d = true && PlayerItems.Inventory [PlayerItems.inventoryCantItems - 1].Defensives == PlayerItems.Inventory [PlayerItems.inventoryCantItems - 4].Defensives;
+			} else 
+				d = false;
+			
+			if(b || c || d){
+				Debug.Log("Borre un repetido");
+				PlayerItems.Inventory.RemoveAt (PlayerItems.inventoryCantItems - 1);
+				PlayerItems.inventoryCantItems--;
+			}
+		}
+	
 
 		public bool isFacingRight(){
 			return facingRight;

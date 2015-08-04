@@ -6,7 +6,7 @@ public class PlayerProjStats : MonoBehaviour {
 	
 	public Types.Element elem ;
 	public float minDmg = 1, maxDmg = 3;
-	private float duration = 6;
+	public float duration = 5;
 	private float lifeTime = 0;
 	public float particleSpeed;
 	public bool isParticle;

@@ -28,7 +28,7 @@ public class Item : MonoBehaviour {
 		utils = new float[p.CantUtils];
 		//offensives [p.MaxDamge] = 4;
 		rb = GetComponent<Rigidbody2D> ();
-		StartCoroutine (StopMove ());
+		//StartCoroutine (StopMove ());
 	}
 
 	void Update(){
@@ -36,7 +36,7 @@ public class Item : MonoBehaviour {
 		rb.velocity = new Vector2 (0, rb.velocity.y - 00000001);
 	}
 
-	IEnumerator StopMove(){
+	/*IEnumerator StopMove(){
 		yield return new WaitForSeconds (3f);
 		while (rb.velocity.x > 0.3f) {
 
@@ -45,7 +45,7 @@ public class Item : MonoBehaviour {
 		}
 		rb.velocity = new Vector2 (0,rb.velocity.y);
 		rb.isKinematic = true;
-	}
+	}*/
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.layer == LayerMask.NameToLayer ("Ground") && soundCount == 0) {
@@ -53,6 +53,8 @@ public class Item : MonoBehaviour {
 			itemSound.Play();
 		}
 	}
+
+
 
 	public float[] Atributes{
 		get {return atributes;}
@@ -163,6 +165,8 @@ public class Item : MonoBehaviour {
 	}
 
 }
+
+
 
 public enum RarityTypes{
 	Normal,

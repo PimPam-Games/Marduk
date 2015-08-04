@@ -8,7 +8,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	public Transform slots;
 	public PlayerProjLauncher[] projLaunchers = new PlayerProjLauncher[4];
 	private GameObject player;
-
+	private int a = 0;
 	// Use this for initialization
 	void Start () {
 		player =  GameObject.Find ("Player");
@@ -27,6 +27,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				HasChanged ();
 			}
 		}
+		a = 0;
 	}
 
 	public void HasChanged(){
@@ -39,6 +40,8 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				projLaunchers[i].projectile = projectiles[i];
 				projLaunchers[i].force = stats.force;
 				projLaunchers[i].flipProjectile = stats.flipProjectile;
+				Debug.Log("castdelay " + stats.castDelay);
+				projLaunchers[i].castDelay = stats.castDelay;
 			}
 			else{
 				projectiles[i] = null;
@@ -49,6 +52,9 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	}
 
 	public void AddSpell(string spellName){
+		a++;
+		if (a > 1)
+			return;
 		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + spellName);
 		if (newSpellPrefab == null)
 			return;
