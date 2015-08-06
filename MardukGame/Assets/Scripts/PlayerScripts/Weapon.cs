@@ -5,37 +5,32 @@ using p = PlayerStats;
 
 public class Weapon : MonoBehaviour {
 
-	private float attackDelay; // tiempo de espera entre cada ataque
-	private float maxAttackingTime = 0.5f; // tiempo que dura el ataque
+	//private float attackDelay; // tiempo de espera entre cada ataque
+	//private float maxAttackingTime = 0.5f; // tiempo que dura el ataque
 	public bool canAttack = false;
 	private bool isAttacking = false;
 	[SerializeField] private Types.Element elem = Types.Element.None; // falta agregar esto a los arreglos de playerStats
 	private float attackingTime; //tiempo que dura el ataque mientras se esta realizando
-	//private bool enemyDamaged;
-	private float attackTimer; 
+	//private float attackTimer; 
 	public AudioSource hitEnemySound;
 	public AudioSource criticalHitSound;
-	//private bool alreadyAttacked; // para ver si le pego en OnEnterTrigger
-	
-	// Use this for initialization
-	void Start () {
-		attackTimer = 0;
-		attackDelay = p.offensives [p.AttackRate];
+	public Animator anim; 
 
+
+	void Start () {
+		//attackTimer = 0;
+		//attackDelay = p.offensives [p.AttackSpeed];
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		attackDelay = p.offensives [p.AttackRate];
+		//attackDelay = p.offensives [p.AttackSpeed];
 		attackingTime -= Time.deltaTime;
-		attackTimer -= Time.deltaTime;
-		if(attackingTime <=0) // si no esta atacando no le pego a ningun enemigo
+		//attackTimer -= Time.deltaTime;
+		if (anim.GetBool ("Attacking") == false) { // si no esta atacando no le pego a ningun enemigo
 			isAttacking = false;
-		if (attackTimer <= 0)
 			canAttack = true;
-		//if (attackingTime > 0 && !enemyDamaged) { //hace daño en el tiempo en que tarda el ataque en ejecutarse siempre y cuando no le haya hecho daño al enemigo una vez
-			//DoDammage(); 
-		//}
+		}
 		if(!GetComponent<PolygonCollider2D>().isTrigger)
 			GetComponent<PolygonCollider2D>().isTrigger = true;
 	}
@@ -43,11 +38,11 @@ public class Weapon : MonoBehaviour {
 
 	public void Attack(){
 		if (canAttack) {
-
+			anim.speed += p.offensives[p.AttackSpeed];
 			isAttacking = true;
-			attackTimer = attackDelay;
+			//attackTimer = attackDelay;
 			canAttack = false;
-			attackingTime = maxAttackingTime;
+			//attackingTime = maxAttackingTime;
 
 		}
 	}

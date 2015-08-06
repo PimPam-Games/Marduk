@@ -99,31 +99,29 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (weaponScript.canAttack) {
 				attackSound.Play();
 				anim.SetBool ("Attacking", true);
-				weaponScript.Attack ();
+				
 			}
+		}
+
+		public void DoDamage(){ //se llama desde la animacion de ataque para que el ataque empiecwe a hacer daño
+			weaponScript.Attack ();
 		}
 
 		void OnTriggerStay2D(Collider2D col){
 			
 			if (Input.GetButtonUp("Grab") && !PlayerStats.isDead) {
-
 				GameObject item = col.gameObject;
-				Debug.Log("lo tendria que agarrar");
 				if(item == null){
 					Debug.Log("es null");
 					return;
 				}
 				if (item.tag == "Item") {
-					Debug.Log("ok, lo tiene que agarrar!!!!");
 					playerItemsGO.Add(item);
 					item.SetActive(false);
-					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems){
-						Debug.Log("Inventario lleno?");
+					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
 						return;
-					}
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
 					PlayerItems.inventoryCantItems++;
-					Debug.Log("ya lo agarro supuestamente");
 					checkInventory();
 				}
 				else{
@@ -164,7 +162,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				d = false;
 			
 			if(b || c || d){
-				Debug.Log("Borre un repetido");
+				
 				PlayerItems.Inventory.RemoveAt (PlayerItems.inventoryCantItems - 1);
 				PlayerItems.inventoryCantItems--;
 			}
@@ -207,7 +205,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 					walkGrassSound.Stop();
                 // Move the character
 				if(knockbackTimer <= 0){
-                	rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);
+				    if(anim.GetBool("Attacking") == true && move != 0)
+						rb.velocity = new Vector2(move*(maxSpeed/2), rb.velocity.y);
+					else
+                		rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);
 				}
 				else{
 					anim.SetFloat("Speed", 0);
@@ -267,6 +268,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		public void Idle(){
 			anim.SetBool ("Attacking",false);
+			anim.speed -= p.offensives[p.AttackSpeed];
 		}
 		
         private void Flip()
