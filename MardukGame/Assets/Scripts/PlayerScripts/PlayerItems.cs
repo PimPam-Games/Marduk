@@ -55,8 +55,11 @@ public class PlayerItems: MonoBehaviour {
 			UpdateStats(oldWeapon,equipedWeapon);
 			if(equipedWeapon==null){
 				weaponRenderer.sprite = null;
+				p.offensives[p.BaseAttacksPerSecond] = 1;
 				return;
 			}
+			else
+				p.offensives[p.BaseAttacksPerSecond] = equipedWeapon.Offensives[p.BaseAttacksPerSecond];
 			weaponRenderer.sprite = equipedWeapon.sprite;
 			Destroy(weapon.GetComponent<PolygonCollider2D>());
 			weapon.gameObject.AddComponent<PolygonCollider2D>();

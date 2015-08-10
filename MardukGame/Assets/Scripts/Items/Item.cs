@@ -122,8 +122,10 @@ public class Item : MonoBehaviour {
 			tooltip = "<color=White>" + Name + "</color> \n";
 		tooltip += "Rarity: " + Rarity + "\n" + 
 					"Type: " + Type + "\n";
-		if (type == ItemTypes.Weapon)
-			tooltip += "damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n";
+		if (type == ItemTypes.Weapon) {
+			tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
+			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n";
+		}
 		if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Shield)
 			tooltip += "defense: " + defensives [p.Defense] + "\n";
 		if(type == ItemTypes.Shield)

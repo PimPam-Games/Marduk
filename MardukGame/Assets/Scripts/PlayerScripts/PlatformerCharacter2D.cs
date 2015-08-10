@@ -206,7 +206,7 @@ public class PlatformerCharacter2D : MonoBehaviour
                 // Move the character
 				if(knockbackTimer <= 0){
 				    if(anim.GetBool("Attacking") == true && move != 0)
-						rb.velocity = new Vector2(move*(maxSpeed/2), rb.velocity.y);
+						rb.velocity = new Vector2(move*(maxSpeed/1.5f), rb.velocity.y);
 					else
                 		rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);
 				}
@@ -268,7 +268,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		public void Idle(){
 			anim.SetBool ("Attacking",false);
-			anim.speed -= p.offensives[p.AttackSpeed];
+			anim.speed -= Weapon.animSpeed;
 		}
 		
         private void Flip()
