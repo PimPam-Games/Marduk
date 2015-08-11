@@ -163,6 +163,8 @@ public class Item : MonoBehaviour {
 			tooltip +=  utils[p.MovementSpeed] + "% To Movement Speed" + "\n";
 		if(offensives[p.CritChance]>0)
 			tooltip +=  offensives[p.CritChance] + "% To Critical Chance" + "\n";
+		if(offensives[p.IncreasedAttackSpeed]>0)
+			tooltip +=  offensives[p.IncreasedAttackSpeed] + "% Increased Attack Speed" + "\n";
 		return tooltip;
 	}
 

@@ -52,6 +52,10 @@ public class ItemGenerator :MonoBehaviour{
 		if (newItem.Rarity == RarityTypes.Magic || newItem.Rarity == RarityTypes.Rare) {
 			int optionDef = Random.Range(0,p.CantDefensives);
 			int optionAtr = Random.Range(0,p.CantAtributes);
+			float[] offensivesProb = {0.7f,0.3f}; // 60% normal, %30 magico, %9 raro , %1 unico hay que ver que onda aca
+			int choice = Utils.Choose(offensivesProb); //a esto hay que sacarlo despues
+			if(choice == 1)//a esto hay que sacarlo despues
+				newItem.Offensives[p.IncreasedAttackSpeed] = (float)Random.Range (5, 30); //a esto hay que sacarlo despues
 			newItem.Atributes[optionAtr] = Random.Range (5, 10);
 
 			if(optionDef == p.LifePerSecond)

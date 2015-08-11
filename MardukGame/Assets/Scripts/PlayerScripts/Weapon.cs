@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour {
 
 	public void Attack(){
 		if (canAttack) {
-			Debug.Log("ataque!" + Time.time);
+			//Debug.Log("ataque!" + Time.time);
 			if(attackDelay >= 0.8f)
 				animSpeed = 0;
 			if(attackDelay < 0.8f && attackDelay >= 0.5f)
@@ -52,8 +52,8 @@ public class Weapon : MonoBehaviour {
 				animSpeed = 6;
 			if(attackDelay < 0.15f)
 				animSpeed = 8;
-			Debug.Log("attack Delay : " + attackDelay.ToString());
-			Debug.Log(animSpeed.ToString());
+		//	Debug.Log("attack Delay : " + attackDelay.ToString());
+		//	Debug.Log(animSpeed.ToString());
 			anim.speed += animSpeed;
 			isAttacking = true;
 			attackTimer = attackDelay;

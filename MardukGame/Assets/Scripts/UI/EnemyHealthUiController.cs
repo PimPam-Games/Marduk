@@ -36,10 +36,10 @@ public class EnemyHealthUiController : MonoBehaviour {
 			canvas.enabled = false;
 	}
 
-	public static void UpdateHealthBar(float currHealth, float maxHealth, String enemyName){
+	public static void UpdateHealthBar(float currHealth, float maxHealth, String enemyName, int lvl){
 		canvas.enabled = true;
 		activeCount = activeTime;
-		lvlText.text = "1";
+		lvlText.text = lvl.ToString();
 		enemName.text = enemyName;
 		healthBarText.text = Math.Round(currHealth,1) + " / " + Math.Round(maxHealth,1);
 		healthSlider.maxValue = maxHealth;

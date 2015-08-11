@@ -102,7 +102,6 @@ public class PlayerItems: MonoBehaviour {
 		set{
 			Item oldHelmet = equipedHelmet;
 			equipedHelmet = value;
-			
 			for(int i = 0; i<p.offensives.Length; i++){ //el arreglo mas largo es offensives
 				if(oldHelmet!=null) p.offensives[i] -= oldHelmet.Offensives[i];
 				if(equipedHelmet!=null) p.offensives[i] += equipedHelmet.Offensives[i];

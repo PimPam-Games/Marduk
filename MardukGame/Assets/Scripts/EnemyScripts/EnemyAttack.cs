@@ -62,7 +62,7 @@ public class EnemyAttack : MonoBehaviour {
 		float distance = Vector3.Distance (target.transform.position, transform.position);
 		if (distance < attackRange)
 			if ((dot < 0 && !movement.IsFacingRight ()) || (dot > 0 && movement.IsFacingRight ())) {
-				float damage = Random.Range (stats.damage.First, stats.damage.Second);
+				float damage = Random.Range (stats.minDamage, stats.maxDamage);
 				playerStats.Hit (damage, stats.elem); 
 				if(target.transform.position.x < this.transform.position.x)
 					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
