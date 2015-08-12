@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.3022852, y: .235800624, z: 0}
+  m_LocalPosition: {x: .647843838, y: .897995472, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 420082}
@@ -251,6 +251,7 @@ MonoBehaviour:
   attackDelay: 3
   anim: {fileID: 9534150}
   target: {fileID: 0}
+  canBlock: 0
 --- !u!114 &11401046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,15 +263,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 0
+  lvl: 1
   currHealth: 0
   maxHealth: 15
+  minDamage: 2
+  maxDamage: 5
   armour: 3
   coldRes: 0
   fireRes: 0
   lightRes: 0
   poisonRes: 1
+  evasiveness: 0
   elem: 4
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
+  healthPerLvl: 10
+  armourPerLvl: 0
+  coldResPerLvl: 0
+  fireResPerLvl: 0
+  lightResPerLvl: 0
+  poisonResPerLvl: 0
+  evasivenessPerLvl: 0
+  blockChance: 0
   alertSound: {fileID: 8290810}
   enemyName: Grotesque
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
@@ -312,6 +326,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  dontFlip: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024

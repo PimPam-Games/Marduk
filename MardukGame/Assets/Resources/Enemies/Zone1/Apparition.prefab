@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.02000046, y: 1.38, z: 0}
+  m_LocalPosition: {x: -1.37889433, y: .573343515, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 423416}
@@ -269,15 +269,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 0
+  lvl: 1
   currHealth: 0
   maxHealth: 10
+  minDamage: 2
+  maxDamage: 5
   armour: 1
   coldRes: 0
   fireRes: 0
   lightRes: 0
   poisonRes: 1
+  evasiveness: 0
   elem: 0
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
+  healthPerLvl: 10
+  armourPerLvl: 0
+  coldResPerLvl: 0
+  fireResPerLvl: 0
+  lightResPerLvl: 0
+  poisonResPerLvl: 0
+  evasivenessPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8294376}
   enemyName: Apparition

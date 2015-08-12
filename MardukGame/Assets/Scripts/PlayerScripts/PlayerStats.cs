@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;
 	public const float InitMgDmg = 1;
-	public const float InitMana = 45; // esto no se va a ver en la barra de mana todavia
+	public const float InitMana = 45; 
 	public const float InitManaRegen = 0.2f;
 	public const float InitCritChance = 0.05f;
 	public const float InitCritDmgMult = 2f;

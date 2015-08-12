@@ -37,7 +37,7 @@ public class ItemGenerator :MonoBehaviour{
 		if (newItem.type == ItemTypes.Weapon) { //el item es un arma
 			newItem.Offensives [p.MinDmg] = Random.Range (1, 3);
 			newItem.Offensives [p.MaxDamge] = Random.Range (4, 7);
-			newItem.Offensives [p.BaseAttacksPerSecond] = Random.Range (1.01f, 2.01f);
+			newItem.Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (1.01f, 2.01f),2);
 		} else {
 			if(newItem.type == ItemTypes.Armour || newItem.type == ItemTypes.Helmet) //el item es amour o casco
 				newItem.Defensives [p.Defense] = Random.Range (5, 21);

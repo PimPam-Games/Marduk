@@ -159,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.2026424, y: -1.39791286, z: 0}
+  m_LocalPosition: {x: 4.47141886, y: .322767735, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 478216}
@@ -336,6 +336,9 @@ MonoBehaviour:
   force: {x: 200, y: 340}
   projectile: {fileID: 122016, guid: a71ffd33b930d4c41a9f719379d9b7ce, type: 2}
   toTargetDir: 0
+  staticProjectile: 0
+  ia: {fileID: 0}
+  flipProjectile: 0
 --- !u!114 &11429050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,11 +350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac5f84726e83d49468c163aba3d85eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 122016, guid: a71ffd33b930d4c41a9f719379d9b7ce, type: 2}
   anim: {fileID: 9537312}
   castDelay: 4
+  stopWalkWhenAttack: 0
   maxDistance: 999
-  multipleProjectiles: 1
   pLaunchers:
   - {fileID: 178026}
   - {fileID: 127622}
@@ -381,6 +383,9 @@ MonoBehaviour:
   force: {x: 0, y: 350}
   projectile: {fileID: 122016, guid: a71ffd33b930d4c41a9f719379d9b7ce, type: 2}
   toTargetDir: 0
+  staticProjectile: 0
+  ia: {fileID: 0}
+  flipProjectile: 0
 --- !u!114 &11451560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,6 +400,9 @@ MonoBehaviour:
   force: {x: -200, y: 340}
   projectile: {fileID: 122016, guid: a71ffd33b930d4c41a9f719379d9b7ce, type: 2}
   toTargetDir: 0
+  staticProjectile: 0
+  ia: {fileID: 0}
+  flipProjectile: 0
 --- !u!114 &11463278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,15 +414,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 0
+  lvl: 1
   currHealth: 0
   maxHealth: 10
+  minDamage: 2
+  maxDamage: 5
   armour: 2
   coldRes: 0
   fireRes: 0
   lightRes: 0
   poisonRes: 1
+  evasiveness: 0
   elem: 4
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
+  healthPerLvl: 10
+  armourPerLvl: 0
+  coldResPerLvl: 0
+  fireResPerLvl: 0
+  lightResPerLvl: 0
+  poisonResPerLvl: 0
+  evasivenessPerLvl: 0
+  blockChance: 0
   alertSound: {fileID: 8291022}
   enemyName: Stinger
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
@@ -444,6 +465,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  dontFlip: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024

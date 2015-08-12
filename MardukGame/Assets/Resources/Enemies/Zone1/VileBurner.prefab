@@ -150,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0299997, y: 5.15999985, z: 0}
+  m_LocalPosition: {x: 2.91491842, y: .627300024, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 456856}
@@ -362,6 +362,8 @@ MonoBehaviour:
   projectile: {fileID: 146446, guid: d33c522e5051e3d41ad8f4fa4af1a6fe, type: 2}
   toTargetDir: 0
   staticProjectile: 1
+  ia: {fileID: 0}
+  flipProjectile: 0
 --- !u!114 &11422550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,6 +379,8 @@ MonoBehaviour:
   projectile: {fileID: 146446, guid: d33c522e5051e3d41ad8f4fa4af1a6fe, type: 2}
   toTargetDir: 0
   staticProjectile: 1
+  ia: {fileID: 0}
+  flipProjectile: 0
 --- !u!114 &11426596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,15 +420,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 0
+  lvl: 1
   currHealth: 0
   maxHealth: 10
+  minDamage: 2
+  maxDamage: 5
   armour: 1
   coldRes: 0
   fireRes: 0
   lightRes: 0
   poisonRes: 1
+  evasiveness: 0
   elem: 0
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
+  healthPerLvl: 10
+  armourPerLvl: 0
+  coldResPerLvl: 0
+  fireResPerLvl: 0
+  lightResPerLvl: 0
+  poisonResPerLvl: 0
+  evasivenessPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8221188}
   enemyName: Crow
@@ -446,6 +462,8 @@ MonoBehaviour:
   projectile: {fileID: 146446, guid: d33c522e5051e3d41ad8f4fa4af1a6fe, type: 2}
   toTargetDir: 0
   staticProjectile: 1
+  ia: {fileID: 0}
+  flipProjectile: 0
 --- !u!114 &11450690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,6 +499,8 @@ MonoBehaviour:
   projectile: {fileID: 146446, guid: d33c522e5051e3d41ad8f4fa4af1a6fe, type: 2}
   toTargetDir: 0
   staticProjectile: 1
+  ia: {fileID: 0}
+  flipProjectile: 0
 --- !u!212 &21217870
 SpriteRenderer:
   m_ObjectHideFlags: 1
