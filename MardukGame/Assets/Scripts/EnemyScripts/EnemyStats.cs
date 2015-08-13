@@ -16,7 +16,8 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float fireRes = 0;
 	[SerializeField] private float lightRes = 0;
 	[SerializeField] private float poisonRes = 1;
-	[SerializeField] private float evasiveness = 0;
+	[SerializeField] private float evasion = 30; //30 
+	[SerializeField] private float accuracy = 25; //25 por ahi deberia ser la base
 	[SerializeField] public Types.Element elem ;
 
 	[SerializeField] public float minDmgPerLvl = 0;
@@ -27,7 +28,7 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float fireResPerLvl = 0;
 	[SerializeField] private float lightResPerLvl = 0;
 	[SerializeField] private float poisonResPerLvl = 0;
-	[SerializeField] private float evasivenessPerLvl = 0;
+	[SerializeField] private float evasionPerLvl = 0;
 
 	public float blockChance = 0;
 
@@ -62,7 +63,7 @@ public class EnemyStats : MonoBehaviour {
 		fireRes += (lvl-1) * fireResPerLvl;
 		lightRes += (lvl-1) * lightResPerLvl;
 		poisonRes += (lvl-1) * poisonResPerLvl;
-		evasiveness += (lvl-1) * evasivenessPerLvl;
+		evasion += (lvl-1) * evasionPerLvl;
 		maxHealth += (lvl-1) * healthPerLvl;
 	}
 
@@ -98,13 +99,23 @@ public class EnemyStats : MonoBehaviour {
 		}
 	}
 
-	public void Hit(float dmg, Types.Element type){
-		Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
+	public bool Hit(float dmg, Types.Element type){
+
+		float chanceToEvade = (float)System.Math.Round((float)(1 - p.offensives [p.Accuracy] / (p.offensives [p.Accuracy] + System.Math.Pow((double)(evasion / 4),0.8))),2 );
+		float[] cteProbs = {1 - chanceToEvade, chanceToEvade};
+		if (Utils.Choose (cteProbs) != 0) {
+			//anim.SetBool ("Blocking", true);
+			Debug.Log ("El enemigo Evadio el ataque! ");
+			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
+			return false;
+		}
+		Debug.Log ("change To Evade: " + chanceToEvade);
 		float[] blockProb = {1 - blockChance, blockChance};
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);
 			Debug.Log ("El enemigo Bloqueo el ataque! ");
 		} else {
+			Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
 			float realDmg = dmg;
 			switch (type) {
 			case Types.Element.None:
@@ -149,7 +160,9 @@ public class EnemyStats : MonoBehaviour {
 			if (currHealth < 0)
 				currHealth = 0;
 		}
+
 		ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
+		return true;
 	}
 
 	IEnumerator EnemyDying () {

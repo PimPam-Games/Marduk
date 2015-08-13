@@ -23,6 +23,8 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitManaRegen = 0.2f;
 	public const float InitCritChance = 0.05f;
 	public const float InitCritDmgMult = 2f;
+	public const float InitAccuracy = 50;
+	public const float InitEvasion = 65;
 
 	public static float currentHealth;
 	public static float currentMana;
@@ -180,9 +182,11 @@ public class PlayerStats : MonoBehaviour {
 		offensives [CritDmgMultiplier] = InitCritDmgMult;
 		offensives [MaxMana] = InitMana;
 		offensives [ManaPerSec] = InitManaRegen;
+		offensives [Accuracy] = InitAccuracy;
 		lvl = 1;
 		currentExp = 0;
 		oldNextLevelExp = 0;
+
 		nextLevelExp = ExpFormula ();
 
 	}

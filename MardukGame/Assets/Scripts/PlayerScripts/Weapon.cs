@@ -74,19 +74,26 @@ public class Weapon : MonoBehaviour {
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+			bool attackResult; 
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
-				criticalHitSound.Play();
-				Debug.Log("Critical Dmg: " + damage);
+				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+				if(attackResult){
+					criticalHitSound.Play();
+					Debug.Log("Critical Dmg: " + damage);
+				}
 			}
 			else{
-				hitEnemySound.Play();
+				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+				if(attackResult)
+					hitEnemySound.Play();
 			}
-			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
-			if(enemy.transform.position.x < this.transform.position.x)
-				enemy.GetComponent<EnemyIAMovement>().Knock(true);
-			else
-				enemy.GetComponent<EnemyIAMovement>().Knock(false);
+			if(attackResult){
+				if(enemy.transform.position.x < this.transform.position.x)
+					enemy.GetComponent<EnemyIAMovement>().Knock(true);
+				else
+					enemy.GetComponent<EnemyIAMovement>().Knock(false);
+			}
 
 			isAttacking = false;
 		}
