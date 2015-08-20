@@ -7,18 +7,30 @@ public class EnemyStats : MonoBehaviour {
 
 	public int lvl = 1; //nivel actual del bicho
 	[SerializeField] public float currHealth;
-	[SerializeField] public float maxHealth = 10;
-	[SerializeField] public float minDamage = 2;
-	[SerializeField] public float maxDamage = 5;
+	[SerializeField] public float initMaxHealth = 10;
+	[SerializeField] public float initMinDamage = 2;
+	[SerializeField] public float initMaxDamage = 5;
 
-	[SerializeField] private float armour = 4;
-	[SerializeField] private float coldRes = 0;
-	[SerializeField] private float fireRes = 0;
-	[SerializeField] private float lightRes = 0;
-	[SerializeField] private float poisonRes = 1;
-	[SerializeField] private float evasion = 30; //30 
-	[SerializeField] private float accuracy = 25; //25 por ahi deberia ser la base
+	[SerializeField] private float initArmour = 4;
+	[SerializeField] private float initColdRes = 0;
+	[SerializeField] private float initFireRes = 0;
+	[SerializeField] private float initLightRes = 0;
+	[SerializeField] private float initPoisonRes = 1;
+	[SerializeField] private float initEvasion = 30; //30 
+	[SerializeField] private float initAccuracy = 25; //25 por ahi deberia ser la base
 	[SerializeField] public Types.Element elem ;
+
+    private float maxHealth = 10;
+	public float minDamage = 2;
+	public float maxDamage = 5;
+	
+	private float armour = 4;
+	private float coldRes = 0;
+	private float fireRes = 0;
+	private float lightRes = 0;
+	private float poisonRes = 1;
+	private float evasion = 30; //30 
+	private float accuracy = 25; //25 por ahi deberia ser la base
 
 	[SerializeField] public float minDmgPerLvl = 0;
 	[SerializeField] public float maxDmgPerLvl = 0;
@@ -36,10 +48,9 @@ public class EnemyStats : MonoBehaviour {
 	private Animator anim;
 	private Rigidbody2D rb;
 	public string enemyName;
-
 	public GameObject blood;
 	public bool isDead = false;
-
+	private LevelSettings zoneSettings;
 	public double exp; //experiencia que da el bicho cuando lo matan
 
 	private Renderer rend;
@@ -47,24 +58,27 @@ public class EnemyStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		zoneSettings = GameObject.Find ("LevelController").GetComponent<LevelSettings>();
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		rend = GetComponent<Renderer> ();
 		StartCoroutine (AlertSoundPlay ());
 		CalculateStats ();
-		currHealth = maxHealth;
+
 	}
 
 	private void CalculateStats(){
-		minDamage += (lvl-1) * minDmgPerLvl;
-		maxDamage += (lvl-1) * maxDmgPerLvl;
-		armour += (lvl-1) * armourPerLvl;
-		coldRes += (lvl-1) * coldResPerLvl;
-		fireRes += (lvl-1) * fireResPerLvl;
-		lightRes += (lvl-1) * lightResPerLvl;
-		poisonRes += (lvl-1) * poisonResPerLvl;
-		evasion += (lvl-1) * evasionPerLvl;
-		maxHealth += (lvl-1) * healthPerLvl;
+
+		minDamage = initMinDamage + (lvl-1) * minDmgPerLvl;
+		maxDamage = initMaxDamage + (lvl-1) * maxDmgPerLvl;
+		armour = initArmour + (lvl-1) * armourPerLvl;
+		coldRes = initColdRes + (lvl-1) * coldResPerLvl;
+		fireRes = initFireRes + (lvl-1) * fireResPerLvl;
+		lightRes = initLightRes + (lvl-1) * lightResPerLvl;
+		poisonRes = initPoisonRes + (lvl-1) * poisonResPerLvl;
+		evasion = initEvasion + (lvl-1) * evasionPerLvl;
+		maxHealth = initMaxHealth + (lvl-1) * healthPerLvl;
+		currHealth = maxHealth;
 	}
 
 	IEnumerator AlertSoundPlay(){
@@ -79,7 +93,10 @@ public class EnemyStats : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if (zoneSettings.enemiesLvl != lvl) {
+			lvl = zoneSettings.enemiesLvl;
+			CalculateStats();
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida

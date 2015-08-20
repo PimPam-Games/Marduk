@@ -5764,6 +5764,7 @@ GameObject:
   m_IsActive: 1
 --- !u!50 &608354409
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -5772,11 +5773,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!114 &608354410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5986,6 +5987,7 @@ Transform:
   m_RootOrder: 1
 --- !u!50 &768061804
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5055154, guid: 61f85360f187f8f469305a6730ef4f92,
     type: 2}
@@ -5995,11 +5997,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &768061805
 Transform:
   m_ObjectHideFlags: 0
@@ -6441,6 +6443,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1676252553
 MonoBehaviour:
@@ -6505,47 +6508,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 466892, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
       propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: poisonResPerLvl
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: elem
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: healthPerLvl
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: armourPerLvl
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: poisonRes
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: lightRes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: lvl
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: minDmgPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: maxDmgPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445282, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
-      propertyPath: evasion
-      value: 30
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
@@ -6768,6 +6731,7 @@ GameObject:
   - 82: {fileID: 2081052186}
   - 114: {fileID: 2081052187}
   - 114: {fileID: 2081052188}
+  - 114: {fileID: 2081052189}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -6926,6 +6890,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f44e888a212c104286706eebdcf63db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2081052189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2081052182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7333171f134d0a0479ff46cd6871d0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesLvl: 1
 --- !u!1 &2084449772
 GameObject:
   m_ObjectHideFlags: 0

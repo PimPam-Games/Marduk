@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.69728947, y: 1.08303332, z: 0}
+  m_LocalPosition: {x: -7.79128027, y: 9.69692039, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 465962}
@@ -96,6 +96,7 @@ Transform:
   m_RootOrder: 1
 --- !u!50 &5032744
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -104,11 +105,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 3
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &6147106
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -304,25 +305,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   currHealth: 0
-  maxHealth: 20
+  initMaxHealth: 20
+  initMinDamage: 2
+  initMaxDamage: 4
+  initArmour: 4
+  initColdRes: 0
+  initFireRes: 0
+  initLightRes: 0
+  initPoisonRes: 1
+  initEvasion: 30
+  initAccuracy: 25
+  elem: 4
   minDamage: 2
   maxDamage: 5
-  armour: 4
-  coldRes: 0
-  fireRes: 0
-  lightRes: 0
-  poisonRes: 1
-  evasiveness: 0
-  elem: 4
-  minDmgPerLvl: 0
-  maxDmgPerLvl: 0
+  minDmgPerLvl: 1
+  maxDmgPerLvl: 1
   healthPerLvl: 10
-  armourPerLvl: 0
+  armourPerLvl: 2
   coldResPerLvl: 0
   fireResPerLvl: 0
   lightResPerLvl: 0
-  poisonResPerLvl: 0
-  evasivenessPerLvl: 0
+  poisonResPerLvl: 4
+  evasionPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8257640}
   enemyName: Decimator

@@ -641,6 +641,7 @@ BoxCollider2D:
   m_Size: {x: 38.8723755, y: 592.874512}
 --- !u!50 &1291336264
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 5091862, guid: 330ff95edd435d948a747eea8ceea735,
     type: 2}
@@ -650,11 +651,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1349710378
 Prefab:
   m_ObjectHideFlags: 0
@@ -817,6 +818,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
+  m_RepeatDelay: .5
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &1767098885
 MonoBehaviour:
@@ -959,6 +961,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1954282477}
   - 114: {fileID: 1954282475}
+  - 114: {fileID: 1954282476}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -1003,6 +1006,18 @@ MonoBehaviour:
   - {fileID: 162140, guid: 0e72a7eb2839f0c4c8f308944de5b77f, type: 2}
   - {fileID: 193144, guid: 064920bee2538674da3b1e3b43a45df5, type: 2}
   - {fileID: 115082, guid: 28a01f31d38f19b4daa360ce342863b3, type: 2}
+--- !u!114 &1954282476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954282474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7333171f134d0a0479ff46cd6871d0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesLvl: 1
 --- !u!4 &1954282477
 Transform:
   m_ObjectHideFlags: 0
