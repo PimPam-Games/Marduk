@@ -10,10 +10,11 @@ public class ProjectileLauncher : MonoBehaviour {
 	public EnemyIAMovement ia;
 	public bool flipProjectile = false;
 	private GameObject p;
+	public EnemyStats stats;
 	// Use this for initialization
 	void Start () {
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(staticProjectile && p != null)
@@ -22,6 +23,7 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	public void LaunchProjectile(GameObject target){
 		p = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
+		p.GetComponent<ProjectileStats> ().enemyStats = stats;
 		if (toTargetDir && target != null) {
 			/*var dir = (target.transform.position - transform.position).normalized;
 			var dot = Vector2.Dot(dir, transform.right);*/

@@ -14,11 +14,10 @@ public class ProjectileStats : MonoBehaviour {
 	private float rotationChange;
 	public Animator anim;
 	private Rigidbody2D rb;
-
+	public EnemyStats enemyStats;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
 	}
@@ -36,11 +35,11 @@ public class ProjectileStats : MonoBehaviour {
 	void DestroyProjectile(){
 		Destroy (this.gameObject);
 	}
-
+	
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		if (col.gameObject.tag == "Player") {
 			float dmgDealt = Random.Range(minDmg,maxDmg);
-			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem);
+			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy);
 			if(col.transform.position.x < this.transform.position.x)
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 			else

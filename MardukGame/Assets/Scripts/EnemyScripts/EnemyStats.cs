@@ -41,6 +41,7 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float lightResPerLvl = 0;
 	[SerializeField] private float poisonResPerLvl = 0;
 	[SerializeField] private float evasionPerLvl = 0;
+	[SerializeField] private float accuracyPerLvl = 0;
 
 	public float blockChance = 0;
 
@@ -55,6 +56,9 @@ public class EnemyStats : MonoBehaviour {
 
 	private Renderer rend;
 
+	public float Accuracy{
+		get {return accuracy;}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -68,7 +72,6 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	private void CalculateStats(){
-
 		minDamage = initMinDamage + (lvl-1) * minDmgPerLvl;
 		maxDamage = initMaxDamage + (lvl-1) * maxDmgPerLvl;
 		armour = initArmour + (lvl-1) * armourPerLvl;
@@ -78,6 +81,7 @@ public class EnemyStats : MonoBehaviour {
 		poisonRes = initPoisonRes + (lvl-1) * poisonResPerLvl;
 		evasion = initEvasion + (lvl-1) * evasionPerLvl;
 		maxHealth = initMaxHealth + (lvl-1) * healthPerLvl;
+		accuracy = initAccuracy + (lvl-1) * accuracyPerLvl;
 		currHealth = maxHealth;
 	}
 
@@ -106,7 +110,7 @@ public class EnemyStats : MonoBehaviour {
 			float dmgDealt = Random.Range(minDamage,maxDamage);
 				if(p.defensives[p.Thorns] > 0)
 					Hit (p.defensives[p.Thorns], Types.Element.None);
-				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem);
+				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy);
 
 				if(col.transform.position.x < this.transform.position.x)
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
@@ -126,7 +130,7 @@ public class EnemyStats : MonoBehaviour {
 			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
 			return false;
 		}
-		Debug.Log ("change To Evade: " + chanceToEvade);
+		Debug.Log ("chance To Evade: " + chanceToEvade);
 		float[] blockProb = {1 - blockChance, blockChance};
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);

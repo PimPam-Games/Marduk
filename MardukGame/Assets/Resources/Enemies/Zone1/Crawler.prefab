@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.36999989, y: .649999976, z: 0}
+  m_LocalPosition: {x: 1051.77405, y: -48.6418877, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 433054}
@@ -282,6 +282,7 @@ MonoBehaviour:
   staticProjectile: 0
   ia: {fileID: 11437880}
   flipProjectile: 1
+  stats: {fileID: 11445282}
 --- !u!114 &11417600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,6 +374,7 @@ MonoBehaviour:
   lightResPerLvl: 0
   poisonResPerLvl: 2
   evasionPerLvl: 0
+  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8282012}
   enemyName: Crawler

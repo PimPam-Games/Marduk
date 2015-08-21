@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitCritChance = 0.05f;
 	public const float InitCritDmgMult = 2f;
 	public const float InitAccuracy = 50;
-	public const float InitEvasion = 65;
+	public const float InitEvasion = 60;
 
 	public static float currentHealth;
 	public static float currentMana;
@@ -183,6 +183,7 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MaxMana] = InitMana;
 		offensives [ManaPerSec] = InitManaRegen;
 		offensives [Accuracy] = InitAccuracy;
+		defensives [Evasiveness] = InitEvasion;
 		lvl = 1;
 		currentExp = 0;
 		oldNextLevelExp = 0;
@@ -222,11 +223,21 @@ public class PlayerStats : MonoBehaviour {
 		ManaUiController.UpdateManaBar (currentMana,offensives[MaxMana]);
 	}
 
-	public void Hit(float dmg, Types.Element type){ //se llama cuando un enemigo le pega al jugador
+	public void Hit(float dmg, Types.Element type, float accuracy){ //se llama cuando un enemigo le pega al jugador
+
 		if (ghostMode == true) {
 			return;
 		}
-
+		if (accuracy > -1) { //si es -1 siempre le pega
+			float chanceToEvade = (float)System.Math.Round ((float)(1 - accuracy / (accuracy + System.Math.Pow ((double)(defensives [Evasiveness] / 4), 0.8))), 2);
+			float[] cteProbs = {1 - chanceToEvade, chanceToEvade};
+			if (Utils.Choose (cteProbs) != 0) {
+				//anim.SetBool ("Blocking", true);
+				Debug.Log ("Esquivaste el ataque! ");
+				return;
+			}
+			//Debug.Log ("player chance To Evade: " + chanceToEvade);
+		}
 		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);
