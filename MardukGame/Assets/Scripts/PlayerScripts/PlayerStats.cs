@@ -55,6 +55,14 @@ public class PlayerStats : MonoBehaviour {
 	public float ghostModeTime = 1f;
 	private float ghostModeCount;
 
+	private bool chill = false;
+	private float chillTimer = 1f;
+	private float chillCount = 0;
+
+	private bool poisoned = false;
+	private float poisonedTimer = 0.5f;
+	private float poisonedCount = 0;
+
 	public static string playerName;
 
 	private SpriteRenderer[] renders;
@@ -88,7 +96,10 @@ public class PlayerStats : MonoBehaviour {
 		if (ghostModeCount <= 0 && ghostMode) {
 			ghostMode = false;
 			for(int i=0 ; i<renders.Length-1;i++){
-				renders[i].color = new Color (1f, 1f, 1f, 1f);
+				if(chill)
+					renders[i].color = new Color (0f, 1f, 1f, 1f);
+				else
+					renders[i].color = new Color (1f, 1f, 1f, 1f);
 			}
 		}
 		if (currentHealth <= 0 && !isDead) {
@@ -97,6 +108,8 @@ public class PlayerStats : MonoBehaviour {
 			//gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false ;//esto es provisorio HAY QUE CAMBIARLO!
 		}
 		UpdateMana ();
+		chillUpdate ();
+		Debug.Log ("anim speed: " + anim.speed);
 	}
 
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
@@ -111,9 +124,23 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
 		offensives[MgDmg] = atributes[Spirit] * 0.25f + InitMgDmg;
 		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
+		offensives [Accuracy] = atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
+		defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
 		currentHealth = defensives[MaxHealth];
 		currentMana = offensives [MaxMana];
 		UpdateMana ();
+	}
+
+	private void chillUpdate(){
+		chillCount -= Time.deltaTime;
+		if (chillCount <= 0 && chill) {
+			chill = false;
+			anim.speed += 0.5f;
+			utils[MovementSpeed] += 2;
+			for(int i=0 ; i<renders.Length-1;i++){
+				renders[i].color = new Color (1f, 1f, 1f, 1f);
+			}
+		}
 	}
 
 	public static void AddAtribute(int atribute){
@@ -125,6 +152,8 @@ public class PlayerStats : MonoBehaviour {
 				break;
 			case 1:
 				atributes [Dextery]++;
+				offensives [Accuracy] +=  2 ;
+				defensives [Evasiveness] +=  2; 
 				break;
 			case 2:
 				atributes [Vitality]++;
@@ -259,8 +288,17 @@ public class PlayerStats : MonoBehaviour {
 			//Debug.Log("me pegaron man! :(");
 			break;
 		case Types.Element.Cold:
-			//Debug.Log("cold damage");
+			Debug.Log("congelado");
 			realDmg -= Math.Abs((realDmg * (defensives[ColdRes]/100)));
+			chillCount = chillTimer;
+			if(!chill){
+				utils[MovementSpeed] -= 2;
+				anim.speed -= 0.5f;
+			}
+			chill = true;
+			for(int i=0 ; i<renders.Length-1;i++){
+				renders[i].color = new Color (0f, 1f, 1f, 1f);
+			}
 			break;
 		case Types.Element.Fire:
 			realDmg -= Math.Abs((realDmg * (defensives[FireRes]/100)));

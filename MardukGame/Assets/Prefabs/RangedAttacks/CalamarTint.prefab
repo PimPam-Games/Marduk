@@ -34,6 +34,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5073110
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -42,11 +43,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5865342
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a52e11b8b0e7046a495a71f8ba4b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elem: 4
+  elem: 3
   minDmg: 1
   maxDmg: 3
   particleSpeed: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
   dontDestroy: 0
   hasSplashAnim: 1
   anim: {fileID: 9596620}
+  enemyStats: {fileID: 0}
 --- !u!212 &21292496
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -128,7 +130,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171128}

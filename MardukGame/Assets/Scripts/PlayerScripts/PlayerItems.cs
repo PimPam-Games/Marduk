@@ -284,6 +284,8 @@ public class PlayerItems: MonoBehaviour {
 			p.offensives [p.MaxMana] -= oldItem.Atributes [p.Spirit] * 3;
 			p.offensives[p.MgDmg] -= oldItem.Atributes[p.Spirit] * 0.25f;
 			p.offensives[p.ManaPerSec] -= oldItem.Atributes[p.Spirit] * 0.1f;
+			p.defensives[p.Evasiveness] -= oldItem.Atributes[p.Dextery] * 2;
+			p.offensives[p.Accuracy] -= oldItem.Atributes[p.Dextery] * 2;
 		}
 		if (newItem != null) {
 			p.defensives [p.MaxHealth] += newItem.Atributes [p.Vitality] * 3; //un putno de vitalidad son 3 de vida
@@ -292,6 +294,8 @@ public class PlayerItems: MonoBehaviour {
 			p.offensives [p.MaxMana] += newItem.Atributes [p.Spirit] * 3; // uno de espiritu da 3 de mana
 			p.offensives[p.MgDmg] += newItem.Atributes[p.Spirit] * 0.25f; // 4 de espiritu da 1 de daño magico
 			p.offensives[p.ManaPerSec] += newItem.Atributes[p.Spirit] * 0.1f; // cada 10 de espiritu 1 de mana regen por segundo
+			p.defensives[p.Evasiveness] += newItem.Atributes[p.Dextery] * 2;
+			p.offensives[p.Accuracy] += newItem.Atributes[p.Dextery] * 2;
 			//utils [MovementSpeed] = InitMoveSpeed + (InitMoveSpeed * porcentaje / 100 )
 		}
 	}

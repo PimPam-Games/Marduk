@@ -111,37 +111,39 @@ public class MyGUI : MonoBehaviour {
 		GUI.Label (new Rect (250*dif, 270*dif, 100*dif, 20*dif), p.offensives[p.MinDmg]+" - "+p.offensives[p.MaxDamge]);
 		GUI.Label (new Rect (65*dif, 285*dif, 100*dif, 20*dif), "Attacks Per Second");
 		GUI.Label (new Rect (250*dif, 285*dif, 100*dif, 20*dif) ,(System.Math.Round(p.offensives[p.BaseAttacksPerSecond] + p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100),2)).ToString());
-		GUI.Label (new Rect (65*dif, 300*dif, 100*dif, 20*dif), "Thorns");
-		GUI.Label (new Rect (250*dif, 300*dif, 100*dif, 20*dif), p.defensives[p.Thorns].ToString());
-		GUI.Label (new Rect (65*dif, 315*dif, 100*dif, 20*dif), "Critical Chance");
-		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), (p.offensives[p.CritChance]*100).ToString() + "%");
-		GUI.Label (new Rect (65*dif, 330*dif, 100*dif, 20*dif), "Crit Dmg Multiplier");
-		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), p.offensives[p.CritDmgMultiplier].ToString());
-		GUI.Label (new Rect (65*dif, 345*dif, 100*dif, 20*dif), "Magic Damage");
-		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), p.offensives[p.MgDmg].ToString());
-		GUI.Label (new Rect (65*dif, 360*dif, 100*dif, 20*dif), "Mana Per Second");
-		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.offensives[p.ManaPerSec].ToString());
+		GUI.Label (new Rect (65*dif, 300*dif, 100*dif, 20*dif), "Accuracy");
+		GUI.Label (new Rect (250*dif, 300*dif, 100*dif, 20*dif), p.offensives[p.Accuracy].ToString());
+		GUI.Label (new Rect (65*dif, 315*dif, 100*dif, 20*dif), "Thorns");
+		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), p.defensives[p.Thorns].ToString());
+		GUI.Label (new Rect (65*dif, 330*dif, 100*dif, 20*dif), "Critical Chance");
+		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), (p.offensives[p.CritChance]*100).ToString() + "%");
+		GUI.Label (new Rect (65*dif, 345*dif, 100*dif, 20*dif), "Crit Dmg Multiplier");
+		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), p.offensives[p.CritDmgMultiplier].ToString());
+		GUI.Label (new Rect (65*dif, 360*dif, 100*dif, 20*dif), "Magic Damage");
+		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.offensives[p.MgDmg].ToString());
+		GUI.Label (new Rect (65*dif, 375*dif, 100*dif, 20*dif), "Mana Per Second");
+		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.offensives[p.ManaPerSec].ToString());
 	}
 
 	private void DisplayDfensives(){
 		GUI.Label (new Rect (65*dif, 270*dif, 200*dif, 20*dif), "Defense");
 		GUI.Label (new Rect (250*dif, 270*dif, 100*dif, 20*dif), p.defensives[p.Defense].ToString());
-		GUI.Label (new Rect (65*dif, 285*dif, 200*dif, 20*dif), "Life Regenerated Per Second");
-		GUI.Label (new Rect (250*dif, 285*dif, 100*dif, 20*dif), p.defensives[p.LifePerSecond].ToString());
-		GUI.Label (new Rect (65*dif, 300*dif, 200*dif, 20*dif), "Cold Resistance");
-		GUI.Label (new Rect (250*dif, 300*dif, 100*dif, 20*dif), p.defensives[p.ColdRes].ToString());
-		GUI.Label (new Rect (65*dif, 315*dif, 200*dif, 20*dif), "Fire Resistance");
-		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), p.defensives[p.FireRes].ToString());
-		GUI.Label (new Rect (65*dif, 330*dif, 200*dif, 20*dif), "Lightning Resistance");
-		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), p.defensives[p.LightRes].ToString());
-		GUI.Label (new Rect (65*dif, 345*dif, 200*dif, 20*dif), "Poison Resistance");
-		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), p.defensives[p.PoisonRes].ToString());
-		GUI.Label (new Rect (65*dif, 360*dif, 200*dif, 20*dif), "Block Chance");
-		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.defensives[p.BlockChance].ToString());
-		GUI.Label (new Rect (65*dif, 375*dif, 200*dif, 20*dif), "Evasiveness");
-		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.defensives[p.Evasiveness].ToString());
-		GUI.Label (new Rect (65*dif, 390*dif, 200*dif, 20*dif), "Life Gained Per Hit");
-		GUI.Label (new Rect (250*dif, 390*dif, 100*dif, 20*dif), p.defensives[p.LifePerHit].ToString());
+		GUI.Label (new Rect (65*dif, 285*dif, 200*dif, 20*dif), "Evasion Rating");
+		GUI.Label (new Rect (250*dif, 285*dif, 100*dif, 20*dif), p.defensives[p.Evasiveness].ToString());
+		GUI.Label (new Rect (65*dif, 300*dif, 200*dif, 20*dif), "Life Regenerated Per Second");
+		GUI.Label (new Rect (250*dif, 300*dif, 100*dif, 20*dif), p.defensives[p.LifePerSecond].ToString());
+		GUI.Label (new Rect (65*dif, 315*dif, 200*dif, 20*dif), "Cold Resistance");
+		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), p.defensives[p.ColdRes].ToString());
+		GUI.Label (new Rect (65*dif, 330*dif, 200*dif, 20*dif), "Fire Resistance");
+		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), p.defensives[p.FireRes].ToString());
+		GUI.Label (new Rect (65*dif, 345*dif, 200*dif, 20*dif), "Lightning Resistance");
+		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), p.defensives[p.LightRes].ToString());
+		GUI.Label (new Rect (65*dif, 360*dif, 200*dif, 20*dif), "Poison Resistance");
+		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.defensives[p.PoisonRes].ToString());
+		GUI.Label (new Rect (65*dif, 375*dif, 200*dif, 20*dif), "Block Chance");
+		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.defensives[p.BlockChance].ToString());
+		GUI.Label (new Rect (65*dif, 405*dif, 200*dif, 20*dif), "Life Gained Per Hit");
+		GUI.Label (new Rect (250*dif, 405*dif, 100*dif, 20*dif), p.defensives[p.LifePerHit].ToString());
 	}
 
 	private void DisplayMisc(){

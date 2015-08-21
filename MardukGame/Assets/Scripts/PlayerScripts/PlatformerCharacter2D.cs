@@ -37,8 +37,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public AudioSource walkGrassSound;
 
 		
-		public float knockback = 2;
-		public float knockbackLength = 0.4f;
+		public float knockback = 15f;
+		public float knockbackLength = 0.2f;
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
 
