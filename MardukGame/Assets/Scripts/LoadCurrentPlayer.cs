@@ -5,7 +5,6 @@ using g = GameController;
 public class LoadCurrentPlayer : MonoBehaviour {
 
 	private float loadCount;
-
 	// Use this for initialization
 	void Start () {
 
@@ -14,10 +13,9 @@ public class LoadCurrentPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		loadCount += Time.deltaTime;
-		if (loadCount > 0.2f && g.nameToLoad != null ){
-
+		if (loadCount > 0.2f && !g.levelLoaded ){
 			Persistence.Load (GameController.nameToLoad);
-			g.nameToLoad = null;
+			g.levelLoaded = true;
 			Debug.Log ("Load Data");
 		}
 	}

@@ -23,8 +23,41 @@ public class Persistence : MonoBehaviour {
 	}
 
 	public static void Delete(string nameToDelete){
-		if(File.Exists (Application.persistentDataPath + "/" + nameToDelete + ".dat"))
+		SavedGamesData data;
+		SavedGamesData dataAux;
+		FileStream file;
+		dataAux = new SavedGamesData ();
+		data = new SavedGamesData ();
+		data.slots = new string[CantSlots];
+		if (File.Exists (Application.persistentDataPath + "/savedGames.dat")) {
+			BinaryFormatter bf = new BinaryFormatter();
+			file =  File.Open(Application.persistentDataPath + "/savedGames.dat", FileMode.Open);
+			dataAux = (SavedGamesData)bf.Deserialize(file);
+			file.Close ();
+			file = File.Create (Application.persistentDataPath + "/savedGames.dat");
+			data.slots = dataAux.slots;
+			data.cantSavedGames = dataAux.cantSavedGames;
+			int i;
+			for (i =0; i<data.cantSavedGames; i++) {
+				if(data.slots[i] == nameToDelete){
+
+					Debug.Log("personaje eliminado de la lista");
+					break;
+				}
+			}
+			int j;
+			for(j = i; j<data.cantSavedGames-1; j++){
+				data.slots[j] = data.slots[j+1];
+			}
+			data.slots[data.cantSavedGames-1] = null;
+			data.cantSavedGames--;
+			bf.Serialize (file,data);
+			file.Close ();
+		}
+		if (File.Exists (Application.persistentDataPath + "/" + nameToDelete + ".dat")) {
 			File.Delete (Application.persistentDataPath + "/" + nameToDelete + ".dat");
+			Debug.Log("Archivo del personaje eliminado");
+		}
 	}
 
 	public static void AddSavedGame(string newName ){
@@ -44,7 +77,14 @@ public class Persistence : MonoBehaviour {
 			data.slots = dataAux.slots;
 			data.cantSavedGames = dataAux.cantSavedGames;
 		}
-
+		for (int i =0; i<data.cantSavedGames; i++) {
+			if(data.slots[i] == newName){
+				Debug.Log("El nombre ya existe");
+				bf.Serialize (file,data);
+				file.Close ();
+				return;
+			}
+		}
 		data.slots [data.cantSavedGames] = newName;
 		data.cantSavedGames++;
 		Debug.Log (data.cantSavedGames);
@@ -111,6 +151,7 @@ public class Persistence : MonoBehaviour {
 	}
 
 	public static void Load(string characterName){
+
 		if(File.Exists(Application.persistentDataPath + "/"+characterName + ".dat")){
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file =  File.Open(Application.persistentDataPath + "/"+characterName + ".dat", FileMode.Open);

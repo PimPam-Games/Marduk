@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour {
 	public static Dictionary<string,List<GameObject>> enemiesPerLevel = new Dictionary<string,List<GameObject>>();
 	public static Dictionary<string,List<GameObject>> chunksPerZone = new Dictionary<string,List<GameObject>> ();
 	public static string currLevelName;
+	public static bool levelLoaded = false;
 
 	public AudioSource music1;
 	void Awake(){
@@ -50,9 +51,6 @@ public class GameController : MonoBehaviour {
 			notVisitedLevels.Add("level" + i);
 		}
 		//Debug.Log ("voy a cargar " + nameToLoad);
-		//if (nameToLoad != null) {
-			
-		//}
 		music1.Play ();
 	}
 
