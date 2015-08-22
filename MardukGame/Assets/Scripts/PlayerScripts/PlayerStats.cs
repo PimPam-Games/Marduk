@@ -60,8 +60,9 @@ public class PlayerStats : MonoBehaviour {
 	private float chillCount = 0;
 
 	private bool poisoned = false;
-	private float poisonedTimer = 0.5f;
+	private float poisonedTimer = 1f;
 	private float poisonedCount = 0;
+	private float poisonedDmg = 0.4f;
 
 	public static string playerName;
 
@@ -98,8 +99,12 @@ public class PlayerStats : MonoBehaviour {
 			for(int i=0 ; i<renders.Length-1;i++){
 				if(chill)
 					renders[i].color = new Color (0f, 1f, 1f, 1f);
-				else
-					renders[i].color = new Color (1f, 1f, 1f, 1f);
+				else{
+					if(poisoned)
+						renders[i].color = new Color (0, 1f, 0, 1f);
+					else
+						renders[i].color = new Color (1f, 1f, 1f, 1f);
+				}
 			}
 		}
 		if (currentHealth <= 0 && !isDead) {
@@ -140,6 +145,23 @@ public class PlayerStats : MonoBehaviour {
 			for(int i=0 ; i<renders.Length-1;i++){
 				renders[i].color = new Color (1f, 1f, 1f, 1f);
 			}
+		}
+	}
+
+	IEnumerator PoisonedUpdate () {
+		for(int i=0 ; i<renders.Length-1;i++){
+			renders[i].color = new Color (0, 1f, 0, 1f);
+		}
+		while (poisonedCount >= 0 && !isDead) {
+			yield return new WaitForSeconds (0.2f);
+			poisonedCount -= 0.2f;
+			currentHealth -= poisonedDmg;
+			if (currentHealth < 0)
+				currentHealth = 0;
+		}
+		poisoned = false;
+		for(int i=0 ; i<renders.Length-1;i++){
+			renders[i].color = new Color (1f, 1f, 1f, 1f);
 		}
 	}
 
@@ -306,7 +328,11 @@ public class PlayerStats : MonoBehaviour {
 			break;
 		case Types.Element.Poison:
 			realDmg -= Math.Abs((realDmg * (defensives[PoisonRes]/100)));
-			//Debug.Log("poison damage");
+			poisonedDmg = (0.3f * realDmg)/5; // 30% del daño infligido en 1 seg
+			poisonedCount = poisonedTimer;
+			if(!poisoned)
+				StartCoroutine(PoisonedUpdate());
+			poisoned = true;
 			break;
 		case Types.Element.Lightning:
 			realDmg -= Math.Abs((realDmg * (defensives[LightRes]/100)));

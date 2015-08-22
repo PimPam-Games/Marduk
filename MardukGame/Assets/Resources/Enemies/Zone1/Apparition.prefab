@@ -282,7 +282,7 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
-  elem: 0
+  elem: 3
   minDamage: 2
   maxDamage: 5
   minDmgPerLvl: 0
@@ -294,12 +294,12 @@ MonoBehaviour:
   lightResPerLvl: 0
   poisonResPerLvl: 0
   evasionPerLvl: 0
+  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8294376}
   enemyName: Apparition
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
-  zoneSettings: {fileID: 0}
   exp: 10
 --- !u!212 &21235842
 SpriteRenderer:
@@ -333,7 +333,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101872}

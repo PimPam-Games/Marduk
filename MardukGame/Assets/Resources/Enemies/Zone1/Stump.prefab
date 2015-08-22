@@ -269,7 +269,7 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
-  elem: 4
+  elem: 0
   minDamage: 1
   maxDamage: 4
   minDmgPerLvl: 1
@@ -281,6 +281,7 @@ MonoBehaviour:
   lightResPerLvl: 0
   poisonResPerLvl: 0
   evasionPerLvl: 0
+  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8274204}
   enemyName: Stump
@@ -347,7 +348,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117550}
