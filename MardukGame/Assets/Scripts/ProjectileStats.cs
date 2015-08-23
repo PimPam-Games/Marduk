@@ -15,6 +15,7 @@ public class ProjectileStats : MonoBehaviour {
 	public Animator anim;
 	private Rigidbody2D rb;
 	public EnemyStats enemyStats;
+	private bool alreadyHit = false; //booleano para evitar que le pegue dos veces al jugador
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -37,20 +38,24 @@ public class ProjectileStats : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
-		if (col.gameObject.tag == "Player") {
+		if (col.gameObject.tag == "Player" && !alreadyHit) {
+			bool hitConfirmed = false;
 			float dmgDealt = Random.Range(minDmg,maxDmg);
-			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy);
-			if(col.transform.position.x < this.transform.position.x)
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-			else
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-			if(!dontDestroy){
-				if(hasSplashAnim){
+			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy);
+			alreadyHit = true;
+			if(hitConfirmed){
+				if(col.transform.position.x < this.transform.position.x)
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+				else
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+				if(!dontDestroy){
+					if(hasSplashAnim){
 
-					anim.SetBool("hit",true);
-					rb.isKinematic = true;
-				}else{
-					Destroy(this.gameObject);
+						anim.SetBool("hit",true);
+						rb.isKinematic = true;
+					}else{
+						Destroy(this.gameObject);
+					}
 				}
 			}
 		}

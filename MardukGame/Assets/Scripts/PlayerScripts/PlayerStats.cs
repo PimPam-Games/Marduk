@@ -114,7 +114,6 @@ public class PlayerStats : MonoBehaviour {
 		}
 		UpdateMana ();
 		chillUpdate ();
-		Debug.Log ("anim speed: " + anim.speed);
 	}
 
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
@@ -274,18 +273,19 @@ public class PlayerStats : MonoBehaviour {
 		ManaUiController.UpdateManaBar (currentMana,offensives[MaxMana]);
 	}
 
-	public void Hit(float dmg, Types.Element type, float accuracy){ //se llama cuando un enemigo le pega al jugador
+	public bool Hit(float dmg, Types.Element type, float accuracy){ //se llama cuando un enemigo le pega al jugador
 
 		if (ghostMode == true) {
-			return;
+			return false;
 		}
 		if (accuracy > -1) { //si es -1 siempre le pega
 			float chanceToEvade = (float)System.Math.Round ((float)(1 - accuracy / (accuracy + System.Math.Pow ((double)(defensives [Evasiveness] / 4), 0.8))), 2);
 			float[] cteProbs = {1 - chanceToEvade, chanceToEvade};
 			if (Utils.Choose (cteProbs) != 0) {
-				//anim.SetBool ("Blocking", true);
+				if(!anim.GetBool("Attacking"))
+					anim.SetBool ("Evading", true);
 				Debug.Log ("Esquivaste el ataque! ");
-				return;
+				return false;
 			}
 			//Debug.Log ("player chance To Evade: " + chanceToEvade);
 		}
@@ -294,7 +294,7 @@ public class PlayerStats : MonoBehaviour {
 			anim.SetBool ("Blocking", true);
 			blockSound.Play();
 			Debug.Log ("Bloqueaste el ataque! " );
-			return;
+			return true;
 		}
 
 		ghostMode = true; //ghost mode
@@ -347,9 +347,14 @@ public class PlayerStats : MonoBehaviour {
 			realDmg = 0;
 		currentHealth -= realDmg;
 		ui.TakeDamage (realDmg);
+		return true;
 	}
 
 	public void stopBlocking(){
 		anim.SetBool ("Blocking",false);
+	}
+
+	public void stopEvading(){
+		anim.SetBool ("Evading",false);
 	}
 }
