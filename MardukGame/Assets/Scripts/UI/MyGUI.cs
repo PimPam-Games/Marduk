@@ -269,7 +269,9 @@ public class MyGUI : MonoBehaviour {
 						//	if(Time.time - doubleClickTimer < DBCLICK_TIMER_THRESHOLD){
 						if(Input.GetMouseButtonUp(0)) {
 
-							if(PlayerItems.Inventory[cnt].Type == ItemTypes.Weapon){ // arma equipada
+							if(PlayerItems.Inventory[cnt].Type == ItemTypes.Weapon || PlayerItems.Inventory[cnt].Type == ItemTypes.RangedWeapon){ // arma equipada
+								if(PlayerItems.EquipedShield != null && PlayerItems.Inventory[cnt].Type == ItemTypes.RangedWeapon)
+									return;
 								if(PlayerItems.EquipedWeapon == null){
 									PlayerItems.EquipedWeapon = PlayerItems.Inventory[cnt];
 									PlayerItems.Inventory.RemoveAt(cnt);
@@ -309,6 +311,8 @@ public class MyGUI : MonoBehaviour {
 									}
 									else{
 										if(PlayerItems.Inventory[cnt].Type == ItemTypes.Shield){ // escudo equipado
+											if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon )
+												return;
 											if(PlayerItems.EquipedShield == null){  
 												PlayerItems.EquipedShield = PlayerItems.Inventory[cnt];
 												PlayerItems.Inventory.RemoveAt(cnt);

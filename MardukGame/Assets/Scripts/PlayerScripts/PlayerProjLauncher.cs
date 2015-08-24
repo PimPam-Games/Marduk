@@ -39,9 +39,12 @@ public class PlayerProjLauncher : MonoBehaviour {
 			else
 				proj.GetComponent<ProjectileMovement> ().moveDirX = -1;
 		}
-		if (flipProjectile && character.isFacingRight())
+		if (flipProjectile && character.isFacingRight ()) {
 			proj.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));
-		else
+			proj.transform.rotation = Quaternion.Euler (0, 0, 90);
+		} else {
 			proj.GetComponent<Rigidbody2D> ().AddForce (force);
+			proj.transform.rotation = Quaternion.Euler(0,0,-90);
+		}
 	}
 }

@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using p = PlayerStats;
 
 public class PlayerItems: MonoBehaviour {
-	
+
 	private static Transform weapon;
-    
+	private static Transform rangedWeapon;
+	private static Transform quiver;
+	private static Transform arrow;
+	private static SpriteRenderer rangedWeaponRenderer;
 	private static SpriteRenderer weaponRenderer;
+	private static SpriteRenderer quiverRenderer;
+	public static SpriteRenderer arrowRenderer;
 	private static ReSkinAnimation reSkin;
 	private static List<Item> inventory = new List<Item>();
 
@@ -55,15 +60,25 @@ public class PlayerItems: MonoBehaviour {
 			UpdateStats(oldWeapon,equipedWeapon);
 			if(equipedWeapon==null){
 				weaponRenderer.sprite = null;
+				rangedWeaponRenderer.sprite = null;
+				quiverRenderer.enabled = false;
 				p.offensives[p.BaseAttacksPerSecond] = 1;
 				return;
 			}
 			else
 				p.offensives[p.BaseAttacksPerSecond] = equipedWeapon.Offensives[p.BaseAttacksPerSecond];
-			weaponRenderer.sprite = equipedWeapon.sprite;
-			Destroy(weapon.GetComponent<PolygonCollider2D>());
-			weapon.gameObject.AddComponent<PolygonCollider2D>();
-
+			if(equipedWeapon.type == ItemTypes.Weapon){
+				weaponRenderer.sprite = equipedWeapon.sprite;
+				rangedWeaponRenderer.sprite = null;
+				quiverRenderer.enabled = false;
+				Destroy(weapon.GetComponent<PolygonCollider2D>());
+				weapon.gameObject.AddComponent<PolygonCollider2D>();
+			}
+			else{
+				rangedWeaponRenderer.sprite = equipedWeapon.sprite;
+				quiverRenderer.enabled = true;
+				weaponRenderer.sprite = null;
+			}
 		}
 	}
 
@@ -148,10 +163,7 @@ public class PlayerItems: MonoBehaviour {
 					if(equipedAmulet!=null)p.utils[i] += equipedAmulet.Utils[i];
 				}
 			}
-			/*if(equipedAmulet==null)
-				reSkin.ReSkinHelmet("head");
-			else
-				reSkin.ReSkinHelmet(equipedAmulet.Name);*/
+		
 			UpdateStats(oldAmulet,equipedAmulet);
 		}
 	}
@@ -251,7 +263,6 @@ public class PlayerItems: MonoBehaviour {
 		set{
 			Item oldShield = equipedShield;
 			equipedShield = value;
-
 			for(int i = 0; i<p.offensives.Length; i++){ //el arreglo mas largo es offensives
 				if(oldShield!=null) p.offensives[i] -= oldShield.Offensives[i];
 				if(equipedShield!=null) p.offensives[i] += equipedShield.Offensives[i];
@@ -317,7 +328,28 @@ public class PlayerItems: MonoBehaviour {
 			if (weapon != null) {
 				weaponRenderer = weapon.GetComponent<SpriteRenderer> ();
 			} else
-				Debug.LogError ("Weapon does not found!");
+				Debug.LogError ("Weapon does not found in Player Graphics!");
+		}
+		if (rangedWeaponRenderer == null) {
+			rangedWeapon = transform.Find ("Graphics/body/back_arm/back_forearm/Bow");
+			if (rangedWeapon != null) {
+				rangedWeaponRenderer = rangedWeapon.GetComponent<SpriteRenderer> ();
+			} else
+				Debug.LogError ("RangedWeapon does not found in Player Graphics!");
+		}
+		if (quiverRenderer == null) {
+			quiver = transform.Find ("Graphics/body/front_thigh/Quiver");
+			if (quiver != null) {
+				quiverRenderer = quiver.GetComponent<SpriteRenderer> ();
+			} else
+				Debug.LogError ("quiver does not found in Player Graphics!");
+		}
+		if (arrowRenderer == null) {
+			arrow = transform.Find ("Graphics/body/front_arm/front_forearm/Arrow");
+			if (arrow != null) {
+				arrowRenderer = arrow.GetComponent<SpriteRenderer> ();
+			} else
+				Debug.LogError ("arrow does not found in Player Graphics!");
 		}
 	}
 }

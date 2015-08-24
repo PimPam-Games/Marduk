@@ -13,7 +13,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	void Start () {
 		player =  GameObject.Find ("Player");
 		if (player != null) {
-			projLaunchers = player.gameObject.GetComponentsInChildren<PlayerProjLauncher> ();
+			projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
 			HasChanged ();
 		}
 
@@ -23,7 +23,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		if (player == null ){
 			player = GameObject.FindGameObjectWithTag("Player");
 			if (player != null){
-				projLaunchers = player.gameObject.GetComponentsInChildren<PlayerProjLauncher> ();
+				projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
 				HasChanged ();
 			}
 		}

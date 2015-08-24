@@ -41,7 +41,7 @@ public class Item : MonoBehaviour {
 			Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
 			Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);
 		} else {
-			if(type == ItemTypes.Armour || type == ItemTypes.Helmet) //el item es amour o casco
+			if(type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
 				Defensives [p.Defense] = (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
 			else{ 
 				if(type == ItemTypes.Shield){// el item es un escudo
@@ -143,11 +143,11 @@ public class Item : MonoBehaviour {
 			tooltip = "<color=White>" + Name + "</color> \n";
 		tooltip += "Rarity: " + Rarity + "\n" + 
 					"Type: " + Type + "\n";
-		if (type == ItemTypes.Weapon) {
+		if (type == ItemTypes.Weapon || type == ItemTypes.RangedWeapon) {
 			tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
 			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n";
 		}
-		if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Shield)
+		if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Shield || type == ItemTypes.Belt)
 			tooltip += "defense: " + defensives [p.Defense] + "\n";
 		if(type == ItemTypes.Shield)
 			tooltip += "block chance: " + defensives[p.BlockChance] + "% \n";
@@ -202,6 +202,7 @@ public enum RarityTypes{
 
 public enum ItemTypes{
 	Weapon,
+	RangedWeapon,
 	Helmet,
 	Armour,
 	Shield,

@@ -46,7 +46,6 @@
 			
 			if (Input.GetButton ("Fire1")) {
 				character.Attack ();
-					
 			}
 		} else
 			character.Move (0, false, false);

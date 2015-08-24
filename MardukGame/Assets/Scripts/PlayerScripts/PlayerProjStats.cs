@@ -16,7 +16,9 @@ public class PlayerProjStats : MonoBehaviour {
 	private float rotationChange;
 	public Animator anim;
 	private Rigidbody2D rb;
-	
+	public AudioSource hitEnemySound;
+	public AudioSource criticalHitSound;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -42,13 +44,37 @@ public class PlayerProjStats : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		if (col.gameObject.tag == "Enemy") {
-			float dmgDealt = Random.Range(minDmg,maxDmg);
-			dmgDealt += p.offensives[p.MgDmg];
-			col.gameObject.GetComponent<EnemyStats>().Hit(dmgDealt, elem);
-			/*if(col.transform.position.x < this.transform.position.x)
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-			else
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);*/
+			EnemyStats enemy = col.gameObject.GetComponent<EnemyStats>();
+			if(elem == Types.Element.None){
+				if(p.LifePerHit > 0 )
+					p.currentHealth += p.defensives[p.LifePerHit];
+				float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
+				float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+				bool attackResult; 
+				if(Utils.Choose(critDmgProb) != 0){
+					damage *= p.offensives[p.CritDmgMultiplier];
+					attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+					if(attackResult){
+						criticalHitSound.Play();
+						Debug.Log("Critical Dmg: " + damage);
+					}
+				}
+				else{
+					attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+					if(attackResult){
+						hitEnemySound.Play();
+					}
+				}
+			}
+			else{
+				float dmgDealt = Random.Range(minDmg,maxDmg);
+				dmgDealt += p.offensives[p.MgDmg];
+				enemy.Hit(dmgDealt, elem);
+				/*if(col.transform.position.x < this.transform.position.x)
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+				else
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);*/
+			}
 			if(!dontDestroy){
 				if(hasSplashAnim){
 					

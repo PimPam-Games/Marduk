@@ -20,8 +20,9 @@ public class PlatformerCharacter2D : MonoBehaviour
         [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask whatIsGround; // A mask determining what is ground to the character
 		[SerializeField] private GameObject weapon;
-
+		[SerializeField] private GameObject RangedWeapon;
 		public PlayerProjLauncher[] projLaunchers;
+		public PlayerProjLauncher bowLauncher;
 		private SpellsPanel spellsPanel;
 
 		private Transform backforeArm;
@@ -33,9 +34,11 @@ public class PlatformerCharacter2D : MonoBehaviour
         private Animator anim; // Reference to the player's animator component.
 		private Rigidbody2D rb;
 		private Weapon weaponScript;
+		private Weapon rangedWeaponScript;
 		public AudioSource attackSound;
 		public AudioSource walkGrassSound;
-
+		
+		public GameObject bowprojectile; //para setearle la flecha al arco por las dudas que no aparezca
 		
 		public float knockback = 15f;
 		public float knockbackLength = 0.2f;
@@ -53,6 +56,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 			rb = GetComponent<Rigidbody2D> ();
 			if(weapon != null)
 				weaponScript = weapon.GetComponent<Weapon> ();
+			if(RangedWeapon != null)
+				rangedWeaponScript = RangedWeapon.GetComponent<Weapon> ();
 
         }
 
@@ -97,9 +102,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (weaponScript == null)
 				return;
 			if (weaponScript.canAttack) {
-				attackSound.Play();
-				anim.SetBool ("Attacking", true);
-				
+				if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon){
+					attackSound.Play();
+					anim.SetBool ("Attacking", true);
+				}
+				else{ //si es el arco
+					anim.SetBool ("BowAttacking", true);	
+				}
 			}
 		}
 
@@ -240,6 +249,20 @@ public class PlatformerCharacter2D : MonoBehaviour
                 rb.AddForce(new Vector2(0f, jumpForce));
             }
         }
+	    
+		public  void EnableArrowRender(){
+			PlayerItems.arrowRenderer.enabled = true;
+		}
+
+		public  void DisableArrowRender(){
+			PlayerItems.arrowRenderer.enabled = false;
+		}
+
+		public void LaunchArrow(){
+			if (bowLauncher.projectile == null)
+				bowLauncher.projectile = bowprojectile;
+			bowLauncher.LaunchProjectile ();
+		}
 
 		public void Fall(){ //si el jugador suelta boton de saltar se llama este metodo
 			//Debug.Log ("Fall");
@@ -268,7 +291,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		public void Idle(){
 			anim.SetBool ("Attacking",false);
-			anim.speed -= Weapon.animSpeed;
+			anim.SetBool ("BowAttacking",false);
+			if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.type == ItemTypes.Weapon)
+				anim.speed -= Weapon.animSpeed;
 		}
 		
         private void Flip()
