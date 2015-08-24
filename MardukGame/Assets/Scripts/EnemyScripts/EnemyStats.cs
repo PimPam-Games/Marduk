@@ -53,7 +53,7 @@ public class EnemyStats : MonoBehaviour {
 	public bool isDead = false;
 	private LevelSettings zoneSettings;
 	public double exp; //experiencia que da el bicho cuando lo matan
-
+	private bool playAlertSound;
 	private Renderer rend;
 
 	public float Accuracy{
@@ -66,8 +66,15 @@ public class EnemyStats : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		rend = GetComponent<Renderer> ();
-		StartCoroutine (AlertSoundPlay ());
+
 		CalculateStats ();
+	}
+
+	void OnEnable(){
+		StartCoroutine (AlertSoundPlay ());
+	}
+
+	void OnDisable(){
 
 	}
 
@@ -130,7 +137,7 @@ public class EnemyStats : MonoBehaviour {
 			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
 			return false;
 		}
-		Debug.Log ("chance To Evade: " + chanceToEvade);
+
 		float[] blockProb = {1 - blockChance, blockChance};
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);

@@ -16,6 +16,11 @@ public class Item : MonoBehaviour {
 	private float[] utils;
 	private Rigidbody2D rb;
 	private int soundCount = 0; //para que el sonido no se reproduzca 2 veces
+	public float[] initMinDamage = new float[2];
+	public float[] initMaxDamage =  new float[2];
+	public float[] initBaseAttackPerSecond = new float[2];
+	public float[] initDefense =  new float[2];
+	public float[] initBlockChance =  new float[2];
 
 	public AudioSource itemSound;
 
@@ -26,9 +31,25 @@ public class Item : MonoBehaviour {
 		offensives = new float[p.CantOffensives];
 		defensives = new float[p.CantDefensives];
 		utils = new float[p.CantUtils];
-		//offensives [p.MaxDamge] = 4;
 		rb = GetComponent<Rigidbody2D> ();
 		//StartCoroutine (StopMove ());
+	}
+
+	void Start(){
+		if (type == ItemTypes.Weapon) { //el item es un arma
+			Offensives [p.MinDmg] = (float)System.Math.Round(Random.Range (initMinDamage[0], initMinDamage[1]),0);
+			Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
+			Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);
+		} else {
+			if(type == ItemTypes.Armour || type == ItemTypes.Helmet) //el item es amour o casco
+				Defensives [p.Defense] = (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
+			else{ 
+				if(type == ItemTypes.Shield){// el item es un escudo
+					Defensives[p.Defense] =  (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
+					Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0],initBlockChance[1]),0);
+				}
+			}	
+		}
 	}
 
 	void Update(){

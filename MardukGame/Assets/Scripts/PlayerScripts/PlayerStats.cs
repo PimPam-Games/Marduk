@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitCritChance = 0.05f;
 	public const float InitCritDmgMult = 2f;
 	public const float InitAccuracy = 50;
-	public const float InitEvasion = 60;
+	public const float InitEvasion = 55;
 
 	public static float currentHealth;
 	public static float currentMana;
@@ -249,6 +249,9 @@ public class PlayerStats : MonoBehaviour {
 		isDead = false;
 		StartCoroutine (LifeRegeneration ());
 		gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+		for(int i=0 ; i<renders.Length-1;i++){
+			renders[i].color = new Color (1f, 1f, 1f, 1f);
+		}
 		UpdateMana ();
 	}
 
@@ -287,7 +290,7 @@ public class PlayerStats : MonoBehaviour {
 				Debug.Log ("Esquivaste el ataque! ");
 				return false;
 			}
-			//Debug.Log ("player chance To Evade: " + chanceToEvade);
+			Debug.Log ("player chance To Evade: " + chanceToEvade);
 		}
 		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
 		if (Utils.Choose (blockProb) != 0) { 

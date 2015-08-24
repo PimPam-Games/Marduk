@@ -34,21 +34,7 @@ public class ItemGenerator :MonoBehaviour{
 		float[] rarityProb = {0.6f,0.3f,0.09f,0.01f}; // 60% normal, %30 magico, %9 raro , %1 unico hay que ver que onda aca
 		int newRarity = Utils.Choose(rarityProb); 
 		newItem.Rarity = (RarityTypes) newRarity; // 0 = normal, 1 = magico , 2 = raro , 3 = unico
-		if (newItem.type == ItemTypes.Weapon) { //el item es un arma
-			newItem.Offensives [p.MinDmg] = Random.Range (1, 3);
-			newItem.Offensives [p.MaxDamge] = Random.Range (4, 7);
-			newItem.Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (1.01f, 2.01f),2);
-		} else {
-			if(newItem.type == ItemTypes.Armour || newItem.type == ItemTypes.Helmet) //el item es amour o casco
-				newItem.Defensives [p.Defense] = Random.Range (5, 21);
-			else{ 
-				if(newItem.type == ItemTypes.Shield){// el item es un escudo
-					newItem.Defensives[p.Defense] =  Random.Range(1,10);
-					newItem.Defensives[p.BlockChance] = Random.Range(5,11);
-				}
-			}
 
-		}
 		if (newItem.Rarity == RarityTypes.Magic || newItem.Rarity == RarityTypes.Rare) {
 			int optionDef = Random.Range(0,p.CantDefensives);
 			int optionAtr = Random.Range(0,p.CantAtributes);

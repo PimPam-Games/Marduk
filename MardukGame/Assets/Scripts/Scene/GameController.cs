@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameController : MonoBehaviour {
 
 	public static int CantLevels = 11;
-	public static string nameToLoad; //nombre del personaje a cargar, null si es un nuevo personaje
+	public static string nameToLoad = ""; //nombre del personaje a cargar, null si es un nuevo personaje
 	public static int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
