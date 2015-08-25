@@ -34,17 +34,17 @@ public class PlatformerCharacter2D : MonoBehaviour
         private Animator anim; // Reference to the player's animator component.
 		private Rigidbody2D rb;
 		private Weapon weaponScript;
-		private Weapon rangedWeaponScript;
+		private RangedWeapon rangedWeaponScript;
 		public AudioSource attackSound;
 		public AudioSource walkGrassSound;
 		
 		public GameObject bowprojectile; //para setearle la flecha al arco por las dudas que no aparezca
-		
+		private float normalAnimSpeed;
 		public float knockback = 15f;
 		public float knockbackLength = 0.2f;
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
-
+		private float auxxx = 0;
         private void Awake()
         {
 
@@ -57,8 +57,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if(weapon != null)
 				weaponScript = weapon.GetComponent<Weapon> ();
 			if(RangedWeapon != null)
-				rangedWeaponScript = RangedWeapon.GetComponent<Weapon> ();
-
+				rangedWeaponScript = RangedWeapon.GetComponent<RangedWeapon> ();
+			normalAnimSpeed = anim.speed;
         }
 
 		void Start(){
@@ -66,7 +66,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		void Update(){
-			
+			auxxx = 0;
 			if (p.isDead)
 				maxSpeed = 0;
 			else
@@ -93,7 +93,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		public void RespawnPosition(){ //hace que el jugador mire a la derecha
 			if (!facingRight)
-				Flip ();;
+				Flip ();
 		}
 
 		public void Attack(){
@@ -106,10 +106,18 @@ public class PlatformerCharacter2D : MonoBehaviour
 					attackSound.Play();
 					anim.SetBool ("Attacking", true);
 				}
-				else{ //si es el arco
-					anim.SetBool ("BowAttacking", true);	
+				else{
+					anim.SetBool ("BowAttacking", true);
 				}
-			}
+			}	
+		}
+			
+		public void setAttackAnimSpeed(){ //se llama desde la animacion de ataque para setear la velocidad	
+				
+			//if(auxxx == 0)
+				anim.speed += weaponScript.animSpeed/2;
+			//auxxx++;
+			//Debug.Log ("+speed: " + weaponScript.animSpeed);
 		}
 
 		public void DoDamage(){ //se llama desde la animacion de ataque para que el ataque empiecwe a hacer daño
@@ -214,7 +222,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					walkGrassSound.Stop();
                 // Move the character
 				if(knockbackTimer <= 0){
-				    if(anim.GetBool("Attacking") == true && move != 0)
+					if((anim.GetBool("Attacking") == true || anim.GetBool("BowAttacking") == true) && move != 0)
 						rb.velocity = new Vector2(move*(maxSpeed/1.5f), rb.velocity.y);
 					else
                 		rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);
@@ -259,6 +267,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void LaunchArrow(){
+			
 			if (bowLauncher.projectile == null)
 				bowLauncher.projectile = bowprojectile;
 			bowLauncher.LaunchProjectile ();
@@ -290,10 +299,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 				projLaunchers[3].LaunchProjectile ();
 		}
 		public void Idle(){
+
+			anim.speed = normalAnimSpeed;
+			//Debug.Log ("-speed: " + weaponScript.animSpeed);
+
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
-			if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.type == ItemTypes.Weapon)
-				anim.speed -= Weapon.animSpeed;
+			
 		}
 		
         private void Flip()

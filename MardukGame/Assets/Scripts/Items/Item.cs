@@ -36,7 +36,7 @@ public class Item : MonoBehaviour {
 	}
 
 	void Start(){
-		if (type == ItemTypes.Weapon) { //el item es un arma
+		if (type == ItemTypes.Weapon || type == ItemTypes.RangedWeapon) { //el item es un arma
 			Offensives [p.MinDmg] = (float)System.Math.Round(Random.Range (initMinDamage[0], initMinDamage[1]),0);
 			Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
 			Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);

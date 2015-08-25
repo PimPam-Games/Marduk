@@ -338,7 +338,7 @@ public class PlayerItems: MonoBehaviour {
 				Debug.LogError ("RangedWeapon does not found in Player Graphics!");
 		}
 		if (quiverRenderer == null) {
-			quiver = transform.Find ("Graphics/body/front_thigh/Quiver");
+			quiver = transform.Find ("Graphics/body/Quiver");
 			if (quiver != null) {
 				quiverRenderer = quiver.GetComponent<SpriteRenderer> ();
 			} else

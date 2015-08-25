@@ -44,7 +44,7 @@
 			character.Move (h, crouch, jump);
 			jump = false;
 			
-			if (Input.GetButton ("Fire1")) {
+			if (Input.GetButton ("Fire1")) {		
 				character.Attack ();
 			}
 		} else

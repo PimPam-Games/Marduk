@@ -64,6 +64,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5019476
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,11 +73,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &6129358
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -184,9 +185,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: PoisonBall
-  type: 7
+  type: 8
   icon: {fileID: 2800000, guid: b36907ac89ef01e4a8db732853092f26, type: 3}
   sprite: {fileID: 21300000, guid: 41dd65d3ee728b44aab1fcbe0bbeb9d1, type: 3}
+  initMinDamage:
+  - 0
+  - 0
+  initMaxDamage:
+  - 0
+  - 0
+  initBaseAttackPerSecond:
+  - 0
+  - 0
+  initDefense:
+  - 0
+  - 0
+  initBlockChance:
+  - 0
+  - 0
   itemSound: {fileID: 8276692}
 --- !u!114 &11492118
 MonoBehaviour:
@@ -236,7 +252,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116412}

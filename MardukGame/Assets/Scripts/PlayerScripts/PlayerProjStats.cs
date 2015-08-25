@@ -18,7 +18,7 @@ public class PlayerProjStats : MonoBehaviour {
 	private Rigidbody2D rb;
 	public AudioSource hitEnemySound;
 	public AudioSource criticalHitSound;
-
+	private bool collision = false;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -33,6 +33,10 @@ public class PlayerProjStats : MonoBehaviour {
 		/*Vector2 v = rb.velocity;
 		float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
+		if (collision) {
+			rb.velocity = new Vector2 (0, 0.2f);
+			lifeTime += Time.deltaTime*5;
+		}
 		lifeTime += Time.deltaTime;
 		if(lifeTime >= duration)
 			Destroy(this.gameObject);
@@ -57,14 +61,17 @@ public class PlayerProjStats : MonoBehaviour {
 					if(attackResult){
 						criticalHitSound.Play();
 						Debug.Log("Critical Dmg: " + damage);
+						collision = true;
 					}
 				}
 				else{
 					attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
 					if(attackResult){
 						hitEnemySound.Play();
+						collision = true;
 					}
 				}
+
 			}
 			else{
 				float dmgDealt = Random.Range(minDmg,maxDmg);
@@ -94,7 +101,12 @@ public class PlayerProjStats : MonoBehaviour {
 				}else{
 					Destroy(this.gameObject);
 				}
-			}	
+			}
+			else{
+				if(elem == Types.Element.None)
+					collision = true;
+
+			}
 		}
 	}
 }

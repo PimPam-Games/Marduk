@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Great bascinet
-  type: 1
+  type: 2
   icon: {fileID: 2800000, guid: 7c6f6180c779e344983dbba59820f006, type: 3}
   sprite: {fileID: 21300000, guid: 7c6f6180c779e344983dbba59820f006, type: 3}
   initMinDamage:
@@ -243,6 +243,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: initDefense.Array.data[1]
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

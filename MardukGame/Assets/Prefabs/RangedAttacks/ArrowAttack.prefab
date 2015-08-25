@@ -214,10 +214,10 @@ MonoBehaviour:
   elem: 0
   minDmg: 0
   maxDmg: 0
-  duration: 3
+  duration: 2
   particleSpeed: 0
   isParticle: 0
-  dontDestroy: 0
+  dontDestroy: 1
   hasSplashAnim: 0
   manaCost: 0
   anim: {fileID: 0}
@@ -275,6 +275,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.z
       value: -.707106829
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dontDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duration
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

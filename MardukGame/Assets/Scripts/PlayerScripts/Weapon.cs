@@ -11,29 +11,42 @@ public class Weapon : MonoBehaviour {
 	private bool isAttacking = false;
 	[SerializeField] private Types.Element elem = Types.Element.None; // falta agregar esto a los arreglos de playerStats
 	//private float attackingTime; //tiempo que dura el ataque mientras se esta realizando
-	private float attackTimer; 
+	private float attackTimer;
 	public AudioSource hitEnemySound;
 	public AudioSource criticalHitSound;
 	public Animator anim = null; 
-	public static float animSpeed = 0;
-
+	public float animSpeed = 0;
+	private float normalAnimSpeed;
 	void Start () {
 		//attackTimer = 0;
 		//attackDelay = p.offensives [p.AttackSpeed];
+		normalAnimSpeed = anim.speed;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		attackDelay = 1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));
-
+		if(attackDelay >= 0.8f)
+			animSpeed = 0;
+		if(attackDelay < 0.8f && attackDelay >= 0.5f)
+			animSpeed = 1;
+		if(attackDelay < 0.5f && attackDelay >= 0.3f)
+			animSpeed = 2;
+		if(attackDelay < 0.3f && attackDelay >= 0.15f)
+			animSpeed = 6;
+		if(attackDelay < 0.15f)
+			animSpeed = 8;
 		//attackingTime -= Time.deltaTime;
 		//Debug.Log("attack timer : " + attackTimer.ToString());
 		attackTimer -= Time.fixedDeltaTime;
-		if (attackTimer <= 0) { //anim.GetBool ("Attacking") == false && 
-
+		if (anim.GetBool ("Attacking") == false)
+			isAttacking = false;
+		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false) { //anim.GetBool ("Attacking") == false && 
+			anim.speed = normalAnimSpeed;
 			isAttacking = false;
 			canAttack = true;
 		}
+
 		if(!GetComponent<PolygonCollider2D>().isTrigger)
 			GetComponent<PolygonCollider2D>().isTrigger = true;
 	}
@@ -42,20 +55,11 @@ public class Weapon : MonoBehaviour {
 	public void Attack(){
 		if (canAttack) {
 			//Debug.Log("ataque!" + Time.time);
-			if(attackDelay >= 0.8f)
-				animSpeed = 0;
-			if(attackDelay < 0.8f && attackDelay >= 0.5f)
-				animSpeed = 1;
-			if(attackDelay < 0.5f && attackDelay >= 0.3f)
-				animSpeed = 2;
-			if(attackDelay < 0.3f && attackDelay >= 0.15f)
-				animSpeed = 6;
-			if(attackDelay < 0.15f)
-				animSpeed = 8;
+
 		//	Debug.Log("attack Delay : " + attackDelay.ToString());
 		//	Debug.Log(animSpeed.ToString());
-			anim.speed += animSpeed;
-			isAttacking = true;
+			if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon)
+				isAttacking = true;
 			attackTimer = attackDelay;
 			canAttack = false;
 			//attackingTime = maxAttackingTime;
