@@ -188,14 +188,14 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: fb7c3703b28cd3244b2a00d544f1bced, type: 3}
   sprite: {fileID: 21300000, guid: fb7c3703b28cd3244b2a00d544f1bced, type: 3}
   initMinDamage:
-  - 1
   - 2
-  initMaxDamage:
   - 3
+  initMaxDamage:
+  - 4
   - 6
   initBaseAttackPerSecond:
-  - 1.5
-  - 2.00999999
+  - 1.29999995
+  - 1.60000002
   initDefense:
   - 0
   - 0
@@ -242,15 +242,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMinDamage.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initMinDamage.Array.data[1]
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: initMaxDamage.Array.data[0]
+      propertyPath: initMinDamage.Array.data[1]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage.Array.data[0]
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDamage.Array.data[1]
@@ -258,11 +258,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[0]
-      value: 1.5
+      value: 1.29999995
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[1]
-      value: 2.00999999
+      value: 1.60000002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

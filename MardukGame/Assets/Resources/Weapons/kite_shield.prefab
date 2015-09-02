@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cece4461bc20d42869435d4e307948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: kite_shield
+  itemName: Kite shield
   type: 4
   icon: {fileID: 2800000, guid: 3ea17fa159a70cb4b8314a14ffaa9903, type: 3}
   sprite: {fileID: 21300000, guid: 3ea17fa159a70cb4b8314a14ffaa9903, type: 3}
@@ -197,11 +197,11 @@ MonoBehaviour:
   - 0
   - 0
   initDefense:
-  - 0
-  - 0
+  - 4
+  - 9
   initBlockChance:
-  - 0
-  - 0
+  - 10
+  - 30
   itemSound: {fileID: 8270098}
 --- !u!212 &21246342
 SpriteRenderer:
@@ -239,6 +239,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: type
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initBlockChance.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initBlockChance.Array.data[1]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initDefense.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initDefense.Array.data[1]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemName
+      value: Kite shield
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -191,11 +191,11 @@ MonoBehaviour:
   - 1
   - 3
   initMaxDamage:
-  - 4
   - 7
+  - 10
   initBaseAttackPerSecond:
-  - 1.00999999
-  - 1.89999998
+  - .899999976
+  - 1.20000005
   initDefense:
   - 0
   - 0
@@ -238,11 +238,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[0]
-      value: 1.00999999
+      value: .899999976
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[1]
-      value: 1.89999998
+      value: 1.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMinDamage.Array.data[0]
@@ -254,11 +254,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDamage.Array.data[0]
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDamage.Array.data[1]
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

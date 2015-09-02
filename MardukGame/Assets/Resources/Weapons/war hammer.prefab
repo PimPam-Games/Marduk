@@ -63,6 +63,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5001604
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -71,11 +72,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &6104672
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -186,6 +187,21 @@ MonoBehaviour:
   type: 0
   icon: {fileID: 2800000, guid: b6740ddf5ffaf1248ba3264feb69a415, type: 3}
   sprite: {fileID: 21300000, guid: b6740ddf5ffaf1248ba3264feb69a415, type: 3}
+  initMinDamage:
+  - 2
+  - 5
+  initMaxDamage:
+  - 7
+  - 12
+  initBaseAttackPerSecond:
+  - .600000024
+  - 1
+  initDefense:
+  - 0
+  - 0
+  initBlockChance:
+  - 0
+  - 0
   itemSound: {fileID: 8287112}
 --- !u!212 &21251098
 SpriteRenderer:
@@ -219,7 +235,31 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: initMinDamage.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initBaseAttackPerSecond.Array.data[0]
+      value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initBaseAttackPerSecond.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161602}

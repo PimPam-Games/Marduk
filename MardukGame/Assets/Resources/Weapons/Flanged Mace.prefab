@@ -183,19 +183,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cece4461bc20d42869435d4e307948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Flanged Mace
+  itemName: Flanged mace
   type: 0
   icon: {fileID: 2800000, guid: f4d35fa730a584e448b6f1dda807ab3a, type: 3}
   sprite: {fileID: 21300000, guid: f4d35fa730a584e448b6f1dda807ab3a, type: 3}
   initMinDamage:
-  - 2
   - 4
-  initMaxDamage:
   - 5
-  - 9
+  initMaxDamage:
+  - 6
+  - 7
   initBaseAttackPerSecond:
-  - 1.00999999
-  - 1.89999998
+  - .699999988
+  - 1.10000002
   initDefense:
   - 0
   - 0
@@ -238,27 +238,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: initMinDamage.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initMinDamage.Array.data[1]
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: initMaxDamage.Array.data[0]
+      propertyPath: initMinDamage.Array.data[1]
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: initMaxDamage.Array.data[0]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: initMaxDamage.Array.data[1]
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[0]
-      value: 1.00999999
+      value: .699999988
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[1]
-      value: 1.89999998
+      value: 1.10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemName
+      value: Flanged mace
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

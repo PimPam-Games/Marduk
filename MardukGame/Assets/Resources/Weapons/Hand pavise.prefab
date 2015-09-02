@@ -30,7 +30,7 @@ GameObject:
   - 212: {fileID: 21219246}
   - 82: {fileID: 8250498}
   m_Layer: 0
-  m_Name: hand_pavise
+  m_Name: Hand pavise
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cece4461bc20d42869435d4e307948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: hand_pavise
+  itemName: Hand pavise
   type: 4
   icon: {fileID: 2800000, guid: 3e09e41be4eac6749abb1f8cd3e135ec, type: 3}
   sprite: {fileID: 21300000, guid: 3e09e41be4eac6749abb1f8cd3e135ec, type: 3}
@@ -197,11 +197,11 @@ MonoBehaviour:
   - 0
   - 0
   initDefense:
-  - 0
-  - 0
+  - 3
+  - 10
   initBlockChance:
-  - 0
-  - 0
+  - 15
+  - 25
   itemSound: {fileID: 8250498}
 --- !u!212 &21219246
 SpriteRenderer:
@@ -239,6 +239,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: type
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initDefense.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initDefense.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initBlockChance.Array.data[0]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initBlockChance.Array.data[1]
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemName
+      value: Hand pavise
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
