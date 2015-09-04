@@ -106,8 +106,19 @@ public class PlayerItems: MonoBehaviour {
 			}
 			if(equipedArmour==null)
 				reSkin.ReSkinArmour("default_armor");
-			else
-				reSkin.ReSkinArmour(equipedArmour.Name);
+			else{
+				if(equipedArmour.Name == "Gothic armour"){
+					Debug.Log(equipedArmour.Name);
+					reSkin.ReSkinArmour("gothicarmour");
+				}
+				else{
+					if(equipedArmour.name == "Milanese armour")
+						reSkin.ReSkinArmour("milanesearmor");
+					else {
+						reSkin.ReSkinArmour(equipedArmour.Name);
+					}
+				}
+			}
 			UpdateStats(oldArmour,equipedArmour);
 		}
 	}
@@ -281,8 +292,10 @@ public class PlayerItems: MonoBehaviour {
 			}
 			if(equipedShield==null)
 				reSkin.ReSkinShield("none");
-			else
+			else{
+				Debug.Log(equipedShield.Name);
 				reSkin.ReSkinShield(equipedShield.Name);
+			}
 			UpdateStats(oldShield,equipedShield);
 		}
 	}

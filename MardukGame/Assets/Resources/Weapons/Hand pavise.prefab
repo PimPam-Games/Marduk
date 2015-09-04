@@ -185,8 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Hand pavise
   type: 4
-  icon: {fileID: 2800000, guid: 3e09e41be4eac6749abb1f8cd3e135ec, type: 3}
-  sprite: {fileID: 21300000, guid: 3e09e41be4eac6749abb1f8cd3e135ec, type: 3}
+  icon: {fileID: 2800000, guid: 232fa129c8acd904ba3c72cbfccc6847, type: 3}
+  sprite: {fileID: 21300000, guid: 232fa129c8acd904ba3c72cbfccc6847, type: 3}
   initMinDamage:
   - 0
   - 0
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -354108773
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e09e41be4eac6749abb1f8cd3e135ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 232fa129c8acd904ba3c72cbfccc6847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -260,6 +260,20 @@ Prefab:
       propertyPath: itemName
       value: Hand pavise
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 232fa129c8acd904ba3c72cbfccc6847, type: 3}
+    - target: {fileID: 0}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 232fa129c8acd904ba3c72cbfccc6847,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 232fa129c8acd904ba3c72cbfccc6847,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190326}
