@@ -109,6 +109,7 @@ public class GameController : MonoBehaviour {
 			return;
 		}
 		GameObject levelEntry = GameObject.Find("LevelEntry" + previousExit); 
+		PlatformerCharacter2D.stopPlayer = true;
 		player.transform.position = levelEntry.transform.position;
 		if(levelEntry.transform.position.x<=0)
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x + 4, levelEntry.transform.position.y, mainCamera.transform.position.z);

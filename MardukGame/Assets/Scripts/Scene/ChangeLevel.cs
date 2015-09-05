@@ -10,6 +10,7 @@ public class ChangeLevel : MonoBehaviour {
 	private float boxTimeCount = 0.5f;
 	public GameObject enemyGenerator;
 	private Rigidbody2D rb;
+	public bool loadAtCollision = false; //si es true carga el level apenas toca el colisinador.
 
 	void Awake(){
 		box = GetComponent<BoxCollider2D> ();
@@ -61,19 +62,17 @@ public class ChangeLevel : MonoBehaviour {
 	}*/
 
 	void OnTriggerStay2D(Collider2D coll){
-		if (coll.gameObject.tag == "Player" && Input.GetButtonUp("UP")) {
-			/*g.SetActiveEnemies(g.currLevelName,false);
-			g.SetActiveChunks(g.currLevelName,false);
-			g.currLevelName = levelToLoad;
-			//Application.LoadLevel(levelToLoad);
-			if(g.chunksPerZone.ContainsKey(g.currLevelName))
-				g.SetActiveChunks(g.currLevelName,true);
-			if(g.enemiesPerLevel.ContainsKey(g.currLevelName))
-				g.SetActiveEnemies(g.currLevelName,true);*/
-
+		if (!loadAtCollision && coll.gameObject.tag == "Player" && Input.GetButtonUp("UP")) {
 			Fading.BeginFadeIn(levelToLoad); //esto se encarga de cargar el nivel y hacer todo el trabajo sucio
 		}
 	}
 
+	void OnTriggerExit2D(Collider2D coll){
+		Debug.Log (coll.gameObject.tag);
+		if(loadAtCollision && coll.gameObject.tag == "Player"){
+			
+			Fading.BeginFadeIn(levelToLoad); //esto se encarga de cargar el nivel y hacer todo el trabajo sucio
+		}
+	}
 
 }

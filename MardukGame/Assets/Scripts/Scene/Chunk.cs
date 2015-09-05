@@ -172,8 +172,8 @@ public class Chunk : MonoBehaviour {
 
 		if (col.gameObject.tag == "Chunk") {
 
-				if(!this.isDouble){
-					//Debug.Log("Elimine un chunk de mierda");
+				if(!this.isDouble){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
+					
 					Destroy(this.gameObject);
 				}
 

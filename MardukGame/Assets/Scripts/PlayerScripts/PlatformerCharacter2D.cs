@@ -8,7 +8,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     {
 
 		public static List<GameObject> playerItemsGO = new List<GameObject>();	
-
+		public static bool stopPlayer = false;
         private bool facingRight = true; // For determining which way the player is currently facing.
 
         public float maxSpeed; // The fastest the player can travel in the x axis.
@@ -71,6 +71,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 				maxSpeed = 0;
 			else
 				maxSpeed = p.utils [p.MovementSpeed];	
+			if(stopPlayer){
+				rb.velocity = new Vector2(0,0); //esto se usa cuando cambia a la cueva para que no caiga tan rapido
+				stopPlayer = false;
+			}
 		}
 
 		public void knockBackPlayer(bool knockFromRight){

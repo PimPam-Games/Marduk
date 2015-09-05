@@ -107,17 +107,16 @@ public class PlayerItems: MonoBehaviour {
 			if(equipedArmour==null)
 				reSkin.ReSkinArmour("default_armor");
 			else{
-				if(equipedArmour.Name == "Gothic armour"){
-					Debug.Log(equipedArmour.Name);
-					reSkin.ReSkinArmour("gothicarmour");
+				if(equipedArmour.Name == "Milanese armour"){
+					reSkin.ReSkinArmour("milanesearmor");
 				}
 				else{
-					if(equipedArmour.name == "Milanese armour")
-						reSkin.ReSkinArmour("milanesearmor");
-					else {
+					if(equipedArmour.Name == "Gothic armour")
+						reSkin.ReSkinArmour("gothicarmour");
+					else
 						reSkin.ReSkinArmour(equipedArmour.Name);
-					}
 				}
+
 			}
 			UpdateStats(oldArmour,equipedArmour);
 		}
