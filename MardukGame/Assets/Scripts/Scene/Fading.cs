@@ -19,6 +19,7 @@ public class Fading : MonoBehaviour {
 
 	public static void BeginFadeIn (string newScene)
 	{
+		PlatformerCharacter2D.stopPlayer = true;
 		sceneToLoad = newScene;
 		anim.SetBool ("FadeOut",false);
 		anim.SetBool ("FadeIn",true);
@@ -26,6 +27,8 @@ public class Fading : MonoBehaviour {
 
 	public static void BeginFadeOut ()
 	{
+		PlatformerCharacter2D.stopPlayer = false;
+		CameraController.stopFollow = false;
 		anim.SetBool ("FadeOut",true);
 		anim.SetBool ("FadeIn",false);
 	}

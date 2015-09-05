@@ -197,6 +197,7 @@ public class PlayerStats : MonoBehaviour {
 		yield return new WaitForSeconds (2.5f);
 		anim.SetBool("IsDead", false);
 		readyToRespawn = true;
+		GameController.previousExit = 0;
 		Fading.BeginFadeIn("level1");
 	}
 

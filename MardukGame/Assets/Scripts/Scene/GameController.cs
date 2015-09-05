@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour {
 
 	public static int CantLevels = 11;
 	public static string nameToLoad = ""; //nombre del personaje a cargar, null si es un nuevo personaje
-	public static int previousExit = 1; // si la salida es 1, tiene que entrar por la entrada 1
+	public static int previousExit = 0; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
 	//public List<string> deadEnemies;
@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
 	public static Dictionary<string,List<GameObject>> chunksPerZone = new Dictionary<string,List<GameObject>> ();
 	public static string currLevelName;
 	public static bool levelLoaded = false;
+	public static bool jumpOnLoad = false; //hacer que el player salte cuando inicie el nivel
 
 	public AudioSource music1;
 	void Awake(){
@@ -111,6 +112,8 @@ public class GameController : MonoBehaviour {
 		GameObject levelEntry = GameObject.Find("LevelEntry" + previousExit); 
 		PlatformerCharacter2D.stopPlayer = true;
 		player.transform.position = levelEntry.transform.position;
+		if (jumpOnLoad)
+			PlatformerCharacter2D.jumpNow = true;
 		if(levelEntry.transform.position.x<=0)
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x + 4, levelEntry.transform.position.y, mainCamera.transform.position.z);
 		else

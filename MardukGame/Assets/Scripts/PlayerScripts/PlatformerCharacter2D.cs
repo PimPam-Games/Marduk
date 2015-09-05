@@ -45,6 +45,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
 		private float auxxx = 0;
+		public static bool jumpNow = false; //para que el jugador salte, se usa para cuando se carga un nivel que entra desde un hueco
         private void Awake()
         {
 
@@ -73,7 +74,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				maxSpeed = p.utils [p.MovementSpeed];	
 			if(stopPlayer){
 				rb.velocity = new Vector2(0,0); //esto se usa cuando cambia a la cueva para que no caiga tan rapido
-				stopPlayer = false;
+				//stopPlayer = false;
+			}
+			if (jumpNow) {
+				rb.AddForce (new Vector2(0, 900f));
+				jumpNow = false;
 			}
 		}
 
@@ -152,6 +157,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 					}
 				}
 		
+			}
+		}
+		
+		void OnTriggerEnter2D(Collider2D col){			
+			if (col.gameObject.tag == "CameraStopFollow") {
+				CameraController.stopFollow = true;
 			}
 		}
 

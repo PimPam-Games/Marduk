@@ -5730,6 +5730,7 @@ MonoBehaviour:
   levelToLoad: level2
   enemyGenerator: {fileID: 0}
   loadAtCollision: 0
+  jumpOnLoad: 0
 --- !u!61 &608354411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5900,9 +5901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
-  enemies:
-  - {fileID: 0}
-  - {fileID: 0}
+  enemies: []
   chunkEndRight: {fileID: 768061803}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}
@@ -8548,7 +8547,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 148376, guid: fb106d1af88ac9d419effef448e7e2b3, type: 2}
       propertyPath: m_Name
-      value: LevelEntry1
+      value: LevelEntry0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb106d1af88ac9d419effef448e7e2b3, type: 2}

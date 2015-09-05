@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	public Transform player;
-
+	public static bool stopFollow = false; // este se llama desde PlatformerCharacter2D y Fading
 	public Vector2 margin,smoothing;
 	public BoxCollider2D bounds;
 
@@ -29,6 +29,8 @@ public class CameraController : MonoBehaviour {
 			FindPlayer();
 			return;
 		}
+		if (stopFollow)
+			return;
 		var x = transform.position.x;
 		var y = transform.position.y;
 		if(isFollowing){
