@@ -291,7 +291,7 @@ public class PlayerStats : MonoBehaviour {
 				Debug.Log ("Esquivaste el ataque! ");
 				return false;
 			}
-			Debug.Log ("player chance To Evade: " + chanceToEvade);
+//			Debug.Log ("player chance To Evade: " + chanceToEvade);
 		}
 		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
 		if (Utils.Choose (blockProb) != 0) { 

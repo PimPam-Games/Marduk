@@ -34,7 +34,7 @@ MonoBehaviour:
   force: {x: 0, y: 0}
   flipProjectile: 0
   projectile: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
-  spellName: 
+  spellName: Lightning Ball
   castDelay: .400000006
 --- !u!114 &11471462
 MonoBehaviour:
@@ -108,7 +108,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: spellName
+      value: Lightning Ball
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186218}

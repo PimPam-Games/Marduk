@@ -5,7 +5,7 @@ using p = PlayerStats;
 public class PlayerProjStats : MonoBehaviour {
 	
 	public Types.Element elem ;
-	public float minDmg = 1, maxDmg = 3;
+	public float minDmg = 1 , maxDmg = 3;
 	public float duration = 5;
 	private float lifeTime = 0;
 	public float particleSpeed;
@@ -53,6 +53,7 @@ public class PlayerProjStats : MonoBehaviour {
 				if(p.LifePerHit > 0 )
 					p.currentHealth += p.defensives[p.LifePerHit];
 				float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
+
 				float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
 				bool attackResult; 
 				if(Utils.Choose(critDmgProb) != 0){

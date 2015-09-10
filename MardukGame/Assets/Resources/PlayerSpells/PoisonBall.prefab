@@ -66,7 +66,7 @@ MonoBehaviour:
   force: {x: -225, y: 210}
   flipProjectile: 1
   projectile: {fileID: 137192, guid: 355b940606ebd5745998166aee28d732, type: 2}
-  spellName: 
+  spellName: Poison Ball
   castDelay: .600000024
 --- !u!222 &22246312
 CanvasRenderer:
@@ -108,7 +108,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: spellName
+      value: Poison Ball
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113964}
