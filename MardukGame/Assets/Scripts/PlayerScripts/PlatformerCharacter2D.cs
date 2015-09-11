@@ -152,7 +152,17 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 				else{
 					if(item.tag == "Spell"){
-						spellsPanel.AddSpell(item.GetComponent<SpellStats>().spellName);
+						string itName = item.name;
+						if(itName.Contains("(clone)")){
+							itName = itName.Substring(0,itName.Length - 7); //le saco la palabra (clone)
+							Debug.Log (itName);
+						}
+						else{
+							if(itName.Contains("(")){
+								itName = itName.Substring(0,itName.Length - 4); // le saco el (2)
+							}
+						}
+						spellsPanel.AddSpell(itName);
 						Destroy(item);
 					}
 				}

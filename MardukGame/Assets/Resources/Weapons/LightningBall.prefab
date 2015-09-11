@@ -13,7 +13,6 @@ GameObject:
   - 61: {fileID: 6154298}
   - 212: {fileID: 21217008}
   - 82: {fileID: 8266164}
-  - 114: {fileID: 11467574}
   m_Layer: 0
   m_Name: LightningBall
   m_TagString: Spell
@@ -204,22 +203,6 @@ MonoBehaviour:
   - 0
   - 0
   itemSound: {fileID: 8266164}
---- !u!114 &11467574
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: 0, y: 0}
-  flipProjectile: 0
-  projectile: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
-  spellName: LightningBall
-  castDelay: .400000006
 --- !u!212 &21217008
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,6 +8,10 @@ public class SpellStats : MonoBehaviour {
 	public GameObject projectile;
 	public string spellName;
 	public float castDelay;
+	public skillsTypes type;
+	public float manaReserved;
+	public float lifeRegenPerSecond;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,5 +20,11 @@ public class SpellStats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public enum skillsTypes{
+		Skill,
+		Aura,
+		Curse
 	}
 }

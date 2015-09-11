@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using p = PlayerStats;
 
 public class SpellsPanel : MonoBehaviour, IHasChanged {
 
@@ -30,7 +31,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		a = 0;
 	}
 
-	public void HasChanged(){
+	public void HasChanged(){ //se llama cuando hubo algun cambio en el spell panel, ej: se intridujo un nuevo skill o se cambio de lugar uno
 		int i = 0;
 		foreach (Transform slot in slots) {
 			GameObject spell = slot.GetComponent<Slot>().spell;
@@ -40,7 +41,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				projLaunchers[i].projectile = projectiles[i];
 				projLaunchers[i].force = stats.force;
 				projLaunchers[i].flipProjectile = stats.flipProjectile;
-				Debug.Log("castdelay " + stats.castDelay);
+				//Debug.Log("castdelay " + stats.castDelay);
 				projLaunchers[i].castDelay = stats.castDelay;
 			}
 			else{
@@ -55,15 +56,19 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		a++;
 		if (a > 1)
 			return;
-		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + spellName);
+		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + spellName); //creo el prefab para meterlo en el slot
 		if (newSpellPrefab == null)
 			return;
 		GameObject newSpell = (GameObject)Instantiate (newSpellPrefab, newSpellPrefab.transform.position, newSpellPrefab.transform.rotation);
-		foreach(Transform slot in slots){
+		foreach(Transform slot in slots){ //busca un slot vacio en spell panel
 			GameObject spell = slot.GetComponent<Slot>().spell;
 			if(spell == null){
 				newSpell.transform.SetParent(slot);
 				newSpell.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+				SpellStats st = newSpell.GetComponent<SpellStats>();
+				if(st.type == SpellStats.skillsTypes.Aura){
+					p.defensives[p.LifePerSecond] += st.lifeRegenPerSecond;
+				}
 				HasChanged();
 				return;
 			}

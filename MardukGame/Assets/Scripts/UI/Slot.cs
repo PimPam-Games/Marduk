@@ -30,33 +30,44 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 	}
 
 		
-	public void OnPointerEnter(PointerEventData eventData){
+	public void OnPointerEnter(PointerEventData eventData){ //muestro el tooltip
 		if (this.spell == null)
 			return;
-		PlayerProjStats pps = spell.GetComponent<SpellStats> ().projectile.GetComponent<PlayerProjStats> ();
-		tooltip.transform.GetChild (0).GetComponent<Text> ().text = spell.GetComponent<SpellStats>().spellName;
-		switch (pps.elem) {
+		SpellStats spellStats = spell.GetComponent<SpellStats> ();
+		tooltip.transform.GetChild (0).GetComponent<Text> ().text = spellStats.spellName;
+		if (spellStats.type == SpellStats.skillsTypes.Skill) {
+			PlayerProjStats pps = spell.GetComponent<SpellStats> ().projectile.GetComponent<PlayerProjStats> ();
+			switch (pps.elem) {
 			case Types.Element.Cold:
-				tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.blue;	
-			break;
+				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.cyan;	
+				break;
 			case Types.Element.Fire:
-				tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.red;	
+				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.red;	
 				break;
 			case Types.Element.Lightning:
-				tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.cyan;	
+				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.yellow;	
 				break;
 			case Types.Element.Poison:
-				tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.green;	
+				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.green;	
 				break;
 			default:
-				tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.white;	
-			break;
+				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.white;	
+				break;
+			}
+			tooltip.transform.GetChild (1).GetComponent<Text> ().text = spellStats.type.ToString();
+			tooltip.transform.GetChild (2).GetComponent<Text> ().text = pps.elem.ToString ();
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + pps.manaCost.ToString () + "\n";
+			float totalMinDmg = pps.minDmg + p.offensives [p.MgDmg];
+			float totalMaxDmg = pps.maxDmg + p.offensives [p.MgDmg];
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Damage " + System.Math.Round (totalMinDmg, 1).ToString () + " - " + System.Math.Round (totalMaxDmg, 1).ToString ();
 		}
-		tooltip.transform.GetChild (1).GetComponent<Text> ().text = pps.elem.ToString();
-		float totalMinDmg = pps.minDmg + p.offensives [p.MgDmg];
-		float totalMaxDmg = pps.maxDmg + p.offensives [p.MgDmg];
-		tooltip.transform.GetChild (2).GetComponent<Text> ().text = "Damage " + System.Math.Round(totalMinDmg,1).ToString()  + " - "+ System.Math.Round(totalMaxDmg,1).ToString();
-		tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + pps.manaCost.ToString ();
+		else {
+			//tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.magenta;	
+			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Aura";
+			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaReserved.ToString()+ "\n";
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Life Regen per Second: " + spellStats.lifeRegenPerSecond;
+		}
 		tooltip.SetActive (true);	
 	}
 
