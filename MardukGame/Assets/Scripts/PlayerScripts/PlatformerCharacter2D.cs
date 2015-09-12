@@ -152,16 +152,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 				else{
 					if(item.tag == "Spell"){
-						string itName = item.name;
-						if(itName.Contains("(clone)")){
-							itName = itName.Substring(0,itName.Length - 7); //le saco la palabra (clone)
-							Debug.Log (itName);
-						}
-						else{
-							if(itName.Contains("(")){
-								itName = itName.Substring(0,itName.Length - 4); // le saco el (2)
-							}
-						}
+						string itName = item.GetComponent<Item>().Name;
 						spellsPanel.AddSpell(itName);
 						Destroy(item);
 					}
@@ -173,6 +164,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 		void OnTriggerEnter2D(Collider2D col){			
 			if (col.gameObject.tag == "CameraStopFollow") {
 				CameraController.stopFollow = true;
+			}
+			if (col.gameObject.tag == "CameraFollow") {
+				CameraController.stopFollow = false;
+				CameraController.stopFollowX = false;
+			}
+			if (col.gameObject.tag == "CameraStopX") {
+				CameraController.stopFollowX = true;
 			}
 		}
 

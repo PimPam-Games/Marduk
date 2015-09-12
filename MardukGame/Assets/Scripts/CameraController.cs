@@ -5,6 +5,7 @@ public class CameraController : MonoBehaviour {
 
 	public Transform player;
 	public static bool stopFollow = false; // este se llama desde PlatformerCharacter2D y Fading
+	public static bool stopFollowX = false;
 	public Vector2 margin,smoothing;
 	public BoxCollider2D bounds;
 
@@ -34,9 +35,10 @@ public class CameraController : MonoBehaviour {
 		var x = transform.position.x;
 		var y = transform.position.y;
 		if(isFollowing){
-
-			if(Mathf.Abs(x - player.position.x)>margin.x)
-				x = Mathf.Lerp(x,player.position.x, smoothing.x * Time.deltaTime);
+			if(!stopFollowX){
+				if(Mathf.Abs(x - player.position.x)>margin.x)
+					x = Mathf.Lerp(x,player.position.x, smoothing.x * Time.deltaTime);
+			}
 			if(Mathf.Abs(y - player.position.y)> margin.y)
 				y = Mathf.Lerp(y, player.position.y, smoothing.y * Time.deltaTime);
 		}
