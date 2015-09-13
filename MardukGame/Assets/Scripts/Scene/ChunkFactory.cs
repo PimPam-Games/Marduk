@@ -10,9 +10,10 @@ public class ChunkFactory : MonoBehaviour {
 	public int matrixDepth = 10;
 	public string bgName = "Mountain";
 	public string sceneName = "level1";
+	public bool hasCaveEntranceChunk = false; // si tiene un chunk de una entrada a una cueva o dungeon en la ultima posicion del arreglo
 	public bool generateBackground;
 	public bool[,] cmatrix;
-
+	public bool zoneEntranceGenerated = false; // es para ver si ya se genero un chunk de entrada a otra zona o no
 	private int currentChunkId = 0;
 	private Object[] chunkPool;
 	private  List<Object> commonChunks = new List<Object>();
@@ -25,6 +26,7 @@ public class ChunkFactory : MonoBehaviour {
 	private static bool isEntry = false;
 	public static float bgCount = 0;
 	public static float bgPerChunk = 4; //cada cuantos chunks debe generar el fondo
+
 
 	// Use this for initialization
 	void Awake () {
@@ -104,10 +106,23 @@ public class ChunkFactory : MonoBehaviour {
 				//Debug.Log("este doble no deberia ir baby");
 				choice = 0;
 			}
+
 			switch(choice){
 			case 0:
 				currentChunkId++;
 				r = Random.Range (0,normalChunks.Count);
+				if(hasCaveEntranceChunk && r == normalChunks.Count - 1){ //en la ultima posicion tiene que estar el chunk que entra a una cueva
+					if(zoneEntranceGenerated){
+						r = Random.Range (0,normalChunks.Count-1);
+					}
+					else{
+						zoneEntranceGenerated = true;
+					}
+				}
+				if(hasCaveEntranceChunk && chunkPos[0] >= matrixDepth && chunkPos[1] == MatrixSize - 3 && !zoneEntranceGenerated){ // si estoy llegando casi al final y no se genero
+					zoneEntranceGenerated = true;                                                          // el chunk cueva lo genero si o si
+					r = normalChunks.Count - 1;
+				}
 				newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
 				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
@@ -116,6 +131,7 @@ public class ChunkFactory : MonoBehaviour {
 					cmatrix[pos[0]+2,pos[1]-1] = true;*/
 				currentChunkId++;
 				r = Random.Range (0,doubleChunks.Count);
+
 				newChunk = (GameObject)Instantiate (doubleChunks [r], pos, rot);
 				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
