@@ -9,9 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 448256}
   - 50: {fileID: 5049868}
-  - 61: {fileID: 6134784}
-  - 114: {fileID: 11464334}
-  - 61: {fileID: 6187932}
+  - 114: {fileID: 11474298}
   m_Layer: 0
   m_Name: castle3
   m_TagString: Untagged
@@ -193,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.2232676, y: -.0160188675, z: 0}
+  m_LocalPosition: {x: 73.1310425, y: 17.0227356, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 489390}
@@ -390,32 +388,6 @@ PolygonCollider2D:
       - {x: 1280, y: -4032}
       - {x: 2432, y: -4032}
       - {x: 2432, y: -3712}
---- !u!61 &6134784
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106970}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 22.6981201, y: 261.921997}
-  serializedVersion: 2
-  m_Size: {x: 38.8723755, y: 592.874512}
---- !u!61 &6187932
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106970}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 1120.75024, y: 242.277359}
-  serializedVersion: 2
-  m_Size: {x: 37.2154541, y: 621.643799}
 --- !u!114 &11403914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -454,7 +426,7 @@ MonoBehaviour:
   TileWidth: 64
   TileHeight: 64
   ExportScale: 1
---- !u!114 &11464334
+--- !u!114 &11474298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -462,16 +434,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 106970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5865672da44157b49b02a81f88c30082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
   enemies:
-  - {fileID: 489390}
   - {fileID: 471800}
+  - {fileID: 489390}
   chunkEndRight: {fileID: 474436}
-  chunkEndDownR: {fileID: 0}
-  chunkEndDownL: {fileID: 0}
+  chunkEndUpR: {fileID: 0}
+  chunkEndUpL: {fileID: 0}
   isDouble: 0
   hasLeftEnd: 1
   hasRightEnd: 1

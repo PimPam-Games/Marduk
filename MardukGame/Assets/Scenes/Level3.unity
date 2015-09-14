@@ -187,9 +187,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 3042.72021, y: 2.47000051}
+  m_Offset: {x: 1717.15002, y: 73.6999969}
   serializedVersion: 2
-  m_Size: {x: 6110.95215, y: 23.7636108}
+  m_Size: {x: 3460, y: 155.199997}
 --- !u!4 &147470058
 Transform:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &288592557
 Prefab:
   m_ObjectHideFlags: 0
@@ -239,7 +239,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 433414, guid: 1f5b6c215a37f094a96448c9399fcff8, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f5b6c215a37f094a96448c9399fcff8, type: 2}
@@ -376,15 +376,21 @@ MonoBehaviour:
   matrixDepth: 5
   bgName: 
   sceneName: level3
+  bottomUpGeneration: 1
+  hasCaveEntranceChunk: 0
   generateBackground: 0
-  doubleChunks: []
+  zoneEntranceGenerated: 0
+  doubleChunks:
+  - {fileID: 191578, guid: 28cb5f0622990cb408a64c68808e2ddd, type: 2}
   normalChunks:
   - {fileID: 106970, guid: c8725d7d0055b644794858668b03e1c4, type: 2}
   - {fileID: 174696, guid: 770d191b3b44f3b4cbfc23b698ece0c5, type: 2}
   - {fileID: 127336, guid: 3225e4d670c68454cab8b5c29d205452, type: 2}
   - {fileID: 169302, guid: 59d4024be3df872488643073c3a3083c, type: 2}
-  leftEndChunks: []
-  rightEndChunks: []
+  leftEndChunks:
+  - {fileID: 180976, guid: b1f52261e069b5845a845ced8a68874c, type: 2}
+  rightEndChunks:
+  - {fileID: 180976, guid: b1f52261e069b5845a845ced8a68874c, type: 2}
 --- !u!4 &1401587217
 Transform:
   m_ObjectHideFlags: 0

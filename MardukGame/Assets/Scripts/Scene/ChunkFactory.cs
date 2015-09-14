@@ -10,6 +10,7 @@ public class ChunkFactory : MonoBehaviour {
 	public int matrixDepth = 10;
 	public string bgName = "Mountain";
 	public string sceneName = "level1";
+	public bool bottomUpGeneration = false; // si los chunks dobles del nivel van hacia el piso de arriba
 	public bool hasCaveEntranceChunk = false; // si tiene un chunk de una entrada a una cueva o dungeon en la ultima posicion del arreglo
 	public bool generateBackground;
 	public bool[,] cmatrix;
@@ -99,12 +100,23 @@ public class ChunkFactory : MonoBehaviour {
 			if((chunkPos[1] == 1 && exit == Exits.Right) ||(chunkPos[1] == MatrixSize-2 && exit == Exits.Left)){ //si llego a algun borde horizontal hay que poner un final
 				choice = 2;
 			}
-			if(chunkPos[0] >= matrixDepth && choice == 1){ // si llego al limite de la profundidad no puede tocar un doble
-				choice = 0;
+			if(bottomUpGeneration){
+				if(chunkPos[0] <= 1 && choice == 1){ // si llego al tope de la profundidad no puede tocar un doble
+					choice = 0;
+				}
+				if((cmatrix[chunkPos[0]-1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]-1, chunkPos[1]+1] && exit == Exits.Left)){
+					//Debug.Log("este doble no deberia ir baby");
+					choice = 0;
+				}
 			}
-			if((cmatrix[chunkPos[0]+1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]+1, chunkPos[1]+1] && exit == Exits.Left)){
-				//Debug.Log("este doble no deberia ir baby");
-				choice = 0;
+			else{
+				if(chunkPos[0] >= matrixDepth && choice == 1){ // si llego al limite de la profundidad no puede tocar un doble
+					choice = 0;
+				}
+				if((cmatrix[chunkPos[0]+1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]+1, chunkPos[1]+1] && exit == Exits.Left)){
+					//Debug.Log("este doble no deberia ir baby");
+					choice = 0;
+				}
 			}
 
 			switch(choice){
@@ -124,7 +136,10 @@ public class ChunkFactory : MonoBehaviour {
 					r = normalChunks.Count - 1;
 				}
 				newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
-				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
+				if(bottomUpGeneration)
+					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
+				else
+					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			case 1:
 				/*if(exit == Exits.Right)
@@ -133,7 +148,10 @@ public class ChunkFactory : MonoBehaviour {
 				r = Random.Range (0,doubleChunks.Count);
 
 				newChunk = (GameObject)Instantiate (doubleChunks [r], pos, rot);
-				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
+				if(bottomUpGeneration)
+					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
+				else
+					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			case 2:
 				currentChunkId++;
@@ -145,7 +163,10 @@ public class ChunkFactory : MonoBehaviour {
 					r = Random.Range (0,rightEndChunks.Count);
 					newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
 				}
-				newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
+				if(bottomUpGeneration)
+					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
+				else
+					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			}
 			//Debug.Log("Id" + currentChunkId);

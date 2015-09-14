@@ -104,8 +104,7 @@ GameObject:
   - 4: {fileID: 498582}
   - 50: {fileID: 5094524}
   - 61: {fileID: 6110722}
-  - 114: {fileID: 11451436}
-  - 61: {fileID: 6114116}
+  - 114: {fileID: 11473802}
   m_Layer: 0
   m_Name: castle5
   m_TagString: Untagged
@@ -282,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.6662025, y: -.546871662, z: 0}
+  m_LocalPosition: {x: 130.488647, y: 12.6935339, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 427350}
@@ -411,19 +410,6 @@ BoxCollider2D:
   m_Offset: {x: 22.6981201, y: 261.921997}
   serializedVersion: 2
   m_Size: {x: 38.8723755, y: 592.874512}
---- !u!61 &6114116
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174696}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 1120.75024, y: 242.277359}
-  serializedVersion: 2
-  m_Size: {x: 37.2154541, y: 621.643799}
 --- !u!114 &11414248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,32 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1874989c5e2da094ea00112c6a895694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11451436
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circle: {fileID: 0}
-  enemies:
-  - {fileID: 415310}
-  - {fileID: 428214}
-  chunkEndRight: {fileID: 427350}
-  chunkEndDownR: {fileID: 0}
-  chunkEndDownL: {fileID: 0}
-  isDouble: 0
-  hasLeftEnd: 1
-  hasRightEnd: 1
-  leftUsed: 0
-  rightUsed: 0
-  position: 0000000000000000
-  isFirstChunk: 0
-  chunkId: 0
 --- !u!114 &11460316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,6 +448,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1874989c5e2da094ea00112c6a895694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11473802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5865672da44157b49b02a81f88c30082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circle: {fileID: 0}
+  enemies:
+  - {fileID: 415310}
+  - {fileID: 428214}
+  chunkEndRight: {fileID: 427350}
+  chunkEndUpR: {fileID: 0}
+  chunkEndUpL: {fileID: 0}
+  isDouble: 0
+  hasLeftEnd: 1
+  hasRightEnd: 1
+  leftUsed: 0
+  rightUsed: 0
+  position: 0000000000000000
+  isFirstChunk: 0
+  chunkId: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
