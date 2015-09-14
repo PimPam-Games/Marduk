@@ -116,6 +116,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					anim.SetBool ("Attacking", true);
 				}
 				else{
+					bowLauncher.projectile = bowprojectile;
 					anim.SetBool ("BowAttacking", true);
 				}
 			}	
@@ -303,8 +304,16 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void Spell1(){
-			if(projLaunchers[0].projectile != null)
-				projLaunchers[0].LaunchProjectile ();
+			if (projLaunchers [0].projectile != null) {
+				if (!projLaunchers [0].projectile.GetComponent<PlayerProjStats> ().bowLauncher){
+					projLaunchers [0].LaunchProjectile ();
+				} else {
+					bowLauncher.projectile = projLaunchers [0].projectile;
+					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
+						anim.SetBool ("BowAttacking", true);
+					}
+				}
+			}
 		}
 		
 		public void Spell2(){

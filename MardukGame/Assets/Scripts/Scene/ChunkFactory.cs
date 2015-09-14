@@ -102,10 +102,14 @@ public class ChunkFactory : MonoBehaviour {
 			}
 			if(bottomUpGeneration){
 				if(chunkPos[0] <= 1 && choice == 1){ // si llego al tope de la profundidad no puede tocar un doble
+					Debug.Log("tope");
 					choice = 0;
 				}
 				if((cmatrix[chunkPos[0]-1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]-1, chunkPos[1]+1] && exit == Exits.Left)){
 					//Debug.Log("este doble no deberia ir baby");
+					choice = 0;
+				}
+				if(choice == 1 && exit == Exits.Right){ //es para que no genere el chunk doble a la izq por que tiene un cierre, es por ahora esto
 					choice = 0;
 				}
 			}

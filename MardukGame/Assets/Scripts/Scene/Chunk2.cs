@@ -53,6 +53,7 @@ public class Chunk2 : MonoBehaviour {
 			GenerateChunks (); //si  no esta en la lista  crea el primero
 			alreadyGenerated = true;
 		}
+		Debug.Log ("pos: "+ this.position[0]);
 		foreach(Transform enemyPos in enemies){
 			int index = Random.Range(0,g.enemyList.Length); //slecciona un enemigo aleatorio de la lista de enemigos
 			if(index >= g.enemyList.Length)

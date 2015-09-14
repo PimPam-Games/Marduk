@@ -18,6 +18,7 @@ public class PlayerProjStats : MonoBehaviour {
 	private Rigidbody2D rb;
 	public AudioSource hitEnemySound;
 	public AudioSource criticalHitSound;
+	public bool bowLauncher = false; //si se tiene que tirar con un arco
 	private bool collision = false;
 	// Use this for initialization
 	void Start () {
