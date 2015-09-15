@@ -67,6 +67,7 @@ MonoBehaviour:
   flipProjectile: 1
   projectile: {fileID: 0}
   spellName: Dash
+  nameForSave: Dash
   coolDown: 2
   type: 5
   manaCost: 3
@@ -175,6 +176,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: coolDown
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nameForSave
+      value: Dash
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

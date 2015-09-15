@@ -67,6 +67,7 @@ MonoBehaviour:
   flipProjectile: 1
   projectile: {fileID: 137192, guid: 355b940606ebd5745998166aee28d732, type: 2}
   spellName: Poison Ball
+  nameForSave: PoisonBall
   coolDown: 3
   type: 0
   manaCost: 8
@@ -127,6 +128,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: coolDown
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nameForSave
+      value: PoisonBall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

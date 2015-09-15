@@ -13,6 +13,8 @@ public class PlayerData{
 	public  int spiAddedPoints;
 	public  int dexAddedPoints;
 
+	public string[] skillsNames; //guardo los nombres de todos los skills del panel
+
 	public  double currentExp;
 	public  int lvl;
 	public  double nextLevelExp;

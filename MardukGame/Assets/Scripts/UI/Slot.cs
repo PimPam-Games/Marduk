@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using p = PlayerStats;
 
-public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
+public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
 	public GameObject tooltip;
 
@@ -29,8 +29,29 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 		ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
 	}
 
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		if (eventData.button == PointerEventData.InputButton.Right) {
+			if(spell != null)
+				spell.GetComponent<SpellStats>().RemoveSkill();
+			ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
+		}
+		/*else if (eventData.button == PointerEventData.InputButton.Middle)
+			Debug.Log("Middle click");
+		else if (eventData.button == PointerEventData.InputButton.Left)
+			Debug.Log("Right click");*/
+	}
 		
 	public void OnPointerEnter(PointerEventData eventData){ //muestro el tooltip
+		showTooltip ();
+	}
+
+	public void OnPointerExit(PointerEventData eventData){
+
+		tooltip.SetActive (false);
+	}
+
+	private void showTooltip(){
 		if (this.spell == null)
 			return;
 		SpellStats spellStats = spell.GetComponent<SpellStats> ();
@@ -61,7 +82,7 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			float totalMinDmg = pps.minDmg + p.offensives [p.MgDmg];
 			float totalMaxDmg = pps.maxDmg + p.offensives [p.MgDmg];
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Damage " + System.Math.Round (totalMinDmg, 1).ToString () + " - " + System.Math.Round (totalMaxDmg, 1).ToString ();
-		break;
+			break;
 		case Types.SkillsTypes.Aura:
 			//tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.magenta;	
 			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Aura";
@@ -73,15 +94,10 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Movement";
 			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaCost.ToString()+ "\n";
-
+			
 			break;
 		}
 		tooltip.SetActive (true);	
-	}
-
-	public void OnPointerExit(PointerEventData eventData){
-
-		tooltip.SetActive (false);
 	}
 
 }

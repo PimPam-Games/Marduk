@@ -165,8 +165,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 				else{
 					if(item.tag == "Spell"){
 						string itName = item.GetComponent<Item>().Name;
-						spellsPanel.AddSpell(itName);
-						Destroy(item);
+						bool spellAdded = spellsPanel.AddSpell(itName);
+						if(spellAdded)
+							Destroy(item);
 					}
 				}
 		

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using p = PlayerStats;
 
 public class SpellStats : MonoBehaviour {
 
@@ -7,6 +8,7 @@ public class SpellStats : MonoBehaviour {
 	public bool flipProjectile;
 	public GameObject projectile;
 	public string spellName;
+	public string nameForSave; //el nombre que se guarda del skill es para poder instanciarlo despues
 	public float coolDown;
 	public Types.SkillsTypes type;
 	public float manaCost;
@@ -36,5 +38,11 @@ public class SpellStats : MonoBehaviour {
 	public void ActivateCoolDown(){
 		if(cdTimer <= 0)
 			cdTimer = coolDown;
+	}
+
+	public void RemoveSkill(){
+		if(type == Types.SkillsTypes.Aura)
+			p.defensives [p.LifePerSecond] -= lifeRegenPerSecond;
+		Destroy (this.gameObject);
 	}
 }

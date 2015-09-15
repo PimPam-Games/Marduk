@@ -57,13 +57,15 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		}
 	}
 
-	public void AddSpell(string spellName){
+	public bool AddSpell(string spellName){
 		a++;
 		if (a > 1)
-			return;
+			return false;
 		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + spellName); //creo el prefab para meterlo en el slot
-		if (newSpellPrefab == null)
-			return;
+		if (newSpellPrefab == null) {
+			Debug.LogError("prefab del skill no encontrado");
+			return false;
+		}
 		GameObject newSpell = (GameObject)Instantiate (newSpellPrefab, newSpellPrefab.transform.position, newSpellPrefab.transform.rotation);
 		foreach(Transform slot in slots){ //busca un slot vacio en spell panel
 			GameObject spell = slot.GetComponent<Slot>().spell;
@@ -75,9 +77,11 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 					p.defensives[p.LifePerSecond] += st.lifeRegenPerSecond;
 				}
 				HasChanged();
-				return;
+				return true;
 			}
 		}
+		return false;
+
 	}
 
 }

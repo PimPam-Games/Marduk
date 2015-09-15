@@ -56,7 +56,8 @@ MonoBehaviour:
   flipProjectile: 1
   projectile: {fileID: 100906, guid: 5caaaa962ca8b7c4d85b2614d0838174, type: 2}
   spellName: Ice Shot
-  castDelay: .600000024
+  nameForSave: IceShot
+  coolDown: 0
   type: 3
   manaCost: 2
   manaReserved: 0
@@ -156,6 +157,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: manaCost
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nameForSave
+      value: IceShot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

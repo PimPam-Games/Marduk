@@ -146,6 +146,17 @@ public class Persistence : MonoBehaviour {
 		data.inventory = inv;
 		data.inventoryCantItems = pItems.inventoryCantItems;
 
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		string[] playerSkills = new string[4];
+		if (player != null) { //para guardar los skills del jugador
+			for (int i = 0; i < playerSkills.Length; i++) {
+				if(player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i] != null)
+					playerSkills[i] = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i].nameForSave;
+				else
+					playerSkills[i] = null;
+			}
+		}
+		data.skillsNames = playerSkills;
 		bf.Serialize (file,data);
 		file.Close ();
 	}
