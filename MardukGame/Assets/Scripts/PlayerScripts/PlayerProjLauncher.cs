@@ -10,8 +10,8 @@ public class PlayerProjLauncher : MonoBehaviour {
 	public bool flipProjectile = false;
 	public PlatformerCharacter2D character;
 	private GameObject proj; //el proyectil
-	public float castDelay = 0;
-	public float castDelayCount = 0;
+	//public float castDelay = 0;
+	//public float castDelayCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -21,16 +21,16 @@ public class PlayerProjLauncher : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		castDelayCount -= Time.deltaTime;
+		//castDelayCount -= Time.deltaTime;
 	}
 
 	public void LaunchProjectile(){
-		if (castDelayCount > 0)
-			return;
-		if (p.currentMana < projectile.GetComponent<PlayerProjStats> ().manaCost)
-			return;
+		//if (castDelayCount > 0)
+		//	return;
+		/*if (p.currentMana < projectile.GetComponent<PlayerProjStats> ().manaCost)
+			return;*/
 		proj = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
-		castDelayCount = castDelay;
+		//castDelayCount = castDelay;
 			/*var dir = (target.transform.position - transform.position).normalized;
 			var dot = Vector2.Dot(dir, transform.right);*/
 		if (!flipProjectile) {	

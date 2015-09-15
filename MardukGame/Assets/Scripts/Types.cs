@@ -10,6 +10,7 @@ public static class Types{
 		Aura,
 		Curse,
 		Bow,
-		Melee
+		Melee,
+		Movement
 	}
 }

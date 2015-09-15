@@ -7,14 +7,16 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 
 	public static GameObject[] projectiles = new GameObject[4];
 	public Transform slots;
-	public PlayerProjLauncher[] projLaunchers = new PlayerProjLauncher[4];
+	//public PlayerProjLauncher[] projLaunchers = new PlayerProjLauncher[4];
 	private GameObject player;
+	public SpellStats[] playerSkills;
 	private int a = 0;
 	// Use this for initialization
 	void Start () {
 		player =  GameObject.Find ("Player");
 		if (player != null) {
-			projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
+			//projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
+			playerSkills  = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
 			HasChanged ();
 		}
 
@@ -24,7 +26,8 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		if (player == null ){
 			player = GameObject.FindGameObjectWithTag("Player");
 			if (player != null){
-				projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
+				//projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
+				playerSkills  = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
 				HasChanged ();
 			}
 		}
@@ -37,16 +40,18 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			GameObject spell = slot.GetComponent<Slot>().spell;
 			if(spell != null){
 				SpellStats stats =  spell.GetComponent<SpellStats>();
-				projectiles[i] = stats.projectile;
+				/*projectiles[i] = stats.projectile;
 				projLaunchers[i].projectile = projectiles[i];
 				projLaunchers[i].force = stats.force;
 				projLaunchers[i].flipProjectile = stats.flipProjectile;
 				//Debug.Log("castdelay " + stats.castDelay);
-				projLaunchers[i].castDelay = stats.castDelay;
+				projLaunchers[i].castDelay = stats.castDelay;*/
+				playerSkills[i] = stats;
 			}
 			else{
-				projectiles[i] = null;
-				projLaunchers[i].projectile = null;
+				playerSkills[i] = null;
+				/*projectiles[i] = null;
+				projLaunchers[i].projectile = null;*/
 			}
 			i++;
 		}

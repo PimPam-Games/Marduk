@@ -35,7 +35,8 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			return;
 		SpellStats spellStats = spell.GetComponent<SpellStats> ();
 		tooltip.transform.GetChild (0).GetComponent<Text> ().text = spellStats.spellName;
-		if (spellStats.type == Types.SkillsTypes.Spell) {
+		switch(spellStats.type){
+		case Types.SkillsTypes.Spell:
 			PlayerProjStats pps = spell.GetComponent<SpellStats> ().projectile.GetComponent<PlayerProjStats> ();
 			switch (pps.elem) {
 			case Types.Element.Cold:
@@ -56,17 +57,24 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			}
 			tooltip.transform.GetChild (1).GetComponent<Text> ().text = spellStats.type.ToString();
 			tooltip.transform.GetChild (2).GetComponent<Text> ().text = pps.elem.ToString ();
-			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + pps.manaCost.ToString () + "\n";
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + spellStats.manaCost.ToString () + "\n";
 			float totalMinDmg = pps.minDmg + p.offensives [p.MgDmg];
 			float totalMaxDmg = pps.maxDmg + p.offensives [p.MgDmg];
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Damage " + System.Math.Round (totalMinDmg, 1).ToString () + " - " + System.Math.Round (totalMaxDmg, 1).ToString ();
-		}
-		else {
+		break;
+		case Types.SkillsTypes.Aura:
 			//tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.magenta;	
 			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Aura";
 			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaReserved.ToString()+ "\n";
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Life Regen per Second: " + spellStats.lifeRegenPerSecond;
+			break;
+		case Types.SkillsTypes.Movement:
+			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Movement";
+			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaCost.ToString()+ "\n";
+
+			break;
 		}
 		tooltip.SetActive (true);	
 	}

@@ -22,9 +22,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 		[SerializeField] private GameObject weapon;
 		[SerializeField] private GameObject RangedWeapon;
 		public PlayerProjLauncher[] projLaunchers;
+		public SpellStats[] playerSkills;
+		private float[] skillsCoolDowns;
 		public PlayerProjLauncher bowLauncher;
 		private SpellsPanel spellsPanel;
-
+		
 		private Transform backforeArm;
         private Transform groundCheck; // A position marking where to check if the player is grounded.
         private float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -46,6 +48,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private bool knockFromRight = true;
 		private float auxxx = 0;
 		public static bool jumpNow = false; //para que el jugador salte, se usa para cuando se carga un nivel que entra desde un hueco
+		
+		private bool movementSkillActivated; //para no permitir que el personaje se mueva si hay un skill de movimiento activado
+		private float moveSkillTimer;	//tiempo que dura el skill de movimiento
+		private float[] moveSkillSpeed; //velocidad x e y del skill de movimiento
+
         private void Awake()
         {
 
@@ -64,6 +71,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		void Start(){
 			spellsPanel = GameObject.Find ("SpellsPanel").GetComponent<SpellsPanel> ();
+			playerSkills = new SpellStats[4];
+			moveSkillSpeed = new float[2];
+			skillsCoolDowns = new float[2];
 		}
 
 		void Update(){
@@ -80,6 +90,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				rb.AddForce (new Vector2(0, 900f));
 				jumpNow = false;
 			}
+			UpdateMovementSkill ();
 		}
 
 		public void knockBackPlayer(bool knockFromRight){
@@ -232,7 +243,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             //only control the player if grounded or airControl is turned on
 		//Debug.Log (grounded);
 		//Debug.Log (Mathf.Abs(move));
-            if (grounded || airControl)
+            if ((grounded || airControl) && !movementSkillActivated)
             {
                 // Reduce the speed if crouching by the crouchSpeed multiplier
                 move = (crouch ? move*crouchSpeed : move);
@@ -304,56 +315,69 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void Spell1(){
-			if (projLaunchers [0].projectile != null) {
-				if (projLaunchers [0].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
-					bowLauncher.projectile = projLaunchers [0].projectile;
-					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
-						anim.SetBool ("BowAttacking", true);
-					}
-				} else {
-					projLaunchers [0].LaunchProjectile ();
-				}
-			}
+			checkSkill (0);
 		}
 		
 		public void Spell2(){
-			if (projLaunchers [1].projectile != null) {
-				if (projLaunchers [1].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
-					bowLauncher.projectile = projLaunchers [1].projectile;
-					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
-						anim.SetBool ("BowAttacking", true);
-					}
-				} else {
-					projLaunchers [1].LaunchProjectile ();
-				}
-			}
+			checkSkill (1);
 		}	
 
 		public void Spell3(){
-			if (projLaunchers [2].projectile != null) {
-				if (projLaunchers [2].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
-					bowLauncher.projectile = projLaunchers [2].projectile;
-					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
-						anim.SetBool ("BowAttacking", true);
-					}
-				} else {
-					projLaunchers [2].LaunchProjectile ();
-				}
-			}
+			checkSkill (2);
 		}
 
 		public void Spell4(){
-			if (projLaunchers [3].projectile != null) {
-				if (projLaunchers [3].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
-					bowLauncher.projectile = projLaunchers [3].projectile;
-					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
-						anim.SetBool ("BowAttacking", true);
-					}
-				} else {
-					projLaunchers [3].LaunchProjectile ();
-				}
+			checkSkill (3);
+		}
+
+		private void UpdateMovementSkill(){
+			if(movementSkillActivated && !PlayerStats.isDead){
+				if(facingRight)
+					rb.velocity = new Vector2(moveSkillSpeed[0], rb.velocity.y);
+				else
+					rb.velocity = new Vector2(-moveSkillSpeed[0], rb.velocity.y);
+				moveSkillTimer -= Time.deltaTime;
+				if(moveSkillTimer <= 0)
+					movementSkillActivated = false;
 			}
 		}
+
+		private void checkSkill(int i){
+			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
+			if (skill != null) {
+				//if(skill.projectile != null){ //si tiene un proyectil se lo seteo al lanzador
+					
+			//	}
+				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0))
+					return;
+				skill.ActivateCoolDown();
+				PlayerStats.currentMana -= skill.manaCost;
+				switch(skill.type){
+					case Types.SkillsTypes.Spell:
+						projLaunchers[0].projectile = skill.projectile;
+						projLaunchers[0].force = skill.force;
+						projLaunchers[0].flipProjectile = skill.flipProjectile;
+						//Debug.Log("castdelay " + stats.castDelay);
+						//projLaunchers[0].castDelay = skill.coolDown;
+						projLaunchers[0].LaunchProjectile();
+					break;
+					case Types.SkillsTypes.Bow:
+						bowLauncher.projectile = skill.projectile;
+						if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
+							anim.SetBool ("BowAttacking", true);
+						}
+					break;
+					case Types.SkillsTypes.Movement:
+						moveSkillTimer = skill.moveTime;
+						moveSkillSpeed[0] = skill.movementX;
+						moveSkillSpeed[1] = skill.movementY;
+						movementSkillActivated = true;
+					break;
+				}
+			}
+
+		}
+
 		public void Idle(){
 
 			anim.speed = normalAnimSpeed;

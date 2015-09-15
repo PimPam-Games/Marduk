@@ -46,6 +46,7 @@ public class EnemyStats : MonoBehaviour {
 	public float blockChance = 0;
 
 	public AudioSource alertSound;
+	private bool alertSoundPlayed; //si ya se ejecuto el sonido del bicho
 	private Animator anim;
 	private Rigidbody2D rb;
 	public string enemyName;
@@ -79,7 +80,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	void OnEnable(){
-		StartCoroutine (AlertSoundPlay ());
+		//StartCoroutine (AlertSoundPlay ());
 	}
 
 	void OnDisable(){
@@ -100,7 +101,7 @@ public class EnemyStats : MonoBehaviour {
 		currHealth = maxHealth;
 	}
 
-	IEnumerator AlertSoundPlay(){
+	/*IEnumerator AlertSoundPlay(){
 		while (true) {
 			yield return new WaitForSeconds (0.4f);
 			if(rend.isVisible){
@@ -108,7 +109,7 @@ public class EnemyStats : MonoBehaviour {
 				yield return new WaitForSeconds (2.4f);
 			}
 		}
-	}
+	}*/
 
 	// Update is called once per frame
 	void Update () {
@@ -117,6 +118,12 @@ public class EnemyStats : MonoBehaviour {
 			CalculateStats();
 		}
 		chillUpdate ();
+		if (rend.isVisible && !alertSoundPlayed) {
+			alertSound.Play ();
+			alertSoundPlayed = true;
+		}
+		if (!rend.isVisible)
+			alertSoundPlayed = false;
 	}
 
 	private void chillUpdate(){
@@ -149,8 +156,9 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	public bool Hit(float dmg, Types.Element type){
-		if (dmg == 0)
+		if (dmg == 0 || isDead) {
 			return false;
+		}
 		//Debug.Log ("damage: " + dmg + " Type: " + type);
 		float chanceToEvade = (float)System.Math.Round((float)(1 - p.offensives [p.Accuracy] / (p.offensives [p.Accuracy] + System.Math.Pow((double)(evasion / 4),0.8))),2 );
 		float[] cteProbs = {1 - chanceToEvade, chanceToEvade};

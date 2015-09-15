@@ -12,7 +12,7 @@ public class PlayerProjStats : MonoBehaviour {
 	public bool isParticle;
 	public bool dontDestroy = false;
 	public bool hasSplashAnim = false;
-	public float manaCost = 5f;
+	//public float manaCost = 5f;
 	private float rotationChange;
 	public Animator anim;
 	private Rigidbody2D rb;
@@ -24,7 +24,7 @@ public class PlayerProjStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		PlayerStats.currentMana -= manaCost;
+
 		//PlayerStats.UpdateMana ();
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;

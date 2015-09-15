@@ -1,92 +1,92 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &103456
+--- !u!1 &123774
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 224: {fileID: 22477672}
-  - 222: {fileID: 22275530}
-  - 114: {fileID: 11434876}
-  - 225: {fileID: 22519734}
-  - 114: {fileID: 11492692}
-  - 114: {fileID: 11489344}
+  - 224: {fileID: 22488752}
+  - 222: {fileID: 22292070}
+  - 114: {fileID: 11424816}
+  - 225: {fileID: 22592980}
+  - 114: {fileID: 11460416}
+  - 114: {fileID: 11462696}
   m_Layer: 5
-  m_Name: IceShot
+  m_Name: Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11434876
+--- !u!114 &11424816
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103456}
+  m_GameObject: {fileID: 123774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: .710344791, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 9b7e76927532dda4883133bafa1fefe4, type: 3}
-  m_Type: 0
+  m_Color: {r: .903448224, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11489344
+--- !u!114 &11460416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: -1200, y: 0}
-  flipProjectile: 1
-  projectile: {fileID: 100906, guid: 5caaaa962ca8b7c4d85b2614d0838174, type: 2}
-  spellName: Ice Shot
-  castDelay: .600000024
-  type: 3
-  manaCost: 2
-  manaReserved: 0
-  lifeRegenPerSecond: 0
-  movementX: 0
-  movementY: 0
-  moveTime: 0
---- !u!114 &11492692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103456}
+  m_GameObject: {fileID: 123774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9452a7a144d828c41a47fab5d96fcd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!222 &22275530
+--- !u!114 &11462696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: {x: 0, y: 0}
+  flipProjectile: 1
+  projectile: {fileID: 0}
+  spellName: Dash
+  coolDown: 2
+  type: 5
+  manaCost: 3
+  manaReserved: 0
+  lifeRegenPerSecond: 0
+  movementX: 15
+  movementY: 0
+  moveTime: .300000012
+--- !u!222 &22292070
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103456}
---- !u!224 &22477672
+  m_GameObject: {fileID: 123774}
+--- !u!224 &22488752
 RectTransform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103456}
+  m_GameObject: {fileID: 123774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -95,15 +95,15 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -13.4486637, y: -2.81666565}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: .5, y: .5}
---- !u!225 &22519734
+--- !u!225 &22592980
 CanvasGroup:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103456}
+  m_GameObject: {fileID: 123774}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
@@ -117,47 +117,66 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
-      propertyPath: spellName
-      value: Ice Shot
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9b7e76927532dda4883133bafa1fefe4,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: .710344791
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 100906, guid: 5caaaa962ca8b7c4d85b2614d0838174, type: 2}
+      propertyPath: m_Color.r
+      value: .903448224
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: force.x
-      value: -1200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: force.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: type
+      propertyPath: flipProjectile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spellName
+      value: Dash
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: castDelay
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: manaReserved
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lifeRegenPerSecond
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: movementX
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveTime
+      value: .300000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: manaCost
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coolDown
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 103456}
+  m_RootGameObject: {fileID: 123774}
   m_IsPrefabParent: 1
