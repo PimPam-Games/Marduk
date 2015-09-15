@@ -35,7 +35,7 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			return;
 		SpellStats spellStats = spell.GetComponent<SpellStats> ();
 		tooltip.transform.GetChild (0).GetComponent<Text> ().text = spellStats.spellName;
-		if (spellStats.type == SpellStats.skillsTypes.Skill) {
+		if (spellStats.type == Types.SkillsTypes.Spell) {
 			PlayerProjStats pps = spell.GetComponent<SpellStats> ().projectile.GetComponent<PlayerProjStats> ();
 			switch (pps.elem) {
 			case Types.Element.Cold:

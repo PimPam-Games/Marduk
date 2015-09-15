@@ -6,6 +6,7 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	public int MaxDistanceFollow = 11;
 	public float maxSpeed = 2f;
+	public float initMaxSpeed;
 	public bool facingRight = false;
 	private float currentSpeed;
 	private Rigidbody2D rb;
@@ -48,6 +49,7 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		initMaxSpeed = maxSpeed;
 		target = GameObject.FindGameObjectWithTag ("Player");
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();

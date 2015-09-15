@@ -8,7 +8,7 @@ public class SpellStats : MonoBehaviour {
 	public GameObject projectile;
 	public string spellName;
 	public float castDelay;
-	public skillsTypes type;
+	public Types.SkillsTypes type;
 	public float manaReserved;
 	public float lifeRegenPerSecond;
 
@@ -22,9 +22,5 @@ public class SpellStats : MonoBehaviour {
 	
 	}
 
-	public enum skillsTypes{
-		Skill,
-		Aura,
-		Curse
-	}
+
 }

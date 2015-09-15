@@ -305,30 +305,54 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		public void Spell1(){
 			if (projLaunchers [0].projectile != null) {
-				if (!projLaunchers [0].projectile.GetComponent<PlayerProjStats> ().bowLauncher){
-					projLaunchers [0].LaunchProjectile ();
-				} else {
+				if (projLaunchers [0].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
 					bowLauncher.projectile = projLaunchers [0].projectile;
 					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
 						anim.SetBool ("BowAttacking", true);
 					}
+				} else {
+					projLaunchers [0].LaunchProjectile ();
 				}
 			}
 		}
 		
 		public void Spell2(){
-			if(projLaunchers[1].projectile != null)
-				projLaunchers[1].LaunchProjectile ();
+			if (projLaunchers [1].projectile != null) {
+				if (projLaunchers [1].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
+					bowLauncher.projectile = projLaunchers [1].projectile;
+					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
+						anim.SetBool ("BowAttacking", true);
+					}
+				} else {
+					projLaunchers [1].LaunchProjectile ();
+				}
+			}
 		}	
 
 		public void Spell3(){
-			if(projLaunchers[2].projectile != null)
-				projLaunchers[2].LaunchProjectile ();
+			if (projLaunchers [2].projectile != null) {
+				if (projLaunchers [2].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
+					bowLauncher.projectile = projLaunchers [2].projectile;
+					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
+						anim.SetBool ("BowAttacking", true);
+					}
+				} else {
+					projLaunchers [2].LaunchProjectile ();
+				}
+			}
 		}
 
 		public void Spell4(){
-			if(projLaunchers[3].projectile != null)
-				projLaunchers[3].LaunchProjectile ();
+			if (projLaunchers [3].projectile != null) {
+				if (projLaunchers [3].projectile.GetComponent<PlayerProjStats> ().projType == Types.SkillsTypes.Bow){
+					bowLauncher.projectile = projLaunchers [3].projectile;
+					if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
+						anim.SetBool ("BowAttacking", true);
+					}
+				} else {
+					projLaunchers [3].LaunchProjectile ();
+				}
+			}
 		}
 		public void Idle(){
 

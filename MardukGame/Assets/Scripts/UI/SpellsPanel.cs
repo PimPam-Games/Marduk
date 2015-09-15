@@ -66,7 +66,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				newSpell.transform.SetParent(slot);
 				newSpell.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 				SpellStats st = newSpell.GetComponent<SpellStats>();
-				if(st.type == SpellStats.skillsTypes.Aura){
+				if(st.type == Types.SkillsTypes.Aura){
 					p.defensives[p.LifePerSecond] += st.lifeRegenPerSecond;
 				}
 				HasChanged();

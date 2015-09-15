@@ -55,6 +55,12 @@ public class EnemyStats : MonoBehaviour {
 	public double exp; //experiencia que da el bicho cuando lo matan
 	private bool playAlertSound;
 	private Renderer rend;
+	private SpriteRenderer spriteRend;
+	private float initAnimSpeed;
+	EnemyIAMovement enemyMove;
+	private bool chill = false;
+	private float chillTimer = 1f;
+	private float chillCount = 0;
 
 	public float Accuracy{
 		get {return accuracy;}
@@ -66,7 +72,9 @@ public class EnemyStats : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		rend = GetComponent<Renderer> ();
-
+		spriteRend = GetComponent<SpriteRenderer> ();
+		enemyMove = GetComponent<EnemyIAMovement>();
+		initAnimSpeed = anim.speed;
 		CalculateStats ();
 	}
 
@@ -108,6 +116,19 @@ public class EnemyStats : MonoBehaviour {
 			lvl = zoneSettings.enemiesLvl;
 			CalculateStats();
 		}
+		chillUpdate ();
+	}
+
+	private void chillUpdate(){
+		chillCount -= Time.deltaTime;
+		if (chillCount <= 0 && chill) {
+			chill = false;
+			anim.speed = initAnimSpeed;
+			enemyMove.maxSpeed += enemyMove.initMaxSpeed;
+			//for(int i=0 ; i<renders.Length-1;i++){
+			spriteRend.color = new Color (1f, 1f, 1f, 1f);
+		//	}
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
@@ -128,10 +149,12 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	public bool Hit(float dmg, Types.Element type){
-
+		if (dmg == 0)
+			return false;
+		//Debug.Log ("damage: " + dmg + " Type: " + type);
 		float chanceToEvade = (float)System.Math.Round((float)(1 - p.offensives [p.Accuracy] / (p.offensives [p.Accuracy] + System.Math.Pow((double)(evasion / 4),0.8))),2 );
 		float[] cteProbs = {1 - chanceToEvade, chanceToEvade};
-		if (Utils.Choose (cteProbs) != 0) {
+		if (Utils.Choose (cteProbs) != 0 && Types.Element.None == type) { //solamente se pueden evadir ataques fisicos
 			//anim.SetBool ("Blocking", true);
 			Debug.Log ("El enemigo Evadio el ataque! ");
 			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
@@ -151,7 +174,19 @@ public class EnemyStats : MonoBehaviour {
 				break;
 			case Types.Element.Cold:
 				//Debug.Log ("cold damage");
+				Debug.Log("EnemigoCongelado");
 				realDmg -= Mathf.Abs ((realDmg * (coldRes/100)));
+				chillCount = chillTimer;
+				if(!chill){
+					if(enemyMove != null)
+						enemyMove.maxSpeed = enemyMove.maxSpeed / 2;
+					anim.speed -= 0.5f;
+				}
+				chill = true;
+				//for(int i=0 ; i<renders.Length-1;i++){
+					spriteRend.color = new Color (0f, 1f, 1f, 1f);
+				//}
+
 				break;
 			case Types.Element.Fire:
 				realDmg -= Mathf.Abs ((realDmg * (fireRes/100)));
