@@ -21,7 +21,7 @@ public class Item : MonoBehaviour {
 	public float[] initBaseAttackPerSecond = new float[2];
 	public float[] initDefense =  new float[2];
 	public float[] initBlockChance =  new float[2];
-
+	public SpriteRenderer auraRend;
 	private float moveTimer = 0; //son para que objeto se mueva un poco
 	private float moveSpeed = 0.1f;
 
@@ -35,6 +35,7 @@ public class Item : MonoBehaviour {
 		defensives = new float[p.CantDefensives];
 		utils = new float[p.CantUtils];
 		rb = GetComponent<Rigidbody2D> ();
+		auraRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
 		//StartCoroutine (StopMove ());
 	}
 
@@ -65,6 +66,7 @@ public class Item : MonoBehaviour {
 			rb.velocity = new Vector2 (0, moveSpeed);
 		}
 	}
+
 
 	/*IEnumerator StopMove(){
 		yield return new WaitForSeconds (3f);

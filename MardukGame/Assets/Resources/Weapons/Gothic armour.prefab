@@ -20,15 +20,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &192686
+--- !u!1 &109162
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 462258}
-  - 61: {fileID: 6110614}
+  - 4: {fileID: 438042}
+  - 61: {fileID: 6131028}
+  - 212: {fileID: 21266662}
   m_Layer: 15
   m_Name: ItemGroundCol
   m_TagString: Untagged
@@ -36,15 +37,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &462258
+--- !u!4 &438042
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192686}
-  m_LocalRotation: {x: 0, y: 0, z: -.0283580832, w: -.999597847}
-  m_LocalPosition: {x: -.159999996, y: .910000026, z: 0}
-  m_LocalScale: {x: 1.50000024, y: 1.5, z: 1}
+  m_GameObject: {fileID: 109162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.00999999978, y: -.0500000007, z: 0}
+  m_LocalScale: {x: 8.15483952, y: 8.75632, z: 1}
   m_Children: []
   m_Father: {fileID: 486764}
   m_RootOrder: 0
@@ -54,11 +55,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102386}
-  m_LocalRotation: {x: 0, y: 0, z: .0283580832, w: -.999597847}
-  m_LocalPosition: {x: -22.4288521, y: 2.17237186, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.5317383, y: -1.96513009, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
-  - {fileID: 462258}
+  - {fileID: 438042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5067386
@@ -77,19 +78,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6110614
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192686}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: .0688459054, y: -.638359785}
-  serializedVersion: 2
-  m_Size: {x: .745554388, y: 1.06815195}
 --- !u!61 &6113002
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -100,9 +88,22 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.00984579511, y: -.0186474361}
+  m_Offset: {x: -.00984191895, y: -.480578423}
   serializedVersion: 2
-  m_Size: {x: 1.32313716, y: 2.01253748}
+  m_Size: {x: 1.13836396, y: 2.2589016}
+--- !u!61 &6131028
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109162}
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .0931798145, y: -.653697312}
+  serializedVersion: 2
+  m_Size: {x: 1.18618929, y: 1.31224585}
 --- !u!82 &8286516
 AudioSource:
   m_ObjectHideFlags: 1
@@ -202,6 +203,7 @@ MonoBehaviour:
   initBlockChance:
   - 0
   - 0
+  auraRend: {fileID: 0}
   itemSound: {fileID: 8286516}
 --- !u!212 &21235592
 SpriteRenderer:
@@ -228,6 +230,32 @@ SpriteRenderer:
   m_SortingLayerID: -354108773
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 00ecbd743c5de334eadd054a753e5add, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!212 &21266662
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109162}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f7b73ee00ab0fdf48a2988e7d044694b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

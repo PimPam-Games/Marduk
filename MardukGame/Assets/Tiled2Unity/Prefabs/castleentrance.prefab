@@ -18,6 +18,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &122300
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 475718}
+  - 60: {fileID: 6074828}
+  m_Layer: 0
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &137080
 GameObject:
   m_ObjectHideFlags: 1
@@ -109,6 +125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477642}
+  - {fileID: 475718}
   m_Father: {fileID: 479796}
   m_RootOrder: 0
 --- !u!4 &418454
@@ -137,6 +154,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 418454}
   m_RootOrder: 0
+--- !u!4 &475718
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 402318}
+  m_RootOrder: 1
 --- !u!4 &476116
 Transform:
   m_ObjectHideFlags: 1
@@ -250,7 +279,18 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 1472, y: -256}
+    - - {x: 1600, y: -64}
+      - {x: 1408, y: -256}
+      - {x: 1280, y: -256}
+      - {x: 1280, y: -320}
+      - {x: 1344, y: -320}
+      - {x: 1344, y: -576}
+      - {x: 1408, y: -576}
+      - {x: 1408, y: -1088}
+      - {x: 1664, y: -1088}
+      - {x: 1664, y: -1024}
+      - {x: 1472, y: -1024}
+      - {x: 1472, y: -256}
       - {x: 1536, y: -256}
       - {x: 1536, y: -192}
       - {x: 1600, y: -192}
@@ -259,20 +299,77 @@ PolygonCollider2D:
       - {x: 1664, y: -64}
       - {x: 2624, y: -64}
       - {x: 2624, y: 0}
-      - {x: 1664, y: 0}
-      - {x: 1408, y: -256}
-      - {x: 1408, y: -1088}
-      - {x: 2496, y: -1088}
-      - {x: 2496, y: -1024}
-      - {x: 1472, y: -1024}
-    - - {x: 2496, y: -1344}
+      - {x: 1600, y: 0}
+    - - {x: 2176, y: -256}
+      - {x: 2240, y: -256}
+      - {x: 2240, y: -576}
+      - {x: 2304, y: -576}
+      - {x: 2304, y: -256}
+      - {x: 2496, y: -256}
+      - {x: 2496, y: -576}
+      - {x: 2560, y: -576}
+      - {x: 2560, y: -256}
+      - {x: 2624, y: -256}
+      - {x: 2624, y: -192}
+      - {x: 2176, y: -192}
+    - - {x: 1664, y: -256}
+      - {x: 1728, y: -256}
+      - {x: 1728, y: -576}
+      - {x: 1792, y: -576}
+      - {x: 1792, y: -256}
+      - {x: 1984, y: -256}
+      - {x: 1984, y: -576}
+      - {x: 2048, y: -576}
+      - {x: 2048, y: -256}
+      - {x: 2112, y: -256}
+      - {x: 2112, y: -192}
+      - {x: 1664, y: -192}
+    - - {x: 1792, y: -640}
+      - {x: 1984, y: -640}
+      - {x: 1984, y: -576}
+      - {x: 1792, y: -576}
+    - - {x: 2496, y: -576}
+      - {x: 2304, y: -576}
+      - {x: 2304, y: -640}
+      - {x: 2496, y: -640}
+    - - {x: 1664, y: -1344}
       - {x: 896, y: -1344}
       - {x: 832, y: -1408}
       - {x: 320, y: -1408}
       - {x: 320, y: -1472}
       - {x: 2624, y: -1472}
       - {x: 2624, y: -1408}
-      - {x: 2496, y: -1408}
+      - {x: 1664, y: -1408}
+--- !u!60 &6074828
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122300}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 1472, y: -960}
+      - {x: 1472, y: -256}
+      - {x: 1536, y: -256}
+      - {x: 1536, y: -192}
+      - {x: 1600, y: -192}
+      - {x: 1600, y: -128}
+      - {x: 1536, y: -128}
+      - {x: 1408, y: -256}
+      - {x: 1408, y: -960}
+    - - {x: 1664, y: -1088}
+      - {x: 2624, y: -1088}
+      - {x: 2624, y: -1024}
+      - {x: 1664, y: -1024}
+    - - {x: 1664, y: -1408}
+      - {x: 2624, y: -1408}
+      - {x: 2624, y: -1344}
+      - {x: 1664, y: -1344}
 --- !u!114 &11451470
 MonoBehaviour:
   m_ObjectHideFlags: 1

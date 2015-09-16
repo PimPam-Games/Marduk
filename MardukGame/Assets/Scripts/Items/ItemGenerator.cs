@@ -4,17 +4,21 @@ using p = PlayerStats;
 
 public class ItemGenerator :MonoBehaviour{
 
+
+
 	private Object[] weaponList;
+
 
 	void Awake(){
 		weaponList = Resources.LoadAll("Weapons", typeof(Object));
+
 	}
 	void Update(){
 
 	}
 
 	public void createInitWeapon(Vector3 position, Quaternion rotation){
-		Object weap =  Resources.Load("Weapons/Arming Sword", typeof(UnityEngine.Object));
+		Object weap =  Resources.Load("Weapons/Arming sword", typeof(UnityEngine.Object));
 		GameObject newWeapon = (GameObject)Instantiate (weap,position,rotation);
 		Item newItem = newWeapon.GetComponent<Item> ();
 		newItem.Rarity = RarityTypes.Normal;
@@ -22,6 +26,9 @@ public class ItemGenerator :MonoBehaviour{
 		newItem.Offensives [p.MinDmg] = 1;
 		newItem.Offensives [p.MaxDamge] = 2;	
 		newItem.Offensives [p.BaseAttacksPerSecond] = 1.15f;
+		if (newItem.auraRend != null) {
+			newItem.auraRend.sprite = GameController.auraRenders[0]; //el color del aura del item, dependiendo si es magico, normal , etc
+		}
 		DontDestroyOnLoad (newWeapon);
 	}
 
@@ -34,7 +41,9 @@ public class ItemGenerator :MonoBehaviour{
 		float[] rarityProb = {0.6f,0.3f,0.09f,0.01f}; // 60% normal, %30 magico, %9 raro , %1 unico hay que ver que onda aca
 		int newRarity = Utils.Choose(rarityProb); 
 		newItem.Rarity = (RarityTypes) newRarity; // 0 = normal, 1 = magico , 2 = raro , 3 = unico
-
+		if (newItem.auraRend != null) {
+			newItem.auraRend.sprite = GameController.auraRenders[newRarity]; //el color del aura del item, dependiendo si es magico, normal , etc
+		}
 		if (newItem.Rarity == RarityTypes.Magic || newItem.Rarity == RarityTypes.Rare) {
 			int optionDef = Random.Range(0,p.CantDefensives);
 			int optionAtr = Random.Range(0,p.CantAtributes);
