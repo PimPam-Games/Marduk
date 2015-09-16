@@ -168,7 +168,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						return;
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
 					PlayerItems.inventoryCantItems++;
-					checkInventory();
+					//checkInventory();
 				}
 				else{
 					if(item.tag == "Spell"){

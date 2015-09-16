@@ -42,8 +42,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193062}
-  m_LocalRotation: {x: 0, y: 0, z: -.999989331, w: .00462490274}
-  m_LocalPosition: {x: -21.4614468, y: 5.77900505, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.964016, y: -2.16875124, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 424414}
@@ -83,7 +83,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142654}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -100,9 +100,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .0128677255, y: .109173551}
+  m_Offset: {x: .0128682451, y: -.38700819}
   serializedVersion: 2
-  m_Size: {x: 1.13975906, y: 1.27811134}
+  m_Size: {x: 1.13975906, y: 1.50711691}
 --- !u!82 &8208786
 AudioSource:
   m_ObjectHideFlags: 1
@@ -274,6 +274,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 4721196a2149fbf43a164b7c0077261c,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 193062}

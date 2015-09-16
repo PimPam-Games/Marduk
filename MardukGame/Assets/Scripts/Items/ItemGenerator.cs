@@ -29,7 +29,7 @@ public class ItemGenerator :MonoBehaviour{
 		//crea una nueva arma
 		int i = Random.Range (0, weaponList.Length);
 		GameObject newWeapon = (GameObject)Instantiate (weaponList [i],position,rotation);
-		newWeapon.GetComponent<Rigidbody2D> ().AddForce (new Vector2(0,250));
+		//newWeapon.GetComponent<Rigidbody2D> ().AddForce (new Vector2(0,250));
 		Item newItem = newWeapon.GetComponent<Item> ();
 		float[] rarityProb = {0.6f,0.3f,0.09f,0.01f}; // 60% normal, %30 magico, %9 raro , %1 unico hay que ver que onda aca
 		int newRarity = Utils.Choose(rarityProb); 

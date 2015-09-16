@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180896}
   m_LocalRotation: {x: 0, y: 0, z: -.999989331, w: .00462490274}
-  m_LocalPosition: {x: -13.9156322, y: 1.79124367, z: 0}
+  m_LocalPosition: {x: -14.1586647, y: -1.69928718, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 470166}
@@ -87,16 +87,16 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .590534508, y: .418470442}
+  m_Offset: {x: .447964996, y: -.145009637}
   serializedVersion: 2
-  m_Size: {x: 1.5866152, y: 1.92616665}
+  m_Size: {x: 1.45389736, y: 2.36542749}
 --- !u!61 &6189456
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -259,6 +259,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[1]
       value: 1.10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

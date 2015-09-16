@@ -22,6 +22,9 @@ public class Item : MonoBehaviour {
 	public float[] initDefense =  new float[2];
 	public float[] initBlockChance =  new float[2];
 
+	private float moveTimer = 0; //son para que objeto se mueva un poco
+	private float moveSpeed = 0.1f;
+
 	public AudioSource itemSound;
 
 	void Awake(){
@@ -53,9 +56,14 @@ public class Item : MonoBehaviour {
 	}
 
 	void Update(){
-		rb.velocity = new Vector2 (0, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
-		rb.velocity = new Vector2 (0, rb.velocity.y - 00000001);
-
+		if (rb.isKinematic == true) {
+			if (moveTimer <= 0) {
+				moveSpeed *= -1;
+				moveTimer = 0.4f;
+			}
+			moveTimer -= Time.deltaTime;
+			rb.velocity = new Vector2 (0, moveSpeed);
+		}
 	}
 
 	/*IEnumerator StopMove(){
@@ -73,6 +81,7 @@ public class Item : MonoBehaviour {
 		if (col.gameObject.layer == LayerMask.NameToLayer ("Ground") && soundCount == 0) {
 			soundCount++;
 			itemSound.Play();
+			rb.isKinematic = true;
 		}
 	}
 

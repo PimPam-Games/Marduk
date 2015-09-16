@@ -18,7 +18,7 @@ public class ChunkFactory : MonoBehaviour {
 	private int currentChunkId = 0;
 	private Object[] chunkPool;
 	private  List<Object> commonChunks = new List<Object>();
-	public List<Object> doubleChunks = new List<Object>();
+	public List<GameObject> doubleChunks = new List<GameObject>();
 	public List<Object> normalChunks = new List<Object>();
 	public List<Object> leftEndChunks = new List<Object>();
 	public List<Object> rightEndChunks = new List<Object>();
@@ -150,7 +150,6 @@ public class ChunkFactory : MonoBehaviour {
 					cmatrix[pos[0]+2,pos[1]-1] = true;*/
 				currentChunkId++;
 				r = Random.Range (0,doubleChunks.Count);
-
 				newChunk = (GameObject)Instantiate (doubleChunks [r], pos, rot);
 				if(bottomUpGeneration)
 					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
