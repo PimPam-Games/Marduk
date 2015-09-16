@@ -150,9 +150,11 @@ public class Persistence : MonoBehaviour {
 		string[] playerSkills = new string[4];
 		if (player != null) { //para guardar los skills del jugador
 			for (int i = 0; i < playerSkills.Length; i++) {
-				if(player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i] != null)
-					playerSkills[i] = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i].nameForSave;
-				else
+				SpellStats ps = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i];
+
+				if(ps != null){
+					playerSkills[i] = ps.nameForSave;
+				}else
 					playerSkills[i] = null;
 			}
 		}
@@ -224,7 +226,17 @@ public class Persistence : MonoBehaviour {
 			}
 			pItems.Inventory = inv;
 			pItems.inventoryCantItems = data.inventoryCantItems;
+			GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
+			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
+			if(data.skillsNames == null)
+				return;
+			for(int i = 0; i < data.skillsNames.Length; i++){
+				if(data.skillsNames[i] != null)
+				{
 
+					sp.AddSpell(data.skillsNames[i]);
+				}
+			}
 		}
 	}
 

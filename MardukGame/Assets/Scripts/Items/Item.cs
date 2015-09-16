@@ -55,6 +55,7 @@ public class Item : MonoBehaviour {
 	void Update(){
 		rb.velocity = new Vector2 (0, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
 		rb.velocity = new Vector2 (0, rb.velocity.y - 00000001);
+
 	}
 
 	/*IEnumerator StopMove(){

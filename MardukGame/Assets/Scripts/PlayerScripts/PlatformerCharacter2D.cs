@@ -46,12 +46,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public float knockbackLength = 0.2f;
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
-		private float auxxx = 0;
 		public static bool jumpNow = false; //para que el jugador salte, se usa para cuando se carga un nivel que entra desde un hueco
 		
 		private bool movementSkillActivated; //para no permitir que el personaje se mueva si hay un skill de movimiento activado
 		private float moveSkillTimer;	//tiempo que dura el skill de movimiento
 		private float[] moveSkillSpeed; //velocidad x e y del skill de movimiento
+
+		private bool isColliding = false;
 
         private void Awake()
         {
@@ -77,7 +78,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		void Update(){
-			auxxx = 0;
 			if (p.isDead)
 				maxSpeed = 0;
 			else
@@ -90,6 +90,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				rb.AddForce (new Vector2(0, 900f));
 				jumpNow = false;
 			}
+			isColliding = false;
 			UpdateMovementSkill ();
 		}
 
@@ -147,12 +148,19 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		void OnTriggerStay2D(Collider2D col){
 			
-			if (Input.GetButtonUp("Grab") && !PlayerStats.isDead) {
+			if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
+				if(isColliding)
+					return;
+				isColliding = true;
 				GameObject item = col.gameObject;
 				if(item == null){
 					Debug.Log("es null");
 					return;
 				}
+				if( item.transform.parent == item.transform ){
+					Debug.Log("hijos: " + item.transform.childCount);
+					return;
+				}	
 				if (item.tag == "Item") {
 					playerItemsGO.Add(item);
 					item.SetActive(false);
