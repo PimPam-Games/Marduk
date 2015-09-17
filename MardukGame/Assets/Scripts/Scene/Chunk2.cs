@@ -41,8 +41,8 @@ public class Chunk2 : MonoBehaviour {
 			if (g.chunksPerZone [g.currLevelName].Count == 0){ //si esta en la lista pero no hay ningun chunk, crea el primero
 				cf.cmatrix[cf.matrixDepth,cf.MatrixSize/2] = true;  //  0000000
 				this.position[0] = cf.matrixDepth;					// 0000000 
-				this.position[1] = cf.MatrixSize/2;					//	0000000
-				GenerateChunks ();									//	0001000 
+				this.position[1] = 1;					            //	0000000
+				GenerateChunks ();									//	1000000 
 				alreadyGenerated = true;
 			}
 		} else {

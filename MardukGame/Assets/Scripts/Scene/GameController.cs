@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void OnApplicationQuit(){
+		previousExit = 0;
 		Persistence.Save ();
 	}
 
@@ -113,6 +114,8 @@ public class GameController : MonoBehaviour {
 			return;
 		}
 		GameObject levelEntry = GameObject.Find("LevelEntry" + previousExit); 
+		Debug.Log ("entry null? " + levelEntry == null);
+		Debug.Log ("previus exit : " + previousExit);
 		PlatformerCharacter2D.stopPlayer = true;
 		player.transform.position = levelEntry.transform.position;
 		if (jumpOnLoad)
