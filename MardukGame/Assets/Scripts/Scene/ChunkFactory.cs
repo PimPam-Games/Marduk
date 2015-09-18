@@ -26,6 +26,7 @@ public class ChunkFactory : MonoBehaviour {
 	private static Object bg;
 	private static bool isEntry = false;
 	public static float bgCount = 0;
+	public static int newChunkPosY; //esta variable se deberia actualziar antes de generar un nuevo chunk, en las clases chunk y chunk2. es para poner la entrada a la cueva
 	public static float bgPerChunk = 4; //cada cuantos chunks debe generar el fondo
 
 
@@ -83,16 +84,16 @@ public class ChunkFactory : MonoBehaviour {
 			Debug.LogError(g.currLevelName + " No encontrado!");
 			return null;
 		}
-		if (isEntry && castleChunks.Count > 0) {
+	/*	if (isEntry && castleChunks.Count > 0) {
 			int r = Random.Range (0,castleChunks.Count);
 			newChunk = (GameObject)Instantiate (castleChunks [r], pos, rot);
 			if(newChunk.name.Contains("Exit"))
 				isEntry = false;
 			DontDestroyOnLoad(newChunk);
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
-		} else {
+		} else {*/
 			int r;
-			float[] chunksProb = {0.4f,0.4f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
+			float[] chunksProb = {04f,0.4f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
 
 			int choice = Utils.Choose(chunksProb);
 			if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1
@@ -102,7 +103,7 @@ public class ChunkFactory : MonoBehaviour {
 			}
 			if(bottomUpGeneration){
 				if(chunkPos[0] <= 2 && choice == 1){ // si llego al tope de la profundidad no puede tocar un doble
-					Debug.Log("tope");
+					//Debug.Log("tope");
 					choice = 0;
 				}
 				if((cmatrix[chunkPos[0]-1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]-1, chunkPos[1]+1] && exit == Exits.Left)){
@@ -128,20 +129,22 @@ public class ChunkFactory : MonoBehaviour {
 				currentChunkId++;
 				r = Random.Range (0,normalChunks.Count);
 				if(hasCaveEntranceChunk && r == normalChunks.Count - 1){ //en la ultima posicion tiene que estar el chunk que entra a una cueva
-					if(zoneEntranceGenerated){
+					if(zoneEntranceGenerated || newChunkPosY != matrixDepth){
 						r = Random.Range (0,normalChunks.Count-1);
 					}
 					else{
 						zoneEntranceGenerated = true;
 					}
 				}
-				if(hasCaveEntranceChunk && chunkPos[0] >= matrixDepth && chunkPos[1] == MatrixSize - 3 && !zoneEntranceGenerated){ // si estoy llegando casi al final y no se genero
+				if(hasCaveEntranceChunk && chunkPos[0] == matrixDepth && chunkPos[1] == MatrixSize - 3 && !zoneEntranceGenerated){ // si estoy llegando casi al final y no se genero
 					zoneEntranceGenerated = true;                                                          // el chunk cueva lo genero si o si
 					r = normalChunks.Count - 1;
 				}
 				newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
-				if(bottomUpGeneration)
+
+				if(bottomUpGeneration){
 					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
+				}
 				else
 					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
@@ -149,8 +152,14 @@ public class ChunkFactory : MonoBehaviour {
 				/*if(exit == Exits.Right)
 					cmatrix[pos[0]+2,pos[1]-1] = true;*/
 				currentChunkId++;
+				if(hasCaveEntranceChunk && chunkPos[0] == matrixDepth && chunkPos[1] == MatrixSize - 3 && !zoneEntranceGenerated){ // si estoy llegando casi al final y no se genero
+					zoneEntranceGenerated = true;                                                          // el chunk cueva lo genero si o si
+					r = normalChunks.Count - 1;
+					newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
+				}
 				r = Random.Range (0,doubleChunks.Count);
-				newChunk = (GameObject)Instantiate (doubleChunks [r], pos, rot);
+				if(newChunk == null)
+					newChunk = (GameObject)Instantiate (doubleChunks [r], pos, rot);
 				if(bottomUpGeneration)
 					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
 				else
@@ -164,7 +173,14 @@ public class ChunkFactory : MonoBehaviour {
 				}
 				else{
 					r = Random.Range (0,rightEndChunks.Count);
-					newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
+				    //if(!hasCaveEntranceChunk || zoneEntranceGenerated)																				
+					//	newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
+					if(hasCaveEntranceChunk && !zoneEntranceGenerated && newChunkPosY == matrixDepth){
+						newChunk = (GameObject)Instantiate (normalChunks [normalChunks.Count -1], pos, rot); //si va a tocar un cierre pero no se genero 
+						zoneEntranceGenerated = true;																						//el chunk para entrar a la cueva, lo genero
+					}
+					if(newChunk == null)
+						newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
 				}
 				if(bottomUpGeneration)
 					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
@@ -172,12 +188,11 @@ public class ChunkFactory : MonoBehaviour {
 					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			}
-			//Debug.Log("Id" + currentChunkId);
 			if(newChunk.name.Contains("Entry"))
 				isEntry = true;
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 			DontDestroyOnLoad(newChunk);
-		}
+		//}
 		if(generateBackground)
 			if (bgCount >= bgPerChunk) {
 				bgCount = 0;

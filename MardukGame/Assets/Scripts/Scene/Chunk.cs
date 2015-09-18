@@ -78,7 +78,7 @@ public class Chunk : MonoBehaviour {
 		if (hasRightEnd && !rightUsed) {
 			rightUsed = true;
 			if(this.position[1] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0],this.position[1]+1]){
-
+				ChunkFactory.newChunkPosY = this.position[0];
 				GameObject g;
 				g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left,this.position);
 				if(g!=null){
@@ -101,7 +101,7 @@ public class Chunk : MonoBehaviour {
 		if (hasLeftEnd && !leftUsed ) {
 			leftUsed = true;
 			if(this.position[1] > 0 && !cf.cmatrix[this.position[0],this.position[1]-1] ){
-
+				ChunkFactory.newChunkPosY = this.position[0];
 				GameObject g;
 				g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right,this.position);
 				if(g != null){
@@ -125,6 +125,7 @@ public class Chunk : MonoBehaviour {
 		if (chunkEndDownL != null) {
 			if(this.position[1] > 0 && this.position[0] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0]+1,this.position[1]-1]){
 				 //la posicion del nuevo es abajo a la izq
+				ChunkFactory.newChunkPosY = this.position[0]+1;
 				GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right,this.position);
 				if(g != null){
 					Chunk nchunk = g.GetComponent<Chunk>();
@@ -146,7 +147,7 @@ public class Chunk : MonoBehaviour {
 		}
 		if (chunkEndDownR != null) {
 			if(this.position[1] < cf.MatrixSize-1 && this.position[0] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0]+1,this.position[1]+1]){
-
+				ChunkFactory.newChunkPosY = this.position[0]+1;
 				//int[] p = {this.position[0]+1,this.position[1]};
 				GameObject g = cf.GenerateChunk (chunkEndDownR.position, chunkEndDownR.rotation,ChunkFactory.Exits.Left,this.position);
 				if(g!=null){

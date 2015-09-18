@@ -10,7 +10,6 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	//public PlayerProjLauncher[] projLaunchers = new PlayerProjLauncher[4];
 	private GameObject player;
 	public SpellStats[] playerSkills;
-	private int a = 0;
 	// Use this for initialization
 	void Start () {
 		player =  GameObject.Find ("Player");
@@ -31,7 +30,6 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				HasChanged ();
 			}
 		}
-		a = 0;
 	}
 
 	public void HasChanged(){ //se llama cuando hubo algun cambio en el spell panel, ej: se intridujo un nuevo skill o se cambio de lugar uno
