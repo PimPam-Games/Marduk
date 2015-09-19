@@ -41,7 +41,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public AudioSource walkGrassSound;
 		
 		public GameObject bowprojectile; //para setearle la flecha al arco por las dudas que no aparezca
-		private float normalAnimSpeed;
+		//private float normalAnimSpeed;
 		public float knockback = 15f;
 		public float knockbackLength = 0.2f;
 		private float knockbackTimer = 0;
@@ -67,7 +67,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				weaponScript = weapon.GetComponent<Weapon> ();
 			if(RangedWeapon != null)
 				rangedWeaponScript = RangedWeapon.GetComponent<RangedWeapon> ();
-			normalAnimSpeed = anim.speed;
+		//	normalAnimSpeed = anim.speed;
         }
 
 		void Start(){
@@ -118,6 +118,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void Attack(){
+			if (stopPlayer)
+				return;
 			if (MyGUI.CharacterWindowOpen () || MyGUI.InventoryOpen ())
 				return;
 			if (weaponScript == null)
@@ -237,7 +239,10 @@ public class PlatformerCharacter2D : MonoBehaviour
         public void Move(float move, bool crouch, bool jump)
         {
 			
-			
+			if (stopPlayer) {
+				walkGrassSound.Stop();
+				return;
+			}
             // If crouching, check to see if the character can stand up
             if (!crouch && anim.GetBool("Crouch"))
             {
@@ -389,7 +394,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		public void Idle(){
 
-			anim.speed = normalAnimSpeed;
+			anim.speed = p.currentAnimSpeed;
 			//Debug.Log ("-speed: " + weaponScript.animSpeed);
 
 			anim.SetBool ("Attacking",false);

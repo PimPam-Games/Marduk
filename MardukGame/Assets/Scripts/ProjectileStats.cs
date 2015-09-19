@@ -41,7 +41,7 @@ public class ProjectileStats : MonoBehaviour {
 		if (col.gameObject.tag == "Player" && !alreadyHit) {
 			bool hitConfirmed = false;
 			float dmgDealt = Random.Range(minDmg,maxDmg);
-			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy);
+			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy,false);
 			alreadyHit = true;
 			if(hitConfirmed){
 				if(col.transform.position.x < this.transform.position.x)

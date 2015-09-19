@@ -7,11 +7,11 @@ using expUi = ExpUiController;
 public class PlayerStats : MonoBehaviour {
 
 
-	public const int CantAtributes = 4, CantOffensives = 13, CantDefensives = 11, CantUtils = 2;
+	public const int CantAtributes = 4, CantOffensives = 13, CantDefensives = 11, CantUtils = 3;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
 	public const int MinDmg = 0, MaxDamge = 1, MgDmg = 2 ,CritChance = 3, CritDmgMultiplier = 4, Accuracy = 5, StunChance = 6, BleedChance = 7, CertainStrChance = 8, ManaPerSec = 9, MaxMana = 10, IncreasedAttackSpeed = 11, BaseAttacksPerSecond = 12; //offensives
 	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, Evasiveness = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10;  //defensives
-	public const int MovementSpeed = 0, MagicFind = 1;//utils
+	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2;//utils
 
 	public const float InitMoveSpeed = 5;
 	public const float InitMaxHealth = 45;
@@ -64,6 +64,9 @@ public class PlayerStats : MonoBehaviour {
 	private float poisonedCount = 0;
 	private float poisonedDmg = 0.4f;
 
+	private float initAnimSpeed;
+	public static float currentAnimSpeed; // guarda la velocidad de movimiento actual, es para usar en Weapon
+
 	public static string playerName;
 
 	private SpriteRenderer[] renders;
@@ -74,6 +77,8 @@ public class PlayerStats : MonoBehaviour {
 		defensives = new float[CantDefensives];
 		utils = new float[CantUtils];
 		anim = GetComponent<Animator> ();
+		initAnimSpeed = anim.speed;
+		currentAnimSpeed = anim.speed;
 	}
 
 	// Use this for initialization
@@ -109,6 +114,7 @@ public class PlayerStats : MonoBehaviour {
 		}
 		if (currentHealth <= 0 && !isDead) {
 			isDead = true;
+			chillCount = 0;
 			StartCoroutine(PlayerDying());
 			//gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false ;//esto es provisorio HAY QUE CAMBIARLO!
 		}
@@ -139,8 +145,10 @@ public class PlayerStats : MonoBehaviour {
 		chillCount -= Time.deltaTime;
 		if (chillCount <= 0 && chill) {
 			chill = false;
-			anim.speed += 0.5f;
-			utils[MovementSpeed] += 2;
+			anim.speed = initAnimSpeed;
+			currentAnimSpeed = anim.speed;
+			utils[MovementSpeed] = InitMoveSpeed; //agregar el increased move speed cuando este implementado!!!!!!!!"!
+			PlatformerCharacter2D.stopPlayer = false;
 			for(int i=0 ; i<renders.Length-1;i++){
 				renders[i].color = new Color (1f, 1f, 1f, 1f);
 			}
@@ -277,7 +285,7 @@ public class PlayerStats : MonoBehaviour {
 		ManaUiController.UpdateManaBar (currentMana,offensives[MaxMana]);
 	}
 
-	public bool Hit(float dmg, Types.Element type, float accuracy){ //se llama cuando un enemigo le pega al jugador
+	public bool Hit(float dmg, Types.Element type, float accuracy, bool isCritical){ //se llama cuando un enemigo le pega al jugador
 
 		if (ghostMode == true) {
 			return false;
@@ -306,7 +314,7 @@ public class PlayerStats : MonoBehaviour {
 			renders[i].color = new Color (1f, 1f, 1f, 0.3f);
 		}
 		ghostModeCount = ghostModeTime;
-
+		
 		float realDmg = dmg;
 		switch (type){
 		case Types.Element.None:
@@ -314,12 +322,21 @@ public class PlayerStats : MonoBehaviour {
 			//Debug.Log("me pegaron man! :(");
 			break;
 		case Types.Element.Cold:
-			Debug.Log("congelado");
+
 			realDmg -= Math.Abs((realDmg * (defensives[ColdRes]/100)));
 			chillCount = chillTimer;
 			if(!chill){
-				utils[MovementSpeed] -= 2;
-				anim.speed -= 0.5f;
+				if(isCritical){
+					Debug.Log("congelado");
+					utils[MovementSpeed] = 0;
+					anim.speed = 0;
+					PlatformerCharacter2D.stopPlayer = true;
+				}
+				else{
+					utils[MovementSpeed] -= 2;
+					anim.speed -= 0.5f;
+				}
+				currentAnimSpeed = anim.speed;
 			}
 			chill = true;
 			for(int i=0 ; i<renders.Length-1;i++){

@@ -18,6 +18,7 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float initPoisonRes = 1;
 	[SerializeField] private float initEvasion = 30; //30 
 	[SerializeField] private float initAccuracy = 25; //25 por ahi deberia ser la base
+	[SerializeField] private float initCritChance = 0.05f; //5% prob de critico
 	[SerializeField] public Types.Element elem ;
 
     private float maxHealth = 10;
@@ -31,7 +32,7 @@ public class EnemyStats : MonoBehaviour {
 	private float poisonRes = 1;
 	private float evasion = 30; //30 
 	private float accuracy = 25; //25 por ahi deberia ser la base
-
+	private float critChance = 25; 
 	[SerializeField] public float minDmgPerLvl = 0;
 	[SerializeField] public float maxDmgPerLvl = 0;
 	[SerializeField] public float healthPerLvl = 10;
@@ -98,6 +99,7 @@ public class EnemyStats : MonoBehaviour {
 		evasion = initEvasion + (lvl-1) * evasionPerLvl;
 		maxHealth = initMaxHealth + (lvl-1) * healthPerLvl;
 		accuracy = initAccuracy + (lvl-1) * accuracyPerLvl;
+		critChance = initCritChance;
 		currHealth = maxHealth;
 	}
 
@@ -145,10 +147,16 @@ public class EnemyStats : MonoBehaviour {
 		if(col.gameObject.tag == "Player" && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		if (col.gameObject.tag == "Player" && !p.isDead) {
+			bool isCrit = false;
 			float dmgDealt = Random.Range(minDamage,maxDamage);
+			float[] critDmgProb = {1 - critChance, critChance };
+			if(Utils.Choose(critDmgProb) != 0){
+				isCrit = true;
+				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
+			}
 				if(p.defensives[p.Thorns] > 0)
 					Hit (p.defensives[p.Thorns], Types.Element.None, false);
-				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy);
+				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy, isCrit);
 
 				if(col.transform.position.x < this.transform.position.x)
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);

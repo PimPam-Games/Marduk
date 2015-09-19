@@ -59,7 +59,7 @@ public class ParticleCollision : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col){
 		if (col.tag == "Player") {
-			col.GetComponent<PlayerStats>().Hit(dmg,elem,-1); //-1 significa que siempre le pega el ataque
+			col.GetComponent<PlayerStats>().Hit(dmg,elem,-1,false); //-1 significa que siempre le pega el ataque
 			if(col.transform.position.x < this.transform.position.x)
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 			else

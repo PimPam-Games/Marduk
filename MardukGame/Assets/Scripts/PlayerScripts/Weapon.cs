@@ -16,11 +16,11 @@ public class Weapon : MonoBehaviour {
 	public AudioSource criticalHitSound;
 	public Animator anim = null; 
 	public float animSpeed = 0;
-	private float normalAnimSpeed;
+	//private float normalAnimSpeed;
 	void Start () {
 		//attackTimer = 0;
 		//attackDelay = p.offensives [p.AttackSpeed];
-		normalAnimSpeed = anim.speed;
+		//normalAnimSpeed = anim.speed;
 	}
 	
 	// Update is called once per frame
@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour {
 		if (anim.GetBool ("Attacking") == false)
 			isAttacking = false;
 		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false) { //anim.GetBool ("Attacking") == false && 
-			anim.speed = normalAnimSpeed;
+			anim.speed = p.currentAnimSpeed;
 			isAttacking = false;
 			canAttack = true;
 		}
