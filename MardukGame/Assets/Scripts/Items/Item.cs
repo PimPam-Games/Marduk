@@ -150,7 +150,7 @@ public class Item : MonoBehaviour {
 		else if (Rarity == RarityTypes.Rare)
 			tooltip = "<color=Yellow>" + Name + "</color> \n";
 		else if (Rarity == RarityTypes.Unique)
-			tooltip = "<color=green>" + Name + "</color> \n";
+			tooltip = "<color=orange>" + Name + "</color> \n";
 		else
 			tooltip = "<color=White>" + Name + "</color> \n";
 		tooltip += "Rarity: " + Rarity + "\n" + 
@@ -173,7 +173,7 @@ public class Item : MonoBehaviour {
 		if (atributes [p.Spirit] > 0)
 			tooltip += "+ " + atributes[p.Spirit] + " To Spirit" + "\n";
 		if (atributes [p.Dextery] > 0)
-			tooltip += "+ " + atributes[p.Dextery] + " To Dextery" + "\n";
+			tooltip += "+ " + atributes[p.Dextery] + " To Dexterity" + "\n";
 		if(defensives[p.MaxHealth] > 0)
 			tooltip += "+ " + defensives[p.MaxHealth] + " To Maximum Life" + "\n";
 		if(defensives[p.ColdRes] > 0)
