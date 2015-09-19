@@ -127,11 +127,14 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	private void chillUpdate(){
+		//Debug.Log(spriteRend.color);
 		chillCount -= Time.deltaTime;
 		if (chillCount <= 0 && chill) {
 			chill = false;
 			anim.speed = initAnimSpeed;
-			enemyMove.maxSpeed += enemyMove.initMaxSpeed;
+			enemyMove.Walk();
+			enemyMove.currentSpeed = enemyMove.initMaxSpeed;
+			enemyMove.maxSpeed = enemyMove.initMaxSpeed;
 			//for(int i=0 ; i<renders.Length-1;i++){
 			spriteRend.color = new Color (1f, 1f, 1f, 1f);
 		//	}
@@ -144,7 +147,7 @@ public class EnemyStats : MonoBehaviour {
 		if (col.gameObject.tag == "Player" && !p.isDead) {
 			float dmgDealt = Random.Range(minDamage,maxDamage);
 				if(p.defensives[p.Thorns] > 0)
-					Hit (p.defensives[p.Thorns], Types.Element.None);
+					Hit (p.defensives[p.Thorns], Types.Element.None, false);
 				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy);
 
 				if(col.transform.position.x < this.transform.position.x)
@@ -155,7 +158,7 @@ public class EnemyStats : MonoBehaviour {
 		}
 	}
 
-	public bool Hit(float dmg, Types.Element type){
+	public bool Hit(float dmg, Types.Element type, bool isCritical){
 		if (dmg == 0 || isDead) {
 			return false;
 		}
@@ -182,17 +185,31 @@ public class EnemyStats : MonoBehaviour {
 				break;
 			case Types.Element.Cold:
 				//Debug.Log ("cold damage");
-				Debug.Log("EnemigoCongelado");
+				Debug.Log("cold Damage");
 				realDmg -= Mathf.Abs ((realDmg * (coldRes/100)));
 				chillCount = chillTimer;
 				if(!chill){
-					if(enemyMove != null)
-						enemyMove.maxSpeed = enemyMove.maxSpeed / 2;
-					anim.speed -= 0.5f;
+					Debug.Log("lño congele");
+					if(enemyMove != null){
+
+						if(isCritical){
+							enemyMove.StopWalk();
+						}else{
+							enemyMove.currentSpeed = enemyMove.maxSpeed / 2;
+							enemyMove.maxSpeed = enemyMove.maxSpeed / 2;
+						}
+					}
+					if(isCritical)
+						anim.speed = 0; // se congela si es critico
+					else{
+						anim.speed -= 0.5f;
+						Debug.Log(anim.speed);
+					}
 				}
 				chill = true;
 				//for(int i=0 ; i<renders.Length-1;i++){
-					spriteRend.color = new Color (0f, 1f, 1f, 1f);
+				spriteRend.color = new Color (0f, 1f, 1f, 1f);
+
 				//}
 
 				break;

@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .226424217, y: 4.60412931, z: 0}
+  m_LocalPosition: {x: -5.52900743, y: -1.41162932, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 458484}
@@ -233,7 +233,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
   maxSpeed: 2
+  initMaxSpeed: 0
   facingRight: 0
+  currentSpeed: 0
+  rb: {fileID: 0}
   groundChecks: []
   jumpForce: 800
   knockable: 1
@@ -294,12 +297,12 @@ MonoBehaviour:
   lightResPerLvl: 0
   poisonResPerLvl: 0
   evasionPerLvl: 0
+  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8280366}
   enemyName: Crow
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
-  zoneSettings: {fileID: 0}
   exp: 10
 --- !u!212 &21223436
 SpriteRenderer:

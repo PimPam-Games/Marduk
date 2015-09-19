@@ -52,6 +52,7 @@ public class PlayerProjStats : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+		//float[] critDmgProb = {0, 1f };
 		float damage;
 		float damageConverted = 0;
 		if (col.gameObject.tag == "Enemy") {
@@ -76,9 +77,9 @@ public class PlayerProjStats : MonoBehaviour {
 			bool attackResult; 
 			if(Utils.Choose(critDmgProb) != 0){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
 				damage *= p.offensives[p.CritDmgMultiplier];
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem); //si elem no es None no se esquivan
+				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true); //si elem no es None no se esquivan
 				if(attackResult){
-					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem);
+					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, true);
 					criticalHitSound.Play();
 					Debug.Log("Critical Dmg: " + damage);
 					if(projType == Types.SkillsTypes.Bow)
@@ -86,9 +87,9 @@ public class PlayerProjStats : MonoBehaviour {
 				}
 			}
 			else{
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
 				if(attackResult){  //si no es critico tira el sonido comun
-					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem);
+					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
 					hitEnemySound.Play();
 					if(projType == Types.SkillsTypes.Bow)
 						collision = true;

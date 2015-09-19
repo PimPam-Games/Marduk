@@ -8,8 +8,8 @@ public class EnemyIAMovement : MonoBehaviour {
 	public float maxSpeed = 2f;
 	public float initMaxSpeed;
 	public bool facingRight = false;
-	private float currentSpeed;
-	private Rigidbody2D rb;
+	public float currentSpeed;
+	public Rigidbody2D rb;
 	private GameObject target;
 	public Transform[] groundChecks;
 	private bool isFollowingPlayer;

@@ -79,16 +79,16 @@ public class Weapon : MonoBehaviour {
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
 			bool attackResult; 
-			if(Utils.Choose(critDmgProb) != 0){
+			if(Utils.Choose(critDmgProb) != 0){ // si es critico
 				damage *= p.offensives[p.CritDmgMultiplier];
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true);
 				if(attackResult){
 					criticalHitSound.Play();
 					Debug.Log("Critical Dmg: " + damage);
 				}
 			}
 			else{
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
 				if(attackResult)
 					hitEnemySound.Play();
 			}
@@ -115,15 +115,17 @@ public class Weapon : MonoBehaviour {
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+			bool isCrit = false;
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
 				criticalHitSound.Play();
+				isCrit = true;
 				Debug.Log("Critical Dmg: " + damage);
 			}
 			else{
 				hitEnemySound.Play();
 			}
-			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+			enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
 			if(enemy.transform.position.x < this.transform.position.x)
 				enemy.GetComponent<EnemyIAMovement>().Knock(true);
 			else
@@ -145,15 +147,17 @@ public class Weapon : MonoBehaviour {
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+			bool isCrit = false;
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
 				criticalHitSound.Play();
+				isCrit = true;
 				Debug.Log("Critical Dmg: " + damage);
 			}
 			else{
 				hitEnemySound.Play();
 			}
-			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
+			enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
 			if(enemy.transform.position.x < this.transform.position.x)
 				enemy.GetComponent<EnemyIAMovement>().Knock(true);
 			else

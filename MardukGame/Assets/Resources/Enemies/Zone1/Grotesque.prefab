@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .647843838, y: .897995472, z: 0}
+  m_LocalPosition: {x: -7.48945427, y: -1.46558654, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 420082}
@@ -96,6 +96,7 @@ Transform:
   m_RootOrder: 1
 --- !u!50 &5071096
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -104,11 +105,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 3
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &6129862
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -265,16 +266,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   currHealth: 0
-  maxHealth: 15
+  initMaxHealth: 10
+  initMinDamage: 2
+  initMaxDamage: 5
+  initArmour: 4
+  initColdRes: 0
+  initFireRes: 0
+  initLightRes: 0
+  initPoisonRes: 1
+  initEvasion: 30
+  initAccuracy: 25
+  elem: 4
   minDamage: 2
   maxDamage: 5
-  armour: 3
-  coldRes: 0
-  fireRes: 0
-  lightRes: 0
-  poisonRes: 1
-  evasiveness: 0
-  elem: 4
   minDmgPerLvl: 0
   maxDmgPerLvl: 0
   healthPerLvl: 10
@@ -283,7 +287,8 @@ MonoBehaviour:
   fireResPerLvl: 0
   lightResPerLvl: 0
   poisonResPerLvl: 0
-  evasivenessPerLvl: 0
+  evasionPerLvl: 0
+  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8290810}
   enemyName: Grotesque
@@ -314,7 +319,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
   maxSpeed: 2
+  initMaxSpeed: 0
   facingRight: 0
+  currentSpeed: 0
+  rb: {fileID: 0}
   groundChecks:
   - {fileID: 497066}
   jumpForce: 800
