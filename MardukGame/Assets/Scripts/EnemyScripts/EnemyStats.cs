@@ -70,6 +70,16 @@ public class EnemyStats : MonoBehaviour {
 	private float shockCount = 0; 
 	private bool shock = false; 
 
+	private bool poisoned = false;
+	private float poisonedCount = 0;
+	private float poisonedDmg = 0;
+	private float poisonedTime = 2f; //2 segundos
+
+	private bool ignited = false;
+	private float ignitedCount = 0;
+	private float ignitedTime = 4f; //4 segundos
+	private float ignitedDmg = 0;
+
 	public float Accuracy{
 		get {return accuracy;}
 	}
@@ -158,6 +168,42 @@ public class EnemyStats : MonoBehaviour {
 		}
 	}
 
+	IEnumerator PoisonedUpdate () {
+		spriteRend.color = new Color (0f, 1f, 0f, 1f);
+		while (poisonedCount >= 0 && !isDead) {
+			yield return new WaitForSeconds (0.2f);
+			poisonedCount -= 0.2f;
+			currHealth -= poisonedDmg;
+			if (currHealth <= 0){
+				currHealth = 0;
+				isDead = true;	
+				StartCoroutine (EnemyDying ());
+			}
+			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
+		}
+		poisoned = false;
+		spriteRend.color = new Color (1f, 1f, 1f, 1f);
+	}
+
+	IEnumerator IgnitedUpdate () {
+		spriteRend.color = new Color (1f, 0.1f, 0f, 1f);
+		while (ignitedCount >= 0 && !isDead) {
+			yield return new WaitForSeconds (0.2f);
+			ignitedCount -= 0.2f;
+			currHealth -= ignitedDmg;
+			if (currHealth <= 0){
+				currHealth = 0;
+				if(!isDead){
+					isDead = true;	
+					StartCoroutine (EnemyDying ());	
+				}
+			}
+			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
+		}
+		ignited = false;
+		spriteRend.color = new Color (1f, 1f, 1f, 1f);
+	}
+
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		if(col.gameObject.tag == "Player" && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -215,37 +261,42 @@ public class EnemyStats : MonoBehaviour {
 				realDmg -= Mathf.Abs ((realDmg * (coldRes/100)));
 				chillCount = chillTimer;
 				if(!chill){
-					Debug.Log("lño congele");
 					if(enemyMove != null){
-
 						if(isCritical){
 							enemyMove.StopWalk();
 						}else{
-							enemyMove.currentSpeed = enemyMove.maxSpeed / 2;
-							enemyMove.maxSpeed = enemyMove.maxSpeed / 2;
+							enemyMove.currentSpeed = enemyMove.maxSpeed / 2; //algunos enemigos usan current speed y otros maxSpeed
+							enemyMove.maxSpeed = enemyMove.maxSpeed / 2;     //asi que actualizo las dos
 						}
 					}
 					if(isCritical)
 						anim.speed = 0; // se congela si es critico
 					else{
 						anim.speed -= 0.5f;
-						Debug.Log(anim.speed);
+						//Debug.Log(anim.speed);
 					}
 				}
 				chill = true;
 				//for(int i=0 ; i<renders.Length-1;i++){
 				spriteRend.color = new Color (0f, 1f, 1f, 1f);
-
-				//}
-
 				break;
 			case Types.Element.Fire:
 				realDmg -= Mathf.Abs ((realDmg * (fireRes/100)));
-				//Debug.Log ("fire damage");
+				if(isCritical){
+					ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
+					ignitedCount = ignitedTime;
+					if(!ignited)
+						StartCoroutine(IgnitedUpdate());
+					ignited = true;
+				}
 				break;
 			case Types.Element.Poison:
 				realDmg -= Mathf.Abs ((realDmg * (poisonRes/100)));
-				//Debug.Log ("poison damage");
+				poisonedDmg = (0.10f * realDmg)/5; // 10% del daño infligido en 1 seg
+				poisonedCount = poisonedTime;
+				if(!poisoned)
+					StartCoroutine(PoisonedUpdate());
+				poisoned = true;
 				break;
 			case Types.Element.Lightning:
 				realDmg -= Mathf.Abs ((realDmg * (lightRes/100)));
@@ -254,7 +305,6 @@ public class EnemyStats : MonoBehaviour {
 					shockCount = shockTimer;
 					shock = true;
 				}
-				//Debug.Log ("lightning damage" + realDmg);
 				break;
 			default:
 				Debug.LogError ("todo maaaal");
@@ -266,13 +316,7 @@ public class EnemyStats : MonoBehaviour {
 			//UpdateHealthBar ();
 			if (currHealth < 0) {
 				isDead = true;
-				rb.gravityScale = 3;
-				GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
-				//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 
-				anim.SetBool ("IsDead", true);
-				GetComponent<BoxCollider2D> ().enabled = false;
-				p.UpdateExp (exp);
 				StartCoroutine (EnemyDying ());
 				//Destroy (this.gameObject);
 			}
@@ -285,6 +329,13 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	IEnumerator EnemyDying () {
+		rb.gravityScale = 3;
+		GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
+		//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
+		
+		anim.SetBool ("IsDead", true);
+		GetComponent<BoxCollider2D> ().enabled = false;
+		p.UpdateExp (exp);
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		yield return new WaitForSeconds (0.5f);
 		while (sprite.color.a > 0) {

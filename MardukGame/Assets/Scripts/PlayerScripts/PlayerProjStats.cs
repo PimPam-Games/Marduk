@@ -51,8 +51,8 @@ public class PlayerProjStats : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
-		//float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
-		float[] critDmgProb = {0, 1f };
+		float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+		//float[] critDmgProb = {0, 1f };
 		float damage;
 		float damageConverted = 0;
 		if (col.gameObject.tag == "Enemy") {

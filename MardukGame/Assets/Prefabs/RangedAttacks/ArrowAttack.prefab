@@ -219,10 +219,11 @@ MonoBehaviour:
   isParticle: 0
   dontDestroy: 1
   hasSplashAnim: 0
-  manaCost: 0
   anim: {fileID: 0}
   hitEnemySound: {fileID: 8259868}
   criticalHitSound: {fileID: 8210316}
+  projType: 3
+  convertElem: 0
 --- !u!212 &21264964
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -283,6 +284,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: duration
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projType
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -50,6 +50,11 @@ public class PlayerStats : MonoBehaviour {
 
 	public AudioSource playerDeathSound;
 	public AudioSource blockSound;
+	public static string playerName;
+	
+	private SpriteRenderer[] renders;
+
+	/*status ailments variables*/
 
 	public static bool ghostMode;
 	public float ghostModeTime = 1f;
@@ -60,16 +65,19 @@ public class PlayerStats : MonoBehaviour {
 	private float chillCount = 0;
 
 	private bool poisoned = false;
-	private float poisonedTimer = 1f;
+	private float poisonedTimer = 2f;
 	private float poisonedCount = 0;
-	private float poisonedDmg = 0.4f;
+	private float poisonedDmg = 0f;
+
+	private bool ignited = false;
+	private float ignitedCount = 0;
+	private float ignitedTime = 4f; //4 segundos
+	private float ignitedDmg = 0;
 
 	private float initAnimSpeed;
 	public static float currentAnimSpeed; // guarda la velocidad de movimiento actual, es para usar en Weapon
 
-	public static string playerName;
 
-	private SpriteRenderer[] renders;
 
 	void Awake(){
 		atributes = new float[CantAtributes];
@@ -107,8 +115,12 @@ public class PlayerStats : MonoBehaviour {
 				else{
 					if(poisoned)
 						renders[i].color = new Color (0, 1f, 0, 1f);
-					else
-						renders[i].color = new Color (1f, 1f, 1f, 1f);
+					else{
+						if(ignited)
+							renders[i].color = new Color (1f, 0.1f, 0f, 1f);
+						else
+							renders[i].color = new Color (1f, 1f, 1f, 1f);
+					}
 				}
 			}
 		}
@@ -167,6 +179,24 @@ public class PlayerStats : MonoBehaviour {
 				currentHealth = 0;
 		}
 		poisoned = false;
+		for(int i=0 ; i<renders.Length-1;i++){
+			renders[i].color = new Color (1f, 1f, 1f, 1f);
+		}
+	}
+
+	IEnumerator IgnitedUpdate () {
+		for(int i=0 ; i<renders.Length-1;i++){
+			renders[i].color = new Color (1f, 0.1f, 0f, 1f);
+		}
+		while (ignitedCount >= 0 && !isDead) {
+			yield return new WaitForSeconds (0.2f);
+			ignitedCount -= 0.2f;
+			currentHealth -= ignitedDmg;
+			if (currentHealth <= 0){
+				currentHealth = 0;
+			}
+		}
+		ignited = false;
 		for(int i=0 ; i<renders.Length-1;i++){
 			renders[i].color = new Color (1f, 1f, 1f, 1f);
 		}
@@ -258,6 +288,9 @@ public class PlayerStats : MonoBehaviour {
 		isDead = false;
 		StartCoroutine (LifeRegeneration ());
 		gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+		poisoned = false;
+		chill = false;
+		ignited = false;
 		for(int i=0 ; i<renders.Length-1;i++){
 			renders[i].color = new Color (1f, 1f, 1f, 1f);
 		}
@@ -345,7 +378,13 @@ public class PlayerStats : MonoBehaviour {
 			break;
 		case Types.Element.Fire:
 			realDmg -= Math.Abs((realDmg * (defensives[FireRes]/100)));
-			//Debug.Log("fire damage");
+			if(isCritical){
+				ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
+				ignitedCount = ignitedTime;
+				if(!ignited)
+					StartCoroutine(IgnitedUpdate());
+				ignited = true;
+			}
 			break;
 		case Types.Element.Poison:
 			realDmg -= Math.Abs((realDmg * (defensives[PoisonRes]/100)));
