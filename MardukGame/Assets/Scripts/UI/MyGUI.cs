@@ -116,11 +116,11 @@ public class MyGUI : MonoBehaviour {
 		GUI.Label (new Rect (65*dif, 315*dif, 100*dif, 20*dif), "Thorns");
 		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), p.defensives[p.Thorns].ToString());
 		GUI.Label (new Rect (65*dif, 330*dif, 100*dif, 20*dif), "Critical Chance");
-		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), (p.offensives[p.CritChance]*100).ToString() + "%");
+		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), ((p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100))*100).ToString() + "%");
 		GUI.Label (new Rect (65*dif, 345*dif, 100*dif, 20*dif), "Crit Dmg Multiplier");
 		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), p.offensives[p.CritDmgMultiplier].ToString());
-		GUI.Label (new Rect (65*dif, 360*dif, 100*dif, 20*dif), "Magic Damage");
-		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.offensives[p.MgDmg].ToString());
+		GUI.Label (new Rect (65*dif, 360*dif, 125*dif, 20*dif), "Increased Magic Dmg");
+		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.offensives[p.IncreasedMgDmg].ToString() + "%");
 		GUI.Label (new Rect (65*dif, 375*dif, 100*dif, 20*dif), "Mana Per Second");
 		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.offensives[p.ManaPerSec].ToString());
 	}

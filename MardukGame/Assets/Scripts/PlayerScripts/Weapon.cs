@@ -77,7 +77,8 @@ public class Weapon : MonoBehaviour {
 			if(p.LifePerHit > 0 )
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+			float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
+			float[] critDmgProb = {1 - critChance,critChance };
 			bool attackResult; 
 			if(Utils.Choose(critDmgProb) != 0){ // si es critico
 				damage *= p.offensives[p.CritDmgMultiplier];

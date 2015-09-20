@@ -66,7 +66,7 @@ public class EnemyStats : MonoBehaviour {
 	private float chillTimer = 1f;
 	private float chillCount = 0;
 
-	private float shockTimer = 1.5f;
+	private float shockTimer = 2f;
 	private float shockCount = 0; 
 	private bool shock = false; 
 

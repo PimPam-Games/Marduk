@@ -79,8 +79,8 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			tooltip.transform.GetChild (1).GetComponent<Text> ().text = spellStats.type.ToString();
 			tooltip.transform.GetChild (2).GetComponent<Text> ().text = pps.elem.ToString ();
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + spellStats.manaCost.ToString () + "\n";
-			float totalMinDmg = pps.minDmg + p.offensives [p.MgDmg];
-			float totalMaxDmg = pps.maxDmg + p.offensives [p.MgDmg];
+			float totalMinDmg = pps.minDmg + pps.minDmg * p.offensives[p.IncreasedMgDmg]/100;
+			float totalMaxDmg = pps.maxDmg + pps.maxDmg * p.offensives[p.IncreasedMgDmg]/100;
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Damage " + System.Math.Round (totalMinDmg, 1).ToString () + " - " + System.Math.Round (totalMaxDmg, 1).ToString ();
 			break;
 		case Types.SkillsTypes.Aura:

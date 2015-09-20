@@ -84,17 +84,20 @@ public class ItemGenerator :MonoBehaviour{
 					}
 				}
 				if (defAtrOff == 2){ //offensive
-					/*bool ok = false;
-					while (ok == false){
-						int optionOff = Random.Range(0,p.CantOffensives);
+					bool ok = false;
+					while (ok == false && j<=(int)newItem.Offensives.Length){
+						int optionOff = Random.Range(11,p.CantOffensives); //empieza desde 11 por que las  de antes son las esatadisticas basicas
 						if (newItem.Offensives[optionOff]>0)
 							continue;
 						ok = true;
-						if (optionOff == p.CritChance)
-							newItem.Offensives[p.CritChance] = (float)Random.Range (2, 10); 
-						if (optionOff == p.IncreasedAttackSpeed ) */
-							newItem.Offensives[p.IncreasedAttackSpeed] = (float)Random.Range (5, 30); //a esto hay que sacarlo despues
-					//}
+						if (optionOff == p.IncreasedCritChance)
+							newItem.Offensives[p.IncreasedCritChance] = (float)Random.Range (10, 30); 
+						if (optionOff == p.IncreasedAttackSpeed ) 
+							newItem.Offensives[p.IncreasedAttackSpeed] = (float)Random.Range (5, 30); 
+						if (optionOff == p.IncreasedMgDmg)
+							newItem.Offensives[p.IncreasedMgDmg] = (float)Random.Range (10, 30);
+
+					}		
 				}
 			}
 

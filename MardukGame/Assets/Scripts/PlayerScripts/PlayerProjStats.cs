@@ -51,7 +51,8 @@ public class PlayerProjStats : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
-		float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+		float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
+		float[] critDmgProb = {1 - critChance,critChance };
 		//float[] critDmgProb = {0, 1f };
 		float damage;
 		float damageConverted = 0;
@@ -68,7 +69,7 @@ public class PlayerProjStats : MonoBehaviour {
 			}
 			else{
 				damage = Random.Range(minDmg,maxDmg);
-				damage += p.offensives[p.MgDmg];
+				damage += damage * p.offensives[p.IncreasedMgDmg]/100;
 				/*if(col.transform.position.x < this.transform.position.x)
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 				else

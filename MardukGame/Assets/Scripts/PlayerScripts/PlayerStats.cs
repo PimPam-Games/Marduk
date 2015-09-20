@@ -7,9 +7,9 @@ using expUi = ExpUiController;
 public class PlayerStats : MonoBehaviour {
 
 
-	public const int CantAtributes = 4, CantOffensives = 13, CantDefensives = 11, CantUtils = 3;
+	public const int CantAtributes = 4, CantOffensives = 15, CantDefensives = 11, CantUtils = 3;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
-	public const int MinDmg = 0, MaxDamge = 1, MgDmg = 2 ,CritChance = 3, CritDmgMultiplier = 4, Accuracy = 5, StunChance = 6, BleedChance = 7, CertainStrChance = 8, ManaPerSec = 9, MaxMana = 10, IncreasedAttackSpeed = 11, BaseAttacksPerSecond = 12; //offensives
+	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, Accuracy = 4, StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, BaseAttacksPerSecond = 10, IncreasedAttackSpeed = 11, IncreasedCritChance = 12, IncreasedDmg = 13, IncreasedMgDmg = 14; //offensives
 	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, Evasiveness = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10;  //defensives
 	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2;//utils
 
@@ -74,6 +74,10 @@ public class PlayerStats : MonoBehaviour {
 	private float ignitedTime = 4f; //4 segundos
 	private float ignitedDmg = 0;
 
+	private float shockTimer = 2f;
+	private float shockCount = 0; 
+	private bool shock = false; 
+
 	private float initAnimSpeed;
 	public static float currentAnimSpeed; // guarda la velocidad de movimiento actual, es para usar en Weapon
 
@@ -109,19 +113,9 @@ public class PlayerStats : MonoBehaviour {
 		ghostModeCount -= Time.deltaTime;
 		if (ghostModeCount <= 0 && ghostMode) {
 			ghostMode = false;
+
 			for(int i=0 ; i<renders.Length-1;i++){
-				if(chill)
-					renders[i].color = new Color (0f, 1f, 1f, 1f);
-				else{
-					if(poisoned)
-						renders[i].color = new Color (0, 1f, 0, 1f);
-					else{
-						if(ignited)
-							renders[i].color = new Color (1f, 0.1f, 0f, 1f);
-						else
-							renders[i].color = new Color (1f, 1f, 1f, 1f);
-					}
-				}
+				renders[i].color = new Color (renders[i].color.r, renders[i].color.g, renders[i].color.b, 1f);
 			}
 		}
 		if (currentHealth <= 0 && !isDead) {
@@ -132,6 +126,7 @@ public class PlayerStats : MonoBehaviour {
 		}
 		UpdateMana ();
 		chillUpdate ();
+		shockUpdate ();
 	}
 
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
@@ -144,7 +139,7 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
 		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
 		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
-		offensives[MgDmg] = atributes[Spirit] * 0.25f + InitMgDmg;
+		//offensives[MgDmg] = atributes[Spirit] * 0.25f + InitMgDmg;
 		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
 		offensives [Accuracy] = atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
 		defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
@@ -161,6 +156,16 @@ public class PlayerStats : MonoBehaviour {
 			currentAnimSpeed = anim.speed;
 			utils[MovementSpeed] = InitMoveSpeed; //agregar el increased move speed cuando este implementado!!!!!!!!"!
 			PlatformerCharacter2D.stopPlayer = false;
+			for(int i=0 ; i<renders.Length-1;i++){
+				renders[i].color = new Color (1f, 1f, 1f, 1f);
+			}
+		}
+	}
+
+	private void shockUpdate(){
+		shockCount -= Time.deltaTime;
+		if (shockCount <= 0 && shock) {
+			shock = false;
 			for(int i=0 ; i<renders.Length-1;i++){
 				renders[i].color = new Color (1f, 1f, 1f, 1f);
 			}
@@ -221,7 +226,7 @@ public class PlayerStats : MonoBehaviour {
 			case 3:
 				atributes [Spirit]++;
 				offensives[MaxMana] += 3;
-				offensives[MgDmg] += 0.25f;
+			//	offensives[MgDmg] += 0.25f;
 				offensives[ManaPerSec] += 0.1f;
 				break;
 		}
@@ -344,11 +349,14 @@ public class PlayerStats : MonoBehaviour {
 
 		ghostMode = true; //ghost mode
 		for(int i=0 ; i<renders.Length-1;i++){
-			renders[i].color = new Color (1f, 1f, 1f, 0.3f);
+			renders[i].color = new Color (renders[i].color.r, renders[i].color.g, renders[i].color.b, 0.3f);
 		}
 		ghostModeCount = ghostModeTime;
 		
 		float realDmg = dmg;
+		if(shock){
+			realDmg *= 1.5f; //cuando esta shokeado aumenta el daño recibido de cualquier tipo
+		}
 		switch (type){
 		case Types.Element.None:
 			realDmg -= (defensives[Defense] / (defensives[Defense] + 8 * realDmg));	
@@ -396,7 +404,13 @@ public class PlayerStats : MonoBehaviour {
 			break;
 		case Types.Element.Lightning:
 			realDmg -= Math.Abs((realDmg * (defensives[LightRes]/100)));
-			//Debug.Log("lightning damage");
+			if(isCritical){
+				for(int i=0 ; i<renders.Length-1;i++){
+					renders[i].color = new Color (0.75f, 0.6f, 1f, 1f);
+				}
+				shockCount = shockTimer;
+				shock = true;
+			}
 			break;
 		default:
 			Debug.LogError("El ataque no es de ningun tipo!!!");
