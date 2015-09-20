@@ -63,7 +63,13 @@ public class EnemyAttack : MonoBehaviour {
 		if (distance < attackRange)
 			if ((dot < 0 && !movement.IsFacingRight ()) || (dot > 0 && movement.IsFacingRight ())) {
 				float damage = Random.Range (stats.minDamage, stats.maxDamage);
-				playerStats.Hit (damage, stats.elem,stats.Accuracy,false); 
+				bool isCrit = false;
+				float[] critDmgProb = {1 - stats.critChance, stats.critChance};
+				if(Utils.Choose(critDmgProb) != 0){
+					isCrit = true;
+					damage *= 2; //si es critico lo multiplico por 2 al daño del enemigo
+				}
+				playerStats.Hit (damage, stats.elem,stats.Accuracy,isCrit); 
 				if(target.transform.position.x < this.transform.position.x)
 					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 				else

@@ -32,7 +32,7 @@ public class EnemyStats : MonoBehaviour {
 	private float poisonRes = 1;
 	private float evasion = 30; //30 
 	private float accuracy = 25; //25 por ahi deberia ser la base
-	private float critChance = 25; 
+	public float critChance = 25; 
 	[SerializeField] public float minDmgPerLvl = 0;
 	[SerializeField] public float maxDmgPerLvl = 0;
 	[SerializeField] public float healthPerLvl = 10;
@@ -60,9 +60,15 @@ public class EnemyStats : MonoBehaviour {
 	private SpriteRenderer spriteRend;
 	private float initAnimSpeed;
 	EnemyIAMovement enemyMove;
+								
+	/* status ailments variables */
 	private bool chill = false;
 	private float chillTimer = 1f;
 	private float chillCount = 0;
+
+	private float shockTimer = 1.5f;
+	private float shockCount = 0; 
+	private bool shock = false; 
 
 	public float Accuracy{
 		get {return accuracy;}
@@ -120,6 +126,7 @@ public class EnemyStats : MonoBehaviour {
 			CalculateStats();
 		}
 		chillUpdate ();
+		shockUpdate ();
 		if (rend.isVisible && !alertSoundPlayed) {
 			alertSound.Play ();
 			alertSoundPlayed = true;
@@ -140,6 +147,14 @@ public class EnemyStats : MonoBehaviour {
 			//for(int i=0 ; i<renders.Length-1;i++){
 			spriteRend.color = new Color (1f, 1f, 1f, 1f);
 		//	}
+		}
+	}
+
+	private void shockUpdate(){
+		shockCount -= Time.deltaTime;
+		if (shockCount <= 0 && shock) {
+			shock = false;
+			spriteRend.color = new Color (1f, 1f, 1f, 1f);
 		}
 	}
 
@@ -187,6 +202,9 @@ public class EnemyStats : MonoBehaviour {
 		} else {
 			Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
 			float realDmg = dmg;
+			if(shock){
+				realDmg *= 1.5f; //cuando esta shokeado aumenta el daño recibido de cualquier tipo
+			}
 			switch (type) {
 			case Types.Element.None:
 				realDmg -= (armour / (armour + 8 * realDmg));	
@@ -231,6 +249,11 @@ public class EnemyStats : MonoBehaviour {
 				break;
 			case Types.Element.Lightning:
 				realDmg -= Mathf.Abs ((realDmg * (lightRes/100)));
+				if(isCritical){
+					spriteRend.color = new Color (0.75f, 0.6f, 1f, 1f);
+					shockCount = shockTimer;
+					shock = true;
+				}
 				//Debug.Log ("lightning damage" + realDmg);
 				break;
 			default:

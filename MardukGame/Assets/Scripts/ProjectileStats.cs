@@ -41,7 +41,13 @@ public class ProjectileStats : MonoBehaviour {
 		if (col.gameObject.tag == "Player" && !alreadyHit) {
 			bool hitConfirmed = false;
 			float dmgDealt = Random.Range(minDmg,maxDmg);
-			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy,false);
+			bool isCrit = false;
+			float[] critDmgProb = {1 - enemyStats.critChance, enemyStats.critChance};
+			if(Utils.Choose(critDmgProb) != 0){
+				isCrit = true;
+				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
+			}
+			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
 			alreadyHit = true;
 			if(hitConfirmed){
 				if(col.transform.position.x < this.transform.position.x)
