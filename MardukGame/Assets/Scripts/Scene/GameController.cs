@@ -9,10 +9,13 @@ public class GameController : MonoBehaviour {
 	public static int previousExit = 0; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
 	private GameObject hudCanvas, mainCamera, gui;
+	public GameObject miniMap;
+	public Transform miniMapPos;
 	//public List<string> deadEnemies;
 	public PlayerStats playerStats;
 	public static int currentLevel = 0;
 	private CameraController cameraController;
+	private CameraController miniMapController;
 	public static List<string> notVisitedLevels;
 	public static List<string[]> levelConnections;
 	//public static bool newLevel = true;
@@ -37,8 +40,11 @@ public class GameController : MonoBehaviour {
 		gui = GameObject.Find("GUI");
 		mainCamera = GameObject.Find("MainCamera");
 		cameraController = mainCamera.GetComponent<CameraController> ();	
+		miniMapController = miniMap.GetComponent<CameraController> ();
 		DontDestroyOnLoad (mainCamera);
 		DontDestroyOnLoad (gui);
+		DontDestroyOnLoad (miniMap);
+		DontDestroyOnLoad (miniMapPos.gameObject);
 		if (hudCanvas != null)
 			DontDestroyOnLoad(hudCanvas);
 		else
@@ -107,8 +113,10 @@ public class GameController : MonoBehaviour {
 		BoxCollider2D newBounds = null;
 		if(camerab != null)
 			 newBounds = camerab.GetComponent<BoxCollider2D>();
-		if (newBounds != null)
+		if (newBounds != null) {
 			cameraController.SetBounds (newBounds);
+			miniMapController.SetBounds(newBounds);
+		}
 		else {
 			//Debug.LogError ("CameraBounds not found");
 			return;
@@ -120,10 +128,13 @@ public class GameController : MonoBehaviour {
 		player.transform.position = levelEntry.transform.position;
 		if (jumpOnLoad)
 			PlatformerCharacter2D.jumpNow = true;
-		if(levelEntry.transform.position.x<=0)
+		if (levelEntry.transform.position.x <= 0) {
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x + 4, levelEntry.transform.position.y, mainCamera.transform.position.z);
-		else
+			miniMap.transform.position = new Vector3 (levelEntry.transform.position.x + 4, levelEntry.transform.position.y, miniMap.transform.position.z);
+		} else {
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x - 4, levelEntry.transform.position.y, mainCamera.transform.position.z);
+			miniMap.transform.position = new Vector3 (levelEntry.transform.position.x - 4, levelEntry.transform.position.y, miniMap.transform.position.z);
+		}
 	}
 
 	public void DestroyEnemies(){
