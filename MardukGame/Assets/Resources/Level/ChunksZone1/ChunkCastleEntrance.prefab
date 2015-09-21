@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482264}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: LevelEntry2
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 474976}
   - 60: {fileID: 6049640}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - 4: {fileID: 463276}
   - 198: {fileID: 19865216}
   - 199: {fileID: 19946030}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Ripple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 495448}
   - 114: {fileID: 11463906}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: castleentrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400204}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ChunkEnd
   m_TagString: Untagged
   m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450868}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BackGround_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409604}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: randomEnemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -120,7 +120,7 @@ GameObject:
   - 33: {fileID: 3331666}
   - 23: {fileID: 2310546}
   - 114: {fileID: 11447824}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: mesh_[00]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - 4: {fileID: 407810}
   - 198: {fileID: 19884524}
   - 199: {fileID: 19981258}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Splash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - 33: {fileID: 3382738}
   - 23: {fileID: 2317316}
   - 114: {fileID: 11400008}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: mesh_[01]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - 4: {fileID: 451888}
   - 82: {fileID: 8207562}
   - 114: {fileID: 11402498}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,11 +190,28 @@ GameObject:
   - 50: {fileID: 5076618}
   - 114: {fileID: 11467914}
   - 61: {fileID: 6164568}
-  - 114: {fileID: 11493682}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ChunkCastleEntrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &173802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 492314}
+  - 61: {fileID: 6138340}
+  - 114: {fileID: 11430808}
+  - 50: {fileID: 5054408}
+  m_Layer: 17
+  m_Name: LevelExit
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -208,7 +225,7 @@ GameObject:
   - 4: {fileID: 404304}
   - 61: {fileID: 6140986}
   - 50: {fileID: 5052568}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: CameraFollow
   m_TagString: CameraFollow
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -224,7 +241,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 401926}
   - 60: {fileID: 6082496}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +258,7 @@ GameObject:
   - 4: {fileID: 475814}
   - 61: {fileID: 6129198}
   - 50: {fileID: 5066730}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: CameraStopX
   m_TagString: CameraStopX
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
@@ -258,7 +275,7 @@ GameObject:
   - 4: {fileID: 430606}
   - 198: {fileID: 19858660}
   - 199: {fileID: 19955314}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +290,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412354}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +455,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0419254303, y: -3.18383098, z: 0}
+  m_LocalPosition: {x: 34.0429039, y: -5.25462866, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 495448}
@@ -448,6 +465,7 @@ Transform:
   - {fileID: 475814}
   - {fileID: 404304}
   - {fileID: 482264}
+  - {fileID: 492314}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &474976
@@ -486,6 +504,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 463508}
   m_RootOrder: 6
+--- !u!4 &492314
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1339, y: 79, z: 0}
+  m_LocalScale: {x: 64, y: 64, z: 64}
+  m_Children: []
+  m_Father: {fileID: 463508}
+  m_RootOrder: 7
 --- !u!4 &495448
 Transform:
   m_ObjectHideFlags: 1
@@ -577,6 +607,22 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5054408
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173802}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!50 &5066730
 Rigidbody2D:
@@ -727,6 +773,19 @@ BoxCollider2D:
   m_Offset: {x: 294.883301, y: 323.783447}
   serializedVersion: 2
   m_Size: {x: 630.211182, y: 1470.84253}
+--- !u!61 &6138340
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173802}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -.0589179993, y: 2.45528507}
+  serializedVersion: 2
+  m_Size: {x: .132659912, y: 5.29336929}
 --- !u!61 &6140986
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -750,9 +809,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1335.13477, y: 191.832977}
+  m_Offset: {x: 648.310791, y: 191.832977}
   serializedVersion: 2
-  m_Size: {x: 16.0631104, y: 387.694519}
+  m_Size: {x: 1299.13977, y: 387.694519}
 --- !u!82 &8207562
 AudioSource:
   m_ObjectHideFlags: 1
@@ -846,6 +905,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8207562}
   delaySecs: 2
+--- !u!114 &11430808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd941cd59200be4f9a67266dc6ff237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exitNumber: 1
+  levelToLoad: level3
+  enemyGenerator: {fileID: 0}
+  loadAtCollision: 1
+  jumpOnLoad: 0
 --- !u!114 &11447824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -898,22 +973,6 @@ MonoBehaviour:
   position: 0000000000000000
   isFirstChunk: 0
   chunkId: 0
---- !u!114 &11493682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bd941cd59200be4f9a67266dc6ff237, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exitNumber: 1
-  levelToLoad: level3
-  enemyGenerator: {fileID: 0}
-  loadAtCollision: 1
-  jumpOnLoad: 0
 --- !u!198 &19858660
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3997,7 +4056,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 167044}

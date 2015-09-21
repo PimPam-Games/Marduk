@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 461322}
   - 82: {fileID: 8202992}
   - 114: {fileID: 11416952}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462192}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 408442}
   - 198: {fileID: 19801892}
   - 199: {fileID: 19933226}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Ripple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422312}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BackGround_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446586}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: randomEnemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -89,7 +89,7 @@ GameObject:
   - 4: {fileID: 410422}
   - 198: {fileID: 19876296}
   - 199: {fileID: 19912206}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Splash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459040}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ChunkEnd
   m_TagString: Untagged
   m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
@@ -138,7 +138,7 @@ GameObject:
   - 50: {fileID: 5071670}
   - 61: {fileID: 6144916}
   - 114: {fileID: 11491108}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Chunk7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - 4: {fileID: 434048}
   - 198: {fileID: 19852572}
   - 199: {fileID: 19908550}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479278}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: randomEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -188,7 +188,7 @@ GameObject:
   - 33: {fileID: 3322634}
   - 23: {fileID: 2346444}
   - 114: {fileID: 11484390}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: mesh_[00]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - 33: {fileID: 3357200}
   - 23: {fileID: 2340680}
   - 114: {fileID: 11402078}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: mesh_[01]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 420998}
   - 114: {fileID: 11425912}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: levelChunk7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 168182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 215.202103, y: 6.20276594, z: 0}
+  m_LocalPosition: {x: 84.3019409, y: -17.4548512, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 459040}
@@ -474,6 +474,7 @@ MeshFilter:
   m_Mesh: {fileID: 4300002, guid: d13468aa5de920641acf0b626f376db4, type: 3}
 --- !u!50 &5071670
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -482,11 +483,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &6045394
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -656,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 0}
   enemies:
   - {fileID: 446586}
   - {fileID: 479278}
@@ -667,8 +669,9 @@ MonoBehaviour:
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
-  isFirst: 0
   position: 0000000000000000
+  isFirstChunk: 0
+  chunkId: 0
 --- !u!198 &19801892
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3752,7 +3755,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168182}

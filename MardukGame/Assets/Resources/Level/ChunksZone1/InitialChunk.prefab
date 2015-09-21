@@ -173,7 +173,8 @@ GameObject:
   - 4: {fileID: 421922}
   - 50: {fileID: 5096382}
   - 114: {fileID: 11452058}
-  m_Layer: 0
+  - 61: {fileID: 6195662}
+  m_Layer: 20
   m_Name: InitialChunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,6 +500,19 @@ PolygonCollider2D:
       - {x: 2624, y: -1472}
       - {x: 2624, y: -1408}
       - {x: 1280, y: -1408}
+--- !u!61 &6195662
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181948}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 1210.46521, y: 176.321045}
+  serializedVersion: 2
+  m_Size: {x: 2186.83521, y: 353.64209}
 --- !u!82 &8200708
 AudioSource:
   m_ObjectHideFlags: 1

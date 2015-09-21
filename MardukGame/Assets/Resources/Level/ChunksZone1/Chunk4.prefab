@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445160}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: randomEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450482}
   - 58: {fileID: 5868638}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: LevelPatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - 4: {fileID: 415974}
   - 198: {fileID: 19848454}
   - 199: {fileID: 19943610}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487394}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ChunkStart
   m_TagString: Untagged
   m_Icon: {fileID: -3906512864147387971, guid: 0000000000000000d000000000000000, type: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442378}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - 4: {fileID: 459310}
   - 82: {fileID: 8243516}
   - 114: {fileID: 11438156}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 461700}
   - 114: {fileID: 11467078}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: levelChunk4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - 4: {fileID: 418260}
   - 198: {fileID: 19822174}
   - 199: {fileID: 19913388}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Splash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - 4: {fileID: 465494}
   - 198: {fileID: 19823114}
   - 199: {fileID: 19984958}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Ripple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443802}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ChunkEnd
   m_TagString: Untagged
   m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
@@ -187,7 +187,7 @@ GameObject:
   - 33: {fileID: 3348474}
   - 23: {fileID: 2306146}
   - 114: {fileID: 11477060}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: mesh_[01]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430502}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: randomEnemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -220,7 +220,7 @@ GameObject:
   - 50: {fileID: 5055610}
   - 61: {fileID: 6180648}
   - 114: {fileID: 11446118}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Chunk4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   - 33: {fileID: 3311612}
   - 23: {fileID: 2303292}
   - 114: {fileID: 11431622}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: mesh_[00]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 484298}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BackGround_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 163.214859, y: 8.5516901, z: 0}
+  m_LocalPosition: {x: 40.8758545, y: -19.9950962, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 487394}
@@ -531,6 +531,7 @@ MeshFilter:
   m_Mesh: {fileID: 4300002, guid: c2b9ae4dee30f0e4ab3bd19b8da6adf8, type: 3}
 --- !u!50 &5055610
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -539,11 +540,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5868638
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -699,6 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 0}
   enemies:
   - {fileID: 430502}
   - {fileID: 445160}
@@ -710,8 +712,9 @@ MonoBehaviour:
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
-  isFirst: 0
   position: 0000000000000000
+  isFirstChunk: 0
+  chunkId: 0
 --- !u!114 &11467078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3822,7 +3825,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148416}

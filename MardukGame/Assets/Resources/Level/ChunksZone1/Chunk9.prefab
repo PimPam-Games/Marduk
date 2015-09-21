@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450226}
   - 114: {fileID: 11465550}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: levelChunk9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 33: {fileID: 3328106}
   - 23: {fileID: 2382222}
   - 114: {fileID: 11489336}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: mesh_[01]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 456966}
   - 198: {fileID: 19843676}
   - 199: {fileID: 19951486}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Ripple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 33: {fileID: 3347998}
   - 23: {fileID: 2323918}
   - 114: {fileID: 11423948}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: mesh_[00]_[00]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 455708}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: randomEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -94,7 +94,7 @@ GameObject:
   - 4: {fileID: 408190}
   - 198: {fileID: 19836822}
   - 199: {fileID: 19966978}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - 4: {fileID: 481506}
   - 198: {fileID: 19869904}
   - 199: {fileID: 19937940}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Splash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - 50: {fileID: 5065692}
   - 61: {fileID: 6145812}
   - 114: {fileID: 11453716}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Chunk9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 475556}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ChunkEnd
   m_TagString: Untagged
   m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406964}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Ground_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422648}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: BackGround_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 408148}
   - 60: {fileID: 6059672}
-  m_Layer: 10
+  m_Layer: 20
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - 4: {fileID: 476938}
   - 82: {fileID: 8203740}
   - 114: {fileID: 11482088}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 481102}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: randomEnemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -474,6 +474,7 @@ MeshFilter:
   m_Mesh: {fileID: 4300000, guid: 297491729e62bdd44bb42da6b437b83f, type: 3}
 --- !u!50 &5065692
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -482,11 +483,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &6059672
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -616,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circle: {fileID: 0}
   enemies:
   - {fileID: 481102}
   - {fileID: 455708}
@@ -627,8 +629,9 @@ MonoBehaviour:
   hasRightEnd: 1
   leftUsed: 0
   rightUsed: 0
-  isFirst: 0
   position: 0000000000000000
+  isFirstChunk: 0
+  chunkId: 0
 --- !u!114 &11465550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3752,7 +3755,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168704}

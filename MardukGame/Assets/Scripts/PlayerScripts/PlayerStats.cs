@@ -239,6 +239,7 @@ public class PlayerStats : MonoBehaviour {
 		playerDeathSound.Play ();
 		yield return new WaitForSeconds (2.5f);
 		anim.SetBool("IsDead", false);
+		anim.speed = initAnimSpeed;
 		readyToRespawn = true;
 		GameController.previousExit = 0;
 		Fading.BeginFadeIn("level1");
