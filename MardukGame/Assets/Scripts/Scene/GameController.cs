@@ -187,7 +187,7 @@ public class GameController : MonoBehaviour {
 
 	public static void SetActiveChunks(string levelName, bool active){
 		if (!chunksPerZone.ContainsKey (levelName)) {
-			Debug.LogError(levelName + " No encontrado!");
+			//Debug.LogError(levelName + " No encontrado!");
 			return;
 		}
 		List<GameObject> chunkList = chunksPerZone [levelName];
