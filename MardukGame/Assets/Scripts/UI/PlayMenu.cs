@@ -107,6 +107,7 @@ public class PlayMenu : MonoBehaviour {
 	public void Play(){
 		if (g.nameToLoad != null) {
 			g.levelLoaded = false;
+			//Fading.BeginFadeIn("level0");
 			Application.LoadLevel ("level0");
 		}
 	}

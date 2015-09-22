@@ -10,6 +10,8 @@ public class Fading : MonoBehaviour {
 	private static string sceneToLoad;
 	public GameObject gameCtrlObj;
 	private GameController gameCtrl;
+	//private ChunkFactory currentChunkFactory;
+
 
 	void Awake(){
 		anim = GetComponent<Animator> ();
@@ -27,6 +29,11 @@ public class Fading : MonoBehaviour {
 
 	public static void BeginFadeOut ()
 	{
+		if (sceneToLoad == "level1") { //hay una pantalla negra al principio que se desactiva al cargar el primer nivel
+			GameObject bs = GameObject.Find ("blackScreen"); //es para que no se vea nada hasta que se genere todo el lvl
+			if(bs != null)
+				bs.SetActive(false); 
+		}
 		PlatformerCharacter2D.stopPlayer = false;
 		CameraController.stopFollow = false;
 		anim.SetBool ("FadeOut",true);
@@ -38,14 +45,14 @@ public class Fading : MonoBehaviour {
 		g.SetActiveEnemies(g.currLevelName,false);
 		g.SetActiveChunks(g.currLevelName,false);
 		g.currLevelName = sceneToLoad;
+		//ChunkFactory.levelGenerated = false;
 		Application.LoadLevel (sceneToLoad);
 
 
 
 	}
 
-	void OnLevelWasLoaded (int level) {
-		Debug.Log ("level cargado;: " + level);
+	public void LevelLoaded(){
 		if(g.chunksPerZone.ContainsKey(g.currLevelName))
 			g.SetActiveChunks(g.currLevelName,true);
 		if(g.enemiesPerLevel.ContainsKey(g.currLevelName))
@@ -58,6 +65,10 @@ public class Fading : MonoBehaviour {
 		}
 		gameCtrl.RepositionPlayerAndCamera();
 		Fading.BeginFadeOut ();
+	}
+
+	void OnLevelWasLoaded (int level) {
+		//Debug.Log ("level cargado;: " + level);
 	}
 
 	public static void DestroyItems(){

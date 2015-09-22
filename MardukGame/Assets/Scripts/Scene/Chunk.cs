@@ -38,14 +38,13 @@ public class Chunk : MonoBehaviour {
 						c3.gameObject.layer = LayerMask.NameToLayer("Ground"); //el de collision tiene que ser ground si o si
 				}
 			}
-			Debug.Log(child.name);
 		}
 	}
 
 	void Update(){
 
 		timeToGenerate += Time.deltaTime;
-		if (timeToGenerate > 0.4 && !alreadyGenerated && !isFirstChunk) {
+		if (timeToGenerate > 0.02f && !alreadyGenerated && !isFirstChunk) {
 			GenerateChunks();
 		}
 	}

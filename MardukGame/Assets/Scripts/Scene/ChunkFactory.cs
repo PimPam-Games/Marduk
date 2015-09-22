@@ -28,7 +28,10 @@ public class ChunkFactory : MonoBehaviour {
 	public static float bgCount = 0;
 	public static int newChunkPosY; //esta variable se deberia actualziar antes de generar un nuevo chunk, en las clases chunk y chunk2. es para poner la entrada a la cueva
 	public static float bgPerChunk = 4; //cada cuantos chunks debe generar el fondo
-
+	public static bool levelGenerated = false; //true si ya se termino de generar todo el lvl
+	private int chunksCount = 0; //cuenta los chunks que se van generando si este numero no cambia mas, es por que ya no hay mas chunks generandose
+	private bool fadingFuncCalled = false;
+	private Fading fading;
 
 	// Use this for initialization
 	void Awake () {
@@ -47,7 +50,28 @@ public class ChunkFactory : MonoBehaviour {
 				commonChunks.Add(chunkPool[i]);
 			}
 		}
+		fading = GameObject.Find ("HUDCanvas").GetComponentInChildren <Fading>();
+		levelGenerated = false;
+		StartCoroutine (CheckLevelGeneration ());
 
+	}
+
+	IEnumerator CheckLevelGeneration () {
+		int currentChunkCount = 0;
+		while (!levelGenerated) {
+			yield return new WaitForSeconds (0.2f);
+			if(currentChunkCount == chunksCount){
+				levelGenerated = true;
+			}
+			currentChunkCount = chunksCount;
+		}
+	}
+
+	void Update(){
+		if (levelGenerated && !fadingFuncCalled) {
+			fadingFuncCalled = true;
+			fading.LevelLoaded();
+		}
 	}
 
 	public static void Initialize(){
@@ -56,6 +80,7 @@ public class ChunkFactory : MonoBehaviour {
 	}
 
 	public GameObject GenerateEnd (Vector3 pos, Quaternion rot, Exits exit){
+		chunksCount++;
 		GameObject newChunk = null;
 		if (!g.chunksPerZone.ContainsKey (g.currLevelName)) {
 			Debug.LogError(g.currLevelName + " No encontrado!");
@@ -79,6 +104,7 @@ public class ChunkFactory : MonoBehaviour {
 
 	public GameObject GenerateChunk(Vector3 pos, Quaternion rot, Exits exit, int[] chunkPos){ //entry: "left", "right" , "up" , "down" , null para cualquiera
 		bgCount++;
+		chunksCount++;
 		GameObject newChunk = null;
 		if (!g.chunksPerZone.ContainsKey (g.currLevelName)) {
 			Debug.LogError(g.currLevelName + " No encontrado!");

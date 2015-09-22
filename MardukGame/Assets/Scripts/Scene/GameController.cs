@@ -32,7 +32,8 @@ public class GameController : MonoBehaviour {
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
 		//deadEnemies = new List<string>();
-
+		player.GetComponent<BoxCollider2D> ().enabled = false;
+		player.GetComponent<Rigidbody2D> ().isKinematic = true;
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (player);
 		playerStats = player.GetComponent<PlayerStats> ();
@@ -50,7 +51,8 @@ public class GameController : MonoBehaviour {
 		else
 			Debug.LogError ("HUDCanvas not found");
 		currLevelName = "level1";
-		Application.LoadLevel (currLevelName);
+		//Application.LoadLevel (currLevelName);
+		Fading.BeginFadeIn (currLevelName);
 		currentLevel = Application.loadedLevel;
 		Cursor.visible = false;
 		notVisitedLevels = new List<string>();
@@ -121,9 +123,10 @@ public class GameController : MonoBehaviour {
 			//Debug.LogError ("CameraBounds not found");
 			return;
 		}
+		//player.SetActive (false); //lo desactivo por las dudas para que no se choque con algun enemigo
 		GameObject levelEntry = GameObject.Find("LevelEntry" + previousExit); 
-		Debug.Log ("entry null? " + levelEntry == null);
-		Debug.Log ("previus exit : " + previousExit);
+		/*Debug.Log ("entry null? " + levelEntry == null);
+		Debug.Log ("previus exit : " + previousExit);*/
 		PlatformerCharacter2D.stopPlayer = true;
 		player.transform.position = levelEntry.transform.position;
 		if (jumpOnLoad)
@@ -135,6 +138,9 @@ public class GameController : MonoBehaviour {
 			mainCamera.transform.position = new Vector3 (levelEntry.transform.position.x - 4, levelEntry.transform.position.y, mainCamera.transform.position.z);
 			miniMap.transform.position = new Vector3 (levelEntry.transform.position.x - 4, levelEntry.transform.position.y, miniMap.transform.position.z);
 		}
+		player.GetComponent<BoxCollider2D> ().enabled = true;
+		player.GetComponent<Rigidbody2D> ().isKinematic = false;
+		//player.SetActive (true);
 	}
 
 	public void DestroyEnemies(){

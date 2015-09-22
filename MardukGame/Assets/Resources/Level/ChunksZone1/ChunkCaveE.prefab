@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &101634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 427010}
+  - 61: {fileID: 6109052}
+  - 50: {fileID: 5000738}
+  m_Layer: 20
+  m_Name: CameraFollow
+  m_TagString: CameraFollow
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &113170
 GameObject:
   m_ObjectHideFlags: 1
@@ -256,9 +273,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.5759773, y: -5.67672825, z: 0}
+  m_LocalPosition: {x: -13.619051, y: 21.2172718, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
+  - {fileID: 427010}
   - {fileID: 462744}
   - {fileID: 421148}
   - {fileID: 454564}
@@ -302,7 +320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405918}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &423448
 Transform:
   m_ObjectHideFlags: 1
@@ -314,7 +332,19 @@ Transform:
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 405918}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!4 &427010
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: -249, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 405918}
+  m_RootOrder: 0
 --- !u!4 &450128
 Transform:
   m_ObjectHideFlags: 1
@@ -340,7 +370,7 @@ Transform:
   - {fileID: 454878}
   - {fileID: 483236}
   m_Father: {fileID: 405918}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &454878
 Transform:
   m_ObjectHideFlags: 1
@@ -365,7 +395,7 @@ Transform:
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 405918}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &467566
 Transform:
   m_ObjectHideFlags: 1
@@ -387,11 +417,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 543, y: -349, z: 0}
+  m_LocalPosition: {x: 550, y: -375, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 405918}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!4 &478638
 Transform:
   m_ObjectHideFlags: 1
@@ -416,7 +446,7 @@ Transform:
   m_Children:
   - {fileID: 467566}
   m_Father: {fileID: 405918}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!4 &483236
 Transform:
   m_ObjectHideFlags: 1
@@ -505,6 +535,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130774}
   m_Mesh: {fileID: 4300002, guid: b1bbcbd11a9d48e43878aa87a8516f91, type: 3}
+--- !u!50 &5000738
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101634}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5064440
 Rigidbody2D:
   serializedVersion: 2
@@ -580,6 +626,19 @@ PolygonCollider2D:
       - {x: 2048, y: -1472}
       - {x: 1984, y: -1408}
       - {x: 1600, y: -1408}
+--- !u!61 &6109052
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101634}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -3.80773926, y: 123.946411}
+  serializedVersion: 2
+  m_Size: {x: 208.044022, y: 224.949951}
 --- !u!61 &6188120
 BoxCollider2D:
   m_ObjectHideFlags: 1
