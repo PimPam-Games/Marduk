@@ -16,7 +16,14 @@ public class Teleporter : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.tag == "Player" && !t.isOpen) {
-			Debug.Log("enter portal");
+			//Debug.Log("enter portal");
+			t.OpenTeleporterPanel();
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D col){
+		if (col.tag == "Player" && !t.isOpen) {
+			//Debug.Log("enter portal");
 			t.OpenTeleporterPanel();
 		}
 	}

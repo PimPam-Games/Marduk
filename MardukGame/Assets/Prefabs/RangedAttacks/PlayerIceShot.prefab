@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11499722}
   - 82: {fileID: 8203550}
   - 82: {fileID: 8271784}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: PlayerIceShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,6 @@ MonoBehaviour:
   isParticle: 0
   dontDestroy: 1
   hasSplashAnim: 0
-  manaCost: 3
   anim: {fileID: 0}
   hitEnemySound: {fileID: 8203550}
   criticalHitSound: {fileID: 8271784}
@@ -285,6 +284,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: convertElem
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

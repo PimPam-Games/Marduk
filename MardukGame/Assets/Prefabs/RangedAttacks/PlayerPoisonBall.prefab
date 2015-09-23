@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11488892}
   - 82: {fileID: 8215492}
   - 82: {fileID: 8221138}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: PlayerPoisonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,6 @@ MonoBehaviour:
   isParticle: 0
   dontDestroy: 0
   hasSplashAnim: 1
-  manaCost: 8
   anim: {fileID: 9500174}
   hitEnemySound: {fileID: 8215492}
   criticalHitSound: {fileID: 8221138}
@@ -275,7 +274,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137192}

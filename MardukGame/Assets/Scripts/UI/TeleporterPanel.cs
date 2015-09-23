@@ -2,6 +2,7 @@
 using System.Collections;
 using g = GameController;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class TeleporterPanel : MonoBehaviour {
 
@@ -46,6 +47,8 @@ public class TeleporterPanel : MonoBehaviour {
 	}
 
 	public void goToCastle(){
+		if (string.Compare(g.currLevelName,"level3") == 0)
+			return;
 		g.previousExit = 7;
 		g.jumpOnLoad = false;
 		/*foreach (GameObject b in buttons) {
@@ -57,7 +60,7 @@ public class TeleporterPanel : MonoBehaviour {
 	}
 
 	public void goToZone1(){
-		if (g.currentLevel == 1)
+		if (string.Compare(g.currLevelName,"level1") == 0)
 			return;
 		g.previousExit = 7;
 		g.jumpOnLoad = false;
@@ -66,6 +69,6 @@ public class TeleporterPanel : MonoBehaviour {
 		}
 		isOpen = false;*/
 		Fading.BeginFadeIn("level1");
-		Debug.Log ("Zone1");
+		//Debug.Log ("Zone1");
 	}
 }

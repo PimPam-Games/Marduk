@@ -16,7 +16,7 @@ public class Chunk2 : MonoBehaviour {
 	//public bool isFirst = false;
 	public int[] position = new int[2]; // posicion en la matriz
 	private bool alreadyGenerated = false;
-	
+	private bool layerChanged = false; //indica si ya se le cambio el layer para que sea visto por el minimapa
 	public bool isFirstChunk = false;
 	public int chunkId = 0;
 	private ChunkFactory cf;
@@ -25,12 +25,24 @@ public class Chunk2 : MonoBehaviour {
 	
 	void Awake(){
 		cf = GameObject.Find ("LevelController").GetComponent<ChunkFactory>();
+		foreach(Transform child in this.transform){  //el layer del chunk y de todos los hijos es miniMapIgnored para que no lo muestre el minimapa
+			child.gameObject.layer = LayerMask.NameToLayer("MiniMapIgnored");
+			foreach(Transform c2 in child){
+				c2.gameObject.layer = LayerMask.NameToLayer("MiniMapIgnored");
+				foreach(Transform c3 in c2){
+					if(c3.gameObject.name != "Collision")
+						c3.gameObject.layer = LayerMask.NameToLayer("MiniMapIgnored");
+					else
+						c3.gameObject.layer = LayerMask.NameToLayer("Ground"); //el de collision tiene que ser ground si o si
+				}
+			}
+		}
 	}
 	
 	void Update(){
 		
 		timeToGenerate += Time.deltaTime;
-		if (timeToGenerate > 0.4 && !alreadyGenerated && !isFirstChunk) {
+		if (timeToGenerate > 0.02f && !alreadyGenerated && !isFirstChunk) {
 			GenerateChunks();
 		}
 	}
@@ -171,14 +183,29 @@ public class Chunk2 : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D col){
-		
 		if (col.gameObject.tag == "Chunk") {
-			
 			if(!this.isDouble){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
 				
 				Destroy(this.gameObject);
 			}
-			
+		}
+
+		if (col.gameObject.tag == "Player") {
+			if(!layerChanged){
+				foreach(Transform child in this.transform){
+					child.gameObject.layer = LayerMask.NameToLayer("Default");
+					foreach(Transform c2 in child){
+						c2.gameObject.layer = LayerMask.NameToLayer("Default");
+						foreach(Transform c3 in c2){
+							if(c3.gameObject.name != "Collision")
+								c3.gameObject.layer = LayerMask.NameToLayer("Default");
+							else
+								c3.gameObject.layer = LayerMask.NameToLayer("Ground");
+						}
+					}
+				}
+				layerChanged = true;
+			}
 		}
 	}
 }

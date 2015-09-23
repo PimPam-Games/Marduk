@@ -278,6 +278,8 @@ MonoBehaviour:
   maxSpeed: 4
   initMaxSpeed: 0
   facingRight: 0
+  currentSpeed: 0
+  rb: {fileID: 0}
   groundChecks:
   - {fileID: 469530}
   - {fileID: 479904}
@@ -317,9 +319,11 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
+  initCritChance: .0500000007
   elem: 4
   minDamage: 2
   maxDamage: 5
+  critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
   healthPerLvl: 10

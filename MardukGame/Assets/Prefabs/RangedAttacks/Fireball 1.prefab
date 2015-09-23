@@ -99,7 +99,7 @@ GameObject:
   - 58: {fileID: 5884116}
   - 50: {fileID: 5074288}
   - 114: {fileID: 11499800}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Fireball 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,6 +215,7 @@ Transform:
   m_RootOrder: 1
 --- !u!50 &5074288
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -223,11 +224,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &5884116
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -257,6 +258,10 @@ MonoBehaviour:
   maxDmg: 3
   particleSpeed: 7
   isParticle: 0
+  dontDestroy: 0
+  hasSplashAnim: 0
+  anim: {fileID: 0}
+  enemyStats: {fileID: 0}
 --- !u!114 &11499800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7375,7 +7380,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174960}
