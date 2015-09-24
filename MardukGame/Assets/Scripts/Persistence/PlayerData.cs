@@ -14,6 +14,7 @@ public class PlayerData{
 	public  int dexAddedPoints;
 
 	public string[] skillsNames; //guardo los nombres de todos los skills del panel
+	public bool[] teleporters; //los transportadores por los que el jugador ya paso
 
 	public  double currentExp;
 	public  int lvl;

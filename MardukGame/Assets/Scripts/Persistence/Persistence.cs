@@ -145,6 +145,7 @@ public class Persistence : MonoBehaviour {
 		}
 		data.inventory = inv;
 		data.inventoryCantItems = pItems.inventoryCantItems;
+		data.teleporters = pItems.playerTeleporters;
 
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		string[] playerSkills = new string[4];
@@ -226,6 +227,7 @@ public class Persistence : MonoBehaviour {
 			}
 			pItems.Inventory = inv;
 			pItems.inventoryCantItems = data.inventoryCantItems;
+			pItems.playerTeleporters = data.teleporters;
 			GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
 			if(data.skillsNames == null)

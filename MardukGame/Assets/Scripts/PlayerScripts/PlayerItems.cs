@@ -27,14 +27,14 @@ public class PlayerItems: MonoBehaviour {
 
 	public static int InventoryMaxSize = 30;
 	public static int inventoryCantItems = 0;
+	public static int CantTeleporters = 2;
+	public static bool[] playerTeleporters;
 
 	public static List<Item> Inventory{
 
 		get {return inventory;}
 		set{inventory = value;}
 	}
-
-
 
 	public static Item EquipedWeapon{
 		get{return equipedWeapon;}
@@ -326,6 +326,7 @@ public class PlayerItems: MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		reSkin = transform.Find ("Graphics").GetComponent<ReSkinAnimation>();
+		playerTeleporters = new bool[CantTeleporters];
 	}
 
 

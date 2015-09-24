@@ -49,7 +49,9 @@ public class TeleporterPanel : MonoBehaviour {
 	public void goToCastle(){
 		if (string.Compare(g.currLevelName,"level3") == 0)
 			return;
-		g.previousExit = 7;
+		if (!PlayerItems.playerTeleporters[Teleporter.TCastle]) //si el jugador no tiene este transportador no puede ir a esa zona
+			return;
+		g.previousExit = 7; //por convencion la salida 7 es para entrar en algun otro transportador
 		g.jumpOnLoad = false;
 		/*foreach (GameObject b in buttons) {
 			b.SetActive(false);
@@ -61,6 +63,8 @@ public class TeleporterPanel : MonoBehaviour {
 
 	public void goToZone1(){
 		if (string.Compare(g.currLevelName,"level1") == 0)
+			return;
+		if (!PlayerItems.playerTeleporters[Teleporter.TZone1]) //si el jugador no tiene este transportador no puede ir a esa zona
 			return;
 		g.previousExit = 7;
 		g.jumpOnLoad = false;

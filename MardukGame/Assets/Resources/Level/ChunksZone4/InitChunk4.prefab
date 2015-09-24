@@ -137,6 +137,7 @@ GameObject:
   - 61: {fileID: 6178654}
   - 114: {fileID: 11404448}
   - 61: {fileID: 6122968}
+  - 61: {fileID: 6151886}
   m_Layer: 0
   m_Name: InitChunk4
   m_TagString: Untagged
@@ -402,7 +403,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1093696345
   m_SortingOrder: 0
 --- !u!23 &2335128
 MeshRenderer:
@@ -513,7 +514,7 @@ PolygonCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133872}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -590,25 +591,38 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137946}
   m_Enabled: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 1120.75024, y: 242.277359}
   serializedVersion: 2
   m_Size: {x: 37.2154541, y: 621.643799}
+--- !u!61 &6151886
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137946}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 733.688477, y: 848.38916}
+  serializedVersion: 2
+  m_Size: {x: 62.9753418, y: 159.051025}
 --- !u!61 &6178654
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137946}
-  m_Enabled: 0
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 22.6981201, y: 261.921997}
+  m_Offset: {x: 416.354492, y: 848.38916}
   serializedVersion: 2
-  m_Size: {x: 38.8723755, y: 592.874512}
+  m_Size: {x: 54.9405518, y: 159.051025}
 --- !u!114 &11404448
 MonoBehaviour:
   m_ObjectHideFlags: 1
