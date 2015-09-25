@@ -7,10 +7,11 @@ public class Teleporter : MonoBehaviour {
 
 	public const int TZone1 = 0 , TCastle = 1, TSublevel = 2; 
 	public int id;
+	private Animator anim;
 
 	// Use this for initialization
 	void Start () {
-	
+		anim = GetComponentInChildren<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +24,7 @@ public class Teleporter : MonoBehaviour {
 			PlayerItems.playerTeleporters[id] = true;
 			//Debug.Log("enter portal");
 			t.OpenTeleporterPanel();
+			anim.SetBool("Activated",true);
 		}
 	}
 
@@ -32,12 +34,14 @@ public class Teleporter : MonoBehaviour {
 			PlayerItems.playerTeleporters[id] = true;
 			//Debug.Log("enter portal");
 			t.OpenTeleporterPanel();
+			anim.SetBool("Activated",true);
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D col){
 		if (col.tag == "Player" && t.isOpen) {
 			t.CloseTeleporterPanel();
+			anim.SetBool("Activated",false);
 		}
 	}
 }
