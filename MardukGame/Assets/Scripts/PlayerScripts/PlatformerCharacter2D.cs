@@ -153,7 +153,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
 				if(isColliding)
 					return;
-				isColliding = true;
+				
 				GameObject item = col.gameObject;
 				if(item == null){
 					Debug.Log("es null");
@@ -170,16 +170,20 @@ public class PlatformerCharacter2D : MonoBehaviour
 						return;
 					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
 					PlayerItems.inventoryCantItems++;
+
 					//checkInventory();
 				}
 				else{
+					
 					if(item.tag == "Spell"){
 						string itName = item.GetComponent<Item>().Name;
 						bool spellAdded = spellsPanel.AddSpell(itName);
 						if(spellAdded)
 							Destroy(item);
 					}
+					
 				}
+				isColliding = true;
 		
 			}
 		}
