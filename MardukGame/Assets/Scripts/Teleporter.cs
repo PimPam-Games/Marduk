@@ -5,7 +5,7 @@ using t = TeleporterPanel;
 public class Teleporter : MonoBehaviour {
 
 
-	public const int TZone1 = 0 , TCastle = 1, TDungeon = 2; 
+	public const int TZone1 = 0 , TCastle = 1, TDungeon = 2, TSublevel = 3; 
 	public int id;
 	private Animator anim;
 
