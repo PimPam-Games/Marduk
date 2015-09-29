@@ -91,9 +91,9 @@ public class Chunk : MonoBehaviour {
 		if (hasRightEnd && !rightUsed) {
 			rightUsed = true;
 			if(this.position[1] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0],this.position[1]+1]){
-				ChunkFactory.newChunkPosY = this.position[0];
+
 				GameObject g;
-				g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left,this.position);
+				g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left,this.position,this.position[0]);
 				if(g!=null){
 					Chunk nchunk = g.GetComponent<Chunk>();
 					nchunk.leftUsed = true;
@@ -114,9 +114,9 @@ public class Chunk : MonoBehaviour {
 		if (hasLeftEnd && !leftUsed ) {
 			leftUsed = true;
 			if(this.position[1] > 0 && !cf.cmatrix[this.position[0],this.position[1]-1] ){
-				ChunkFactory.newChunkPosY = this.position[0];
+
 				GameObject g;
-				g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right,this.position);
+				g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right,this.position,this.position[0]);
 				if(g != null){
 					Chunk nchunk = g.GetComponent<Chunk>();
 					nchunk.rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
@@ -138,8 +138,8 @@ public class Chunk : MonoBehaviour {
 		if (chunkEndDownL != null) {
 			if(this.position[1] > 0 && this.position[0] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0]+1,this.position[1]-1]){
 				 //la posicion del nuevo es abajo a la izq
-				ChunkFactory.newChunkPosY = this.position[0]+1;
-				GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right,this.position);
+
+				GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right,this.position,this.position[0]+1);
 				if(g != null){
 					Chunk nchunk = g.GetComponent<Chunk>();
 					nchunk.rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
@@ -160,9 +160,9 @@ public class Chunk : MonoBehaviour {
 		}
 		if (chunkEndDownR != null) {
 			if(this.position[1] < cf.MatrixSize-1 && this.position[0] < cf.MatrixSize-1 && !cf.cmatrix[this.position[0]+1,this.position[1]+1]){
-				ChunkFactory.newChunkPosY = this.position[0]+1;
+
 				//int[] p = {this.position[0]+1,this.position[1]};
-				GameObject g = cf.GenerateChunk (chunkEndDownR.position, chunkEndDownR.rotation,ChunkFactory.Exits.Left,this.position);
+				GameObject g = cf.GenerateChunk (chunkEndDownR.position, chunkEndDownR.rotation,ChunkFactory.Exits.Left,this.position,this.position[0]+1);
 				if(g!=null){
 					Chunk nchunk = g.GetComponent<Chunk>();
 					nchunk.leftUsed = true;

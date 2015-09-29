@@ -46,6 +46,17 @@ public class TeleporterPanel : MonoBehaviour {
 		isOpen = false;
 	}
 
+	public void goToDungeon(){
+		if (string.Compare(g.currLevelName,"level4") == 0)
+			return;
+		if (!PlayerItems.playerTeleporters[Teleporter.TDungeon]) //si el jugador no tiene este transportador no puede ir a esa zona
+			return;
+		g.previousExit = 7; //por convencion la salida 7 es para entrar en algun otro transportador
+		g.jumpOnLoad = false;
+		Fading.BeginFadeIn("level4");
+		Debug.Log ("Dungeon");
+	}
+
 	public void goToCastle(){
 		if (string.Compare(g.currLevelName,"level3") == 0)
 			return;

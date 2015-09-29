@@ -27,7 +27,7 @@ public class PlayerItems: MonoBehaviour {
 
 	public static int InventoryMaxSize = 30;
 	public static int inventoryCantItems = 0;
-	public static int CantTeleporters = 2;
+	public static int CantTeleporters = 3;
 	public static bool[] playerTeleporters;
 
 	public static List<Item> Inventory{
