@@ -121,7 +121,7 @@ public class ChunkFactory : MonoBehaviour {
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 		} else {*/
 			int r;
-			float[] chunksProb = {0.4f,0.4f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
+			float[] chunksProb = {0.5f,0.3f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
 
 			int choice = Utils.Choose(chunksProb);
 			Debug.Log ("chunk pos 0 " + chunkPos [0]);

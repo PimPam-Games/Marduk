@@ -202,6 +202,8 @@ public class Item : MonoBehaviour {
 			tooltip +=  offensives[p.IncreasedCritChance] + "% Increased Critical Chances" + "\n";
 		if(offensives[p.IncreasedMgDmg]>0)
 			tooltip +=  offensives[p.IncreasedMgDmg] + "% Increased Magic Damage" + "\n";
+		if(offensives[p.IncreasedCastSpeed]>0)
+			tooltip +=  offensives[p.IncreasedCastSpeed] + "% Increased Cast Speed" + "\n";
 		return tooltip;
 	}
 

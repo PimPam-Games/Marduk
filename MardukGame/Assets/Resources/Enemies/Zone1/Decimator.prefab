@@ -266,7 +266,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 10
   maxSpeed: 1
+  initMaxSpeed: 0
   facingRight: 0
+  currentSpeed: 0
+  rb: {fileID: 0}
   groundChecks: []
   jumpForce: 800
   knockable: 1
@@ -315,18 +318,21 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
+  initCritChance: .0500000007
   elem: 4
   minDamage: 2
   maxDamage: 5
-  minDmgPerLvl: 1
-  maxDmgPerLvl: 1
-  healthPerLvl: 10
+  critChance: 25
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
+  healthPerLvl: 15
   armourPerLvl: 2
   coldResPerLvl: 0
   fireResPerLvl: 0
   lightResPerLvl: 0
   poisonResPerLvl: 4
   evasionPerLvl: 0
+  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8257640}
   enemyName: Decimator
@@ -365,7 +371,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthPerLvl
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196658}

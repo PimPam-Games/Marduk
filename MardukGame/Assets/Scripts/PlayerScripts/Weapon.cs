@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour {
 		attackTimer -= Time.fixedDeltaTime;
 		if (anim.GetBool ("Attacking") == false)
 			isAttacking = false;
-		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false) { //anim.GetBool ("Attacking") == false && 
+		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false && anim.GetBool ("SpellCasting") == false) { //anim.GetBool ("Attacking") == false && 
 			anim.speed = p.currentAnimSpeed;
 			isAttacking = false;
 			canAttack = true;

@@ -79,6 +79,7 @@ public class EnemyStats : MonoBehaviour {
 	private float ignitedCount = 0;
 	private float ignitedTime = 4f; //4 segundos
 	private float ignitedDmg = 0;
+	private bool itemCreated = false;
 
 	public float Accuracy{
 		get {return accuracy;}
@@ -330,7 +331,10 @@ public class EnemyStats : MonoBehaviour {
 
 	IEnumerator EnemyDying () {
 		rb.gravityScale = 3;
-		GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
+		if (!itemCreated) {
+			itemCreated = true;
+			GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
+		}
 		//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 		
 		anim.SetBool ("IsDead", true);

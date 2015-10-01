@@ -53,6 +53,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private float[] moveSkillSpeed; //velocidad x e y del skill de movimiento
 
 		private bool isColliding = false;
+		private SpellStats currentSkill = null;
 
         private void Awake()
         {
@@ -142,6 +143,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 				anim.speed += weaponScript.animSpeed/2;
 			//auxxx++;
 			//Debug.Log ("+speed: " + weaponScript.animSpeed);
+		}
+
+		public void setCastAnimSpeed(){ //se llama desde la animacion de ataque para setear la velocidad
+			
+			if (currentSkill != null)
+				anim.speed += currentSkill.animSpeed/2;
+			else
+				Debug.Log ("skill null");
+			Debug.Log ("cast anim speed  added" + anim.speed);
 		}
 
 		public void DoDamage(){ //se llama desde la animacion de ataque para que el ataque empiecwe a hacer daño
@@ -275,7 +285,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					walkGrassSound.Stop();
                 // Move the character
 				if(knockbackTimer <= 0){
-					if((anim.GetBool("Attacking") == true || anim.GetBool("BowAttacking") == true) && move != 0)
+					if((anim.GetBool("Attacking") || anim.GetBool("BowAttacking") || anim.GetBool("SpellCasting")) && move != 0)
 						rb.velocity = new Vector2(move*(maxSpeed/1.5f), rb.velocity.y);
 					else
                 		rb.velocity = new Vector2(move*maxSpeed, rb.velocity.y);
@@ -360,24 +370,31 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 
+		public void CastSpell(){
+			currentSkill.ActivateCoolDown ();
+			projLaunchers[0].LaunchProjectile();
+		}
+
 		private void checkSkill(int i){
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
 			if (skill != null) {
 				//if(skill.projectile != null){ //si tiene un proyectil se lo seteo al lanzador
 					
 			//	}
-				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0))
+				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting"))
 					return;
-				skill.ActivateCoolDown();
+				
 				PlayerStats.currentMana -= skill.manaCost;
 				switch(skill.type){
 					case Types.SkillsTypes.Spell:
 						projLaunchers[0].projectile = skill.projectile;
 						projLaunchers[0].force = skill.force;
 						projLaunchers[0].flipProjectile = skill.flipProjectile;
+						currentSkill = skill;
+						anim.SetBool("SpellCasting", true);
 						//Debug.Log("castdelay " + stats.castDelay);
 						//projLaunchers[0].castDelay = skill.coolDown;
-						projLaunchers[0].LaunchProjectile();
+						
 					break;
 					case Types.SkillsTypes.Bow:
 						bowLauncher.projectile = skill.projectile;
@@ -386,6 +403,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 					break;
 					case Types.SkillsTypes.Movement:
+						skill.ActivateCoolDown();
 						moveSkillTimer = skill.moveTime;
 						moveSkillSpeed[0] = skill.movementX;
 						moveSkillSpeed[1] = skill.movementY;
@@ -403,7 +421,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
-			
+			anim.SetBool ("SpellCasting", false);
 		}
 		
         private void Flip()

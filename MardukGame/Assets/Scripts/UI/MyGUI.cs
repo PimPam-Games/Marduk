@@ -123,6 +123,8 @@ public class MyGUI : MonoBehaviour {
 		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.offensives[p.IncreasedMgDmg].ToString() + "%");
 		GUI.Label (new Rect (65*dif, 375*dif, 100*dif, 20*dif), "Mana Per Second");
 		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.offensives[p.ManaPerSec].ToString());
+		GUI.Label (new Rect (65*dif, 390*dif, 125*dif, 20*dif), "Increased Cast Speed");
+		GUI.Label (new Rect (250*dif, 390*dif, 100*dif, 20*dif), p.offensives[p.IncreasedCastSpeed].ToString() + "%");
 	}
 
 	private void DisplayDfensives(){
@@ -142,8 +144,8 @@ public class MyGUI : MonoBehaviour {
 		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.defensives[p.PoisonRes].ToString());
 		GUI.Label (new Rect (65*dif, 375*dif, 200*dif, 20*dif), "Block Chance");
 		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.defensives[p.BlockChance].ToString());
-		GUI.Label (new Rect (65*dif, 405*dif, 200*dif, 20*dif), "Life Gained Per Hit");
-		GUI.Label (new Rect (250*dif, 405*dif, 100*dif, 20*dif), p.defensives[p.LifePerHit].ToString());
+		GUI.Label (new Rect (65*dif, 390*dif, 200*dif, 20*dif), "Life Gained Per Hit");
+		GUI.Label (new Rect (250*dif, 390*dif, 100*dif, 20*dif), p.defensives[p.LifePerHit].ToString());
 	}
 
 	private void DisplayMisc(){

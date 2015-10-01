@@ -52,6 +52,7 @@ public class ItemGenerator :MonoBehaviour{
 				numAffixes = 3 + numAffixes;
 			if (newItem.Rarity == RarityTypes.Unique)
 				numAffixes = 5 + numAffixes;
+
 			for (int j=0;j<numAffixes;j++){
 				int defAtrOff = Random.Range(0,3);
 				if (defAtrOff == 0){ //defensive
@@ -93,7 +94,9 @@ public class ItemGenerator :MonoBehaviour{
 						if (optionOff == p.IncreasedCritChance)
 							newItem.Offensives[p.IncreasedCritChance] = (float)Random.Range (10, 30); 
 						if (optionOff == p.IncreasedAttackSpeed ) 
-							newItem.Offensives[p.IncreasedAttackSpeed] = (float)Random.Range (5, 30); 
+							newItem.Offensives[p.IncreasedAttackSpeed] = (float)Random.Range (5, 30);
+						if (optionOff == p.IncreasedCastSpeed) 
+							newItem.Offensives[p.IncreasedCastSpeed] = (float)Random.Range (5, 30); 
 						if (optionOff == p.IncreasedMgDmg)
 							newItem.Offensives[p.IncreasedMgDmg] = (float)Random.Range (10, 30);
 
