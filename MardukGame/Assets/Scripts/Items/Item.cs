@@ -180,6 +180,11 @@ public class Item : MonoBehaviour {
 			tooltip += "+ " + defensives[p.ColdRes] + "% To Cold Resistance" + "\n";
 		if(defensives[p.FireRes] > 0)
 			tooltip += "+ " + defensives[p.FireRes] + "% To Fire Resistance" + "\n";
+		if(defensives[p.AllRes] != 0)
+			if (defensives[p.AllRes] > 0)
+				tooltip += "+ " + defensives[p.AllRes] + "% to all resistances" + "\n";
+			else
+				tooltip += defensives[p.AllRes] + "% to all resistances" + "\n";
 		if(defensives[p.LightRes] > 0)
 			tooltip += "+ " + defensives[p.LightRes] + "% To Lightning Resistance" + "\n";
 		if(defensives[p.PoisonRes] > 0)
@@ -204,6 +209,8 @@ public class Item : MonoBehaviour {
 			tooltip +=  offensives[p.IncreasedMgDmg] + "% Increased Magic Damage" + "\n";
 		if(offensives[p.IncreasedCastSpeed]>0)
 			tooltip +=  offensives[p.IncreasedCastSpeed] + "% Increased Cast Speed" + "\n";
+		if (utils[p.AllAttr]>0)
+			tooltip += "+ " + utils[p.AllAttr] + " to all attributes";
 		return tooltip;
 	}
 

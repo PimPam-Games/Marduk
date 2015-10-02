@@ -7,11 +7,11 @@ using expUi = ExpUiController;
 public class PlayerStats : MonoBehaviour {
 
 
-	public const int CantAtributes = 4, CantOffensives = 16, CantDefensives = 11, CantUtils = 3;
+	public const int CantAtributes = 4, CantOffensives = 16, CantDefensives = 12, CantUtils = 4;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
 	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, Accuracy = 4, StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, BaseAttacksPerSecond = 10, IncreasedAttackSpeed = 11, IncreasedCritChance = 12, IncreasedDmg = 13, IncreasedMgDmg = 14, IncreasedCastSpeed = 15; //offensives
-	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, Evasiveness = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10;  //defensives
-	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2;//utils
+	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, Evasiveness = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10, AllRes = 11;  //defensives
+	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2, AllAttr = 3;//utils
 
 	public const float InitMoveSpeed = 5;
 	public const float InitMaxHealth = 45;
@@ -130,10 +130,10 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
-		atributes [Strength] = strAddedPoints;
-		atributes [Vitality] = vitAddedPoints;
-		atributes [Spirit] = spiAddedPoints;
-		atributes [Dextery] = dexAddedPoints;
+		atributes [Strength] = strAddedPoints + utils[AllAttr];
+		atributes [Vitality] = vitAddedPoints + utils[AllAttr];
+		atributes [Spirit] = spiAddedPoints + utils[AllAttr];
+		atributes [Dextery] = dexAddedPoints + utils[AllAttr];
 
 		defensives [MaxHealth] = atributes [Vitality] * 3 + InitMaxHealth; 
 		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
@@ -366,6 +366,7 @@ public class PlayerStats : MonoBehaviour {
 		case Types.Element.Cold:
 
 			realDmg -= Math.Abs((realDmg * (defensives[ColdRes]/100)));
+			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
 			chillCount = chillTimer;
 			if(!chill){
 				if(isCritical){
@@ -387,6 +388,7 @@ public class PlayerStats : MonoBehaviour {
 			break;
 		case Types.Element.Fire:
 			realDmg -= Math.Abs((realDmg * (defensives[FireRes]/100)));
+			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
 			if(isCritical){
 				ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
 				ignitedCount = ignitedTime;
@@ -397,6 +399,7 @@ public class PlayerStats : MonoBehaviour {
 			break;
 		case Types.Element.Poison:
 			realDmg -= Math.Abs((realDmg * (defensives[PoisonRes]/100)));
+			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
 			poisonedDmg = (0.3f * realDmg)/5; // 30% del daño infligido en 1 seg
 			poisonedCount = poisonedTimer;
 			if(!poisoned)
@@ -405,6 +408,7 @@ public class PlayerStats : MonoBehaviour {
 			break;
 		case Types.Element.Lightning:
 			realDmg -= Math.Abs((realDmg * (defensives[LightRes]/100)));
+			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
 			if(isCritical){
 				for(int i=0 ; i<renders.Length-1;i++){
 					renders[i].color = new Color (0.75f, 0.6f, 1f, 1f);

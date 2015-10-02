@@ -135,13 +135,13 @@ public class MyGUI : MonoBehaviour {
 		GUI.Label (new Rect (65*dif, 300*dif, 200*dif, 20*dif), "Life Regenerated Per Second");
 		GUI.Label (new Rect (250*dif, 300*dif, 100*dif, 20*dif), p.defensives[p.LifePerSecond].ToString());
 		GUI.Label (new Rect (65*dif, 315*dif, 200*dif, 20*dif), "Cold Resistance");
-		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), p.defensives[p.ColdRes].ToString());
+		GUI.Label (new Rect (250*dif, 315*dif, 100*dif, 20*dif), (p.defensives[p.ColdRes]+p.defensives[p.AllRes]).ToString());
 		GUI.Label (new Rect (65*dif, 330*dif, 200*dif, 20*dif), "Fire Resistance");
-		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), p.defensives[p.FireRes].ToString());
+		GUI.Label (new Rect (250*dif, 330*dif, 100*dif, 20*dif), (p.defensives[p.FireRes]+p.defensives[p.AllRes]).ToString());
 		GUI.Label (new Rect (65*dif, 345*dif, 200*dif, 20*dif), "Lightning Resistance");
-		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), p.defensives[p.LightRes].ToString());
+		GUI.Label (new Rect (250*dif, 345*dif, 100*dif, 20*dif), (p.defensives[p.LightRes]+p.defensives[p.AllRes]).ToString());
 		GUI.Label (new Rect (65*dif, 360*dif, 200*dif, 20*dif), "Poison Resistance");
-		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), p.defensives[p.PoisonRes].ToString());
+		GUI.Label (new Rect (250*dif, 360*dif, 100*dif, 20*dif), (p.defensives[p.PoisonRes]+p.defensives[p.AllRes]).ToString());
 		GUI.Label (new Rect (65*dif, 375*dif, 200*dif, 20*dif), "Block Chance");
 		GUI.Label (new Rect (250*dif, 375*dif, 100*dif, 20*dif), p.defensives[p.BlockChance].ToString());
 		GUI.Label (new Rect (65*dif, 390*dif, 200*dif, 20*dif), "Life Gained Per Hit");
