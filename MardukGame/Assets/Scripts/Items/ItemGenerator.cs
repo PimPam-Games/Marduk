@@ -54,7 +54,7 @@ public class ItemGenerator :MonoBehaviour{
 		}
 
 		if (newItem.Rarity != RarityTypes.Normal) {
-			int numAffixes = 1;
+			int numAffixes = 1; // no se que onda esto, pero da la impresion de que a veces no entra por los casos de abajo
 			if (newItem.Rarity == RarityTypes.Magic)
 				numAffixes = Random.Range (1, 3);
 			if (newItem.Rarity == RarityTypes.Rare)
@@ -79,6 +79,29 @@ public class ItemGenerator :MonoBehaviour{
 				if (newItem.itemName == "Sandblast"){
 					newItem.Atributes [p.Vitality] = 15;
 					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (12, 16);
+				}
+				if (newItem.itemName == "Viper"){
+					newItem.Atributes [p.Dextery] = 15;
+					newItem.Defensives [p.PoisonRes] = 20;
+					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (8, 11);
+				}
+				if (newItem.itemName == "Dracule"){
+					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (2f, 4f), 2);
+					newItem.Offensives [p.IncreasedMgDmg] = 15;
+				}
+				if (newItem.itemName == "Enlil's breath"){
+					newItem.Defensives [p.ColdRes] = 15;
+					newItem.Defensives [p.LightRes] = 30;
+					newItem.Offensives [p.AllAttr] = 20;
+				}
+				if (newItem.itemName == "Solar edge"){
+					newItem.Offensives [p.AllAttr] = 10;
+					newItem.Defensives [p.FireRes] = 40;
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 21);
+				}
+				if (newItem.itemName == "Titan's might"){
+					newItem.Atributes [p.Strength] = 30;
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16);
 				}
 			}
 
