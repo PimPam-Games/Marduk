@@ -81,7 +81,8 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + spellStats.manaCost.ToString () + "\n";
 			float totalMinDmg = pps.minDmg + pps.minDmg * p.offensives[p.IncreasedMgDmg]/100;
 			float totalMaxDmg = pps.maxDmg + pps.maxDmg * p.offensives[p.IncreasedMgDmg]/100;
-			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Damage " + System.Math.Round (totalMinDmg, 1).ToString () + " - " + System.Math.Round (totalMaxDmg, 1).ToString ();
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Damage " + System.Math.Round (totalMinDmg, 1).ToString () + " - " + System.Math.Round (totalMaxDmg, 1).ToString () + "\n";
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "level: " + spellStats.lvl.ToString() +  "\n";
 			break;
 		case Types.SkillsTypes.Aura:
 			//tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.magenta;	

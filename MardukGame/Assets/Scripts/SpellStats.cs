@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
+using System;
 
 public class SpellStats : MonoBehaviour {
 
@@ -22,10 +23,22 @@ public class SpellStats : MonoBehaviour {
 	private float castDelay;
 	private float cdTimer; 
 
+	public  double currentExp;
+	public  int lvl;
+	public  double nextLevelExp;
+	public  double oldNextLevelExp;
+
+
+	void Awake(){
+		lvl = 1;
+		currentExp = 0;
+		oldNextLevelExp = 0;
+		nextLevelExp = SpellExpFormula ();
+	}
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -42,6 +55,21 @@ public class SpellStats : MonoBehaviour {
 		if(castDelay < 0.15f)
 			animSpeed = 8;
 		cdTimer -= Time.deltaTime;
+	}
+
+	public void UpdateExp(double exp){
+		currentExp += exp;
+		if (currentExp >= nextLevelExp) {
+			lvl++;
+			oldNextLevelExp = nextLevelExp;
+			nextLevelExp = SpellExpFormula();
+
+		}
+		//Debug.Log ("currExp " + currentExp + ", " + "nextLevelExp " + nextLevelExp + ", " + "lvl " + lvl );
+	}
+
+	public double SpellExpFormula(){
+		return oldNextLevelExp + Math.Pow(1.2,lvl)*100;
 	}
 
 	public float CDtimer{

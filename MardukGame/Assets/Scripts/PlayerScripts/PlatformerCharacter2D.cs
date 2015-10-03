@@ -22,7 +22,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		[SerializeField] private GameObject weapon;
 		[SerializeField] private GameObject RangedWeapon;
 		public PlayerProjLauncher[] projLaunchers;
-		public SpellStats[] playerSkills;
+		public static SpellStats[] playerSkills;
 		private float[] skillsCoolDowns;
 		public PlayerProjLauncher bowLauncher;
 		private SpellsPanel spellsPanel;
@@ -187,7 +187,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					
 					if(item.tag == "Spell"){
 						string itName = item.GetComponent<Item>().Name;
-						bool spellAdded = spellsPanel.AddSpell(itName);
+						bool spellAdded = spellsPanel.AddSpell(itName,1,0,0);
 						if(spellAdded)
 							Destroy(item);
 					}

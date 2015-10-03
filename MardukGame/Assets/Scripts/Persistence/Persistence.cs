@@ -149,17 +149,26 @@ public class Persistence : MonoBehaviour {
 
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
 		string[] playerSkills = new string[4];
+		int[] skillsLevels = new int[4];
+		double[] skillsCurrentExp = new double[4]; 
+		double[] skillsOldNextLevelExp = new double[4];
 		if (player != null) { //para guardar los skills del jugador
 			for (int i = 0; i < playerSkills.Length; i++) {
-				SpellStats ps = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i];
+				SpellStats ps =  PlatformerCharacter2D.playerSkills[i];//player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i];
 
 				if(ps != null){
 					playerSkills[i] = ps.nameForSave;
+					skillsLevels[i] = ps.lvl;
+					skillsCurrentExp[i] = ps.currentExp;
+					skillsOldNextLevelExp[i] = ps.oldNextLevelExp;
 				}else
 					playerSkills[i] = null;
 			}
 		}
 		data.skillsNames = playerSkills;
+		data.skillsLevels = skillsLevels;
+		data.skillsCurrentExp = skillsCurrentExp;
+		data.skillsOldNextLevelExp = skillsOldNextLevelExp;
 		bf.Serialize (file,data);
 		file.Close ();
 	}
@@ -235,8 +244,9 @@ public class Persistence : MonoBehaviour {
 			for(int i = 0; i < data.skillsNames.Length; i++){
 				if(data.skillsNames[i] != null)
 				{
+					Debug.Log("skill level: " + data.skillsLevels[i]);
+					sp.AddSpell(data.skillsNames[i],data.skillsLevels[i],data.skillsCurrentExp[i],data.skillsOldNextLevelExp[i]);
 
-					sp.AddSpell(data.skillsNames[i]);
 				}
 			}
 		}
@@ -245,6 +255,8 @@ public class Persistence : MonoBehaviour {
 	private static Item GenerateItem(SerializableItem i){
 
 		UnityEngine.Object obj  = Resources.Load("Weapons/" + i.itemName, typeof(UnityEngine.Object));
+		if(obj == null)
+			obj  = Resources.Load("Unique/" + i.itemName, typeof(UnityEngine.Object));
 		GameObject newWeapon = (GameObject)Instantiate (obj,new Vector3(-500,-500,500),new Quaternion(1,1,1,1));
 		Item newItem = newWeapon.GetComponent<Item> ();
 

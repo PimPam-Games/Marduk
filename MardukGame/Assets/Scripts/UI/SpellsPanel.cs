@@ -15,7 +15,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		player =  GameObject.Find ("Player");
 		if (player != null) {
 			//projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
-			playerSkills  = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
+			playerSkills  = PlatformerCharacter2D.playerSkills; //player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
 			HasChanged ();
 		}
 
@@ -26,7 +26,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			player = GameObject.FindGameObjectWithTag("Player");
 			if (player != null){
 				//projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
-				playerSkills  = player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
+				playerSkills  = PlatformerCharacter2D.playerSkills; //player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
 				HasChanged ();
 			}
 		}
@@ -55,7 +55,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		}
 	}
 
-	public bool AddSpell(string spellName){
+	public bool AddSpell(string spellName, int lvl, double currentExp, double oldNextLevelExp){
 		/*a++;
 		if (a > 1)
 			return false;*/
@@ -73,7 +73,11 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				newSpell.transform.SetParent(slot);
 				newSpell.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 				SpellStats st = newSpell.GetComponent<SpellStats>();
-
+				st.oldNextLevelExp = oldNextLevelExp;
+				st.lvl = lvl;
+				Debug.Log("st level: " + st.lvl);
+				st.currentExp = currentExp;
+				st.nextLevelExp = st.SpellExpFormula();
 				if(st.type == Types.SkillsTypes.Aura){
 					p.defensives[p.LifePerSecond] += st.lifeRegenPerSecond;
 				}

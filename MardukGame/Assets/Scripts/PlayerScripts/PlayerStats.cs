@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using pi = PlayerItems;
 using expUi = ExpUiController;
+using plat = PlatformerCharacter2D;
 
 public class PlayerStats : MonoBehaviour {
 
@@ -61,6 +62,7 @@ public class PlayerStats : MonoBehaviour {
 	private float ghostModeCount;
 
 	private bool chill = false;
+	private bool freeze = false;
 	private float chillTimer = 1f;
 	private float chillCount = 0;
 
@@ -152,6 +154,7 @@ public class PlayerStats : MonoBehaviour {
 		chillCount -= Time.deltaTime;
 		if (chillCount <= 0 && chill) {
 			chill = false;
+			freeze = false;
 			anim.speed = initAnimSpeed;
 			currentAnimSpeed = anim.speed;
 			utils[MovementSpeed] = InitMoveSpeed; //agregar el increased move speed cuando este implementado!!!!!!!!"!
@@ -317,6 +320,10 @@ public class PlayerStats : MonoBehaviour {
 			atributesPoints += 5;
 		}
 		expUi.UpdateExpBar (currentExp,oldNextLevelExp,nextLevelExp);
+		for (int i = 0; i < plat.playerSkills.Length; i++) {
+			if(plat.playerSkills[i] != null)
+				plat.playerSkills[i].GetComponent<SpellStats>().UpdateExp(exp);
+		}
 		//Debug.Log ("currExp " + currentExp + ", " + "nextLevelExp " + nextLevelExp + ", " + "lvl " + lvl );
 	}
 
@@ -367,13 +374,15 @@ public class PlayerStats : MonoBehaviour {
 
 			realDmg -= Math.Abs((realDmg * (defensives[ColdRes]/100)));
 			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
-			chillCount = chillTimer;
+			if(!freeze)
+				chillCount = chillTimer;
 			if(!chill){
 				if(isCritical){
 					Debug.Log("congelado");
 					utils[MovementSpeed] = 0;
 					anim.speed = 0;
 					PlatformerCharacter2D.stopPlayer = true;
+					freeze = true;
 				}
 				else{
 					utils[MovementSpeed] -= 2;
