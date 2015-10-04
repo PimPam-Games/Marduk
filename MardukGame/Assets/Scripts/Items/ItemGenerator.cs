@@ -72,7 +72,7 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Defensives [p.Thorns] = 5;
 				}
 				if (newItem.itemName == "Cold zero"){
-					newItem.Offensives [p.AllAttr] = 10;
+					newItem.Utils [p.AllAttr] = 10;
 					newItem.Defensives [p.ColdRes] = 40;
 					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
 				}
@@ -92,10 +92,10 @@ public class ItemGenerator :MonoBehaviour{
 				if (newItem.itemName == "Enlil's breath"){
 					newItem.Defensives [p.ColdRes] = 15;
 					newItem.Defensives [p.LightRes] = 30;
-					newItem.Offensives [p.AllAttr] = 20;
+					newItem.Utils [p.AllAttr] = 20;
 				}
 				if (newItem.itemName == "Solar edge"){
-					newItem.Offensives [p.AllAttr] = 10;
+					newItem.Utils [p.AllAttr] = 10;
 					newItem.Defensives [p.FireRes] = 40;
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 21);
 				}

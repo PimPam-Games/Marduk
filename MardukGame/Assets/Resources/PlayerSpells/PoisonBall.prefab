@@ -63,20 +63,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: -225, y: 210}
+  force: {x: -280, y: 200}
   flipProjectile: 1
   projectile: {fileID: 137192, guid: 355b940606ebd5745998166aee28d732, type: 2}
   spellName: Poison Ball
   nameForSave: PoisonBall
   castPerSecond: 1
   type: 0
-  manaCost: 6
+  manaCost: 0
   manaReserved: 0
   lifeRegenPerSecond: 0
   movementX: 0
   movementY: 0
   moveTime: 0
   animSpeed: 0
+  initManaCost: 6
+  initMinDmg: 4
+  initMaxDmg: 8
+  manaCostPerLvl: 1
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
+  currentExp: 0
+  lvl: 0
+  nextLevelExp: 0
+  oldNextLevelExp: 0
 --- !u!222 &22246312
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -124,7 +134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCost
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: coolDown
@@ -137,6 +147,38 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: castPerSecond
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: force.x
+      value: -280
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: force.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initManaCost
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDmg
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDmg
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: manaCostPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

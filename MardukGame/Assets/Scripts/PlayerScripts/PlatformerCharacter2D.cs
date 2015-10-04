@@ -159,11 +159,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		void OnTriggerStay2D(Collider2D col){
-			
 			if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
 				if(isColliding)
 					return;
-				
+				isColliding = true;
 				GameObject item = col.gameObject;
 				if(item == null){
 					Debug.Log("es null");
@@ -176,9 +175,47 @@ public class PlatformerCharacter2D : MonoBehaviour
 				if (item.tag == "Item") {
 					playerItemsGO.Add(item);
 					item.SetActive(false);
+					Item it = item.GetComponent<Item>();
+					Debug.Log("agarre un arma");
+					if(PlayerItems.EquipedWeapon == null && it.Type == ItemTypes.Weapon){ //si el slot del arma no esta ocupado pongo ahi el nuevo item
+						PlayerItems.EquipedWeapon = it;
+						return;
+					}
+					if(PlayerItems.EquipedArmour == null && it.Type == ItemTypes.Armour){
+						PlayerItems.EquipedArmour = it;
+						return;
+					}
+					if(PlayerItems.EquipedShield == null && it.Type == ItemTypes.Shield){
+						if(!(PlayerItems.EquipedWeapon == null) && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){} //si hay un arco equipado no hago nada
+						else{
+							PlayerItems.EquipedShield = it;
+							return;
+						}
+						
+					}
+					if(PlayerItems.EquipedHelmet == null && it.Type == ItemTypes.Helmet){
+						PlayerItems.EquipedHelmet = it;
+						return;
+					}
+					if(PlayerItems.EquipedBelt == null && it.Type == ItemTypes.Belt){
+						PlayerItems.EquipedBelt = it;
+						return;
+					}
+					if(PlayerItems.EquipedAmulet == null && it.Type == ItemTypes.Amulet){
+						PlayerItems.EquipedAmulet = it;
+						return;
+					}
+					if(PlayerItems.EquipedRingL == null && it.Type == ItemTypes.Ring){
+						PlayerItems.EquipedRingL = it;
+						return;
+					}
+					if(PlayerItems.EquipedRingR == null && it.Type == ItemTypes.Ring){
+						PlayerItems.EquipedRingR = it;
+						return;
+					}
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
 						return;
-					PlayerItems.Inventory.Add (item.GetComponent<Item> ());
+					PlayerItems.Inventory.Add (it);
 					PlayerItems.inventoryCantItems++;
 
 					//checkInventory();
@@ -193,8 +230,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 					}
 					
 				}
-				isColliding = true;
-		
 			}
 		}
 		
@@ -209,6 +244,79 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (col.gameObject.tag == "CameraStopX") {
 				CameraController.stopFollowX = true;
 			}
+
+		if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
+			if(isColliding)
+				return;
+			isColliding = true;
+			GameObject item = col.gameObject;
+			if(item == null){
+				Debug.Log("es null");
+				return;
+			}
+			if( item.transform.parent == item.transform ){
+				Debug.Log("hijos: " + item.transform.childCount);
+				return;
+			}	
+			if (item.tag == "Item") {
+				playerItemsGO.Add(item);
+				item.SetActive(false);
+				Item it = item.GetComponent<Item>();
+				Debug.Log("agarre un arma");
+				if(PlayerItems.EquipedWeapon == null && it.Type == ItemTypes.Weapon){ //si el slot del arma no esta ocupado pongo ahi el nuevo item
+					PlayerItems.EquipedWeapon = it;
+					return;
+				}
+				if(PlayerItems.EquipedArmour == null && it.Type == ItemTypes.Armour){
+					PlayerItems.EquipedArmour = it;
+					return;
+				}
+				if(PlayerItems.EquipedShield == null && it.Type == ItemTypes.Shield){
+					if(!(PlayerItems.EquipedWeapon == null) && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){} //si hay un arco equipado no hago nada
+					else{
+						PlayerItems.EquipedShield = it;
+						return;
+					}
+					
+				}
+				if(PlayerItems.EquipedHelmet == null && it.Type == ItemTypes.Helmet){
+					PlayerItems.EquipedHelmet = it;
+					return;
+				}
+				if(PlayerItems.EquipedBelt == null && it.Type == ItemTypes.Belt){
+					PlayerItems.EquipedBelt = it;
+					return;
+				}
+				if(PlayerItems.EquipedAmulet == null && it.Type == ItemTypes.Amulet){
+					PlayerItems.EquipedAmulet = it;
+					return;
+				}
+				if(PlayerItems.EquipedRingL == null && it.Type == ItemTypes.Ring){
+					PlayerItems.EquipedRingL = it;
+					return;
+				}
+				if(PlayerItems.EquipedRingR == null && it.Type == ItemTypes.Ring){
+					PlayerItems.EquipedRingR = it;
+					return;
+				}
+				if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
+					return;
+				PlayerItems.Inventory.Add (it);
+				PlayerItems.inventoryCantItems++;
+				
+				//checkInventory();
+			}
+			else{
+				
+				if(item.tag == "Spell"){
+					string itName = item.GetComponent<Item>().Name;
+					bool spellAdded = spellsPanel.AddSpell(itName,1,0,0);
+					if(spellAdded)
+						Destroy(item);
+				}
+				
+			}
+		}
 		}
 
 		private void checkInventory(){ //para que no se dupliquen los putos items

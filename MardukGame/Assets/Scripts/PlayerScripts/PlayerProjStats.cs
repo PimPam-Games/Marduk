@@ -21,6 +21,7 @@ public class PlayerProjStats : MonoBehaviour {
 	public Types.SkillsTypes projType = Types.SkillsTypes.Spell; //si se tiene que tirar con un arco o es melee, spell , etc
 	public Types.Element convertElem = Types.Element.None; // a que elemento tiene que convertir el 40% del daño fisico
 	private bool collision = false;
+	private bool alreadyHit = false;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -28,6 +29,7 @@ public class PlayerProjStats : MonoBehaviour {
 		//PlayerStats.UpdateMana ();
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
+		Debug.Log ("minDmg : " + minDmg + ", " + "maxDmg : " + maxDmg);
 	}
 
 
@@ -50,13 +52,16 @@ public class PlayerProjStats : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 	
-	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
+	void OnTriggerEnter2D(Collider2D col){ 
 		float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
 		float[] critDmgProb = {1 - critChance,critChance };
 		//float[] critDmgProb = {0, 1f };
 		float damage;
 		float damageConverted = 0;
 		if (col.gameObject.tag == "Enemy") {
+			if (alreadyHit)
+				return;
+			alreadyHit = true;
 			EnemyStats enemy = col.gameObject.GetComponent<EnemyStats>();
 			if(elem == Types.Element.None){
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
@@ -89,6 +94,7 @@ public class PlayerProjStats : MonoBehaviour {
 			}
 			else{
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
+				Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
 					hitEnemySound.Play();

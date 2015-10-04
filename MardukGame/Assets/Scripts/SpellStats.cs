@@ -23,22 +23,36 @@ public class SpellStats : MonoBehaviour {
 	private float castDelay;
 	private float cdTimer; 
 
+	[SerializeField] private float initManaCost;
+	[SerializeField] private float initMinDmg;
+	[SerializeField] private float initMaxDmg;
+	//[SerializeField] private float initLifeRegen;
+
+	[SerializeField] private float manaCostPerLvl;
+	[SerializeField] private float minDmgPerLvl;
+	[SerializeField] private float maxDmgPerLvl;
+	//[SerializeField] private float lifeRegenPerLvl;
+
 	public  double currentExp;
 	public  int lvl;
 	public  double nextLevelExp;
 	public  double oldNextLevelExp;
 
+	private PlayerProjStats projStats;
 
 	void Awake(){
 		lvl = 1;
 		currentExp = 0;
 		oldNextLevelExp = 0;
 		nextLevelExp = SpellExpFormula ();
+		if (projectile != null)
+			projStats = projectile.GetComponent<PlayerProjStats> ();
+
 	}
 
 	// Use this for initialization
 	void Start () {
-
+		CalculateStats ();
 	}
 	
 	// Update is called once per frame
@@ -57,13 +71,21 @@ public class SpellStats : MonoBehaviour {
 		cdTimer -= Time.deltaTime;
 	}
 
+	private void CalculateStats(){
+		if (projStats != null) {
+			projStats.minDmg = initMinDmg + (lvl - 1) * minDmgPerLvl;
+			projStats.maxDmg = initMaxDmg + (lvl-1) * maxDmgPerLvl;
+		}
+		manaCost = initManaCost + (lvl - 1) * manaCostPerLvl;
+	}
+
 	public void UpdateExp(double exp){
 		currentExp += exp;
 		if (currentExp >= nextLevelExp) {
 			lvl++;
 			oldNextLevelExp = nextLevelExp;
 			nextLevelExp = SpellExpFormula();
-
+			CalculateStats();
 		}
 		//Debug.Log ("currExp " + currentExp + ", " + "nextLevelExp " + nextLevelExp + ", " + "lvl " + lvl );
 	}
