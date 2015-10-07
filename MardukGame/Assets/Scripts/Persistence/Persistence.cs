@@ -110,6 +110,8 @@ public class Persistence : MonoBehaviour {
 		data.atributes = p.atributes;
 		data.defensives = p.defensives;
 		data.offensives = p.offensives;
+		data.playerTraits = Traits.traits;
+		data.passivePoints = p.passivePoints;
 		data.utils = p.utils;
 		data.lvl = p.lvl;
 		data.currentExp = p.currentExp;
@@ -190,6 +192,8 @@ public class Persistence : MonoBehaviour {
 			p.dexAddedPoints = data.dexAddedPoints;
 			p.vitAddedPoints = data.vitAddedPoints;
 			p.atributesPoints = data.atributesPoints;
+			Traits.traits = data.playerTraits;
+			p.passivePoints = data.passivePoints;
 
 			p.LoadAtributes();
 

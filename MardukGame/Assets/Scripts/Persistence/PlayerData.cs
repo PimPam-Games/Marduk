@@ -13,6 +13,9 @@ public class PlayerData{
 	public  int spiAddedPoints;
 	public  int dexAddedPoints;
 
+	public Trait[] playerTraits; // pasivas
+	public int passivePoints;
+
 	public string[] skillsNames; //guardo los nombres de todos los skills del panel
 	public int[] skillsLevels;
 	public double[] skillsCurrentExp; 

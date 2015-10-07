@@ -39,8 +39,10 @@ public class PlayerStats : MonoBehaviour {
 	private Animator anim;
 	private PlayerUIController ui;
 
+
 	public static double currentExp;
 	public static int lvl;
+	public static int passivePoints;
 	public static double nextLevelExp;
 	public static double oldNextLevelExp;
 	public static int atributesPoints = 0; //puntos de atributos que quedan por poner cada vez que se pasa de nivel
@@ -131,7 +133,25 @@ public class PlayerStats : MonoBehaviour {
 		shockUpdate ();
 	}
 
+	public static void LoadTraits(){ //carga todas las pasivas activadas
+		int i;
+		Traits.init(); // activa las pasivas que el personaje tenia guardadas
+		for (i=0; i<CantAtributes; i++) {
+			atributes [i] += Traits.atributes[i];
+		}
+		for (i=0; i<CantDefensives; i++) {
+			defensives [i] += Traits.defensives[i];
+		}
+		for (i=0; i<CantOffensives; i++) {
+			offensives [i] += Traits.offensives[i];
+		}
+		for (i=0; i<CantUtils; i++) {
+			utils [i] += Traits.utils[i];
+		}
+	}
+
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
+		LoadTraits();
 		atributes [Strength] = strAddedPoints + utils[AllAttr];
 		atributes [Vitality] = vitAddedPoints + utils[AllAttr];
 		atributes [Spirit] = spiAddedPoints + utils[AllAttr];
@@ -315,6 +335,7 @@ public class PlayerStats : MonoBehaviour {
 		currentExp += exp;
 		if (currentExp >= nextLevelExp) {
 			lvl++;
+			passivePoints++;
 			oldNextLevelExp = nextLevelExp;
 			nextLevelExp = ExpFormula();
 			atributesPoints += 5;
