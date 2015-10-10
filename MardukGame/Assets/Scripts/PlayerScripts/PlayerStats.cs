@@ -316,6 +316,7 @@ public class PlayerStats : MonoBehaviour {
 		StartCoroutine (ManaRegeneration());
 		isDead = false;
 		StartCoroutine (LifeRegeneration ());
+		StartCoroutine (ManaRegeneration());
 		gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
 		poisoned = false;
 		chill = false;

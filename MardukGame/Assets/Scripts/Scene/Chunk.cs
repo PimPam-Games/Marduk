@@ -187,8 +187,8 @@ public class Chunk : MonoBehaviour {
 		if (col.gameObject.tag == "Chunk") {
 
 				if(!this.isDouble){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
-					
-					Destroy(this.gameObject);
+					Debug.Log("tengo que destruir el chunk");
+					//Destroy(this.gameObject);
 				}
 
 		}

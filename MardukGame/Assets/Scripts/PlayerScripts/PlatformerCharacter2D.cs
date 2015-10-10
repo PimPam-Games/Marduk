@@ -160,19 +160,19 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		void OnTriggerStay2D(Collider2D col){
 			if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
-				if(isColliding)
+				/*if(isColliding)
 					return;
-				isColliding = true;
+				isColliding = true;*/
 				GameObject item = col.gameObject;
 				if(item == null){
 					Debug.Log("es null");
 					return;
 				}
-				if( item.transform.parent == item.transform ){
+				/*if( item.transform.parent == item.transform ){
 					Debug.Log("hijos: " + item.transform.childCount);
 					return;
-				}	
-				if (item.tag == "Item") {
+				}	*/
+				if (item.tag == "Item" && item.activeSelf) {
 					playerItemsGO.Add(item);
 					item.SetActive(false);
 					Item it = item.GetComponent<Item>();
@@ -220,9 +220,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 					//checkInventory();
 				}
-				else{
-					
-					if(item.tag == "Spell"){
+				else{	
+					Debug.Log("is active? : " + item.activeSelf);
+					if(item.tag == "Spell" && item.activeSelf){
+						item.SetActive(false);
 						string itName = item.GetComponent<Item>().Name;
 						bool spellAdded = spellsPanel.AddSpell(itName,1,0,0);
 						if(spellAdded)
@@ -245,7 +246,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				CameraController.stopFollowX = true;
 			}
 
-		if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
+		/*if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
 			if(isColliding)
 				return;
 			isColliding = true;
@@ -316,7 +317,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 				
 			}
-		}
+		}*/
 		}
 
 		private void checkInventory(){ //para que no se dupliquen los putos items
