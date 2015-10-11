@@ -20,11 +20,13 @@ public class Chunk2 : MonoBehaviour {
 	public bool isFirstChunk = false;
 	public int chunkId = 0;
 	private ChunkFactory cf;
+	private LevelSettings ls;
 	private float timeToGenerate = 0;
 	// Use this for initialization
 	
 	void Awake(){
 		cf = GameObject.Find ("LevelController").GetComponent<ChunkFactory>();
+		ls = GameObject.Find ("LevelController").GetComponent<LevelSettings>();
 		foreach(Transform child in this.transform){  //el layer del chunk y de todos los hijos es miniMapIgnored para que no lo muestre el minimapa
 			child.gameObject.layer = LayerMask.NameToLayer("MiniMapIgnored");
 			foreach(Transform c2 in child){
@@ -67,12 +69,7 @@ public class Chunk2 : MonoBehaviour {
 		}
 		//Debug.Log ("pos: "+ this.position[0]);
 		foreach(Transform enemyPos in enemies){
-			int index = Random.Range(0,g.enemyList.Length); //slecciona un enemigo aleatorio de la lista de enemigos
-			if(index >= g.enemyList.Length)
-				Debug.LogError("Arreglo de enemigos fuera de rango");
-			GameObject newEnemy = (GameObject)Instantiate (g.enemyList[index],enemyPos.position,enemyPos.rotation);
-			DontDestroyOnLoad(newEnemy);
-			g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
+			ls.generateEnemy(enemyPos.position,enemyPos.rotation);
 		}
 		/*if (!alreadyGenerated && !isFirstChunk) {
 

@@ -275,9 +275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   currHealth: 0
-  initMaxHealth: 10
-  initMinDamage: 2
-  initMaxDamage: 5
+  initMaxHealth: 8
+  initMinDamage: 1
+  initMaxDamage: 3
   initArmour: 4
   initColdRes: 0
   initFireRes: 0
@@ -285,12 +285,14 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
+  initCritChance: .0500000007
   elem: 0
   minDamage: 2
   maxDamage: 5
-  minDmgPerLvl: 0
-  maxDmgPerLvl: 0
-  healthPerLvl: 10
+  critChance: 25
+  minDmgPerLvl: 1
+  maxDmgPerLvl: 1
+  healthPerLvl: 7
   armourPerLvl: 0
   coldResPerLvl: 0
   fireResPerLvl: 0
@@ -336,7 +338,31 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: initMaxHealth
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthPerLvl
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169616}
