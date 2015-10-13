@@ -29,7 +29,7 @@ public class PlayerProjStats : MonoBehaviour {
 		//PlayerStats.UpdateMana ();
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
-		Debug.Log ("minDmg : " + minDmg + ", " + "maxDmg : " + maxDmg);
+
 	}
 
 

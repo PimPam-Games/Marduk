@@ -331,7 +331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &154718
 GameObject:
   m_ObjectHideFlags: 1
@@ -455,6 +455,7 @@ GameObject:
   - 82: {fileID: 8267136}
   - 68: {fileID: 6866954}
   - 82: {fileID: 8207330}
+  - 114: {fileID: 11421644}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -645,7 +646,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154718}
-  m_LocalRotation: {x: 0, y: 0, z: .298430443, w: .954431415}
+  m_LocalRotation: {x: 0, y: 0, z: .297297388, w: .954784989}
   m_LocalPosition: {x: .0710000023, y: -.469999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -873,7 +874,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126410}
-  m_LocalRotation: {x: 0, y: 0, z: -.386921734, w: .922112584}
+  m_LocalRotation: {x: 0, y: 0, z: -.386689216, w: .922210097}
   m_LocalPosition: {x: .195999995, y: -.626999974, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -977,7 +978,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164764}
-  m_LocalRotation: {x: 0, y: 0, z: .0941037908, w: .995562434}
+  m_LocalRotation: {x: 0, y: 0, z: .0950343832, w: .995473981}
   m_LocalPosition: {x: .203999996, y: .448000014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1660,6 +1661,17 @@ MonoBehaviour:
   - Transform: {fileID: 485640}
     min: 200
     max: 350
+--- !u!114 &11421644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31af77fe11967e43a875776e4a95e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11425070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1723,7 +1735,6 @@ MonoBehaviour:
   - {fileID: 11479340}
   - {fileID: 11403376}
   - {fileID: 11428158}
-  playerSkills: []
   bowLauncher: {fileID: 11495354}
   attackSound: {fileID: 8251618}
   walkGrassSound: {fileID: 8210794}

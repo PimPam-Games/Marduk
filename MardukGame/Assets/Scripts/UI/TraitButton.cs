@@ -7,7 +7,8 @@ using p = PlayerStats;
 public class TraitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 	
 	public GameObject tooltip;
-		
+	public int traitIndex;
+
 	public void OnPointerEnter(PointerEventData eventData){ //muestro el tooltip
 		tooltip.SetActive (true);	
 		showTooltip ();
@@ -18,8 +19,8 @@ public class TraitButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 	}
 	
 	private void showTooltip(){
-		tooltip.transform.GetChild(0).GetComponent<Text> ().text = Traits.traits[0].getName() + "\n";
-		tooltip.transform.GetChild(1).GetComponent<Text> ().text = Traits.traits[0].getDescription()  + "\n";
+		tooltip.transform.GetChild(0).GetComponent<Text> ().text = Traits.traits[traitIndex].getName() + "\n";
+		tooltip.transform.GetChild(1).GetComponent<Text> ().text = Traits.traits[traitIndex].getDescription()  + "\n cost: " + Traits.traits[traitIndex].getCost()  + "\n";
 	}
 	
 }

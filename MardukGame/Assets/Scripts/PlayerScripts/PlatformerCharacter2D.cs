@@ -190,8 +190,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						else{
 							PlayerItems.EquipedShield = it;
 							return;
-						}
-						
+						}						
 					}
 					if(PlayerItems.EquipedHelmet == null && it.Type == ItemTypes.Helmet){
 						PlayerItems.EquipedHelmet = it;
@@ -217,20 +216,16 @@ public class PlatformerCharacter2D : MonoBehaviour
 						return;
 					PlayerItems.Inventory.Add (it);
 					PlayerItems.inventoryCantItems++;
-
-					//checkInventory();
 				}
-				else{	
-					
-					if(item.tag == "Spell" && item.activeSelf){
-						
-						item.SetActive(false);
+				else{						
+					if(item.tag == "Spell" && item.activeSelf){			
 						string itName = item.GetComponent<Item>().Name;
 						bool spellAdded = spellsPanel.AddSpell(itName,1,0,0);
-						if(spellAdded)
+						if(spellAdded){
+							item.SetActive(false);
 							Destroy(item);
-					}
-					
+						}
+					}					
 				}
 			}
 		}

@@ -38,27 +38,21 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			GameObject spell = slot.GetComponent<Slot>().spell;
 			if(spell != null){
 				SpellStats stats =  spell.GetComponent<SpellStats>();
-				/*projectiles[i] = stats.projectile;
-				projLaunchers[i].projectile = projectiles[i];
-				projLaunchers[i].force = stats.force;
-				projLaunchers[i].flipProjectile = stats.flipProjectile;
-				//Debug.Log("castdelay " + stats.castDelay);
-				projLaunchers[i].castDelay = stats.castDelay;*/
+
 				playerSkills[i] = stats;
 			}
 			else{
 				playerSkills[i] = null;
-				/*projectiles[i] = null;
-				projLaunchers[i].projectile = null;*/
 			}
 			i++;
 		}
 	}
 
 	public bool AddSpell(string spellName, int lvl, double currentExp, double oldNextLevelExp){
-		/*a++;
-		if (a > 1)
-			return false;*/
+		for(int i = 0; i< PlatformerCharacter2D.playerSkills.Length; i++){
+			if(PlatformerCharacter2D.playerSkills[i] != null && string.Compare(PlatformerCharacter2D.playerSkills[i].nameForSave,spellName)==0)
+				return false;
+		}
 		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + spellName); //creo el prefab para meterlo en el slot
 		if (newSpellPrefab == null) {
 			Debug.LogError("prefab del skill no encontrado");
@@ -75,7 +69,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				SpellStats st = newSpell.GetComponent<SpellStats>();
 				st.oldNextLevelExp = oldNextLevelExp;
 				st.lvl = lvl;
-				Debug.Log("st level: " + st.lvl);
+
 				st.currentExp = currentExp;
 				st.nextLevelExp = st.SpellExpFormula();
 				if(st.type == Types.SkillsTypes.Aura){

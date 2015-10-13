@@ -253,7 +253,7 @@ public class Persistence : MonoBehaviour {
 			for(int i = 0; i < data.skillsNames.Length; i++){
 				if(data.skillsNames[i] != null)
 				{
-					Debug.Log("skill level: " + data.skillsLevels[i]);
+
 					sp.AddSpell(data.skillsNames[i],data.skillsLevels[i],data.skillsCurrentExp[i],data.skillsOldNextLevelExp[i]);
 
 				}
