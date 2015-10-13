@@ -110,8 +110,12 @@ public class Persistence : MonoBehaviour {
 		data.atributes = p.atributes;
 		data.defensives = p.defensives;
 		data.offensives = p.offensives;
-		data.playerTraits = Traits.traits;
+		data.playerTraits = (Trait[])Traits.traits.Clone();
+		for (int i = 0; i<Traits.CantTraits; i++)
+			data.playerTraits [i] = Traits.traits [i].Clone ();
+		Traits.reset ();
 		data.passivePoints = p.passivePoints;
+
 		data.utils = p.utils;
 		data.lvl = p.lvl;
 		data.currentExp = p.currentExp;
@@ -195,6 +199,7 @@ public class Persistence : MonoBehaviour {
 			Traits.traits = data.playerTraits;
 			p.passivePoints = data.passivePoints;
 
+			Traits.init ();
 			p.LoadAtributes();
 
 			p.lvl = data.lvl;

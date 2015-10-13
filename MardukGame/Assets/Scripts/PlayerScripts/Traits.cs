@@ -20,69 +20,67 @@ public class Traits: MonoBehaviour
 		traits [OneWithNature] = new Trait("One with nature",2,"+5 to all resistances");
 		traits [IronSkin] = new Trait("Iron skin",2,"+10% defense");
 		traits [Trascendance] = new Trait("Trascendence",2,"+10 spirit");
-		atributes = new float[p.CantAtributes];
+		/*atributes = new float[p.CantAtributes];
 		offensives = new float[p.CantOffensives];
 		defensives = new float[p.CantDefensives];
-		utils = new float[p.CantUtils]; 
+		utils = new float[p.CantUtils]; */
 	}
 
 	public static void init(){
 		for (int i=0; i<CantTraits; i++) {
-			activate (i);
+			if (Traits.traits [i].isActive ())
+				activate (i);
 		}
 	}
 
 	public static void reset(){
 		for (int i=0; i<CantTraits; i++) {
-			deactivate (i);
+			if (Traits.traits [i].isActive ())
+				deactivate (i);
 		}
 	}
 	public static void activate(int tName){
-		if (!traits [tName].isActive()) {
 			if (p.passivePoints >= traits [tName].getCost ()) {
 				p.passivePoints -= traits [tName].getCost ();
 				switch (tName) {
 				case NoRemorse: 
-					offensives [p.IncreasedDmg] += 10;
+					p.offensives [p.IncreasedDmg] += 10;
 					break;
 				case OneWithNature: 
-					defensives [p.AllRes] += 5;
+					p.defensives [p.AllRes] += 5;
 					break;
 				case IronSkin: 
-					defensives [p.Defense] += 10;
+					p.defensives [p.Defense] += 10;
 					break;
 				case Trascendance: 
-					atributes [p.Spirit] += 10;
+					p.atributes [p.Spirit] += 10;
 					break;
 				default :
 					break;
 				}
 				traits [tName].setActive (true);
 			}
-		}
 		
 	}
 	public static void deactivate(int tName){
-		if (traits [tName].isActive()) {
 			p.passivePoints += traits [tName].getCost ();
 			switch (tName) {
 			case NoRemorse: 
-				offensives [p.IncreasedDmg] -= 10;
+				p.offensives [p.IncreasedDmg] -= 10;
 				break;
 			case OneWithNature: 
-				defensives [p.AllRes] -= 5;
+				p.defensives [p.AllRes] -= 5;
 				break;
 			case IronSkin: 
-				defensives [p.Defense] -= 10;
+				p.defensives [p.Defense] -= 10;
 				break;
 			case Trascendance: 
-				atributes [p.Spirit] -= 10;
+				p.atributes [p.Spirit] -= 10;
 				break;
 			default :
 				break;
 			}
 			traits [tName].setActive (false);
-		}
 	}
 }
 

@@ -43,6 +43,12 @@ public class Trait
 		description = d;
 	}
 
+	public Trait Clone(){
+		Trait c = new Trait (name, cost, description);
+		c.setActive(active);
+		return c;
+	}
+
 }
 
 

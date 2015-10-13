@@ -133,40 +133,23 @@ public class PlayerStats : MonoBehaviour {
 		shockUpdate ();
 	}
 
-	public static void LoadTraits(){ //carga todas las pasivas activadas
-		int i;
-		Traits.init(); // activa las pasivas que el personaje tenia guardadas
-		for (i=0; i<CantAtributes; i++) {
-			atributes [i] += Traits.atributes[i];
-		}
-		for (i=0; i<CantDefensives; i++) {
-			defensives [i] += Traits.defensives[i];
-		}
-		for (i=0; i<CantOffensives; i++) {
-			offensives [i] += Traits.offensives[i];
-		}
-		for (i=0; i<CantUtils; i++) {
-			utils [i] += Traits.utils[i];
-		}
-	}
 
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
-		LoadTraits();
-		atributes [Strength] = strAddedPoints + utils[AllAttr];
-		atributes [Vitality] = vitAddedPoints + utils[AllAttr];
-		atributes [Spirit] = spiAddedPoints + utils[AllAttr];
-		atributes [Dextery] = dexAddedPoints + utils[AllAttr];
+		atributes [Strength] += strAddedPoints + utils[AllAttr];
+		atributes [Vitality] += vitAddedPoints + utils[AllAttr];
+		atributes [Spirit] += spiAddedPoints + utils[AllAttr];
+		atributes [Dextery] += dexAddedPoints + utils[AllAttr];
 
-		defensives [MaxHealth] = atributes [Vitality] * 3 + InitMaxHealth; 
-		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
-		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
-		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
+		defensives [MaxHealth] += atributes [Vitality] * 3 + InitMaxHealth; 
+		offensives [MinDmg] += atributes [Strength] * 0.25f + InitMinDmg;
+		offensives [MaxDamge] += atributes [Strength] * 0.25f + InitMaxDmg;
+		offensives [MaxMana] += atributes [Spirit] * 3 + InitMana;
 		//offensives[MgDmg] = atributes[Spirit] * 0.25f + InitMgDmg;
-		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
-		offensives [Accuracy] = atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
-		defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
-		currentHealth = defensives[MaxHealth];
-		currentMana = offensives [MaxMana];
+		offensives[ManaPerSec] += atributes[Spirit] * 0.1f + InitManaRegen;
+		offensives [Accuracy] += atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
+		defensives [Evasiveness] += atributes [Dextery] * 2 + InitEvasion;
+		currentHealth += defensives[MaxHealth];
+		currentMana += offensives [MaxMana];
 		UpdateMana ();
 	}
 

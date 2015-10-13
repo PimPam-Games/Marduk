@@ -33,8 +33,6 @@ public class TraitsPanel : MonoBehaviour{
 
 	public void clickOnReset () {
 		Traits.reset();
-		foreach (GameObject b in buttons)
-			b.SetActive(false);
 	}
 
 
