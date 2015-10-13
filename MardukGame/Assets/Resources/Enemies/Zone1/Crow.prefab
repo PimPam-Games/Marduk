@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   currHealth: 0
-  initMaxHealth: 8
+  initMaxHealth: 6
   initMinDamage: 1
   initMaxDamage: 3
   initArmour: 4
@@ -292,7 +292,7 @@ MonoBehaviour:
   critChance: 25
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
-  healthPerLvl: 7
+  healthPerLvl: 5
   armourPerLvl: 0
   coldResPerLvl: 0
   fireResPerLvl: 0
@@ -341,11 +341,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: initMaxHealth
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: healthPerLvl
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDamage

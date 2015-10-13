@@ -1043,10 +1043,10 @@ RectTransform:
   - {fileID: 364134263}
   m_Father: {fileID: 1694684157}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 45, y: -15}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &363818492
 MonoBehaviour:
@@ -1541,14 +1541,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 833681796}
-        m_MethodName: goToSublevel
-        m_Mode: 1
+        m_MethodName: UseTeleporter
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: level5 3
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2531,7 +2531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &833681793
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3435,10 +3435,10 @@ RectTransform:
   - {fileID: 1896596660}
   m_Father: {fileID: 1694684157}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105, y: -15}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1078493813
 MonoBehaviour:
@@ -3922,6 +3922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f8b7eb3a5dfe34ca6499a5a17d452f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  traitsPanel: {fileID: 1694684156}
+  teleporterPanel: {fileID: 833681792}
   menuInGame: {fileID: 460089881}
 --- !u!1 &1181779271
 GameObject:
@@ -4421,14 +4423,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 833681796}
-        m_MethodName: goToZone1
-        m_Mode: 1
+        m_MethodName: UseTeleporter
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: level1 0
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -4536,14 +4538,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 833681796}
-        m_MethodName: goToCastle
-        m_Mode: 1
+        m_MethodName: UseTeleporter
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: level3 1
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5055,7 +5057,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415260, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.942025542
+      value: -.942025602
       objectReference: {fileID: 0}
     - target: {fileID: 459914, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.z
@@ -5107,35 +5109,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 417818, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0769474581
+      value: .076947473
       objectReference: {fileID: 0}
     - target: {fileID: 417818, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.997035146
+      value: -.997035205
       objectReference: {fileID: 0}
     - target: {fileID: 460342, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.386689126
+      value: -.386370838
       objectReference: {fileID: 0}
     - target: {fileID: 460342, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .922210157
+      value: .922343552
       objectReference: {fileID: 0}
     - target: {fileID: 415706, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .297297359
+      value: .297132611
       objectReference: {fileID: 0}
     - target: {fileID: 415706, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .954784989
+      value: .954836249
       objectReference: {fileID: 0}
     - target: {fileID: 481286, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0950343311
+      value: .0948625356
       objectReference: {fileID: 0}
     - target: {fileID: 481286, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .995473981
+      value: .995490372
       objectReference: {fileID: 0}
     - target: {fileID: 436400, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
       propertyPath: m_LocalRotation.z
@@ -5492,7 +5494,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1694684157
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5652,14 +5654,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 833681796}
-        m_MethodName: goToDungeon
-        m_Mode: 1
+        m_MethodName: UseTeleporter
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: level4 2
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5809,6 +5811,10 @@ Prefab:
       propertyPath: miniMapPos
       value: 
       objectReference: {fileID: 1533231758}
+    - target: {fileID: 8241982, guid: 16ee322cd8753254d8ce3c931f6c0b2e, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0408a1d82f2d30b4e90db6f414b561e0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16ee322cd8753254d8ce3c931f6c0b2e, type: 2}
   m_IsPrefabParent: 0
@@ -5996,10 +6002,10 @@ RectTransform:
   - {fileID: 1157476548}
   m_Father: {fileID: 1694684157}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -15}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1892035859
 MonoBehaviour:
@@ -6260,10 +6266,10 @@ RectTransform:
   - {fileID: 1308905834}
   m_Father: {fileID: 1694684157}
   m_RootOrder: 4
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 120.000008, y: -15}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 1.71363354e-07, y: .5}
 --- !u!114 &1960961913
 MonoBehaviour:
@@ -6555,10 +6561,10 @@ RectTransform:
   - {fileID: 1055525137}
   m_Father: {fileID: 1694684157}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 75, y: -15}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2078491864
 MonoBehaviour:

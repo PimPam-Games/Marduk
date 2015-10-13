@@ -31,11 +31,18 @@ public class LevelSettings : MonoBehaviour {
 		}
 		if (zoneNumber == 3 || zoneNumber == 4) {
 			if (string.Compare (newEnemy.GetComponent<EnemyStats> ().enemyName, "Crow") == 0) { //si es un crow genero 2
-				
-				GameObject newEnemy1 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x + 3, pos.y - 1, pos.z), rot);
-				//GameObject newEnemy2 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x - 2, pos.y, pos.z), rot);
-				DontDestroyOnLoad (newEnemy1);
-				g.enemiesPerLevel [g.currLevelName].Add (newEnemy1);
+				int cant = Random.Range(1,3);
+				for(int i = 1; i <= cant;i++){
+					GameObject newEnemy1;
+					if(i == 2){
+						newEnemy1 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x - 3, pos.y + 1, pos.z), rot);
+					}
+					else
+						newEnemy1 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x + 3, pos.y - 1, pos.z), rot);
+					//GameObject newEnemy2 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x - 2, pos.y, pos.z), rot);
+					DontDestroyOnLoad (newEnemy1);
+					g.enemiesPerLevel [g.currLevelName].Add (newEnemy1);
+				}
 				//DontDestroyOnLoad (newEnemy2);
 				//g.enemiesPerLevel [g.currLevelName].Add (newEnemy2);
 			}

@@ -221,8 +221,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 					//checkInventory();
 				}
 				else{	
-					Debug.Log("is active? : " + item.activeSelf);
+					
 					if(item.tag == "Spell" && item.activeSelf){
+						
 						item.SetActive(false);
 						string itName = item.GetComponent<Item>().Name;
 						bool spellAdded = spellsPanel.AddSpell(itName,1,0,0);

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using t = TeleporterPanel;
+using icg = InputControllerGui;
 
 public class Teleporter : MonoBehaviour {
 
@@ -20,27 +20,27 @@ public class Teleporter : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.tag == "Player" && !t.isOpen) {
+		if (col.tag == "Player" && !icg.tpOpen) {
 			PlayerItems.playerTeleporters[id] = true;
 			//Debug.Log("enter portal");
-			t.OpenTeleporterPanel();
+			icg.OpenTeleporterPanel();
 			anim.SetBool("Activated",true);
 		}
 	}
 
 	void OnTriggerStay2D(Collider2D col){
-		if (col.tag == "Player" && !t.isOpen) {
+		if (col.tag == "Player" && !icg.tpOpen) {
 
 			PlayerItems.playerTeleporters[id] = true;
 			//Debug.Log("enter portal");
-			t.OpenTeleporterPanel();
+			icg.OpenTeleporterPanel();
 			anim.SetBool("Activated",true);
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D col){
-		if (col.tag == "Player" && t.isOpen) {
-			t.CloseTeleporterPanel();
+		if (col.tag == "Player" && icg.tpOpen) {
+			icg.CloseTeleporterPanel();
 			anim.SetBool("Activated",false);
 		}
 	}

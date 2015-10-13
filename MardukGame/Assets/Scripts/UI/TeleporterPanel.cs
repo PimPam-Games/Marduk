@@ -3,98 +3,20 @@ using System.Collections;
 using g = GameController;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System;
 
 public class TeleporterPanel : MonoBehaviour {
 
-	//private static Canvas[] canvas;
-	private static List<GameObject> buttons;
-	public static bool isOpen;
-
-	// Use this for initialization
-	void Start () {
-		//canvas = (Canvas)GetComponentsInChildren<Canvas>();
-		buttons = new List<GameObject> ();
-		foreach (Transform child in this.transform) {
-			buttons.Add(child.gameObject);
-		}
-		foreach (GameObject b in buttons) {
-			b.SetActive(false);
-		}
-		isOpen = false;
-	}
-
-	void Update(){
-	/*	if (isOpen && !this.gameObject.activeSelf)
-			this.gameObject.);
-		if (!isOpen && this.gameObject.activeSelf)
-			this.gameObject.SetActive (false);*/
-	}
-
-	public static void OpenTeleporterPanel(){
-		//canvas[0].enabled = true;
-		foreach (GameObject b in buttons) {
-			b.SetActive(true);
-		}
-		isOpen = true;
-	}
-
-	public static void CloseTeleporterPanel(){
-		//canvas[0].enabled = false;
-		foreach (GameObject b in buttons) {
-			b.SetActive(false);
-		}
-		isOpen = false;
-	}
-
-	public void goToSublevel(){
-		if (string.Compare(g.currLevelName,"level5") == 0)
+	public void UseTeleporter(string levelAndTp){
+		string levelToLoad = levelAndTp.Split(' ')[0]; //el parametro se divide en 2, ej: "level5 3"
+		int index = Int32.Parse(levelAndTp.Split (' ') [1]); //index es el numero del transportador en el arreglo de los tps
+		if (string.Compare(g.currLevelName,levelToLoad) == 0)
 			return;
-		if (!PlayerItems.playerTeleporters[Teleporter.TSublevel]) //si el jugador no tiene este transportador no puede ir a esa zona
+		if (!PlayerItems.playerTeleporters[index]) //si el jugador no tiene este transportador no puede ir a esa zona
 			return;
 		g.previousExit = 7; //por convencion la salida 7 es para entrar en algun otro transportador
 		g.jumpOnLoad = false;
-		Fading.BeginFadeIn("level5");
-		Debug.Log ("Sublevel");
-	}
-
-	public void goToDungeon(){
-		if (string.Compare(g.currLevelName,"level4") == 0)
-			return;
-		if (!PlayerItems.playerTeleporters[Teleporter.TDungeon]) //si el jugador no tiene este transportador no puede ir a esa zona
-			return;
-		g.previousExit = 7; //por convencion la salida 7 es para entrar en algun otro transportador
-		g.jumpOnLoad = false;
-		Fading.BeginFadeIn("level4");
-		Debug.Log ("Dungeon");
-	}
-
-	public void goToCastle(){
-		if (string.Compare(g.currLevelName,"level3") == 0)
-			return;
-		if (!PlayerItems.playerTeleporters[Teleporter.TCastle]) //si el jugador no tiene este transportador no puede ir a esa zona
-			return;
-		g.previousExit = 7; //por convencion la salida 7 es para entrar en algun otro transportador
-		g.jumpOnLoad = false;
-		/*foreach (GameObject b in buttons) {
-			b.SetActive(false);
-		}
-		isOpen = false;*/
-		Fading.BeginFadeIn("level3");
-		Debug.Log ("Castle");
-	}
-
-	public void goToZone1(){
-		if (string.Compare(g.currLevelName,"level1") == 0)
-			return;
-		if (!PlayerItems.playerTeleporters[Teleporter.TZone1]) //si el jugador no tiene este transportador no puede ir a esa zona
-			return;
-		g.previousExit = 7;
-		g.jumpOnLoad = false;
-		/*foreach (GameObject b in buttons) {
-			b.SetActive(false);
-		}
-		isOpen = false;*/
-		Fading.BeginFadeIn("level1");
-		//Debug.Log ("Zone1");
+		Fading.BeginFadeIn(levelToLoad);
+		Debug.Log (levelToLoad);
 	}
 }
