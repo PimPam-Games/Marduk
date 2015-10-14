@@ -6,6 +6,7 @@ public class PlayerProjStats : MonoBehaviour {
 	
 	public Types.Element elem ;
 	public float minDmg = 1 , maxDmg = 3;
+	public float physicalDmgMult = 100f; //se usa para aumentar el daño de ataque fisicos
 	public float duration = 5;
 	private float lifeTime = 0;
 	public float particleSpeed;
@@ -67,6 +68,7 @@ public class PlayerProjStats : MonoBehaviour {
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
 					p.currentHealth += p.defensives[p.LifePerHit];
 				damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
+				damage = damage * physicalDmgMult/100;  //aumenta el daño en un porcentaje dependiendo de la habilidad			
 				if(convertElem != Types.Element.None){
 					damage = damage * 0.6f; 
 					damageConverted = damage * 0.4f; //al 40% del daño fisico lo convierte en otro daño
@@ -94,7 +96,7 @@ public class PlayerProjStats : MonoBehaviour {
 			}
 			else{
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
-				Debug.Log("damage: " + damage);
+				//Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
 					hitEnemySound.Play();

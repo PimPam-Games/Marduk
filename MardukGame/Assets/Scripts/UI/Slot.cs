@@ -89,12 +89,21 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Aura";
 			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaReserved.ToString()+ "\n";
-			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Life Regen per Second: " + spellStats.lifeRegenPerSecond;
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text += spellStats.lifeRegenPerSecond + "% Life Regen per Second" ;
 			break;
 		case Types.SkillsTypes.Movement:
 			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Movement";
 			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaCost.ToString()+ "\n";
+			
+			break;
+		case Types.SkillsTypes.Bow:
+			PlayerProjStats proj = spell.GetComponent<SpellStats> ().projectile.GetComponent<PlayerProjStats> ();
+			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Bow";
+			tooltip.transform.GetChild (2).GetComponent<Text> ().text = proj.elem.ToString ();
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + spellStats.manaCost.ToString () + "\n"
+				+ "damage multiplier: " + proj.physicalDmgMult +"% \n"
+					+ "level: " + spellStats.lvl.ToString() +  "\n";
 			
 			break;
 		}

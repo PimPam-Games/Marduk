@@ -331,7 +331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &154718
 GameObject:
   m_ObjectHideFlags: 1
@@ -646,7 +646,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154718}
-  m_LocalRotation: {x: 0, y: 0, z: .297297388, w: .954784989}
+  m_LocalRotation: {x: 0, y: 0, z: .297297418, w: .954784989}
   m_LocalPosition: {x: .0710000023, y: -.469999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -709,7 +709,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153136}
-  m_LocalRotation: {x: 0, y: 0, z: -.392337054, w: -.919821501}
+  m_LocalRotation: {x: 0, y: 0, z: .392337024, w: .91982156}
   m_LocalPosition: {x: -.231999993, y: .134000003, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -874,7 +874,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126410}
-  m_LocalRotation: {x: 0, y: 0, z: -.386689216, w: .922210097}
+  m_LocalRotation: {x: 0, y: 0, z: -.386689246, w: .922210097}
   m_LocalPosition: {x: .195999995, y: -.626999974, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -978,7 +978,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164764}
-  m_LocalRotation: {x: 0, y: 0, z: .0950343832, w: .995473981}
+  m_LocalRotation: {x: 0, y: 0, z: .0950343907, w: .995473981}
   m_LocalPosition: {x: .203999996, y: .448000014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1736,6 +1736,7 @@ MonoBehaviour:
   - {fileID: 11403376}
   - {fileID: 11428158}
   bowLauncher: {fileID: 11495354}
+  bowLauncherGO: {fileID: 153136}
   attackSound: {fileID: 8251618}
   walkGrassSound: {fileID: 8210794}
   bowprojectile: {fileID: 108042, guid: 26e40b4ea95e7274c860baf18d875959, type: 2}

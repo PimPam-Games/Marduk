@@ -115,7 +115,7 @@ public class ItemGenerator :MonoBehaviour{
 							continue;
 						ok = true;
 						if (optionDef == p.LifePerSecond)
-							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.1f, 0.3f), 2);
+							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.4f, 1f), 2);
 						if (optionDef == p.Thorns)
 							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.2f, 2f), 2);
 						if (optionDef >= p.ColdRes && optionDef <= p.PoisonRes)

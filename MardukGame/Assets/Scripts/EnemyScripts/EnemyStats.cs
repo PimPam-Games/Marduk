@@ -333,7 +333,9 @@ public class EnemyStats : MonoBehaviour {
 		rb.gravityScale = 3;
 		if (!itemCreated) {
 			itemCreated = true;
-			GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
+			float[] dropItemProb = {0.5f,0.5f}; //50% de chance de tirar un item al morir
+			if(Utils.Choose (dropItemProb) == 0)
+				GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
 		}
 		//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 		

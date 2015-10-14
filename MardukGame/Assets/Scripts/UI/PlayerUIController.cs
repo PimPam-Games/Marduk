@@ -25,7 +25,7 @@ public class PlayerUIController : MonoBehaviour {
 		if(healthSlider != null && p.defensives != null)
 			healthSlider.value = p.defensives[p.MaxHealth];
 		if(healthBarText != null && p.defensives != null)
-			healthBarText.text = Math.Round(p.currentHealth,1) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
+			healthBarText.text = Math.Round(p.currentHealth,0) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
 	}
 	void Start () {
 	
@@ -38,7 +38,7 @@ public class PlayerUIController : MonoBehaviour {
 		else
 			damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 		damaged = false;
-		healthBarText.text = Math.Round(p.currentHealth,1) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
+		healthBarText.text = Math.Round(p.currentHealth,0) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
 		healthSlider.maxValue = p.defensives [p.MaxHealth];
 		healthSlider.value = p.currentHealth;
 		if (p.isDead) {

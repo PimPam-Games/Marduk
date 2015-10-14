@@ -25,6 +25,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public static SpellStats[] playerSkills;
 		private float[] skillsCoolDowns;
 		public PlayerProjLauncher bowLauncher;
+		public GameObject bowLauncherGO;
 		private SpellsPanel spellsPanel;
 		
 		private Transform backforeArm;
@@ -435,7 +436,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void LaunchArrow(){
-			
+			bowLauncher.force = new Vector2(bowLauncher.force.x,Input.GetAxis("Vertical") * 180); //direccion de la flecha dependiendo para donde apunta
 			if (bowLauncher.projectile == null)
 				bowLauncher.projectile = bowprojectile;
 			bowLauncher.LaunchProjectile ();
@@ -502,7 +503,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 						
 					break;
 					case Types.SkillsTypes.Bow:
+						
 						bowLauncher.projectile = skill.projectile;
+						
 						if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
 							anim.SetBool ("BowAttacking", true);
 						}

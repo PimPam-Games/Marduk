@@ -26,11 +26,13 @@ public class SpellStats : MonoBehaviour {
 	[SerializeField] private float initManaCost;
 	[SerializeField] private float initMinDmg;
 	[SerializeField] private float initMaxDmg;
+	[SerializeField] private float initPhysicalDmgMult;
 	//[SerializeField] private float initLifeRegen;
 
 	[SerializeField] private float manaCostPerLvl;
 	[SerializeField] private float minDmgPerLvl;
 	[SerializeField] private float maxDmgPerLvl;
+	[SerializeField] private float physicalDmgMultPerLvl;
 	//[SerializeField] private float lifeRegenPerLvl;
 
 	public  double currentExp;
@@ -75,6 +77,7 @@ public class SpellStats : MonoBehaviour {
 		if (projStats != null) {
 			projStats.minDmg = initMinDmg + (lvl - 1) * minDmgPerLvl;
 			projStats.maxDmg = initMaxDmg + (lvl-1) * maxDmgPerLvl;
+			projStats.physicalDmgMult = initPhysicalDmgMult + (lvl-1) * physicalDmgMultPerLvl;
 		}
 		manaCost = initManaCost + (lvl - 1) * manaCostPerLvl;
 	}

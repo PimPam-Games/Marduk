@@ -254,21 +254,20 @@ public class PlayerStats : MonoBehaviour {
 	IEnumerator ManaRegeneration () {
 		while (!isDead) {
 			if (currentMana < offensives [MaxMana])
-				currentMana += offensives [ManaPerSec];
+				currentMana += offensives [ManaPerSec]/2;
 			if (currentMana > offensives [MaxMana])
 				currentMana = offensives [MaxMana];
-			//UpdateMana();
-			yield return new WaitForSeconds (1);
+			yield return new WaitForSeconds (0.5f);
 		}
 	}
 
 	IEnumerator LifeRegeneration () {
 		while (!isDead) {
 			if (currentHealth < defensives [MaxHealth])
-				currentHealth += defensives [LifePerSecond];
+				currentHealth += (defensives[MaxHealth] * defensives [LifePerSecond] / 100)/2;
 			if (currentHealth > defensives [MaxHealth])
 				currentHealth = defensives [MaxHealth];
-			yield return new WaitForSeconds (1);
+			yield return new WaitForSeconds (0.5f);
 		}
 	}
 

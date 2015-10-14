@@ -57,14 +57,25 @@ MonoBehaviour:
   projectile: {fileID: 0}
   spellName: Life Regen
   nameForSave: LifeRegen
-  coolDown: 0
+  castPerSecond: 0
   type: 1
   manaCost: 0
   manaReserved: 20
-  lifeRegenPerSecond: 4
+  lifeRegenPerSecond: 2
   movementX: 0
   movementY: 0
   moveTime: 0
+  animSpeed: 0
+  initManaCost: 0
+  initMinDmg: 0
+  initMaxDmg: 0
+  manaCostPerLvl: 0
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
+  currentExp: 0
+  lvl: 0
+  nextLevelExp: 0
+  oldNextLevelExp: 0
 --- !u!114 &11460834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,7 +134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lifeRegenPerSecond
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: nameForSave

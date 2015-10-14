@@ -22,7 +22,7 @@ public class ManaUiController : MonoBehaviour {
 	}
 	
 	public static void UpdateManaBar (double current,double max){
-		manaBarText.text = Math.Round(current,1) + " / " + Math.Round(max,1);
+		manaBarText.text = Math.Round(current,0) + " / " + Math.Round(max,1);
 		manaSlider.maxValue = (float)max;
 		manaSlider.value = (float)current;
 	}

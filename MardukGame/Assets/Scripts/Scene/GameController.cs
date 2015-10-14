@@ -68,7 +68,8 @@ public class GameController : MonoBehaviour {
 
 	void OnApplicationQuit(){
 		previousExit = 0;
-		Persistence.Save ();
+		if(player != null)
+			Persistence.Save ();
 	}
 
 	public void stopMusic(){

@@ -212,8 +212,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 0
-  minDmg: 2
-  maxDmg: 5
+  minDmg: 0
+  maxDmg: 0
+  physicalDmgMult: 0
   duration: 2
   particleSpeed: 0
   isParticle: 0
@@ -267,11 +268,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minDmg
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxDmg
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: bowLauncher
