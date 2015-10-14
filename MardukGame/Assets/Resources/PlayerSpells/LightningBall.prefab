@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11494518}
   - 225: {fileID: 22535052}
   - 114: {fileID: 11471462}
-  - 114: {fileID: 11438550}
+  - 114: {fileID: 11487236}
   m_Layer: 5
   m_Name: LightningBall
   m_TagString: Untagged
@@ -20,41 +20,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11438550
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: 0, y: 0}
-  flipProjectile: 0
-  projectile: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
-  spellName: Lightning Ball
-  nameForSave: LightningBall
-  castPerSecond: 1
-  type: 0
-  manaCost: 0
-  manaReserved: 0
-  lifeRegenPerSecond: 0
-  movementX: 0
-  movementY: 0
-  moveTime: 0
-  animSpeed: 0
-  initManaCost: 4
-  initMinDmg: 2
-  initMaxDmg: 5
-  manaCostPerLvl: .5
-  minDmgPerLvl: 1
-  maxDmgPerLvl: 1
-  currentExp: 0
-  lvl: 0
-  nextLevelExp: 0
-  oldNextLevelExp: 0
 --- !u!114 &11471462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +31,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9452a7a144d828c41a47fab5d96fcd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11487236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1b4ea85d6d36a469d42078085bddfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellName: Lightning Ball
+  nameForSave: LightningBall
+  castPerSecond: 1
+  type: 0
+  requeriments: 04000000
+  manaCost: 0
+  manaReserved: 0
+  animSpeed: 0
+  initManaCost: 4
+  manaCostPerLvl: 1
+  force: {x: 0, y: 0}
+  flipProjectile: 0
+  projectile: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
+  initMinDmg: 1
+  initMaxDmg: 4
+  initPhysicalDmgMult: 0
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
+  physicalDmgMultPerLvl: 0
 --- !u!114 &11494518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +124,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: requeriments.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: spellName
       value: Lightning Ball
       objectReference: {fileID: 0}
@@ -154,24 +153,32 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMinDmg
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDmg
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCostPerLvl
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minDmgPerLvl
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxDmgPerLvl
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: requeriments.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186218}

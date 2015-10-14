@@ -19,7 +19,7 @@ public class PlayerProjStats : MonoBehaviour {
 	private Rigidbody2D rb;
 	public AudioSource hitEnemySound;
 	public AudioSource criticalHitSound;
-	public Types.SkillsTypes projType = Types.SkillsTypes.Spell; //si se tiene que tirar con un arco o es melee, spell , etc
+	public Types.SkillsRequirements projRequirements = Types.SkillsRequirements.None; //si se tiene que tirar con un arco o es melee, spell , etc
 	public Types.Element convertElem = Types.Element.None; // a que elemento tiene que convertir el 40% del daño fisico
 	private bool collision = false;
 	private bool alreadyHit = false;
@@ -68,7 +68,7 @@ public class PlayerProjStats : MonoBehaviour {
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
 					p.currentHealth += p.defensives[p.LifePerHit];
 				damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-				damage = damage * physicalDmgMult/100;  //aumenta el daño en un porcentaje dependiendo de la habilidad			
+				damage = damage * physicalDmgMult/100;  //aumenta el daño en un porcentaje dependiendo de la habilidad	
 				if(convertElem != Types.Element.None){
 					damage = damage * 0.6f; 
 					damageConverted = damage * 0.4f; //al 40% del daño fisico lo convierte en otro daño
@@ -90,7 +90,7 @@ public class PlayerProjStats : MonoBehaviour {
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, true);
 					criticalHitSound.Play();
 					Debug.Log("Critical Dmg: " + damage);
-					if(projType == Types.SkillsTypes.Bow)
+					if(projRequirements == Types.SkillsRequirements.Bow)
 						collision = true;
 				}
 			}
@@ -100,7 +100,7 @@ public class PlayerProjStats : MonoBehaviour {
 				if(attackResult){  //si no es critico tira el sonido comun
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
 					hitEnemySound.Play();
-					if(projType == Types.SkillsTypes.Bow)
+					if(projRequirements == Types.SkillsRequirements.Bow)
 						collision = true;
 				}
 			}

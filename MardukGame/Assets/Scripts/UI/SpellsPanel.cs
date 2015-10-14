@@ -67,13 +67,13 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				newSpell.transform.SetParent(slot);
 				newSpell.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 				SpellStats st = newSpell.GetComponent<SpellStats>();
-				st.oldNextLevelExp = oldNextLevelExp;
-				st.lvl = lvl;
+				st.OldNextLevelExp = oldNextLevelExp;
+				st.Lvl = lvl;
 
-				st.currentExp = currentExp;
-				st.nextLevelExp = st.SpellExpFormula();
+				st.CurrentExp = currentExp;
+				st.NextLevelExp = st.SpellExpFormula();
 				if(st.type == Types.SkillsTypes.Aura){
-					p.defensives[p.LifePerSecond] += st.lifeRegenPerSecond;
+					//p.defensives[p.LifePerSecond] += st.lifeRegenPerSecond;
 				}
 				HasChanged();
 				return true;

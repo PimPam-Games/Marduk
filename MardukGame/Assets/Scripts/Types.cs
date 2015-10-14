@@ -6,11 +6,18 @@ public static class Types{
 	public enum Element{None,Fire,Lightning,Cold,Poison};
 
 	public enum SkillsTypes{
-		Spell,
-		Aura,
-		Curse,
-		Bow,
+		Ranged,
 		Melee,
-		Movement
+		Utility,
+		Aura,
+		Support
+	}
+
+	public enum SkillsRequirements{
+		Bow,
+		Sword,
+		Axe,
+		Mace,
+		None
 	}
 }

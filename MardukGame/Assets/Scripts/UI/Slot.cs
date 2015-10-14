@@ -56,54 +56,42 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			return;
 		SpellStats spellStats = spell.GetComponent<SpellStats> ();
 		tooltip.transform.GetChild (0).GetComponent<Text> ().text = spellStats.spellName;
+		tooltip.transform.GetChild (1).GetComponent<Text> ().text = spellStats.type.ToString();
+		Text reqText = tooltip.transform.GetChild (2).GetComponent<Text> ();
+		reqText.text = "";
+		for (int i = 0; i<spellStats.requeriments.Length; i++) {
+			reqText.text += spellStats.requeriments[i].ToString() + " ";
+			if(spellStats.requeriments[i] == Types.SkillsRequirements.None)
+				reqText.text = "No requirements";
+		}
 		switch(spellStats.type){
-		case Types.SkillsTypes.Spell:
-			PlayerProjStats pps = spell.GetComponent<SpellStats> ().projectile.GetComponent<PlayerProjStats> ();
-			switch (pps.elem) {
-			case Types.Element.Cold:
-				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.cyan;	
-				break;
-			case Types.Element.Fire:
-				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.red;	
-				break;
-			case Types.Element.Lightning:
-				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.yellow;	
-				break;
-			case Types.Element.Poison:
-				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.green;	
-				break;
-			default:
-				tooltip.transform.GetChild (2).GetComponent<Text> ().color = Color.white;	
-				break;
-			}
-			tooltip.transform.GetChild (1).GetComponent<Text> ().text = spellStats.type.ToString();
-			tooltip.transform.GetChild (2).GetComponent<Text> ().text = pps.elem.ToString ();
+		case Types.SkillsTypes.Ranged:
+			RangedSkill rskill = (RangedSkill)spell.GetComponent<SpellStats> ();
+			PlayerProjStats pps = rskill.projectile.GetComponent<PlayerProjStats> ();
+
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + spellStats.manaCost.ToString () + "\n";
 			float totalMinDmg = pps.minDmg + pps.minDmg * p.offensives[p.IncreasedMgDmg]/100;
 			float totalMaxDmg = pps.maxDmg + pps.maxDmg * p.offensives[p.IncreasedMgDmg]/100;
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "Damage " + System.Math.Round (totalMinDmg, 1).ToString () + " - " + System.Math.Round (totalMaxDmg, 1).ToString () + "\n";
-			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "level: " + spellStats.lvl.ToString() +  "\n";
+			tooltip.transform.GetChild (3).GetComponent<Text> ().text += "level: " + spellStats.Lvl.ToString() +  "\n";
 			break;
 		case Types.SkillsTypes.Aura:
-			//tooltip.transform.GetChild (1).GetComponent<Text> ().color = Color.magenta;	
-			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Aura";
-			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
+
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaReserved.ToString()+ "\n";
-			tooltip.transform.GetChild (3).GetComponent<Text> ().text += spellStats.lifeRegenPerSecond + "% Life Regen per Second" ;
+			//tooltip.transform.GetChild (3).GetComponent<Text> ().text += spellStats.lifeRegenPerSecond + "% Life Regen per Second" ;
 			break;
-		case Types.SkillsTypes.Movement:
-			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Movement";
-			tooltip.transform.GetChild (2).GetComponent<Text> ().text = "";
+		case Types.SkillsTypes.Utility:
+
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana Reserved: " + spellStats.manaCost.ToString()+ "\n";
 			
 			break;
-		case Types.SkillsTypes.Bow:
-			PlayerProjStats proj = spell.GetComponent<SpellStats> ().projectile.GetComponent<PlayerProjStats> ();
-			tooltip.transform.GetChild (1).GetComponent<Text> ().text = "Bow";
-			tooltip.transform.GetChild (2).GetComponent<Text> ().text = proj.elem.ToString ();
+		case Types.SkillsTypes.Melee:
+			RangedSkill rsskill = (RangedSkill)spell.GetComponent<SpellStats> ();
+			PlayerProjStats proj = rsskill.projectile.GetComponent<PlayerProjStats> ();
+
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + spellStats.manaCost.ToString () + "\n"
 				+ "damage multiplier: " + proj.physicalDmgMult +"% \n"
-					+ "level: " + spellStats.lvl.ToString() +  "\n";
+					+ "level: " + spellStats.Lvl.ToString() +  "\n";
 			
 			break;
 		}

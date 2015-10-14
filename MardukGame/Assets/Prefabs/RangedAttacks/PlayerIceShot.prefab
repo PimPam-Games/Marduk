@@ -223,7 +223,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   hitEnemySound: {fileID: 8203550}
   criticalHitSound: {fileID: 8271784}
-  projType: 3
+  projRequirements: 0
   convertElem: 3
 --- !u!212 &21280864
 SpriteRenderer:
@@ -293,6 +293,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -354108773
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projRequirements
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

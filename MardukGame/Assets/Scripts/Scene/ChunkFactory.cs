@@ -24,7 +24,6 @@ public class ChunkFactory : MonoBehaviour {
 	public List<Object> rightEndChunks = new List<Object>();
 	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
-	private static bool isEntry = false;
 	public static float bgCount = 0;
 	//public static int newChunkPosY; //esta variable se deberia actualziar antes de generar un nuevo chunk, en las clases chunk y chunk2. es para poner la entrada a la cueva
 	public static float bgPerChunk = 4; //cada cuantos chunks debe generar el fondo
@@ -77,7 +76,6 @@ public class ChunkFactory : MonoBehaviour {
 	}
 
 	public static void Initialize(){
-		isEntry = false;
 		bgCount = 0;
 	}
 
@@ -124,10 +122,10 @@ public class ChunkFactory : MonoBehaviour {
 			float[] chunksProb = {0.5f,0.3f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
 
 			int choice = Utils.Choose(chunksProb);
-			Debug.Log ("chunk pos 0 " + chunkPos [0]);
+			//Debug.Log ("chunk pos 0 " + chunkPos [0]);
 			if((!doubleInRow[chunkPos[0]] &&  choice == 2) || (!doubleInRow[chunkPos[0]] && chunkPos[1] == MatrixSize - 3)){ //si estoy casi por llegar a un borde
 				choice = 1;																												//o si toca un cierre, me aseguro que haya un doble antes
-				Debug.Log("un doble generado is o si");
+			
 			}
 			if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1
 				choice = 0;
@@ -142,7 +140,7 @@ public class ChunkFactory : MonoBehaviour {
 					}
 					else{
 						if((cmatrix[chunkPos[0]-1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]-1, chunkPos[1]+1] && exit == Exits.Left)){
-							Debug.Log("este doble no deberia ir baby");
+							//Debug.Log("este doble no deberia ir baby");
 							choice = 0;
 						}
 					}
@@ -230,8 +228,6 @@ public class ChunkFactory : MonoBehaviour {
 					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
 				break;
 			}
-			if(newChunk.name.Contains("Entry"))
-				isEntry = true;
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
 			DontDestroyOnLoad(newChunk);
 		//}

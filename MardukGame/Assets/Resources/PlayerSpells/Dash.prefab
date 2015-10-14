@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11424816}
   - 225: {fileID: 22592980}
   - 114: {fileID: 11460416}
-  - 114: {fileID: 11462696}
+  - 114: {fileID: 11468402}
   m_Layer: 5
   m_Name: Dash
   m_TagString: Untagged
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9452a7a144d828c41a47fab5d96fcd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11462696
+--- !u!114 &11468402
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -60,23 +60,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 123774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4439b2ad4003af146820046e8b16a30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 0, y: 0}
-  flipProjectile: 1
-  projectile: {fileID: 0}
   spellName: Dash
   nameForSave: Dash
-  castPerSecond: 1
-  type: 5
-  manaCost: 3
+  castPerSecond: 2
+  type: 2
+  requeriments: 04000000
+  manaCost: 2
   manaReserved: 0
-  lifeRegenPerSecond: 0
-  movementX: 15
-  movementY: 0
-  moveTime: .300000012
   animSpeed: 0
+  initManaCost: 2
+  manaCostPerLvl: 1
+  movementX: 17
+  movementY: 0
+  moveTime: .349999994
 --- !u!222 &22292070
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -119,6 +118,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: requeriments.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
@@ -152,7 +155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: type
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaReserved
@@ -164,15 +167,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: movementX
-      value: 15
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveTime
-      value: .300000012
+      value: .349999994
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCost
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: coolDown
@@ -184,6 +187,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: castPerSecond
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: requeriments.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initManaCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: manaCostPerLvl
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

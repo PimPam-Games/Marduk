@@ -23,7 +23,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		[SerializeField] private GameObject RangedWeapon;
 		public PlayerProjLauncher[] projLaunchers;
 		public static SpellStats[] playerSkills;
-		private float[] skillsCoolDowns;
 		public PlayerProjLauncher bowLauncher;
 		public GameObject bowLauncherGO;
 		private SpellsPanel spellsPanel;
@@ -37,7 +36,6 @@ public class PlatformerCharacter2D : MonoBehaviour
         private Animator anim; // Reference to the player's animator component.
 		private Rigidbody2D rb;
 		private Weapon weaponScript;
-		private RangedWeapon rangedWeaponScript;
 		public AudioSource attackSound;
 		public AudioSource walkGrassSound;
 		
@@ -52,9 +50,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private bool movementSkillActivated; //para no permitir que el personaje se mueva si hay un skill de movimiento activado
 		private float moveSkillTimer;	//tiempo que dura el skill de movimiento
 		private float[] moveSkillSpeed; //velocidad x e y del skill de movimiento
-
-		private bool isColliding = false;
 		private SpellStats currentSkill = null;
+		private bool multipleShots = false;
 
         private void Awake()
         {
@@ -67,8 +64,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 			rb = GetComponent<Rigidbody2D> ();
 			if(weapon != null)
 				weaponScript = weapon.GetComponent<Weapon> ();
-			if(RangedWeapon != null)
-				rangedWeaponScript = RangedWeapon.GetComponent<RangedWeapon> ();
 		//	normalAnimSpeed = anim.speed;
         }
 
@@ -76,7 +71,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 			spellsPanel = GameObject.Find ("SpellsPanel").GetComponent<SpellsPanel> ();
 			playerSkills = new SpellStats[4];
 			moveSkillSpeed = new float[2];
-			skillsCoolDowns = new float[2];
 		}
 
 		void Update(){
@@ -92,7 +86,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 				rb.AddForce (new Vector2(0, 900f));
 				jumpNow = false;
 			}
-			isColliding = false;
 			UpdateMovementSkill ();
 		}
 
@@ -242,79 +235,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (col.gameObject.tag == "CameraStopX") {
 				CameraController.stopFollowX = true;
 			}
-
-		/*if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
-			if(isColliding)
-				return;
-			isColliding = true;
-			GameObject item = col.gameObject;
-			if(item == null){
-				Debug.Log("es null");
-				return;
-			}
-			if( item.transform.parent == item.transform ){
-				Debug.Log("hijos: " + item.transform.childCount);
-				return;
-			}	
-			if (item.tag == "Item") {
-				playerItemsGO.Add(item);
-				item.SetActive(false);
-				Item it = item.GetComponent<Item>();
-				Debug.Log("agarre un arma");
-				if(PlayerItems.EquipedWeapon == null && it.Type == ItemTypes.Weapon){ //si el slot del arma no esta ocupado pongo ahi el nuevo item
-					PlayerItems.EquipedWeapon = it;
-					return;
-				}
-				if(PlayerItems.EquipedArmour == null && it.Type == ItemTypes.Armour){
-					PlayerItems.EquipedArmour = it;
-					return;
-				}
-				if(PlayerItems.EquipedShield == null && it.Type == ItemTypes.Shield){
-					if(!(PlayerItems.EquipedWeapon == null) && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){} //si hay un arco equipado no hago nada
-					else{
-						PlayerItems.EquipedShield = it;
-						return;
-					}
-					
-				}
-				if(PlayerItems.EquipedHelmet == null && it.Type == ItemTypes.Helmet){
-					PlayerItems.EquipedHelmet = it;
-					return;
-				}
-				if(PlayerItems.EquipedBelt == null && it.Type == ItemTypes.Belt){
-					PlayerItems.EquipedBelt = it;
-					return;
-				}
-				if(PlayerItems.EquipedAmulet == null && it.Type == ItemTypes.Amulet){
-					PlayerItems.EquipedAmulet = it;
-					return;
-				}
-				if(PlayerItems.EquipedRingL == null && it.Type == ItemTypes.Ring){
-					PlayerItems.EquipedRingL = it;
-					return;
-				}
-				if(PlayerItems.EquipedRingR == null && it.Type == ItemTypes.Ring){
-					PlayerItems.EquipedRingR = it;
-					return;
-				}
-				if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
-					return;
-				PlayerItems.Inventory.Add (it);
-				PlayerItems.inventoryCantItems++;
-				
-				//checkInventory();
-			}
-			else{
-				
-				if(item.tag == "Spell"){
-					string itName = item.GetComponent<Item>().Name;
-					bool spellAdded = spellsPanel.AddSpell(itName,1,0,0);
-					if(spellAdded)
-						Destroy(item);
-				}
-				
-			}
-		}*/
 		}
 
 		private void checkInventory(){ //para que no se dupliquen los putos items
@@ -436,10 +356,20 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void LaunchArrow(){
-			bowLauncher.force = new Vector2(bowLauncher.force.x,Input.GetAxis("Vertical") * 180); //direccion de la flecha dependiendo para donde apunta
 			if (bowLauncher.projectile == null)
 				bowLauncher.projectile = bowprojectile;
-			bowLauncher.LaunchProjectile ();
+			if (multipleShots) {
+				bowLauncher.force = new Vector2 (bowLauncher.force.x, 0); 
+				bowLauncher.LaunchProjectile ();
+				bowLauncher.force = new Vector2 (bowLauncher.force.x, 1 * 180); 
+				bowLauncher.LaunchProjectile ();
+				bowLauncher.force = new Vector2 (bowLauncher.force.x, -1 * 180); 
+				bowLauncher.LaunchProjectile ();
+				multipleShots = false;
+			} else {
+				bowLauncher.force = new Vector2 (bowLauncher.force.x, Input.GetAxis ("Vertical") * 180); 					
+				bowLauncher.LaunchProjectile ();
+			}
 		}
 
 		public void Fall(){ //si el jugador suelta boton de saltar se llama este metodo
@@ -492,29 +422,36 @@ public class PlatformerCharacter2D : MonoBehaviour
 				
 				PlayerStats.currentMana -= skill.manaCost;
 				switch(skill.type){
-					case Types.SkillsTypes.Spell:
-						projLaunchers[0].projectile = skill.projectile;
-						projLaunchers[0].force = skill.force;
-						projLaunchers[0].flipProjectile = skill.flipProjectile;
-						currentSkill = skill;
-						anim.SetBool("SpellCasting", true);
-						//Debug.Log("castdelay " + stats.castDelay);
-						//projLaunchers[0].castDelay = skill.coolDown;
-						
-					break;
-					case Types.SkillsTypes.Bow:
-						
-						bowLauncher.projectile = skill.projectile;
-						
-						if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
-							anim.SetBool ("BowAttacking", true);
+					case Types.SkillsTypes.Ranged:
+						RangedSkill rskill = (RangedSkill)skill;
+						//arco
+						if(skill.requeriments[0] == Types.SkillsRequirements.Bow){
+							bowLauncher.projectile = rskill.projectile;
+							if(string.Compare(rskill.nameForSave,"MultipleShot")==0)
+								multipleShots = true;							
+							if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
+								anim.SetBool ("BowAttacking", true);
+							}
+						}
+						else{
+							//magias
+							projLaunchers[0].projectile = rskill.projectile;
+							projLaunchers[0].force = rskill.force;
+							projLaunchers[0].flipProjectile = rskill.flipProjectile;
+							currentSkill = skill;
+							anim.SetBool("SpellCasting", true);
 						}
 					break;
-					case Types.SkillsTypes.Movement:
+					case Types.SkillsTypes.Melee:
+						
+						
+					break;
+					case Types.SkillsTypes.Utility:
 						skill.ActivateCoolDown();
-						moveSkillTimer = skill.moveTime;
-						moveSkillSpeed[0] = skill.movementX;
-						moveSkillSpeed[1] = skill.movementY;
+						UtilitySkill uskill = (UtilitySkill) skill;	
+						moveSkillTimer = uskill.moveTime;
+						moveSkillSpeed[0] = uskill.movementX;
+						moveSkillSpeed[1] = uskill.movementY;
 						movementSkillActivated = true;
 					break;
 				}

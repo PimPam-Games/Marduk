@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11410578}
   - 225: {fileID: 22590634}
   - 114: {fileID: 11418590}
-  - 114: {fileID: 11486156}
+  - 114: {fileID: 11404228}
   m_Layer: 5
   m_Name: PoisonBall
   m_TagString: Untagged
@@ -20,6 +20,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11404228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1b4ea85d6d36a469d42078085bddfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellName: Poison Ball
+  nameForSave: PoisonBall
+  castPerSecond: 1
+  type: 0
+  requeriments: 04000000
+  manaCost: 0
+  manaReserved: 0
+  animSpeed: 0
+  initManaCost: 4
+  manaCostPerLvl: 1
+  force: {x: -500, y: 200}
+  flipProjectile: 1
+  projectile: {fileID: 137192, guid: 355b940606ebd5745998166aee28d732, type: 2}
+  initMinDmg: 3
+  initMaxDmg: 6
+  initPhysicalDmgMult: 0
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
+  physicalDmgMultPerLvl: 0
 --- !u!114 &11410578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,41 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9452a7a144d828c41a47fab5d96fcd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11486156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: -280, y: 200}
-  flipProjectile: 1
-  projectile: {fileID: 137192, guid: 355b940606ebd5745998166aee28d732, type: 2}
-  spellName: Poison Ball
-  nameForSave: PoisonBall
-  castPerSecond: 1
-  type: 0
-  manaCost: 0
-  manaReserved: 0
-  lifeRegenPerSecond: 0
-  movementX: 0
-  movementY: 0
-  moveTime: 0
-  animSpeed: 0
-  initManaCost: 6
-  initMinDmg: 4
-  initMaxDmg: 8
-  manaCostPerLvl: 1
-  minDmgPerLvl: 2
-  maxDmgPerLvl: 2
-  currentExp: 0
-  lvl: 0
-  nextLevelExp: 0
-  oldNextLevelExp: 0
 --- !u!222 &22246312
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -129,6 +124,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: requeriments.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: spellName
       value: Poison Ball
       objectReference: {fileID: 0}
@@ -150,7 +149,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: force.x
-      value: -280
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: force.y
@@ -158,15 +157,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initManaCost
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initMinDmg
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: initMinDmg
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: initMaxDmg
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCostPerLvl
@@ -179,6 +178,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxDmgPerLvl
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: requeriments.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 137192, guid: 355b940606ebd5745998166aee28d732, type: 2}
+    - target: {fileID: 0}
+      propertyPath: flipProjectile
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

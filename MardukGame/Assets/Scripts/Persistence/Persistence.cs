@@ -164,9 +164,9 @@ public class Persistence : MonoBehaviour {
 
 				if(ps != null){
 					playerSkills[i] = ps.nameForSave;
-					skillsLevels[i] = ps.lvl;
-					skillsCurrentExp[i] = ps.currentExp;
-					skillsOldNextLevelExp[i] = ps.oldNextLevelExp;
+					skillsLevels[i] = ps.Lvl;
+					skillsCurrentExp[i] = ps.CurrentExp;
+					skillsOldNextLevelExp[i] = ps.OldNextLevelExp;
 				}else
 					playerSkills[i] = null;
 			}

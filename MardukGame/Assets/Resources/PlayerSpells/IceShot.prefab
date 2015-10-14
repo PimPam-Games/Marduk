@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11434876}
   - 225: {fileID: 22519734}
   - 114: {fileID: 11492692}
-  - 114: {fileID: 11489344}
+  - 114: {fileID: 11446806}
   m_Layer: 5
   m_Name: IceShot
   m_TagString: Untagged
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11489344
+--- !u!114 &11446806
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,35 +49,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 103456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
+  m_Script: {fileID: 11500000, guid: fc1b4ea85d6d36a469d42078085bddfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: -1200, y: 0}
-  flipProjectile: 1
-  projectile: {fileID: 100906, guid: 5caaaa962ca8b7c4d85b2614d0838174, type: 2}
   spellName: Ice Shot
   nameForSave: IceShot
   castPerSecond: 0
-  type: 3
-  manaCost: 2
+  type: 0
+  requeriments: 00000000
+  manaCost: 0
   manaReserved: 0
-  lifeRegenPerSecond: 0
-  movementX: 0
-  movementY: 0
-  moveTime: 0
   animSpeed: 0
   initManaCost: 2
+  manaCostPerLvl: 1
+  force: {x: 1200, y: 0}
+  flipProjectile: 1
+  projectile: {fileID: 100906, guid: 5caaaa962ca8b7c4d85b2614d0838174, type: 2}
   initMinDmg: 0
   initMaxDmg: 0
   initPhysicalDmgMult: 120
-  manaCostPerLvl: .5
   minDmgPerLvl: 0
   maxDmgPerLvl: 0
   physicalDmgMultPerLvl: 10
-  currentExp: 0
-  lvl: 0
-  nextLevelExp: 0
-  oldNextLevelExp: 0
 --- !u!114 &11492692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +124,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: requeriments.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: spellName
       value: Ice Shot
       objectReference: {fileID: 0}
@@ -157,7 +154,7 @@ Prefab:
       objectReference: {fileID: 100906, guid: 5caaaa962ca8b7c4d85b2614d0838174, type: 2}
     - target: {fileID: 0}
       propertyPath: force.x
-      value: -1200
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: force.y
@@ -165,7 +162,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: type
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCost
@@ -185,11 +182,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCostPerLvl
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: physicalDmgMultPerLvl
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: flipProjectile
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11448484}
   - 225: {fileID: 22527176}
   - 114: {fileID: 11460834}
-  - 114: {fileID: 11459064}
+  - 114: {fileID: 11444396}
   m_Layer: 5
   m_Name: LifeRegen
   m_TagString: Untagged
@@ -20,6 +20,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11444396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158709914f43c64489e808ce55b40d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: {x: 0, y: 0}
+  flipProjectile: 0
+  projectile: {fileID: 0}
+  spellName: LifeRegen
+  nameForSave: LifeRegen
+  castPerSecond: 0
+  type: 3
+  requeriments: 04000000
+  manaCost: 0
+  manaReserved: 0
+  lifeRegenPerSecond: 0
+  movementX: 0
+  movementY: 0
+  moveTime: 0
+  animSpeed: 0
+  initManaCost: 0
+  initMinDmg: 0
+  initMaxDmg: 0
+  initPhysicalDmgMult: 0
+  manaCostPerLvl: 0
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
+  physicalDmgMultPerLvl: 0
+  currentExp: 0
+  lvl: 0
+  nextLevelExp: 0
+  oldNextLevelExp: 0
+  increasedAttackSpeed: 0
+  increasedCastSpeed: 0
+  increasedMovementSpeed: 0
 --- !u!114 &11448484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,41 +82,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11459064
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cdf9874ab934948a822264148a7c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: -225, y: 210}
-  flipProjectile: 1
-  projectile: {fileID: 0}
-  spellName: Life Regen
-  nameForSave: LifeRegen
-  castPerSecond: 0
-  type: 1
-  manaCost: 0
-  manaReserved: 20
-  lifeRegenPerSecond: 2
-  movementX: 0
-  movementY: 0
-  moveTime: 0
-  animSpeed: 0
-  initManaCost: 0
-  initMinDmg: 0
-  initMaxDmg: 0
-  manaCostPerLvl: 0
-  minDmgPerLvl: 0
-  maxDmgPerLvl: 0
-  currentExp: 0
-  lvl: 0
-  nextLevelExp: 0
-  oldNextLevelExp: 0
 --- !u!114 &11460834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,6 +135,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: requeriments.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: manaReserved
       value: 20
       objectReference: {fileID: 0}
@@ -138,6 +148,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: nameForSave
+      value: LifeRegen
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: requeriments.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spellName
       value: LifeRegen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
