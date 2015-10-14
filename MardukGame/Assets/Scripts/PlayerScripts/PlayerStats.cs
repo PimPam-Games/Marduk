@@ -135,21 +135,21 @@ public class PlayerStats : MonoBehaviour {
 
 
 	public static void LoadAtributes(){ //actualiza los atributos con los puntos añadidos, se llama cuando se carga un juego guardado
-		atributes [Strength] += strAddedPoints + utils[AllAttr];
-		atributes [Vitality] += vitAddedPoints + utils[AllAttr];
-		atributes [Spirit] += spiAddedPoints + utils[AllAttr];
-		atributes [Dextery] += dexAddedPoints + utils[AllAttr];
+		atributes [Strength] = strAddedPoints;
+		atributes [Vitality] = vitAddedPoints;
+		atributes [Spirit] = spiAddedPoints;
+		atributes [Dextery] = dexAddedPoints;
 
-		defensives [MaxHealth] += atributes [Vitality] * 3 + InitMaxHealth; 
-		offensives [MinDmg] += atributes [Strength] * 0.25f + InitMinDmg;
-		offensives [MaxDamge] += atributes [Strength] * 0.25f + InitMaxDmg;
-		offensives [MaxMana] += atributes [Spirit] * 3 + InitMana;
+		defensives [MaxHealth] = atributes [Vitality] * 3 + InitMaxHealth; 
+		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
+		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
+		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
 		//offensives[MgDmg] = atributes[Spirit] * 0.25f + InitMgDmg;
-		offensives[ManaPerSec] += atributes[Spirit] * 0.1f + InitManaRegen;
-		offensives [Accuracy] += atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
-		defensives [Evasiveness] += atributes [Dextery] * 2 + InitEvasion;
-		currentHealth += defensives[MaxHealth];
-		currentMana += offensives [MaxMana];
+		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
+		offensives [Accuracy] = atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
+		defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
+		currentHealth = defensives[MaxHealth];
+		currentMana = offensives [MaxMana];
 		UpdateMana ();
 	}
 

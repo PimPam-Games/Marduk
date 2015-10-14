@@ -199,8 +199,8 @@ public class Persistence : MonoBehaviour {
 			Traits.traits = data.playerTraits;
 			p.passivePoints = data.passivePoints;
 
-			Traits.init ();
 			p.LoadAtributes();
+			Traits.init ();
 
 			p.lvl = data.lvl;
 			p.currentExp = data.currentExp;
