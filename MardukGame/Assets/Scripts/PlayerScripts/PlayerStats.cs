@@ -20,8 +20,8 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;
 	public const float InitMgDmg = 1;
-	public const float InitMana = 45; 
-	public const float InitManaRegen = 0.2f;
+	public const float InitMana = 40; 
+	public const float InitManaRegen = 1.75f;
 	public const float InitCritChance = 0.05f;
 	public const float InitCritDmgMult = 2f;
 	public const float InitAccuracy = 50;
@@ -254,7 +254,7 @@ public class PlayerStats : MonoBehaviour {
 	IEnumerator ManaRegeneration () {
 		while (!isDead) {
 			if (currentMana < offensives [MaxMana])
-				currentMana += offensives [ManaPerSec]/2;
+				currentMana += (offensives [MaxMana] * offensives [ManaPerSec]/100)/2;
 			if (currentMana > offensives [MaxMana])
 				currentMana = offensives [MaxMana];
 			yield return new WaitForSeconds (0.5f);

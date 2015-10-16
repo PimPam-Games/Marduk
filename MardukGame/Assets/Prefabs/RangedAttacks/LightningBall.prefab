@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elem: 2
   minDmg: 1
-  maxDmg: 3
+  maxDmg: 1
   particleSpeed: 0
   isParticle: 0
   dontDestroy: 0
@@ -153,6 +153,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_SortingLayerID
       value: -354108773
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmg
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmg
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -87,7 +87,7 @@ public class Persistence : MonoBehaviour {
 		}
 		data.slots [data.cantSavedGames] = newName;
 		data.cantSavedGames++;
-		Debug.Log (data.cantSavedGames);
+		//Debug.Log (data.cantSavedGames);
 		bf.Serialize (file,data);
 		file.Close ();
 	}

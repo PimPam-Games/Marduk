@@ -60,7 +60,7 @@ public class EnemyStats : MonoBehaviour {
 	private SpriteRenderer spriteRend;
 	private float initAnimSpeed;
 	EnemyIAMovement enemyMove;
-								
+	EnemyRangedAttack rangedAttack;				
 	/* status ailments variables */
 	private bool chill = false;
 	private float chillTimer = 1f;
@@ -93,6 +93,7 @@ public class EnemyStats : MonoBehaviour {
 		rend = GetComponent<Renderer> ();
 		spriteRend = GetComponent<SpriteRenderer> ();
 		enemyMove = GetComponent<EnemyIAMovement>();
+		rangedAttack = GetComponent<EnemyRangedAttack>();
 		initAnimSpeed = anim.speed;
 		CalculateStats ();
 	}
@@ -118,6 +119,11 @@ public class EnemyStats : MonoBehaviour {
 		accuracy = initAccuracy + (lvl-1) * accuracyPerLvl;
 		critChance = initCritChance;
 		currHealth = maxHealth;
+		if(rangedAttack != null){
+			foreach(GameObject plauncher in rangedAttack.pLaunchers){
+				plauncher.GetComponent<ProjectileLauncher>().setDamage(minDamage,maxDamage);
+			}
+		}
 	}
 
 	/*IEnumerator AlertSoundPlay(){
@@ -216,15 +222,15 @@ public class EnemyStats : MonoBehaviour {
 				isCrit = true;
 				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
 			}
-				if(p.defensives[p.Thorns] > 0)
-					Hit (p.defensives[p.Thorns], Types.Element.None, false);
-				col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy, isCrit);
+			if(p.defensives[p.Thorns] > 0){
+				Hit (p.defensives[p.Thorns], Types.Element.None, false);
+			}
+			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy, isCrit);
 
-				if(col.transform.position.x < this.transform.position.x)
-					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-				else
-					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-
+			if(col.transform.position.x < this.transform.position.x)
+				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+			else
+				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
 		}
 	}
 

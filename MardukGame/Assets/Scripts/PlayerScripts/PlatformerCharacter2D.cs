@@ -170,7 +170,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					playerItemsGO.Add(item);
 					item.SetActive(false);
 					Item it = item.GetComponent<Item>();
-					Debug.Log("agarre un arma");
+					
 					if(PlayerItems.EquipedWeapon == null && it.Type == ItemTypes.Weapon){ //si el slot del arma no esta ocupado pongo ahi el nuevo item
 						PlayerItems.EquipedWeapon = it;
 						return;
@@ -417,7 +417,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				//if(skill.projectile != null){ //si tiene un proyectil se lo seteo al lanzador
 					
 			//	}
-				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting"))
+				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking"))
 					return;
 				
 				PlayerStats.currentMana -= skill.manaCost;

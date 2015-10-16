@@ -11,6 +11,11 @@ public class ProjectileLauncher : MonoBehaviour {
 	public bool flipProjectile = false;
 	private GameObject p;
 	public EnemyStats stats;
+
+	public void setDamage(float minDmg, float maxDmg){
+		projectile.GetComponent<ProjectileStats>().minDmg = minDmg;
+		projectile.GetComponent<ProjectileStats>().maxDmg = maxDmg;
+	}
 	// Use this for initialization
 	void Start () {
 	}
@@ -25,9 +30,6 @@ public class ProjectileLauncher : MonoBehaviour {
 		p = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
 		p.GetComponent<ProjectileStats> ().enemyStats = stats;
 		if (toTargetDir && target != null) {
-			/*var dir = (target.transform.position - transform.position).normalized;
-			var dot = Vector2.Dot(dir, transform.right);*/
-
 			if(target.transform.position.x < transform.position.x)
 				p.GetComponent<ProjectileMovement>().moveDirX= -1;
 			else

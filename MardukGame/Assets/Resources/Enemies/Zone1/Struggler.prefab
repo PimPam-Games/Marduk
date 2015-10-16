@@ -115,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1056.83508, y: -49.4186058, z: 0}
+  m_LocalPosition: {x: -14.8800001, y: -2.0999999, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 453892}
@@ -300,6 +300,10 @@ MonoBehaviour:
   ia: {fileID: 11459556}
   flipProjectile: 0
   stats: {fileID: 11459776}
+  initMinDmg: 1
+  initMaxDmg: 3
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
 --- !u!114 &11439518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,7 +328,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
   maxSpeed: 3.5
+  initMaxSpeed: 0
   facingRight: 0
+  currentSpeed: 0
+  rb: {fileID: 0}
   groundChecks: []
   jumpForce: 800
   knockable: 1
@@ -362,11 +369,13 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
+  initCritChance: .0500000007
   elem: 2
   minDamage: 2
   maxDamage: 5
-  minDmgPerLvl: 0
-  maxDmgPerLvl: 0
+  critChance: 25
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
   healthPerLvl: 10
   armourPerLvl: 0
   coldResPerLvl: 0

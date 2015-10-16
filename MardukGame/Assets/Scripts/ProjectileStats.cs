@@ -5,17 +5,22 @@ public class ProjectileStats : MonoBehaviour {
 
 	public Types.Element elem ;
 	public float minDmg = 1, maxDmg = 3;
+	
 	private float duration = 6;
 	private float lifeTime = 0;
 	public float particleSpeed;
 	public bool isParticle;
 	public bool dontDestroy = false;
 	public bool hasSplashAnim = false;
+	
 	private float rotationChange;
 	public Animator anim;
 	private Rigidbody2D rb;
 	public EnemyStats enemyStats;
 	private bool alreadyHit = false; //booleano para evitar que le pegue dos veces al jugador
+
+	
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -25,9 +30,6 @@ public class ProjectileStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*Vector2 v = rb.velocity;
-		float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
 		lifeTime += Time.deltaTime;
 		if(lifeTime >= duration)
 			Destroy(this.gameObject);

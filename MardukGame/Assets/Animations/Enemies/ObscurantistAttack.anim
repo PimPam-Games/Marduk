@@ -21,9 +21,9 @@ AnimationClip:
       value: {fileID: 21300006, guid: 4d7788691cb2f1a4786e1d02b167af92, type: 3}
     - time: .125
       value: {fileID: 21300008, guid: 4d7788691cb2f1a4786e1d02b167af92, type: 3}
-    - time: .25
+    - time: .275000006
       value: {fileID: 21300010, guid: 4d7788691cb2f1a4786e1d02b167af92, type: 3}
-    - time: .375
+    - time: .625
       value: {fileID: 21300006, guid: 4d7788691cb2f1a4786e1d02b167af92, type: 3}
     attribute: m_Sprite
     path: 
@@ -50,7 +50,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .400000006
+    m_StopTime: .675000012
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -70,8 +70,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: .375
-    functionName: Idle
+  - time: .349999994
+    functionName: RangedAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: .675000012
+    functionName: StopAttackAmin
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
