@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.0997734, y: -1.79993629, z: 0}
+  m_LocalPosition: {x: -18.9502945, y: -2.49081445, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 484538}
@@ -202,6 +202,7 @@ MonoBehaviour:
   initBlockChance:
   - 0
   - 0
+  auraRend: {fileID: 0}
   itemSound: {fileID: 8266164}
 --- !u!212 &21217008
 SpriteRenderer:
@@ -227,7 +228,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -354108773
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 41dd65d3ee728b44aab1fcbe0bbeb9d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e4dbef19ba5fee44d9701c5543712ddf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -244,6 +245,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4dbef19ba5fee44d9701c5543712ddf,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 175500}

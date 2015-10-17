@@ -55,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.6664066, y: -.282683849, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: -16.7566833, y: -1.84351981, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 467438}
   m_Father: {fileID: 0}
@@ -87,9 +87,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.00695737218, y: -.00241208076}
+  m_Offset: {x: -.0233573914, y: -.013344368}
   serializedVersion: 2
-  m_Size: {x: .341549277, y: .416983783}
+  m_Size: {x: .592995822, y: .788686156}
 --- !u!61 &6163650
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -202,6 +202,7 @@ MonoBehaviour:
   initBlockChance:
   - 0
   - 0
+  auraRend: {fileID: 0}
   itemSound: {fileID: 8284566}
 --- !u!212 &21238066
 SpriteRenderer:
@@ -227,8 +228,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -354108773
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: .975456357, b: .110294104, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a1564fcc91729354bb74a61dcfea99a9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -239,6 +240,23 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1564fcc91729354bb74a61dcfea99a9,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

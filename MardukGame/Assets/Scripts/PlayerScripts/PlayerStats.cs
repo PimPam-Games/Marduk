@@ -344,12 +344,11 @@ public class PlayerStats : MonoBehaviour {
 			float chanceToEvade = (float)System.Math.Round ((float)(1 - accuracy / (accuracy + System.Math.Pow ((double)(defensives [Evasiveness] / 4), 0.8))), 2);
 			float[] cteProbs = {1 - chanceToEvade, chanceToEvade};
 			if (Utils.Choose (cteProbs) != 0) {
-				if(!anim.GetBool("Attacking") && !anim.GetBool("BowAttacking"))
+				if(!anim.GetBool("Attacking") && !anim.GetBool("BowAttacking") && !anim.GetBool("SpellCasting"))
 					anim.SetBool ("Evading", true);
 				Debug.Log ("Esquivaste el ataque! ");
 				return false;
 			}
-//			Debug.Log ("player chance To Evade: " + chanceToEvade);
 		}
 		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
 		if (Utils.Choose (blockProb) != 0) { 

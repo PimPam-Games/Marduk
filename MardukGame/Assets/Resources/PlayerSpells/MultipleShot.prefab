@@ -32,8 +32,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: .889655113, b: 0, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 9b7e76927532dda4883133bafa1fefe4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1fc3d886e6033ae4b8385073baea67e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -64,6 +64,7 @@ MonoBehaviour:
   manaCostPerLvl: 1
   force: {x: 1200, y: 0}
   flipProjectile: 1
+  staticProjectile: 0
   projectile: {fileID: 108042, guid: 26e40b4ea95e7274c860baf18d875959, type: 2}
   initMinDmg: 0
   initMaxDmg: 0
@@ -149,12 +150,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: .889655113
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1fc3d886e6033ae4b8385073baea67e9,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122322}

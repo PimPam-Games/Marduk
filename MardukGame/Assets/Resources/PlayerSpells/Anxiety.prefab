@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .603854716, g: .816176474, b: .00600130344, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4dec199b1616a8545b3b5e0662cd9772, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -76,6 +76,8 @@ MonoBehaviour:
   increasedAttackSpeed: 50
   increasedCastSpeed: 50
   increasedMovementSpeed: 2
+  increasedManaRegen: 0
+  increasedMaxMana: 0
 --- !u!222 &22216454
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -123,15 +125,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.r
-      value: .603854716
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: .816176474
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
-      value: .00600130344
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spellName
@@ -168,6 +170,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: increasedMovementSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4dec199b1616a8545b3b5e0662cd9772,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

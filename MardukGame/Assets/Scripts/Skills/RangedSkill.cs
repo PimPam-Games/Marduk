@@ -6,6 +6,7 @@ public class RangedSkill : SpellStats {
 
 	public Vector2 force;
 	public bool flipProjectile;
+	public bool staticProjectile = false;
 	public GameObject projectile;
 	private PlayerProjStats projStats;
 

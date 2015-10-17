@@ -20,8 +20,12 @@ public class PlayerProjLauncher : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		//castDelayCount -= Time.deltaTime;
+		if(staticProjectile && proj != null){
+			if (character.isFacingRight ())
+				proj.transform.position = new Vector3(this.transform.position.x - 0.4f,this.transform.position.y,this.transform.position.z);
+			else	
+				proj.transform.position = new Vector3(this.transform.position.x + 0.4f,this.transform.position.y,this.transform.position.z);
+		}
 	}
 
 	public void LaunchProjectile(){

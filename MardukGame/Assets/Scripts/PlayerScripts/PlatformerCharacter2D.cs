@@ -145,7 +145,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 				anim.speed += currentSkill.animSpeed/2;
 			else
 				Debug.Log ("skill null");
-			Debug.Log ("cast anim speed  added" + anim.speed);
 		}
 
 		public void DoDamage(){ //se llama desde la animacion de ataque para que el ataque empiecwe a hacer daño
@@ -414,9 +413,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private void checkSkill(int i){
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
 			if (skill != null) {
-				//if(skill.projectile != null){ //si tiene un proyectil se lo seteo al lanzador
-					
-			//	}
 				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking"))
 					return;
 				
@@ -438,6 +434,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 							projLaunchers[0].projectile = rskill.projectile;
 							projLaunchers[0].force = rskill.force;
 							projLaunchers[0].flipProjectile = rskill.flipProjectile;
+							projLaunchers[0].staticProjectile = rskill.staticProjectile;
+							projLaunchers[0].staticProjectile = rskill.staticProjectile;
 							currentSkill = skill;
 							anim.SetBool("SpellCasting", true);
 						}
@@ -462,7 +460,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public void Idle(){
 
 			anim.speed = p.currentAnimSpeed;
-			//Debug.Log ("-speed: " + weaponScript.animSpeed);
 
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);

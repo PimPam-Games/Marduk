@@ -13,6 +13,8 @@ public class PlayerProjStats : MonoBehaviour {
 	public bool isParticle;
 	public bool dontDestroy = false;
 	public bool hasSplashAnim = false;
+	public bool isAoe = false;
+
 	//public float manaCost = 5f;
 	private float rotationChange;
 	public Animator anim;
@@ -26,20 +28,17 @@ public class PlayerProjStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-
 		//PlayerStats.UpdateMana ();
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
-
 	}
-
-
 
 	// Update is called once per frame
 	void Update () {
 		/*Vector2 v = rb.velocity;
 		float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
+	
 		if (collision) {
 			rb.velocity = new Vector2 (0, 0.2f);
 			lifeTime += Time.deltaTime*5;
@@ -60,7 +59,7 @@ public class PlayerProjStats : MonoBehaviour {
 		float damage;
 		float damageConverted = 0;
 		if (col.gameObject.tag == "Enemy") {
-			if (alreadyHit)
+			if (!isAoe && alreadyHit)
 				return;
 			alreadyHit = true;
 			EnemyStats enemy = col.gameObject.GetComponent<EnemyStats>();
