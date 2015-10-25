@@ -9,6 +9,7 @@ public class InputControllerGui : MonoBehaviour {
 	private MyGUI gui;
 	public GameObject traitsPanel;
 	public GameObject teleporterPanel;
+	public GameObject characterPanel;
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
 	//private bool gamePaused = false;
@@ -30,7 +31,11 @@ public class InputControllerGui : MonoBehaviour {
 			SetMouseVisible();
 		}
 		if (Input.GetButtonUp ("ToggleCharacterWindow") && !menuInGame.IsActive()) {
-			gui.ToggleCharacterWindow();
+			//gui.ToggleCharacterWindow();
+			if(characterPanel.activeSelf)
+				characterPanel.SetActive(false);
+			else
+				characterPanel.SetActive(true);
 			SetMouseVisible();
 		}
 		if (Input.GetButtonUp ("ToggleTraits") && !menuInGame.IsActive()) {
@@ -88,7 +93,7 @@ public class InputControllerGui : MonoBehaviour {
 	}
 
 	private void SetMouseVisible(){
-		if(MyGUI.InventoryOpen() || MyGUI.CharacterWindowOpen() || menuInGame.IsActive() || traitsPanel.activeSelf || tpOpen)
+		if(MyGUI.InventoryOpen() || characterPanel.activeSelf || menuInGame.IsActive() || traitsPanel.activeSelf || tpOpen)
 			Cursor.visible = true;
 		else
 			Cursor.visible = false;
