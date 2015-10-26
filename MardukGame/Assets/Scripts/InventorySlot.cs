@@ -39,18 +39,18 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
 	public void OnPointerEnter (PointerEventData eventData)
 	{
-		Debug.Log("pointer enter");
+		//Debug.Log("pointer enter");
 	}
 
 
 	public void OnPointerExit (PointerEventData eventData)
 	{
-		Debug.Log("pointer exit");
+		//Debug.Log("pointer exit");
 	}
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		Debug.Log("pointer click");
+		//Debug.Log("pointer click");
 	}
 
 }

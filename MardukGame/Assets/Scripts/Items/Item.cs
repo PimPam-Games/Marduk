@@ -14,6 +14,8 @@ public class Item : MonoBehaviour {
 	private float[] offensives;
 	private float[] defensives;
 	private float[] utils;
+	private int inventoryPosition; //posicion del item en el inventario
+	private bool isEquipped; //si el item esta equipado o no
 	private Rigidbody2D rb;
 	private int soundCount = 0; //para que el sonido no se reproduzca 2 veces
 	public float[] initMinDamage = new float[2];
@@ -24,18 +26,21 @@ public class Item : MonoBehaviour {
 	public SpriteRenderer auraRend;
 	private float moveTimer = 0; //son para que objeto se mueva un poco
 	private float moveSpeed = 0.1f;
-
+	public bool itemForSlot = false; //si es true es un item para poner en un slot, si no es un item de los que se pueden agarrar
 	public AudioSource itemSound;
 
 	void Awake(){
 
-		itemSound = GetComponent<AudioSource> ();
+		
 		atributes = new float[p.CantAtributes];
 		offensives = new float[p.CantOffensives];
 		defensives = new float[p.CantDefensives];
 		utils = new float[p.CantUtils];
-		rb = GetComponent<Rigidbody2D> ();
-		auraRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		if(!itemForSlot){
+			itemSound = GetComponent<AudioSource> ();
+			rb = GetComponent<Rigidbody2D> ();
+			auraRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
+		}
 		//StartCoroutine (StopMove ());
 	}
 
@@ -57,13 +62,15 @@ public class Item : MonoBehaviour {
 	}
 
 	void Update(){
-		if (rb.isKinematic == true) {
-			if (moveTimer <= 0) {
-				moveSpeed *= -1;
-				moveTimer = 0.4f;
+		if(!itemForSlot){
+			if (rb.isKinematic == true) {
+				if (moveTimer <= 0) {
+					moveSpeed *= -1;
+					moveTimer = 0.4f;
+				}
+				moveTimer -= Time.deltaTime;
+				rb.velocity = new Vector2 (0, moveSpeed);
 			}
-			moveTimer -= Time.deltaTime;
-			rb.velocity = new Vector2 (0, moveSpeed);
 		}
 	}
 
@@ -87,7 +94,15 @@ public class Item : MonoBehaviour {
 		}
 	}
 
+	public bool IsEquipped{
+		get {return isEquipped;}
+		set {isEquipped = value;}
+	}
 
+	public int InventoryPosition{
+		get {return inventoryPosition;}
+		set {inventoryPosition = value;}
+	}
 
 	public float[] Atributes{
 		get {return atributes;}

@@ -14,7 +14,8 @@ public class PlayerItems: MonoBehaviour {
 	private static SpriteRenderer quiverRenderer;
 	public static SpriteRenderer arrowRenderer;
 	private static ReSkinAnimation reSkin;
-	private static List<Item> inventory = new List<Item>();
+	public static int InventoryMaxSize = 35;
+	private static List<Item> inventory = new List<Item>(InventoryMaxSize);
 
 	private static Item equipedArmour;
 	private static Item equipedWeapon;
@@ -25,7 +26,7 @@ public class PlayerItems: MonoBehaviour {
 	private static Item equipedRingL;
 	private static Item equipedRingR;
 
-	public static int InventoryMaxSize = 30;
+	
 	public static int inventoryCantItems = 0;
 	public static int CantTeleporters = 6;
 	public static bool[] playerTeleporters;

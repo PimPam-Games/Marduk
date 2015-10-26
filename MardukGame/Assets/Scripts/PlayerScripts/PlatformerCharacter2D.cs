@@ -210,7 +210,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					PlayerItems.Inventory.Add (it);
 					PlayerItems.inventoryCantItems++;
 					//string itName = item.GetComponent<Item>().Name;
-					//inventoryPanel.AddItem(itName);
+					//inventoryPanel.AddItem(it);
 				}
 				else{						
 					if(item.tag == "Spell" && item.activeSelf){			
