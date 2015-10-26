@@ -26,7 +26,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public PlayerProjLauncher bowLauncher;
 		public GameObject bowLauncherGO;
 		private SpellsPanel spellsPanel;
-		
+		private InventorySlotsPanel inventoryPanel;		
+
 		private Transform backforeArm;
         private Transform groundCheck; // A position marking where to check if the player is grounded.
         private float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -69,6 +70,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		void Start(){
 			spellsPanel = GameObject.Find ("SpellsPanel").GetComponent<SpellsPanel> ();
+			//inventoryPanel = GameObject.Find ("InventorySlots").GetComponent<InventorySlotsPanel> ();
 			playerSkills = new SpellStats[4];
 			moveSkillSpeed = new float[2];
 		}
@@ -161,10 +163,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					Debug.Log("es null");
 					return;
 				}
-				/*if( item.transform.parent == item.transform ){
-					Debug.Log("hijos: " + item.transform.childCount);
-					return;
-				}	*/
+
 				if (item.tag == "Item" && item.activeSelf) {
 					playerItemsGO.Add(item);
 					item.SetActive(false);
@@ -207,8 +206,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 					}
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
 						return;
+
 					PlayerItems.Inventory.Add (it);
 					PlayerItems.inventoryCantItems++;
+					//string itName = item.GetComponent<Item>().Name;
+					//inventoryPanel.AddItem(itName);
 				}
 				else{						
 					if(item.tag == "Spell" && item.activeSelf){			

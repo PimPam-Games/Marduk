@@ -72,9 +72,6 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 
 				st.CurrentExp = currentExp;
 				st.NextLevelExp = st.SpellExpFormula();
-				if(st.type == Types.SkillsTypes.Aura){
-					//p.defensives[p.LifePerSecond] += st.lifeRegenPerSecond;
-				}
 				HasChanged();
 				return true;
 			}
