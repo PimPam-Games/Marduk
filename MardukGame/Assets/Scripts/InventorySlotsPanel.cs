@@ -7,14 +7,15 @@ using UnityEngine.UI;
 public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 
 	public Transform[] slotsPanels;
-	public Transform weaponSlot;
-	public Transform shieldSlot;
-	public Transform armourSlot;
-	public Transform headSlot;
-	public Transform amuletSlot;
-	public Transform ringLSlot;
-	public Transform ringRSlot;
-	public Transform beltSlot;
+	public Transform weaponSlot = null;
+	public Transform armourSlot = null;
+	public Transform shieldSlot = null;
+	public Transform headSlot = null;
+	public Transform beltSlot = null;
+	public Transform ringLSlot = null;
+	public Transform ringRSlot = null;
+	public Transform amuletSlot = null;
+	
 	//public GameObject itemUI;
 	// Use this for initialization
 	void Start () {
@@ -28,7 +29,6 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 
 	public void HasChanged ()
 	{
-		Debug.Log("has changed ");
 		int i = 0;
 		for(int j = 0; j < slotsPanels.Length;j++) {
 			foreach(Transform slot in slotsPanels[j]){
@@ -37,22 +37,24 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 				if(item != null){
 					item.GetComponent<Item>().IsEquipped = false;
 					item.GetComponent<Item>().InventoryPosition = i;
-					Debug.Log("item en posicion " + i);
 				}
 				i++;
 			}
 		}
-		GameObject weaponItem = weaponSlot.GetComponent<InventorySlot>().item;
-		if(weaponItem != null){
-			Item it = weaponItem.GetComponent<Item>();
-			it.IsEquipped = true;
-			it.InventoryPosition = -1; //-1 significa que no esta en el inventario
-			PlayerItems.EquipedWeapon = it;
-			PlayerItems.inventoryCantItems--;
-		}
-		else{
+		if(weaponSlot != null && weaponSlot.GetComponent<InventorySlot>().item == null)
 			PlayerItems.EquipedWeapon = null;
-		}
+		if(armourSlot != null && armourSlot.GetComponent<InventorySlot>().item == null)
+			PlayerItems.EquipedArmour = null;
+		if(shieldSlot != null && shieldSlot.GetComponent<InventorySlot>().item == null)
+			PlayerItems.EquipedShield = null;
+		if(weaponSlot != null && weaponSlot.GetComponent<InventorySlot>().item == null)
+			PlayerItems.EquipedWeapon = null;
+		if(weaponSlot != null && weaponSlot.GetComponent<InventorySlot>().item == null)
+			PlayerItems.EquipedWeapon = null;
+		if(weaponSlot != null && weaponSlot.GetComponent<InventorySlot>().item == null)
+			PlayerItems.EquipedWeapon = null;
+		if(weaponSlot != null && weaponSlot.GetComponent<InventorySlot>().item == null)
+			PlayerItems.EquipedWeapon = null;
 	}
 
 	public bool AddItem(Item newItem){
@@ -70,7 +72,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 				if(item == null){
 					Item itComponent = it.GetComponent<Item>(); //copia todo lo del item que estaba en el suelo al item que se ve en la ui del inventario
 					itComponent.Atributes = newItem.Atributes;
-					itComponent.Offensives = newItem.Offensives;			
+					itComponent.Offensives = newItem.Offensives;		
 					itComponent.Defensives = newItem.Defensives;
 					itComponent.Utils = newItem.Utils;
 					itComponent.Name = newItem.Name;
@@ -87,7 +89,6 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 					HasChanged();
 					return true;
 				}	
-				
 			}
 		}
 		return false;

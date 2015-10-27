@@ -6,10 +6,11 @@ public class InputControllerGui : MonoBehaviour {
 
 	//este script esta en el gameobject GUI, 
 
-	private MyGUI gui;
+	//private MyGUI gui;
 	public GameObject traitsPanel;
 	public GameObject teleporterPanel;
 	public GameObject characterPanel;
+	public GameObject inventory;
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
 	//private bool gamePaused = false;
@@ -19,7 +20,7 @@ public class InputControllerGui : MonoBehaviour {
 	void Awake () {
 
 
-		gui = GetComponent<MyGUI>();
+		//gui = GetComponent<MyGUI>();
 	}
 
 
@@ -27,7 +28,13 @@ public class InputControllerGui : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonUp ("ToggleInventory") && !menuInGame.IsActive()) {
-			gui.ToggleInventoryWindow();
+			//gui.ToggleInventoryWindow();
+			if(inventory.activeSelf){
+				//if(!Input.Fire1"))
+					inventory.SetActive(false);
+			}
+			else
+				inventory.SetActive(true);
 			SetMouseVisible();
 		}
 		if (Input.GetButtonUp ("ToggleCharacterWindow") && !menuInGame.IsActive()) {
@@ -93,7 +100,7 @@ public class InputControllerGui : MonoBehaviour {
 	}
 
 	private void SetMouseVisible(){
-		if(MyGUI.InventoryOpen() || characterPanel.activeSelf || menuInGame.IsActive() || traitsPanel.activeSelf || tpOpen)
+		if(inventory.activeSelf || characterPanel.activeSelf || menuInGame.IsActive() || traitsPanel.activeSelf || tpOpen)
 			Cursor.visible = true;
 		else
 			Cursor.visible = false;

@@ -26,7 +26,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public PlayerProjLauncher bowLauncher;
 		public GameObject bowLauncherGO;
 		private SpellsPanel spellsPanel;
-		private InventorySlotsPanel inventoryPanel;		
+		public InventorySlotsPanel inventoryPanel;		
 
 		private Transform backforeArm;
         private Transform groundCheck; // A position marking where to check if the player is grounded.
@@ -169,7 +169,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					item.SetActive(false);
 					Item it = item.GetComponent<Item>();
 					
-					if(PlayerItems.EquipedWeapon == null && it.Type == ItemTypes.Weapon){ //si el slot del arma no esta ocupado pongo ahi el nuevo item
+					/*if(PlayerItems.EquipedWeapon == null && it.Type == ItemTypes.Weapon){ //si el slot del arma no esta ocupado pongo ahi el nuevo item
 						PlayerItems.EquipedWeapon = it;
 						return;
 					}
@@ -203,14 +203,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 					if(PlayerItems.EquipedRingR == null && it.Type == ItemTypes.Ring){
 						PlayerItems.EquipedRingR = it;
 						return;
-					}
+					}*/
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
 						return;
 
-					PlayerItems.Inventory.Add (it);
-					PlayerItems.inventoryCantItems++;
+					//PlayerItems.Inventory.Add (it);
+					//PlayerItems.inventoryCantItems++;
 					//string itName = item.GetComponent<Item>().Name;
-					//inventoryPanel.AddItem(it);
+					inventoryPanel.AddItem(it);
 				}
 				else{						
 					if(item.tag == "Spell" && item.activeSelf){			

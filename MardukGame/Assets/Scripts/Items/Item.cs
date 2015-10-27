@@ -31,12 +31,12 @@ public class Item : MonoBehaviour {
 
 	void Awake(){
 
-		
+		if(!itemForSlot){
 		atributes = new float[p.CantAtributes];
 		offensives = new float[p.CantOffensives];
 		defensives = new float[p.CantDefensives];
 		utils = new float[p.CantUtils];
-		if(!itemForSlot){
+		
 			itemSound = GetComponent<AudioSource> ();
 			rb = GetComponent<Rigidbody2D> ();
 			auraRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -45,19 +45,21 @@ public class Item : MonoBehaviour {
 	}
 
 	void Start(){
-		if (type == ItemTypes.Weapon || type == ItemTypes.RangedWeapon) { //el item es un arma
-			Offensives [p.MinDmg] = (float)System.Math.Round(Random.Range (initMinDamage[0], initMinDamage[1]),0);
-			Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
-			Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);
-		} else {
-			if(type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
-				Defensives [p.Defense] = (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
-			else{ 
-				if(type == ItemTypes.Shield){// el item es un escudo
-					Defensives[p.Defense] =  (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
-					Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0],initBlockChance[1]),0);
-				}
-			}	
+		if(!itemForSlot){
+			if (type == ItemTypes.Weapon || type == ItemTypes.RangedWeapon) { //el item es un arma
+				Offensives [p.MinDmg] = (float)System.Math.Round(Random.Range (initMinDamage[0], initMinDamage[1]),0);
+				Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
+				Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);
+			} else {
+				if(type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
+					Defensives [p.Defense] = (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
+				else{ 
+					if(type == ItemTypes.Shield){// el item es un escudo
+						Defensives[p.Defense] =  (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
+						Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0],initBlockChance[1]),0);
+					}
+				}	
+			}
 		}
 	}
 
