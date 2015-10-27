@@ -14,7 +14,8 @@ public class Item : MonoBehaviour {
 	private float[] offensives;
 	private float[] defensives;
 	private float[] utils;
-	private int inventoryPosition; //posicion del item en el inventario
+	private int inventoryPositionX = -2; //posicion del item en el inventario
+	private int inventoryPositionY = -2;
 	private bool isEquipped; //si el item esta equipado o no
 	private Rigidbody2D rb;
 	private int soundCount = 0; //para que el sonido no se reproduzca 2 veces
@@ -101,9 +102,14 @@ public class Item : MonoBehaviour {
 		set {isEquipped = value;}
 	}
 
-	public int InventoryPosition{
-		get {return inventoryPosition;}
-		set {inventoryPosition = value;}
+	public int InventoryPositionX{
+		get {return inventoryPositionX;}
+		set {inventoryPositionX = value;}
+	}
+
+	public int InventoryPositionY{
+		get {return inventoryPositionY;}
+		set {inventoryPositionY = value;}
 	}
 
 	public float[] Atributes{

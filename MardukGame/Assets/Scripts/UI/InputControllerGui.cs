@@ -30,7 +30,7 @@ public class InputControllerGui : MonoBehaviour {
 		if (Input.GetButtonUp ("ToggleInventory") && !menuInGame.IsActive()) {
 			//gui.ToggleInventoryWindow();
 			if(inventory.activeSelf){
-				//if(!Input.Fire1"))
+				if(!Input.GetMouseButton(0))
 					inventory.SetActive(false);
 			}
 			else

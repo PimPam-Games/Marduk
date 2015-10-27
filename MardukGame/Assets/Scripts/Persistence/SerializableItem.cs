@@ -13,6 +13,9 @@ public class SerializableItem{
 		offensives = it.Offensives;
 		defensives = it.Defensives;
 		utils = it.Utils;
+		inventoryPositionX = it.InventoryPositionX;
+		inventoryPositionY = it.InventoryPositionY;
+		isEquipped = it.IsEquipped;
 	}
 
 	public string itemName;
@@ -22,6 +25,8 @@ public class SerializableItem{
 	public float[] offensives;
 	public float[] defensives;
 	public float[] utils;
-
+	public int inventoryPositionX; //posicion del item en el inventario
+	public int inventoryPositionY;
+	public bool isEquipped; 
 
 }

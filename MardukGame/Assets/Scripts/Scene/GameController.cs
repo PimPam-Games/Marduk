@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour {
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
 		//deadEnemies = new List<string>();
 		player.GetComponent<PlatformerCharacter2D>().inventoryPanel = inventoryUI.GetComponent<InventorySlotsPanel>();
+		//inventoryUI.GetComponent<InventorySlotsPanel>().LoadItems();
 		player.GetComponent<BoxCollider2D> ().enabled = false;
 		player.GetComponent<Rigidbody2D> ().isKinematic = true;
 		DontDestroyOnLoad (this);

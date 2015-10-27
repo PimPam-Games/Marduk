@@ -245,6 +245,7 @@ public class Persistence : MonoBehaviour {
 			}
 			pItems.Inventory = inv;
 			pItems.inventoryCantItems = data.inventoryCantItems;
+			
 			pItems.playerTeleporters = data.teleporters;
 			GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
@@ -275,6 +276,9 @@ public class Persistence : MonoBehaviour {
 		newItem.Defensives = i.defensives;
 		newItem.Offensives = i.offensives;
 		newItem.Utils = i.utils;
+		newItem.InventoryPositionX = i.inventoryPositionX;
+		newItem.InventoryPositionY = i.inventoryPositionY;
+		newItem.IsEquipped = i.isEquipped;
 		DontDestroyOnLoad (newItem);
 		PlatformerCharacter2D.playerItemsGO.Add (newWeapon);
 		newWeapon.SetActive (false);
