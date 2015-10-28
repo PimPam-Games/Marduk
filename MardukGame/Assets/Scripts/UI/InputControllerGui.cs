@@ -11,6 +11,7 @@ public class InputControllerGui : MonoBehaviour {
 	public GameObject teleporterPanel;
 	public GameObject characterPanel;
 	public GameObject inventory;
+	public GameObject invTooltip;
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
 	//private bool gamePaused = false;
@@ -30,8 +31,10 @@ public class InputControllerGui : MonoBehaviour {
 		if (Input.GetButtonUp ("ToggleInventory") && !menuInGame.IsActive()) {
 			//gui.ToggleInventoryWindow();
 			if(inventory.activeSelf){
-				if(!Input.GetMouseButton(0))
+				if(!Input.GetMouseButton(0)){
 					inventory.SetActive(false);
+					invTooltip.SetActive(false);
+				}
 			}
 			else
 				inventory.SetActive(true);

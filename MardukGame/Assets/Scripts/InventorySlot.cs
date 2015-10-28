@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler{
 
@@ -10,6 +11,7 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	private float doubleClickTimer = 0;
 	private float doubleClickDelay = 0.5f;
 	private int clickCount = 0;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -112,23 +114,49 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
 	public void OnPointerEnter (PointerEventData eventData)
 	{
-		//Debug.Log("pointer enter");
+		
+		if(item!=null){
+			InventorySlotsPanel.invTooltip.SetActive(true);
+			InventorySlotsPanel.invTooltip.GetComponentInChildren<Text>().text = item.GetComponent<Item>().ToolTip();
+		}
 	}
 
 
 	public void OnPointerExit (PointerEventData eventData)
 	{
-		//Debug.Log("pointer exit");
+		if(item!=null){
+			InventorySlotsPanel.invTooltip.SetActive(false);
+			//InventorySlotsPanel.invTooltip.GetComponentInChildren<Text>().text = item.GetComponent<Item>().ToolTip();
+		}
 	}
 
 	public void OnPointerClick (PointerEventData eventData)
 	{
-		clickCount++;
-		doubleClickTimer = doubleClickDelay;
-		if(clickCount == 2){
-			clickCount = 0;
-			Debug.Log("Double click");
+		switch(eventData.button)
+		{
+		case PointerEventData.InputButton.Left:
+			clickCount++;
+			doubleClickTimer = doubleClickDelay;
+			if(clickCount == 2){
+				clickCount = 0;
+				if(item == null)
+					return;
+				
+			}
+			break;
+		case PointerEventData.InputButton.Right:
+			if(item!=null){
+				Item it = item.GetComponent<Item>();
+				if(it.IsEquipped){
+					return;					
+				}
+				PlayerItems.Inventory.Remove(it);
+				Destroy(item.gameObject);
+				ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
+			}
+			break;
 		}
+		
 	}
 
 }

@@ -168,45 +168,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 					playerItemsGO.Add(item);
 					item.SetActive(false);
 					Item it = item.GetComponent<Item>();
-					
-					/*if(PlayerItems.EquipedWeapon == null && it.Type == ItemTypes.Weapon){ //si el slot del arma no esta ocupado pongo ahi el nuevo item
-						PlayerItems.EquipedWeapon = it;
-						return;
-					}
-					if(PlayerItems.EquipedArmour == null && it.Type == ItemTypes.Armour){
-						PlayerItems.EquipedArmour = it;
-						return;
-					}
-					if(PlayerItems.EquipedShield == null && it.Type == ItemTypes.Shield){
-						if(!(PlayerItems.EquipedWeapon == null) && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){} //si hay un arco equipado no hago nada
-						else{
-							PlayerItems.EquipedShield = it;
-							return;
-						}						
-					}
-					if(PlayerItems.EquipedHelmet == null && it.Type == ItemTypes.Helmet){
-						PlayerItems.EquipedHelmet = it;
-						return;
-					}
-					if(PlayerItems.EquipedBelt == null && it.Type == ItemTypes.Belt){
-						PlayerItems.EquipedBelt = it;
-						return;
-					}
-					if(PlayerItems.EquipedAmulet == null && it.Type == ItemTypes.Amulet){
-						PlayerItems.EquipedAmulet = it;
-						return;
-					}
-					if(PlayerItems.EquipedRingL == null && it.Type == ItemTypes.Ring){
-						PlayerItems.EquipedRingL = it;
-						return;
-					}
-					if(PlayerItems.EquipedRingR == null && it.Type == ItemTypes.Ring){
-						PlayerItems.EquipedRingR = it;
-						return;
-					}*/
 					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
 						return;
-
 					//PlayerItems.Inventory.Add (it);
 					//PlayerItems.inventoryCantItems++;
 					//string itName = item.GetComponent<Item>().Name;

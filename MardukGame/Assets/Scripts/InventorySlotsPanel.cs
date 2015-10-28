@@ -17,13 +17,15 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	public Transform ringRSlot = null;
 	public Transform amuletSlot = null;
 	public GameObject itemUI;
+	public GameObject invTooltipGO;
+	public static GameObject invTooltip;
 	private bool itemsLoaded = false;
 	
 	
 	//public GameObject itemUI;
 	// Use this for initialization
 	void Start () {
-	
+		invTooltip = invTooltipGO;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +37,6 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	}
 		
 	public void LoadItems(){
-		Debug.Log("LOAD ITEMS " + PlayerItems.Inventory.Count);	
 		List<Item> ilistAux = new List<Item>();	
 		foreach(Item item in PlayerItems.Inventory){
 			GameObject it = (GameObject)Instantiate (itemUI, itemUI.transform.position, itemUI.transform.rotation);
@@ -129,13 +130,14 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 
 	/* se llama cada vez que hubo un cambio en algun slot */
 	public void HasChanged ()
-	{		
+	{	int cantItems = 0;		
 		for(int j = 0; j < slotsPanels.Length;j++) { //recorre el inventario y se fija los objetos y sus posiciones
 			int i = 0;
 			foreach(Transform slot in slotsPanels[j]){	
 				InventorySlot sl = slot.GetComponent<InventorySlot>();
 				GameObject item = sl.item;
 				if(item != null){
+					cantItems++;
 					item.GetComponent<Item>().IsEquipped = false;
 					item.GetComponent<Item>().InventoryPositionX = j;
 					item.GetComponent<Item>().InventoryPositionY = i;				
@@ -143,7 +145,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 				i++;
 			}
 		}
-
+		PlayerItems.inventoryCantItems = cantItems;
 		/* desequipar objetos */
 		if(weaponSlot != null && weaponSlot.GetComponent<InventorySlot>().item == null)
 			PlayerItems.EquipedWeapon = null;

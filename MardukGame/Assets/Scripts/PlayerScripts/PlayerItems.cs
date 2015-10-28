@@ -15,7 +15,7 @@ public class PlayerItems: MonoBehaviour {
 	public static SpriteRenderer arrowRenderer;
 	private static ReSkinAnimation reSkin;
 	public static int InventoryMaxSize = 35;
-	private static List<Item> inventory = new List<Item>(InventoryMaxSize);
+	private static List<Item> inventory = new List<Item>();
 
 	private static Item equipedArmour;
 	private static Item equipedWeapon;
@@ -323,6 +323,7 @@ public class PlayerItems: MonoBehaviour {
 			//utils [MovementSpeed] = InitMoveSpeed + (InitMoveSpeed * porcentaje / 100 )
 		}
 	}
+
 
 	// Use this for initialization
 	void Awake () {
