@@ -39,7 +39,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d298de7e7b57fa743bc14f2a5efe0ba7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0408a1d82f2d30b4e90db6f414b561e0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .5
   m_Pitch: 1
@@ -124,6 +124,7 @@ MonoBehaviour:
   player: {fileID: 174082, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
   miniMap: {fileID: 0}
   miniMapPos: {fileID: 0}
+  inventoryUI: {fileID: 0}
   playerStats: {fileID: 0}
   music1: {fileID: 8241982}
   auraRendsGameCtrl:
@@ -131,6 +132,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 16e1e3baa5e33ea45bd591531636f0be, type: 3}
   - {fileID: 21300000, guid: 8eba23a15b945314ca18395322881dcb, type: 3}
   - {fileID: 21300000, guid: 0b263c9fdb5ac764eb5a544eb924cb85, type: 3}
+  lifeOrbsGameCtrl:
+  - {fileID: 164486, guid: 005f224d4a69051478102354efe44b72, type: 2}
+  - {fileID: 115110, guid: 9d9cea6455a49614882d16b43cfb1cf5, type: 2}
+  - {fileID: 159400, guid: e19d14ad5c4105548b8c01e43db0252a, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

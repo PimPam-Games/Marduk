@@ -271,6 +271,13 @@ public class PlayerStats : MonoBehaviour {
 		}
 	}
 
+	public static void AddLife(float percentage){
+		if (currentHealth < defensives [MaxHealth])
+			currentHealth += (defensives[MaxHealth] * percentage / 100); //da un 5% de la vida maxima
+		if (currentHealth > defensives [MaxHealth])
+			currentHealth = defensives [MaxHealth];
+	}
+
 	/* setea los stats iniciales */
 	private static void intialStats(){
 		offensives [MinDmg] = InitMinDmg;

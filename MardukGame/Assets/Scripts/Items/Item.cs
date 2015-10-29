@@ -29,6 +29,7 @@ public class Item : MonoBehaviour {
 	private float moveSpeed = 0.1f;
 	public bool itemForSlot = false; //si es true es un item para poner en un slot, si no es un item de los que se pueden agarrar
 	public AudioSource itemSound;
+	public int lifeToAdd = 5; //porcentaje de la vida maxima que agrega el orbe
 
 	void Awake(){
 
@@ -66,7 +67,7 @@ public class Item : MonoBehaviour {
 
 	void Update(){
 		if(!itemForSlot){
-			if (rb.isKinematic == true) {
+			if (rb.isKinematic) { //esto le da el efecto de "levitacion"
 				if (moveTimer <= 0) {
 					moveSpeed *= -1;
 					moveTimer = 0.4f;
@@ -257,5 +258,6 @@ public enum ItemTypes{
 	Ring,
 	Amulet,
 	Belt,
-	Spell
+	Spell,
+	Orb
 }

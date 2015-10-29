@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour {
 	public AudioSource music1;
 	public Sprite[] auraRendsGameCtrl = new Sprite[4]; //los renders cargados en el objeto game controller 
 	public static Sprite[] auraRenders; // despues les paso los auraRendsGameCtrl para que se puedan usar de todas las clases
+	public GameObject[] lifeOrbsGameCtrl = new GameObject[3];
+	public static GameObject[] lifeOrbs;
 
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
@@ -62,6 +64,7 @@ public class GameController : MonoBehaviour {
 		levelConnections = new List<string[]>();
 		enemyList = Resources.LoadAll("Enemies/Zone1", typeof(Object));
 		auraRenders = auraRendsGameCtrl;
+		lifeOrbs = lifeOrbsGameCtrl;
 		for (int i = 2; i <= CantLevels; i++) {
 			notVisitedLevels.Add("level" + i);
 		}

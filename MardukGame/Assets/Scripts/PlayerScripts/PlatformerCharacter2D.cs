@@ -154,7 +154,16 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		void OnTriggerStay2D(Collider2D col){
-			if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) {
+
+			if(!p.isDead){ //si toco un orbe de vida
+				GameObject orb = col.gameObject;
+				if(orb.tag == "LifeOrb"){
+					p.AddLife(orb.GetComponent<Item>().lifeToAdd);
+					Destroy(orb.gameObject);
+				}
+			}
+
+			if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) { //agarra un item
 				/*if(isColliding)
 					return;
 				isColliding = true;*/

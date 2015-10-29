@@ -342,6 +342,11 @@ public class EnemyStats : MonoBehaviour {
 			float[] dropItemProb = {0.5f,0.5f}; //50% de chance de tirar un item al morir
 			if(Utils.Choose (dropItemProb) == 0)
 				GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
+			float[] dropOrbProb = {0.65f,0.35f};
+			if(Utils.Choose(dropOrbProb)==1){
+				float[] typeOrbProb = {0.5f,0.3f,0.2f}; //0 chico, 1 mediano, 2 grande
+				Instantiate(GameController.lifeOrbs[Utils.Choose(typeOrbProb)],this.transform.position,this.transform.rotation);
+			}
 		}
 		//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 		
