@@ -22,7 +22,7 @@ public class TraitsPanel : MonoBehaviour{
 
 	// Update is called once per frame
 	void Update () {
-		passivePointsText.text = "Passive points: " + p.passivePoints;
+		passivePointsText.text = p.passivePoints.ToString();
 	}
 	
 	public void clickOnTrait(int tName) {

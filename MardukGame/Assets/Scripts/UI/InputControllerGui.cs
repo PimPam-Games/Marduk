@@ -8,6 +8,7 @@ public class InputControllerGui : MonoBehaviour {
 
 	//private MyGUI gui;
 	public GameObject traitsPanel;
+	public GameObject traitsTooltip;
 	public GameObject teleporterPanel;
 	public GameObject characterPanel;
 	public GameObject inventory;
@@ -49,8 +50,10 @@ public class InputControllerGui : MonoBehaviour {
 			SetMouseVisible();
 		}
 		if (Input.GetButtonUp ("ToggleTraits") && !menuInGame.IsActive()) {
-			if(traitsPanel.activeSelf)
+			if(traitsPanel.activeSelf){
 				traitsPanel.SetActive(false);
+				traitsTooltip.SetActive(false);
+			}
 			else
 				traitsPanel.SetActive(true);
 			SetMouseVisible();
