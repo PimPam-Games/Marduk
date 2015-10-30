@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour {
 	public static Sprite[] auraRenders; // despues les paso los auraRendsGameCtrl para que se puedan usar de todas las clases
 	public GameObject[] lifeOrbsGameCtrl = new GameObject[3];
 	public static GameObject[] lifeOrbs;
-
+	private bool inventoryItemsLoaded = false; //true si ya se cargaron los items en el inventario
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
 		//deadEnemies = new List<string>();
@@ -84,35 +84,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		//if (currentLevel != Application.loadedLevel) {
-			/*GameObject[] enemies;
-			enemies = GameObject.FindGameObjectsWithTag("Enemy");
-			foreach(string deadEnemy in deadEnemies){ //Destruye enemigos muertos de esta scena
-				foreach(GameObject enemy in enemies){
-					if(enemy.name == deadEnemy)
-						Destroy(enemy);
-				}
-			}*/
-		//	RepositionPlayerAndCamera();
-		//	currentLevel = Application.loadedLevel;
-
-		//}
-		/*if (playerStats.readyToRespawn) {
-			//DestroyEnemies();
-
-			//enemiesPerLevel.Clear ();
-			//currLevelName = "level1";
-			//Application.LoadLevel(currLevelName);
-			Fading.BeginFadeIn("level1");
-			currentLevel = 0;
-			ChunkFactory.Initialize();
-			previousExit = 1; //la proxima entrada tiene que ser la 1, la de la izquierda del nivel
-			playerStats.RespawnStats();
-			player.GetComponent<PlatformerCharacter2D>().RespawnPosition(); //hace que el jugador mire a la derecha
-			currentLevel = 0; //cambio al nivel 0 para que se reposicione el jugador entrando por el otro if despues
-			playerStats.readyToRespawn = false;
-		}*/
+		if(levelLoaded && !inventoryItemsLoaded){
+			inventoryItemsLoaded = true;
+			player.GetComponent<PlatformerCharacter2D>().inventoryPanel.LoadItems();	
+		}
 	}
 
 

@@ -56,8 +56,8 @@ public class EnemyStats : MonoBehaviour {
 	private LevelSettings zoneSettings;
 	public double exp; //experiencia que da el bicho cuando lo matan
 	private bool playAlertSound;
-	private Renderer rend;
-	private SpriteRenderer spriteRend;
+	public Renderer rend;
+	public SpriteRenderer spriteRend;
 	private float initAnimSpeed;
 	EnemyIAMovement enemyMove;
 	EnemyRangedAttack rangedAttack;				
@@ -81,6 +81,7 @@ public class EnemyStats : MonoBehaviour {
 	private float ignitedDmg = 0;
 	private bool itemCreated = false;
 
+	public bool isBoss = false;
 	public float Accuracy{
 		get {return accuracy;}
 	}
@@ -90,8 +91,10 @@ public class EnemyStats : MonoBehaviour {
 		zoneSettings = GameObject.Find ("LevelController").GetComponent<LevelSettings>();
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
-		rend = GetComponent<Renderer> ();
-		spriteRend = GetComponent<SpriteRenderer> ();
+		if(!isBoss){
+			rend = GetComponent<Renderer> ();
+			spriteRend = GetComponent<SpriteRenderer> ();
+		}
 		enemyMove = GetComponent<EnemyIAMovement>();
 		rangedAttack = GetComponent<EnemyRangedAttack>();
 		initAnimSpeed = anim.speed;
@@ -353,11 +356,14 @@ public class EnemyStats : MonoBehaviour {
 		anim.SetBool ("IsDead", true);
 		GetComponent<BoxCollider2D> ().enabled = false;
 		p.UpdateExp (exp);
-		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
-		yield return new WaitForSeconds (0.5f);
-		while (sprite.color.a > 0) {
-			sprite.color = new Color (1f, 1f, 1f, sprite.color.a - 0.1f);
-			yield return new WaitForSeconds (0.2f);
+		if(!isBoss){
+			SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
+		
+			yield return new WaitForSeconds (0.5f);
+			while (sprite.color.a > 0) {
+				sprite.color = new Color (1f, 1f, 1f, sprite.color.a - 0.1f);
+				yield return new WaitForSeconds (0.2f);
+			}
 		}
 		Destroy (this.gameObject);
 	}

@@ -19,7 +19,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	public GameObject itemUI;
 	public GameObject invTooltipGO;
 	public static GameObject invTooltip;
-	private bool itemsLoaded = false;
+	//private bool itemsLoaded = false;
 	
 	
 	//public GameObject itemUI;
@@ -30,10 +30,10 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GameController.levelLoaded && !itemsLoaded){
+		/*if(GameController.levelLoaded && !itemsLoaded){
 			itemsLoaded = true;
 			LoadItems();	
-		}
+		}*/
 	}
 		
 	public void LoadItems(){
