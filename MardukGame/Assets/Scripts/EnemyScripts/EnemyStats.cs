@@ -88,7 +88,8 @@ public class EnemyStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		zoneSettings = GameObject.Find ("LevelController").GetComponent<LevelSettings>();
+		if(!isBoss)
+			zoneSettings = GameObject.Find ("LevelController").GetComponent<LevelSettings>();
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		if(!isBoss){
@@ -141,9 +142,11 @@ public class EnemyStats : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (zoneSettings.enemiesLvl != lvl) {
-			lvl = zoneSettings.enemiesLvl;
-			CalculateStats();
+		if(!isBoss){
+			if (zoneSettings.enemiesLvl != lvl) {
+				lvl = zoneSettings.enemiesLvl;
+				CalculateStats();
+			}
 		}
 		chillUpdate ();
 		shockUpdate ();

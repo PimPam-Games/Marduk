@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesLvl: 6
+  zoneNumber: 1
   zoneEnemies:
   - {fileID: 154232, guid: fe3aee0fdaaa9904db9afab9317bea65, type: 2}
   - {fileID: 101872, guid: 35e3af2e9bdcc2047aaa7c0d45118a88, type: 2}
@@ -476,7 +477,7 @@ MonoBehaviour:
   bgName: Mountain
   sceneName: level5
   bottomUpGeneration: 0
-  hasCaveEntranceChunk: 0
+  hasCaveEntranceChunk: 1
   generateBackground: 0
   zoneEntranceGenerated: 0
   doubleChunks:
@@ -494,6 +495,7 @@ MonoBehaviour:
   - {fileID: 139226, guid: 5019e4200522999418bc4cf36ef753a1, type: 2}
   - {fileID: 149604, guid: 7219ddf0055be77429978c43c06690ba, type: 2}
   - {fileID: 168618, guid: a0822bf3570db3841ae8602223198092, type: 2}
+  - {fileID: 167874, guid: 512604cd89599de419c6b117066862fa, type: 2}
   leftEndChunks:
   - {fileID: 144104, guid: c0c0e6f1be21096418b6902ae8082078, type: 2}
   rightEndChunks:
@@ -509,7 +511,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &2057304467
 GameObject:
   m_ObjectHideFlags: 0
