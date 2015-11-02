@@ -48,7 +48,7 @@ public class Item : MonoBehaviour {
 
 	void Start(){
 		if(!itemForSlot){
-			if (type == ItemTypes.Weapon || type == ItemTypes.RangedWeapon) { //el item es un arma
+			if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) { //el item es un arma
 				Offensives [p.MinDmg] = (float)System.Math.Round(Random.Range (initMinDamage[0], initMinDamage[1]),0);
 				Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
 				Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);
@@ -179,7 +179,7 @@ public class Item : MonoBehaviour {
 			tooltip = "<color=White>" + Name + "</color> \n";
 		tooltip += "Rarity: " + Rarity + "\n" + 
 					"Type: " + Type + "\n";
-		if (type == ItemTypes.Weapon || type == ItemTypes.RangedWeapon) {
+		if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
 			tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
 			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n";
 		}
@@ -259,5 +259,6 @@ public enum ItemTypes{
 	Amulet,
 	Belt,
 	Spell,
-	Orb
+	Orb,
+	TwoHandedWeapon
 }

@@ -41,9 +41,9 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 		Item draggedItem = DragHandeler.itemBeingDragged.GetComponent<Item>();
 		switch(slotId){
 			case WeaponSlotID:
-				if(draggedItem.type != ItemTypes.Weapon && draggedItem.type != ItemTypes.RangedWeapon)
+			if(draggedItem.type != ItemTypes.Weapon && draggedItem.type != ItemTypes.TwoHandedWeapon && draggedItem.type != ItemTypes.RangedWeapon)
 					return;
-				if(draggedItem.type == ItemTypes.RangedWeapon && PlayerItems.EquipedShield != null) //no deja equipar al arco si hay un escudo equipado
+			if((draggedItem.type == ItemTypes.RangedWeapon || draggedItem.type == ItemTypes.TwoHandedWeapon) && PlayerItems.EquipedShield != null) //no deja equipar al arco si hay un escudo equipado
 					return;
 				draggedItem.IsEquipped = true;
 				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
@@ -59,7 +59,7 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 			case ShieldSlotID:
 				if(draggedItem.type != ItemTypes.Shield)
 					return;
-				if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.type == ItemTypes.RangedWeapon) //no deja equipar al escudo si hay un arco equipado
+			if(PlayerItems.EquipedWeapon != null && (PlayerItems.EquipedWeapon.type == ItemTypes.RangedWeapon || PlayerItems.EquipedWeapon.type == ItemTypes.TwoHandedWeapon)) //no deja equipar al escudo si hay un arco equipado
 					return;
 				draggedItem.IsEquipped = true;
 				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
