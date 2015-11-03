@@ -122,15 +122,19 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (weaponScript == null)
 				return;
 			if (weaponScript.canAttack) {
-				if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon){
-					attackSound.Play();
+				if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon) {
+					attackSound.Play ();
 					anim.SetBool ("Attacking", true);
-				}
-				else{
-					bowLauncher.projectile = bowprojectile;
-					anim.SetBool ("BowAttacking", true);
-				}
-			}	
+				} else {
+					if (PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
+						attackSound.Play ();
+						anim.SetBool ("PolearmAttacking", true);
+					} else {
+						bowLauncher.projectile = bowprojectile;
+						anim.SetBool ("BowAttacking", true);
+					}
+				}	
+			}
 		}
 			
 		public void setAttackAnimSpeed(){ //se llama desde la animacion de ataque para setear la velocidad	
@@ -438,6 +442,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
 			anim.SetBool ("SpellCasting", false);
+		    anim.SetBool ("PolearmAttacking", false);
 		}
 		
         private void Flip()
