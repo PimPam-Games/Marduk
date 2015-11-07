@@ -16,7 +16,7 @@ public class PlayerItems: MonoBehaviour {
 	private static ReSkinAnimation reSkin;
 	public static int InventoryMaxSize = 35;
 	private static List<Item> inventory = new List<Item>();
-
+	private static List<SpellStats> spellsInvetory = new List<SpellStats>(); // para guardar los skills que estan en el inventario
 	private static Item equipedArmour;
 	private static Item equipedWeapon;
 	private static Item equipedHelmet;

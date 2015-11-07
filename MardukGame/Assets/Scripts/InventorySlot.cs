@@ -104,7 +104,10 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 		if (!item)
 			DragHandeler.itemBeingDragged.transform.SetParent (transform);
 		else {
-			if(DragHandeler.startParent.gameObject.GetComponent<InventorySlot>().slotId < 1){
+			InventorySlot invSlot = DragHandeler.startParent.gameObject.GetComponent<InventorySlot>();
+			if(invSlot == null)
+				return; 
+			if(invSlot.slotId < 1){
 				item.transform.SetParent(DragHandeler.startParent);
 				DragHandeler.itemBeingDragged.transform.SetParent (transform);
 			}
@@ -116,8 +119,11 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	{
 		
 		if(item!=null){
+			
 			InventorySlotsPanel.invTooltip.SetActive(true);
-			InventorySlotsPanel.invTooltip.GetComponentInChildren<Text>().text = item.GetComponent<Item>().ToolTip();
+			Item it = item.GetComponent<Item>();
+			if(it != null)
+				InventorySlotsPanel.invTooltip.GetComponentInChildren<Text>().text = it.ToolTip();
 		}
 	}
 

@@ -20,6 +20,9 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 	}
 
 	public void OnDrop(PointerEventData eventData){
+		SpellStats draggedSpell = DragHandeler.itemBeingDragged.GetComponent<SpellStats>();
+		if(draggedSpell == null)
+			return;
 		if (!spell)
 			DragHandeler.itemBeingDragged.transform.SetParent (transform);
 		else {

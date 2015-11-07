@@ -19,6 +19,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	public GameObject itemUI;
 	public GameObject invTooltipGO;
 	public static GameObject invTooltip;
+	public SpellsPanel spellsPanel;
 	//private bool itemsLoaded = false;
 	
 	
@@ -130,7 +131,8 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 
 	/* se llama cada vez que hubo un cambio en algun slot */
 	public void HasChanged ()
-	{	int cantItems = 0;		
+	{	spellsPanel.HasChanged();
+		int cantItems = 0;		
 		for(int j = 0; j < slotsPanels.Length;j++) { //recorre el inventario y se fija los objetos y sus posiciones
 			int i = 0;
 			foreach(Transform slot in slotsPanels[j]){	
@@ -138,9 +140,17 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 				GameObject item = sl.item;
 				if(item != null){
 					cantItems++;
-					item.GetComponent<Item>().IsEquipped = false;
-					item.GetComponent<Item>().InventoryPositionX = j;
-					item.GetComponent<Item>().InventoryPositionY = i;				
+					Item it = item.GetComponent<Item>();
+					if(it != null){
+						it.IsEquipped = false;
+						it.InventoryPositionX = j;
+						it.InventoryPositionY = i;
+					}				
+					else{
+						SpellStats skill = item.GetComponent<SpellStats>();
+						skill.InventoryPositionX = j;
+						skill.InventoryPositionY = i;
+					}	
 				}
 				i++;
 			}

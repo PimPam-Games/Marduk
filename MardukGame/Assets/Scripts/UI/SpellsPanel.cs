@@ -6,7 +6,9 @@ using p = PlayerStats;
 public class SpellsPanel : MonoBehaviour, IHasChanged {
 
 	public static GameObject[] projectiles = new GameObject[4];
+	public InventorySlotsPanel invPanel;
 	public Transform slots;
+
 	//public PlayerProjLauncher[] projLaunchers = new PlayerProjLauncher[4];
 	private GameObject player;
 	public SpellStats[] playerSkills;
@@ -65,7 +67,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			if(spell == null){
 
 				newSpell.transform.SetParent(slot);
-				newSpell.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+				newSpell.GetComponent<RectTransform>().localScale = new Vector3(2,2,1);
 				SpellStats st = newSpell.GetComponent<SpellStats>();
 				st.OldNextLevelExp = oldNextLevelExp;
 				st.Lvl = lvl;

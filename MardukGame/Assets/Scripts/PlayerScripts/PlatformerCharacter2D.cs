@@ -214,7 +214,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 
-		private void checkInventory(){ //para que no se dupliquen los putos items
+		private void checkInventory(){ //para que no se dupliquen los putos items, ahora no se esta usando
 			bool b = true;
 			bool c = true;
 			bool d = true;

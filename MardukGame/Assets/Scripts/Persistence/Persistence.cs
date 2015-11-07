@@ -161,7 +161,6 @@ public class Persistence : MonoBehaviour {
 		if (player != null) { //para guardar los skills del jugador
 			for (int i = 0; i < playerSkills.Length; i++) {
 				SpellStats ps =  PlatformerCharacter2D.playerSkills[i];//player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i];
-
 				if(ps != null){
 					playerSkills[i] = ps.nameForSave;
 					skillsLevels[i] = ps.Lvl;

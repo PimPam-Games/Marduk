@@ -6,6 +6,8 @@ using System;
 public class SpellStats : MonoBehaviour {
 
 
+	private int inventoryPositionX = -2; //posicion del item en el inventario
+	private int inventoryPositionY = -2; 
 	public string spellName;
 	public string nameForSave; //el nombre que se guarda del skill es para poder instanciarlo despues
 	public float castPerSecond;
@@ -33,6 +35,16 @@ public class SpellStats : MonoBehaviour {
 	protected  int lvl;
 	protected  double nextLevelExp;
 	protected  double oldNextLevelExp;
+
+	public int InventoryPositionX{
+		get {return inventoryPositionX;}
+		set {inventoryPositionX = value;}
+	}
+	
+	public int InventoryPositionY{
+		get {return inventoryPositionY;}
+		set {inventoryPositionY = value;}
+	}
 
 	public double CurrentExp{
 		get {return currentExp;}
