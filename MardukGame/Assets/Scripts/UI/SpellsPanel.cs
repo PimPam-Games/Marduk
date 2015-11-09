@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using p = PlayerStats;
+using System.Collections.Generic;
 
 public class SpellsPanel : MonoBehaviour, IHasChanged {
 
@@ -40,7 +41,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			GameObject spell = slot.GetComponent<Slot>().spell;
 			if(spell != null){
 				SpellStats stats =  spell.GetComponent<SpellStats>();
-
+				stats.EquipSkill();
 				playerSkills[i] = stats;
 			}
 			else{
@@ -48,38 +49,81 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			}
 			i++;
 		}
-	}
-
-	public bool AddSpell(string spellName, int lvl, double currentExp, double oldNextLevelExp){
-		for(int i = 0; i< PlatformerCharacter2D.playerSkills.Length; i++){
-			if(PlatformerCharacter2D.playerSkills[i] != null && string.Compare(PlatformerCharacter2D.playerSkills[i].nameForSave,spellName)==0)
-				return false;
-		}
-		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + spellName); //creo el prefab para meterlo en el slot
-		if (newSpellPrefab == null) {
-			Debug.LogError("prefab del skill no encontrado");
-			return false;
-		}
-		GameObject newSpell = (GameObject)Instantiate (newSpellPrefab, newSpellPrefab.transform.position, newSpellPrefab.transform.rotation);
-		foreach(Transform slot in slots){ //busca un slot vacio en spell panel
-			GameObject spell = slot.GetComponent<Slot>().spell;
-
-			if(spell == null){
-
-				newSpell.transform.SetParent(slot);
-				newSpell.GetComponent<RectTransform>().localScale = new Vector3(2,2,1);
-				SpellStats st = newSpell.GetComponent<SpellStats>();
-				st.OldNextLevelExp = oldNextLevelExp;
-				st.Lvl = lvl;
-
-				st.CurrentExp = currentExp;
-				st.NextLevelExp = st.SpellExpFormula();
-				HasChanged();
-				return true;
+		foreach(SpellStats sp in PlayerItems.SpellsInvetory){
+			if(sp.IdSlotEquipped < 0){
+				sp.UnequipSkill();
 			}
 		}
-		return false;
+	}
 
+	public void LoadSkills(List<SerializableSpell> skillList){
+		List<SpellStats> sInvAux = new List<SpellStats>();
+		foreach(SerializableSpell skill in skillList){
+			GameObject newSpell = InstantiateSkill(skill.spellName);
+			SpellStats st = newSpell.GetComponent<SpellStats>();
+			if(st != null){
+				st.OldNextLevelExp = skill.oldNextLevelExp;
+				st.Lvl = skill.lvl;	
+				st.CurrentExp = skill.currentExp;
+				st.NextLevelExp = st.SpellExpFormula();
+				st.InventoryPositionX = skill.inventoryPositionX;
+				st.InventoryPositionY = skill.inventoryPositionY;
+				st.IdSlotEquipped = skill.idSlotEquipped;
+				sInvAux.Add(st);
+				if(st.IdSlotEquipped > -1){ // si es mayor a -1 esta equipado en esa posicion
+					st.EquipSkill();
+					newSpell.transform.SetParent(slots.GetChild(st.IdSlotEquipped));
+					newSpell.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);	
+				}
+				else
+					invPanel.LoadSkillAt(newSpell,st.InventoryPositionX,st.InventoryPositionY);
+			}
+		}
+		PlayerItems.SpellsInvetory = sInvAux;
+		HasChanged();
+	}
+	
+	/*Agrega un nuevo skill despues de que se agarra, se invoca desde PlatformerCharacter2D*/
+	public bool AddSpell(string spellName){ 
+		bool alreadyEquipped = false;
+		for(int i = 0; i< PlatformerCharacter2D.playerSkills.Length; i++){
+			if(PlatformerCharacter2D.playerSkills[i] != null && string.Compare(PlatformerCharacter2D.playerSkills[i].nameForSave,spellName)==0)
+				alreadyEquipped = true;
+		}
+		GameObject newSpell = InstantiateSkill(spellName);
+		SpellStats st = newSpell.GetComponent<SpellStats>();
+		st.OldNextLevelExp = 1;
+		st.Lvl = 0;	
+		st.CurrentExp = 0;
+		st.NextLevelExp = st.SpellExpFormula();
+		if(!alreadyEquipped){
+			foreach(Transform slot in slots){ //busca un slot vacio en spell panel
+				GameObject spell = slot.GetComponent<Slot>().spell;
+				if(spell == null){
+					newSpell.transform.SetParent(slot);
+					newSpell.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+					st.IdSlotEquipped = slot.GetComponent<Slot>().id;
+					PlayerItems.SpellsInvetory.Add(st);
+					st.EquipSkill();		
+					HasChanged();
+					return true;
+				}
+			}
+		}
+		/*Si no encuentra un slot disponible, lo intenta meter en el inventario*/
+		bool invPanelResult = false;
+		invPanelResult =  invPanel.AddSkill(newSpell);
+		return invPanelResult;
+
+	}
+	
+	private GameObject InstantiateSkill(string skillName){
+		GameObject newSpellPrefab = (GameObject)Resources.Load ("PlayerSpells/" + skillName); //creo el prefab para meterlo en el slot
+		if (newSpellPrefab == null) {
+			Debug.LogError("prefab del skill no encontrado");
+			return null;
+		}
+		return (GameObject)Instantiate (newSpellPrefab, newSpellPrefab.transform.position, newSpellPrefab.transform.rotation);
 	}
 
 }

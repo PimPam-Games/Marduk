@@ -25,7 +25,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public static SpellStats[] playerSkills;
 		public PlayerProjLauncher bowLauncher;
 		public GameObject bowLauncherGO;
-		private SpellsPanel spellsPanel;
+		public SpellsPanel spellsPanel;
 		public InventorySlotsPanel inventoryPanel;		
 
 		private Transform backforeArm;
@@ -191,7 +191,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				else{						
 					if(item.tag == "Spell" && item.activeSelf){			
 						string itName = item.GetComponent<Item>().Name;
-						bool spellAdded = spellsPanel.AddSpell(itName,1,0,0);
+						bool spellAdded = spellsPanel.AddSpell(itName);
 						if(spellAdded){
 							item.SetActive(false);
 							Destroy(item);

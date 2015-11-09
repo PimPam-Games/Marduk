@@ -5,7 +5,7 @@ using g = GameController;
 public class LoadCurrentPlayer : MonoBehaviour {
 
 	private float loadCount;
-	private InventorySlotsPanel inv;
+//	private InventorySlotsPanel inv;
 	// Use this for initialization
 	void Start () {
 	}

@@ -40,6 +40,7 @@ public class PlayerData{
 	public  SerializableItem equipedRingL;
 	public  SerializableItem equipedRingR;
 
+	public List<SerializableSpell> spellInv;
 	public  List<SerializableItem> inventory;
 	public  int inventoryCantItems;
 

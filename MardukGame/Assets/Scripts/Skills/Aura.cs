@@ -12,13 +12,37 @@ public class Aura : SpellStats {
 
 	// Use this for initialization
 	void Start () {
+		/*p.offensives [p.IncreasedAttackSpeed] += increasedAttackSpeed;
+		p.offensives [p.IncreasedCastSpeed] += increasedCastSpeed;
+		p.utils [p.MovementSpeed] += increasedMovementSpeed;
+		p.offensives[p.MaxMana] += increasedMaxMana;
+		p.offensives[p.ManaPerSec] += increasedManaRegen;*/
+	}
+	
+	public override void EquipSkill ()
+	{
+		if(equipped)
+			return;
 		p.offensives [p.IncreasedAttackSpeed] += increasedAttackSpeed;
 		p.offensives [p.IncreasedCastSpeed] += increasedCastSpeed;
 		p.utils [p.MovementSpeed] += increasedMovementSpeed;
 		p.offensives[p.MaxMana] += increasedMaxMana;
 		p.offensives[p.ManaPerSec] += increasedManaRegen;
-	}
-	
+		equipped = true;
+		
+	}	
+
+	public override void UnequipSkill ()
+	{
+		if(!equipped)
+			return;
+		p.offensives [p.IncreasedAttackSpeed] -= increasedAttackSpeed;
+		p.offensives [p.IncreasedCastSpeed] -= increasedCastSpeed;
+		p.utils [p.MovementSpeed] -= increasedMovementSpeed;
+		p.offensives[p.MaxMana] -= increasedMaxMana;
+		p.offensives[p.ManaPerSec] -= increasedManaRegen;
+		equipped = false;
+	}	
 
 	public override void RemoveSkill(){
 		p.offensives [p.IncreasedAttackSpeed] -= increasedAttackSpeed;

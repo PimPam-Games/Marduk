@@ -36,13 +36,22 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 			LoadItems();	
 		}*/
 	}
-		
+
+	/*Se invoca desde SpellsPanel */
+	public void LoadSkillAt(GameObject newSkill, int posX, int posY){
+		if(slotsPanels[posX].GetChild(posY).GetComponent<InventorySlot>().item == null){
+			newSkill.transform.SetParent(slotsPanels[posX].GetChild(posY));
+			newSkill.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);					
+		}
+		HasChanged();
+	}
+
+	/* Se invoca desde GameController*/	
 	public void LoadItems(){
-		List<Item> ilistAux = new List<Item>();	
+		List<Item> ilistAux = new List<Item>();
 		foreach(Item item in PlayerItems.Inventory){
 			GameObject it = (GameObject)Instantiate (itemUI, itemUI.transform.position, itemUI.transform.rotation);
-			it = ItemCopy(item,it);
-			
+			it = ItemCopy(item,it);			
 			if(!item.IsEquipped){
 				if(item != null){
 					if(slotsPanels[item.InventoryPositionX].GetChild(item.InventoryPositionY).GetComponent<InventorySlot>().item == null){
@@ -131,7 +140,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 
 	/* se llama cada vez que hubo un cambio en algun slot */
 	public void HasChanged ()
-	{	spellsPanel.HasChanged();
+	{	
 		int cantItems = 0;		
 		for(int j = 0; j < slotsPanels.Length;j++) { //recorre el inventario y se fija los objetos y sus posiciones
 			int i = 0;
@@ -150,11 +159,13 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 						SpellStats skill = item.GetComponent<SpellStats>();
 						skill.InventoryPositionX = j;
 						skill.InventoryPositionY = i;
+						skill.IdSlotEquipped = -1;
 					}	
 				}
 				i++;
 			}
 		}
+		spellsPanel.HasChanged();
 		PlayerItems.inventoryCantItems = cantItems;
 		/* desequipar objetos */
 		if(weaponSlot != null && weaponSlot.GetComponent<InventorySlot>().item == null)
@@ -173,6 +184,30 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 			PlayerItems.EquipedRingR = null;
 		if(amuletSlot != null && amuletSlot.GetComponent<InventorySlot>().item == null)
 			PlayerItems.EquipedAmulet = null;
+	}
+
+	/*Se invoca desde SpellsPanel para agregar un skill al inventario*/
+	public bool AddSkill(GameObject skill){		
+		for(int j = 0; j < slotsPanels.Length;j++) {
+			int i = 0;
+			foreach(Transform slot in slotsPanels[j]){
+				GameObject item = slot.GetComponent<InventorySlot>().item;
+				if(item == null){	
+					skill.transform.SetParent(slot);					
+					SpellStats skillStats = skill.GetComponent<SpellStats>();
+					skillStats.InventoryPositionX = j;
+					skillStats.InventoryPositionY = i;
+					skillStats.IdSlotEquipped = -1; //no esta equipado
+					skill.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+					PlayerItems.SpellsInvetory.Add(skillStats);
+					PlayerItems.inventoryCantItems++;
+					HasChanged();
+					i++;
+					return true;
+				}	
+			}
+		}
+		return false;	
 	}
 
 	/* Este metodo se llama desde PlatformerCharacter2D cuando se agarra un item*/

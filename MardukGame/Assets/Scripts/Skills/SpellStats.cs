@@ -6,8 +6,10 @@ using System;
 public class SpellStats : MonoBehaviour {
 
 
+	private int idSlotEquipped = -1; //id del slot en el que esta equipado, -1 si no esta en ninguno
 	private int inventoryPositionX = -2; //posicion del item en el inventario
 	private int inventoryPositionY = -2; 
+	protected bool equipped = false; 
 	public string spellName;
 	public string nameForSave; //el nombre que se guarda del skill es para poder instanciarlo despues
 	public float castPerSecond;
@@ -44,6 +46,11 @@ public class SpellStats : MonoBehaviour {
 	public int InventoryPositionY{
 		get {return inventoryPositionY;}
 		set {inventoryPositionY = value;}
+	}
+
+	public int IdSlotEquipped{
+		get {return idSlotEquipped;}
+		set {idSlotEquipped = value;}
 	}
 
 	public double CurrentExp{
@@ -108,6 +115,13 @@ public class SpellStats : MonoBehaviour {
 	public void ActivateCoolDown(){
 		if(cdTimer <= 0)
 			cdTimer = castDelay;
+	}
+	
+	public virtual void EquipSkill(){
+	}
+
+	public virtual void UnequipSkill(){
+		
 	}
 
 	public virtual void RemoveSkill(){

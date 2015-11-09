@@ -145,20 +145,27 @@ public class Persistence : MonoBehaviour {
 			data.equipedRingL = new SerializableItem(pItems.EquipedRingL);
 		if(pItems.EquipedRingR != null)
 			data.equipedRingR = new SerializableItem(pItems.EquipedRingR);
-		List<SerializableItem> inv = new List<SerializableItem>();
+		List<SerializableItem> inv = new List<SerializableItem>(); // guarda todos los items del inventario
 		foreach(Item it in pItems.Inventory){
 			inv.Add(new SerializableItem(it));
 		}
 		data.inventory = inv;
+
+		List<SerializableSpell> skillsInv = new List<SerializableSpell>(); //guarda todos los skills del inventario
+		foreach(SpellStats sp in pItems.SpellsInvetory){
+			skillsInv.Add(new SerializableSpell(sp));
+		}
+		data.spellInv = skillsInv;
+
 		data.inventoryCantItems = pItems.inventoryCantItems;
 		data.teleporters = pItems.playerTeleporters;
 
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		/*GameObject player = GameObject.FindGameObjectWithTag("Player");
 		string[] playerSkills = new string[4];
 		int[] skillsLevels = new int[4];
 		double[] skillsCurrentExp = new double[4]; 
-		double[] skillsOldNextLevelExp = new double[4];
-		if (player != null) { //para guardar los skills del jugador
+		double[] skillsOldNextLevelExp = new double[4];*/
+	/*	if (player != null) { //para guardar los skills del jugador
 			for (int i = 0; i < playerSkills.Length; i++) {
 				SpellStats ps =  PlatformerCharacter2D.playerSkills[i];//player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i];
 				if(ps != null){
@@ -169,11 +176,11 @@ public class Persistence : MonoBehaviour {
 				}else
 					playerSkills[i] = null;
 			}
-		}
-		data.skillsNames = playerSkills;
-		data.skillsLevels = skillsLevels;
-		data.skillsCurrentExp = skillsCurrentExp;
-		data.skillsOldNextLevelExp = skillsOldNextLevelExp;
+		}*/
+		//data.skillsNames = playerSkills;
+		//data.skillsLevels = skillsLevels;
+		//data.skillsCurrentExp = skillsCurrentExp;
+		//data.skillsOldNextLevelExp = skillsOldNextLevelExp;
 		bf.Serialize (file,data);
 		file.Close ();
 	}
@@ -248,7 +255,9 @@ public class Persistence : MonoBehaviour {
 			pItems.playerTeleporters = data.teleporters;
 			GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
-			if(data.skillsNames == null)
+			
+			sp.LoadSkills(data.spellInv);
+			/*if(data.skillsNames == null)
 				return;
 			for(int i = 0; i < data.skillsNames.Length; i++){
 				if(data.skillsNames[i] != null)
@@ -257,7 +266,7 @@ public class Persistence : MonoBehaviour {
 					sp.AddSpell(data.skillsNames[i],data.skillsLevels[i],data.skillsCurrentExp[i],data.skillsOldNextLevelExp[i]);
 
 				}
-			}
+			}*/
 		}
 	}
 

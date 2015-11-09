@@ -86,7 +86,8 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		if(levelLoaded && !inventoryItemsLoaded){
 			inventoryItemsLoaded = true;
-			player.GetComponent<PlatformerCharacter2D>().inventoryPanel.LoadItems();	
+			player.GetComponent<PlatformerCharacter2D>().inventoryPanel.LoadItems();
+			//player.GetComponent<PlatformerCharacter2D>().spellsPanel.LoadSkills();	
 		}
 	}
 

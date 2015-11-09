@@ -39,75 +39,76 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	public void OnDrop (PointerEventData eventData)
 	{
 		Item draggedItem = DragHandeler.itemBeingDragged.GetComponent<Item>();
-		switch(slotId){
-			case WeaponSlotID:
-			if(draggedItem.type != ItemTypes.Weapon && draggedItem.type != ItemTypes.TwoHandedWeapon && draggedItem.type != ItemTypes.RangedWeapon)
-					return;
-			if((draggedItem.type == ItemTypes.RangedWeapon || draggedItem.type == ItemTypes.TwoHandedWeapon) && PlayerItems.EquipedShield != null) //no deja equipar al arco si hay un escudo equipado
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedWeapon = draggedItem;
-				break;
-			case ArmourSlotID:
-				if(draggedItem.type != ItemTypes.Armour)
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedArmour = draggedItem;
-				break;
-			case ShieldSlotID:
-				if(draggedItem.type != ItemTypes.Shield)
-					return;
-			if(PlayerItems.EquipedWeapon != null && (PlayerItems.EquipedWeapon.type == ItemTypes.RangedWeapon || PlayerItems.EquipedWeapon.type == ItemTypes.TwoHandedWeapon)) //no deja equipar al escudo si hay un arco equipado
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedShield = draggedItem;
-				break;
-			case HeadSlotID:
-				if(draggedItem.type != ItemTypes.Helmet)
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedHelmet = draggedItem;
-				break;
-			case BeltSlotID:
-				if(draggedItem.type != ItemTypes.Belt)
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedBelt = draggedItem;
-				break;
-			case RingLSlotID:
-				if(draggedItem.type != ItemTypes.Ring)
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedRingL = draggedItem;
-				break;
-			case RingRSlotID:
-				if(draggedItem.type != ItemTypes.Ring)
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedRingR= draggedItem;
-				break;
-			case AmuletSlotID:
-				if(draggedItem.type != ItemTypes.Amulet)
-					return;
-				draggedItem.IsEquipped = true;
-				draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-				PlayerItems.EquipedAmulet= draggedItem;
-				break;
+		if(draggedItem != null){
+			switch(slotId){
+				case WeaponSlotID:
+				if(draggedItem.type != ItemTypes.Weapon && draggedItem.type != ItemTypes.TwoHandedWeapon && draggedItem.type != ItemTypes.RangedWeapon)
+						return;
+				if((draggedItem.type == ItemTypes.RangedWeapon || draggedItem.type == ItemTypes.TwoHandedWeapon) && PlayerItems.EquipedShield != null) //no deja equipar al arco si hay un escudo equipado
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedWeapon = draggedItem;
+					break;
+				case ArmourSlotID:
+					if(draggedItem.type != ItemTypes.Armour)
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedArmour = draggedItem;
+					break;
+				case ShieldSlotID:
+					if(draggedItem.type != ItemTypes.Shield)
+						return;
+				if(PlayerItems.EquipedWeapon != null && (PlayerItems.EquipedWeapon.type == ItemTypes.RangedWeapon || PlayerItems.EquipedWeapon.type == ItemTypes.TwoHandedWeapon)) //no deja equipar al escudo si hay un arco equipado
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedShield = draggedItem;
+					break;
+				case HeadSlotID:
+					if(draggedItem.type != ItemTypes.Helmet)
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedHelmet = draggedItem;
+					break;
+				case BeltSlotID:
+					if(draggedItem.type != ItemTypes.Belt)
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedBelt = draggedItem;
+					break;
+				case RingLSlotID:
+					if(draggedItem.type != ItemTypes.Ring)
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedRingL = draggedItem;
+					break;
+				case RingRSlotID:
+					if(draggedItem.type != ItemTypes.Ring)
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedRingR= draggedItem;
+					break;
+				case AmuletSlotID:
+					if(draggedItem.type != ItemTypes.Amulet)
+						return;
+					draggedItem.IsEquipped = true;
+					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					PlayerItems.EquipedAmulet= draggedItem;
+					break;
+			}
 		}
 		if (!item)
 			DragHandeler.itemBeingDragged.transform.SetParent (transform);
 		else {
 			InventorySlot invSlot = DragHandeler.startParent.gameObject.GetComponent<InventorySlot>();
-			if(invSlot == null)
-				return; 
-			if(invSlot.slotId < 1){
+			
+			if(invSlot != null && invSlot.slotId < 1){
 				item.transform.SetParent(DragHandeler.startParent);
 				DragHandeler.itemBeingDragged.transform.SetParent (transform);
 			}
@@ -146,17 +147,22 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 			if(clickCount == 2){
 				clickCount = 0;
 				if(item == null)
-					return;
-				
+					return;				
 			}
 			break;
 		case PointerEventData.InputButton.Right:
 			if(item!=null){
 				Item it = item.GetComponent<Item>();
-				if(it.IsEquipped){
-					return;					
+				if(it != null ){
+					if(it.IsEquipped){
+						return;					
+					}
+					PlayerItems.Inventory.Remove(it);
 				}
-				PlayerItems.Inventory.Remove(it);
+				else{
+					SpellStats sp = item.GetComponent<SpellStats>();
+					PlayerItems.SpellsInvetory.Remove(sp);
+				}
 				Destroy(item.gameObject);
 				ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
 			}
