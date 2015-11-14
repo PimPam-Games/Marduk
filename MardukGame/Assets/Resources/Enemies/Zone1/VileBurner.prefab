@@ -438,9 +438,11 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
+  initCritChance: .0500000007
   elem: 1
   minDamage: 2
   maxDamage: 5
+  critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
   healthPerLvl: 4
@@ -453,10 +455,13 @@ MonoBehaviour:
   accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8221188}
-  enemyName: VileBurner
+  enemyName: Pirobolus
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 10
+  rend: {fileID: 0}
+  spriteRend: {fileID: 0}
+  isBoss: 0
 --- !u!114 &11432784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,6 +554,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: elem
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemyName
+      value: Pirobolus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

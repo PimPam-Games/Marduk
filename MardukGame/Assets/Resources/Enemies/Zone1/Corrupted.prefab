@@ -287,10 +287,13 @@ MonoBehaviour:
   accuracyPerLvl: 0
   blockChance: .100000001
   alertSound: {fileID: 8204492}
-  enemyName: Corrupted
+  enemyName: Revenant
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 18
+  rend: {fileID: 0}
+  spriteRend: {fileID: 0}
+  isBoss: 0
 --- !u!114 &11413470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -380,6 +383,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxDmgPerLvl
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemyName
+      value: Revenant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

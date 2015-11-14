@@ -244,7 +244,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
   maxSpeed: 2
+  initMaxSpeed: 0
   facingRight: 0
+  currentSpeed: 0
+  rb: {fileID: 0}
   groundChecks: []
   jumpForce: 800
   knockable: 1
@@ -282,9 +285,11 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
+  initCritChance: .0500000007
   elem: 3
   minDamage: 2
   maxDamage: 5
+  critChance: 25
   minDmgPerLvl: 0
   maxDmgPerLvl: 0
   healthPerLvl: 10
@@ -297,10 +302,13 @@ MonoBehaviour:
   accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8294376}
-  enemyName: Apparition
+  enemyName: Wraith
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 10
+  rend: {fileID: 0}
+  spriteRend: {fileID: 0}
+  isBoss: 0
 --- !u!212 &21235842
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -337,6 +345,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: elem
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enemyName
+      value: Wraith
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
