@@ -55,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.3271313, y: -2.65365124, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: -15.2646322, y: -2.19071746, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 406966}
   m_Father: {fileID: 0}
@@ -87,9 +87,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.00695737218, y: -.00241208076}
+  m_Offset: {x: -.00236638403, y: -.0138899488}
   serializedVersion: 2
-  m_Size: {x: .341549277, y: .416983783}
+  m_Size: {x: .571117163, y: .65114367}
 --- !u!61 &6182446
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -203,7 +203,9 @@ MonoBehaviour:
   - 0
   - 0
   auraRend: {fileID: 0}
+  itemForSlot: 0
   itemSound: {fileID: 8282668}
+  lifeToAdd: 5
 --- !u!212 &21296886
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -228,8 +230,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -354108773
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: .296551704, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 166e301a5b6115d43beba68ccb16f330, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

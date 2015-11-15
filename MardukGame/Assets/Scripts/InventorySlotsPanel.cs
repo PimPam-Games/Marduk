@@ -66,30 +66,35 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 						if(weaponSlot.GetComponent<InventorySlot>().item == null){
 							it.transform.SetParent(weaponSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedWeapon = it.GetComponent<Item>();
 						}
 						break;
 					case ItemTypes.Armour:
 						if(armourSlot.GetComponent<InventorySlot>().item == null){
 							it.transform.SetParent(armourSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedArmour = it.GetComponent<Item>();
 						}
 						break;
 					case ItemTypes.Shield:
 						if(shieldSlot.GetComponent<InventorySlot>().item == null){
 							it.transform.SetParent(shieldSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedShield = it.GetComponent<Item>();
 						}
 						break;
 					case ItemTypes.Helmet:
 						if(headSlot.GetComponent<InventorySlot>().item == null){
-						it.transform.SetParent(headSlot);
+							it.transform.SetParent(headSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedHelmet = it.GetComponent<Item>();
 						}
 						break;
 					case ItemTypes.Belt:
 						if(beltSlot.GetComponent<InventorySlot>().item == null){
 							it.transform.SetParent(beltSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedBelt = it.GetComponent<Item>();
 						}
 						break;
 					case ItemTypes.Amulet:
@@ -102,11 +107,13 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 						if(ringLSlot.GetComponent<InventorySlot>().item == null){
 							it.transform.SetParent(ringLSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedRingL = it.GetComponent<Item>();
 						}
 						else{
 							if(ringRSlot.GetComponent<InventorySlot>().item == null){
 								it.transform.SetParent(ringRSlot);
 								it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+								PlayerItems.EquipedRingR = it.GetComponent<Item>();						
 							}
 						}
 						break;
