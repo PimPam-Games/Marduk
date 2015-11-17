@@ -36,7 +36,7 @@ public class Nergal : MonoBehaviour {
 		if(col.gameObject.tag == "Player" && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		if (col.gameObject.tag == "Player" && !p.isDead) {
-			bool isCrit = false;
+			//bool isCrit = false;
 			float dmgDealt = Random.Range(meleeAttackMinDmg,meleeAttackMaxDmg);
 			//float[] critDmgProb = {1 - critChance, critChance };
 			//if(Utils.Choose(critDmgProb) != 0){

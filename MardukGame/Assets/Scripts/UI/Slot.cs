@@ -8,6 +8,7 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 
 	public GameObject tooltip;
 	public int id;
+	public bool supportSlot;
 	public GameObject spell{
 		get{
 			if(transform.childCount > 0)
@@ -19,13 +20,17 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 		}
 	}
 
-	public void OnDrop(PointerEventData eventData){
+	public void OnDrop(PointerEventData eventData){	
 		SpellStats draggedSpell = DragHandeler.itemBeingDragged.GetComponent<SpellStats>();
 		if(draggedSpell == null)
 			return;
-		for(int i = 0; i< PlatformerCharacter2D.playerSkills.Length; i++){ // si hay otro skill igual equipado
-			if(PlatformerCharacter2D.playerSkills[i] != null && PlatformerCharacter2D.playerSkills[i].IdSlotEquipped != draggedSpell.IdSlotEquipped  && string.Compare(PlatformerCharacter2D.playerSkills[i].nameForSave,draggedSpell.nameForSave)==0)
-				return;
+		if(supportSlot && draggedSpell.type != Types.SkillsTypes.Support || !supportSlot && draggedSpell.type == Types.SkillsTypes.Support)
+			return;
+		if(!supportSlot){ //si es suppport se pueden poner 2 iguales
+			for(int i = 0; i< PlatformerCharacter2D.playerSkills.Length; i++){ // si hay otro skill igual equipado
+				if(PlatformerCharacter2D.playerSkills[i] != null && PlatformerCharacter2D.playerSkills[i].IdSlotEquipped != draggedSpell.IdSlotEquipped  && string.Compare(PlatformerCharacter2D.playerSkills[i].nameForSave,draggedSpell.nameForSave)==0)
+					return;
+			}
 		}
 		draggedSpell.IdSlotEquipped = this.id;
 		if (!spell)

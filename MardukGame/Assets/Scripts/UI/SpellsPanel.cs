@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using p = PlayerStats;
+using pc = PlatformerCharacter2D;
 using System.Collections.Generic;
 
 public class SpellsPanel : MonoBehaviour, IHasChanged {
@@ -9,27 +10,27 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	public static GameObject[] projectiles = new GameObject[4];
 	public InventorySlotsPanel invPanel;
 	public Transform slots;
+	public Transform supportSlots;
 
-	//public PlayerProjLauncher[] projLaunchers = new PlayerProjLauncher[4];
 	private GameObject player;
 	public SpellStats[] playerSkills;
+	public SpellStats[] playerSupportSkills;
 	// Use this for initialization
 	void Start () {
 		player =  GameObject.Find ("Player");
 		if (player != null) {
-			//projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
-			playerSkills  = PlatformerCharacter2D.playerSkills; //player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
+			playerSkills  = PlatformerCharacter2D.playerSkills;
+			playerSupportSkills = pc.playerSupportSkills;
 			HasChanged ();
 		}
-
 	}
 
 	void Update(){
 		if (player == null ){
 			player = GameObject.FindGameObjectWithTag("Player");
 			if (player != null){
-				//projLaunchers = player.gameObject.GetComponent<PlatformerCharacter2D>().projLaunchers;
-				playerSkills  = PlatformerCharacter2D.playerSkills; //player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills;
+				playerSkills  = PlatformerCharacter2D.playerSkills; 
+				playerSupportSkills = pc.playerSupportSkills;
 				HasChanged ();
 			}
 		}
@@ -48,6 +49,19 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				playerSkills[i] = null;
 			}
 			i++;
+		}
+		int j = 0;
+		foreach (Transform slot in supportSlots) { // recorre los supoprt slots
+			GameObject spell = slot.GetComponent<Slot>().spell;
+			if(spell != null){
+				SpellStats stats =  spell.GetComponent<SpellStats>();
+				stats.EquipSkill();
+				pc.playerSupportSkills[j] = stats;
+			}
+			else{
+				pc.playerSupportSkills[j] = null;
+			}
+			j++;
 		}
 		foreach(SpellStats sp in PlayerItems.SpellsInvetory){
 			if(sp.IdSlotEquipped < 0){
@@ -92,6 +106,8 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		}
 		GameObject newSpell = InstantiateSkill(spellName);
 		SpellStats st = newSpell.GetComponent<SpellStats>();
+		if(st.type == Types.SkillsTypes.Support) //si es un support lo agrega al inventario directamente
+			alreadyEquipped = true;
 		st.OldNextLevelExp = 1;
 		st.Lvl = 0;	
 		st.CurrentExp = 0;

@@ -34,13 +34,11 @@ public class PlayerItems: MonoBehaviour {
 	public static bool[] playerTeleporters;
 
 	public static List<Item> Inventory{
-
 		get {return inventory;}
 		set{inventory = value;}
 	}
 
-	public static List<SpellStats> SpellsInvetory{
-		
+	public static List<SpellStats> SpellsInvetory{		
 		get {return spellsInvetory;}
 		set{spellsInvetory = value;}
 	}

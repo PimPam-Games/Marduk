@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.921236, y: -1.93342149, z: 0}
+  m_LocalPosition: {x: -16.9419117, y: -2.40900183, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 454792}
@@ -87,9 +87,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.0178883877, y: .00305422163}
+  m_Offset: {x: -.00919977855, y: -.0548736267}
   serializedVersion: 2
-  m_Size: {x: .625791967, y: .755887985}
+  m_Size: {x: .573656201, y: .732717216}
 --- !u!61 &6145910
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -203,7 +203,9 @@ MonoBehaviour:
   - 0
   - 0
   auraRend: {fileID: 0}
+  itemForSlot: 0
   itemSound: {fileID: 8281768}
+  lifeToAdd: 5
 --- !u!212 &21253736
 SpriteRenderer:
   m_ObjectHideFlags: 1

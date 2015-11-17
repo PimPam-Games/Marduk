@@ -12,14 +12,37 @@ GameObject:
   - 114: {fileID: 11434876}
   - 225: {fileID: 22519734}
   - 114: {fileID: 11492692}
-  - 114: {fileID: 11446806}
+  - 114: {fileID: 11400268}
   m_Layer: 5
-  m_Name: IceShot
+  m_Name: IcedDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11400268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e8d9ef0fc9e0e4ab45305515d834a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellName: Iced Damage
+  nameForSave: IcedDamage
+  castPerSecond: 0
+  type: 4
+  requeriments: 
+  manaCost: 0
+  manaReserved: 0
+  animSpeed: 0
+  initManaCost: 1
+  manaCostPerLvl: 1
+  dmgElement: 3
+  damageAdded: 2
 --- !u!114 &11434876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32,8 +55,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: .710344791, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 9b7e76927532dda4883133bafa1fefe4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0427714571e370e4ebe6064736171381, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -41,37 +64,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11446806
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1b4ea85d6d36a469d42078085bddfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellName: Ice Shot
-  nameForSave: IceShot
-  castPerSecond: 0
-  type: 0
-  requeriments: 00000000
-  manaCost: 0
-  manaReserved: 0
-  animSpeed: 0
-  initManaCost: 2
-  manaCostPerLvl: 1
-  force: {x: 1200, y: 0}
-  flipProjectile: 1
-  staticProjectile: 0
-  projectile: {fileID: 100906, guid: 5caaaa962ca8b7c4d85b2614d0838174, type: 2}
-  initMinDmg: 0
-  initMaxDmg: 0
-  initPhysicalDmgMult: 120
-  minDmgPerLvl: 0
-  maxDmgPerLvl: 0
-  physicalDmgMultPerLvl: 10
 --- !u!114 &11492692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,20 +122,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spellName
-      value: Ice Shot
+      value: Iced Damage
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9b7e76927532dda4883133bafa1fefe4,
+      objectReference: {fileID: 21300000, guid: 0427714571e370e4ebe6064736171381,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.g
-      value: .710344791
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Color.b
@@ -163,7 +155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: type
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCost
@@ -171,11 +163,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: nameForSave
-      value: IceShot
+      value: IcedDamage
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initManaCost
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initPhysicalDmgMult
@@ -199,6 +191,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dmgElement
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damageAdded
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

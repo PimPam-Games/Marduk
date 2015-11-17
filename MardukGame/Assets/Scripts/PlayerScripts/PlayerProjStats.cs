@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
+using pc = PlatformerCharacter2D;
 
 public class PlayerProjStats : MonoBehaviour {
 	
@@ -58,6 +59,11 @@ public class PlayerProjStats : MonoBehaviour {
 		//float[] critDmgProb = {0, 1f };
 		float damage;
 		float damageConverted = 0;
+		Support supportSkill = null;
+
+		if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
+			supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
+
 		if (col.gameObject.tag == "Enemy") {
 			if (!isAoe && alreadyHit)
 				return;
@@ -81,12 +87,16 @@ public class PlayerProjStats : MonoBehaviour {
 				else
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);*/
 			}
-			bool attackResult; 
+			bool attackResult = false ;
 			if(Utils.Choose(critDmgProb) != 0){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
 				damage *= p.offensives[p.CritDmgMultiplier];
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true); //si elem no es None no se esquivan
 				if(attackResult){
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, true);
+					if(supportSkill != null){
+						enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, true);
+						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
+					}
 					criticalHitSound.Play();
 					Debug.Log("Critical Dmg: " + damage);
 					if(projRequirements == Types.SkillsRequirements.Bow)
@@ -97,7 +107,12 @@ public class PlayerProjStats : MonoBehaviour {
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
 				//Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
+						
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
+					if(supportSkill != null){
+						enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, false);
+						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
+					}
 					hitEnemySound.Play();
 					if(projRequirements == Types.SkillsRequirements.Bow)
 						collision = true;

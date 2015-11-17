@@ -23,6 +23,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		[SerializeField] private GameObject RangedWeapon;
 		public PlayerProjLauncher[] projLaunchers;
 		public static SpellStats[] playerSkills;
+		public static SpellStats[] playerSupportSkills;
 		public PlayerProjLauncher bowLauncher;
 		public GameObject bowLauncherGO;
 		public SpellsPanel spellsPanel;
@@ -53,6 +54,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private float[] moveSkillSpeed; //velocidad x e y del skill de movimiento
 		private SpellStats currentSkill = null;
 		private bool multipleShots = false;
+		public static int supportSkillPos = -1; //cuando se dispara algun skill y haya algun support en un slot
 
         private void Awake()
         {
@@ -72,6 +74,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			spellsPanel = GameObject.Find ("SpellsPanel").GetComponent<SpellsPanel> ();
 			//inventoryPanel = GameObject.Find ("InventorySlots").GetComponent<InventorySlotsPanel> ();
 			playerSkills = new SpellStats[4];
+			playerSupportSkills = new SpellStats[4];
 			moveSkillSpeed = new float[2];
 		}
 
@@ -130,6 +133,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						attackSound.Play ();
 						anim.SetBool ("PolearmAttacking", true);
 					} else {
+						supportSkillPos = -1; //es un ataque comun, no se usa una support
 						bowLauncher.projectile = bowprojectile;
 						anim.SetBool ("BowAttacking", true);
 					}
@@ -390,6 +394,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		private void checkSkill(int i){
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
+			supportSkillPos = i; //la posicion del support que deberia usar, si es que hay uno
 			if (skill != null) {
 				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking"))
 					return;
