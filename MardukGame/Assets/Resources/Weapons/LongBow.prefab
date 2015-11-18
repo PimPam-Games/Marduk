@@ -189,14 +189,14 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: f6ca0da904534df4caf3a12f9372e4c3, type: 3}
   sprite: {fileID: 21300000, guid: f6ca0da904534df4caf3a12f9372e4c3, type: 3}
   initMinDamage:
-  - 1
   - 2
-  initMaxDamage:
   - 3
-  - 8
+  initMaxDamage:
+  - 5
+  - 9
   initBaseAttackPerSecond:
-  - 1
   - 1.20000005
+  - 1.39999998
   initDefense:
   - 0
   - 0
@@ -204,7 +204,9 @@ MonoBehaviour:
   - 0
   - 0
   auraRend: {fileID: 0}
+  itemForSlot: 0
   itemSound: {fileID: 8224158}
+  lifeToAdd: 5
 --- !u!212 &21269104
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -270,19 +272,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDamage.Array.data[1]
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[0]
-      value: 1
+      value: 1.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[1]
-      value: 1.20000005
+      value: 1.39999998
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage.Array.data[0]
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
