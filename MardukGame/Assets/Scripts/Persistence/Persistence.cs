@@ -255,7 +255,7 @@ public class Persistence : MonoBehaviour {
 			pItems.playerTeleporters = data.teleporters;
 			GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
-			
+
 			sp.LoadSkills(data.spellInv);
 			/*if(data.skillsNames == null)
 				return;

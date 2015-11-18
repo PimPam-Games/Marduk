@@ -58,7 +58,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         private void Awake()
         {
-
             // Setting up references.
             groundCheck = transform.Find("GroundCheck");
             ceilingCheck = transform.Find("CeilingCheck");
@@ -71,7 +70,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         }
 
 		void Start(){
-			spellsPanel = GameObject.Find ("SpellsPanel").GetComponent<SpellsPanel> ();
+			//spellsPanel = GameObject.Find ("SpellsPanel").GetComponent<SpellsPanel> ();
 			//inventoryPanel = GameObject.Find ("InventorySlots").GetComponent<InventorySlotsPanel> ();
 			playerSkills = new SpellStats[4];
 			playerSupportSkills = new SpellStats[4];
@@ -447,7 +446,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
 			anim.SetBool ("SpellCasting", false);
-		    anim.SetBool ("PolearmAttacking", false);
+		   // anim.SetBool ("PolearmAttacking", false);
 		}
 		
         private void Flip()

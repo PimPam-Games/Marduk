@@ -65,13 +65,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Dash
   nameForSave: Dash
-  castPerSecond: 2
+  castPerSecond: 1.60000002
   type: 2
   requeriments: 04000000
   manaCost: 2
   manaReserved: 0
   animSpeed: 0
-  initManaCost: 2
+  initManaCost: 3
   manaCostPerLvl: 1
   movementX: 17
   movementY: 0
@@ -187,7 +187,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: castPerSecond
-      value: 2
+      value: 1.60000002
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: requeriments.Array.data[0]
@@ -195,7 +195,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initManaCost
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCostPerLvl

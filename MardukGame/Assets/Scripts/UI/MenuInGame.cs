@@ -23,4 +23,8 @@ public class MenuInGame : MonoBehaviour {
 		Application.LoadLevel("MainMenu");
 
 	}
+
+	public void Resume(){
+		InputControllerGui.resumePressed = true;
+	}
 }

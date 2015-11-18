@@ -75,17 +75,17 @@ public class SpellStats : MonoBehaviour {
 		currentExp = 0;
 		oldNextLevelExp = 0;
 		nextLevelExp = SpellExpFormula ();
-
 	}
 
 	// Use this for initialization
 	void Start () {
+		castDelay = castPerSecond; //si es un skill que depende de la velocidad de casteo del personaje, se sobreescribe el update para cambiar castdelay
 		CalculateStats ();
 	}
 	
 	// Update is called once per frame
 	protected virtual void Update () {
-
+		
 		cdTimer -= Time.deltaTime;
 	}
 

@@ -37,16 +37,18 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	}
 
 	public void HasChanged(){ //se llama cuando hubo algun cambio en el spell panel, ej: se intridujo un nuevo skill o se cambio de lugar uno
+		if(playerSkills == null || pc.playerSupportSkills == null)
+			return;
 		int i = 0;
 		foreach (Transform slot in slots) {
 			GameObject spell = slot.GetComponent<Slot>().spell;
 			if(spell != null){
 				SpellStats stats =  spell.GetComponent<SpellStats>();
 				stats.EquipSkill();
-				playerSkills[i] = stats;
+				pc.playerSkills[i] = stats;
 			}
 			else{
-				playerSkills[i] = null;
+				pc.playerSkills[i] = null;
 			}
 			i++;
 		}
@@ -86,8 +88,14 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				sInvAux.Add(st);
 				if(st.IdSlotEquipped > -1){ // si es mayor a -1 esta equipado en esa posicion
 					st.EquipSkill();
-					newSpell.transform.SetParent(slots.GetChild(st.IdSlotEquipped));
-					newSpell.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);	
+					if(st.type != Types.SkillsTypes.Support){
+						newSpell.transform.SetParent(slots.GetChild(st.IdSlotEquipped));
+						newSpell.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+					}
+					else{
+						newSpell.transform.SetParent(supportSlots.GetChild(st.IdSlotEquipped));
+						newSpell.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+					}	
 				}
 				else
 					invPanel.LoadSkillAt(newSpell,st.InventoryPositionX,st.InventoryPositionY);

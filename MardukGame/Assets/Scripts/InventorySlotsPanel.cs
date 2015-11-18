@@ -69,6 +69,20 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 							PlayerItems.EquipedWeapon = it.GetComponent<Item>();
 						}
 						break;
+					case ItemTypes.RangedWeapon:
+						if(weaponSlot.GetComponent<InventorySlot>().item == null){
+							it.transform.SetParent(weaponSlot);
+							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedWeapon = it.GetComponent<Item>();
+						}
+						break;
+					case ItemTypes.TwoHandedWeapon:
+						if(weaponSlot.GetComponent<InventorySlot>().item == null){
+							it.transform.SetParent(weaponSlot);
+							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedWeapon = it.GetComponent<Item>();
+						}
+						break;
 					case ItemTypes.Armour:
 						if(armourSlot.GetComponent<InventorySlot>().item == null){
 							it.transform.SetParent(armourSlot);

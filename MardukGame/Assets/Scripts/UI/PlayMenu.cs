@@ -89,7 +89,7 @@ public class PlayMenu : MonoBehaviour {
 		for (int i = 0; i < slots.Length; i++) {
 			Image img = slots[i].GetComponent<Image>();
 			if(i == index)
-				img.color = new Color32(34,156,34,255);
+				img.color = new Color32(122,86,47,255);
 			else
 				img.color = new Color(255,255,255);
 		}

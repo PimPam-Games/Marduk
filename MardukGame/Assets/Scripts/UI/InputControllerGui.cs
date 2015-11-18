@@ -15,6 +15,7 @@ public class InputControllerGui : MonoBehaviour {
 	public GameObject invTooltip;
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
+	public static bool resumePressed = false;
 	//private bool gamePaused = false;
 
 	public Image menuInGame;
@@ -66,8 +67,9 @@ public class InputControllerGui : MonoBehaviour {
 			Persistence.Load("Hola");
 			Debug.Log("Load Data");
 		}
-		if (Input.GetButtonUp ("Escape")) {
+		if (Input.GetButtonUp ("Escape") || resumePressed) {
 			Debug.Log("Pause");
+			resumePressed = false;
 			if(Time.timeScale == 1.0f){
 				Time.timeScale = 0;
 				//gamePaused = true;
