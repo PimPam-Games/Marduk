@@ -55,6 +55,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private SpellStats currentSkill = null;
 		private bool multipleShots = false;
 		public static int supportSkillPos = -1; //cuando se dispara algun skill y haya algun support en un slot
+		public static int meleeSkillPos = -1; //cuando usa algun skill de tipo melee
 
         private void Awake()
         {
@@ -423,8 +424,13 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 					break;
 					case Types.SkillsTypes.Melee:
-						
-						
+						meleeSkillPos = i;
+						weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f,0,0,1);
+						MeleeSkill ms = (MeleeSkill)skill;
+						if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
+							p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
+							Attack();
+						}
 					break;
 					case Types.SkillsTypes.Utility:
 						skill.ActivateCoolDown();

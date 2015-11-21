@@ -110,12 +110,12 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 			
 			break;
 		case Types.SkillsTypes.Melee:
-			RangedSkill rsskill = (RangedSkill)spell.GetComponent<SpellStats> ();
+			/*RangedSkill rsskill = (RangedSkill)spell.GetComponent<SpellStats> ();
 			PlayerProjStats proj = rsskill.projectile.GetComponent<PlayerProjStats> ();
 
 			tooltip.transform.GetChild (3).GetComponent<Text> ().text = "Mana cost: " + spellStats.manaCost.ToString () + "\n"
 				+ "damage multiplier: " + proj.physicalDmgMult +"% \n"
-					+ "level: " + spellStats.Lvl.ToString() +  "\n";
+					+ "level: " + spellStats.Lvl.ToString() +  "\n";*/
 			
 			break;
 		}

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using p = PlayerStats;
+using pc = PlatformerCharacter2D;
 
 public class Weapon : MonoBehaviour {
 
@@ -39,8 +40,10 @@ public class Weapon : MonoBehaviour {
 		//attackingTime -= Time.deltaTime;
 		//Debug.Log("attack timer : " + attackTimer.ToString());
 		attackTimer -= Time.fixedDeltaTime;
-		if (anim.GetBool ("Attacking") == false)
+		if (anim.GetBool ("Attacking") == false){
 			isAttacking = false;
+			this.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1); //si no esta atacando pone el arma en su color original
+		}
 		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false && anim.GetBool ("SpellCasting") == false) { //anim.GetBool ("Attacking") == false && 
 			anim.speed = p.currentAnimSpeed;
 			isAttacking = false;
@@ -54,133 +57,65 @@ public class Weapon : MonoBehaviour {
 
 	public void Attack(){
 		if (canAttack) {
-			//Debug.Log("ataque!" + Time.time);
-
-		//	Debug.Log("attack Delay : " + attackDelay.ToString());
-		//	Debug.Log(animSpeed.ToString());
 			if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon)
 				isAttacking = true;
 			attackTimer = attackDelay;
 			canAttack = false;
-			//attackingTime = maxAttackingTime;
-
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		GameObject enemy = col.gameObject;
+		DoDamage(col);
 
+	}
+
+	void OnTriggerStay2D(Collider2D col){
+		DoDamage(col);
+
+	}
+
+	void OnTriggerExit2D(Collider2D col){
+		DoDamage(col);
+	}
+
+	private void DoDamage(Collider2D col){
+		GameObject enemy = col.gameObject;
+		
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
-		
-
+			Support supportSkill = null;
 			if(p.LifePerHit > 0 )
 				p.currentHealth += p.defensives[p.LifePerHit];
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-			float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
-			float[] critDmgProb = {1 - critChance,critChance };
-			bool attackResult; 
-			if(Utils.Choose(critDmgProb) != 0){ // si es critico
+			if(pc.meleeSkillPos > -1){ //si la posicion es mayor a -1, significa que se esta usando un skill melee
+				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();
+				damage *= ms.DmgMultiplier/100;	
+			}
+			if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
+				supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
+
+			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+			bool isCrit = false;
+			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true);
-				if(attackResult){
-					criticalHitSound.Play();
-					Debug.Log("Critical Dmg: " + damage);
-				}
+				criticalHitSound.Play();
+				isCrit = true;
+				Debug.Log("Critical Dmg: " + damage);
 			}
 			else{
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
-				if(attackResult)
-					hitEnemySound.Play();
+				hitEnemySound.Play();
 			}
-			if(attackResult){
+			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
+			if(hit){
+				if(supportSkill != null)
+					enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support
 				if(enemy.transform.position.x < this.transform.position.x)
 					enemy.GetComponent<EnemyIAMovement>().Knock(true);
 				else
 					enemy.GetComponent<EnemyIAMovement>().Knock(false);
 			}
-
-			isAttacking = false;
-		}
-		//alreadyAttacked = false;
-
-	}
-
-	void OnTriggerStay2D(Collider2D col){
-		GameObject enemy = col.gameObject;
-
-		if (enemy.tag == "Enemy" && isAttacking) {
-			//Debug.Log ("Le pegue a " + enemy.name);
-
-			if(p.LifePerHit > 0 )
-				p.currentHealth += p.defensives[p.LifePerHit];
-			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
-			bool isCrit = false;
-			if(Utils.Choose(critDmgProb) != 0){
-				damage *= p.offensives[p.CritDmgMultiplier];
-				criticalHitSound.Play();
-				isCrit = true;
-				Debug.Log("Critical Dmg: " + damage);
-			}
-			else{
-				hitEnemySound.Play();
-			}
-			enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
-			if(enemy.transform.position.x < this.transform.position.x)
-				enemy.GetComponent<EnemyIAMovement>().Knock(true);
-			else
-				enemy.GetComponent<EnemyIAMovement>().Knock(false);
 			
 			isAttacking = false;
 		}
-		//alreadyAttacked = false;
-
 	}
-
-	void OnTriggerExit2D(Collider2D col){
-		GameObject enemy = col.gameObject;
-		
-		if (enemy.tag == "Enemy" && isAttacking) {
-			//Debug.Log ("Le pegue a " + enemy.name);
-
-			if(p.LifePerHit > 0 )
-				p.currentHealth += p.defensives[p.LifePerHit];
-			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
-			bool isCrit = false;
-			if(Utils.Choose(critDmgProb) != 0){
-				damage *= p.offensives[p.CritDmgMultiplier];
-				criticalHitSound.Play();
-				isCrit = true;
-				Debug.Log("Critical Dmg: " + damage);
-			}
-			else{
-				hitEnemySound.Play();
-			}
-			enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
-			if(enemy.transform.position.x < this.transform.position.x)
-				enemy.GetComponent<EnemyIAMovement>().Knock(true);
-			else
-				enemy.GetComponent<EnemyIAMovement>().Knock(false);
-			
-			isAttacking = false;
-		}
-		//alreadyAttacked = false;
-
-	}
-	/*private void DoDammage(){ // se fija si colisiona con enemigos y les saca vida
-		int enemyLayerMask = 1 << LayerMask.NameToLayer ("Enemy");
-		float radius = this.GetComponent<CircleCollider2D> ().radius;
-		Collider2D[] overlappedThings = Physics2D.OverlapCircleAll (new Vector2 (transform.position.x, transform.position.y), radius, enemyLayerMask); //crea una lista de todos los enemigos que colisiona
-		if (overlappedThings.Length > 0)
-			enemyDamaged = true;
-		for (int i = 0; i < overlappedThings.Length; i++) { 
-			GameObject enemy = overlappedThings [i].gameObject;
-			// Do something to the enemy
-			float damage = Random.Range(minDmg,maxDmg);
-			Debug.Log ("Le pegue a " + enemy.name + " daño:" + damage);
-			enemy.GetComponent<EnemyStats>().Hit(damage,elem);
-		}
-	}*/
 }

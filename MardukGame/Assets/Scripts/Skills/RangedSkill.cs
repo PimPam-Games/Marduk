@@ -28,12 +28,12 @@ public class RangedSkill : SpellStats {
 	protected override void CalculateStats (){
 		base.CalculateStats();
 		if (projStats != null) {
-			projStats.minDmg = initMinDmg + (lvl - 1) * minDmgPerLvl;
-			projStats.maxDmg = initMaxDmg + (lvl-1) * maxDmgPerLvl;
+			projStats.minDmg = initMinDmg + (lvl - 1) * minDmgPerLvl; //en arcos no se usa
+			projStats.maxDmg = initMaxDmg + (lvl-1) * maxDmgPerLvl;	//en arcos no se usa
 			projStats.physicalDmgMult = initPhysicalDmgMult + (lvl-1) * physicalDmgMultPerLvl;
 		}
-
 	}
+
 	// Use this for initialization
 	void Start () {
 		CalculateStats ();

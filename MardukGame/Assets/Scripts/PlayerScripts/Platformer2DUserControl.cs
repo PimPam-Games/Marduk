@@ -44,7 +44,8 @@
 			character.Move (h, crouch, jump);
 			jump = false;
 			
-			if (Input.GetButton ("Fire1")) {		
+			if (Input.GetButton ("Fire1")) {	
+				PlatformerCharacter2D.meleeSkillPos = -1; //es el ataque comun	
 				character.Attack ();
 			}
 		} else
