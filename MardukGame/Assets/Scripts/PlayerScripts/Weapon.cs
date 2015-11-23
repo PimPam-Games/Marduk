@@ -94,6 +94,11 @@ public class Weapon : MonoBehaviour {
 				
 			}
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
+			//Begin Traits
+			if (Traits.traits[Traits.PDAMAGE].isActive ()) {
+				damage = damage * (float)1.5;
+			}
+			//End Traits
 			if(pc.meleeSkillPos > -1){ //si la posicion es mayor a -1, significa que se esta usando un skill melee
 				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();
 				damage *= ms.DmgMultiplier/100;	

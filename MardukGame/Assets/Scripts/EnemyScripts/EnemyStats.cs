@@ -270,6 +270,12 @@ public class EnemyStats : MonoBehaviour {
 			if(shock){
 				realDmg *= 1.5f; //cuando esta shokeado aumenta el daño recibido de cualquier tipo
 			}
+			//Begin Traits
+			if (Traits.traits[Traits.MDAMAGE].isActive())
+				if (type!=Types.Element.None)
+					realDmg = realDmg*(float)1.5;
+
+			//End Traits
 			switch (type) {
 			case Types.Element.None:
 				realDmg -= (armour / (armour + 8 * realDmg));	

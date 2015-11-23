@@ -253,10 +253,22 @@ public class PlayerStats : MonoBehaviour {
 
 	IEnumerator ManaRegeneration () {
 		while (!isDead) {
-			if (currentMana < offensives [MaxMana])
-				currentMana += (offensives [MaxMana] * offensives [ManaPerSec]/100)/2;
-			if (currentMana > offensives [MaxMana])
-				currentMana = offensives [MaxMana];
+			//Begin Traits
+			if(Traits.traits[Traits.MPREGEN].isActive()){
+				if (currentMana < offensives [MaxMana]/2){
+					currentMana += (offensives [MaxMana]/2 * offensives [ManaPerSec]/100);
+				}
+				if (currentMana > offensives [MaxMana]/2)
+					currentMana = offensives [MaxMana]/2;
+			}
+			//End Traits
+			else{
+				if (currentMana < offensives [MaxMana]){
+					currentMana += (offensives [MaxMana] * offensives [ManaPerSec]/100)/2;
+				}
+				if (currentMana > offensives [MaxMana])
+					currentMana = offensives [MaxMana];
+			}
 			yield return new WaitForSeconds (0.5f);
 		}
 	}
@@ -339,7 +351,12 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	public static void UpdateMana(){
-		ManaUiController.UpdateManaBar (currentMana,offensives[MaxMana]);
+		//Begin Traits
+		if(Traits.traits[Traits.MPREGEN].isActive())
+			ManaUiController.UpdateManaBar (currentMana,offensives[MaxMana]/2);
+		//End Traits
+		else
+			ManaUiController.UpdateManaBar (currentMana,offensives[MaxMana]);
 	}
 
 	public bool Hit(float dmg, Types.Element type, float accuracy, bool isCritical){ //se llama cuando un enemigo le pega al jugador
@@ -377,7 +394,12 @@ public class PlayerStats : MonoBehaviour {
 		}
 		switch (type){
 		case Types.Element.None:
-			realDmg -= (defensives[Defense] / (defensives[Defense] + 8 * realDmg));	
+			//Begin Traits
+			if (Traits.traits[Traits.PDAMAGE].isActive ())
+				realDmg -= (defensives[Defense]*(float)0.75 / (defensives[Defense]*(float)0.75 + 8 * realDmg));
+			//End Traits
+			else
+				realDmg -= (defensives[Defense] / (defensives[Defense] + 8 * realDmg));	
 			//Debug.Log("me pegaron man! :(");
 			break;
 		case Types.Element.Cold:
