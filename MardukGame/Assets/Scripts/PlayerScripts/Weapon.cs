@@ -84,8 +84,15 @@ public class Weapon : MonoBehaviour {
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
 			Support supportSkill = null;
-			if(p.LifePerHit > 0 )
-				p.currentHealth += p.defensives[p.LifePerHit];
+			if(p.LifePerHit > 0 ){
+				//Begin Traits
+				if (Traits.traits[Traits.MPLEECH].isActive ()) 
+					p.currentMana += p.defensives[p.LifePerHit];
+				//End Traits
+				else
+					p.currentHealth += p.defensives[p.LifePerHit];
+				
+			}
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			if(pc.meleeSkillPos > -1){ //si la posicion es mayor a -1, significa que se esta usando un skill melee
 				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();
@@ -98,7 +105,11 @@ public class Weapon : MonoBehaviour {
 			bool isCrit = false;
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
-				criticalHitSound.Play();
+				//Begin Traits
+				if (!Traits.traits[Traits.ACCURACY].isActive ()) {
+					criticalHitSound.Play();
+				}
+				//End Traits
 				isCrit = true;
 				Debug.Log("Critical Dmg: " + damage);
 			}
@@ -106,6 +117,7 @@ public class Weapon : MonoBehaviour {
 				hitEnemySound.Play();
 			}
 			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
+
 			if(hit){
 				if(supportSkill != null)
 					enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support

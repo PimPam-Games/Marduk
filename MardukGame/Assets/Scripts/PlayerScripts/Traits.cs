@@ -6,7 +6,7 @@ using p = PlayerStats;
 public class Traits: MonoBehaviour
 {
 	public const int CantTraits = 20;
-	public const int t0 = 0, t1 = 1, t2 = 2, t3 = 3, t4 = 4, t5= 5, t6 = 6, t7 = 7, t8 = 8, t9 = 9, 
+	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, t4 = 4, t5= 5, t6 = 6, t7 = 7, t8 = 8, t9 = 9, 
 	t10 = 10, t11 = 11, t12 = 12, t13 = 13,t14 = 14, t15= 15, t16 = 16, t17 = 17, t18 = 18, t19 = 19;
 	public static Trait[] traits;
 
@@ -17,10 +17,10 @@ public class Traits: MonoBehaviour
 	
 	void Awake(){
 		traits = new Trait[CantTraits];
-		traits [t0] = new Trait("t0",2,"25% of incoming damage applies on MP instead of HP");
-		traits [t1] = new Trait("t1",2,"Half MP, double MP regeneration");
-		traits [t2] = new Trait("t2",2,"Life on hit applies to MP instead of HP");
-		traits [t3] = new Trait("t3",2,"100% accuracy, no critical hit chance");
+		traits [MPDAMAGE] = new Trait("MPDAMAGE",1,"25% of incoming damage applies on MP instead of HP");
+		traits [MPREGEN] = new Trait("MPREGEN",1,"Half MP, double MP regeneration");
+		traits [MPLEECH] = new Trait("MPLEECH",1,"Life on hit applies to MP instead of HP");
+		traits [ACCURACY] = new Trait("ACCURACY",1,"100% accuracy, no critical hit chance");
 		traits [t4] = new Trait("t4",2,"+50% physical damage, -25% defense");
 		traits [t5] = new Trait("t5",2,"+50% magic damage, -30 to all resistances");
 		traits [t6] = new Trait("t6",2,"+20% attack speed limit");
@@ -60,44 +60,28 @@ public class Traits: MonoBehaviour
 	public static void activate(int tName){
 			if (p.passivePoints >= traits [tName].getCost ()) {
 				p.passivePoints -= traits [tName].getCost ();
-				/*switch (tName) {
-				case NoRemorse: 
-					p.offensives [p.IncreasedDmg] += 10;
-					break;
-				case OneWithNature: 
-					p.defensives [p.AllRes] += 5;
-					break;
-				case IronSkin: 
-					p.defensives [p.Defense] += 10;
-					break;
-				case Trascendance: 
-					p.atributes [p.Spirit] += 10;
+				switch (tName) {
+				case MPREGEN:
+					p.offensives[p.MaxMana] = p.offensives[p.MaxMana]/2;
+					p.offensives[p.ManaPerSec] = p.offensives[p.ManaPerSec]*2;
 					break;
 				default :
 					break;
-				}*/
+				}
 				traits [tName].setActive (true);
 			}
 		
 	}
 	public static void deactivate(int tName){
 			p.passivePoints += traits [tName].getCost ();
-			/*switch (tName) {
-			case NoRemorse: 
-				p.offensives [p.IncreasedDmg] -= 10;
-				break;
-			case OneWithNature: 
-				p.defensives [p.AllRes] -= 5;
-				break;
-			case IronSkin: 
-				p.defensives [p.Defense] -= 10;
-				break;
-			case Trascendance: 
-				p.atributes [p.Spirit] -= 10;
+			switch (tName) {
+			case MPREGEN:
+				p.offensives[p.MaxMana] = p.offensives[p.MaxMana]*2;
+				p.offensives[p.ManaPerSec] = p.offensives[p.ManaPerSec]/2;
 				break;
 			default :
 				break;
-			}*/
+			}
 			traits [tName].setActive (false);
 	}
 }

@@ -62,6 +62,10 @@ public class CharacterPanel : MonoBehaviour {
 	}
 
 	private void UpdateOffensives(){
+		float critChance = 0;
+		if (!Traits.traits [Traits.ACCURACY].isActive ()) {
+			critChance = ((p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100))*100);
+		}
 		txtOffensives.text = "Physical Damage         " + "\n"
 			+"Attacks Per Second      " + "\n"
 				+"Accuracy                \n" 
@@ -72,7 +76,7 @@ public class CharacterPanel : MonoBehaviour {
 		txt2Offensives.text = System.Math.Round(p.offensives[p.MinDmg],1) + " - " + System.Math.Round(p.offensives[p.MaxDamge],1) + "\n"
 			+(System.Math.Round(p.offensives[p.BaseAttacksPerSecond] + p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100),2)).ToString() + "\n"
 				+ 	p.offensives[p.Accuracy].ToString()+ "\n"
-				+((p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100))*100).ToString() + "%"+ "\n"
+				+ critChance.ToString() + "%"+ "\n"
 				+ p.offensives[p.CritDmgMultiplier].ToString()+ "\n"
 				+ p.offensives[p.ManaPerSec].ToString()+ "% \n"
 				+ p.offensives[p.IncreasedCastSpeed].ToString() + "%" + "\n";	

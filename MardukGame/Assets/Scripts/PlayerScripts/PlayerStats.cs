@@ -441,6 +441,13 @@ public class PlayerStats : MonoBehaviour {
 			break;
 		}
 		//Debug.Log ("daño con defensa:" + realDmg);
+		//Begin Traits
+		if (Traits.traits[Traits.MPDAMAGE].isActive ()) {
+			if (currentMana >= realDmg/4)
+				currentMana -= realDmg/4;
+			realDmg -= realDmg/4;
+		}
+		//End Traits
 		if (realDmg < 0)
 			realDmg = 0;
 		currentHealth -= realDmg;
