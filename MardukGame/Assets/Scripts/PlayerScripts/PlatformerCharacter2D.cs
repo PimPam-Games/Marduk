@@ -127,6 +127,16 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (weaponScript.canAttack) {
 				if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon) {
 					attackSound.Play ();
+					if(meleeSkillPos > -1){ //si se uso sacrifice le resta la vida
+						MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
+						if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
+							p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
+						}
+						else{
+							return;
+						}
+						weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f,0,0,1);
+					}
 					anim.SetBool ("Attacking", true);
 				} else {
 					if (PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
@@ -425,12 +435,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 					break;
 					case Types.SkillsTypes.Melee:
 						meleeSkillPos = i;
-						weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f,0,0,1);
-						MeleeSkill ms = (MeleeSkill)skill;
-						if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
-							p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
-							Attack();
-						}
+						
+						Attack();
 					break;
 					case Types.SkillsTypes.Utility:
 						skill.ActivateCoolDown();
