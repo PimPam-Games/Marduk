@@ -98,6 +98,10 @@ public class Weapon : MonoBehaviour {
 			if (Traits.traits[Traits.PDAMAGE].isActive ()) {
 				damage = damage * (float)1.5;
 			}
+			if (Traits.traits[Traits.LOWHPDAMAGE].isActive ()) {
+				if (p.currentHealth <= p.MaxHealth*(float)0.3)
+					damage = damage * (float)1.25;
+			}
 			//End Traits
 			if(pc.meleeSkillPos > -1){ //si la posicion es mayor a -1, significa que se esta usando un skill melee
 				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();

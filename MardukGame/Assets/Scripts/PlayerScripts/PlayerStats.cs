@@ -406,56 +406,64 @@ public class PlayerStats : MonoBehaviour {
 
 			realDmg -= Math.Abs((realDmg * (defensives[ColdRes]/100)));
 			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
-			if(!freeze)
-				chillCount = chillTimer;
-			if(!chill){
-				if(isCritical){
-					Debug.Log("congelado");
-					utils[MovementSpeed] = 0;
-					anim.speed = 0;
-					PlatformerCharacter2D.stopPlayer = true;
-					freeze = true;
+			if (!Traits.traits[Traits.NOFREEZE].isActive()){
+				if(!freeze)
+					chillCount = chillTimer;
+				if(!chill){
+					if(isCritical){
+						Debug.Log("congelado");
+						utils[MovementSpeed] = 0;
+						anim.speed = 0;
+						PlatformerCharacter2D.stopPlayer = true;
+						freeze = true;
+					}
+					else{
+						utils[MovementSpeed] -= 2;
+						anim.speed -= 0.5f;
+					}
+					currentAnimSpeed = anim.speed;
 				}
-				else{
-					utils[MovementSpeed] -= 2;
-					anim.speed -= 0.5f;
+				chill = true;
+				for(int i=0 ; i<renders.Length-1;i++){
+					renders[i].color = new Color (0f, 1f, 1f, 1f);
 				}
-				currentAnimSpeed = anim.speed;
-			}
-			chill = true;
-			for(int i=0 ; i<renders.Length-1;i++){
-				renders[i].color = new Color (0f, 1f, 1f, 1f);
 			}
 			break;
 		case Types.Element.Fire:
 			realDmg -= Math.Abs((realDmg * (defensives[FireRes]/100)));
 			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
-			if(isCritical){
-				ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
-				ignitedCount = ignitedTime;
-				if(!ignited)
-					StartCoroutine(IgnitedUpdate());
-				ignited = true;
+			if (!Traits.traits[Traits.NOBURN].isActive()){
+				if(isCritical){
+					ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
+					ignitedCount = ignitedTime;
+					if(!ignited)
+						StartCoroutine(IgnitedUpdate());
+					ignited = true;
+				}
 			}
 			break;
 		case Types.Element.Poison:
 			realDmg -= Math.Abs((realDmg * (defensives[PoisonRes]/100)));
 			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
-			poisonedDmg = (0.3f * realDmg)/5; // 30% del daño infligido en 1 seg
-			poisonedCount = poisonedTimer;
-			if(!poisoned)
-				StartCoroutine(PoisonedUpdate());
-			poisoned = true;
+			if (!Traits.traits[Traits.NOPOISON].isActive()){
+				poisonedDmg = (0.3f * realDmg)/5; // 30% del daño infligido en 1 seg
+				poisonedCount = poisonedTimer;
+				if(!poisoned)
+					StartCoroutine(PoisonedUpdate());
+				poisoned = true;
+			}
 			break;
 		case Types.Element.Lightning:
 			realDmg -= Math.Abs((realDmg * (defensives[LightRes]/100)));
 			realDmg -= Math.Abs((realDmg * (defensives[AllRes]/100)));
-			if(isCritical){
-				for(int i=0 ; i<renders.Length-1;i++){
-					renders[i].color = new Color (0.75f, 0.6f, 1f, 1f);
+			if (!Traits.traits[Traits.NOSHOCK].isActive()){
+				if(isCritical){
+					for(int i=0 ; i<renders.Length-1;i++){
+						renders[i].color = new Color (0.75f, 0.6f, 1f, 1f);
+					}
+					shockCount = shockTimer;
+					shock = true;
 				}
-				shockCount = shockTimer;
-				shock = true;
 			}
 			break;
 		default:

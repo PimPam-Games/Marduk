@@ -88,6 +88,12 @@ public class PlayerProjStats : MonoBehaviour {
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);*/
 			}
 			bool attackResult = false ;
+			//Begin Traits
+			if (Traits.traits[Traits.LOWHPDAMAGE].isActive ()) {
+				if (p.currentHealth <= p.MaxHealth*(float)0.3)
+					damage = damage * (float)1.25;
+			}
+			//End Traits
 			if(Utils.Choose(critDmgProb) != 0){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
 				damage *= p.offensives[p.CritDmgMultiplier];
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true); //si elem no es None no se esquivan

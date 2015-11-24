@@ -6,8 +6,8 @@ using p = PlayerStats;
 public class Traits: MonoBehaviour
 {
 	public const int CantTraits = 20;
-	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, t6 = 6, t7 = 7, t8 = 8, t9 = 9, 
-	t10 = 10, t11 = 11, t12 = 12, t13 = 13,t14 = 14, t15= 15, t16 = 16, t17 = 17, t18 = 18, t19 = 19;
+	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, ASPEED = 6, LOWHPDAMAGE = 7, NOFREEZE = 8, NOSHOCK = 9, 
+	NOPOISON = 10, NOBURN = 11, t12 = 12, t13 = 13,t14 = 14, t15= 15, t16 = 16, t17 = 17, t18 = 18, t19 = 19;
 	public static Trait[] traits;
 
 	public static float[] atributes;
@@ -22,13 +22,13 @@ public class Traits: MonoBehaviour
 		traits [MPLEECH] = new Trait("MPLEECH",1,"Life on hit applies to MP instead of HP");
 		traits [ACCURACY] = new Trait("ACCURACY",1,"100% accuracy, no critical hit chance");
 		traits [PDAMAGE] = new Trait("PDAMAGE",1,"+50% physical damage, -25% defense");
-		traits [MDAMAGE] = new Trait("MDAMAGE",2,"+50% magic damage, -30 to all resistances");
-		traits [t6] = new Trait("t6",2,"+20% attack speed limit");
-		traits [t7] = new Trait("t7",2,"+25% damage when below 30% HP");
-		traits [t8] = new Trait("t8",2,"Can't be frozen");
-		traits [t9] = new Trait("t9",2,"Can't be shocked");
-		traits [t10] = new Trait("t10",2,"Can't be poisoned");
-		traits [t11] = new Trait("t11",2,"Can't be burned");
+		traits [MDAMAGE] = new Trait("MDAMAGE",1,"+50% magic damage, -30 to all resistances");
+		traits [ASPEED] = new Trait("ASPEED",1,"+20% attack speed limit");
+		traits [LOWHPDAMAGE] = new Trait("LOWHPDAMAGE",1,"+25% damage when below 30% HP");
+		traits [NOFREEZE] = new Trait("NOFREEZE",1,"Can't be frozen");
+		traits [NOSHOCK] = new Trait("NOSHOCK",1,"Can't be shocked");
+		traits [NOPOISON] = new Trait("NOPOISON",1,"Can't be poisoned");
+		traits [NOBURN] = new Trait("NOBURN",1,"Can't be burned");
 		traits [t12] = new Trait("t12",2,"Can't evade attacks, +100% critical chance");
 		traits [t13] = new Trait("t13",2,"+10 to resistances limit");
 		traits [t14] = new Trait("t14",2,"+10% chance on hit to cause a random status effect");
