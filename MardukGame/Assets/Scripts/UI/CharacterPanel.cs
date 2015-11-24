@@ -48,7 +48,7 @@ public class CharacterPanel : MonoBehaviour {
 		UpdateUtils();
 		txtStrength.text = p.atributes[p.Strength].ToString();
 		txtDexterity.text = p.atributes[p.Dextery].ToString();
-		txtName.text = p.playerName;
+		txtName.text = p.playerName + " lvl: " + p.lvl;
 		txtSpirit.text = p.atributes[p.Spirit].ToString();
 		txtVitality.text = p.atributes[p.Vitality].ToString();
 		if(addAtributesPanel.activeSelf){

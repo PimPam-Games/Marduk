@@ -125,6 +125,10 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 			Item it = item.GetComponent<Item>();
 			if(it != null)
 				InventorySlotsPanel.invTooltip.GetComponentInChildren<Text>().text = it.ToolTip();
+			else{
+				SpellStats skill = item.GetComponent<SpellStats>();
+				InventorySlotsPanel.invTooltip.GetComponentInChildren<Text>().text = skill.ToolTip();
+			}
 		}
 	}
 

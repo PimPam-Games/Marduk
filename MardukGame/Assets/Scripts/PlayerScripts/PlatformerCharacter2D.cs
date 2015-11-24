@@ -409,7 +409,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking"))
 					return;
 				
-				PlayerStats.currentMana -= skill.manaCost;
+				
 				switch(skill.type){
 					case Types.SkillsTypes.Ranged:
 						RangedSkill rskill = (RangedSkill)skill;
@@ -419,11 +419,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 							if(string.Compare(rskill.nameForSave,"MultipleShot")==0)
 								multipleShots = true;							
 							if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
-								anim.SetBool ("BowAttacking", true);
+								if(weaponScript.canAttack){
+									PlayerStats.currentMana -= skill.manaCost;
+									anim.SetBool ("BowAttacking", true);
+								}
 							}
 						}
 						else{
 							//magias
+							PlayerStats.currentMana -= skill.manaCost;
 							projLaunchers[0].projectile = rskill.projectile;
 							projLaunchers[0].force = rskill.force;
 							projLaunchers[0].flipProjectile = rskill.flipProjectile;
@@ -439,6 +443,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						Attack();
 					break;
 					case Types.SkillsTypes.Utility:
+						PlayerStats.currentMana -= skill.manaCost;
 						skill.ActivateCoolDown();
 						UtilitySkill uskill = (UtilitySkill) skill;	
 						moveSkillTimer = uskill.moveTime;

@@ -27,10 +27,8 @@
 				if(Input.GetButtonUp("Spell3"))
 					character.Spell3();
 				if(Input.GetButtonUp("Spell4"))
-					character.Spell4();
-					
+					character.Spell4();					
 			}
-
         }
 
         private void FixedUpdate()
@@ -46,6 +44,7 @@
 			
 			if (Input.GetButton ("Fire1")) {	
 				PlatformerCharacter2D.meleeSkillPos = -1; //es el ataque comun	
+				PlatformerCharacter2D.supportSkillPos = -1; 
 				character.Attack ();
 			}
 		} else

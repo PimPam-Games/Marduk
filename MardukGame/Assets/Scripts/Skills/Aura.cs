@@ -53,4 +53,20 @@ public class Aura : SpellStats {
 		
 		base.RemoveSkill ();
 	}
+
+	public override string ToolTip ()
+	{
+		string tooltip = "";
+		tooltip =  base.ToolTip();
+		tooltip += "<color=red>----------------------------------</color> \n";
+		if(increasedAttackSpeed > 0)
+			tooltip += "Increased Attack Speed: %" + increasedAttackSpeed + "\n";
+		if(increasedCastSpeed > 0)
+			tooltip += "Increased Cast Speed: %" + increasedCastSpeed + "\n";
+		if(increasedManaRegen > 0)
+			tooltip += "Increased Mana Regeneration: %" + increasedManaRegen + "\n";
+		if(increasedMaxMana > 0)
+			tooltip += "Increased Max Mana: %" + increasedMaxMana + "\n";
+		return tooltip;
+	}
 }

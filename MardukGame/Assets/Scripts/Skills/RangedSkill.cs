@@ -29,7 +29,7 @@ public class RangedSkill : SpellStats {
 		base.CalculateStats();
 		if (projStats != null) {
 			projStats.minDmg = initMinDmg + (lvl - 1) * minDmgPerLvl; //en arcos no se usa
-			projStats.maxDmg = initMaxDmg + (lvl-1) * maxDmgPerLvl;	//en arcos no se usa
+			projStats.maxDmg = initMaxDmg + (lvl - 1) * maxDmgPerLvl;	//en arcos no se usa
 			projStats.physicalDmgMult = initPhysicalDmgMult + (lvl-1) * physicalDmgMultPerLvl;
 		}
 	}
@@ -55,5 +55,17 @@ public class RangedSkill : SpellStats {
 			animSpeed = 6;
 		if(castDelay < 0.15f)
 			animSpeed = 8;
+	}
+
+	public override string ToolTip ()
+	{
+		string tooltip = "";
+		tooltip =  base.ToolTip();
+		tooltip += "<color=red>----------------------------------</color> \n";
+		if(initPhysicalDmgMult > 0)
+			tooltip += "Damage Multiplier: %" + projStats.physicalDmgMult + "\n";
+		if(initMaxDmg > 0)
+			tooltip += "Damage: " + projStats.minDmg + " - " + projStats.maxDmg + "\n";
+		return tooltip;
 	}
 }

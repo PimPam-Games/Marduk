@@ -23,6 +23,7 @@ public class MeleeSkill : SpellStats {
 
 	protected override void Awake() {
 		base.Awake();
+		CalculateStats();
 	}
 
 	protected override void CalculateStats (){
@@ -38,5 +39,17 @@ public class MeleeSkill : SpellStats {
 	// Use this for initialization
 	void Start () {
 		CalculateStats ();
+	}
+
+	public override string ToolTip ()
+	{
+		string tooltip = "";
+		tooltip =  base.ToolTip();
+		tooltip += "<color=red>----------------------------------</color> \n";
+		if(sacrifiedLife > 0)
+			tooltip += "Sacrificed Life: %" + sacrifiedLife + "\n";
+		if(dmgMultiplier > 0)
+			tooltip += "Damage Multiplier: %" + dmgMultiplier + "\n";
+		return tooltip;
 	}
 }

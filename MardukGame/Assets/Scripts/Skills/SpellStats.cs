@@ -34,7 +34,7 @@ public class SpellStats : MonoBehaviour {
 	//[SerializeField] private float lifeRegenPerLvl;
 
 	protected  double currentExp;
-	protected  int lvl;
+	protected  int lvl = 1;
 	protected  double nextLevelExp;
 	protected  double oldNextLevelExp;
 
@@ -127,5 +127,32 @@ public class SpellStats : MonoBehaviour {
 		//if(type == Types.SkillsTypes.Aura)
 			//p.defensives [p.LifePerSecond] -= lifeRegenPerSecond;
 		Destroy (this.gameObject);
+	}
+
+	public virtual string ToolTip(){
+		string tooltip = spellName + "\n";
+		switch(type){
+			case Types.SkillsTypes.Aura:
+				tooltip += "Type: <color=#1F45FC>" + type + "</color> \n";
+				break;
+			case Types.SkillsTypes.Melee:
+				tooltip += "Type: <color=#F70D1A>" + type + "</color> \n";
+				break;
+			case Types.SkillsTypes.Ranged:
+				tooltip += "Type: <color=green>" + type + "</color> \n";
+				break;
+			case Types.SkillsTypes.Utility:
+				tooltip += "Type: <color=#EAC117>" + type + "</color> \n";
+				break;
+			case Types.SkillsTypes.Support:
+				tooltip += "Type: <color=grey>" + type + "</color> \n";
+				break;
+		}
+		if(Lvl <= 0){ //a veces aparece lvl = 0 cuando deberia ser 1
+			lvl = 1;
+			CalculateStats();
+		}
+		tooltip += "lvl: " + Lvl.ToString() + "\n"; 
+		return tooltip;
 	}
 }
