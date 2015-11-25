@@ -101,6 +101,15 @@ public class PlayerProjStats : MonoBehaviour {
 				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
 					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, true);
 				}
+				if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, true);
+				}
+				if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, true);
+				}
+				if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, true);
+				}
 				//End Traits
 				if(attackResult){
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, true);
@@ -123,6 +132,15 @@ public class PlayerProjStats : MonoBehaviour {
 					//Begin Traits
 					if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
 						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, false);
+					}
+					if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
+						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, false);
+					}
+					if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
+						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, false);
+					}
+					if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
+						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, false);
 					}
 					//End Traits
 					if(supportSkill != null){

@@ -130,6 +130,15 @@ public class Weapon : MonoBehaviour {
 			if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
 				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, isCrit);
 			}
+			if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
+				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, isCrit);
+			}
+			if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
+				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, isCrit);
+			}
+			if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
+				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, isCrit);
+			}
 			//End Traits
 			
 			if(hit){

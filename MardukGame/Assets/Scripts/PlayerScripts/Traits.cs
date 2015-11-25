@@ -7,7 +7,7 @@ public class Traits: MonoBehaviour
 {
 	public const int CantTraits = 20;
 	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 6, LOWHPDAMAGE = 7, NOFREEZE = 8, NOSHOCK = 9, 
-	NOPOISON = 10, NOBURN = 11, FIREDAMAGE = 12, t13 = 13,t14 = 14, t15= 15, t16 = 16, t17 = 17, t18 = 18, t19 = 19;
+	NOPOISON = 10, NOBURN = 11, FIREDAMAGE = 12, COLDDAMAGE = 13,LIGHTDAMAGE = 14, POISONDAMAGE= 15, t16 = 16, t17 = 17, t18 = 18, t19 = 19;
 	public static Trait[] traits;
 
 	public static float[] atributes;
@@ -30,6 +30,9 @@ public class Traits: MonoBehaviour
 		traits [NOPOISON] = new Trait("NOPOISON",1,"Can't be poisoned");
 		traits [NOBURN] = new Trait("NOBURN",1,"Can't be burned");
 		traits [FIREDAMAGE] = new Trait("FIREDAMAGE",1,"10% of damage dealt is added as fire damage");
+		traits [COLDDAMAGE] = new Trait("COLDDAMAGE",1,"10% of damage dealt is added as cold damage");
+		traits [LIGHTDAMAGE] = new Trait("LIGHTDAMAGE",1,"10% of damage dealt is added as lightning damage");
+		traits [POISONDAMAGE] = new Trait("POISONDAMAGE",1,"10% of damage dealt is added as poison damage");
 		/*traits [ASPEED] = new Trait("ASPEED",1,"+20% attack speed limit");
 		traits [t12] = new Trait("t12",2,"Can't evade attacks, +100% critical chance");
 		traits [t13] = new Trait("t13",2,"+10 to resistances limit");
