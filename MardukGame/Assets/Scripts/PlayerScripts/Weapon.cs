@@ -126,7 +126,12 @@ public class Weapon : MonoBehaviour {
 				hitEnemySound.Play();
 			}
 			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
-
+			//Begin Traits
+			if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
+				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, isCrit);
+			}
+			//End Traits
+			
 			if(hit){
 				if(supportSkill != null)
 					enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support

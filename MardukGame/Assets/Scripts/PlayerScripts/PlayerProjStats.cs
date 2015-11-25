@@ -97,6 +97,11 @@ public class PlayerProjStats : MonoBehaviour {
 			if(Utils.Choose(critDmgProb) != 0){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
 				damage *= p.offensives[p.CritDmgMultiplier];
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true); //si elem no es None no se esquivan
+				//Begin Traits
+				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, true);
+				}
+				//End Traits
 				if(attackResult){
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, true);
 					if(supportSkill != null){
@@ -115,6 +120,11 @@ public class PlayerProjStats : MonoBehaviour {
 				if(attackResult){  //si no es critico tira el sonido comun
 						
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
+					//Begin Traits
+					if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
+						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, false);
+					}
+					//End Traits
 					if(supportSkill != null){
 						enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, false);
 						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
@@ -124,6 +134,9 @@ public class PlayerProjStats : MonoBehaviour {
 						collision = true;
 				}
 			}
+
+
+
 			if(!dontDestroy){
 				if(hasSplashAnim){
 					

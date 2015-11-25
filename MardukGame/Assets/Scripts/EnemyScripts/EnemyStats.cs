@@ -271,11 +271,76 @@ public class EnemyStats : MonoBehaviour {
 				realDmg *= 1.5f; //cuando esta shokeado aumenta el daño recibido de cualquier tipo
 			}
 			//Begin Traits
-			if (Traits.traits[Traits.MDAMAGE].isActive())
+			if (Traits.traits[Traits.MDAMAGE].isActive()){
 				if (type!=Types.Element.None)
-					realDmg = realDmg*(float)1.5;
-
+					realDmg *= 1.5f;
+			}
+			if (Traits.traits[Traits.SEFFECT].isActive()){
+				float[] statusProb = {0.8f, 0.2f};
+				if (Utils.Choose (statusProb) != 0) {
+					float[] effectProb = {0.25f, 0.25f, 0.25f, 0.25f};
+					//int i = Random.Range (0, 3);
+					int i = Utils.Choose (effectProb);
+					switch (i) {
+					case 0:
+						//Debug.Log ("cold damage");
+						Debug.Log("cold Damage");
+						realDmg -= Mathf.Abs ((realDmg * (coldRes/100)));
+						chillCount = chillTimer;
+						if(!chill){
+							if(enemyMove != null){
+								if(isCritical){
+									enemyMove.StopWalk();
+								}else{
+									enemyMove.currentSpeed = enemyMove.maxSpeed / 2; //algunos enemigos usan current speed y otros maxSpeed
+									enemyMove.maxSpeed = enemyMove.maxSpeed / 2;     //asi que actualizo las dos
+								}
+							}
+							if(isCritical)
+								anim.speed = 0; // se congela si es critico
+							else{
+								anim.speed -= 0.5f;
+								//Debug.Log(anim.speed);
+							}
+						}
+						chill = true;
+						//for(int i=0 ; i<renders.Length-1;i++){
+						spriteRend.color = new Color (0f, 1f, 1f, 1f);
+						break;
+					case 1:
+						realDmg -= Mathf.Abs ((realDmg * (fireRes/100)));
+						if(isCritical){
+							ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
+							ignitedCount = ignitedTime;
+							if(!ignited)
+								StartCoroutine(IgnitedUpdate());
+							ignited = true;
+						}
+						break;
+					case 2:
+						realDmg -= Mathf.Abs ((realDmg * (poisonRes/100)));
+						poisonedDmg = (0.10f * realDmg)/5; // 10% del daño infligido en 1 seg
+						poisonedCount = poisonedTime;
+						if(!poisoned)
+							StartCoroutine(PoisonedUpdate());
+						poisoned = true;
+						break;
+					case 3:
+						realDmg -= Mathf.Abs ((realDmg * (lightRes/100)));
+						if(isCritical){
+							spriteRend.color = new Color (0.75f, 0.6f, 1f, 1f);
+							shockCount = shockTimer;
+							shock = true;
+						}
+						break;
+					default:
+						Debug.LogError ("todo maaaal");
+						break;
+					}
+				}
+			}
 			//End Traits
+
 			switch (type) {
 			case Types.Element.None:
 				realDmg -= (armour / (armour + 8 * realDmg));	
