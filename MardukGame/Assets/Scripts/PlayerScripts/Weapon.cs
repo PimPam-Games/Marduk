@@ -17,6 +17,8 @@ public class Weapon : MonoBehaviour {
 	public AudioSource criticalHitSound;
 	public Animator anim = null; 
 	public float animSpeed = 0;
+	public GameObject weaponProjLauncher1;
+	public GameObject weaponProjLauncher2;
 	//private float normalAnimSpeed;
 	void Start () {
 		//attackTimer = 0;
@@ -80,7 +82,7 @@ public class Weapon : MonoBehaviour {
 
 	private void DoDamage(Collider2D col){
 		GameObject enemy = col.gameObject;
-		
+		elem = Types.Element.None;
 		if (enemy.tag == "Enemy" && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
 			Support supportSkill = null;
@@ -105,7 +107,21 @@ public class Weapon : MonoBehaviour {
 			//End Traits
 			if(pc.meleeSkillPos > -1){ //si la posicion es mayor a -1, significa que se esta usando un skill melee
 				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();
-				damage *= ms.DmgMultiplier/100;	
+				damage *= ms.DmgMultiplier/100;
+				elem = ms.elementToConvert;
+		
+				if(pc.useMeleeProjLauncher){
+					PlayerProjStats msProj = ms.projectile.GetComponent<PlayerProjStats>();
+					msProj.minDmg = damage * 0.6f; //por ahora es asi loco
+					msProj.maxDmg = damage * 0.6f;
+					if(pc.isFacingRight()){
+						weaponProjLauncher1.transform.rotation = Quaternion.Euler(0,0,90);
+					}
+					else{
+						weaponProjLauncher1.transform.rotation = Quaternion.Euler(0,0,270);
+					}
+					Instantiate (msProj, weaponProjLauncher1.transform.position, weaponProjLauncher1.transform.rotation);
+				}	
 			}
 			if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
 				supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];

@@ -45,6 +45,7 @@
 			if (Input.GetButton ("Fire1")) {	
 				PlatformerCharacter2D.meleeSkillPos = -1; //es el ataque comun	
 				PlatformerCharacter2D.supportSkillPos = -1; 
+				PlatformerCharacter2D.useMeleeProjLauncher = false;
 				character.Attack ();
 			}
 		} else

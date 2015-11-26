@@ -8,6 +8,7 @@ public class MeleeSkill : SpellStats {
 	public float dmgMultiplierPerLvl = 0;
 	public Types.Element elementToConvert = Types.Element.None;
 	public float convertedDmg = 0;
+	public GameObject projectile;
 
 	private float dmgMultiplier = 0;
 	private float sacrifiedLife = 0;

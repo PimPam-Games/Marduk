@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
+using pc = PlatformerCharacter2D;
 
 public class PlayerProjLauncher : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class PlayerProjLauncher : MonoBehaviour {
 	public GameObject projectile;
 	public bool staticProjectile;
 	public bool flipProjectile = false;
-	public PlatformerCharacter2D character;
+	//public PlatformerCharacter2D character;
 	private GameObject proj; //el proyectil
 	//public float castDelay = 0;
 	//public float castDelayCount = 0;
@@ -21,7 +22,7 @@ public class PlayerProjLauncher : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(staticProjectile && proj != null){
-			if (character.isFacingRight ())
+			if (pc.isFacingRight ())
 				proj.transform.position = new Vector3(this.transform.position.x - 0.4f,this.transform.position.y,this.transform.position.z);
 			else	
 				proj.transform.position = new Vector3(this.transform.position.x + 0.4f,this.transform.position.y,this.transform.position.z);
@@ -38,12 +39,12 @@ public class PlayerProjLauncher : MonoBehaviour {
 			/*var dir = (target.transform.position - transform.position).normalized;
 			var dot = Vector2.Dot(dir, transform.right);*/
 		if (!flipProjectile) {	
-			if (character.isFacingRight ())
+			if (pc.isFacingRight ())
 				proj.GetComponent<ProjectileMovement> ().moveDirX = 1;
 			else
 				proj.GetComponent<ProjectileMovement> ().moveDirX = -1;
 		}
-		if (flipProjectile && character.isFacingRight ()) {
+		if (flipProjectile && pc.isFacingRight ()) {
 			proj.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));
 			proj.transform.rotation = Quaternion.Euler (0, 0, 90);
 		} else {

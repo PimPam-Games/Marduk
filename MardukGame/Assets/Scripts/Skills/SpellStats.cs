@@ -153,6 +153,9 @@ public class SpellStats : MonoBehaviour {
 			CalculateStats();
 		}
 		tooltip += "level: " + Lvl.ToString() + "\n";
+		if(manaCost > 0){
+			tooltip += "Mana cost: " + manaCost + "\n";
+		}
 		if(requeriments != null && requeriments.Length > 0 && requeriments[0] != Types.SkillsRequirements.None){ 
 			tooltip += "Only works with ";
 			for(int i= 0 ; i < requeriments.Length ; i++){

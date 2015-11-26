@@ -9,7 +9,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		public static List<GameObject> playerItemsGO = new List<GameObject>();	
 		public static bool stopPlayer = false;
-        private bool facingRight = true; // For determining which way the player is currently facing.
+        private static bool facingRight = true; // For determining which way the player is currently facing.
 
         public float maxSpeed; // The fastest the player can travel in the x axis.
         [SerializeField] private float jumpForce = 400f; // Amount of force added when the player jumps.	
@@ -56,6 +56,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private bool multipleShots = false;
 		public static int supportSkillPos = -1; //cuando se dispara algun skill y haya algun support en un slot
 		public static int meleeSkillPos = -1; //cuando usa algun skill de tipo melee
+		public static bool useMeleeProjLauncher = false; //si es true, se uso una habilidad melee que tiene que usar el proj launcher
 
         private void Awake()
         {
@@ -129,13 +130,19 @@ public class PlatformerCharacter2D : MonoBehaviour
 					attackSound.Play ();
 					if(meleeSkillPos > -1){ //si se uso sacrifice le resta la vida
 						MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
-						if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
-							p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
+						if(string.Compare(ms.nameForSave,"Sacrifice")==0){
+							if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
+								p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
+							}
+							else{
+								return;
+							}
+							weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f,0,0,1);
 						}
-						else{
-							return;
+						if(string.Compare(ms.nameForSave,"BurningBlow")==0){ //usa burning blow
+							useMeleeProjLauncher = true;
+							weapon.GetComponent<SpriteRenderer>().color = new Color(1f,0.5f,0,1);
 						}
-						weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f,0,0,1);
 					}
 					anim.SetBool ("Attacking", true);
 				} else {
@@ -263,7 +270,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 	
 
-		public bool isFacingRight(){
+		public static bool isFacingRight(){
 			return facingRight;
 		}
 
@@ -439,7 +446,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					break;
 					case Types.SkillsTypes.Melee:
 						meleeSkillPos = i;
-						
+						PlayerStats.currentMana -= skill.manaCost;
 						Attack();
 					break;
 					case Types.SkillsTypes.Utility:
