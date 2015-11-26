@@ -152,7 +152,16 @@ public class SpellStats : MonoBehaviour {
 			lvl = 1;
 			CalculateStats();
 		}
-		tooltip += "lvl: " + Lvl.ToString() + "\n"; 
+		tooltip += "level: " + Lvl.ToString() + "\n";
+		if(requeriments != null && requeriments.Length > 0 && requeriments[0] != Types.SkillsRequirements.None){ 
+			tooltip += "Only works with ";
+			for(int i= 0 ; i < requeriments.Length ; i++){
+				tooltip += requeriments[i] + "s";
+				if(i < requeriments.Length - 1)
+					tooltip += ", ";
+			}
+			tooltip += "\n";			
+		}
 		return tooltip;
 	}
 }

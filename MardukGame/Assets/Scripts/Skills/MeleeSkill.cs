@@ -45,11 +45,14 @@ public class MeleeSkill : SpellStats {
 	{
 		string tooltip = "";
 		tooltip =  base.ToolTip();
-		tooltip += "<color=red>----------------------------------</color> \n";
+		tooltip += "<color=#F70D1A>----------------------------------</color> \n";
+		if(string.Compare(spellName,"Sacrifice") == 0){
+			tooltip += "Performs a powerful attack that costs life \n \n";
+		}
 		if(sacrifiedLife > 0)
 			tooltip += "Sacrificed Life: %" + sacrifiedLife + "\n";
 		if(dmgMultiplier > 0)
-			tooltip += "Damage Multiplier: %" + dmgMultiplier + "\n";
+			tooltip += "Deals " + dmgMultiplier + "% of Base Attack Damage \n";
 		return tooltip;
 	}
 }

@@ -188,7 +188,7 @@ public class Item : MonoBehaviour {
 		if(type == ItemTypes.Shield)
 			tooltip += "block chance: " + defensives[p.BlockChance] + "% \n";
 
-		tooltip += "<color=red>----------------------------------</color> \n";
+		tooltip += "<color=orange>----------------------------------</color> \n";
 
 		if (atributes [p.Strength] > 0)
 			tooltip += "+ " + atributes[p.Strength] + " To Strength" + "\n";

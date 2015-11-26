@@ -61,9 +61,22 @@ public class RangedSkill : SpellStats {
 	{
 		string tooltip = "";
 		tooltip =  base.ToolTip();
-		tooltip += "<color=red>----------------------------------</color> \n";
+		tooltip += "<color=green>----------------------------------</color> \n";
+		if(string.Compare(spellName,"Multiple Shot") == 0){
+			tooltip += "Fires multiple arrows at different targets \n \n";
+			tooltip += "2 additional arrows \n";
+		}
+		if(string.Compare(spellName,"Lightning Ball") == 0){
+			tooltip += "Fires a projectile that deals lightning damage \n \n";
+		}
+		if(string.Compare(spellName,"Poison Ball") == 0){
+			tooltip += "Fires a projectile that deals poison damage \n \n";
+		}
+		if(string.Compare(spellName,"Poison Nova") == 0){
+			tooltip += "Casts a ring of Poison around you that deals aoe damage \n \n";
+		}
 		if(initPhysicalDmgMult > 0)
-			tooltip += "Damage Multiplier: %" + projStats.physicalDmgMult + "\n";
+			tooltip += "Deals " + projStats.physicalDmgMult + "% of Base Attack Damage \n";
 		if(initMaxDmg > 0)
 			tooltip += "Damage: " + projStats.minDmg + " - " + projStats.maxDmg + "\n";
 		return tooltip;

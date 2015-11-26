@@ -68,11 +68,11 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 	}
 		
 	public void OnPointerEnter(PointerEventData eventData){ //muestro el tooltip
-		showTooltip ();
+		//showTooltip ();
 	}
 
 	public void OnPointerExit(PointerEventData eventData){
-		tooltip.SetActive (false);
+		//tooltip.SetActive (false);
 	}
 
 	private void showTooltip(){

@@ -58,7 +58,13 @@ public class Aura : SpellStats {
 	{
 		string tooltip = "";
 		tooltip =  base.ToolTip();
-		tooltip += "<color=red>----------------------------------</color> \n";
+		tooltip += " <color=#1F45FC> ----------------------------------</color> \n";
+		if(string.Compare(spellName,"Anxiety") == 0){
+			tooltip += "Casts an aura that increases attack speed and cast speed \n \n";
+		}
+		if(string.Compare(spellName,"Mana Flows") == 0){
+			tooltip += "Casts an aura that increases mana regeneration and maximun mana \n \n";
+		}
 		if(increasedAttackSpeed > 0)
 			tooltip += "Increased Attack Speed: %" + increasedAttackSpeed + "\n";
 		if(increasedCastSpeed > 0)

@@ -10,7 +10,13 @@ public class Support : SpellStats {
 	{
 		string tooltip = "";
 		tooltip =  base.ToolTip();
-		tooltip += "<color=red>----------------------------------</color> \n";
+		if(string.Compare(spellName,"Iced Damage") == 0){
+			tooltip += "Only works with melee and Ranged skills \n";
+		}
+		tooltip += "<color=grey>----------------------------------</color> \n";
+		if(string.Compare(spellName,"Iced Damage") == 0){
+			tooltip += "Adds ice damage to one skill \n \n";
+		}
 		if(damageAdded > 0 && dmgElement != Types.Element.None)
 			tooltip += "Adds " + damageAdded + " of " + dmgElement + " Damage \n";
 		if(damageAdded > 0 && dmgElement == Types.Element.None)
