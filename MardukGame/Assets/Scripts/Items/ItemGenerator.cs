@@ -37,7 +37,8 @@ public class ItemGenerator :MonoBehaviour{
 		//crea una nueva arma
 		GameObject newWeapon;
 		Item newItem;
-		float[] rarityProb = {0.61f,0.3f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
+		float[] rarityProb = {0.25f,0.25f,0.25f,0.25f};
+		//float[] rarityProb = {0.61f,0.3f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
 		int newRarity = Utils.Choose (rarityProb); 
 		if (newRarity != 3) { //no es unico
 			int i = Random.Range (0, weaponList.Length);
@@ -102,6 +103,14 @@ public class ItemGenerator :MonoBehaviour{
 				if (newItem.itemName == "Titan's might"){
 					newItem.Atributes [p.Strength] = 30;
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16);
+				}
+				if (newItem.itemName == "Golden champion"){
+					newItem.Atributes [p.Strength] = 20;
+					newItem.Offensives [p.IncreasedCritChance] = 20;
+				}
+				if (newItem.itemName == "The berserker"){
+					newItem.Atributes [p.Dextery] = 30;
+					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
 				}
 			}
 

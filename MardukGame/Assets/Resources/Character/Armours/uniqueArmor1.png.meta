@@ -1,9 +1,27 @@
 fileFormatVersion: 2
 guid: b78ebe966125755468beadfe5cd383f0
-timeCreated: 1446768871
+timeCreated: 1448579666
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: f_thigh
+    21300002: f_arm
+    21300004: b_arm
+    21300006: uniqueArmor1_3
+    21300008: b_thigh
+    21300010: torso
+    21300012: uniqueArmor1_6
+    21300014: f_leg
+    21300016: f_forearm
+    21300018: uniqueArmor1_9
+    21300020: b_forearm
+    21300022: uniqueArmor1_11
+    21300024: b_leg
+    21300026: uniqueArmor1_13
+    21300028: uniqueArmor1_14
+    21300030: uniqueArmor1_15
+    21300032: f_foot
+    21300034: b_foot
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,25 +48,205 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: f_thigh
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 328
+        width: 64
+        height: 114
+      alignment: 9
+      pivot: {x: .349426031, y: .792023242}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f_arm
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 332
+        width: 58
+        height: 93
+      alignment: 9
+      pivot: {x: .409372538, y: .716662347}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: b_arm
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 335
+        width: 86
+        height: 96
+      alignment: 9
+      pivot: {x: .591681898, y: .682514489}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: uniqueArmor1_3
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 410
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: b_thigh
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 307
+        width: 61
+        height: 109
+      alignment: 9
+      pivot: {x: .428192645, y: .869717658}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: torso
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 174
+        width: 109
+        height: 175
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: uniqueArmor1_6
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 338
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f_leg
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 199
+        width: 56
+        height: 121
+      alignment: 9
+      pivot: {x: .546932518, y: .818570495}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f_forearm
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 213
+        width: 69
+        height: 111
+      alignment: 9
+      pivot: {x: .309550405, y: .815700471}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: uniqueArmor1_9
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 300
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: b_forearm
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 223
+        width: 59
+        height: 92
+      alignment: 9
+      pivot: {x: .410908341, y: .852332056}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: uniqueArmor1_11
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 281
+        width: 15
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: b_leg
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 176
+        width: 49
+        height: 123
+      alignment: 9
+      pivot: {x: .410604686, y: .863248229}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: uniqueArmor1_13
+      rect:
+        serializedVersion: 2
+        x: 622
+        y: 273
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: uniqueArmor1_14
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 190
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: uniqueArmor1_15
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 172
+        width: 15
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: f_foot
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 136
+        width: 88
+        height: 34
+      alignment: 9
+      pivot: {x: .271027833, y: .757668018}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: b_foot
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 118
+        width: 88
+        height: 34
+      alignment: 9
+      pivot: {x: .241161689, y: .757668018}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

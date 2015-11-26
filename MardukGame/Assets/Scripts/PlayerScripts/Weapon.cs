@@ -131,16 +131,12 @@ public class Weapon : MonoBehaviour {
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
 				//Begin Traits
-				if (!Traits.traits[Traits.ACCURACY].isActive ()) {
-					criticalHitSound.Play();
-				}
+
 				//End Traits
 				isCrit = true;
 				Debug.Log("Critical Dmg: " + damage);
 			}
-			else{
-				hitEnemySound.Play();
-			}
+
 			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
 			//Begin Traits
 			if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
@@ -158,6 +154,12 @@ public class Weapon : MonoBehaviour {
 			//End Traits
 			
 			if(hit){
+				if (isCrit && !Traits.traits[Traits.ACCURACY].isActive ()){
+					criticalHitSound.Play();
+				}
+				else{
+					hitEnemySound.Play();
+				}
 				if(supportSkill != null)
 					enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support
 				if(enemy.transform.position.x < this.transform.position.x)

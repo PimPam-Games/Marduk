@@ -114,14 +114,25 @@ public class PlayerItems: MonoBehaviour {
 			if(equipedArmour==null)
 				reSkin.ReSkinArmour("default_armor");
 			else{
-				if(equipedArmour.Name == "Milanese armour"){
+				switch (equipedArmour.Name){
+				case "Milanese armour":
 					reSkin.ReSkinArmour("milanesearmor");
-				}
-				else{
-					if(equipedArmour.Name == "Gothic armour")
-						reSkin.ReSkinArmour("gothicarmour");
-					else
-						reSkin.ReSkinArmour(equipedArmour.Name);
+					break;
+				case "Gothic armour":
+					reSkin.ReSkinArmour("gothicarmour");
+					break;
+				case "Plated mail":
+					reSkin.ReSkinArmour("platedmail");
+					break;
+				case "Golden champion":
+					reSkin.ReSkinArmour("uniqueArmor1");
+					break;
+				case "The berserker":
+					reSkin.ReSkinArmour("uniqueArmor2");
+					break;
+				default:
+					reSkin.ReSkinArmour(equipedArmour.Name);
+				break;
 				}
 
 			}

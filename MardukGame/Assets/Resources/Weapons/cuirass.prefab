@@ -198,13 +198,15 @@ MonoBehaviour:
   - 0
   - 0
   initDefense:
-  - 5
-  - 14
+  - 6
+  - 12
   initBlockChance:
   - 0
   - 0
   auraRend: {fileID: 0}
+  itemForSlot: 0
   itemSound: {fileID: 8290414}
+  lifeToAdd: 5
 --- !u!212 &21270664
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -270,11 +272,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initDefense.Array.data[0]
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initDefense.Array.data[1]
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemName
