@@ -11,6 +11,8 @@ public class TraitsPanel : MonoBehaviour{
 
 	//private static List<GameObject> buttons;
 	public Text passivePointsText;
+	public Image[] traitsButtons;
+
 	// Use this for initialization
 	void Start () {
 		/*buttons = new List<GameObject> ();
@@ -27,13 +29,20 @@ public class TraitsPanel : MonoBehaviour{
 	
 	public void clickOnTrait(int tName) {
 		if (!Traits.traits [tName].isActive ()) {
-			Traits.activate(tName);
+			if(p.passivePoints >= Traits.traits[tName].getCost()){
+				traitsButtons[tName].color = new Color(1,1,1,0.35f);
+				Traits.activate(tName);
+			}
 		} else {
+			traitsButtons[tName].color = new Color(1,1,1,1);
 			Traits.deactivate(tName);
 		}
 	}
 
 	public void clickOnReset () {
+		foreach(Image img in traitsButtons){
+			img.color = new Color(1,1,1,1);
+		}
 		Traits.reset();
 	}
 

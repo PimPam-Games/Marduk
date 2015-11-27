@@ -50,6 +50,9 @@ public class MeleeSkill : SpellStats {
 		if(string.Compare(spellName,"Sacrifice") == 0){
 			tooltip += "Performs a powerful attack that costs life \n \n";
 		}
+		if(string.Compare(spellName,"Burning Blow") == 0){
+			tooltip += "Performs a fire attack that throws flames when hits an enemy \n \n";
+		}
 		if(sacrifiedLife > 0)
 			tooltip += "Sacrificed Life: %" + sacrifiedLife + "\n";
 		if(dmgMultiplier > 0)

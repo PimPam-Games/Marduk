@@ -53,13 +53,13 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		if (eventData.button == PointerEventData.InputButton.Right) {
-			if(spell != null){
+			/*if(spell != null){
 				SpellStats sp = spell.GetComponent<SpellStats>();
 				PlayerItems.SpellsInvetory.Remove(sp);
 				sp.RemoveSkill();
 				
 			}
-			ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
+			ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());*/
 		}
 		/*else if (eventData.button == PointerEventData.InputButton.Middle)
 			Debug.Log("Middle click");

@@ -168,15 +168,26 @@ public class Item : MonoBehaviour {
 	}
 
 	public string ToolTip(){
-		string tooltip;
-		if(Rarity == RarityTypes.Magic)
-			tooltip = "<color=cyan>" + Name + "</color> \n";
-		else if (Rarity == RarityTypes.Rare)
-			tooltip = "<color=Yellow>" + Name + "</color> \n";
-		else if (Rarity == RarityTypes.Unique)
-			tooltip = "<color=orange>" + Name + "</color> \n";
-		else
-			tooltip = "<color=White>" + Name + "</color> \n";
+		string tooltip = "";
+		string separator = "";
+		switch(Rarity){
+			case RarityTypes.Normal:
+				tooltip = "<color=White>" + Name + "</color> \n";
+				separator = "<color=White>----------------------------------</color> \n";
+				break;
+			case RarityTypes.Magic:
+				tooltip = "<color=cyan>" + Name + "</color> \n";
+				separator = "<color=cyan>----------------------------------</color> \n";
+				break;
+			case RarityTypes.Rare:
+				tooltip = "<color=Yellow>" + Name + "</color> \n";
+				separator = "<color=Yellow>----------------------------------</color> \n";
+				break;
+			case RarityTypes.Unique:
+				tooltip = "<color=orange>" + Name + "</color> \n";
+				separator = "<color=orange>----------------------------------</color> \n";
+				break;
+		}
 		tooltip += "Rarity: " + Rarity + "\n" + 
 					"Type: " + Type + "\n";
 		if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
@@ -188,7 +199,7 @@ public class Item : MonoBehaviour {
 		if(type == ItemTypes.Shield)
 			tooltip += "block chance: " + defensives[p.BlockChance] + "% \n";
 
-		tooltip += "<color=orange>----------------------------------</color> \n";
+		tooltip += separator;
 
 		if (atributes [p.Strength] > 0)
 			tooltip += "+ " + atributes[p.Strength] + " To Strength" + "\n";

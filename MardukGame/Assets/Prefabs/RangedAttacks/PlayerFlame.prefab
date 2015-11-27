@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 1
-  minDmg: 5.11051559
-  maxDmg: 5.11051559
+  minDmg: 9.86149597
+  maxDmg: 9.86149597
   physicalDmgMult: 0
   duration: 1
   particleSpeed: 0
@@ -184,6 +184,7 @@ MonoBehaviour:
   dontDestroy: 1
   hasSplashAnim: 0
   isAoe: 1
+  alwaysCrit: 1
   anim: {fileID: 0}
   hitEnemySound: {fileID: 8297338}
   criticalHitSound: {fileID: 8297338}
@@ -258,6 +259,10 @@ Prefab:
       propertyPath: criticalHitSound
       value: 
       objectReference: {fileID: 8297338}
+    - target: {fileID: 0}
+      propertyPath: alwaysCrit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191792}

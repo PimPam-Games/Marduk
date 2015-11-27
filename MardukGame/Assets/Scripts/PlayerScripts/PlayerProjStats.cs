@@ -15,6 +15,7 @@ public class PlayerProjStats : MonoBehaviour {
 	public bool dontDestroy = false;
 	public bool hasSplashAnim = false;
 	public bool isAoe = false;
+	public bool alwaysCrit = false;
 
 	//public float manaCost = 5f;
 	private float rotationChange;
@@ -61,7 +62,7 @@ public class PlayerProjStats : MonoBehaviour {
 		float damageConverted = 0;
 		Support supportSkill = null;
 
-		if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
+		if(pc.supportSkillPos > -1 && !alwaysCrit) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
 			supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
 
 		if (col.gameObject.tag == "Enemy") {
@@ -94,8 +95,12 @@ public class PlayerProjStats : MonoBehaviour {
 					damage = damage * (float)1.25;
 			}
 			//End Traits
-			if(Utils.Choose(critDmgProb) != 0){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
-				damage *= p.offensives[p.CritDmgMultiplier];
+			bool isCrit = false;
+			if(Utils.Choose(critDmgProb) != 0 || alwaysCrit)
+				isCrit = true;
+			if(isCrit){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
+				if(!alwaysCrit)
+					damage *= p.offensives[p.CritDmgMultiplier];
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true); //si elem no es None no se esquivan
 				//Begin Traits
 				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
@@ -117,7 +122,8 @@ public class PlayerProjStats : MonoBehaviour {
 						enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, true);
 						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
 					}
-					criticalHitSound.Play();
+					if(!alwaysCrit)
+						criticalHitSound.Play();
 					Debug.Log("Critical Dmg: " + damage);
 					if(projRequirements == Types.SkillsRequirements.Bow)
 						collision = true;
