@@ -52,7 +52,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldWeapon!=null) p.offensives[i] -= oldWeapon.Offensives[i];
 				if(equipedWeapon!=null) p.offensives[i] += equipedWeapon.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldWeapon!=null) p.atributes[i] -= oldWeapon.Atributes[i] - oldWeapon.Utils[p.AllAttr];
+					if(oldWeapon!=null) p.atributes[i] -= oldWeapon.Atributes[i] + oldWeapon.Utils[p.AllAttr];
 					if(equipedWeapon!=null) p.atributes[i] += equipedWeapon.Atributes[i]+ equipedWeapon.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
@@ -99,7 +99,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldArmour!=null) p.offensives[i] -= oldArmour.Offensives[i];
 				if(equipedArmour!=null) p.offensives[i] += equipedArmour.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldArmour!=null) p.atributes[i] -= oldArmour.Atributes[i]- oldArmour.Utils[p.AllAttr];
+					if(oldArmour!=null) p.atributes[i] -= oldArmour.Atributes[i]+ oldArmour.Utils[p.AllAttr];
 					if(equipedArmour!=null) p.atributes[i] += equipedArmour.Atributes[i]+ equipedArmour.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
@@ -149,7 +149,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldHelmet!=null) p.offensives[i] -= oldHelmet.Offensives[i];
 				if(equipedHelmet!=null) p.offensives[i] += equipedHelmet.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldHelmet!=null) p.atributes[i] -= oldHelmet.Atributes[i]- oldHelmet.Utils[p.AllAttr];
+					if(oldHelmet!=null) p.atributes[i] -= oldHelmet.Atributes[i]+ oldHelmet.Utils[p.AllAttr];
 					if(equipedHelmet!=null) p.atributes[i] += equipedHelmet.Atributes[i] + equipedHelmet.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
@@ -192,7 +192,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldAmulet!=null) p.offensives[i] -= oldAmulet.Offensives[i];
 				if(equipedAmulet!=null) p.offensives[i] += equipedAmulet.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldAmulet!=null) p.atributes[i] -= oldAmulet.Atributes[i]- oldAmulet.Utils[p.AllAttr];
+					if(oldAmulet!=null) p.atributes[i] -= oldAmulet.Atributes[i]+ oldAmulet.Utils[p.AllAttr];
 					if(equipedAmulet!=null) p.atributes[i] += equipedAmulet.Atributes[i] + equipedAmulet.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
@@ -219,7 +219,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldRingR!=null) p.offensives[i] -= oldRingR.Offensives[i];
 				if(equipedRingR!=null) p.offensives[i] += equipedRingR.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldRingR!=null) p.atributes[i] -= oldRingR.Atributes[i]- oldRingR.Utils[p.AllAttr];
+					if(oldRingR!=null) p.atributes[i] -= oldRingR.Atributes[i]+ oldRingR.Utils[p.AllAttr];
 					if(equipedRingR!=null) p.atributes[i] += equipedRingR.Atributes[i]+ equipedRingR.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
@@ -249,7 +249,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldRingL!=null) p.offensives[i] -= oldRingL.Offensives[i];
 				if(equipedRingL!=null) p.offensives[i] += equipedRingL.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldRingL!=null) p.atributes[i] -= oldRingL.Atributes[i]- oldRingL.Utils[p.AllAttr];
+					if(oldRingL!=null) p.atributes[i] -= oldRingL.Atributes[i]+ oldRingL.Utils[p.AllAttr];
 					if(equipedRingL!=null) p.atributes[i] += equipedRingL.Atributes[i]+ equipedRingL.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
@@ -279,7 +279,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldBelt!=null) p.offensives[i] -= oldBelt.Offensives[i];
 				if(equipedBelt!=null) p.offensives[i] += equipedBelt.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldBelt!=null) p.atributes[i] -= oldBelt.Atributes[i]- oldBelt.Utils[p.AllAttr];
+					if(oldBelt!=null) p.atributes[i] -= oldBelt.Atributes[i]+ oldBelt.Utils[p.AllAttr];
 					if(equipedBelt!=null) p.atributes[i] += equipedBelt.Atributes[i]+ equipedBelt.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
@@ -308,7 +308,7 @@ public class PlayerItems: MonoBehaviour {
 				if(oldShield!=null) p.offensives[i] -= oldShield.Offensives[i];
 				if(equipedShield!=null) p.offensives[i] += equipedShield.Offensives[i];
 				if(i<p.atributes.Length){
-					if(oldShield!=null) p.atributes[i] -= oldShield.Atributes[i]- oldShield.Utils[p.AllAttr];
+					if(oldShield!=null) p.atributes[i] -= oldShield.Atributes[i]+ oldShield.Utils[p.AllAttr];
 					if(equipedShield!=null) p.atributes[i] += equipedShield.Atributes[i]+ equipedShield.Utils[p.AllAttr];
 				}
 				if(i<p.CantDefensives){
