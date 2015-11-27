@@ -112,6 +112,15 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Atributes [p.Dextery] = 30;
 					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
 				}
+				if (newItem.itemName == "The untouchable"){
+					newItem.Atributes [p.Strength] = 15;
+					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
+					newItem.Defensives [p.AllRes] = 5;
+				}
+				if (newItem.itemName == "Dark will"){
+					newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (10, 20);
+					newItem.Defensives [p.Thorns] = 10;
+				}
 			}
 
 			for (int j=0; j<numAffixes; j++) {
