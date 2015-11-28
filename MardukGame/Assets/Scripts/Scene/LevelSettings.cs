@@ -19,7 +19,7 @@ public class LevelSettings : MonoBehaviour {
 			Debug.LogError("Arreglo de enemigos fuera de rango");
 		GameObject newEnemy = (GameObject)Instantiate (zoneEnemies[index],pos,rot);
 		if (zoneNumber == 1) {
-			if (string.Compare (newEnemy.GetComponent<EnemyStats> ().enemyName, "Tree Father") == 0) { //al lado del treefather genero unos stumps
+			if (string.Compare (newEnemy.GetComponent<EnemyStats> ().enemyName, "Hell mouth") == 0) { //al lado del treefather genero unos stumps
 
 				GameObject newEnemy1 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x + 5, pos.y, pos.z), rot);
 				GameObject newEnemy2 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x - 5, pos.y, pos.z), rot);
@@ -30,7 +30,7 @@ public class LevelSettings : MonoBehaviour {
 			}
 		}
 		if (zoneNumber == 3 || zoneNumber == 4) {
-			if (string.Compare (newEnemy.GetComponent<EnemyStats> ().enemyName, "Crow") == 0) { //si es un crow genero 2
+			if (string.Compare (newEnemy.GetComponent<EnemyStats> ().enemyName, "Roc") == 0) { //si es un crow genero 2
 				int cant = Random.Range(1,3);
 				for(int i = 1; i <= cant;i++){
 					GameObject newEnemy1;
