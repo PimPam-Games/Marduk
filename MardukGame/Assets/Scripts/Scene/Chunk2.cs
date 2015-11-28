@@ -19,9 +19,11 @@ public class Chunk2 : MonoBehaviour {
 	private bool layerChanged = false; //indica si ya se le cambio el layer para que sea visto por el minimapa
 	public bool isFirstChunk = false;
 	public int chunkId = 0;
+	public bool isEnd = false; //true si es un chunk cuadrado, una terminacion
 	private ChunkFactory cf;
 	private LevelSettings ls;
 	private float timeToGenerate = 0;
+
 	// Use this for initialization
 	
 	void Awake(){
@@ -47,6 +49,7 @@ public class Chunk2 : MonoBehaviour {
 		if (timeToGenerate > 0.02f && !alreadyGenerated && !isFirstChunk) {
 			GenerateChunks();
 		}
+		
 	}
 	
 	void Start () {
@@ -179,10 +182,11 @@ public class Chunk2 : MonoBehaviour {
 		}
 	}
 	
+
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.tag == "Chunk") {
-			if(!this.isDouble){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
-				
+			if(!this.isDouble && !col.GetComponent<Chunk2>().isEnd && !this.isEnd){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
+				Debug.Log("choco el" + this.chunkId + " con "+ col.GetComponent<Chunk2>().chunkId);
 				Destroy(this.gameObject);
 			}
 		}

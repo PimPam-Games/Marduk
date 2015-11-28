@@ -24,6 +24,7 @@ public class Chunk : MonoBehaviour {
 	private ChunkFactory cf;
 	private LevelSettings ls;
 	private float timeToGenerate = 0;
+	public bool isEnd = false;
 	// Use this for initialization
 
 	void Awake(){
@@ -184,10 +185,10 @@ public class Chunk : MonoBehaviour {
 
 		if (col.gameObject.tag == "Chunk") {
 
-				if(!this.isDouble){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
+			if(!this.isDouble && !col.GetComponent<Chunk>().isEnd && !this.isEnd){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
 					Debug.Log("tengo que destruir el chunk");
-					//Destroy(this.gameObject);
-				}
+					Destroy(this.gameObject);
+			}
 
 		}
 		if (col.gameObject.tag == "Player") {

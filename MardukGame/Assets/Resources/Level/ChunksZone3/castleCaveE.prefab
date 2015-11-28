@@ -122,7 +122,7 @@ GameObject:
   - 114: {fileID: 11490414}
   m_Layer: 0
   m_Name: castleCaveE
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,7 +321,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.2258167, y: 3.30168438, z: 0}
+  m_LocalPosition: {x: -110.523643, y: 28.2599564, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 453026}
@@ -604,9 +604,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 576.68396, y: 173.637421}
+  m_Offset: {x: 568.105957, y: 173.637451}
   serializedVersion: 2
-  m_Size: {x: 1080.77905, y: 734.594421}
+  m_Size: {x: 814.865967, y: 734.594482}
 --- !u!61 &6199472
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -700,13 +700,18 @@ MonoBehaviour:
   position: 0000000000000000
   isFirstChunk: 0
   chunkId: 0
+  isEnd: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Chunk
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155764}
