@@ -130,6 +130,9 @@ public class PlayerItems: MonoBehaviour {
 				case "The berserker":
 					reSkin.ReSkinArmour("uniqueArmor2");
 					break;
+				case "Templar's faith":
+					reSkin.ReSkinArmour("uniqueArmor3");
+					break;
 				default:
 					reSkin.ReSkinArmour(equipedArmour.Name);
 				break;
@@ -170,6 +173,9 @@ public class PlayerItems: MonoBehaviour {
 					break;
 				case "The untouchable":
 					reSkin.ReSkinHelmet("uniqueHelm2");
+					break;
+				case "Crusader's wrath":
+					reSkin.ReSkinHelmet("uniqueHelm3");
 					break;
 				default:
 					reSkin.ReSkinHelmet(equipedHelmet.Name);

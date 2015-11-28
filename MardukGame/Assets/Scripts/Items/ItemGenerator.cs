@@ -121,6 +121,15 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (10, 20);
 					newItem.Defensives [p.Thorns] = 10;
 				}
+				if (newItem.itemName == "Crusader's wrath"){
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 15);
+					newItem.Utils [p.AllAttr] = 10;
+				}
+				if (newItem.itemName == "Templar's faith"){
+					newItem.Atributes [p.Vitality] = 15;
+					newItem.Atributes [p.Spirit] = 15;
+					newItem.Defensives [p.AllRes] = 15;
+				}
 			}
 
 			for (int j=0; j<numAffixes; j++) {
