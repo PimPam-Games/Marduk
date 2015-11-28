@@ -73,8 +73,8 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Defensives [p.Thorns] = 5;
 				}
 				if (newItem.itemName == "Cold zero"){
-					newItem.Utils [p.AllAttr] = 10;
-					newItem.Defensives [p.ColdRes] = 40;
+					newItem.Offensives [p.IncreasedCritChance] = 15;
+					newItem.Defensives [p.ColdRes] = 30;
 					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
 				}
 				if (newItem.itemName == "Sandblast"){
@@ -92,8 +92,8 @@ public class ItemGenerator :MonoBehaviour{
 				}
 				if (newItem.itemName == "Enlil's breath"){
 					newItem.Defensives [p.ColdRes] = 15;
-					newItem.Defensives [p.LightRes] = 30;
-					newItem.Utils [p.AllAttr] = 20;
+					newItem.Defensives [p.LightRes] = 20;
+					newItem.Utils [p.AllAttr] = 10;
 				}
 				if (newItem.itemName == "Solar edge"){
 					newItem.Utils [p.AllAttr] = 10;
@@ -128,6 +128,18 @@ public class ItemGenerator :MonoBehaviour{
 				if (newItem.itemName == "Templar's faith"){
 					newItem.Atributes [p.Vitality] = 15;
 					newItem.Atributes [p.Spirit] = 15;
+					newItem.Defensives [p.AllRes] = 15;
+				}
+				if (newItem.itemName == "The contender"){
+					newItem.Atributes [p.Vitality] = 10;
+					newItem.Atributes [p.Strength] = 10;
+				}
+				if (newItem.itemName == "Ice dragon's defense"){
+					newItem.Defensives [p.ColdRes] = 25;
+					newItem.Utils [p.AllAttr] = 15;
+				}
+				if (newItem.itemName == "The wall"){
+					newItem.Defensives [p.MaxHealth] = Random.Range (30, 40);
 					newItem.Defensives [p.AllRes] = 15;
 				}
 			}

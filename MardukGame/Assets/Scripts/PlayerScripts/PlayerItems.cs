@@ -329,8 +329,20 @@ public class PlayerItems: MonoBehaviour {
 			if(equipedShield==null)
 				reSkin.ReSkinShield("none");
 			else{
-				Debug.Log(equipedShield.Name);
-				reSkin.ReSkinShield(equipedShield.Name);
+				switch (equipedShield.Name){
+				case "The contender":
+					reSkin.ReSkinShield("uniqueShield1");
+					break;
+				case "Ice dragon's defense":
+					reSkin.ReSkinShield("uniqueShield2");
+					break;
+				case "The wall":
+					reSkin.ReSkinShield("uniqueShield3");
+					break;
+				default:
+					reSkin.ReSkinShield(equipedShield.Name);
+					break;
+				}
 			}
 			UpdateStats(oldShield,equipedShield);
 		}
