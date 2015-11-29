@@ -142,6 +142,24 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Defensives [p.MaxHealth] = Random.Range (30, 40);
 					newItem.Defensives [p.AllRes] = 15;
 				}
+				if (newItem.itemName == "Thunderstrike"){
+					newItem.Defensives [p.LightRes] = 20;
+					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
+					newItem.Utils [p.AllAttr] = 5;
+				}
+				if (newItem.itemName == "Conqueror's ambition"){
+					newItem.Defensives [p.MaxHealth] = Random.Range (20, 30);
+					newItem.Utils [p.AllAttr] = 20;
+				}
+				if (newItem.itemName == "Vicious hunter"){
+					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 15);
+				}
+				if (newItem.itemName == "The redeemer"){
+					newItem.Offensives [p.IncreasedMgDmg] = 10;
+					newItem.Atributes [p.Spirit] = 25;
+					newItem.Defensives [p.AllRes] = 10;
+				}
 			}
 
 			for (int j=0; j<numAffixes; j++) {
