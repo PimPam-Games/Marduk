@@ -160,6 +160,29 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Atributes [p.Spirit] = 25;
 					newItem.Defensives [p.AllRes] = 10;
 				}
+				if (newItem.itemName == "Head crusher"){
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (20, 30);
+					newItem.Atributes [p.Strength] = 20;
+				}
+				if (newItem.itemName == "Ogre's mace"){
+					newItem.Defensives [p.PoisonRes] = 15;
+					newItem.Defensives [p.Thorns] = 10;
+				}
+				if (newItem.itemName == "Holy sceptre"){
+					newItem.Atributes [p.Dextery] = 20;
+					newItem.Atributes [p.Spirit] = 20;
+					newItem.Defensives [p.AllRes] = 20;
+				}
+				if (newItem.itemName == "Black skull"){
+					newItem.Offensives [p.IncreasedMgDmg] = 10;
+					newItem.Atributes [p.Spirit] = 15;
+					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
+				}
+				if (newItem.itemName == "The raider"){
+					newItem.Atributes [p.Dextery] = 30;
+					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
+					newItem.Offensives [p.IncreasedAttackSpeed] = 10;
+				}
 			}
 
 			for (int j=0; j<numAffixes; j++) {
