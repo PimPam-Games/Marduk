@@ -177,6 +177,9 @@ public class PlayerItems: MonoBehaviour {
 				case "Crusader's wrath":
 					reSkin.ReSkinHelmet("uniqueHelm3");
 					break;
+				case "Golden cap":
+					reSkin.ReSkinHelmet("uniqueHelm4");
+					break;
 				default:
 					reSkin.ReSkinHelmet(equipedHelmet.Name);
 					break;

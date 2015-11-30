@@ -118,8 +118,13 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Defensives [p.AllRes] = 5;
 				}
 				if (newItem.itemName == "Dark will"){
-					newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (10, 20);
+					newItem.Atributes [p.Dextery] = 20;
 					newItem.Defensives [p.Thorns] = 10;
+				}
+				if (newItem.itemName == "Golden cap"){
+					newItem.Offensives [p.IncreasedMgDmg] = 20;
+					newItem.Offensives [p.IncreasedCastSpeed] = 12;
+					newItem.Defensives [p.AllRes] = 10;
 				}
 				if (newItem.itemName == "Crusader's wrath"){
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 15);
