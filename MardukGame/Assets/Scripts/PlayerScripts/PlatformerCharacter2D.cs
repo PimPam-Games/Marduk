@@ -439,7 +439,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 							projLaunchers[0].force = rskill.force;
 							projLaunchers[0].flipProjectile = rskill.flipProjectile;
 							projLaunchers[0].staticProjectile = rskill.staticProjectile;
-							projLaunchers[0].staticProjectile = rskill.staticProjectile;
+							projLaunchers[0].dontChangeRotation = rskill.dontChangeRotation;
 							currentSkill = skill;
 							anim.SetBool("SpellCasting", true);
 						}

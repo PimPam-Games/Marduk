@@ -9,6 +9,7 @@ public class RangedSkill : SpellStats {
 	public bool staticProjectile = false;
 	public GameObject projectile;
 	private PlayerProjStats projStats;
+	public bool dontChangeRotation = false;
 
 
 	[SerializeField] private float initMinDmg;

@@ -9,6 +9,7 @@ public class PlayerProjLauncher : MonoBehaviour {
 	public GameObject projectile;
 	public bool staticProjectile;
 	public bool flipProjectile = false;
+	public bool dontChangeRotation = false;
 	//public PlatformerCharacter2D character;
 	private GameObject proj; //el proyectil
 	//public float castDelay = 0;
@@ -34,7 +35,12 @@ public class PlayerProjLauncher : MonoBehaviour {
 		//	return;
 		/*if (p.currentMana < projectile.GetComponent<PlayerProjStats> ().manaCost)
 			return;*/
-		proj = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
+		proj = null;
+		if(!dontChangeRotation)
+			proj = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
+		else{
+			proj = (GameObject)Instantiate (projectile, transform.position, projectile.transform.rotation);
+		}
 		//castDelayCount = castDelay;
 			/*var dir = (target.transform.position - transform.position).normalized;
 			var dot = Vector2.Dot(dir, transform.right);*/
@@ -46,10 +52,12 @@ public class PlayerProjLauncher : MonoBehaviour {
 		}
 		if (flipProjectile && pc.isFacingRight ()) {
 			proj.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));
-			proj.transform.rotation = Quaternion.Euler (0, 0, 90);
+			if(!dontChangeRotation)
+				proj.transform.rotation = Quaternion.Euler (0, 0, 90);
 		} else {
 			proj.GetComponent<Rigidbody2D> ().AddForce (force);
-			proj.transform.rotation = Quaternion.Euler(0,0,-90);
+			if(!dontChangeRotation)
+				proj.transform.rotation = Quaternion.Euler(0,0,-90);
 		}
 	}
 }

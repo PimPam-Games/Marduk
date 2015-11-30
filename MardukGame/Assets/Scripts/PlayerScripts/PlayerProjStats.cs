@@ -16,6 +16,7 @@ public class PlayerProjStats : MonoBehaviour {
 	public bool hasSplashAnim = false;
 	public bool isAoe = false;
 	public bool alwaysCrit = false;
+	public int stopAfterTime = -1;
 
 	//public float manaCost = 5f;
 	private float rotationChange;
@@ -27,6 +28,7 @@ public class PlayerProjStats : MonoBehaviour {
 	public Types.Element convertElem = Types.Element.None; // a que elemento tiene que convertir el 40% del daño fisico
 	private bool collision = false;
 	private bool alreadyHit = false;
+	private float stopCount = 0;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -37,10 +39,15 @@ public class PlayerProjStats : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		/*Vector2 v = rb.velocity;
-		float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
 	
+		stopCount += Time.deltaTime;
+		if(stopAfterTime != -1 && rb.velocity.x != 0){
+			rb.velocity = new Vector2(rb.velocity.x /1.04f,rb.velocity.y);
+			//rb.velocity = new Vector2(0,rb.velocity.y);
+		}
+		if(stopCount >= stopAfterTime && stopAfterTime != -1){
+			rb.velocity = new Vector2(0,rb.velocity.y);
+		}
 		if (collision) {
 			rb.velocity = new Vector2 (0, 0.2f);
 			lifeTime += Time.deltaTime*5;
@@ -54,6 +61,10 @@ public class PlayerProjStats : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 	
+	public void Ready(){
+		anim.SetBool("Ready",true); // solo lo usa glacier por ahora
+	}
+
 	void OnTriggerEnter2D(Collider2D col){ 
 		float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
 		float[] critDmgProb = {1 - critChance,critChance };
