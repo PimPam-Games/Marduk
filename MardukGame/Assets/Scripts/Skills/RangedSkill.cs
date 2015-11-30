@@ -9,8 +9,8 @@ public class RangedSkill : SpellStats {
 	public bool staticProjectile = false;
 	public GameObject projectile;
 	private PlayerProjStats projStats;
-	public bool dontChangeRotation = false;
-
+	public bool dontChangeRotation = false; // para que la rotacion no se ajuste a la rotacion del lanzador
+	public bool continuosRelease = false; // true si el poder se tira continuamente como incinerate
 
 	[SerializeField] private float initMinDmg;
 	[SerializeField] private float initMaxDmg;

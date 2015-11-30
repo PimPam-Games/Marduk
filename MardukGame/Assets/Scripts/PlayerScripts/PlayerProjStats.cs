@@ -15,6 +15,8 @@ public class PlayerProjStats : MonoBehaviour {
 	public bool dontDestroy = false;
 	public bool hasSplashAnim = false;
 	public bool isAoe = false;
+	public bool dotSkill = false;
+	public bool continuosRelease = false;
 	public bool alwaysCrit = false;
 	public int stopAfterTime = -1;
 
@@ -55,6 +57,14 @@ public class PlayerProjStats : MonoBehaviour {
 		lifeTime += Time.deltaTime;
 		if(lifeTime >= duration)
 			Destroy(this.gameObject);
+
+		if(continuosRelease && pc.isFacingRight()) //acomoda el poder segun para que lado esta mirando el personaje
+			this.transform.rotation = Quaternion.Euler(0,0,90);
+		else
+			this.transform.rotation = Quaternion.Euler(0,0,-90);
+
+		if(continuosRelease && pc.castInterruptByMovement) //si el personaje se mueve, se deja de castear el poder
+			StopIncinerate();								//en PlatformerUserControl y enemyStats se modifica la variable
 	}
 	
 	void DestroyProjectile(){
@@ -65,7 +75,17 @@ public class PlayerProjStats : MonoBehaviour {
 		anim.SetBool("Ready",true); // solo lo usa glacier por ahora
 	}
 
+	public void Incinerate(){
+		anim.SetBool("Incinerate",true);
+	}
+
+	public void StopIncinerate(){
+		anim.SetBool("StopIncinerate", true);
+	}
+
 	void OnTriggerEnter2D(Collider2D col){ 
+		if(dotSkill) //el daño de estos skills se calcula en la parte del enemigo
+			return;
 		float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
 		float[] critDmgProb = {1 - critChance,critChance };
 		//float[] critDmgProb = {0, 1f };

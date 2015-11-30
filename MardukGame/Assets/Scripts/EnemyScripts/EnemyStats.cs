@@ -81,6 +81,8 @@ public class EnemyStats : MonoBehaviour {
 	private float ignitedDmg = 0;
 	private bool itemCreated = false;
 
+	private float DotSkillTimer = 0;
+
 	public bool isBoss = false;
 	public float Accuracy{
 		get {return accuracy;}
@@ -156,6 +158,7 @@ public class EnemyStats : MonoBehaviour {
 		}
 		if (!rend.isVisible)
 			alertSoundPlayed = false;
+		
 	}
 
 	private void chillUpdate(){
@@ -237,6 +240,29 @@ public class EnemyStats : MonoBehaviour {
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 			else
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+			PlatformerCharacter2D.castInterruptByMovement = true;
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D col){
+
+		if( col.gameObject.tag == "DotSkill"){
+			PlayerProjStats proj =  col.GetComponent<PlayerProjStats>();
+			if(proj == null){
+				return;
+			}
+			if(proj.elem == Types.Element.Fire){
+				
+				ignitedDmg = Random.Range(proj.minDmg,proj.maxDmg); 
+				Debug.Log("daño quedamado " + ignitedDmg);
+				ignitedCount = 0.41f;
+				if(!ignited){
+					StartCoroutine(IgnitedUpdate());
+					ignited = true;
+				}
+				//DotSkillTimer = 0.42f;
+				
+			}
 		}
 	}
 

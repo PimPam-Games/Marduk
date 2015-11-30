@@ -66,6 +66,7 @@ public class ProjectileStats : MonoBehaviour {
 					}
 				}
 			}
+			PlatformerCharacter2D.castInterruptByMovement = true;
 		}
 		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
 			if(!dontDestroy){

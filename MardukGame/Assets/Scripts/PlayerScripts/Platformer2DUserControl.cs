@@ -39,6 +39,8 @@
 			bool crouch = Input.GetKey (KeyCode.LeftControl);
 			float h = Input.GetAxis ("Horizontal");
 			// Pass all parameters to the character control script.
+			if(h != 0)
+				PlatformerCharacter2D.castInterruptByMovement = true;
 			character.Move (h, crouch, jump);
 			jump = false;
 			

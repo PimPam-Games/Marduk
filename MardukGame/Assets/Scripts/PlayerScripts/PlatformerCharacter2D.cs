@@ -58,6 +58,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public static int meleeSkillPos = -1; //cuando usa algun skill de tipo melee
 		public static bool useMeleeProjLauncher = false; //si es true, se uso una habilidad melee que tiene que usar el proj launcher
 
+		public static bool castInterruptByMovement = false;
+
         private void Awake()
         {
             // Setting up references.
@@ -440,6 +442,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 							projLaunchers[0].flipProjectile = rskill.flipProjectile;
 							projLaunchers[0].staticProjectile = rskill.staticProjectile;
 							projLaunchers[0].dontChangeRotation = rskill.dontChangeRotation;
+							castInterruptByMovement = false;
 							currentSkill = skill;
 							anim.SetBool("SpellCasting", true);
 						}
