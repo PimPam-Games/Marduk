@@ -11,6 +11,7 @@ public class RangedSkill : SpellStats {
 	private PlayerProjStats projStats;
 	public bool dontChangeRotation = false; // para que la rotacion no se ajuste a la rotacion del lanzador
 	public bool continuosRelease = false; // true si el poder se tira continuamente como incinerate
+	public bool drainMana = false; //si debe drenar el mana o gastarlo de una
 
 	[SerializeField] private float initMinDmg;
 	[SerializeField] private float initMaxDmg;

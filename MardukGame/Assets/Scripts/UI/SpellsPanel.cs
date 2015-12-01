@@ -117,7 +117,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		if(st.type == Types.SkillsTypes.Support) //si es un support lo agrega al inventario directamente
 			alreadyEquipped = true;
 		st.OldNextLevelExp = 1;
-		st.Lvl = 0;	
+		st.Lvl = 1;	
 		st.CurrentExp = 0;
 		st.NextLevelExp = st.SpellExpFormula();
 		if(!alreadyEquipped){

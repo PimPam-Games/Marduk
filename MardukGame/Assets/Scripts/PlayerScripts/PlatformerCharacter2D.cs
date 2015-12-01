@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using p = PlayerStats;
 using System.Collections.Generic;
+using System.Collections;
 
 
 
@@ -94,6 +95,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 				rb.AddForce (new Vector2(0, 900f));
 				jumpNow = false;
 			}
+			if(castInterruptByMovement)
+				anim.SetBool("ContinuousCast",false);
 			UpdateMovementSkill ();
 		}
 
@@ -412,6 +415,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		private void checkSkill(int i){
+			castInterruptByMovement = true;
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
 			supportSkillPos = i; //la posicion del support que deberia usar, si es que hay uno
 			if (skill != null) {
@@ -436,6 +440,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 						else{
 							//magias
+							
 							PlayerStats.currentMana -= skill.manaCost;
 							projLaunchers[0].projectile = rskill.projectile;
 							projLaunchers[0].force = rskill.force;
@@ -443,6 +448,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 							projLaunchers[0].staticProjectile = rskill.staticProjectile;
 							projLaunchers[0].dontChangeRotation = rskill.dontChangeRotation;
 							castInterruptByMovement = false;
+							Debug.Log(rskill.drainMana  +  " ," + rskill.manaCost);
+							if(rskill.drainMana){
+								StartCoroutine(ManaDrain(rskill.manaCost));
+							}
 							currentSkill = skill;
 							anim.SetBool("SpellCasting", true);
 						}
@@ -466,16 +475,34 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		}
 
+		IEnumerator ManaDrain (float manaToDrain) {		
+			while (!castInterruptByMovement && !p.isDead) {
+				yield return new WaitForSeconds (0.2f);
+				p.currentMana -= manaToDrain;
+				if(p.currentMana <= 0){
+					castInterruptByMovement = true;
+					p.currentMana = 0;
+				}
+			}
+		}
+
 		public void Idle(){
 
 			anim.speed = p.currentAnimSpeed;
-
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
-			anim.SetBool ("SpellCasting", false);
+			if(castInterruptByMovement)	
+				anim.SetBool ("SpellCasting", false);
+			else{				
+				anim.SetBool("ContinuousCast",true);
+			}
 		   // anim.SetBool ("PolearmAttacking", false);
 		}
 		
+		public void StopSpellCast(){
+			anim.SetBool ("SpellCasting", false);
+		}
+
         private void Flip()
         {
 

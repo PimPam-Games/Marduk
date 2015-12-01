@@ -331,7 +331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &154718
 GameObject:
   m_ObjectHideFlags: 1
@@ -646,7 +646,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154718}
-  m_LocalRotation: {x: 0, y: 0, z: .297132611, w: .954836249}
+  m_LocalRotation: {x: 0, y: 0, z: .297297418, w: .954784989}
   m_LocalPosition: {x: .0710000023, y: -.469999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -874,7 +874,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126410}
-  m_LocalRotation: {x: 0, y: 0, z: -.386370867, w: .922343612}
+  m_LocalRotation: {x: 0, y: 0, z: -.386689246, w: .922210097}
   m_LocalPosition: {x: .195999995, y: -.626999974, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -978,7 +978,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164764}
-  m_LocalRotation: {x: 0, y: 0, z: .0948625356, w: .995490432}
+  m_LocalRotation: {x: 0, y: 0, z: .0950343907, w: .995473981}
   m_LocalPosition: {x: .203999996, y: .448000014, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1630,6 +1630,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   staticProjectile: 0
   flipProjectile: 0
+  dontChangeRotation: 0
 --- !u!114 &11406086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1758,6 +1759,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   staticProjectile: 0
   flipProjectile: 0
+  dontChangeRotation: 0
 --- !u!114 &11447414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1773,6 +1775,7 @@ MonoBehaviour:
   projectile: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
   staticProjectile: 0
   flipProjectile: 0
+  dontChangeRotation: 0
 --- !u!114 &11452910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1827,6 +1830,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   staticProjectile: 0
   flipProjectile: 0
+  dontChangeRotation: 0
 --- !u!114 &11481868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1872,6 +1876,7 @@ MonoBehaviour:
   projectile: {fileID: 108042, guid: 26e40b4ea95e7274c860baf18d875959, type: 2}
   staticProjectile: 0
   flipProjectile: 1
+  dontChangeRotation: 0
 --- !u!114 &11497350
 MonoBehaviour:
   m_ObjectHideFlags: 1
