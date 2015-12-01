@@ -5,7 +5,7 @@ using p = PlayerStats;
 
 public class Traits: MonoBehaviour
 {
-	public const int CantTraits = 20;
+	public const int CantTraits = 16;
 	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 6, LOWHPDAMAGE = 7, NOFREEZE = 8, NOSHOCK = 9, 
 	NOPOISON = 10, NOBURN = 11, FIREDAMAGE = 12, COLDDAMAGE = 13,LIGHTDAMAGE = 14, POISONDAMAGE= 15, t16 = 16, t17 = 17, t18 = 18, t19 = 19;
 	public static Trait[] traits;
