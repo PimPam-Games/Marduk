@@ -59,7 +59,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public static int meleeSkillPos = -1; //cuando usa algun skill de tipo melee
 		public static bool useMeleeProjLauncher = false; //si es true, se uso una habilidad melee que tiene que usar el proj launcher
 
-		public static bool castInterruptByMovement = false;
+	//	public static bool castInterruptByMovement = false;
+		public static int skillBtnPressed = -1;
 
         private void Awake()
         {
@@ -95,7 +96,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 				rb.AddForce (new Vector2(0, 900f));
 				jumpNow = false;
 			}
-			if(castInterruptByMovement)
+			//if(castInterruptByMovement)
+			//	anim.SetBool("ContinuousCast",false);
+			if(skillBtnPressed>=1 && skillBtnPressed<=4){ 
+				if(Input.GetButtonUp("Spell"+skillBtnPressed)){
+					Debug.Log("Boton soltado " + skillBtnPressed);
+					skillBtnPressed = -1;
+				}
+			}
+			if(skillBtnPressed < 0)
 				anim.SetBool("ContinuousCast",false);
 			UpdateMovementSkill ();
 		}
@@ -383,18 +392,25 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		public void Spell1(){
 			checkSkill (0);
+			
 		}
 		
 		public void Spell2(){
+		
 			checkSkill (1);
+		
 		}	
 
 		public void Spell3(){
+
 			checkSkill (2);
+			
+			
 		}
 
-		public void Spell4(){
-			checkSkill (3);
+		public void Spell4(){			
+				checkSkill (3);
+		
 		}
 
 		private void UpdateMovementSkill(){
@@ -415,7 +431,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		private void checkSkill(int i){
-			castInterruptByMovement = true;
+
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
 			supportSkillPos = i; //la posicion del support que deberia usar, si es que hay uno
 			if (skill != null) {
@@ -440,15 +456,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 						else{
 							//magias
-							
+							skillBtnPressed = i+1;
 							PlayerStats.currentMana -= skill.manaCost;
 							projLaunchers[0].projectile = rskill.projectile;
 							projLaunchers[0].force = rskill.force;
 							projLaunchers[0].flipProjectile = rskill.flipProjectile;
 							projLaunchers[0].staticProjectile = rskill.staticProjectile;
 							projLaunchers[0].dontChangeRotation = rskill.dontChangeRotation;
-							castInterruptByMovement = false;
-							Debug.Log(rskill.drainMana  +  " ," + rskill.manaCost);
+							//skillBtnPressed = true;
 							if(rskill.drainMana){
 								StartCoroutine(ManaDrain(rskill.manaCost));
 							}
@@ -476,11 +491,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		IEnumerator ManaDrain (float manaToDrain) {		
-			while (!castInterruptByMovement && !p.isDead) {
+			while (skillBtnPressed >= 1 && !p.isDead) {
 				yield return new WaitForSeconds (0.2f);
 				p.currentMana -= manaToDrain;
 				if(p.currentMana <= 0){
-					castInterruptByMovement = true;
+					skillBtnPressed = -1;
 					p.currentMana = 0;
 				}
 			}
@@ -491,7 +506,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			anim.speed = p.currentAnimSpeed;
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
-			if(castInterruptByMovement)	
+			if(skillBtnPressed < 1)	
 				anim.SetBool ("SpellCasting", false);
 			else{				
 				anim.SetBool("ContinuousCast",true);

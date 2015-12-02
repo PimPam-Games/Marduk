@@ -20,14 +20,15 @@
 					jump = Input.GetButtonDown ("Jump");
 				if(Input.GetButtonUp("Jump"))
 					character.Fall();
-				if(Input.GetButtonUp("Spell1"))
-					character.Spell1();
-				if(Input.GetButtonUp("Spell2"))
-					character.Spell2();
-				if(Input.GetButtonUp("Spell3"))
-					character.Spell3();
-				if(Input.GetButtonUp("Spell4"))
-					character.Spell4();					
+
+				if(Input.GetButtonDown("Spell1"))
+						character.Spell1();
+				if(Input.GetButtonDown("Spell2"))
+						character.Spell2();
+				if(Input.GetButtonDown("Spell3"))
+						character.Spell3();
+				if(Input.GetButtonDown("Spell4"))
+						character.Spell4();					
 			}
         }
 
@@ -39,8 +40,8 @@
 			bool crouch = Input.GetKey (KeyCode.LeftControl);
 			float h = Input.GetAxis ("Horizontal");
 			// Pass all parameters to the character control script.
-			if(h != 0 || jump)
-				PlatformerCharacter2D.castInterruptByMovement = true;
+			if(PlatformerCharacter2D.skillBtnPressed > 0) // si esta pulsando un boton de habilidad no se puede mover
+				h=0;
 			character.Move (h, crouch, jump);
 			jump = false;
 			

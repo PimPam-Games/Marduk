@@ -41,7 +41,6 @@ public class PlayerProjStats : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
 		stopCount += Time.deltaTime;
 		if(stopAfterTime != -1 && rb.velocity.x != 0){
 			rb.velocity = new Vector2(rb.velocity.x /1.04f,rb.velocity.y);
@@ -58,12 +57,13 @@ public class PlayerProjStats : MonoBehaviour {
 		if(lifeTime >= duration)
 			Destroy(this.gameObject);
 
-		if(continuosRelease && pc.isFacingRight()) //acomoda el poder segun para que lado esta mirando el personaje
-			this.transform.rotation = Quaternion.Euler(0,0,90);
-		else
-			this.transform.rotation = Quaternion.Euler(0,0,-90);
-
-		if(continuosRelease && pc.castInterruptByMovement) //si el personaje se mueve, se deja de castear el poder
+		if(continuosRelease){ //acomoda el poder segun para que lado esta mirando el personaje
+			if(pc.isFacingRight())
+				this.transform.rotation = Quaternion.Euler(0,0,90);
+			else
+				this.transform.rotation = Quaternion.Euler(0,0,-90);
+		}
+		if(continuosRelease && pc.skillBtnPressed < 1) //si el personaje deja de presionar una tecla, se deja de castear el poder
 			StopIncinerate();								//en PlatformerUserControl y enemyStats se modifica la variable
 	}
 	

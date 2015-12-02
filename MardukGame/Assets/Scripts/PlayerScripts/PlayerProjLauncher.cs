@@ -39,7 +39,7 @@ public class PlayerProjLauncher : MonoBehaviour {
 		if(!dontChangeRotation)
 			proj = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
 		else{
-			proj = (GameObject)Instantiate (projectile, transform.position, projectile.transform.rotation);
+			proj = (GameObject)Instantiate (projectile, transform.position, Quaternion.Euler(0,0,0));
 		}
 		//castDelayCount = castDelay;
 			/*var dir = (target.transform.position - transform.position).normalized;

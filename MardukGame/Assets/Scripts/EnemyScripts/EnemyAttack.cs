@@ -74,7 +74,7 @@ public class EnemyAttack : MonoBehaviour {
 					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 				else
 					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-				PlatformerCharacter2D.castInterruptByMovement = true;
+				PlatformerCharacter2D.skillBtnPressed = -1;
 			}
 	}
 

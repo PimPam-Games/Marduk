@@ -240,7 +240,7 @@ public class EnemyStats : MonoBehaviour {
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 			else
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-			PlatformerCharacter2D.castInterruptByMovement = true;
+			PlatformerCharacter2D.skillBtnPressed = -1; //hace que el jugador deje de castear el skill
 		}
 	}
 
