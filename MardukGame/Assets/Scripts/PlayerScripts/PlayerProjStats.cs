@@ -26,6 +26,7 @@ public class PlayerProjStats : MonoBehaviour {
 	private Rigidbody2D rb;
 	public AudioSource hitEnemySound;
 	public AudioSource criticalHitSound;
+	public AudioSource skillSound;
 	public Types.SkillsRequirements projRequirements = Types.SkillsRequirements.None; //si se tiene que tirar con un arco o es melee, spell , etc
 	public Types.Element convertElem = Types.Element.None; // a que elemento tiene que convertir el 40% del daño fisico
 	private bool collision = false;
@@ -34,6 +35,9 @@ public class PlayerProjStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
+		if(skillSound != null){
+			skillSound.Play();
+		}
 		//PlayerStats.UpdateMana ();
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
