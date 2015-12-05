@@ -7,21 +7,24 @@ public class MainMenu : MonoBehaviour {
 	public Image playMenuImage;
 
 	void Awake(){
-		/*foreach (GameObject o in Object.FindObjectsOfType<GameObject>()) {
-			if(!o.activeSelf){
-				Destroy(o);
-			}
-		}*/
 	}
-
+	
 	public void NewGame(){
-
-		playMenuImage.gameObject.SetActive(true);
-		this.gameObject.SetActive(false);
-		//Application.LoadLevel ("level0");
+		StartCoroutine(ButtonPush(1));
 	}
 
 	public void ExitGame(){
-		Application.Quit ();
+		StartCoroutine(ButtonPush(3));
+	}
+
+	IEnumerator ButtonPush(int btnId){
+		yield return new WaitForSeconds (0.3f);
+		if(btnId == 1){
+			playMenuImage.gameObject.SetActive(true);
+			this.gameObject.SetActive(false);
+		}
+		if(btnId == 3){
+			Application.Quit ();
+		}
 	}
 }

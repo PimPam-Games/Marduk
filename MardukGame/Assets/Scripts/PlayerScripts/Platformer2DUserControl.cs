@@ -21,14 +21,7 @@
 				if(Input.GetButtonUp("Jump"))
 					character.Fall();
 
-				if(Input.GetButtonDown("Spell1"))
-						character.Spell1();
-				if(Input.GetButtonDown("Spell2"))
-						character.Spell2();
-				if(Input.GetButtonDown("Spell3"))
-						character.Spell3();
-				if(Input.GetButtonDown("Spell4"))
-						character.Spell4();					
+							
 			}
         }
 
@@ -44,13 +37,21 @@
 				h=0;
 			character.Move (h, crouch, jump);
 			jump = false;
-			
-			if (Input.GetButton ("Fire1")) {	
+
+			if(Input.GetButton("Spell1"))
+				character.Spell1();
+			if(Input.GetButton("Spell2"))
+				character.Spell2();
+			if(Input.GetButton("Spell3"))
+				character.Spell3();
+			if(Input.GetButton("Spell4"))
+				character.Spell4();		
+			/*if (Input.GetButton ("Fire1")) {	
 				PlatformerCharacter2D.meleeSkillPos = -1; //es el ataque comun	
 				PlatformerCharacter2D.supportSkillPos = -1; 
 				PlatformerCharacter2D.useMeleeProjLauncher = false;
 				character.Attack ();
-			}
+			}*/
 		} else
 			character.Move (0, false, false);
         }

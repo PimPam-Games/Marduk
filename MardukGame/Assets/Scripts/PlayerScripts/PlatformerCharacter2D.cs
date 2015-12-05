@@ -100,7 +100,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 			//	anim.SetBool("ContinuousCast",false);
 			if(skillBtnPressed>=1 && skillBtnPressed<=4){ 
 				if(Input.GetButtonUp("Spell"+skillBtnPressed)){
-					Debug.Log("Boton soltado " + skillBtnPressed);
 					skillBtnPressed = -1;
 				}
 			}
@@ -391,6 +390,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void Spell1(){
+		
 			checkSkill (0);
 			
 		}
@@ -437,7 +437,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
 			supportSkillPos = i; //la posicion del support que deberia usar, si es que hay uno
+			
 			if (skill != null) {
+				if(skill.manaCost > PlayerStats.currentMana && i == 0){ //si no hay mana para el skill y es con el click comun
+					NormalAttack();
+					return;
+				}
 				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking"))
 					return;
 				
@@ -459,8 +464,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 						else{
 							//magias
-							skillBtnPressed = i+1;
 							PlayerStats.currentMana -= skill.manaCost;
+							if(rskill.continuosRelease)
+								skillBtnPressed = i+1;
 							if(rskill.staticProjectile){
 								projLaunchers[0].projectile = null;
 								projLaunchers[1].projectile = rskill.projectile;
@@ -502,7 +508,17 @@ public class PlatformerCharacter2D : MonoBehaviour
 					break;
 				}
 			}
+			else{
+				if(i == 0)
+					NormalAttack();
+			}
+		}
 
+		private void NormalAttack(){
+			PlatformerCharacter2D.meleeSkillPos = -1; //es el ataque comun	
+			PlatformerCharacter2D.supportSkillPos = -1; 
+			PlatformerCharacter2D.useMeleeProjLauncher = false;
+			Attack ();
 		}
 
 		IEnumerator ManaDrain (float manaToDrain) {		
