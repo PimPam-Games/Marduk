@@ -15,11 +15,13 @@ public class TraitsPanel : MonoBehaviour{
 
 	// Use this for initialization
 	void Start () {
-		/*buttons = new List<GameObject> ();
-		foreach (Transform child in this.transform) {
-			buttons.Add(child.gameObject);
-		}*/
-	
+		Debug.Log("xxxxx");
+		for (int i=0; i<Traits.CantTraits; i++) {
+			if (Traits.traits [i].isActive ())
+				traitsButtons[i].color = new Color(1,1,1,0.35f);
+			else
+				traitsButtons[i].color = new Color(1,1,1,1);	
+		}
 	}
 
 	// Update is called once per frame

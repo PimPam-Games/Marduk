@@ -257,16 +257,6 @@ public class Persistence : MonoBehaviour {
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
 
 			sp.LoadSkills(data.spellInv);
-			/*if(data.skillsNames == null)
-				return;
-			for(int i = 0; i < data.skillsNames.Length; i++){
-				if(data.skillsNames[i] != null)
-				{
-
-					sp.AddSpell(data.skillsNames[i],data.skillsLevels[i],data.skillsCurrentExp[i],data.skillsOldNextLevelExp[i]);
-
-				}
-			}*/
 		}
 	}
 
