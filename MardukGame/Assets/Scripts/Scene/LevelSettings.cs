@@ -7,7 +7,8 @@ public class LevelSettings : MonoBehaviour {
 	public int enemiesLvl = 1;
 	public int zoneNumber = 1;
 	public GameObject[] zoneEnemies;
-
+	public GameObject miniBoss;
+	private bool minibossGenerated = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -49,6 +50,19 @@ public class LevelSettings : MonoBehaviour {
 		}
 		DontDestroyOnLoad(newEnemy);
 		g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
+	}
+	
+	public void GenerateMiniBoss(float miniBossProb, Vector3 pos, Quaternion rot){
+		float[] prob = {1 - miniBossProb, miniBossProb };
+		if(Utils.Choose (prob) == 0 || minibossGenerated) //no toco el boss o ya esta generado
+			return;
+		minibossGenerated = true;
+		if(zoneNumber == 2){
+			Debug.Log("MINIBOSSGENERADO");
+			GameObject newEnemy = (GameObject)Instantiate (miniBoss,pos,rot);
+			DontDestroyOnLoad(newEnemy);
+			g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
+		}
 	}
 
 	// Update is called once per frame

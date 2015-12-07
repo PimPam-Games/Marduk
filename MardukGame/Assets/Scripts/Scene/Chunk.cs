@@ -72,13 +72,10 @@ public class Chunk : MonoBehaviour {
 			alreadyGenerated = true;
 		}
 		foreach(Transform enemyPos in enemies){
-			/*int index = Random.Range(0,ls.zoneEnemies.Length); //slecciona un enemigo aleatorio de la lista de enemigos
-			if(index >= ls.zoneEnemies.Length)
-				Debug.LogError("Arreglo de enemigos fuera de rango");
-			GameObject newEnemy = (GameObject)Instantiate (ls.zoneEnemies[index],enemyPos.position,enemyPos.rotation);
-
-			DontDestroyOnLoad(newEnemy);
-			g.enemiesPerLevel[g.currLevelName].Add(newEnemy);*/
+			float miniBossProb = (this.position[0]+1)/7;
+			if(this.position[0] == cf.matrixDepth-1)
+				miniBossProb = 1;
+			ls.GenerateMiniBoss(miniBossProb,enemyPos.position,enemyPos.rotation);
 			ls.generateEnemy(enemyPos.position,enemyPos.rotation);
 		}	
 	}

@@ -15,7 +15,6 @@ public class TraitsPanel : MonoBehaviour{
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log("xxxxx");
 		for (int i=0; i<Traits.CantTraits; i++) {
 			if (Traits.traits [i].isActive ())
 				traitsButtons[i].color = new Color(1,1,1,0.35f);
