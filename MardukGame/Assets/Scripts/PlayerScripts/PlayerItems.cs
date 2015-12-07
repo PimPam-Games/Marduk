@@ -81,10 +81,17 @@ public class PlayerItems: MonoBehaviour {
 				Destroy(weapon.GetComponent<PolygonCollider2D>());
 				weapon.gameObject.AddComponent<PolygonCollider2D>();
 			}
-			else{
+			if(equipedWeapon.type == ItemTypes.RangedWeapon){
 				rangedWeaponRenderer.sprite = equipedWeapon.sprite;
 				quiverRenderer.enabled = true;
 				weaponRenderer.sprite = null;
+			}
+			if(equipedWeapon.type == ItemTypes.TwoHandedWeapon){
+				weaponRenderer.sprite = equipedWeapon.sprite;
+				rangedWeaponRenderer.sprite = null;
+				quiverRenderer.enabled = false;
+				Destroy(weapon.GetComponent<PolygonCollider2D>());
+				weapon.gameObject.AddComponent<PolygonCollider2D>();
 			}
 		}
 	}
