@@ -22,6 +22,7 @@ public class ChunkFactory : MonoBehaviour {
 	public List<Object> normalChunks = new List<Object>();
 	public List<Object> leftEndChunks = new List<Object>();
 	public List<Object> rightEndChunks = new List<Object>();
+	public Object outcastleEntrance = null;
 	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
 	public static float bgCount = 0;
@@ -32,7 +33,7 @@ public class ChunkFactory : MonoBehaviour {
 	private bool fadingFuncCalled = false;
 	private Fading fading;
 	private bool[] doubleInRow; //si hay un doble en cada fila
-
+	private bool outcastleExitGenerated = false;
 	// Use this for initialization
 	void Awake () {
 		cmatrix = new bool[matrixDepth, MatrixSize];
@@ -110,57 +111,49 @@ public class ChunkFactory : MonoBehaviour {
 			Debug.LogError(g.currLevelName + " No encontrado!");
 			return null;
 		}
-	/*	if (isEntry && castleChunks.Count > 0) {
-			int r = Random.Range (0,castleChunks.Count);
-			newChunk = (GameObject)Instantiate (castleChunks [r], pos, rot);
-			if(newChunk.name.Contains("Exit"))
-				isEntry = false;
-			DontDestroyOnLoad(newChunk);
-			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel
-		} else {*/
-			int r;
-			float[] chunksProb = {0.5f,0.3f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
+		int r;
+		float[] chunksProb = {0.5f,0.3f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
 
-			int choice = Utils.Choose(chunksProb);
-			//Debug.Log ("chunk pos 0 " + chunkPos [0]);
-			if((!doubleInRow[chunkPos[0]] &&  choice == 2) || (!doubleInRow[chunkPos[0]] && chunkPos[1] == MatrixSize - 3)){ //si estoy casi por llegar a un borde
-				choice = 1;																												//o si toca un cierre, me aseguro que haya un doble antes
-			
-			}
-			if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1
-				choice = 0;
-			
-			if((chunkPos[1] == 1 && exit == Exits.Right) ||(chunkPos[1] == MatrixSize-2 && exit == Exits.Left)){ //si llego a algun borde horizontal hay que poner un final
-				choice = 2;
-			}
-			if(bottomUpGeneration){
-				if(choice == 1){ //casos en los que no puede ir un doble
-					if(newChunkPosY <= 0){ //si esta en el limite de la matriz no puede venir un doble
-							choice = 0;
-					}
-					else{
-						if((cmatrix[chunkPos[0]-1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]-1, chunkPos[1]+1] && exit == Exits.Left)){
-							//Debug.Log("este doble no deberia ir baby");
-							choice = 0;
-						}
+		int choice = Utils.Choose(chunksProb);
+		//Debug.Log ("chunk pos 0 " + chunkPos [0]);
+		if((!doubleInRow[chunkPos[0]] &&  choice == 2) || (!doubleInRow[chunkPos[0]] && chunkPos[1] == MatrixSize - 3)){ //si estoy casi por llegar a un borde
+			choice = 1;																												//o si toca un cierre, me aseguro que haya un doble antes
+		
+		}
+		if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1
+			choice = 0;
+		
+		if((chunkPos[1] == 1 && exit == Exits.Right) ||(chunkPos[1] == MatrixSize-2 && exit == Exits.Left)){ //si llego a algun borde horizontal hay que poner un final
+			choice = 2;
+		}
+		if(bottomUpGeneration){
+			if(choice == 1){ //casos en los que no puede ir un doble
+				if(newChunkPosY <= 0){ //si esta en el limite de la matriz no puede venir un doble
+						choice = 0;
+				}
+				else{
+					if((cmatrix[chunkPos[0]-1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]-1, chunkPos[1]+1] && exit == Exits.Left)){
+						//Debug.Log("este doble no deberia ir baby");
+						choice = 0;
 					}
 				}
-
 			}
-			else{
-				if(choice == 1){ //casos en los que no puede ir un doble
-					if(newChunkPosY >= matrixDepth -1){ //si esta en el limite de la matriz no puede venir un doble
-							choice = 0;
-					}
-					else{
-						if((cmatrix[chunkPos[0]+1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]+1, chunkPos[1]+1] && exit == Exits.Left)){ //si la posciciones de abajo
-							Debug.Log("este doble no deberia ir baby");																						//de los doobles estan ocupadas		
-							choice = 0;
-						}
+
+		}
+		else{
+			if(choice == 1){ //casos en los que no puede ir un doble
+				if(newChunkPosY >= matrixDepth -1){ //si esta en el limite de la matriz no puede venir un doble
+						choice = 0;
+				}
+				else{
+					if((cmatrix[chunkPos[0]+1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]+1, chunkPos[1]+1] && exit == Exits.Left)){ //si la posciciones de abajo
+						Debug.Log("este doble no deberia ir baby");																						//de los doobles estan ocupadas		
+						choice = 0;
 					}
 				}
-
 			}
+
+		}
 			
 		switch(choice){
 			case 0:
@@ -209,12 +202,17 @@ public class ChunkFactory : MonoBehaviour {
 				currentChunkId++;
 				if(exit == Exits.Right){
 					r = Random.Range (0,leftEndChunks.Count);
-					newChunk = (GameObject)Instantiate (leftEndChunks [r], pos, rot);
+				
+					if(newChunk == null)
+						newChunk = (GameObject)Instantiate (leftEndChunks [r], pos, rot);
 				}
 				else{
 					r = Random.Range (0,rightEndChunks.Count);
-				    //if(!hasCaveEntranceChunk || zoneEntranceGenerated)																				
-					//	newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
+					if(!outcastleExitGenerated && outcastleEntrance != null && newChunkPosY == 0){
+						Debug.Log("OUTCASTLENETRANCEGENERATED");
+						outcastleExitGenerated = true;
+						newChunk = (GameObject)Instantiate (outcastleEntrance, pos, rot);
+					}
 					if(hasCaveEntranceChunk && !zoneEntranceGenerated && newChunkPosY == matrixDepth -1){
 						newChunk = (GameObject)Instantiate (normalChunks [normalChunks.Count -1], pos, rot); //si va a tocar un cierre pero no se genero 
 						zoneEntranceGenerated = true;																						//el chunk para entrar a la cueva, lo genero
