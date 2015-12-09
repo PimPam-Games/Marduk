@@ -140,6 +140,9 @@ public class PlayerItems: MonoBehaviour {
 				case "Templar's faith":
 					reSkin.ReSkinArmour("uniqueArmor3");
 					break;
+				case "The Magi":
+					reSkin.ReSkinArmour("uniqueArmor4");
+					break;
 				default:
 					reSkin.ReSkinArmour(equipedArmour.Name);
 				break;

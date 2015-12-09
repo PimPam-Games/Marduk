@@ -135,6 +135,10 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Atributes [p.Spirit] = 15;
 					newItem.Defensives [p.AllRes] = 15;
 				}
+				if (newItem.itemName == "The Magi"){
+					newItem.Offensives [p.IncreasedMgDmg] = 20;
+					newItem.Offensives [p.IncreasedCastSpeed] = 20;
+				}
 				if (newItem.itemName == "The contender"){
 					newItem.Atributes [p.Vitality] = 10;
 					newItem.Atributes [p.Strength] = 10;
