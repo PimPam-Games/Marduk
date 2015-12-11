@@ -5,7 +5,7 @@ using icg = InputControllerGui;
 public class Teleporter : MonoBehaviour {
 
 
-	public const int TZone1 = 0 , TCastle = 1, TDungeon = 2, TSublevel = 3; 
+	public const int TZone1 = 0 , TCastle = 1, TCastle2 = 2, TSublevel = 3; 
 	public int id;
 	private Animator anim;
 
