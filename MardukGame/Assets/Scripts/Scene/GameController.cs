@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
 	public Transform miniMapPos;
 	public GameObject inventoryUI;
 	public GameObject spellPanelUI;
+	public GameObject introTextGo;
+	public static GameObject introText; 
 	//public List<string> deadEnemies;
 	public PlayerStats playerStats;
 	public static int currentLevel = 0;
@@ -38,6 +40,7 @@ public class GameController : MonoBehaviour {
 		//deadEnemies = new List<string>();
 		player.GetComponent<PlatformerCharacter2D>().inventoryPanel = inventoryUI.GetComponent<InventorySlotsPanel>();
 		player.GetComponent<PlatformerCharacter2D>().spellsPanel = spellPanelUI.GetComponent<SpellsPanel>();
+		introText = introTextGo;
 		//inventoryUI.GetComponent<InventorySlotsPanel>().LoadItems();
 		player.GetComponent<BoxCollider2D> ().enabled = false;
 		player.GetComponent<Rigidbody2D> ().isKinematic = true;

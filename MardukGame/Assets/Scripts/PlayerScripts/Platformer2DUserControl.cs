@@ -15,7 +15,7 @@
 
         private void Update()
         {
-			if (!PlayerStats.isDead) {
+			if (!PlayerStats.isDead && !IntroText.introVisible) {
 				if (!jump)
 					jump = Input.GetButtonDown ("Jump");
 				if(Input.GetButtonUp("Jump"))
@@ -28,7 +28,7 @@
         private void FixedUpdate()
         {
 			
-		if (!PlayerStats.isDead) {
+		if (!PlayerStats.isDead && !IntroText.introVisible) {
 			// Read the inputs.
 			bool crouch = Input.GetKey (KeyCode.LeftControl);
 			float h = Input.GetAxis ("Horizontal");

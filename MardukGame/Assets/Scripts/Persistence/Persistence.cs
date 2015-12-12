@@ -10,7 +10,6 @@ using pItems = PlayerItems;
 public class Persistence : MonoBehaviour {
 
 	public const int CantSlots = 5;
-
 	public static int CantSavedGames(){
 		if (File.Exists (Application.persistentDataPath + "/savedGames.dat")) {
 			BinaryFormatter bf = new BinaryFormatter();
@@ -257,6 +256,10 @@ public class Persistence : MonoBehaviour {
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
 
 			sp.LoadSkills(data.spellInv);
+			LoadCurrentPlayer.showIntro = false;
+		}
+		else{
+			LoadCurrentPlayer.showIntro = true;
 		}
 	}
 
