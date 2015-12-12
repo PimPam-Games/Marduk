@@ -140,7 +140,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				return;
 			if (weaponScript.canAttack) {
 				if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon) {
-					attackSound.Play ();
+					
 					if(meleeSkillPos > -1){ //si se uso sacrifice le resta la vida
 						MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
 						if(string.Compare(ms.nameForSave,"Sacrifice")==0){
@@ -148,6 +148,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 								p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
 							}
 							else{
+								NormalAttack();
 								return;
 							}
 							weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f,0,0,1);
@@ -157,6 +158,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 							weapon.GetComponent<SpriteRenderer>().color = new Color(1f,0.5f,0,1);
 						}
 					}
+					attackSound.Play ();
 					anim.SetBool ("Attacking", true);
 				} else {
 					if (PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
@@ -202,9 +204,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 
 			if (Input.GetButtonUp ("Grab") && !PlayerStats.isDead) { //agarra un item
-				/*if(isColliding)
-					return;
-				isColliding = true;*/
 				GameObject item = col.gameObject;
 				if(item == null){
 					Debug.Log("es null");
@@ -212,11 +211,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 
 				if (item.tag == "Item" && item.activeSelf) {
+					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
+						return;
 					playerItemsGO.Add(item);
 					item.SetActive(false);
 					Item it = item.GetComponent<Item>();
-					if(PlayerItems.InventoryMaxSize <= PlayerItems.inventoryCantItems)
-						return;
 					//PlayerItems.Inventory.Add (it);
 					//PlayerItems.inventoryCantItems++;
 					//string itName = item.GetComponent<Item>().Name;

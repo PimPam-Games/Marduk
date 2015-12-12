@@ -31,9 +31,9 @@ public class IntroText : MonoBehaviour {
 
 	IEnumerator IntroFade(){
 		while(background.color.a > 0 && text.color.a > 0){
-			yield return new WaitForSeconds (0.1f);
-			background.color = new Color(1,1,1,background.color.a - 0.1f);
-			text.color = new Color(1,1,1,text.color.a - 0.1f);
+			yield return new WaitForSeconds (0.04f);
+			background.color = new Color(1,1,1,background.color.a - 0.05f);
+			text.color = new Color(1,1,1,text.color.a - 0.09f);
 		}
 		introVisible = false;
 		Destroy(this.gameObject); 
