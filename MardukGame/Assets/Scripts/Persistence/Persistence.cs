@@ -182,6 +182,41 @@ public class Persistence : MonoBehaviour {
 		//data.skillsOldNextLevelExp = skillsOldNextLevelExp;
 		bf.Serialize (file,data);
 		file.Close ();
+		ClearPlayer();
+	}
+
+	private static void ClearPlayer(){
+		p.playerName = "";
+		p.strAddedPoints = 0;
+		p.spiAddedPoints =0;
+		p.dexAddedPoints = 0;
+		p.vitAddedPoints = 0;
+		p.atributesPoints = 0;
+		Traits.traits = null;
+		p.passivePoints = 0;			
+		p.lvl = 1;
+		p.currentExp = 0;
+		p.oldNextLevelExp = 0;
+		p.nextLevelExp = 0;
+		pItems.EquipedArmour = null;
+		pItems.EquipedHelmet = null;
+		pItems.EquipedShield = null;
+		pItems.EquipedWeapon = null;
+		pItems.EquipedBelt = null;
+		pItems.EquipedAmulet = null;
+		pItems.EquipedRingR = null;
+		pItems.EquipedRingL = null;
+		List<Item> inv = new List<Item>();
+		pItems.Inventory = inv;
+		pItems.playerTeleporters = null;
+		GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
+		SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
+		
+		for(int i = 0; i < PlatformerCharacter2D.playerSkills.Length; i++){
+			PlatformerCharacter2D.playerSkills[i] = null;
+			PlatformerCharacter2D.playerSupportSkills[i] = null;
+		}
+		sp.HasChanged();
 	}
 
 	public static void Load(string characterName){

@@ -21,6 +21,10 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		if (player != null) {
 			playerSkills  = PlatformerCharacter2D.playerSkills;
 			playerSupportSkills = pc.playerSupportSkills;
+			for(int i = 0; i < PlatformerCharacter2D.playerSkills.Length; i++){
+				pc.playerSkills[i] = null;
+				pc.playerSupportSkills[i] = null;
+			}
 			HasChanged ();
 		}
 	}
@@ -31,7 +35,6 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			if (player != null){
 				playerSkills  = PlatformerCharacter2D.playerSkills; 
 				playerSupportSkills = pc.playerSupportSkills;
-				HasChanged ();
 			}
 		}
 	}
@@ -74,6 +77,8 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 
 	public void LoadSkills(List<SerializableSpell> skillList){
 		List<SpellStats> sInvAux = new List<SpellStats>();
+		
+		HasChanged();
 		foreach(SerializableSpell skill in skillList){
 			GameObject newSpell = InstantiateSkill(skill.spellName);
 			SpellStats st = newSpell.GetComponent<SpellStats>();
