@@ -441,9 +441,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (skill != null) {
 				if(skill.manaCost > PlayerStats.currentMana && i == 0){ //si no hay mana para el skill y es con el click comun
 					NormalAttack();
+					Debug.Log("normal");
 					return;
 				}
-				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking"))
+				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking"))
 					return;
 				
 				
@@ -494,8 +495,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 					break;
 					case Types.SkillsTypes.Melee:
 						meleeSkillPos = i;
-						PlayerStats.currentMana -= skill.manaCost;
-						Attack();
+						if(weaponScript.canAttack){
+							PlayerStats.currentMana -= skill.manaCost;
+							Attack();
+						}
 					break;
 					case Types.SkillsTypes.Utility:
 						PlayerStats.currentMana -= skill.manaCost;

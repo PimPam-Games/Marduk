@@ -8,7 +8,7 @@ public class IntroText : MonoBehaviour {
 	public Text text;
 	public Text skipText;
 	public static bool introVisible = true;
-	private float duration = 25;
+	private float duration = 45;
 	private bool skip = false;
 	private bool routineStarted = false;
 	// Use this for initialization

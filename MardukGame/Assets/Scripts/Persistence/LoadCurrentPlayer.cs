@@ -19,6 +19,8 @@ public class LoadCurrentPlayer : MonoBehaviour {
 			g.levelLoaded = true;
 			if(showIntro) 
 				g.introText.SetActive(true);
+			else
+				IntroText.introVisible = false;
 			Debug.Log ("Load Data");
 		}
 	}
