@@ -19,13 +19,22 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 	void Start () {
 		player =  GameObject.Find ("Player");
 		if (player != null) {
-			playerSkills  = PlatformerCharacter2D.playerSkills;
+			playerSkills  = pc.playerSkills;
 			playerSupportSkills = pc.playerSupportSkills;
-			for(int i = 0; i < PlatformerCharacter2D.playerSkills.Length; i++){
-				pc.playerSkills[i] = null;
-				pc.playerSupportSkills[i] = null;
+		/*	if(pc.playerSkills != null){
+				for(int i = 0; i < pc.playerSkills.Length; i++){
+					pc.playerSkills[i] = null;
+					pc.playerSupportSkills[i] = null;
+				}
 			}
-			HasChanged ();
+			foreach (Transform slot in slots) {
+				GameObject spell = slot.GetComponent<Slot>().spell;
+				spell = null;
+			}
+			foreach (Transform slot in supportSlots) { // recorre los supoprt slots
+				GameObject spell = slot.GetComponent<Slot>().spell;
+				spell = null;
+			}*/
 		}
 	}
 

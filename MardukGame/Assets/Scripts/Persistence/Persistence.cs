@@ -182,6 +182,7 @@ public class Persistence : MonoBehaviour {
 		//data.skillsOldNextLevelExp = skillsOldNextLevelExp;
 		bf.Serialize (file,data);
 		file.Close ();
+		data.spellInv = null;
 		ClearPlayer();
 	}
 
@@ -207,7 +208,9 @@ public class Persistence : MonoBehaviour {
 		pItems.EquipedRingR = null;
 		pItems.EquipedRingL = null;
 		List<Item> inv = new List<Item>();
+		List<SpellStats> skillsInv = new List<SpellStats>();
 		pItems.Inventory = inv;
+		pItems.SpellsInvetory = skillsInv;
 		pItems.playerTeleporters = null;
 		GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
 		SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
@@ -224,7 +227,8 @@ public class Persistence : MonoBehaviour {
 		if(File.Exists(Application.persistentDataPath + "/"+characterName + ".dat")){
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file =  File.Open(Application.persistentDataPath + "/"+characterName + ".dat", FileMode.Open);
-			PlayerData data = (PlayerData)bf.Deserialize(file);
+			PlayerData data = null;
+			data = (PlayerData)bf.Deserialize(file);
 			file.Close();
 			/*p.atributes = data.atributes ;
 			p.defensives = data.defensives;
@@ -289,7 +293,7 @@ public class Persistence : MonoBehaviour {
 			pItems.playerTeleporters = data.teleporters;
 			GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
-
+			Debug.Log(data.spellInv.ToString());
 			sp.LoadSkills(data.spellInv);
 			LoadCurrentPlayer.showIntro = false;
 		}

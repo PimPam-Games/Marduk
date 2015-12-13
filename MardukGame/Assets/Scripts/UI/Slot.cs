@@ -20,6 +20,11 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 		}
 	}
 
+	void Awake(){
+		if(transform.childCount > 0)
+			Destroy(transform.GetChild(0).gameObject);
+	}
+
 	public void OnDrop(PointerEventData eventData){	
 		SpellStats draggedSpell = DragHandeler.itemBeingDragged.GetComponent<SpellStats>();
 		if(draggedSpell == null)
