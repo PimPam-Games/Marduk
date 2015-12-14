@@ -138,20 +138,7 @@ public class Weapon : MonoBehaviour {
 			}
 
 			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
-			//Begin Traits
-			if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
-				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, isCrit);
-			}
-			if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
-				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, isCrit);
-			}
-			if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
-				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, isCrit);
-			}
-			if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
-				enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, isCrit);
-			}
-			//End Traits
+
 			
 			if(hit){
 				if (isCrit && !Traits.traits[Traits.ACCURACY].isActive ()){
@@ -160,6 +147,22 @@ public class Weapon : MonoBehaviour {
 				else{
 					hitEnemySound.Play();
 				}
+
+				//Begin Traits
+				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, isCrit);
+				}
+				if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, isCrit);
+				}
+				if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, isCrit);
+				}
+				if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
+					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, isCrit);
+				}
+				//End Traits
+
 				if(supportSkill != null)
 					enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support
 				if(enemy.transform.position.x < this.transform.position.x)
