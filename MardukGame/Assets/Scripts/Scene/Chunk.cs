@@ -22,6 +22,7 @@ public class Chunk : MonoBehaviour {
 
 	public bool isFirstChunk = false;
 	public int chunkId = 0;
+	public bool minibossChunk = false;
 	private ChunkFactory cf;
 	private LevelSettings ls;
 	private float timeToGenerate = 0;
@@ -72,11 +73,13 @@ public class Chunk : MonoBehaviour {
 			alreadyGenerated = true;
 		}
 		foreach(Transform enemyPos in enemies){
-			float miniBossProb = (this.position[0]+1)/7;
+			/*float miniBossProb = (this.position[0]+1)/7;
 			if(this.position[0] == cf.matrixDepth-1)
-				miniBossProb = 1;
-			ls.GenerateMiniBoss(miniBossProb,enemyPos.position,enemyPos.rotation);
-			ls.generateEnemy(enemyPos.position,enemyPos.rotation);
+				miniBossProb = 1;*/
+			if(minibossChunk)
+				ls.GenerateMiniBoss(enemyPos.position,enemyPos.rotation);
+			else
+				ls.generateEnemy(enemyPos.position,enemyPos.rotation);
 		}	
 	}
 

@@ -140,7 +140,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &591718846
 Prefab:
   m_ObjectHideFlags: 0
@@ -435,6 +435,7 @@ MonoBehaviour:
   rightEndChunks:
   - {fileID: 166020, guid: a12a95724ff72614a99e4f34a8224745, type: 2}
   outcastleEntrance: {fileID: 0}
+  miniBossChunk: {fileID: 0}
 --- !u!4 &1600867241
 Transform:
   m_ObjectHideFlags: 0
@@ -571,7 +572,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 499562, guid: 45ccd4f600b69a94daca47e671be02ad, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 45ccd4f600b69a94daca47e671be02ad, type: 2}

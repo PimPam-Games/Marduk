@@ -52,10 +52,10 @@ public class LevelSettings : MonoBehaviour {
 		g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
 	}
 	
-	public void GenerateMiniBoss(float miniBossProb, Vector3 pos, Quaternion rot){
-		float[] prob = {1 - miniBossProb, miniBossProb };
-		if(Utils.Choose (prob) == 0 || minibossGenerated) //no toco el boss o ya esta generado
-			return;
+	public void GenerateMiniBoss(Vector3 pos, Quaternion rot){
+		//float[] prob = {1 - miniBossProb, miniBossProb };
+		//if(Utils.Choose (prob) == 0 || minibossGenerated) //no toco el boss o ya esta generado
+		//	return;
 		minibossGenerated = true;
 		if(zoneNumber == 2){
 			Debug.Log("MINIBOSSGENERADO");

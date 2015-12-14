@@ -212,14 +212,18 @@ public class Persistence : MonoBehaviour {
 		pItems.Inventory = inv;
 		pItems.SpellsInvetory = skillsInv;
 		pItems.playerTeleporters = null;
-		GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
-		SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
+		
 		
 		for(int i = 0; i < PlatformerCharacter2D.playerSkills.Length; i++){
 			PlatformerCharacter2D.playerSkills[i] = null;
 			PlatformerCharacter2D.playerSupportSkills[i] = null;
 		}
-		sp.HasChanged();
+		GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
+		if(spGO != null){
+			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
+			if(sp != null)
+				sp.HasChanged();
+		}
 	}
 
 	public static void Load(string characterName){

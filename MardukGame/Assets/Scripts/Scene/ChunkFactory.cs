@@ -23,6 +23,8 @@ public class ChunkFactory : MonoBehaviour {
 	public List<Object> leftEndChunks = new List<Object>();
 	public List<Object> rightEndChunks = new List<Object>();
 	public Object outcastleEntrance = null;
+	public Object miniBossChunk = null;
+
 	private  List<Object> castleChunks = new List<Object>();
 	private static Object bg;
 	public static float bgCount = 0;
@@ -34,6 +36,7 @@ public class ChunkFactory : MonoBehaviour {
 	private Fading fading;
 	private bool[] doubleInRow; //si hay un doble en cada fila
 	private bool outcastleExitGenerated = false;
+	private bool minibossChunkGenerated = false;
 	// Use this for initialization
 	void Awake () {
 		cmatrix = new bool[matrixDepth, MatrixSize];
@@ -117,8 +120,7 @@ public class ChunkFactory : MonoBehaviour {
 		int choice = Utils.Choose(chunksProb);
 		//Debug.Log ("chunk pos 0 " + chunkPos [0]);
 		if((!doubleInRow[chunkPos[0]] &&  choice == 2) || (!doubleInRow[chunkPos[0]] && chunkPos[1] == MatrixSize - 3)){ //si estoy casi por llegar a un borde
-			choice = 1;																												//o si toca un cierre, me aseguro que haya un doble antes
-		
+			choice = 1;																												//o si toca un cierre, me aseguro que haya un doble antes		
 		}
 		if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1
 			choice = 0;
@@ -158,21 +160,34 @@ public class ChunkFactory : MonoBehaviour {
 		switch(choice){
 			case 0:
 				currentChunkId++;
-				r = Random.Range (0,normalChunks.Count);
-				if(hasCaveEntranceChunk && r == normalChunks.Count - 1){ //en la ultima posicion tiene que estar el chunk que entra a una cueva
-					if(zoneEntranceGenerated || newChunkPosY != matrixDepth - 1){
-						r = Random.Range (0,normalChunks.Count-1);
+				float miniBossProb = (newChunkPosY+1)/7;
+				if(newChunkPosY == matrixDepth-1){ // si estoy abajo de todo genero el boss si o si
+					miniBossProb = 1;
+				}     
+				float[] prob = {1 - miniBossProb, miniBossProb }; 
+				                   //lo del miniboss por ahora deberia andar solo para la cueva
+				if(Utils.Choose (prob) == 0 || minibossChunkGenerated || miniBossChunk == null){ //no toco el boss o ya esta generado o no hay miniboss					
+					r = Random.Range (0,normalChunks.Count);
+					if(hasCaveEntranceChunk && r == normalChunks.Count - 1){ //en la ultima posicion tiene que estar el chunk que entra a una cueva
+						if(zoneEntranceGenerated || newChunkPosY != matrixDepth - 1){
+							r = Random.Range (0,normalChunks.Count-1);
+						}
+						else{
+							zoneEntranceGenerated = true;
+						}
 					}
-					else{
-						zoneEntranceGenerated = true;
+					if(hasCaveEntranceChunk && chunkPos[0] == matrixDepth - 1 && chunkPos[1] == MatrixSize - 3 && !zoneEntranceGenerated){ // si estoy llegando casi al final y no se genero
+						zoneEntranceGenerated = true;                                                          // el chunk cueva lo genero si o si
+						r = normalChunks.Count - 1;
 					}
+									
+					newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
 				}
-				if(hasCaveEntranceChunk && chunkPos[0] == matrixDepth - 1 && chunkPos[1] == MatrixSize - 3 && !zoneEntranceGenerated){ // si estoy llegando casi al final y no se genero
-					zoneEntranceGenerated = true;                                                          // el chunk cueva lo genero si o si
-					r = normalChunks.Count - 1;
+				else{ //genero el chunk del miniboss
+					newChunk = (GameObject)Instantiate (miniBossChunk, pos, rot);
+					minibossChunkGenerated = true;	
 				}
-				newChunk = (GameObject)Instantiate (normalChunks [r], pos, rot);
-
+			
 				if(bottomUpGeneration){
 					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
 				}
