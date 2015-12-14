@@ -105,7 +105,7 @@ public class CharacterPanel : MonoBehaviour {
 	private void UpdateUtils(){
 		txtUtils.text = "Movement Speed  \n"
 						+ "Magic Find \n";
-		txt2Utils.text = p.utils[p.MovementSpeed].ToString() + "\n"
+		txt2Utils.text = (p.utils[p.MovementSpeed] + (p.utils[p.MovementSpeed] * p.utils[p.IncreasedMoveSpeed])/100).ToString() + "\n"
 			+  p.utils[p.MagicFind].ToString() + "\n" ;
 
 	}

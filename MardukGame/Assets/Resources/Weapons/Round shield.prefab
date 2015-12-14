@@ -44,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.3590088, y: -.88202405, z: 0}
+  m_LocalPosition: {x: -8.82873917, y: -.294649601, z: 0}
   m_LocalScale: {x: .600000024, y: .600000024, z: 1}
   m_Children:
   - {fileID: 466906}
@@ -203,8 +203,11 @@ MonoBehaviour:
   initBlockChance:
   - 12
   - 20
+  moveSpeedReduction: 10
   auraRend: {fileID: 0}
+  itemForSlot: 0
   itemSound: {fileID: 8270298}
+  lifeToAdd: 5
 --- !u!212 &21218814
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -24,6 +24,7 @@ public class Item : MonoBehaviour {
 	public float[] initBaseAttackPerSecond = new float[2];
 	public float[] initDefense =  new float[2];
 	public float[] initBlockChance =  new float[2];
+	public float moveSpeedReduction = 0;
 	public SpriteRenderer auraRend;
 	private float moveTimer = 0; //son para que objeto se mueva un poco
 	private float moveSpeed = 0.1f;
@@ -61,6 +62,9 @@ public class Item : MonoBehaviour {
 						Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0],initBlockChance[1]),0);
 					}
 				}	
+			}
+			if(type == ItemTypes.Armour || type == ItemTypes.Shield){
+				utils[p.IncreasedMoveSpeed] = -moveSpeedReduction;
 			}
 		}
 	}
@@ -198,6 +202,8 @@ public class Item : MonoBehaviour {
 			tooltip += "defense: " + defensives [p.Defense] + "\n";
 		if(type == ItemTypes.Shield)
 			tooltip += "block chance: " + defensives[p.BlockChance] + "% \n";
+		if(utils[p.IncreasedMoveSpeed] < 0)
+			tooltip += utils[p.IncreasedMoveSpeed] + "% to movement speed \n";
 
 		tooltip += separator;
 

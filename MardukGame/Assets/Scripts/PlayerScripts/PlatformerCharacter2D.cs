@@ -87,7 +87,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (p.isDead)
 				maxSpeed = 0;
 			else
-				maxSpeed = p.utils [p.MovementSpeed];	
+				maxSpeed = p.utils [p.MovementSpeed] + (p.utils[p.MovementSpeed] * p.utils[p.IncreasedMoveSpeed])/100;	
 			if(stopPlayer){
 				rb.velocity = new Vector2(0,0); //esto se usa cuando cambia a la cueva para que no caiga tan rapido
 				//stopPlayer = false;
