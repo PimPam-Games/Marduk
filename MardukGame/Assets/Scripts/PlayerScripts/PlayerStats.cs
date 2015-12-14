@@ -55,6 +55,7 @@ public class PlayerStats : MonoBehaviour {
 	public AudioSource blockSound;
 	public static string playerName;
 	
+	public GameObject graphics;
 	private SpriteRenderer[] renders;
 
 	/*status ailments variables*/
@@ -102,8 +103,8 @@ public class PlayerStats : MonoBehaviour {
 		intialStats ();
 		isDead = false;
 		ui = this.GetComponent<PlayerUIController> ();
-		renders = GetComponentsInChildren<SpriteRenderer> ();
-
+		renders = graphics.GetComponentsInChildren<SpriteRenderer> ();
+		Debug.Log("renders " + renders.Length);
 		currentHealth = defensives [MaxHealth];
 		currentMana = offensives [MaxMana];
 		UpdateMana ();

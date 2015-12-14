@@ -16,6 +16,7 @@ public class InputControllerGui : MonoBehaviour {
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
 	public static bool resumePressed = false;
+	public static bool invOpen = false;
 	//private bool gamePaused = false;
 
 	public Image menuInGame;
@@ -36,10 +37,13 @@ public class InputControllerGui : MonoBehaviour {
 				if(!Input.GetMouseButton(0)){
 					inventory.SetActive(false);
 					invTooltip.SetActive(false);
+					invOpen = false;
 				}
 			}
-			else
+			else{
 				inventory.SetActive(true);
+				invOpen = true;
+			}
 			SetMouseVisible();
 		}
 		if (Input.GetButtonUp ("ToggleCharacterWindow") && !menuInGame.IsActive()) {

@@ -73,11 +73,17 @@ public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 	}
 		
 	public void OnPointerEnter(PointerEventData eventData){ //muestro el tooltip
-		//showTooltip ();
+		if(spell!=null && InputControllerGui.invOpen){			
+			InventorySlotsPanel.invTooltip.SetActive(true);
+			SpellStats skill = spell.GetComponent<SpellStats>();
+			InventorySlotsPanel.invTooltip.GetComponentInChildren<Text>().text = skill.ToolTip();
+		}
 	}
 
 	public void OnPointerExit(PointerEventData eventData){
-		//tooltip.SetActive (false);
+		if(InputControllerGui.invOpen){
+			InventorySlotsPanel.invTooltip.SetActive(false);
+		}
 	}
 
 	private void showTooltip(){

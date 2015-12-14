@@ -38,7 +38,7 @@
 			character.Move (h, crouch, jump);
 			jump = false;
 
-			if(Input.GetButton("Spell1"))
+			if(Input.GetButton("Spell1") && !Cursor.visible)
 				character.Spell1();
 			if(Input.GetButton("Spell2"))
 				character.Spell2();
