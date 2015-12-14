@@ -38,7 +38,11 @@ public class PlayerUIController : MonoBehaviour {
 		else
 			damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
 		damaged = false;
-		healthBarText.text = Math.Round(p.currentHealth,0) + " / " + Math.Round(p.defensives[p.MaxHealth],1);
+		double currHealth = Math.Round(p.currentHealth,0);
+		if(p.currentHealth < 1) //si esta entre 0 y 1 muestra un 1
+			currHealth = 1;
+		Debug.Log("currhealth: " + currHealth.ToString());
+		healthBarText.text = currHealth + " / " + Math.Round(p.defensives[p.MaxHealth],1);
 		healthSlider.maxValue = p.defensives [p.MaxHealth];
 		healthSlider.value = p.currentHealth;
 		if (p.isDead) {

@@ -314,6 +314,7 @@ public class PlayerStats : MonoBehaviour {
 	public void RespawnStats(){ //Restaura los valores predeterminados del jugador
 		currentHealth = defensives [MaxHealth];
 		currentMana = offensives [MaxMana];
+		utils [MovementSpeed] = InitMoveSpeed;
 		StartCoroutine (ManaRegeneration());
 		isDead = false;
 		StartCoroutine (LifeRegeneration ());
