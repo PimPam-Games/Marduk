@@ -271,7 +271,8 @@ public class EnemyStats : MonoBehaviour {
 			return false;
 		}
 		//Debug.Log ("damage: " + dmg + " Type: " + type);
-		float chanceToEvade = (float)System.Math.Round((float)(1 - p.offensives [p.Accuracy] / (p.offensives [p.Accuracy] + System.Math.Pow((double)(evasion / 4),0.8))),2 );
+		float playerAccuracy = p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy];
+		float chanceToEvade = (float)System.Math.Round((float)(1 - playerAccuracy / (playerAccuracy + System.Math.Pow((double)(evasion / 4),0.8))),2 );
 		//Begin Traits
 		if (Traits.traits[Traits.ACCURACY].isActive ()) {
 			chanceToEvade = 0;

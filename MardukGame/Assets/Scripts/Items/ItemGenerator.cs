@@ -211,7 +211,9 @@ public class ItemGenerator :MonoBehaviour{
 							newItem.Defensives [optionDef] = Random.Range (2, 6);
 						if (optionDef == p.MaxHealth)
 							newItem.Defensives [optionDef] = Random.Range (5, 11);
-						if (optionDef == p.Defense)
+						if (optionDef == p.IncreasedDefense)
+							newItem.Defensives [optionDef] = Random.Range (5, 11);
+						if (optionDef == p.IncreasedEvasion)
 							newItem.Defensives [optionDef] = Random.Range (5, 11);
 						if (optionDef == p.LifePerHit)
 							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.5f, 2f), 2);
@@ -244,8 +246,8 @@ public class ItemGenerator :MonoBehaviour{
 							newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (5, 11);
 						if (optionOff == p.IncreasedDmg)
 							newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (5, 11);
-						if (optionOff == p.Accuracy)
-							newItem.Offensives [p.Accuracy] = (float)Random.Range (5, 11);
+						if (optionOff == p.IncreasedAccuracy)
+							newItem.Offensives [p.IncreasedAccuracy] = (float)Random.Range (5, 11);
 
 					}		
 				}

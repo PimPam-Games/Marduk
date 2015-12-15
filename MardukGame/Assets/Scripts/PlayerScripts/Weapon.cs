@@ -125,8 +125,8 @@ public class Weapon : MonoBehaviour {
 			}
 			if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
 				supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
-
-			float[] critDmgProb = {1 - p.offensives[p.CritChance], p.offensives[p.CritChance] };
+			float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
+			float[] critDmgProb = {1 - critChance, critChance };
 			bool isCrit = false;
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
@@ -136,7 +136,7 @@ public class Weapon : MonoBehaviour {
 				isCrit = true;
 				Debug.Log("Critical Dmg: " + damage);
 			}
-
+			damage += damage * p.offensives[p.IncreasedDmg]/100;
 			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
 
 			
