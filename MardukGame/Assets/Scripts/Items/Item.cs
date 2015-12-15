@@ -218,40 +218,50 @@ public class Item : MonoBehaviour {
 		if(defensives[p.MaxHealth] > 0)
 			tooltip += "+ " + defensives[p.MaxHealth] + " To Maximum Life" + "\n";
 		if(defensives[p.ColdRes] > 0)
-			tooltip += "+ " + defensives[p.ColdRes] + "% To Cold Resistance" + "\n";
+			tooltip += "+ " + defensives[p.ColdRes] + " To Cold Resistance" + "\n";
 		if(defensives[p.FireRes] > 0)
-			tooltip += "+ " + defensives[p.FireRes] + "% To Fire Resistance" + "\n";
+			tooltip += "+ " + defensives[p.FireRes] + " To Fire Resistance" + "\n";
 		if(defensives[p.AllRes] != 0)
 			if (defensives[p.AllRes] > 0)
-				tooltip += "+ " + defensives[p.AllRes] + "% to all resistances" + "\n";
+				tooltip += "+ " + defensives[p.AllRes] + " To All Resistances" + "\n";
 			else
-				tooltip += defensives[p.AllRes] + "% to all resistances" + "\n";
+				tooltip += defensives[p.AllRes] + " To All Resistances" + "\n";
 		if(defensives[p.LightRes] > 0)
-			tooltip += "+ " + defensives[p.LightRes] + "% To Lightning Resistance" + "\n";
+			tooltip += "+ " + defensives[p.LightRes] + " To Lightning Resistance" + "\n";
 		if(defensives[p.PoisonRes] > 0)
-			tooltip += "+ " + defensives[p.PoisonRes] + "% To Poison Resistance" + "\n";
+			tooltip += "+ " + defensives[p.PoisonRes] + " To Poison Resistance" + "\n";
 		if(defensives[p.Evasiveness] > 0)
 			tooltip += "+ " + defensives[p.Evasiveness] + "% To Evasiveness" + "\n";
 		if(defensives[p.Thorns] > 0)
-			tooltip += "Reflects " + defensives[p.Thorns] + " Physical Damage \n To Attackers" + "\n";
+			tooltip += "+ " + defensives[p.Thorns] + " Thorns Damage" + "\n";
 		if(defensives[p.LifePerHit] > 0)
-			tooltip +=  defensives[p.LifePerHit] + " Life Gained Per Hit" + "\n";
+			tooltip += "+ " + defensives[p.LifePerHit] + " Life Per Hit" + "\n";
 		if(defensives[p.LifePerSecond] > 0)
 			tooltip +=  defensives[p.LifePerSecond] + "% Life Regenerated Per Second" + "\n";
+		if (defensives [p.Defense] > 0)
+			tooltip += "+ " + defensives [p.Defense] + " Defense" +"\n";
 		if(utils[p.MovementSpeed] > 0)
-			tooltip +=  utils[p.MovementSpeed] + "% To Movement Speed" + "\n";
+			tooltip +=  utils[p.MovementSpeed] + "% Increased Movement Speed" + "\n";
 		if(offensives[p.CritChance]>0)
-			tooltip +=  offensives[p.CritChance] + "% To Critical Chance" + "\n";
+			tooltip += "+ " + offensives[p.CritChance] + "% Critical Chance" + "\n";
 		if(offensives[p.IncreasedAttackSpeed]>0)
 			tooltip +=  offensives[p.IncreasedAttackSpeed] + "% Increased Attack Speed" + "\n";
 		if(offensives[p.IncreasedCritChance]>0)
-			tooltip +=  offensives[p.IncreasedCritChance] + "% Increased Critical Chances" + "\n";
+			tooltip +=  offensives[p.IncreasedCritChance] + "% Increased Critical Chance" + "\n";
 		if(offensives[p.IncreasedMgDmg]>0)
 			tooltip +=  offensives[p.IncreasedMgDmg] + "% Increased Magic Damage" + "\n";
 		if(offensives[p.IncreasedCastSpeed]>0)
 			tooltip +=  offensives[p.IncreasedCastSpeed] + "% Increased Cast Speed" + "\n";
+		if(offensives[p.Accuracy]>0)
+			tooltip +=  "+ " + offensives[p.Accuracy] + " Accuracy" + "\n";
+		if(offensives[p.BleedChance]>0)
+			tooltip +=  "+ " + offensives[p.BleedChance] + "% Chance Of Bleeding " + "\n";
+		if(offensives[p.CertainStrChance]>0)
+			tooltip +=  "+ " + offensives[p.CertainStrChance] + "% Chance Of Certain Damage" + "\n";
+		if(offensives[p.IncreasedDmg]>0)
+			tooltip +=  "+ " + offensives[p.IncreasedDmg] + "% Increased Physical Damage" + "\n";
 		if (utils[p.AllAttr]>0)
-			tooltip += "+ " + utils[p.AllAttr] + " to all attributes";
+			tooltip += "+ " + utils[p.AllAttr] + " To All Attributes";
 		return tooltip;
 	}
 
