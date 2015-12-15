@@ -42,7 +42,7 @@ public class EnemyIAMovement : MonoBehaviour {
 	private Vector3 dir;
 	private float dotX,dotY;
 	private float calcDirTime, calcDirDelay = 0.6f;
-
+	public bool horizontalFly = false;
 	public bool dontFlip = false;
 
 	[SerializeField] private LayerMask whatIsGround;
@@ -193,7 +193,11 @@ public class EnemyIAMovement : MonoBehaviour {
 	private void Fly(){
 		if (knockbackTimer <= 0) {
 			anim.SetBool ("hit", false);
-			rb.velocity = new Vector2 (moveDir * maxSpeed, moveDirY * maxSpeed);
+			if(!horizontalFly)
+				rb.velocity = new Vector2 (moveDir * maxSpeed, moveDirY * maxSpeed);
+			else{
+				rb.velocity = new Vector2 (moveDir * maxSpeed, 0 * maxSpeed);
+			}
 		}
 		else{
 			if(knockable){
