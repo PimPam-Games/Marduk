@@ -31,6 +31,8 @@ public class EnemyRangedAttack : MonoBehaviour {
 		castTimer -= Time.deltaTime;
 		float distance = Vector3.Distance (target.transform.position, transform.position);
 		if (castTimer < 0 && distance <= maxDistance) {
+			if(movement.smartFly && (!movement.horizontalFly || movement.upFly)) //el zu, tira el ataque solo cuando esta arriba
+				return;
 			castTimer = castDelay;
 			anim.SetBool ("Attacking", true);
 			if(stopWalkWhenAttack)

@@ -43,12 +43,20 @@ public class EnemyIAMovement : MonoBehaviour {
 	private float dotX,dotY;
 	private float calcDirTime, calcDirDelay = 0.6f;
 	public bool horizontalFly = false;
+	public bool smartFly = false;
+	private float upFlyTimer = 0;
+	private float followPlayerTimer =0; 
+	public bool upFly = false;
+	private const float HFlyC = 10; 
+	private float hflyTimer = 0;
+	
 	public bool dontFlip = false;
 
 	[SerializeField] private LayerMask whatIsGround;
 
 	// Use this for initialization
 	void Start () {
+		hflyTimer = HFlyC;
 		initMaxSpeed = maxSpeed;
 		target = GameObject.FindGameObjectWithTag ("Player");
 		rb = GetComponent<Rigidbody2D> ();
@@ -89,6 +97,29 @@ public class EnemyIAMovement : MonoBehaviour {
 		} else {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 		}
+	
+		if(smartFly){ //solo para el zu por ahora
+			hflyTimer -= Time.deltaTime;  //comienza moviendose horizontalmente
+			followPlayerTimer -= Time.deltaTime;
+			upFlyTimer -= Time.deltaTime;
+			if(hflyTimer <= 0 && followPlayerTimer <= 0 && horizontalFly && !upFly){ // empieza a seguir al player
+				followPlayerTimer = HFlyC;
+				horizontalFly = false;
+			}			
+			if(!horizontalFly && followPlayerTimer <= 0 && !upFly){ //deja de seguirlo, empieza a subir
+				horizontalFly = true;
+				upFly = true;
+				upFlyTimer = 0.85f;
+				Debug.Log("comienza a subir");
+			}
+			if(upFlyTimer <= 0 && upFly && horizontalFly){ //deja de subir, se muve horizontalmente
+				horizontalFly = true;
+				upFly = false;
+				hflyTimer = HFlyC;
+				Debug.Log("deja de subir");
+				
+			}
+		}		
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
@@ -196,7 +227,11 @@ public class EnemyIAMovement : MonoBehaviour {
 			if(!horizontalFly)
 				rb.velocity = new Vector2 (moveDir * maxSpeed, moveDirY * maxSpeed);
 			else{
-				rb.velocity = new Vector2 (moveDir * maxSpeed, 0 * maxSpeed);
+				if(!upFly)
+					rb.velocity = new Vector2 (moveDir * maxSpeed, 0 * maxSpeed);
+				else{
+					rb.velocity = new Vector2 (moveDir * maxSpeed, maxSpeed);
+				}
 			}
 		}
 		else{

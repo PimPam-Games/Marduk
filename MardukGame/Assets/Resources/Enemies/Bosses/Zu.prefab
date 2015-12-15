@@ -78,7 +78,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0500000007, y: -2.66000009, z: 0}
+  m_LocalPosition: {x: -.0700000003, y: -2.04999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 499562}
@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.15520048, y: 2.08827329, z: 0}
+  m_LocalPosition: {x: -7.3499999, y: 3.0999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 474878}
@@ -148,9 +148,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: .0550757274, y: -.958714366}
+  m_Offset: {x: .0550757274, y: -.60169661}
   serializedVersion: 2
-  m_Size: {x: 2.17063999, y: 3.3314929}
+  m_Size: {x: 2.17063999, y: 2.61745739}
 --- !u!61 &6158482
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
-  maxSpeed: 4
+  maxSpeed: 3.5
   initMaxSpeed: 0
   facingRight: 0
   currentSpeed: 0
@@ -353,6 +353,8 @@ MonoBehaviour:
   knockbackLength: .300000012
   knockback: 2.5
   horizontalFly: 1
+  smartFly: 1
+  upFly: 0
   dontFlip: 0
   whatIsGround:
     serializedVersion: 2

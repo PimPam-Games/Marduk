@@ -67,6 +67,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &115536
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 484418}
+  - 60: {fileID: 6069828}
+  m_Layer: 10
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &123232
 GameObject:
   m_ObjectHideFlags: 1
@@ -80,22 +96,6 @@ GameObject:
   - 114: {fileID: 11481804}
   m_Layer: 0
   m_Name: mesh_[00]_[00]
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &143970
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 421538}
-  - 60: {fileID: 6029538}
-  m_Layer: 0
-  m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,16 +131,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &173944
+--- !u!1 &183390
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 454132}
-  - 60: {fileID: 6042490}
-  m_Layer: 10
+  - 4: {fileID: 478592}
+  - 60: {fileID: 6010046}
+  m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,33 +158,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463476}
-  - {fileID: 454132}
+  - {fileID: 484418}
   m_Father: {fileID: 468624}
   m_RootOrder: 2
---- !u!4 &421538
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143970}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 470930}
-  m_RootOrder: 1
---- !u!4 &454132
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173944}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 413864}
-  m_RootOrder: 1
 --- !u!4 &463476
 Transform:
   m_ObjectHideFlags: 1
@@ -223,7 +199,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 474650}
-  - {fileID: 421538}
+  - {fileID: 478592}
   m_Father: {fileID: 468624}
   m_RootOrder: 0
 --- !u!4 &474650
@@ -263,6 +239,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 476210}
   m_RootOrder: 0
+--- !u!4 &478592
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 470930}
+  m_RootOrder: 1
+--- !u!4 &484418
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 413864}
+  m_RootOrder: 1
 --- !u!23 &2309220
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -356,12 +356,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123232}
   m_Mesh: {fileID: 4300000, guid: 9edbcc3c3cbd6f248b0191fac9a96ee5, type: 3}
---- !u!60 &6029538
+--- !u!60 &6010046
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143970}
+  m_GameObject: {fileID: 183390}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -373,12 +373,12 @@ PolygonCollider2D:
       - {x: 1472, y: -832}
       - {x: 1472, y: -768}
       - {x: 320, y: -768}
---- !u!60 &6042490
+--- !u!60 &6069828
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173944}
+  m_GameObject: {fileID: 115536}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
