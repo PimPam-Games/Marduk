@@ -263,6 +263,9 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  horizontalFly: 0
+  smartFly: 0
+  upFly: 0
   dontFlip: 0
   whatIsGround:
     serializedVersion: 2
@@ -310,7 +313,10 @@ MonoBehaviour:
   enemyName: Ghoul
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
-  exp: 18
+  exp: 12
+  rend: {fileID: 0}
+  spriteRend: {fileID: 0}
+  isBoss: 0
 --- !u!114 &11451364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,6 +385,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: armourPerLvl
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: exp
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

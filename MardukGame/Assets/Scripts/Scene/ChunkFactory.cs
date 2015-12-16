@@ -119,7 +119,7 @@ public class ChunkFactory : MonoBehaviour {
 
 		int choice = Utils.Choose(chunksProb);
 		//Debug.Log ("chunk pos 0 " + chunkPos [0]);
-		if((!doubleInRow[chunkPos[0]] &&  choice == 2) || (!doubleInRow[chunkPos[0]] && chunkPos[1] == MatrixSize - 3)){ //si estoy casi por llegar a un borde
+		if((!doubleInRow[newChunkPosY] &&  choice == 2) || (!doubleInRow[newChunkPosY] && chunkPos[1] == MatrixSize - 3)){ //si estoy casi por llegar a un borde
 			choice = 1;																												//o si toca un cierre, me aseguro que haya un doble antes		
 		}
 		if(doubleChunks.Count == 0) // esto es por ahora nomas, para que ande el level 1

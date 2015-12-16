@@ -450,7 +450,7 @@ MonoBehaviour:
   enemyName: Carcohl
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
-  exp: 10
+  exp: 6
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -481,6 +481,9 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  horizontalFly: 0
+  smartFly: 0
+  upFly: 0
   dontFlip: 0
   whatIsGround:
     serializedVersion: 2
@@ -521,6 +524,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: enemyName
       value: Carcohl
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: exp
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
