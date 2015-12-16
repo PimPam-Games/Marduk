@@ -361,7 +361,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -101.677582, y: 27.187706, z: 0}
+  m_LocalPosition: {x: -133.867371, y: 54.4828529, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 422330}
@@ -636,9 +636,9 @@ Rigidbody2D:
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!50 &5090256
 Rigidbody2D:
@@ -738,9 +738,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 517.393555, y: 250.112061}
+  m_Offset: {x: 591.585938, y: 250.112061}
   serializedVersion: 2
-  m_Size: {x: 824.335815, y: 509.012817}
+  m_Size: {x: 972.722046, y: 509.012817}
 --- !u!61 &6107206
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -891,6 +891,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Chunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -135,7 +135,7 @@ public class ChunkFactory : MonoBehaviour {
 				}
 				else{
 					if((cmatrix[chunkPos[0]-1, chunkPos[1]-1] && exit == Exits.Right) || (cmatrix[chunkPos[0]-1, chunkPos[1]+1] && exit == Exits.Left)){
-						//Debug.Log("este doble no deberia ir baby");
+						Debug.Log("este doble no deberia ir baby");
 						choice = 0;
 					}
 				}
