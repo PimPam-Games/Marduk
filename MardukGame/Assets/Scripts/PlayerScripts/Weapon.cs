@@ -170,7 +170,9 @@ public class Weapon : MonoBehaviour {
 				else
 					enemy.GetComponent<EnemyIAMovement>().Knock(false);
 			}
-			
+			else {
+				CombatText.ShowCombatText("Miss!");
+			}
 			isAttacking = false;
 		}
 	}

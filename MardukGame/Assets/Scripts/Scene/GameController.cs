@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour {
 	private CameraController miniMapController;
 	public static List<string> notVisitedLevels;
 	public static List<string[]> levelConnections;
-	//public static bool newLevel = true;
 	public static Object[] enemyList;
 	public static Dictionary<string,List<GameObject>> enemiesPerLevel = new Dictionary<string,List<GameObject>>();
 	public static Dictionary<string,List<GameObject>> chunksPerZone = new Dictionary<string,List<GameObject>> ();

@@ -163,6 +163,9 @@ public class PlayerProjStats : MonoBehaviour {
 					if(projRequirements == Types.SkillsRequirements.Bow)
 						collision = true;
 				}
+				else{
+					CombatText.ShowCombatText("Miss!");
+				}
 			}
 			else{
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
@@ -191,6 +194,9 @@ public class PlayerProjStats : MonoBehaviour {
 					hitEnemySound.Play();
 					if(projRequirements == Types.SkillsRequirements.Bow)
 						collision = true;
+				}
+				else{
+					CombatText.ShowCombatText("Miss!");
 				}
 			}
 

@@ -344,6 +344,7 @@ public class PlayerStats : MonoBehaviour {
 		if (currentExp >= nextLevelExp) {
 			lvl++;
 			levelUpSoundStatic.Play();
+			CombatText.ShowCombatText("LevelUp!");
 			passivePoints++;
 			oldNextLevelExp = nextLevelExp;
 			nextLevelExp = ExpFormula();
@@ -379,6 +380,7 @@ public class PlayerStats : MonoBehaviour {
 				if(!anim.GetBool("Attacking") && !anim.GetBool("BowAttacking") && !anim.GetBool("SpellCasting"))
 					anim.SetBool ("Evading", true);
 				Debug.Log ("Esquivaste el ataque! ");
+				CombatText.ShowCombatText("Dodge!");
 				return false;
 			}
 		}
