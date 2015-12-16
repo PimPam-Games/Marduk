@@ -22,6 +22,7 @@ public class Teleporter : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.tag == "Player" && !icg.tpOpen) {
 			PlayerItems.playerTeleporters[id] = true;
+			TeleporterPanel.updateTeleporterUI = true;
 			//Debug.Log("enter portal");
 			icg.OpenTeleporterPanel();
 			anim.SetBool("Activated",true);

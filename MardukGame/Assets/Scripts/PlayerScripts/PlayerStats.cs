@@ -53,6 +53,10 @@ public class PlayerStats : MonoBehaviour {
 
 	public AudioSource playerDeathSound;
 	public AudioSource blockSound;
+	public AudioSource levelUpSound	;
+
+	private static AudioSource levelUpSoundStatic;
+	
 	public static string playerName;
 	
 	public GameObject graphics;
@@ -104,7 +108,7 @@ public class PlayerStats : MonoBehaviour {
 		isDead = false;
 		ui = this.GetComponent<PlayerUIController> ();
 		renders = graphics.GetComponentsInChildren<SpriteRenderer> ();
-		Debug.Log("renders " + renders.Length);
+		levelUpSoundStatic = levelUpSound;
 		currentHealth = defensives [MaxHealth];
 		currentMana = offensives [MaxMana];
 		UpdateMana ();
@@ -339,6 +343,7 @@ public class PlayerStats : MonoBehaviour {
 		currentExp += exp;
 		if (currentExp >= nextLevelExp) {
 			lvl++;
+			levelUpSoundStatic.Play();
 			passivePoints++;
 			oldNextLevelExp = nextLevelExp;
 			nextLevelExp = ExpFormula();

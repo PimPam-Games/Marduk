@@ -19,6 +19,7 @@ public class CharacterPanel : MonoBehaviour {
 	public Text txt2Defensives;
 	public Text txtUtils;
 	public Text txt2Utils;
+	public Text txtRemPoints;
 
 	public Text txtName;
 	public Text txtStrength;
@@ -51,6 +52,7 @@ public class CharacterPanel : MonoBehaviour {
 		txtName.text = p.playerName + " lvl: " + p.lvl;
 		txtSpirit.text = p.atributes[p.Spirit].ToString();
 		txtVitality.text = p.atributes[p.Vitality].ToString();
+		txtRemPoints.text = p.atributesPoints.ToString();
 		if(addAtributesPanel.activeSelf){
 			if(p.atributesPoints <= 0)
 				addAtributesPanel.SetActive(false);
