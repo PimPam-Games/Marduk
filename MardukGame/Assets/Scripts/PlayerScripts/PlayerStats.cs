@@ -90,6 +90,8 @@ public class PlayerStats : MonoBehaviour {
 	private float initAnimSpeed;
 	public static float currentAnimSpeed; // guarda la velocidad de movimiento actual, es para usar en Weapon
 
+	public static bool isBlocking; // sirve para activar algunas cosas al bloquear
+
 
 
 	void Awake(){
@@ -388,6 +390,10 @@ public class PlayerStats : MonoBehaviour {
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);
 			blockSound.Play();
+			//begin traits
+			if (Traits.traits[Traits.BLOCKDMG].isActive())
+				isBlocking = true;
+			//end traits
 			Debug.Log ("Bloqueaste el ataque! " );
 			return true;
 		}

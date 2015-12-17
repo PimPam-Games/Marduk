@@ -5,9 +5,9 @@ using p = PlayerStats;
 
 public class Traits: MonoBehaviour
 {
-	public const int CantTraits = 16;
+	public const int CantTraits = 18;
 	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 6, LOWHPDAMAGE = 7, NOFREEZE = 8, NOSHOCK = 9, 
-	NOPOISON = 10, NOBURN = 11, FIREDAMAGE = 12, COLDDAMAGE = 13,LIGHTDAMAGE = 14, POISONDAMAGE= 15, t16 = 16, t17 = 17, t18 = 18, t19 = 19;
+	NOPOISON = 10, NOBURN = 11, FIREDAMAGE = 12, COLDDAMAGE = 13,LIGHTDAMAGE = 14, POISONDAMAGE= 15, CRITACC = 16, BLOCKDMG = 17;
 	public static Trait[] traits;
 
 	public static float[] atributes;
@@ -18,7 +18,7 @@ public class Traits: MonoBehaviour
 	void Awake(){
 		traits = new Trait[CantTraits];
 		traits [MPDAMAGE] = new Trait("MPDAMAGE",1,"25% of incoming damage applies on MP instead of HP");
-		traits [MPREGEN] = new Trait("MPREGEN",1,"Half MP, double MP regeneration"); //este hay que verlo
+		traits [MPREGEN] = new Trait("MPREGEN",1,"Half MP, double MP regeneration");
 		traits [MPLEECH] = new Trait("MPLEECH",1,"Life on hit applies to MP instead of HP");
 		traits [ACCURACY] = new Trait("ACCURACY",1,"100% accuracy, no critical hit chance");
 		traits [PDAMAGE] = new Trait("PDAMAGE",1,"+50% physical damage, -25% defense");
@@ -33,11 +33,9 @@ public class Traits: MonoBehaviour
 		traits [COLDDAMAGE] = new Trait("COLDDAMAGE",1,"10% of damage dealt is added as cold damage");
 		traits [LIGHTDAMAGE] = new Trait("LIGHTDAMAGE",1,"10% of damage dealt is added as lightning damage");
 		traits [POISONDAMAGE] = new Trait("POISONDAMAGE",1,"10% of damage dealt is added as poison damage");
-		/*traits [ASPEED] = new Trait("ASPEED",1,"+20% attack speed limit");
-		traits [t12] = new Trait("t12",2,"Can't evade attacks, +100% critical chance");
-		traits [t13] = new Trait("t13",2,"+10 to resistances limit");
-		traits [t14] = new Trait("t14",2,"+10% chance on hit to cause a random status effect");
-		traits [t15] = new Trait("t15",2,"Double hit");
+		traits [CRITACC] = new Trait("CRITACC",1,"-50% Accuracy, +100% critical chance");
+		traits [BLOCKDMG] = new Trait("BLOCKDMG",1,"Deal half of your thorns damage when blocking an attack");
+		/*traits [t15] = new Trait("t15",2,"Double hit");
 		traits [t16] = new Trait("t16",2,"10% chance to counterattack with one of your skills when struck");
 		traits [t17] = new Trait("t17",2,"Attacks cause area damage");
 		traits [t18] = new Trait("t18",2,"Your thorns damage causes bleeding");
@@ -69,6 +67,10 @@ public class Traits: MonoBehaviour
 				case MDAMAGE:
 					p.defensives[p.AllRes] -= 30;
 					break;
+				case CRITACC:
+					p.offensives[p.IncreasedAccuracy] -= 50;
+					p.offensives[p.IncreasedCritChance] += 100;
+					break;
 				default :
 					break;
 				}
@@ -81,6 +83,10 @@ public class Traits: MonoBehaviour
 		switch (tName) {
 		case MDAMAGE:
 			p.defensives[p.AllRes] += 30;
+			break;
+		case CRITACC:
+			p.offensives[p.IncreasedAccuracy] += 50;
+			p.offensives[p.IncreasedCritChance] -= 100;
 			break;
 		default :
 			break;

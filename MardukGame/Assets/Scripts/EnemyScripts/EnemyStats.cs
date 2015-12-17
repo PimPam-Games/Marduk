@@ -235,7 +235,13 @@ public class EnemyStats : MonoBehaviour {
 				Hit (p.defensives[p.Thorns], Types.Element.None, false);
 			}
 			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy, isCrit);
-
+			//begin traits
+			if (p.isBlocking){
+				if (Traits.traits[Traits.BLOCKDMG].isActive())
+					Hit (p.defensives[p.Thorns]/2, Types.Element.None, false);
+				p.isBlocking = false;
+			}
+			//end traits
 			if(col.transform.position.x < this.transform.position.x)
 				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 			else
