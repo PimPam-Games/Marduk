@@ -130,13 +130,21 @@ public class Weapon : MonoBehaviour {
 			bool isCrit = false;
 			if(Utils.Choose(critDmgProb) != 0){
 				damage *= p.offensives[p.CritDmgMultiplier];
-				//Begin Traits
 
-				//End Traits
 				isCrit = true;
 				Debug.Log("Critical Dmg: " + damage);
 			}
 			damage += damage * p.offensives[p.IncreasedDmg]/100;
+			//Begin Traits
+			if (Traits.traits[Traits.LOWHPCRIT].isActive())
+				if (p.currentHealth <= p.MaxHealth * 0.15)
+					isCrit = true;
+			if (Traits.traits[Traits.ANTIAIR].isActive())
+				if (enemy.GetComponent<EnemyStats>().enemyName == "Wraith" ||
+				    enemy.GetComponent<EnemyStats>().enemyName == "Roc" ||
+				    enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus")
+					damage *= 1.2f;
+			//End Traits
 			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
 
 			

@@ -129,6 +129,14 @@ public class PlayerProjStats : MonoBehaviour {
 				if (p.currentHealth <= p.MaxHealth*(float)0.3)
 					damage = damage * (float)1.25;
 			}
+			if (Traits.traits[Traits.LOWHPCRIT].isActive())
+				if (p.currentHealth <= p.MaxHealth * 0.15)
+					alwaysCrit = true;
+			if (Traits.traits[Traits.ANTIAIR].isActive())
+				if (enemy.GetComponent<EnemyStats>().enemyName == "Wraith" ||
+				    enemy.GetComponent<EnemyStats>().enemyName == "Roc" ||
+				    enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus")
+					damage *= 1.2f;
 			//End Traits
 			bool isCrit = false;
 			if(Utils.Choose(critDmgProb) != 0 || alwaysCrit)

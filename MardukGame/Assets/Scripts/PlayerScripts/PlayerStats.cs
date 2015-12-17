@@ -491,7 +491,13 @@ public class PlayerStats : MonoBehaviour {
 		if (Traits.traits[Traits.MPDAMAGE].isActive ()) {
 			if (currentMana >= realDmg/4)
 				currentMana -= realDmg/4;
+			else
+				currentMana = 0;
 			realDmg -= realDmg/4;
+		}
+		if (Traits.traits [Traits.HIGHMP].isActive ()) {
+			if (currentMana >= MaxMana * 0.8)
+				realDmg -= realDmg/4;
 		}
 		//End Traits
 		if (realDmg < 0)
