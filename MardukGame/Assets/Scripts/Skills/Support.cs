@@ -10,7 +10,7 @@ public class Support : SpellStats {
 	{
 		string tooltip = "";
 		tooltip =  base.ToolTip();
-		if(string.Compare(spellName,"Iced Damage") == 0){
+		if(damageAdded > 0){
 			tooltip += "Only works with melee and Ranged skills \n";
 		}
 		tooltip += "<color=grey>----------------------------------</color> \n";

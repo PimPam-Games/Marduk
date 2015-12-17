@@ -11,8 +11,9 @@ GameObject:
   - 212: {fileID: 21293838}
   - 50: {fileID: 5048804}
   - 114: {fileID: 11426550}
-  - 58: {fileID: 5862746}
-  - 95: {fileID: 9574036}
+  - 61: {fileID: 6151882}
+  - 95: {fileID: 9553766}
+  - 82: {fileID: 8294678}
   m_Layer: 20
   m_Name: Lightning
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.878294, y: 1.92476058, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.16598701, y: 1.61126614, z: 0}
+  m_LocalScale: {x: 3.37033224, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,13 +44,13 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5862746
-CircleCollider2D:
+--- !u!61 &6151882
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -58,10 +59,79 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.0601517, y: 0}
   serializedVersion: 2
-  m_Radius: .230916977
---- !u!95 &9574036
+  m_Size: {x: 2.25598097, y: .409999937}
+--- !u!82 &8294678
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108874}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7b07743c461bd9845ba61de24bfefe77, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .666999996
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!95 &9553766
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -70,7 +140,7 @@ Animator:
   m_GameObject: {fileID: 108874}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c06ee28f9bf5824488b212bd2259bd1b, type: 2}
+  m_Controller: {fileID: 9100000, guid: b583c7cdaf8e40e4cb4b80fb34ed75b9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -92,10 +162,12 @@ MonoBehaviour:
   elem: 2
   minDmg: 4
   maxDmg: 7
+  duration: .600000024
   particleSpeed: 0
   isParticle: 0
-  dontDestroy: 0
+  dontDestroy: 1
   hasSplashAnim: 0
+  projSound: {fileID: 8294678}
   anim: {fileID: 0}
   enemyStats: {fileID: 0}
 --- !u!212 &21293838
@@ -122,7 +194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -354108773
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 41dd65d3ee728b44aab1fcbe0bbeb9d1, type: 3}
+  m_Sprite: {fileID: 21300064, guid: 41dd65d3ee728b44aab1fcbe0bbeb9d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -134,6 +206,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dontDestroy
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

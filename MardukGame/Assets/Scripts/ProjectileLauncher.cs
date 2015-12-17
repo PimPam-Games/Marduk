@@ -12,7 +12,7 @@ public class ProjectileLauncher : MonoBehaviour {
 	private GameObject p;
 	public EnemyStats stats;
 
-	public void setDamage(float minDmg, float maxDmg){
+	public void SetDamage(float minDmg, float maxDmg){
 		projectile.GetComponent<ProjectileStats>().minDmg = minDmg;
 		projectile.GetComponent<ProjectileStats>().maxDmg = maxDmg;
 	}

@@ -103,7 +103,7 @@ public class EnemyIAMovement : MonoBehaviour {
 			followPlayerTimer -= Time.deltaTime;
 			upFlyTimer -= Time.deltaTime;
 			if(hflyTimer <= 0 && followPlayerTimer <= 0 && horizontalFly && !upFly){ // empieza a seguir al player
-				followPlayerTimer = HFlyC;
+				followPlayerTimer = 6;
 				horizontalFly = false;
 			}			
 			if(!horizontalFly && followPlayerTimer <= 0 && !upFly){ //deja de seguirlo, empieza a subir

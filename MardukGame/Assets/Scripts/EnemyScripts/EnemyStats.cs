@@ -127,7 +127,7 @@ public class EnemyStats : MonoBehaviour {
 		currHealth = maxHealth;
 		if(rangedAttack != null){
 			foreach(GameObject plauncher in rangedAttack.pLaunchers){
-				plauncher.GetComponent<ProjectileLauncher>().setDamage(minDamage,maxDamage);
+				plauncher.GetComponent<ProjectileLauncher>().SetDamage(minDamage,maxDamage);
 			}
 		}
 	}

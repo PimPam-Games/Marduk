@@ -6,13 +6,14 @@ public class ProjectileStats : MonoBehaviour {
 	public Types.Element elem ;
 	public float minDmg = 1, maxDmg = 3;
 	
-	private float duration = 6;
+	public float duration = 6;
 	private float lifeTime = 0;
 	public float particleSpeed;
 	public bool isParticle;
 	public bool dontDestroy = false;
 	public bool hasSplashAnim = false;
 	
+	public AudioSource projSound = null;
 	private float rotationChange;
 	public Animator anim;
 	private Rigidbody2D rb;
@@ -23,6 +24,9 @@ public class ProjectileStats : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if(projSound != null){
+			projSound.Play();
+		}
 		rb = GetComponent<Rigidbody2D> ();
 		if(isParticle)
 			gameObject.GetComponent<ParticleSystem> ().playbackSpeed = particleSpeed;
