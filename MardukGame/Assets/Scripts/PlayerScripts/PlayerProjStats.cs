@@ -164,7 +164,7 @@ public class PlayerProjStats : MonoBehaviour {
 						collision = true;
 				}
 				else{
-					CombatText.ShowCombatText("Miss!");
+					CombatText.ShowCombatText("Miss");
 				}
 			}
 			else{
@@ -196,7 +196,7 @@ public class PlayerProjStats : MonoBehaviour {
 						collision = true;
 				}
 				else{
-					CombatText.ShowCombatText("Miss!");
+					CombatText.ShowCombatText("Miss");
 				}
 			}
 
