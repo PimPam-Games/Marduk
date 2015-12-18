@@ -97,8 +97,10 @@ public class EnemyIAMovement : MonoBehaviour {
 		} else {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 		}
-	
-		if(smartFly){ //solo para el zu por ahora
+		float dist = 99999;
+		if(target != null)
+			 dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));
+		if(smartFly && dist < MaxDistanceFollow){ //solo para el zu por ahora
 			hflyTimer -= Time.deltaTime;  //comienza moviendose horizontalmente
 			followPlayerTimer -= Time.deltaTime;
 			upFlyTimer -= Time.deltaTime;

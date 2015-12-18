@@ -76,15 +76,16 @@ public class CharacterPanel : MonoBehaviour {
 				+"Critical Chance         \n" 
 				+"Crit Dmg Multiplier       \n" 
 				+"Mana Per Second      \n"  
-				+"Increased Cast Speed \n" ;
+				+"Increased Cast Speed \n"
+				+"Thorns damage        \n";
 		txt2Offensives.text = physicalDmg + "\n"
 			+(System.Math.Round(p.offensives[p.BaseAttacksPerSecond] + p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100),2)).ToString() + "\n"
 				+ accuracy + "\n"
 				+ critChance.ToString() + "%"+ "\n"
 				+ p.offensives[p.CritDmgMultiplier].ToString()+ "\n"
 				+ p.offensives[p.ManaPerSec].ToString()+ "% \n"
-				+ p.offensives[p.IncreasedCastSpeed].ToString() + "%" + "\n";	
-	
+				+ p.offensives[p.IncreasedCastSpeed].ToString() + "%" + "\n"
+				+ p.defensives[p.Thorns].ToString() + "\n";	
 	}
 
 	private void UpdateDefensives(){

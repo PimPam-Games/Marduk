@@ -82,6 +82,7 @@ public class EnemyStats : MonoBehaviour {
 	private bool itemCreated = false;
 
 	private float DotSkillTimer = 0;
+	private int t = 0; //para soluciona bug de thorns que se llama dos veces
 
 	public bool isBoss = false;
 	public float Accuracy{
@@ -144,6 +145,7 @@ public class EnemyStats : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		t = 0;
 		if(!isBoss){
 			if (zoneSettings.enemiesLvl != lvl) {
 				lvl = zoneSettings.enemiesLvl;
@@ -221,6 +223,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
+		t++;
 		if(col.gameObject.tag == "Player" && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		if (col.gameObject.tag == "Player" && !p.isDead) {
@@ -231,8 +234,10 @@ public class EnemyStats : MonoBehaviour {
 				isCrit = true;
 				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
 			}
-			if(p.defensives[p.Thorns] > 0){
-				Hit (p.defensives[p.Thorns], Types.Element.None, false);
+			if(p.defensives[p.Thorns] > 0){			
+				if(t == 1){
+					Hit (p.defensives[p.Thorns], Types.Element.None, false);
+				}
 			}
 			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy, isCrit);
 			//begin traits
