@@ -112,7 +112,7 @@ public class Weapon : MonoBehaviour {
 		
 				if(pc.useMeleeProjLauncher && ms.projectile != null){
 					PlayerProjStats msProj = ms.projectile.GetComponent<PlayerProjStats>();
-					msProj.minDmg = damage * 0.55f; //por ahora es asi loco
+					msProj.minDmg = damage * 0.55f; //por ahora es asi loco,
 					msProj.maxDmg = damage * 0.55f;
 					if(pc.isFacingRight()){
 						weaponProjLauncher1.transform.rotation = Quaternion.Euler(0,0,90);

@@ -151,7 +151,7 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
 		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
 		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
-		//offensives[MgDmg] = atributes[Spirit] * 0.25f + InitMgDmg;
+		offensives[IncreasedMgDmg] = atributes[Spirit] * 0.5f;
 		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
 		offensives [Accuracy] = atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
 		defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
@@ -239,7 +239,7 @@ public class PlayerStats : MonoBehaviour {
 			case 3:
 				atributes [Spirit]++;
 				offensives[MaxMana] += 3;
-			//	offensives[MgDmg] += 0.25f;
+				offensives[IncreasedMgDmg] += 0.5f;
 				offensives[ManaPerSec] += 0.1f;
 				break;
 		}

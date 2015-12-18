@@ -75,7 +75,8 @@ public class CharacterPanel : MonoBehaviour {
 				+"Accuracy                \n" 
 				+"Critical Chance         \n" 
 				+"Crit Dmg Multiplier       \n" 
-				+"Mana Per Second      \n"  
+				+"Mana Per Second      \n"
+				+"Increased Magic Damage\n"  
 				+"Increased Cast Speed \n"
 				+"Thorns damage        \n";
 		txt2Offensives.text = physicalDmg + "\n"
@@ -84,6 +85,7 @@ public class CharacterPanel : MonoBehaviour {
 				+ critChance.ToString() + "%"+ "\n"
 				+ p.offensives[p.CritDmgMultiplier].ToString()+ "\n"
 				+ p.offensives[p.ManaPerSec].ToString()+ "% \n"
+				+ p.offensives[p.IncreasedMgDmg].ToString() + "% \n"
 				+ p.offensives[p.IncreasedCastSpeed].ToString() + "%" + "\n"
 				+ p.defensives[p.Thorns].ToString() + "\n";	
 	}

@@ -79,8 +79,11 @@ public class RangedSkill : SpellStats {
 		}
 		if(initPhysicalDmgMult > 0)
 			tooltip += "Deals " + projStats.physicalDmgMult + "% of Base Attack Damage \n";
-		if(initMaxDmg > 0)
-			tooltip += "Damage: " + projStats.minDmg + " - " + projStats.maxDmg + "\n";
+		if(initMaxDmg > 0){
+			double mindmg = System.Math.Round(projStats.minDmg + projStats.minDmg * p.offensives[p.IncreasedMgDmg]/100,1);
+			double maxdmg = System.Math.Round(projStats.maxDmg + projStats.maxDmg * p.offensives[p.IncreasedMgDmg]/100,1);
+			tooltip += "Damage: " + mindmg.ToString() +  " - " + maxdmg.ToString() + "\n";
+		}
 		return tooltip;
 	}
 }
