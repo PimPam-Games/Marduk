@@ -8,11 +8,13 @@ public class ItemGenerator :MonoBehaviour{
 
 	private Object[] weaponList;
 	private Object[] uniqueList;
+	private Object[] skillList;
 
 
 	void Awake(){
 		weaponList = Resources.LoadAll("Weapons", typeof(Object));
 		uniqueList = Resources.LoadAll ("Unique", typeof(Object));
+		skillList = Resources.LoadAll ("SkillItems", typeof(Object));
 	}
 	void Update(){
 
@@ -38,12 +40,22 @@ public class ItemGenerator :MonoBehaviour{
 		GameObject newWeapon;
 		Item newItem;
 		//float[] rarityProb = {0.25f,0.25f,0.25f,0.25f};
-		float[] rarityProb = {0.61f,0.3f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
-		int newRarity = Utils.Choose (rarityProb); 
+		//float[] rarityProb = {0.51f,0.2f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
+		//int newRarity = Utils.Choose (rarityProb); 
+		int newRarity = Utils.ChooseItem(); 
 		if (newRarity != 3) { //no es unico
-			int i = Random.Range (0, weaponList.Length);
-			newWeapon = (GameObject)Instantiate (weaponList [i], position, rotation);
-			newItem = newWeapon.GetComponent<Item> ();
+			if(newRarity == 4){ // es un skill
+				int i = Random.Range (0, skillList.Length);
+				newWeapon = (GameObject)Instantiate (skillList [i], position, rotation);
+				newItem = newWeapon.GetComponent<Item> ();
+				DontDestroyOnLoad(newWeapon);
+				return;
+			}
+			else{ //no es skill
+				int i = Random.Range (0, weaponList.Length);
+				newWeapon = (GameObject)Instantiate (weaponList [i], position, rotation);
+				newItem = newWeapon.GetComponent<Item> ();
+			}
 		} else { //es unico
 			int i = Random.Range (0, uniqueList.Length);
 			newWeapon = (GameObject)Instantiate (uniqueList [i], position, rotation);
@@ -255,8 +267,6 @@ public class ItemGenerator :MonoBehaviour{
 
 		}
 		DontDestroyOnLoad (newWeapon);
-
-		//crea una nueva armadura
 	}
 
 
