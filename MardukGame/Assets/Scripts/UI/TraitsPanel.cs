@@ -34,18 +34,18 @@ public class TraitsPanel : MonoBehaviour{
 				traitsButtons[tName].color = new Color(1,1,1,0.35f);
 				Traits.activate(tName);
 			}
-		}/* else {
+		} else {
 			traitsButtons[tName].color = new Color(1,1,1,1);
 			Traits.deactivate(tName);
-		}*/
+		}
 	}
 
-	/*public void clickOnReset () {
+	public void clickOnReset () {
 		foreach(Image img in traitsButtons){
 			img.color = new Color(1,1,1,1);
 		}
 		Traits.reset();
-	}*/
+	}
 
 
 }
