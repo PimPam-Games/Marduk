@@ -11,7 +11,7 @@ public class LevelSettings : MonoBehaviour {
 	private bool minibossGenerated = false;
 	// Use this for initialization
 	void Start () {
-	
+		ZoneName.ShowZoneName(zoneNumber);
 	}
 
 	public void generateEnemy(Vector3 pos, Quaternion rot){

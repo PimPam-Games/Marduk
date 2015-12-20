@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesLvl: 6
-  zoneNumber: 1
+  zoneNumber: 8
   zoneEnemies:
   - {fileID: 154232, guid: fe3aee0fdaaa9904db9afab9317bea65, type: 2}
   - {fileID: 101872, guid: 35e3af2e9bdcc2047aaa7c0d45118a88, type: 2}
@@ -604,6 +604,7 @@ MonoBehaviour:
   rightEndChunks:
   - {fileID: 144104, guid: c0c0e6f1be21096418b6902ae8082078, type: 2}
   outcastleEntrance: {fileID: 0}
+  miniBossChunk: {fileID: 0}
 --- !u!4 &2046447872
 Transform:
   m_ObjectHideFlags: 0
@@ -615,7 +616,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!1 &2057304467
 GameObject:
   m_ObjectHideFlags: 0

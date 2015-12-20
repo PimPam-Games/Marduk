@@ -12,9 +12,13 @@ public class AttrInfo : MonoBehaviour,  IPointerEnterHandler, IPointerExitHandle
 		if(!characterTooltip.activeSelf){
 			characterTooltip.SetActive(true);
 			if(id == 1)
-				characterTooltip.GetComponentInChildren<Text>().text = "1 Strength , 0.25 of base physical damage";
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Strength \n ---------------------------------- \n +0.25 of base physical damage";
 			if(id == 3)
-				characterTooltip.GetComponentInChildren<Text>().text = "1 Vitality , 3 HP";
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Vitality \n ---------------------------------- \n +3 Maximum HP";
+			if(id == 2)
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Dexterity \n ---------------------------------- \n +2 Accuracy \n +2 Evasiveness";
+			if(id == 4)
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Spirit \n ---------------------------------- \n +3 Maximum Mana \n +0.1 Mana Regeneration per second \n +0.5% Increased Magic Damage";
 		}
 	}
 	
