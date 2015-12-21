@@ -136,14 +136,17 @@ public class Weapon : MonoBehaviour {
 			}
 			damage += damage * p.offensives[p.IncreasedDmg]/100;
 			//Begin Traits
-			if (Traits.traits[Traits.LOWHPCRIT].isActive())
-				if (p.currentHealth <= p.MaxHealth * 0.15)
+			if (Traits.traits[Traits.LOWHPCRIT].isActive()){
+				if (p.currentHealth <= 25)
 					isCrit = true;
-			if (Traits.traits[Traits.ANTIAIR].isActive())
+			}
+			if (Traits.traits[Traits.ANTIAIR].isActive()){
 				if (enemy.GetComponent<EnemyStats>().enemyName == "Wraith" ||
 				    enemy.GetComponent<EnemyStats>().enemyName == "Roc" ||
-				    enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus")
+				    enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus" ||
+				    enemy.GetComponent<EnemyStats>().enemyName == "Zu")
 					damage *= 1.2f;
+			}
 			//End Traits
 			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
 
