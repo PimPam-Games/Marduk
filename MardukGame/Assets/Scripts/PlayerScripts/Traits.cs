@@ -36,7 +36,7 @@ public class Traits: MonoBehaviour
 		traits [CRITACC] = new Trait("CRITACC",1,"-50% Accuracy, +100% critical chance");
 		traits [BLOCKDMG] = new Trait("BLOCKDMG",1,"Deal half of your thorns damage when blocking an attack");
 		traits [HIGHMP] = new Trait("HIGHMP",1,"25% reduced damage taken while above 80% MP");
-		traits [LOWHPCRIT] = new Trait("LOWHPCRIT",1,"100% critical chance while below 25 HP");
+		traits [LOWHPCRIT] = new Trait("LOWHPCRIT",1,"100% critical chance while below 15% HP");
 		traits [ANTIAIR] = new Trait("ANTIAIR",1,"+20% damage to flying enemies");
 		/*traits [t15] = new Trait("t15",2,"Double hit");
 		traits [t16] = new Trait("t16",2,"10% chance to counterattack with one of your skills when struck");

@@ -137,7 +137,7 @@ public class Weapon : MonoBehaviour {
 			damage += damage * p.offensives[p.IncreasedDmg]/100;
 			//Begin Traits
 			if (Traits.traits[Traits.LOWHPCRIT].isActive()){
-				if (p.currentHealth <= 25)
+				if (p.currentHealth <= p.defensives[p.MaxHealth] * 0.15)
 					isCrit = true;
 			}
 			if (Traits.traits[Traits.ANTIAIR].isActive()){

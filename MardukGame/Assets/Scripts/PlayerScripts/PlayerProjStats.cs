@@ -130,7 +130,7 @@ public class PlayerProjStats : MonoBehaviour {
 					damage = damage * (float)1.25;
 			}
 			if (Traits.traits[Traits.LOWHPCRIT].isActive()){
-				if (p.currentHealth <= 25)
+				if (p.currentHealth <= p.defensives[p.MaxHealth] * 0.15)
 					alwaysCrit = true;
 			}
 			if (Traits.traits[Traits.ANTIAIR].isActive()){
