@@ -160,6 +160,7 @@ GameObject:
   - 114: {fileID: 11435284}
   - 82: {fileID: 8242054}
   - 114: {fileID: 11488388}
+  - 114: {fileID: 11489010}
   m_Layer: 11
   m_Name: Nergal
   m_TagString: Enemy
@@ -730,6 +731,9 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  horizontalFly: 0
+  smartFly: 0
+  upFly: 0
   dontFlip: 0
   whatIsGround:
     serializedVersion: 2
@@ -905,6 +909,17 @@ MonoBehaviour:
   RightArmCol: {fileID: 6080108}
   RightArmRend: {fileID: 21286324}
   novaLauncher: {fileID: 11475680}
+--- !u!114 &11489010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83292b4168fca94dae2a95979c7f424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21216056
 SpriteRenderer:
   m_ObjectHideFlags: 1

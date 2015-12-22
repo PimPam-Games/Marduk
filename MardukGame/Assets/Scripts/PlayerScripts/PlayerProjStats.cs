@@ -19,7 +19,7 @@ public class PlayerProjStats : MonoBehaviour {
 	public bool continuosRelease = false;
 	public bool alwaysCrit = false;
 	public int stopAfterTime = -1;
-
+	public ProjectileMovement pm = null;
 	//public float manaCost = 5f;
 	private float rotationChange;
 	public Animator anim;
@@ -218,6 +218,9 @@ public class PlayerProjStats : MonoBehaviour {
 					
 					anim.SetBool("hit",true);
 					rb.isKinematic = true;
+					if(pm != null){
+						//pm.maxSpeed = new Vector2(5,0);
+					}
 				}else{
 					Destroy(this.gameObject);
 				}
