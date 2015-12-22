@@ -77,9 +77,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151518}
-  m_LocalRotation: {x: 0, y: 0, z: .707106888, w: .707106769}
-  m_LocalPosition: {x: -.063000001, y: -.301999986, z: 0}
-  m_LocalScale: {x: 1.50000012, y: 1.5, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071069, w: 0.70710677}
+  m_LocalPosition: {x: -0.063, y: -0.302, z: 0}
+  m_LocalScale: {x: 1.5000001, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 432362}
   m_RootOrder: 2
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1048.59192, y: -47.6772537, z: 0}
+  m_LocalPosition: {x: -7.0889144, y: -1.5817028, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 443328}
@@ -105,7 +105,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.1200027, y: 1.53000033, z: 0}
+  m_LocalPosition: {x: 16.120003, y: 1.5300003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 432362}
@@ -117,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -.605000019, z: 0}
+  m_LocalPosition: {x: -0, y: -0.605, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 432362}
@@ -129,9 +129,10 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100584}
+  m_UseAutoMass: 0
   m_Mass: 5
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_GravityScale: 3
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -145,12 +146,13 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114926}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -16.1086197, y: -1.58452821}
+  m_Offset: {x: -16.10862, y: -1.5845282}
   serializedVersion: 2
-  m_Size: {x: .353255272, y: 1.13871837}
+  m_Size: {x: 0.35325527, y: 1.1387184}
 --- !u!61 &6186842
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -158,12 +160,13 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100584}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: .00318336487, y: -.037861146}
+  m_Offset: {x: 0.0031833649, y: -0.037861146}
   serializedVersion: 2
-  m_Size: {x: .469687104, y: 1.06621969}
+  m_Size: {x: 0.4696871, y: 1.0662197}
 --- !u!82 &8299696
 AudioSource:
   m_ObjectHideFlags: 1
@@ -175,10 +178,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 29784c8025e13d4468a3c95b5f101f4f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .796999991
+  m_Volume: 0.797
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -203,6 +207,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -213,6 +218,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -223,6 +229,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -233,6 +240,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9512272
 Animator:
   serializedVersion: 3
@@ -292,7 +300,7 @@ MonoBehaviour:
   common: 1
   hasIdleInstance: 0
   jumpDelay: 2
-  knockbackLength: .300000012
+  knockbackLength: 0.3
   knockback: 2.5
   horizontalFly: 0
   smartFly: 0
@@ -335,7 +343,7 @@ MonoBehaviour:
   initPoisonRes: 1
   initEvasion: 30
   initAccuracy: 25
-  initCritChance: .0500000007
+  initCritChance: 0.05
   elem: 4
   minDamage: 2
   maxDamage: 4
@@ -371,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 0}
-  projectile: {fileID: 174960, guid: a307a58dce45c394983ba05743a04cb8, type: 2}
+  projectile: {fileID: 182746, guid: 542d5d5894c0d4ee4bcab662ab6ef7c7, type: 2}
   toTargetDir: 1
   staticProjectile: 0
   ia: {fileID: 0}
@@ -395,14 +403,18 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -354108773
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4a310a1ffec252144847d824cb3a3252, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

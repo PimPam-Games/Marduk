@@ -13,8 +13,13 @@ public class ProjectileLauncher : MonoBehaviour {
 	public EnemyStats stats;
 
 	public void SetDamage(float minDmg, float maxDmg){
-		projectile.GetComponent<ProjectileStats>().minDmg = minDmg;
-		projectile.GetComponent<ProjectileStats>().maxDmg = maxDmg;
+		if (projectile.GetComponent<ProjectileStats> () != null) {
+			projectile.GetComponent<ProjectileStats> ().minDmg = minDmg;
+			projectile.GetComponent<ProjectileStats> ().maxDmg = maxDmg;
+		} else {
+			projectile.GetComponent<PlayerProjStats> ().minDmg = minDmg;
+			projectile.GetComponent<PlayerProjStats> ().maxDmg = maxDmg;
+		}
 	}
 	// Use this for initialization
 	void Start () {
@@ -28,10 +33,15 @@ public class ProjectileLauncher : MonoBehaviour {
 
 	public void LaunchProjectile(GameObject target){
 		p = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
-		p.GetComponent<ProjectileStats> ().enemyStats = stats;
+		if(p.GetComponent<ProjectileStats> () != null)
+			p.GetComponent<ProjectileStats> ().enemyStats = stats;
+		else	
+			p.GetComponent<PlayerProjStats> ().enemyStats = stats;
 		if (toTargetDir && target != null) {
-			if(target.transform.position.x < transform.position.x)
-				p.GetComponent<ProjectileMovement>().moveDirX= -1;
+			if (target.transform.position.x < transform.position.x) {
+				p.GetComponent<ProjectileMovement> ().moveDirX = -1;
+				p.transform.rotation = Quaternion.Euler (0,0,-90);
+			}
 			else
 				p.GetComponent<ProjectileMovement>().moveDirX = 1;
 		}

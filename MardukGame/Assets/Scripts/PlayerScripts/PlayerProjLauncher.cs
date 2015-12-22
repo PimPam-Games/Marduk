@@ -48,8 +48,10 @@ public class PlayerProjLauncher : MonoBehaviour {
 		if (!flipProjectile) {	
 			if (pc.isFacingRight ())
 				proj.GetComponent<ProjectileMovement> ().moveDirX = 1;
-			else
+			else {
 				proj.GetComponent<ProjectileMovement> ().moveDirX = -1;
+				proj.transform.rotation = Quaternion.Euler(0,0,-90);
+			}
 		}
 		if (flipProjectile && pc.isFacingRight ()) {
 			proj.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));
