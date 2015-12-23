@@ -6,8 +6,8 @@ using p = PlayerStats;
 public class Traits: MonoBehaviour
 {
 	public const int CantTraits = 21;
-	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 6, LOWHPDAMAGE = 7, NOFREEZE = 8, NOSHOCK = 9, 
-	NOPOISON = 10, NOBURN = 11, FIREDAMAGE = 12, COLDDAMAGE = 13,LIGHTDAMAGE = 14, POISONDAMAGE= 15, CRITACC = 16, BLOCKDMG = 17, HIGHMP = 18, LOWHPCRIT = 19, ANTIAIR = 20;
+	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 16, LOWHPDAMAGE = 7, NOFREEZE = 17, NOSHOCK = 18, 
+	NOPOISON = 19, NOBURN = 20, FIREDAMAGE = 8, COLDDAMAGE = 9,LIGHTDAMAGE = 10, POISONDAMAGE= 11, CRITACC = 6, BLOCKDMG = 12, HIGHMP = 13, LOWHPCRIT = 14, ANTIAIR = 15;
 	public static Trait[] traits;
 
 	public static float[] atributes;
@@ -17,27 +17,27 @@ public class Traits: MonoBehaviour
 	
 	void Awake(){
 		traits = new Trait[CantTraits];
-		traits [MPDAMAGE] = new Trait("MPDAMAGE",1,"25% of incoming damage applies on MP instead of HP");
-		traits [MPREGEN] = new Trait("MPREGEN",1,"Half MP, double MP regeneration");
-		traits [MPLEECH] = new Trait("MPLEECH",1,"Life on hit applies to MP instead of HP");
-		traits [ACCURACY] = new Trait("ACCURACY",1,"100% accuracy, 0% hit chance");
-		traits [PDAMAGE] = new Trait("PDAMAGE",1,"+50% physical damage, -25% defense");
-		traits [MDAMAGE] = new Trait("MDAMAGE",1,"+50% magic damage, -30 to all resistances");
-		traits [SEFFECT] = new Trait("SEFFECT",1,"+20% chance on hit to cause a random status effect");
-		traits [LOWHPDAMAGE] = new Trait("LOWHPDAMAGE",1,"+25% damage while below 30% HP");
-		traits [NOFREEZE] = new Trait("NOFREEZE",1,"Can't be frozen");
-		traits [NOSHOCK] = new Trait("NOSHOCK",1,"Can't be shocked");
-		traits [NOPOISON] = new Trait("NOPOISON",1,"Can't be poisoned");
-		traits [NOBURN] = new Trait("NOBURN",1,"Can't be burned");
-		traits [FIREDAMAGE] = new Trait("FIREDAMAGE",1,"10% of damage dealt is added as fire damage");
-		traits [COLDDAMAGE] = new Trait("COLDDAMAGE",1,"10% of damage dealt is added as cold damage");
-		traits [LIGHTDAMAGE] = new Trait("LIGHTDAMAGE",1,"10% of damage dealt is added as lightning damage");
-		traits [POISONDAMAGE] = new Trait("POISONDAMAGE",1,"10% of damage dealt is added as poison damage");
-		traits [CRITACC] = new Trait("CRITACC",1,"-50% Accuracy, +100% critical chance");
-		traits [BLOCKDMG] = new Trait("BLOCKDMG",1,"Deal half of your thorns damage when blocking an attack");
-		traits [HIGHMP] = new Trait("HIGHMP",1,"25% reduced damage taken while above 80% MP");
-		traits [LOWHPCRIT] = new Trait("LOWHPCRIT",1,"100% critical chance while below 15% HP");
-		traits [ANTIAIR] = new Trait("ANTIAIR",1,"+20% damage to flying enemies");
+		traits [MPDAMAGE] = new Trait("Spirit Guard",2,"25% of incoming damage applies on MP instead of HP");
+		traits [MPREGEN] = new Trait("Focus",2,"Half MP, double MP regeneration");
+		traits [MPLEECH] = new Trait("Energy Thirst",2,"Life on hit applies to MP instead of HP");
+		traits [ACCURACY] = new Trait("Restraint",2,"100% accuracy, 0% Critical hit chance");
+		traits [PDAMAGE] = new Trait("Berserker",2,"+50% physical damage, -25% defense");
+		traits [MDAMAGE] = new Trait("Magic Overflow",2,"+50% magic damage, -30 to all resistances");
+		traits [SEFFECT] = new Trait("Pandora's Box",6,"+20% chance on hit to cause a random status effect");
+		traits [LOWHPDAMAGE] = new Trait("Fatal Awareness",4,"+25% damage while below 30% HP");
+		traits [NOFREEZE] = new Trait("Freeze Immunity",6,"Can't be frozen");
+		traits [NOSHOCK] = new Trait("Shock Immunity",6,"Can't be shocked");
+		traits [NOPOISON] = new Trait("Poison Immunity",6,"Can't be poisoned");
+		traits [NOBURN] = new Trait("Burn Immunity",6,"Can't be burned");
+		traits [FIREDAMAGE] = new Trait("Fire Funneling",4,"10% of damage dealt is added as fire damage");
+		traits [COLDDAMAGE] = new Trait("Cold Funneling",4,"10% of damage dealt is added as cold damage");
+		traits [LIGHTDAMAGE] = new Trait("Lightning Funneling",4,"10% of damage dealt is added as lightning damage");
+		traits [POISONDAMAGE] = new Trait("Posion Funneling",4,"10% of damage dealt is added as poison damage");
+		traits [CRITACC] = new Trait("Recklessness",2,"-50% Accuracy, +100% critical chance");
+		traits [BLOCKDMG] = new Trait("Thorned Shield",4,"Deal half of your thorns damage when blocking an attack");
+		traits [HIGHMP] = new Trait("Energy Barrier",4,"25% reduced damage taken while above 80% MP");
+		traits [LOWHPCRIT] = new Trait("Killer Instinct",4,"100% critical chance while below 15% HP");
+		traits [ANTIAIR] = new Trait("Bird Hunter",4,"+20% damage to flying enemies");
 		/*traits [t15] = new Trait("t15",2,"Double hit");
 		traits [t16] = new Trait("t16",2,"10% chance to counterattack with one of your skills when struck");
 		traits [t17] = new Trait("t17",2,"Attacks cause area damage");
