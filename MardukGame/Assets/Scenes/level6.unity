@@ -233,6 +233,7 @@ MonoBehaviour:
   enemiesLvl: 10
   zoneNumber: 1
   zoneEnemies: []
+  miniBoss: {fileID: 0}
 --- !u!114 &944083918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +259,8 @@ MonoBehaviour:
   leftEndChunks: []
   rightEndChunks:
   - {fileID: 144104, guid: c0c0e6f1be21096418b6902ae8082078, type: 2}
+  outcastleEntrance: {fileID: 0}
+  miniBossChunk: {fileID: 0}
 --- !u!4 &944083919
 Transform:
   m_ObjectHideFlags: 0
@@ -534,23 +537,47 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476220, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.792615354
+      value: -.793059587
       objectReference: {fileID: 0}
     - target: {fileID: 462028, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .613026142
+      value: .61228776
       objectReference: {fileID: 0}
     - target: {fileID: 462028, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .790062606
+      value: .79063499
       objectReference: {fileID: 0}
     - target: {fileID: 444560, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .00417531887
+      value: .00396999856
       objectReference: {fileID: 0}
     - target: {fileID: 444560, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.999991298
+      value: -.999992192
+      objectReference: {fileID: 0}
+    - target: {fileID: 476220, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .609144151
+      objectReference: {fileID: 0}
+    - target: {fileID: 444454, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -.0299958605
+      objectReference: {fileID: 0}
+    - target: {fileID: 434242, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .542498291
+      objectReference: {fileID: 0}
+    - target: {fileID: 434242, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .840056896
+      objectReference: {fileID: 0}
+    - target: {fileID: 422556, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .567452431
+      objectReference: {fileID: 0}
+    - target: {fileID: 422556, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.823406219
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 811e9a63574613e479e9e908a00c382d, type: 2}
