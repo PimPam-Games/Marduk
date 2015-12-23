@@ -10,9 +10,9 @@ GameObject:
   - 4: {fileID: 498998}
   - 212: {fileID: 21219314}
   - 50: {fileID: 5027634}
-  - 114: {fileID: 11479546}
   - 95: {fileID: 9537682}
   - 61: {fileID: 6122740}
+  - 114: {fileID: 11445302}
   m_Layer: 20
   m_Name: IceBall
   m_TagString: Untagged
@@ -78,7 +78,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11479546
+--- !u!114 &11445302
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,17 +86,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 113220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a52e11b8b0e7046a495a71f8ba4b8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 948c1346adf22a34f94b5431df77aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 3
   minDmg: 2
   maxDmg: 5
+  physicalDmgMult: 0
+  duration: 6
   particleSpeed: 0
   isParticle: 0
   dontDestroy: 0
   hasSplashAnim: 1
+  isAoe: 0
+  dotSkill: 0
+  continuosRelease: 0
+  alwaysCrit: 0
+  stopAfterTime: -1
+  pm: {fileID: 0}
   anim: {fileID: 9537682}
+  hitEnemySound: {fileID: 0}
+  criticalHitSound: {fileID: 0}
+  skillSound: {fileID: 0}
+  projRequirements: 4
+  convertElem: 0
+  fromEnemy: 0
   enemyStats: {fileID: 0}
 --- !u!212 &21219314
 SpriteRenderer:
@@ -130,7 +144,35 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmg
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmg
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: physicalDmgMult
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: hasSplashAnim
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 9537682}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113220}

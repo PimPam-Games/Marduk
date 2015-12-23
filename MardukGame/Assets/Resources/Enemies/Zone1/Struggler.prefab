@@ -115,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.23679161, y: -1.96050084, z: 0}
+  m_LocalPosition: {x: -15.2248716, y: -1.93093252, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 453892}
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 0}
-  projectile: {fileID: 161618, guid: f381298fb86239c40a93e3796f1febab, type: 2}
+  projectile: {fileID: 184760, guid: e4978de0f17ca9e45ae32e9b2ffa61af, type: 2}
   toTargetDir: 1
   staticProjectile: 0
   ia: {fileID: 11459556}
@@ -338,6 +338,9 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  horizontalFly: 0
+  smartFly: 0
+  upFly: 0
   dontFlip: 0
   whatIsGround:
     serializedVersion: 2

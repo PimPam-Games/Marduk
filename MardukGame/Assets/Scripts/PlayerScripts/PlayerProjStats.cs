@@ -32,6 +32,9 @@ public class PlayerProjStats : MonoBehaviour {
 	private bool collision = false;
 	private bool alreadyHit = false;
 	private float stopCount = 0;
+
+	public bool fromEnemy = false;
+	public EnemyStats enemyStats = null;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -88,6 +91,33 @@ public class PlayerProjStats : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){ 
+		
+		if(fromEnemy)
+			EnemyProj(col); //es un proyectil disparado por el enemigo
+		else{
+			PlayerProj(col); //es un proyectil disparado por el jugador
+			Debug.Log("jugador");
+		}
+		
+		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+			if(!dontDestroy){
+				if(hasSplashAnim){
+					
+					anim.SetBool("hit",true);
+					rb.isKinematic = true;
+				}else{
+					Destroy(this.gameObject);
+				}
+			}
+			else{
+				if(elem == Types.Element.None)
+					collision = true;
+
+			}
+		}
+	}
+
+	private void PlayerProj(Collider2D col){
 		if(dotSkill) //el daño de estos skills se calcula en la parte del enemigo
 			return;
 		float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
@@ -96,10 +126,10 @@ public class PlayerProjStats : MonoBehaviour {
 		float damage;
 		float damageConverted = 0;
 		Support supportSkill = null;
-
+		
 		if(pc.supportSkillPos > -1 && !alwaysCrit) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
 			supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
-
+		
 		if (col.gameObject.tag == "Enemy") {
 			if (!isAoe && alreadyHit)
 				return;
@@ -182,7 +212,7 @@ public class PlayerProjStats : MonoBehaviour {
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
 				//Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
-						
+					
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
 					//Begin Traits
 					if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
@@ -210,9 +240,9 @@ public class PlayerProjStats : MonoBehaviour {
 					CombatText.ShowCombatText("Miss");
 				}
 			}
-
-
-
+			
+			
+			
 			if(!dontDestroy){
 				if(hasSplashAnim){
 					
@@ -226,22 +256,40 @@ public class PlayerProjStats : MonoBehaviour {
 				}
 			}
 		}
+	}
 
-		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-			if(!dontDestroy){
-				if(hasSplashAnim){
-					
-					anim.SetBool("hit",true);
-					rb.isKinematic = true;
-				}else{
-					Destroy(this.gameObject);
+	private void EnemyProj(Collider2D col){
+		if(enemyStats == null){
+			Debug.LogError("EnemyStats not found in ProjStats");
+			return;
+		}
+		if (col.gameObject.tag == "Player" && !alreadyHit) {
+			bool hitConfirmed = false;
+			float dmgDealt = Random.Range(minDmg,maxDmg);
+			bool isCrit = false;
+			float[] critDmgProb = {1 - enemyStats.critChance, enemyStats.critChance};
+			if(Utils.Choose(critDmgProb) != 0){
+				isCrit = true;
+				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
+			}
+			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
+			alreadyHit = true;
+			if(hitConfirmed){
+				if(col.transform.position.x < this.transform.position.x)
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+				else
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+				if(!dontDestroy){
+					if(hasSplashAnim){
+						
+						anim.SetBool("hit",true);
+						rb.isKinematic = true;
+					}else{
+						Destroy(this.gameObject);
+					}
 				}
 			}
-			else{
-				if(elem == Types.Element.None)
-					collision = true;
-
-			}
+			PlatformerCharacter2D.skillBtnPressed = -1;
 		}
 	}
 

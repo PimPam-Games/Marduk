@@ -17,7 +17,7 @@ public class PlayerProjLauncher : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -31,10 +31,6 @@ public class PlayerProjLauncher : MonoBehaviour {
 	}
 
 	public void LaunchProjectile(){
-		//if (castDelayCount > 0)
-		//	return;
-		/*if (p.currentMana < projectile.GetComponent<PlayerProjStats> ().manaCost)
-			return;*/
 		proj = null;
 		if(!dontChangeRotation)
 			proj = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
@@ -42,14 +38,14 @@ public class PlayerProjLauncher : MonoBehaviour {
 			//proj = (GameObject)Instantiate (projectile, transform.position, Quaternion.Euler(0,0,0));
 			proj = (GameObject)Instantiate (projectile, transform.position, projectile.transform.rotation);
 		}
-		//castDelayCount = castDelay;
-			/*var dir = (target.transform.position - transform.position).normalized;
-			var dot = Vector2.Dot(dir, transform.right);*/
+
 		if (!flipProjectile) {	
 			if (pc.isFacingRight ())
 				proj.GetComponent<ProjectileMovement> ().moveDirX = 1;
-			else
+			else{
 				proj.GetComponent<ProjectileMovement> ().moveDirX = -1;
+				proj.transform.rotation = Quaternion.Euler(0,0,-90);
+			}
 		}
 		if (flipProjectile && pc.isFacingRight ()) {
 			proj.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));

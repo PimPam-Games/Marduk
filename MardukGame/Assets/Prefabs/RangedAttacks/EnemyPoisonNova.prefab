@@ -14,7 +14,7 @@ GameObject:
   - 95: {fileID: 9510678}
   - 82: {fileID: 8203518}
   - 82: {fileID: 8271630}
-  - 114: {fileID: 11498224}
+  - 114: {fileID: 11406776}
   m_Layer: 20
   m_Name: EnemyPoisonNova
   m_TagString: Untagged
@@ -218,7 +218,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11498224
+--- !u!114 &11406776
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -226,17 +226,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 164194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a52e11b8b0e7046a495a71f8ba4b8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 948c1346adf22a34f94b5431df77aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 4
   minDmg: 1
   maxDmg: 3
+  physicalDmgMult: 0
+  duration: 6
   particleSpeed: 0
   isParticle: 0
   dontDestroy: 1
   hasSplashAnim: 0
+  isAoe: 0
+  dotSkill: 0
+  continuosRelease: 0
+  alwaysCrit: 0
+  stopAfterTime: -1
+  pm: {fileID: 0}
   anim: {fileID: 9510678}
+  hitEnemySound: {fileID: 0}
+  criticalHitSound: {fileID: 0}
+  skillSound: {fileID: 0}
+  projRequirements: 4
+  convertElem: 0
+  fromEnemy: 0
   enemyStats: {fileID: 0}
 --- !u!212 &21200152
 SpriteRenderer:
@@ -275,6 +289,22 @@ Prefab:
       propertyPath: elem
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: physicalDmgMult
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dontDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 9510678}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 164194}

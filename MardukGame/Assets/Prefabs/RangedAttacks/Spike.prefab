@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21200396}
   - 50: {fileID: 5075332}
   - 61: {fileID: 6141818}
-  - 114: {fileID: 11485110}
+  - 114: {fileID: 11467890}
   m_Layer: 20
   m_Name: Spike
   m_TagString: Untagged
@@ -60,7 +60,7 @@ BoxCollider2D:
   m_Offset: {x: -.0291522332, y: -.0781014562}
   serializedVersion: 2
   m_Size: {x: .0845739841, y: .170705378}
---- !u!114 &11485110
+--- !u!114 &11467890
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -68,19 +68,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 122016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a52e11b8b0e7046a495a71f8ba4b8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 948c1346adf22a34f94b5431df77aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 4
-  initMinDmg: 1
-  initMaxDmg: 3
-  minDmgPerLvl: 2
-  maxDmgPerLvl: 2
+  minDmg: 1
+  maxDmg: 3
+  physicalDmgMult: 0
+  duration: 6
   particleSpeed: 0
   isParticle: 0
   dontDestroy: 0
   hasSplashAnim: 0
+  isAoe: 0
+  dotSkill: 0
+  continuosRelease: 0
+  alwaysCrit: 0
+  stopAfterTime: -1
+  pm: {fileID: 0}
   anim: {fileID: 0}
+  hitEnemySound: {fileID: 0}
+  criticalHitSound: {fileID: 0}
+  skillSound: {fileID: 0}
+  projRequirements: 4
+  convertElem: 0
+  fromEnemy: 0
   enemyStats: {fileID: 0}
 --- !u!212 &21200396
 SpriteRenderer:
@@ -130,6 +142,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxDmgPerLvl
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: physicalDmgMult
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duration
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
