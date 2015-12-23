@@ -193,18 +193,21 @@ MonoBehaviour:
   - 2
   initMaxDamage:
   - 3
-  - 7
+  - 8
   initBaseAttackPerSecond:
-  - 1.20000005
-  - 1.79999995
+  - 1.29999995
+  - 1.70000005
   initDefense:
   - 0
   - 0
   initBlockChance:
   - 0
   - 0
+  moveSpeedReduction: 0
   auraRend: {fileID: 0}
+  itemForSlot: 0
   itemSound: {fileID: 8201620}
+  lifeToAdd: 5
 --- !u!212 &21242316
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -278,15 +281,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDamage.Array.data[1]
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[0]
-      value: 1.20000005
+      value: 1.29999995
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[1]
-      value: 1.79999995
+      value: 1.70000005
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemName

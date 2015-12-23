@@ -199,10 +199,11 @@ MonoBehaviour:
   - 0
   initDefense:
   - 6
-  - 12
+  - 11
   initBlockChance:
   - 0
   - 0
+  moveSpeedReduction: 7
   auraRend: {fileID: 0}
   itemForSlot: 0
   itemSound: {fileID: 8290414}
@@ -276,7 +277,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initDefense.Array.data[1]
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemName
@@ -285,6 +286,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeedReduction
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

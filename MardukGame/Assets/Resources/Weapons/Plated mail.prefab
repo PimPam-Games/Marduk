@@ -198,7 +198,7 @@ MonoBehaviour:
   - 0
   - 0
   initDefense:
-  - 10
+  - 11
   - 15
   initBlockChance:
   - 0
@@ -289,6 +289,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: a44fbdd11e1a9e74d83e1e4baebb2f66,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: initDefense.Array.data[0]
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 127072}

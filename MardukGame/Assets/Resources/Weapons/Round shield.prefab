@@ -198,12 +198,12 @@ MonoBehaviour:
   - 0
   - 0
   initDefense:
-  - 3
-  - 7
+  - 4
+  - 6
   initBlockChance:
   - 12
-  - 20
-  moveSpeedReduction: 10
+  - 18
+  moveSpeedReduction: 5
   auraRend: {fileID: 0}
   itemForSlot: 0
   itemSound: {fileID: 8270298}
@@ -277,15 +277,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initBlockChance.Array.data[1]
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initDefense.Array.data[0]
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initDefense.Array.data[1]
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemName
@@ -308,6 +308,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeedReduction
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
