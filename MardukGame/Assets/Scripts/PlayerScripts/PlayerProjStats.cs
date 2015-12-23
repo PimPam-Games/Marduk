@@ -32,10 +32,6 @@ public class PlayerProjStats : MonoBehaviour {
 	private bool collision = false;
 	private bool alreadyHit = false;
 	private float stopCount = 0;
-
-	public EnemyStats enemyStats;
-	public bool fromEnemy = false;
-
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -92,63 +88,6 @@ public class PlayerProjStats : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){ 
-		if (!fromEnemy) {
-			PlayerProj (col);
-		} 
-		else {
-			EnemyProj (col);
-		}
-
-		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-			if(!dontDestroy){
-				if(hasSplashAnim){
-					
-					anim.SetBool("hit",true);
-					rb.isKinematic = true;
-				}else{
-					Destroy(this.gameObject);
-				}
-			}
-			else{
-				if(elem == Types.Element.None)
-					collision = true;
-
-			}
-		}
-	}
-
-	private void EnemyProj(Collider2D col){
-		if (col.gameObject.tag == "Player" && !alreadyHit) {
-			bool hitConfirmed = false;
-			float dmgDealt = Random.Range(minDmg,maxDmg);
-			bool isCrit = false;
-			float[] critDmgProb = {1 - enemyStats.critChance, enemyStats.critChance};
-			if(Utils.Choose(critDmgProb) != 0){
-				isCrit = true;
-				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
-			}
-			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
-			alreadyHit = true;
-			if(hitConfirmed){
-				if(col.transform.position.x < this.transform.position.x)
-					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-				else
-					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
-				if(!dontDestroy){
-					if(hasSplashAnim){
-
-						anim.SetBool("hit",true);
-						rb.isKinematic = true;
-					}else{
-						Destroy(this.gameObject);
-					}
-				}
-			}
-			PlatformerCharacter2D.skillBtnPressed = -1;
-		}
-	}
-
-	private void PlayerProj(Collider2D col){
 		if(dotSkill) //el daño de estos skills se calcula en la parte del enemigo
 			return;
 		float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
@@ -196,9 +135,9 @@ public class PlayerProjStats : MonoBehaviour {
 			}
 			if (Traits.traits[Traits.ANTIAIR].isActive()){
 				if (enemy.GetComponent<EnemyStats>().enemyName == "Wraith" ||
-					enemy.GetComponent<EnemyStats>().enemyName == "Roc" ||
-					enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus" ||
-					enemy.GetComponent<EnemyStats>().enemyName == "Zu")
+				    enemy.GetComponent<EnemyStats>().enemyName == "Roc" ||
+				    enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus" ||
+				    enemy.GetComponent<EnemyStats>().enemyName == "Zu")
 					damage *= 1.2f;
 			}
 			//End Traits
@@ -243,7 +182,7 @@ public class PlayerProjStats : MonoBehaviour {
 				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
 				//Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
-
+						
 					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
 					//Begin Traits
 					if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
@@ -276,7 +215,7 @@ public class PlayerProjStats : MonoBehaviour {
 
 			if(!dontDestroy){
 				if(hasSplashAnim){
-
+					
 					anim.SetBool("hit",true);
 					rb.isKinematic = true;
 					if(pm != null){
@@ -285,6 +224,23 @@ public class PlayerProjStats : MonoBehaviour {
 				}else{
 					Destroy(this.gameObject);
 				}
+			}
+		}
+
+		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+			if(!dontDestroy){
+				if(hasSplashAnim){
+					
+					anim.SetBool("hit",true);
+					rb.isKinematic = true;
+				}else{
+					Destroy(this.gameObject);
+				}
+			}
+			else{
+				if(elem == Types.Element.None)
+					collision = true;
+
 			}
 		}
 	}
