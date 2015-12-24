@@ -355,7 +355,7 @@ MonoBehaviour:
   anim: {fileID: 9537312}
   castDelay: 4
   stopWalkWhenAttack: 0
-  maxDistance: 999
+  maxDistance: 11
   pLaunchers:
   - {fileID: 178026}
   - {fileID: 127622}
@@ -528,6 +528,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: exp
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDistance
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
