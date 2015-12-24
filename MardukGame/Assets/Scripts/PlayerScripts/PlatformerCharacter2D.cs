@@ -58,7 +58,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public static int supportSkillPos = -1; //cuando se dispara algun skill y haya algun support en un slot
 		public static int meleeSkillPos = -1; //cuando usa algun skill de tipo melee
 		public static bool useMeleeProjLauncher = false; //si es true, se uso una habilidad melee que tiene que usar el proj launcher
-
+		public static bool useThunderBlow = false;
 	//	public static bool castInterruptByMovement = false;
 		public static int skillBtnPressed = -1;
 
@@ -156,6 +156,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 						if(string.Compare(ms.nameForSave,"BurningBlow")==0){ //usa burning blow
 							useMeleeProjLauncher = true;
 							weapon.GetComponent<SpriteRenderer>().color = new Color(1f,0.5f,0,1);
+						}
+						if(string.Compare(ms.nameForSave,"ThunderBlow")==0){ //usa Poison blow
+							useThunderBlow = true;
+							weapon.GetComponent<SpriteRenderer>().color = new Color(0.2f,0.4f,1,1);
 						}
 					}
 					attackSound.Play ();
@@ -520,6 +524,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			PlatformerCharacter2D.meleeSkillPos = -1; //es el ataque comun	
 			PlatformerCharacter2D.supportSkillPos = -1; 
 			PlatformerCharacter2D.useMeleeProjLauncher = false;
+			PlatformerCharacter2D.useThunderBlow = false;
 			Attack ();
 		}
 

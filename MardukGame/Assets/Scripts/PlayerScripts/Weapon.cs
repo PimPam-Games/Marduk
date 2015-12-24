@@ -122,6 +122,13 @@ public class Weapon : MonoBehaviour {
 					}
 					Instantiate (msProj, weaponProjLauncher1.transform.position, weaponProjLauncher1.transform.rotation);
 				}	
+				if(pc.useThunderBlow && ms.projectile != null){ //thunder blow
+					PlayerProjStats msProj = ms.projectile.GetComponent<PlayerProjStats>();
+					msProj.minDmg = damage *  0.65f; //por ahora es asi loco,
+					msProj.maxDmg = damage *  0.65f;
+					weaponProjLauncher1.transform.rotation = Quaternion.Euler(0,0,90);
+					Instantiate (msProj, weaponProjLauncher1.transform.position, weaponProjLauncher1.transform.rotation);
+				}	
 			}
 			if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
 				supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];

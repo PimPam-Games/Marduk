@@ -307,8 +307,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 			foreach(Transform slot in slotsPanels[j]){
 				GameObject item = slot.GetComponent<InventorySlot>().item;
 				if(item == null){	
-					it.transform.SetParent(slot);
-					
+					it.transform.SetParent(slot);					
 					itComponent.InventoryPositionX = j;
 					itComponent.InventoryPositionY = i;
 					itComponent.IsEquipped = false;

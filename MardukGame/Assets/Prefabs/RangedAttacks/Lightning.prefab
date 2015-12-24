@@ -10,10 +10,12 @@ GameObject:
   - 4: {fileID: 406760}
   - 212: {fileID: 21293838}
   - 50: {fileID: 5048804}
-  - 114: {fileID: 11426550}
   - 61: {fileID: 6151882}
   - 95: {fileID: 9553766}
   - 82: {fileID: 8294678}
+  - 114: {fileID: 11409866}
+  - 82: {fileID: 8206906}
+  - 82: {fileID: 8230236}
   m_Layer: 20
   m_Name: Lightning
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.16598701, y: 1.61126614, z: 0}
+  m_LocalPosition: {x: 74.7130585, y: 3186.33179, z: 0}
   m_LocalScale: {x: 3.37033224, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,6 +64,144 @@ BoxCollider2D:
   m_Offset: {x: 1.0601517, y: 0}
   serializedVersion: 2
   m_Size: {x: 2.25598097, y: .409999937}
+--- !u!82 &8206906
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108874}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3244e9f87bacae84ba9dd76e1ed556b6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .152999997
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8230236
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108874}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b81e81992a7c747419267346d6d414ac, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .0970000029
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!82 &8294678
 AudioSource:
   m_ObjectHideFlags: 1
@@ -71,7 +211,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b07743c461bd9845ba61de24bfefe77, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9ae522c3faeb9d645a5a95fc056119bf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .666999996
   m_Pitch: 1
@@ -148,7 +288,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11426550
+--- !u!114 &11409866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -156,19 +296,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 108874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72a52e11b8b0e7046a495a71f8ba4b8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 948c1346adf22a34f94b5431df77aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 2
-  minDmg: 4
-  maxDmg: 7
+  minDmg: 3.25661159
+  maxDmg: 3.25661159
+  physicalDmgMult: 0
   duration: .600000024
   particleSpeed: 0
   isParticle: 0
   dontDestroy: 1
   hasSplashAnim: 0
-  projSound: {fileID: 8294678}
-  anim: {fileID: 0}
+  isAoe: 1
+  dotSkill: 0
+  continuosRelease: 0
+  alwaysCrit: 0
+  stopAfterTime: -1
+  pm: {fileID: 0}
+  anim: {fileID: 9553766}
+  hitEnemySound: {fileID: 8230236}
+  criticalHitSound: {fileID: 8206906}
+  skillSound: {fileID: 8294678}
+  projRequirements: 4
+  convertElem: 0
+  fromEnemy: 0
   enemyStats: {fileID: 0}
 --- !u!212 &21293838
 SpriteRenderer:
@@ -209,6 +361,54 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dontDestroy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: physicalDmgMult
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duration
+      value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmg
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmg
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillSound
+      value: 
+      objectReference: {fileID: 8294678}
+    - target: {fileID: 0}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 9553766}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b81e81992a7c747419267346d6d414ac, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .0970000029
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: criticalHitSound
+      value: 
+      objectReference: {fileID: 8206906}
+    - target: {fileID: 0}
+      propertyPath: hitEnemySound
+      value: 
+      objectReference: {fileID: 8230236}
+    - target: {fileID: 0}
+      propertyPath: isAoe
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

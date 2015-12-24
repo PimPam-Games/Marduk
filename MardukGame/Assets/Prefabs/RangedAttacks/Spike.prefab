@@ -12,6 +12,8 @@ GameObject:
   - 50: {fileID: 5075332}
   - 61: {fileID: 6141818}
   - 114: {fileID: 11467890}
+  - 82: {fileID: 8291448}
+  - 82: {fileID: 8296196}
   m_Layer: 20
   m_Name: Spike
   m_TagString: Untagged
@@ -60,6 +62,144 @@ BoxCollider2D:
   m_Offset: {x: -.0291522332, y: -.0781014562}
   serializedVersion: 2
   m_Size: {x: .0845739841, y: .170705378}
+--- !u!82 &8291448
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122016}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3244e9f87bacae84ba9dd76e1ed556b6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .305999994
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8296196
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122016}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b81e81992a7c747419267346d6d414ac, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .202000007
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11467890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,8 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 4
-  minDmg: 1
-  maxDmg: 3
+  minDmg: 4.45504284
+  maxDmg: 4.45504284
   physicalDmgMult: 0
   duration: 6
   particleSpeed: 0
@@ -87,8 +227,8 @@ MonoBehaviour:
   stopAfterTime: -1
   pm: {fileID: 0}
   anim: {fileID: 0}
-  hitEnemySound: {fileID: 0}
-  criticalHitSound: {fileID: 0}
+  hitEnemySound: {fileID: 8296196}
+  criticalHitSound: {fileID: 8291448}
   skillSound: {fileID: 0}
   projRequirements: 4
   convertElem: 0
@@ -155,6 +295,22 @@ Prefab:
       propertyPath: duration
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b81e81992a7c747419267346d6d414ac, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Volume
+      value: .202000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: criticalHitSound
+      value: 
+      objectReference: {fileID: 8291448}
+    - target: {fileID: 0}
+      propertyPath: hitEnemySound
+      value: 
+      objectReference: {fileID: 8296196}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 122016}
