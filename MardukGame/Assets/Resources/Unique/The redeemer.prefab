@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11437094}
   - 82: {fileID: 8231286}
   m_Layer: 0
-  m_Name: The redeemer
+  m_Name: The Redeemer
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cece4461bc20d42869435d4e307948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: The redeemer
+  itemName: The Redeemer
   type: 0
   icon: {fileID: 2800000, guid: ef555661c10f7424e81c4a6887462f27, type: 3}
   sprite: {fileID: 21300000, guid: ef555661c10f7424e81c4a6887462f27, type: 3}
@@ -203,6 +203,7 @@ MonoBehaviour:
   initBlockChance:
   - 0
   - 0
+  moveSpeedReduction: 0
   auraRend: {fileID: 0}
   itemForSlot: 0
   itemSound: {fileID: 8231286}
@@ -268,7 +269,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: itemName
-      value: The redeemer
+      value: The Redeemer
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Sprite

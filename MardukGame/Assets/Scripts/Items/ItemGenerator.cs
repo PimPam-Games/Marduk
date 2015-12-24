@@ -79,12 +79,12 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Defensives [p.AllRes] = 5;
 					newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (15, 21);
 				}
-				if (newItem.itemName == "Death omen"){
+				if (newItem.itemName == "Death Omen"){
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (25, 31);
 					newItem.Defensives [p.AllRes] = -15;
 					newItem.Defensives [p.Thorns] = 5;
 				}
-				if (newItem.itemName == "Cold zero"){
+				if (newItem.itemName == "Cold Zero"){
 					newItem.Offensives [p.IncreasedCritChance] = 15;
 					newItem.Defensives [p.ColdRes] = 30;
 					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
@@ -102,47 +102,47 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (2f, 4f), 2);
 					newItem.Offensives [p.IncreasedMgDmg] = 15;
 				}
-				if (newItem.itemName == "Enlil's breath"){
+				if (newItem.itemName == "Enlil's Breath"){
 					newItem.Defensives [p.ColdRes] = 15;
-					newItem.Defensives [p.LightRes] = 20;
+					newItem.Defensives [p.LightRes] = 15;
 					newItem.Utils [p.AllAttr] = 10;
 				}
-				if (newItem.itemName == "Solar edge"){
+				if (newItem.itemName == "Solar Edge"){
 					newItem.Utils [p.AllAttr] = 10;
-					newItem.Defensives [p.FireRes] = 40;
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 21);
+					newItem.Defensives [p.FireRes] = 30;
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (15, 21);
 				}
-				if (newItem.itemName == "Titan's might"){
+				if (newItem.itemName == "Titan's Might"){
 					newItem.Atributes [p.Strength] = 30;
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16);
+					newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (15, 21);
 				}
-				if (newItem.itemName == "Golden champion"){
+				if (newItem.itemName == "Golden Champion"){
 					newItem.Atributes [p.Strength] = 20;
-					newItem.Offensives [p.IncreasedCritChance] = 20;
+					newItem.Offensives [p.IncreasedCritChance] = 30;
 				}
-				if (newItem.itemName == "The berserker"){
+				if (newItem.itemName == "The Berserker"){
 					newItem.Atributes [p.Dextery] = 30;
-					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
+					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 16);
 				}
-				if (newItem.itemName == "The untouchable"){
+				if (newItem.itemName == "The Untouchable"){
 					newItem.Atributes [p.Strength] = 15;
-					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
-					newItem.Defensives [p.AllRes] = 5;
+					newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (10, 16);
+					newItem.Defensives [p.IncreasedDefense] = 25;
 				}
-				if (newItem.itemName == "Dark will"){
+				if (newItem.itemName == "Dark Will"){
 					newItem.Atributes [p.Dextery] = 20;
-					newItem.Defensives [p.Thorns] = 10;
+					newItem.Defensives [p.Thorns] = (float)Random.Range (7, 11);
 				}
-				if (newItem.itemName == "Golden cap"){
+				if (newItem.itemName == "Golden Cap"){
 					newItem.Offensives [p.IncreasedMgDmg] = 20;
 					newItem.Offensives [p.IncreasedCastSpeed] = 12;
 					newItem.Defensives [p.AllRes] = 10;
 				}
-				if (newItem.itemName == "Crusader's wrath"){
+				if (newItem.itemName == "Crusader's Wrath"){
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 15);
 					newItem.Utils [p.AllAttr] = 10;
 				}
-				if (newItem.itemName == "Templar's faith"){
+				if (newItem.itemName == "Templar's Faith"){
 					newItem.Atributes [p.Vitality] = 15;
 					newItem.Atributes [p.Spirit] = 15;
 					newItem.Defensives [p.AllRes] = 15;
@@ -151,15 +151,17 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Offensives [p.IncreasedMgDmg] = 20;
 					newItem.Offensives [p.IncreasedCastSpeed] = 20;
 				}
-				if (newItem.itemName == "The contender"){
-					newItem.Atributes [p.Vitality] = 10;
-					newItem.Atributes [p.Strength] = 10;
+				if (newItem.itemName == "The Contender"){
+					newItem.Atributes [p.Vitality] = 12;
+					newItem.Atributes [p.Strength] = 12;
+					newItem.Defensives[p.IncreasedEvasion] = 15;
 				}
-				if (newItem.itemName == "Ice dragon's defense"){
+				if (newItem.itemName == "Ice Dragon's Defense"){
 					newItem.Defensives [p.ColdRes] = 25;
-					newItem.Utils [p.AllAttr] = 15;
+					newItem.Utils [p.AllAttr] = 5;
+					newItem.Defensives[p.IncreasedDefense] = 35;
 				}
-				if (newItem.itemName == "The wall"){
+				if (newItem.itemName == "The Wall"){
 					newItem.Defensives [p.MaxHealth] = Random.Range (30, 40);
 					newItem.Defensives [p.AllRes] = 15;
 				}
@@ -168,38 +170,38 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
 					newItem.Utils [p.AllAttr] = 5;
 				}
-				if (newItem.itemName == "Conqueror's ambition"){
+				if (newItem.itemName == "Conqueror's Ambition"){
 					newItem.Defensives [p.MaxHealth] = Random.Range (20, 30);
-					newItem.Utils [p.AllAttr] = 20;
+					newItem.Utils [p.AllAttr] = 15;
 				}
-				if (newItem.itemName == "Vicious hunter"){
+				if (newItem.itemName == "Vicious Hunter"){
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 15);
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16);
 				}
-				if (newItem.itemName == "The redeemer"){
+				if (newItem.itemName == "The Redeemer"){
 					newItem.Offensives [p.IncreasedMgDmg] = 10;
-					newItem.Atributes [p.Spirit] = 25;
+					newItem.Atributes [p.Spirit] = 20;
 					newItem.Defensives [p.AllRes] = 10;
 				}
-				if (newItem.itemName == "Head crusher"){
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (20, 30);
-					newItem.Atributes [p.Strength] = 20;
+				if (newItem.itemName == "Head Crusher"){
+					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (20, 31);
+					newItem.Atributes [p.IncreasedDmg] = 20;
 				}
-				if (newItem.itemName == "Ogre's mace"){
+				if (newItem.itemName == "Ogre's Mace"){
 					newItem.Defensives [p.PoisonRes] = 15;
-					newItem.Defensives [p.Thorns] = 10;
+					newItem.Defensives [p.Thorns] = 7;
 				}
-				if (newItem.itemName == "Holy sceptre"){
+				if (newItem.itemName == "Holy Sceptre"){
 					newItem.Atributes [p.Dextery] = 20;
 					newItem.Atributes [p.Spirit] = 20;
 					newItem.Defensives [p.AllRes] = 20;
 				}
-				if (newItem.itemName == "Black skull"){
+				if (newItem.itemName == "Black Skull"){
 					newItem.Offensives [p.IncreasedMgDmg] = 10;
 					newItem.Atributes [p.Spirit] = 15;
 					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
 				}
-				if (newItem.itemName == "The raider"){
+				if (newItem.itemName == "The Raider"){
 					newItem.Atributes [p.Dextery] = 30;
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
 					newItem.Offensives [p.IncreasedAttackSpeed] = 10;

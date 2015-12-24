@@ -31,7 +31,7 @@ GameObject:
   - 212: {fileID: 21267266}
   - 82: {fileID: 8233178}
   m_Layer: 0
-  m_Name: Ice dragon's defense
+  m_Name: Ice Dragon's Defense
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cece4461bc20d42869435d4e307948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Ice dragon's defense
+  itemName: Ice Dragon's Defense
   type: 4
   icon: {fileID: 2800000, guid: cd3f20911b8f15e4ea7d3ac07121fcb6, type: 3}
   sprite: {fileID: 21300000, guid: cd3f20911b8f15e4ea7d3ac07121fcb6, type: 3}
@@ -203,6 +203,7 @@ MonoBehaviour:
   initBlockChance:
   - 20
   - 25
+  moveSpeedReduction: 0
   auraRend: {fileID: 0}
   itemForSlot: 0
   itemSound: {fileID: 8233178}
@@ -272,7 +273,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemName
-      value: Ice dragon's defense
+      value: Ice Dragon's Defense
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: icon

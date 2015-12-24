@@ -122,22 +122,22 @@ public class PlayerItems: MonoBehaviour {
 				reSkin.ReSkinArmour("default_armor");
 			else{
 				switch (equipedArmour.Name){
-				case "Milanese armour":
+				case "Milanese Armour":
 					reSkin.ReSkinArmour("milanesearmor");
 					break;
-				case "Gothic armour":
+				case "Gothic Armour":
 					reSkin.ReSkinArmour("gothicarmour");
 					break;
-				case "Plated mail":
+				case "Plated Mail":
 					reSkin.ReSkinArmour("platedmail");
 					break;
-				case "Golden champion":
+				case "Golden Champion":
 					reSkin.ReSkinArmour("uniqueArmor1");
 					break;
-				case "The berserker":
+				case "The Berserker":
 					reSkin.ReSkinArmour("uniqueArmor2");
 					break;
-				case "Templar's faith":
+				case "Templar's Faith":
 					reSkin.ReSkinArmour("uniqueArmor3");
 					break;
 				case "The Magi":
@@ -178,16 +178,16 @@ public class PlayerItems: MonoBehaviour {
 				reSkin.ReSkinHelmet("head");
 			else{
 				switch (equipedHelmet.Name){
-				case "Dark will":
+				case "Dark Will":
 					reSkin.ReSkinHelmet("uniqueHelm1");
 					break;
-				case "The untouchable":
+				case "The Untouchable":
 					reSkin.ReSkinHelmet("uniqueHelm2");
 					break;
-				case "Crusader's wrath":
+				case "Crusader's Wrath":
 					reSkin.ReSkinHelmet("uniqueHelm3");
 					break;
-				case "Golden cap":
+				case "Golden Cap":
 					reSkin.ReSkinHelmet("uniqueHelm4");
 					break;
 				default:
@@ -343,13 +343,13 @@ public class PlayerItems: MonoBehaviour {
 				reSkin.ReSkinShield("none");
 			else{
 				switch (equipedShield.Name){
-				case "The contender":
+				case "The Contender":
 					reSkin.ReSkinShield("uniqueShield1");
 					break;
-				case "Ice dragon's defense":
+				case "Ice Dragon's Defense":
 					reSkin.ReSkinShield("uniqueShield2");
 					break;
-				case "The wall":
+				case "The Wall":
 					reSkin.ReSkinShield("uniqueShield3");
 					break;
 				default:

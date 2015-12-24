@@ -14,7 +14,7 @@ GameObject:
   - 212: {fileID: 21205608}
   - 82: {fileID: 8291492}
   m_Layer: 0
-  m_Name: Dark will
+  m_Name: Dark Will
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cece4461bc20d42869435d4e307948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Dark will
+  itemName: Dark Will
   type: 2
   icon: {fileID: 2800000, guid: 2c7c33b02bbd2a44dbd6deadc87431d2, type: 3}
   sprite: {fileID: 21300000, guid: 2c7c33b02bbd2a44dbd6deadc87431d2, type: 3}
@@ -203,6 +203,7 @@ MonoBehaviour:
   initBlockChance:
   - 0
   - 0
+  moveSpeedReduction: 0
   auraRend: {fileID: 0}
   itemForSlot: 0
   itemSound: {fileID: 8291492}
@@ -268,7 +269,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: itemName
-      value: Dark will
+      value: Dark Will
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: icon

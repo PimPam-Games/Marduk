@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11438938}
   - 82: {fileID: 8223560}
   m_Layer: 0
-  m_Name: Holy sceptre
+  m_Name: Holy Sceptre
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cece4461bc20d42869435d4e307948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Holy sceptre
+  itemName: Holy Sceptre
   type: 0
   icon: {fileID: 2800000, guid: 104a3b67fdf34af44b878c94b37d83e6, type: 3}
   sprite: {fileID: 21300000, guid: 104a3b67fdf34af44b878c94b37d83e6, type: 3}
@@ -203,6 +203,7 @@ MonoBehaviour:
   initBlockChance:
   - 0
   - 0
+  moveSpeedReduction: 0
   auraRend: {fileID: 0}
   itemForSlot: 0
   itemSound: {fileID: 8223560}
@@ -273,7 +274,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: itemName
-      value: Holy sceptre
+      value: Holy Sceptre
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: icon
