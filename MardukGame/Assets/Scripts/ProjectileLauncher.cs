@@ -12,7 +12,7 @@ public class ProjectileLauncher : MonoBehaviour {
 	private GameObject p;
 	public EnemyStats stats;
 	PlayerProjStats projStats = null;
-
+	public bool dontChangeRotation = false;
 	
 	// Use this for initialization
 	void Awake () {
@@ -33,7 +33,12 @@ public class ProjectileLauncher : MonoBehaviour {
 	}
 
 	public void LaunchProjectile(GameObject target){
-		p = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
+		if(!dontChangeRotation)
+			p = (GameObject)Instantiate (projectile, transform.position, transform.rotation);
+		else{
+			//proj = (GameObject)Instantiate (projectile, transform.position, Quaternion.Euler(0,0,0));
+			p = (GameObject)Instantiate (projectile, transform.position, projectile.transform.rotation);
+		}
 		p.GetComponent<PlayerProjStats> ().enemyStats = stats;
 		p.GetComponent<PlayerProjStats> ().fromEnemy = true;
 		if (toTargetDir && target != null) {
