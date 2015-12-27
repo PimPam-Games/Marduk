@@ -74,6 +74,16 @@ public class InputControllerGui : MonoBehaviour {
 		if (Input.GetButtonUp ("Escape") || resumePressed) {
 			Debug.Log("Pause");
 			resumePressed = false;
+			if(inventory.activeSelf || characterPanel.activeSelf || traitsPanel.activeSelf){
+				traitsPanel.SetActive(false);
+				traitsTooltip.SetActive(false);
+				characterPanel.SetActive(false);
+				inventory.SetActive(false);
+				invTooltip.SetActive(false);
+				invOpen = false;
+				Cursor.visible = false;
+				return;
+			}
 			if(Time.timeScale == 1.0f){
 				Time.timeScale = 0;
 				//gamePaused = true;
