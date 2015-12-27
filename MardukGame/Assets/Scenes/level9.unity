@@ -387,11 +387,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 415020, guid: cd09c75a17baef74998615858f15a287, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11455120, guid: cd09c75a17baef74998615858f15a287, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd09c75a17baef74998615858f15a287, type: 2}
@@ -580,19 +580,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410a5bf4207f73a4d91d3192807ad1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zone: 7
-  MatrixSize: 10
+  zone: 8
+  MatrixSize: 15
   matrixDepth: 1
   bgName: 
-  sceneName: level7
+  sceneName: level9
   bottomUpGeneration: 0
-  hasCaveEntranceChunk: 1
+  hasCaveEntranceChunk: 0
   generateBackground: 0
   zoneEntranceGenerated: 0
   doubleChunks: []
-  normalChunks: []
+  normalChunks:
+  - {fileID: 172150, guid: 1efdce2d57c94854f828926fbf350e7f, type: 2}
+  - {fileID: 166328, guid: 3eaeec57ffcccb247941ba4b0dd4303e, type: 2}
+  - {fileID: 195366, guid: 98cdbbd6f3447a2409d33f4cfae74899, type: 2}
+  - {fileID: 137454, guid: 0f10a5e49f8fc724886ff29a92f692fa, type: 2}
+  - {fileID: 184262, guid: bfe25d27a18de844798849a03d9a56d7, type: 2}
   leftEndChunks: []
-  rightEndChunks: []
+  rightEndChunks:
+  - {fileID: 186330, guid: 1187f7cb404f3874a9ba399d456fce15, type: 2}
   outcastleEntrance: {fileID: 0}
   miniBossChunk: {fileID: 0}
 --- !u!4 &1568648400
