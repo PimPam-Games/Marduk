@@ -442,9 +442,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 			supportSkillPos = i; //la posicion del support que deberia usar, si es que hay uno
 			
 			if (skill != null) {
-				if(skill.manaCost > PlayerStats.currentMana && i == 0){ //si no hay mana para el skill y es con el click comun
+				if(skill.manaCost > PlayerStats.currentMana){ //si no hay mana para el skill
 					NormalAttack();
-					Debug.Log("normal");
+					return;
+				}
+				if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon && skill.type == Types.SkillsTypes.Melee){ //si tengo un arco y es un ataque melee
+					NormalAttack();
 					return;
 				}
 				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking"))
@@ -497,6 +500,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 					break;
 					case Types.SkillsTypes.Melee:
+						
 						meleeSkillPos = i;
 						if(weaponScript.canAttack){
 							PlayerStats.currentMana -= skill.manaCost;

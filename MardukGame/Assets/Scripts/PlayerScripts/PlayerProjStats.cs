@@ -96,7 +96,6 @@ public class PlayerProjStats : MonoBehaviour {
 			EnemyProj(col); //es un proyectil disparado por el enemigo
 		else{
 			PlayerProj(col); //es un proyectil disparado por el jugador
-			Debug.Log("jugador");
 		}
 		
 		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {

@@ -113,8 +113,9 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 						break;
 					case ItemTypes.Amulet:
 						if(amuletSlot.GetComponent<InventorySlot>().item == null){
-						it.transform.SetParent(amuletSlot);
+							it.transform.SetParent(amuletSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+							PlayerItems.EquipedAmulet = it.GetComponent<Item>();
 						}
 						break;
 					case ItemTypes.Ring:
