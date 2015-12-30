@@ -1227,7 +1227,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &178359225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1324,7 @@ RectTransform:
   m_LocalScale: {x: .529999971, y: .529999971, z: .529999971}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 400.000031, y: 172.64151}
@@ -2401,7 +2401,7 @@ Transform:
   - {fileID: 1265012412}
   - {fileID: 1157494012}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
 --- !u!114 &247292499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4619,7 +4619,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1001 &537714568
 Prefab:
   m_ObjectHideFlags: 0
@@ -5801,7 +5801,7 @@ Transform:
   - {fileID: 233053496}
   - {fileID: 2084449773}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
 --- !u!114 &645134430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5931,6 +5931,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 300d989e4ccd7094897f321a911688d2, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &660262645
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -18.1489105
+      objectReference: {fileID: 0}
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.12241817
+      objectReference: {fileID: 0}
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 418932, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1f667ecb37d7d9841a08276c7e049813, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &667776031
 Prefab:
@@ -6077,7 +6119,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
 --- !u!1001 &1055875739
 Prefab:
   m_ObjectHideFlags: 0
@@ -6501,7 +6543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &1777918569
 Prefab:
   m_ObjectHideFlags: 0
@@ -6736,7 +6778,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!114 &2081052185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6769,6 +6811,7 @@ MonoBehaviour:
   - {fileID: 177298, guid: 0da3f13a24fa79b47bd86bd60e50179e, type: 2}
   - {fileID: 168704, guid: 2451b792d6a44604fa09aa2055fef56c, type: 2}
   - {fileID: 110992, guid: 45e1df431d297d745b6ba49ee600bfc4, type: 2}
+  - {fileID: 171320, guid: 0ec928133a2f00c4fa9465b9e790296d, type: 2}
   - {fileID: 175922, guid: 9e469b999b34c1741b06cb2905c431dc, type: 2}
   leftEndChunks: []
   rightEndChunks:
