@@ -73,6 +73,7 @@ MonoBehaviour:
   animSpeed: 0
   initManaCost: 0
   manaCostPerLvl: 0
+  sprite: {fileID: 21300000, guid: 49d595af171d9b94989731a54aed4d85, type: 3}
   increasedAttackSpeed: 0
   increasedCastSpeed: 0
   increasedMovementSpeed: 0
@@ -156,6 +157,11 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 49d595af171d9b94989731a54aed4d85,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163744}
