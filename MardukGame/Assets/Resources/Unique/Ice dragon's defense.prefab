@@ -203,7 +203,7 @@ MonoBehaviour:
   initBlockChance:
   - 20
   - 25
-  moveSpeedReduction: 0
+  moveSpeedReduction: 10
   auraRend: {fileID: 0}
   itemForSlot: 0
   itemSound: {fileID: 8233178}
@@ -305,6 +305,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: cd3f20911b8f15e4ea7d3ac07121fcb6,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: moveSpeedReduction
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152670}
