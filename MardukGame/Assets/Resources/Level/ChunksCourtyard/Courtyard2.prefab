@@ -160,7 +160,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 428332}
   m_Layer: 20
-  m_Name: randomEnemy
+  m_Name: randomEnemy (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -195,6 +195,21 @@ GameObject:
   m_Name: ChunkEnd
   m_TagString: Untagged
   m_Icon: {fileID: -2663371497217273435, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &182294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 442536}
+  m_Layer: 20
+  m_Name: randomEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -358,11 +373,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 275, y: 146, z: 0}
+  m_LocalPosition: {x: 570, y: 146, z: 0}
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 449410}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!4 &434658
 Transform:
   m_ObjectHideFlags: 1
@@ -375,6 +390,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 470678}
   m_RootOrder: 1
+--- !u!4 &442536
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 275, y: 146, z: 0}
+  m_LocalScale: {x: 64, y: 64, z: 64}
+  m_Children: []
+  m_Father: {fileID: 449410}
+  m_RootOrder: 3
 --- !u!4 &449410
 Transform:
   m_ObjectHideFlags: 1
@@ -382,14 +409,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1236.27942, y: 40.7774887, z: 0}
+  m_LocalPosition: {x: -184.887482, y: -40.3481979, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 421436}
   - {fileID: 401512}
   - {fileID: 421316}
-  - {fileID: 428332}
+  - {fileID: 442536}
   - {fileID: 416272}
+  - {fileID: 428332}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &459480
@@ -728,8 +756,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
   enemies:
-  - {fileID: 428332}
+  - {fileID: 442536}
   - {fileID: 416272}
+  - {fileID: 428332}
   chunkEndRight: {fileID: 401512}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}

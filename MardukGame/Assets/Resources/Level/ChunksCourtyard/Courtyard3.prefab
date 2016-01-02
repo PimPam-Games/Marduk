@@ -166,6 +166,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &159690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457076}
+  m_Layer: 20
+  m_Name: randomEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &164428
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,7 +271,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 404456}
   m_Layer: 20
-  m_Name: randomEnemy
+  m_Name: randomEnemy (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -269,11 +284,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 275, y: 146, z: 0}
+  m_LocalPosition: {x: 551, y: 265, z: 0}
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 494370}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!4 &408738
 Transform:
   m_ObjectHideFlags: 1
@@ -367,7 +382,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 877, y: 156, z: 0}
+  m_LocalPosition: {x: 938, y: 118, z: 0}
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 494370}
@@ -384,6 +399,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 473866}
   m_RootOrder: 0
+--- !u!4 &457076
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 169, y: 108, z: 0}
+  m_LocalScale: {x: 64, y: 64, z: 64}
+  m_Children: []
+  m_Father: {fileID: 494370}
+  m_RootOrder: 2
 --- !u!4 &457564
 Transform:
   m_ObjectHideFlags: 1
@@ -459,14 +486,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1236.37866, y: 40.7785301, z: 0}
+  m_LocalPosition: {x: -184.636978, y: -39.9974937, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 436092}
   - {fileID: 418222}
-  - {fileID: 404456}
+  - {fileID: 457076}
   - {fileID: 448056}
   - {fileID: 490820}
+  - {fileID: 404456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2322238
@@ -764,8 +792,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
   enemies:
-  - {fileID: 404456}
+  - {fileID: 457076}
   - {fileID: 448056}
+  - {fileID: 404456}
   chunkEndRight: {fileID: 436092}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}

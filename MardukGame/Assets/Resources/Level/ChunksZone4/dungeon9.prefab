@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &113506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 413680}
+  m_Layer: 0
+  m_Name: enemy1
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &114458
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,12 +201,24 @@ GameObject:
   m_Component:
   - 4: {fileID: 471340}
   m_Layer: 0
-  m_Name: enemy1
+  m_Name: enemy1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &413680
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 177, y: 146, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 432704}
+  m_RootOrder: 2
 --- !u!4 &421748
 Transform:
   m_ObjectHideFlags: 1
@@ -235,14 +262,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -551.121643, y: 34.9002838, z: 0}
+  m_LocalPosition: {x: -181.434998, y: -32.1828461, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 457402}
   - {fileID: 434600}
-  - {fileID: 471340}
+  - {fileID: 413680}
   - {fileID: 421748}
   - {fileID: 460344}
+  - {fileID: 471340}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &434600
@@ -316,11 +344,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 320, y: 212, z: 0}
+  m_LocalPosition: {x: 528, y: 208, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 432704}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!4 &493214
 Transform:
   m_ObjectHideFlags: 1
@@ -530,8 +558,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
   enemies:
-  - {fileID: 471340}
+  - {fileID: 413680}
   - {fileID: 421748}
+  - {fileID: 471340}
   chunkEndRight: {fileID: 434600}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}

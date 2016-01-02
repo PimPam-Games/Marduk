@@ -27,7 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 467270}
   m_Layer: 20
-  m_Name: randomEnemy
+  m_Name: randomEnemy (2)
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -161,6 +161,21 @@ GameObject:
   m_Name: outcastle4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &182122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 489568}
+  m_Layer: 20
+  m_Name: randomEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -331,11 +346,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1183, y: 861, z: 0}
+  m_LocalPosition: {x: 1813, y: 635, z: 0}
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 499056}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!4 &487640
 Transform:
   m_ObjectHideFlags: 1
@@ -348,6 +363,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 431538}
   m_RootOrder: 0
+--- !u!4 &489568
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1183, y: 861, z: 0}
+  m_LocalScale: {x: 64, y: 64, z: 64}
+  m_Children: []
+  m_Father: {fileID: 499056}
+  m_RootOrder: 2
 --- !u!4 &499056
 Transform:
   m_ObjectHideFlags: 1
@@ -355,14 +382,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 108.253891, y: 5.832798, z: 0}
+  m_LocalPosition: {x: -176.642746, y: -59.5787697, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 440192}
   - {fileID: 465154}
-  - {fileID: 467270}
+  - {fileID: 489568}
   - {fileID: 417682}
   - {fileID: 431538}
+  - {fileID: 467270}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &499606
@@ -566,8 +594,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
   enemies:
-  - {fileID: 467270}
+  - {fileID: 489568}
   - {fileID: 417682}
+  - {fileID: 467270}
   chunkEndRight: {fileID: 440192}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}
