@@ -30,7 +30,7 @@ public class LevelSettings : MonoBehaviour {
 				g.enemiesPerLevel [g.currLevelName].Add (newEnemy2);
 			}
 		}
-		if (zoneNumber == 1 || zoneNumber == 7 || zoneNumber == 9) {
+		if (zoneNumber == 1 || zoneNumber == 7 || zoneNumber == 9 | zoneNumber == 8) {
 			if (string.Compare (newEnemy.GetComponent<EnemyStats> ().enemyName, "Roc") == 0) { //si es un crow genero 2
 				int cant = Random.Range(1,3);
 				for(int i = 1; i <= cant;i++){
