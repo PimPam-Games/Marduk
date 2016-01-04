@@ -5,6 +5,7 @@ public class EnemyIAMovement : MonoBehaviour {
 
 
 	public int MaxDistanceFollow = 11;
+	public float minDistanceFollow = 0;
 	public float maxSpeed = 2f;
 	public float initMaxSpeed;
 	public bool facingRight = false;
@@ -41,7 +42,8 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	private Vector3 dir;
 	private float dotX,dotY;
-	private float calcDirTime, calcDirDelay = 0.6f;
+	private float calcDirTime; 	
+	public float calcDirDelay = 0.6f; //retardo para calcular la direccion en la que debe ir el tipo,
 	public bool horizontalFly = false;
 	public bool smartFly = false;
 	private float upFlyTimer = 0;
@@ -54,6 +56,11 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	[SerializeField] private LayerMask whatIsGround;
 
+
+	public int MoveDir{
+		get {return moveDir;}
+	}
+	
 	// Use this for initialization
 	void Start () {
 		hflyTimer = HFlyC;
@@ -190,8 +197,8 @@ public class EnemyIAMovement : MonoBehaviour {
 		float dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));
 		 // calcula la direccion donde esta el jugador respecto del enemigo
 		if (common) {
-			if (dist < MaxDistanceFollow){
-				CalculateDir ();
+			if (dist < MaxDistanceFollow && dist > minDistanceFollow){
+				CalculateDir (false);
 
 				if(hasIdleInstance){
 					currentSpeed = maxSpeed;
@@ -199,13 +206,24 @@ public class EnemyIAMovement : MonoBehaviour {
 				}
 				Move ();
 			}
-			else
-				Patrol();
+			else{
+				if(dist < minDistanceFollow - 0.7f){
+					CalculateDir (true); //true significa que la funcion retorna lo contrario de lo que deberia retornar
+					if(hasIdleInstance){
+						currentSpeed = maxSpeed;
+						anim.SetFloat("Speed",currentSpeed);
+					}
+					Move();
+				}
+				else{	
+					Patrol();
+				}
+			}
 				//rb.velocity = new Vector2 (0, rb.velocity.y); //aca hay que poner la animacion en idle
 		} 
 		if(jumper){
 			if (dist < MaxDistanceFollow){
-				CalculateDir ();
+				CalculateDir (false);
 				jumpPatrol();
 			}
 			else
@@ -213,7 +231,7 @@ public class EnemyIAMovement : MonoBehaviour {
 		}
 		if (flying) {
 			if (dist < MaxDistanceFollow){
-				CalculateDir ();
+				CalculateDir (false);
 				Fly();
 			}
 			else
@@ -257,17 +275,25 @@ public class EnemyIAMovement : MonoBehaviour {
 			Flip();
 	}
 
-	private void CalculateDir(){
+	public void CalculateDir(bool inverse){
 		calcDirTime -= Time.deltaTime;
 		if (calcDirTime < 0) {
 			calcDirTime = calcDirDelay;
 			dir = (target.transform.position - transform.position).normalized;
 			dotX = Vector2.Dot (dir, transform.right); //negativo si player esta a su izquierda
 			dotY = Vector2.Dot(dir,transform.up); //negativo si player esta arriba?
-			if (dotX < 0)
-				moveDir = -1;
-			else
-				moveDir = 1;
+			if(!inverse){
+				if (dotX < 0)
+					moveDir = -1;
+				else
+					moveDir = 1;
+			}
+			else{
+				if (dotX < 0)
+					moveDir = 1;
+				else
+					moveDir = -1;
+			}
 			if(dotY < 0)
 				moveDirY = -1;
 			else
@@ -305,7 +331,7 @@ public class EnemyIAMovement : MonoBehaviour {
 			Flip();
 	}
 
-	private void Flip()
+	public void Flip()
 	{
 		if (dontFlip)
 			return;

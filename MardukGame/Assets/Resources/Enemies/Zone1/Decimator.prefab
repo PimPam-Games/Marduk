@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.79128027, y: 9.69692039, z: 0}
+  m_LocalPosition: {x: -8.39849663, y: -1.36362219, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 465962}
@@ -264,7 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxDistanceFollow: 10
+  MaxDistanceFollow: 11
+  minDistanceFollow: 2.29999995
   maxSpeed: 1
   initMaxSpeed: 0
   facingRight: 0
@@ -272,7 +273,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   groundChecks: []
   jumpForce: 800
-  knockable: 1
+  knockable: 0
   jumper: 0
   flying: 0
   common: 1
@@ -280,6 +281,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  calcDirDelay: .600000024
   horizontalFly: 0
   smartFly: 0
   upFly: 0

@@ -150,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.96808624, y: -2.5828414, z: 0}
+  m_LocalPosition: {x: -8.38762474, y: -1.38536561, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 456856}
@@ -366,6 +366,7 @@ MonoBehaviour:
   ia: {fileID: 0}
   flipProjectile: 0
   stats: {fileID: 11427868}
+  dontChangeRotation: 0
 --- !u!114 &11422550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,6 +385,7 @@ MonoBehaviour:
   ia: {fileID: 0}
   flipProjectile: 0
   stats: {fileID: 11427868}
+  dontChangeRotation: 0
 --- !u!114 &11426596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
+  minDistanceFollow: 0
   maxSpeed: .800000012
   initMaxSpeed: 0
   facingRight: 0
@@ -411,6 +414,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  calcDirDelay: 2
   horizontalFly: 0
   smartFly: 0
   upFly: 0
@@ -483,6 +487,7 @@ MonoBehaviour:
   ia: {fileID: 0}
   flipProjectile: 0
   stats: {fileID: 11427868}
+  dontChangeRotation: 0
 --- !u!114 &11450690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,6 +526,7 @@ MonoBehaviour:
   ia: {fileID: 0}
   flipProjectile: 0
   stats: {fileID: 11427868}
+  dontChangeRotation: 0
 --- !u!212 &21217870
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.02066994, y: -1.54262662, z: 0}
+  m_LocalPosition: {x: -6.56116676, y: -1.55931401, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 433054}
@@ -283,6 +283,7 @@ MonoBehaviour:
   ia: {fileID: 11437880}
   flipProjectile: 1
   stats: {fileID: 11445282}
+  dontChangeRotation: 0
 --- !u!114 &11417600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
+  minDistanceFollow: 5
   maxSpeed: 2.5
   initMaxSpeed: 0
   facingRight: 0
@@ -338,6 +340,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  calcDirDelay: .600000024
   horizontalFly: 0
   smartFly: 0
   upFly: 0

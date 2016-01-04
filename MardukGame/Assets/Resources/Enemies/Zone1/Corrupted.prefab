@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.122858, y: 10.8324747, z: 0}
+  m_LocalPosition: {x: -7.30044746, y: -1.21141744, z: 0}
   m_LocalScale: {x: 1.79999995, y: 1.79999995, z: 1}
   m_Children:
   - {fileID: 465010}
@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
+  minDistanceFollow: 1.89999998
   maxSpeed: 1.79999995
   initMaxSpeed: 0
   facingRight: 1
@@ -314,7 +315,7 @@ MonoBehaviour:
   groundChecks:
   - {fileID: 438344}
   jumpForce: 800
-  knockable: 1
+  knockable: 0
   jumper: 0
   flying: 0
   common: 1
@@ -322,6 +323,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  calcDirDelay: .600000024
   horizontalFly: 0
   smartFly: 0
   upFly: 0
@@ -341,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasMeleeAttack: 1
-  attackRange: 1.89999998
+  attackRange: 2.0999999
   attackDelay: 3
   anim: {fileID: 9528060}
   target: {fileID: 0}

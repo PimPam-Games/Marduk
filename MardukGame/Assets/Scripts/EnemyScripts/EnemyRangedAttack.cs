@@ -30,10 +30,19 @@ public class EnemyRangedAttack : MonoBehaviour {
 			return;
 		castTimer -= Time.deltaTime;
 		float distance = Vector3.Distance (target.transform.position, transform.position);
+		Vector3 dir = (target.transform.position - transform.position).normalized;
+		float dotX = Vector2.Dot (dir, transform.right);
 		if (castTimer < 0 && distance <= maxDistance) {
 			if(movement.smartFly && (!movement.horizontalFly || movement.upFly)) //el zu, tira el ataque solo cuando esta arriba
 				return;
 			castTimer = castDelay;
+			if (dotX > 0 && !movement.IsFacingRight()) 
+				// ... flip the player.
+				movement.Flip();
+			// Otherwise if the input is moving the player left and the player is facing right...
+			else if (dotX < 0 && movement.IsFacingRight())
+				// ... flip the player.
+				movement.Flip();
 			anim.SetBool ("Attacking", true);
 			if(stopWalkWhenAttack)
 				movement.StopWalk();
