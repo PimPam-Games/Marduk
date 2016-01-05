@@ -215,21 +215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &198002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 479684}
-  m_Layer: 20
-  m_Name: randomEnemy (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &198400
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +298,6 @@ Transform:
   m_Children:
   - {fileID: 461174}
   - {fileID: 410388}
-  - {fileID: 479684}
   - {fileID: 479076}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -418,18 +402,6 @@ Transform:
   - {fileID: 486470}
   - {fileID: 413674}
   - {fileID: 439484}
-  m_Father: {fileID: 415020}
-  m_RootOrder: 3
---- !u!4 &479684
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 877, y: 156, z: 0}
-  m_LocalScale: {x: 64, y: 64, z: 64}
-  m_Children: []
   m_Father: {fileID: 415020}
   m_RootOrder: 2
 --- !u!4 &486470
@@ -751,8 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
-  enemies:
-  - {fileID: 479684}
+  enemies: []
   chunkEndRight: {fileID: 461174}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}
@@ -762,7 +733,7 @@ MonoBehaviour:
   leftUsed: 0
   rightUsed: 0
   position: 0000000000000000
-  isFirstChunk: 0
+  isFirstChunk: 1
   chunkId: 0
   minibossChunk: 0
   isEnd: 0
