@@ -48,7 +48,7 @@ public class ItemGenerator :MonoBehaviour{
 				int i = Random.Range (0, skillList.Length);
 				newWeapon = (GameObject)Instantiate (skillList [i], position, rotation);
 				newItem = newWeapon.GetComponent<Item> ();
-				DontDestroyOnLoad(newWeapon);
+				//DontDestroyOnLoad(newWeapon);
 				return;
 			}
 			else{ //no es skill
