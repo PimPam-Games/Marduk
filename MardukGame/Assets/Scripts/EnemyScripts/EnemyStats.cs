@@ -458,7 +458,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	IEnumerator EnemyDying () {
-		deathSound.Play ();
+		
 		rb.gravityScale = 3;
 		if (!itemCreated) {
 			itemCreated = true;
@@ -477,6 +477,7 @@ public class EnemyStats : MonoBehaviour {
 		GetComponent<BoxCollider2D> ().enabled = false;
 		p.UpdateExp (exp);
 		if(!isBoss){
+			deathSound.Play ();
 			SpriteRenderer sprite = GetComponent<SpriteRenderer> ();
 		
 			yield return new WaitForSeconds (0.5f);
