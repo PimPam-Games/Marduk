@@ -17,6 +17,7 @@ GameObject:
   - 82: {fileID: 8291022}
   - 95: {fileID: 9537312}
   - 114: {fileID: 11429050}
+  - 82: {fileID: 8272654}
   m_Layer: 11
   m_Name: Stinger
   m_TagString: Enemy
@@ -237,6 +238,75 @@ EdgeCollider2D:
   m_Points:
   - {x: -.230145618, y: -.163930893}
   - {x: .183478519, y: -.163604826}
+--- !u!82 &8272654
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120410}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ea96ce10b232cbf4182cb5cd5e07f2f1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .736999989
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!82 &8291022
 AudioSource:
   m_ObjectHideFlags: 1
@@ -450,6 +520,7 @@ MonoBehaviour:
   accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8291022}
+  deathSound: {fileID: 8272654}
   enemyName: Carcohl
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
@@ -542,6 +613,14 @@ Prefab:
       propertyPath: blood
       value: 
       objectReference: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ea96ce10b232cbf4182cb5cd5e07f2f1, type: 3}
+    - target: {fileID: 0}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8272654}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120410}

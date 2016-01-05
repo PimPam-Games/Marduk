@@ -47,6 +47,7 @@ public class EnemyStats : MonoBehaviour {
 	public float blockChance = 0;
 
 	public AudioSource alertSound;
+	public AudioSource deathSound;
 	private bool alertSoundPlayed; //si ya se ejecuto el sonido del bicho
 	private Animator anim;
 	private Rigidbody2D rb;
@@ -457,6 +458,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	IEnumerator EnemyDying () {
+		deathSound.Play ();
 		rb.gravityScale = 3;
 		if (!itemCreated) {
 			itemCreated = true;
