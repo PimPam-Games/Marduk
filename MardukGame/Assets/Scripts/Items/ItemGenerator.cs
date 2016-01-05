@@ -212,7 +212,7 @@ public class ItemGenerator :MonoBehaviour{
 				int defAtrOff = Random.Range (0, 3);
 				if (defAtrOff == 0) { //defensive
 					bool ok = false;
-					while (ok == false && j<=(int)newItem.Defensives.Length) {
+					while (ok == false) {
 						int optionDef = Random.Range (0, p.CantDefensives);
 						if (newItem.Defensives [optionDef] > 0)
 							continue;
@@ -235,7 +235,7 @@ public class ItemGenerator :MonoBehaviour{
 				}
 				if (defAtrOff == 1) { //attribute
 					bool ok = false;
-					while (ok == false && j<=(int)newItem.Atributes.Length) {
+					while (ok == false && j<(int)newItem.Atributes.Length) {
 						int optionAtr = Random.Range (0, p.CantAtributes);
 						if (newItem.Atributes [optionAtr] > 0)
 							continue;
@@ -245,7 +245,7 @@ public class ItemGenerator :MonoBehaviour{
 				}
 				if (defAtrOff == 2) { //offensive
 					bool ok = false;
-					while (ok == false && j<=(int)newItem.Offensives.Length) {
+					while (ok == false) {
 						int optionOff = Random.Range (11, p.CantOffensives); //empieza desde 11 por que las  de antes son las esatadisticas basicas
 						if (newItem.Offensives [optionOff] > 0)
 							continue;
