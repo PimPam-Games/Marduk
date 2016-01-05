@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 10
+  minDistanceFollow: 0
   maxSpeed: 4
   initMaxSpeed: 0
   facingRight: 0
@@ -292,6 +293,7 @@ MonoBehaviour:
   jumpDelay: 3
   knockbackLength: .300000012
   knockback: 2.5
+  calcDirDelay: .600000024
   horizontalFly: 0
   smartFly: 0
   upFly: 0
@@ -340,7 +342,7 @@ MonoBehaviour:
   blockChance: 0
   alertSound: {fileID: 8247286}
   enemyName: Monoceros
-  blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
+  blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 17
   rend: {fileID: 0}
@@ -398,6 +400,10 @@ Prefab:
       propertyPath: exp
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154232}

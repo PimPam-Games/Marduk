@@ -161,6 +161,7 @@ GameObject:
   - 82: {fileID: 8242054}
   - 114: {fileID: 11488388}
   - 114: {fileID: 11489010}
+  - 82: {fileID: 8274538}
   m_Layer: 11
   m_Name: Nergal
   m_TagString: Enemy
@@ -360,7 +361,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100812}
-  m_LocalRotation: {x: 0, y: 0, z: -.0298876651, w: -.999553263}
+  m_LocalRotation: {x: 0, y: 0, z: -.0298876762, w: -.999553323}
   m_LocalPosition: {x: -1.28199995, y: -.606000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -372,7 +373,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160058}
-  m_LocalRotation: {x: -0, y: 0, z: .00404151017, w: -.999991894}
+  m_LocalRotation: {x: -0, y: 0, z: .00404149294, w: -.999991894}
   m_LocalPosition: {x: -1.55599999, y: -.60799998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -609,9 +610,78 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2193c003fbe8e3342a92285b420303ff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bde3100d5efc0704fbe0c7fc981f0b68, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .610000014
+  m_Volume: .595000029
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8274538
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142560}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9448ff9e8fef1844aa2ff434b4812caf, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .611999989
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -717,6 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 200
+  minDistanceFollow: 0
   maxSpeed: 0
   initMaxSpeed: 0
   facingRight: 0
@@ -732,6 +803,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  calcDirDelay: .600000024
   horizontalFly: 0
   smartFly: 0
   upFly: 0
@@ -911,6 +983,7 @@ MonoBehaviour:
   meleeAttackMinDmg: 10
   meleeAttackMaxDmg: 25
   RightArmCol: {fileID: 6080108}
+  deathSound: {fileID: 8274538}
   RightArmRend: {fileID: 21286324}
   novaLauncher: {fileID: 11475680}
 --- !u!114 &11489010

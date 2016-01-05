@@ -8,6 +8,8 @@ public class Nergal : MonoBehaviour {
 	public float meleeAttackMaxDmg = 25f;
 	private Animator anim;
 	public PolygonCollider2D RightArmCol;
+	public AudioSource deathSound;
+	private EnemyStats stats;
 	public SpriteRenderer RightArmRend;
 	private float meleeAttackTimer = 0;
 	private float meleeAttackDelay = 10;
@@ -18,21 +20,26 @@ public class Nergal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
+		stats = GetComponent<EnemyStats>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		meleeAttackTimer -= Time.deltaTime;
-		novaAttackTimer -= Time.deltaTime;
-		if(meleeAttackTimer < 0 && !anim.GetBool("Attacking")){
-			NergalMeleeAttack();
-		}
-		if(novaAttackTimer < 0){
-			LaunchNova();
+		if(!stats.isDead){
+			meleeAttackTimer -= Time.deltaTime;
+			novaAttackTimer -= Time.deltaTime;
+			if(meleeAttackTimer < 0 && !anim.GetBool("Attacking")){
+				NergalMeleeAttack();
+			}
+			if(novaAttackTimer < 0){
+				LaunchNova();
+			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
+		if(stats.isDead)
+			return;
 		if(col.gameObject.tag == "Player" && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 		if (col.gameObject.tag == "Player" && !p.isDead) {
@@ -74,5 +81,9 @@ public class Nergal : MonoBehaviour {
 
 	public void EnableRightArmCol(){
 		RightArmCol.enabled = true;
+	}
+
+	public void PlayDeathSound(){
+		deathSound.Play();
 	}
 }

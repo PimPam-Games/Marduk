@@ -482,7 +482,12 @@ public class EnemyStats : MonoBehaviour {
 				sprite.color = new Color (1f, 1f, 1f, sprite.color.a - 0.1f);
 				yield return new WaitForSeconds (0.2f);
 			}
+			Destroy (this.gameObject);
 		}
+		
+	}
+
+	public void SelfDestruction(){
 		Destroy (this.gameObject);
 	}
 }

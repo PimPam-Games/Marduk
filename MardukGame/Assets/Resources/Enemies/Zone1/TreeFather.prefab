@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.5120764, y: -1.77220261, z: 0}
+  m_LocalPosition: {x: -10.1382103, y: -2.56371403, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 443328}
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDistanceFollow: 11
+  minDistanceFollow: 0
   maxSpeed: 0
   initMaxSpeed: 0
   facingRight: 0
@@ -294,6 +295,7 @@ MonoBehaviour:
   jumpDelay: 2
   knockbackLength: .300000012
   knockback: 2.5
+  calcDirDelay: .600000024
   horizontalFly: 0
   smartFly: 0
   upFly: 0
@@ -353,7 +355,7 @@ MonoBehaviour:
   blockChance: 0
   alertSound: {fileID: 8299696}
   enemyName: Hell mouth
-  blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
+  blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 14
   rend: {fileID: 0}
@@ -377,6 +379,7 @@ MonoBehaviour:
   ia: {fileID: 0}
   flipProjectile: 0
   stats: {fileID: 11468250}
+  dontChangeRotation: 0
 --- !u!212 &21255006
 SpriteRenderer:
   m_ObjectHideFlags: 1
