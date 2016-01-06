@@ -474,7 +474,12 @@ public class EnemyStats : MonoBehaviour {
 		//GameObject.Find ("GameMainController").GetComponent<GameController> ().deadEnemies.Add (this.name); //agrega ese enemigo a la lista de muertos
 		
 		anim.SetBool ("IsDead", true);
-		GetComponent<BoxCollider2D> ().enabled = false;
+		BoxCollider2D boxcol = GetComponent<BoxCollider2D> ();
+		CircleCollider2D circlecol = GetComponent<CircleCollider2D> ();
+		if(boxcol != null)
+			boxcol.enabled = false;
+		if(circlecol != null)
+			circlecol.enabled = false;
 		p.UpdateExp (exp);
 		if(!isBoss){
 			deathSound.Play ();
