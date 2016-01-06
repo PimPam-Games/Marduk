@@ -152,7 +152,7 @@ public class SpellStats : MonoBehaviour {
 			lvl = 1;
 			CalculateStats();
 		}
-		tooltip += "level: " + Lvl.ToString() + "\n";
+		//tooltip += "level: " + Lvl.ToString() + "\n";
 		if(manaCost > 0){
 			tooltip += "Mana cost: " + manaCost + "\n";
 		}

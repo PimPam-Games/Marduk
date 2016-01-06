@@ -77,8 +77,11 @@ MonoBehaviour:
   flipProjectile: 1
   staticProjectile: 1
   projectile: {fileID: 120056, guid: 2a1e2a651aaa5514ab87d4b9bc45eb5c, type: 2}
-  initMinDmg: 1
-  initMaxDmg: 2
+  dontChangeRotation: 0
+  continuosRelease: 0
+  drainMana: 0
+  initMinDmg: 2
+  initMaxDmg: 4
   initPhysicalDmgMult: 0
   minDmgPerLvl: .5
   maxDmgPerLvl: .5
@@ -130,11 +133,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMinDmg
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDmg
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minDmgPerLvl

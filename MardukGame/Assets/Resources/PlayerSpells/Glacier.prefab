@@ -58,8 +58,9 @@ MonoBehaviour:
   projectile: {fileID: 132576, guid: 5357c12ac0ba2cf4e876d1e98130743b, type: 2}
   dontChangeRotation: 1
   continuosRelease: 0
-  initMinDmg: 1
-  initMaxDmg: 4
+  drainMana: 0
+  initMinDmg: 2
+  initMaxDmg: 5
   initPhysicalDmgMult: 0
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
@@ -167,6 +168,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 6bee3073b273e0e4c823610598b30915,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: initMinDmg
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDmg
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 119988}

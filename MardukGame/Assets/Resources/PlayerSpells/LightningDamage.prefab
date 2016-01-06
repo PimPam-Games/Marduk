@@ -74,7 +74,7 @@ MonoBehaviour:
   initManaCost: 1
   manaCostPerLvl: 1
   dmgElement: 2
-  damageAdded: 3
+  damageAdded: 4
 --- !u!222 &22256658
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -125,6 +125,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 30617dc3113e42d4eae10ec58fbf8dd0,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: damageAdded
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194660}

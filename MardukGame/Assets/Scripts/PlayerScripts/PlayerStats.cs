@@ -355,10 +355,10 @@ public class PlayerStats : MonoBehaviour {
 			atributesPoints += 5;
 		}
 		expUi.UpdateExpBar (currentExp,oldNextLevelExp,nextLevelExp);
-		for (int i = 0; i < plat.playerSkills.Length; i++) {
+		/*for (int i = 0; i < plat.playerSkills.Length; i++) { //actualizar experiencia de las skills
 			if(plat.playerSkills[i] != null)
 				plat.playerSkills[i].GetComponent<SpellStats>().UpdateExp(exp);
-		}
+		}*/
 		//Debug.Log ("currExp " + currentExp + ", " + "nextLevelExp " + nextLevelExp + ", " + "lvl " + lvl );
 	}
 
