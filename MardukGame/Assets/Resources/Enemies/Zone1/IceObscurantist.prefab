@@ -402,28 +402,28 @@ MonoBehaviour:
   lvl: 1
   currHealth: 0
   initMaxHealth: 10
-  initMinDamage: 2
-  initMaxDamage: 5
+  initMinDamage: 6
+  initMaxDamage: 7
   initArmour: 4
-  initColdRes: 0
-  initFireRes: 0
-  initLightRes: 0
-  initPoisonRes: 1
+  initColdRes: 15
+  initFireRes: 15
+  initLightRes: 15
+  initPoisonRes: 15
   initEvasion: 30
   initAccuracy: 25
   initCritChance: .0500000007
   elem: 0
-  minDamage: 2
-  maxDamage: 5
+  minDamage: 6
+  maxDamage: 7
   critChance: 25
-  minDmgPerLvl: 0
-  maxDmgPerLvl: 0
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
   healthPerLvl: 10
-  armourPerLvl: 0
-  coldResPerLvl: 0
-  fireResPerLvl: 0
-  lightResPerLvl: 0
-  poisonResPerLvl: 0
+  armourPerLvl: 1
+  coldResPerLvl: 1
+  fireResPerLvl: 1
+  lightResPerLvl: 1
+  poisonResPerLvl: 1
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: 0
@@ -432,7 +432,7 @@ MonoBehaviour:
   enemyName: Vampire
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
-  exp: 10
+  exp: 6
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -505,7 +505,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exp
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: blood
@@ -519,6 +519,74 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8220268}
+    - target: {fileID: 0}
+      propertyPath: armourPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coldResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initColdRes
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initFireRes
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initLightRes
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initPoisonRes
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDamage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isDead
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152940}

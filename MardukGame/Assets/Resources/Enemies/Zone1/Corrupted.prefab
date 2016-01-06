@@ -330,29 +330,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   currHealth: 0
-  initMaxHealth: 16
-  initMinDamage: 2
+  initMaxHealth: 12
+  initMinDamage: 4
   initMaxDamage: 5
-  initArmour: 4
+  initArmour: 10
   initColdRes: 0
   initFireRes: 0
   initLightRes: 0
-  initPoisonRes: 1
-  initEvasion: 30
+  initPoisonRes: 10
+  initEvasion: 20
   initAccuracy: 25
   initCritChance: .0500000007
   elem: 0
-  minDamage: 2
+  minDamage: 4
   maxDamage: 5
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
   healthPerLvl: 5
-  armourPerLvl: 1
-  coldResPerLvl: 0
-  fireResPerLvl: 0
-  lightResPerLvl: 0
-  poisonResPerLvl: 0
+  armourPerLvl: 5
+  coldResPerLvl: 1
+  fireResPerLvl: 1
+  lightResPerLvl: 1
+  poisonResPerLvl: 1
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: .100000001
@@ -361,7 +361,7 @@ MonoBehaviour:
   enemyName: Revenant
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
-  exp: 10
+  exp: 3
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -466,7 +466,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exp
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_audioClip
@@ -476,6 +476,50 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8252468}
+    - target: {fileID: 0}
+      propertyPath: initMaxHealth
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initArmour
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initPoisonRes
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initEvasion
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coldResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armourPerLvl
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160442}

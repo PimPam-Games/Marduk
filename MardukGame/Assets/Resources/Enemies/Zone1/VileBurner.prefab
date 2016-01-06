@@ -506,28 +506,28 @@ MonoBehaviour:
   lvl: 1
   currHealth: 0
   initMaxHealth: 10
-  initMinDamage: 2
-  initMaxDamage: 5
-  initArmour: 4
+  initMinDamage: 7
+  initMaxDamage: 8
+  initArmour: 0
   initColdRes: 0
-  initFireRes: 0
+  initFireRes: 20
   initLightRes: 0
-  initPoisonRes: 1
-  initEvasion: 30
-  initAccuracy: 25
+  initPoisonRes: 0
+  initEvasion: 40
+  initAccuracy: 20
   initCritChance: .0500000007
   elem: 1
-  minDamage: 2
-  maxDamage: 5
+  minDamage: 7
+  maxDamage: 8
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
-  healthPerLvl: 4
-  armourPerLvl: 0
-  coldResPerLvl: 0
-  fireResPerLvl: 0
-  lightResPerLvl: 0
-  poisonResPerLvl: 0
+  healthPerLvl: 10
+  armourPerLvl: 1
+  coldResPerLvl: 1
+  fireResPerLvl: 1
+  lightResPerLvl: 1
+  poisonResPerLvl: 1
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: 0
@@ -536,7 +536,7 @@ MonoBehaviour:
   enemyName: Pirobolus
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
-  exp: 8
+  exp: 3
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -641,7 +641,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exp
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxDistance
@@ -659,6 +659,66 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8257988}
+    - target: {fileID: 0}
+      propertyPath: healthPerLvl
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armourPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coldResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDamage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initArmour
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initEvasion
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initAccuracy
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initPoisonRes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initFireRes
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 136586}

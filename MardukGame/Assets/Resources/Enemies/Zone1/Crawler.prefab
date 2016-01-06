@@ -431,29 +431,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 2
   currHealth: 0
-  initMaxHealth: 15
-  initMinDamage: 2
-  initMaxDamage: 5
-  initArmour: 4
-  initColdRes: 0
+  initMaxHealth: 20
+  initMinDamage: 5
+  initMaxDamage: 8
+  initArmour: 10
+  initColdRes: 15
   initFireRes: 0
   initLightRes: 0
-  initPoisonRes: 1
-  initEvasion: 30
+  initPoisonRes: 20
+  initEvasion: 20
   initAccuracy: 25
   initCritChance: .0500000007
   elem: 4
-  minDamage: 2
-  maxDamage: 5
+  minDamage: 5
+  maxDamage: 8
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
   healthPerLvl: 10
-  armourPerLvl: 2
-  coldResPerLvl: 0
-  fireResPerLvl: 0
-  lightResPerLvl: 0
-  poisonResPerLvl: 2
+  armourPerLvl: 1
+  coldResPerLvl: 1
+  fireResPerLvl: 1
+  lightResPerLvl: 1
+  poisonResPerLvl: 1
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
   enemyName: Polypus
   blood: {fileID: 107802, guid: 3ed5ed1124df78b4e86fe3971671868a, type: 2}
   isDead: 0
-  exp: 18
+  exp: 6
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -517,7 +517,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exp
-      value: 18
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_audioClip
@@ -527,6 +527,70 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8206196}
+    - target: {fileID: 0}
+      propertyPath: initMaxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initArmour
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initColdRes
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initPoisonRes
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initLightRes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initFireRes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initEvasion
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armourPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coldResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180936}

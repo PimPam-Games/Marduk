@@ -462,7 +462,7 @@ public class EnemyStats : MonoBehaviour {
 		rb.gravityScale = 3;
 		if (!itemCreated) {
 			itemCreated = true;
-			float[] dropItemProb = {0.5f,0.5f}; //50% de chance de tirar un item al morir
+			float[] dropItemProb = {0.1f,0.9f}; //50% de chance de tirar un item al morir
 			if(Utils.Choose (dropItemProb) == 0)
 				GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation);
 			float[] dropOrbProb = {0.65f,0.35f};

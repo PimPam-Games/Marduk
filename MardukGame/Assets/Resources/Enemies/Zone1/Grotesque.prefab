@@ -337,28 +337,28 @@ MonoBehaviour:
   lvl: 1
   currHealth: 0
   initMaxHealth: 10
-  initMinDamage: 2
+  initMinDamage: 4
   initMaxDamage: 5
-  initArmour: 4
+  initArmour: 5
   initColdRes: 0
   initFireRes: 0
   initLightRes: 0
-  initPoisonRes: 1
-  initEvasion: 30
-  initAccuracy: 25
+  initPoisonRes: 10
+  initEvasion: 35
+  initAccuracy: 35
   initCritChance: .0500000007
   elem: 4
-  minDamage: 2
+  minDamage: 4
   maxDamage: 5
   critChance: 25
-  minDmgPerLvl: 4
-  maxDmgPerLvl: 4
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
   healthPerLvl: 10
-  armourPerLvl: 0
-  coldResPerLvl: 0
-  fireResPerLvl: 0
-  lightResPerLvl: 0
-  poisonResPerLvl: 0
+  armourPerLvl: 1
+  coldResPerLvl: 1
+  fireResPerLvl: 1
+  lightResPerLvl: 1
+  poisonResPerLvl: 1
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   enemyName: Mandrake
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
-  exp: 20
+  exp: 3
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -454,11 +454,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: minDmgPerLvl
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxDmgPerLvl
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemyName
@@ -476,6 +476,58 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8299176}
+    - target: {fileID: 0}
+      propertyPath: exp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthPerLvl
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armourPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coldResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initArmour
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initPoisonRes
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initAccuracy
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initEvasion
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116708}

@@ -384,28 +384,28 @@ MonoBehaviour:
   lvl: 1
   currHealth: 0
   initMaxHealth: 20
-  initMinDamage: 2
-  initMaxDamage: 4
-  initArmour: 4
-  initColdRes: 0
-  initFireRes: 0
-  initLightRes: 0
-  initPoisonRes: 1
-  initEvasion: 30
+  initMinDamage: 4
+  initMaxDamage: 9
+  initArmour: 20
+  initColdRes: 5
+  initFireRes: 5
+  initLightRes: 5
+  initPoisonRes: 5
+  initEvasion: 10
   initAccuracy: 25
   initCritChance: .0500000007
-  elem: 4
-  minDamage: 2
-  maxDamage: 5
+  elem: 0
+  minDamage: 4
+  maxDamage: 9
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
-  healthPerLvl: 15
-  armourPerLvl: 2
-  coldResPerLvl: 0
-  fireResPerLvl: 0
-  lightResPerLvl: 0
-  poisonResPerLvl: 4
+  healthPerLvl: 10
+  armourPerLvl: 1
+  coldResPerLvl: 1
+  fireResPerLvl: 1
+  lightResPerLvl: 1
+  poisonResPerLvl: 1
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   enemyName: Ogre
   blood: {fileID: 107802, guid: 3ed5ed1124df78b4e86fe3971671868a, type: 2}
   isDead: 0
-  exp: 10
+  exp: 5
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -461,7 +461,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: healthPerLvl
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemyName
@@ -469,7 +469,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exp
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_audioClip
@@ -479,6 +479,70 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8258700}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initArmour
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initColdRes
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initFireRes
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initLightRes
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initPoisonRes
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: elem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initEvasion
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDamage
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armourPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coldResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 196658}

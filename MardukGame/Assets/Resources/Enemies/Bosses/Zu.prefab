@@ -333,29 +333,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   currHealth: 0
-  initMaxHealth: 60
-  initMinDamage: 8
-  initMaxDamage: 13
-  initArmour: 5
-  initColdRes: 2
-  initFireRes: 2
-  initLightRes: 2
-  initPoisonRes: 2
-  initEvasion: 30
+  initMaxHealth: 120
+  initMinDamage: 10
+  initMaxDamage: 15
+  initArmour: 25
+  initColdRes: 10
+  initFireRes: 10
+  initLightRes: 30
+  initPoisonRes: 10
+  initEvasion: 40
   initAccuracy: 45
   initCritChance: .100000001
   elem: 2
-  minDamage: 2
-  maxDamage: 5
+  minDamage: 20
+  maxDamage: 30
   critChance: 0
-  minDmgPerLvl: 1
-  maxDmgPerLvl: 1
-  healthPerLvl: 5
-  armourPerLvl: 0
-  coldResPerLvl: 0
-  fireResPerLvl: 0
-  lightResPerLvl: 0
-  poisonResPerLvl: 0
+  minDmgPerLvl: 2
+  maxDmgPerLvl: 2
+  healthPerLvl: 10
+  armourPerLvl: 1
+  coldResPerLvl: 1
+  fireResPerLvl: 1
+  lightResPerLvl: 1
+  poisonResPerLvl: 1
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
   enemyName: Zu
   blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
-  exp: 35
+  exp: 15
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -492,6 +492,86 @@ Prefab:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8254470}
+    - target: {fileID: 0}
+      propertyPath: initMaxHealth
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMinDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initMaxDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDamage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initArmour
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initColdRes
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initFireRes
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initLightRes
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initPoisonRes
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initEvasion
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthPerLvl
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armourPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coldResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lightResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: exp
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163554}
