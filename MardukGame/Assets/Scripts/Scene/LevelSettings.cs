@@ -36,10 +36,10 @@ public class LevelSettings : MonoBehaviour {
 				for(int i = 1; i <= cant;i++){
 					GameObject newEnemy1;
 					if(i == 2){
-						newEnemy1 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x - 3, pos.y + 1, pos.z), rot);
+						newEnemy1 = (GameObject)Instantiate (zoneEnemies [3], new Vector3 (pos.x - 3, pos.y + 1, pos.z), rot);
 					}
 					else
-						newEnemy1 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x + 3, pos.y - 1, pos.z), rot);
+						newEnemy1 = (GameObject)Instantiate (zoneEnemies [3], new Vector3 (pos.x + 3, pos.y - 1, pos.z), rot);
 					//GameObject newEnemy2 = (GameObject)Instantiate (zoneEnemies [0], new Vector3 (pos.x - 2, pos.y, pos.z), rot);
 					DontDestroyOnLoad (newEnemy1);
 					g.enemiesPerLevel [g.currLevelName].Add (newEnemy1);

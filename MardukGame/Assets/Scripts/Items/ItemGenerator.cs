@@ -67,13 +67,13 @@ public class ItemGenerator :MonoBehaviour{
 		}
 
 		if (newItem.Rarity != RarityTypes.Normal) {
-			int numAffixes = 1; // no se que onda esto, pero da la impresion de que a veces no entra por los casos de abajo
+			int numAffixes = 1; 
 			if (newItem.Rarity == RarityTypes.Magic)
 				numAffixes = Random.Range (1, 3);
 			if (newItem.Rarity == RarityTypes.Rare)
 				numAffixes = Random.Range (3, 5);
 			if (newItem.Rarity == RarityTypes.Unique){
-				numAffixes = 2;
+				numAffixes = 1;
 				if (newItem.itemName == "Babeblade"){
 					newItem.Defensives [p.MaxHealth] = Random.Range (50, 101);
 					newItem.Defensives [p.AllRes] = 5;
@@ -235,7 +235,7 @@ public class ItemGenerator :MonoBehaviour{
 				}
 				if (defAtrOff == 1) { //attribute
 					bool ok = false;
-					while (ok == false && j<(int)newItem.Atributes.Length) {
+					while (ok == false) {
 						int optionAtr = Random.Range (0, p.CantAtributes);
 						if (newItem.Atributes [optionAtr] > 0)
 							continue;
