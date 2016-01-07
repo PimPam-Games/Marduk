@@ -361,6 +361,7 @@ MonoBehaviour:
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 1
+  expPerLevel: 1
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -511,6 +512,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: poisonResPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: expPerLevel
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

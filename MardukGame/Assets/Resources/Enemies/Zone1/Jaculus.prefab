@@ -307,10 +307,12 @@ MonoBehaviour:
   accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8220786}
+  deathSound: {fileID: 0}
   enemyName: Jaculus
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 4
+  expPerLevel: 1
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
@@ -375,6 +377,10 @@ Prefab:
       propertyPath: blood
       value: 
       objectReference: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
+    - target: {fileID: 0}
+      propertyPath: expPerLevel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 154764}

@@ -56,6 +56,7 @@ public class EnemyStats : MonoBehaviour {
 	public bool isDead = false;
 	private LevelSettings zoneSettings;
 	public double exp; //experiencia que da el bicho cuando lo matan
+	public double expPerLevel = 0; // experiencia que se aumenta a exp de acuerdo al nivel del bicho
 	private bool playAlertSound;
 	public Renderer rend;
 	public SpriteRenderer spriteRend;
@@ -480,7 +481,9 @@ public class EnemyStats : MonoBehaviour {
 			boxcol.enabled = false;
 		if(circlecol != null)
 			circlecol.enabled = false;
-		p.UpdateExp (exp);
+		double e = exp + ((lvl-1) * expPerLevel);
+		Debug.Log("experiencia dada: " + e);
+		p.UpdateExp (exp + ((lvl-1) * expPerLevel));
 		if(!isBoss){
 			deathSound.Play ();
 			SpriteRenderer sprite = GetComponent<SpriteRenderer> ();

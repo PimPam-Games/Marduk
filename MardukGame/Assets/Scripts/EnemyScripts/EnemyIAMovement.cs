@@ -197,7 +197,7 @@ public class EnemyIAMovement : MonoBehaviour {
 		float dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));
 		 // calcula la direccion donde esta el jugador respecto del enemigo
 		if (common) {
-			if (dist < MaxDistanceFollow && dist > minDistanceFollow){
+			if (dist < MaxDistanceFollow && dist >= minDistanceFollow){
 				CalculateDir (false);
 
 				if(hasIdleInstance){
