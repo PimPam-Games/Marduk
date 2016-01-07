@@ -10,6 +10,8 @@ public class PlayerProjLauncher : MonoBehaviour {
 	public bool staticProjectile;
 	public bool flipProjectile = false;
 	public bool dontChangeRotation = false;
+	public float minDmg = 0;
+	public float maxDmg = 0;
 	//public PlatformerCharacter2D character;
 	private GameObject proj; //el proyectil
 	//public float castDelay = 0;
@@ -38,7 +40,8 @@ public class PlayerProjLauncher : MonoBehaviour {
 			//proj = (GameObject)Instantiate (projectile, transform.position, Quaternion.Euler(0,0,0));
 			proj = (GameObject)Instantiate (projectile, transform.position, projectile.transform.rotation);
 		}
-
+		proj.GetComponent<PlayerProjStats>().minDmg = minDmg;
+		proj.GetComponent<PlayerProjStats>().maxDmg = maxDmg;
 		if (!flipProjectile) {	
 			if (pc.isFacingRight ())
 				proj.GetComponent<ProjectileMovement> ().moveDirX = 1;

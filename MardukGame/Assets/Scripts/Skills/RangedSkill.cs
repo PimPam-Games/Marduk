@@ -13,13 +13,16 @@ public class RangedSkill : SpellStats {
 	public bool continuosRelease = false; // true si el poder se tira continuamente como incinerate
 	public bool drainMana = false; //si debe drenar el mana o gastarlo de una
 
-	[SerializeField] private float initMinDmg;
-	[SerializeField] private float initMaxDmg;
+	public float initMinDmg;
+	public float initMaxDmg;
 	[SerializeField] private float initPhysicalDmgMult;
 
 	[SerializeField] private float minDmgPerLvl;
 	[SerializeField] private float maxDmgPerLvl;
 	[SerializeField] private float physicalDmgMultPerLvl;
+
+
+	
 
 	protected override void Awake() {
 		base.Awake();
@@ -30,8 +33,8 @@ public class RangedSkill : SpellStats {
 	protected override void CalculateStats (){
 		base.CalculateStats();
 		if (projStats != null) {
-			projStats.minDmg = initMinDmg + (lvl - 1) * minDmgPerLvl; //en arcos no se usa
-			projStats.maxDmg = initMaxDmg + (lvl - 1) * maxDmgPerLvl;	//en arcos no se usa
+			/*projStats.minDmg = initMinDmg; //+ (lvl - 1) * minDmgPerLvl; //en arcos no se usa
+			projStats.maxDmg = initMaxDmg; //+ (lvl - 1) * maxDmgPerLvl;	//en arcos no se usa*/ // habia un drama con el daño de los projectiles
 			projStats.physicalDmgMult = initPhysicalDmgMult + (lvl-1) * physicalDmgMultPerLvl;
 		}
 	}
@@ -80,9 +83,9 @@ public class RangedSkill : SpellStats {
 		if(initPhysicalDmgMult > 0)
 			tooltip += "Deals " + projStats.physicalDmgMult + "% of Base Attack Damage \n";
 		if(initMaxDmg > 0){
-			double mindmg = projStats.minDmg + p.offensives[p.MagicDmg];
+			double mindmg = initMinDmg + p.offensives[p.MagicDmg];
 			mindmg = System.Math.Round(mindmg + mindmg * p.offensives[p.IncreasedMgDmg]/100,1);
-			double maxdmg = projStats.maxDmg + p.offensives[p.MagicDmg];
+			double maxdmg = initMaxDmg + p.offensives[p.MagicDmg];
 			maxdmg = System.Math.Round(maxdmg + maxdmg * p.offensives[p.IncreasedMgDmg]/100,1);
 			tooltip += "Damage: " + mindmg.ToString() +  " - " + maxdmg.ToString() + "\n";
 		}

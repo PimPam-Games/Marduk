@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elem: 1
-  minDmg: 2
-  maxDmg: 5
+  minDmg: 1
+  maxDmg: 6
   physicalDmgMult: 0
   duration: 2
   particleSpeed: 0
@@ -381,6 +381,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: fromEnemy
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmg
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmg
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

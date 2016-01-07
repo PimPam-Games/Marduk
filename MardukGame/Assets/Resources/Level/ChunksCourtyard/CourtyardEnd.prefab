@@ -83,21 +83,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &135382
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 421662}
-  m_Layer: 20
-  m_Name: randomEnemy (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &151476
 GameObject:
   m_ObjectHideFlags: 1
@@ -302,18 +287,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 457148}
   m_RootOrder: 1
---- !u!4 &421662
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135382}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 612, y: 203, z: 0}
-  m_LocalScale: {x: 64, y: 64, z: 64}
-  m_Children: []
-  m_Father: {fileID: 475600}
-  m_RootOrder: 3
 --- !u!4 &424388
 Transform:
   m_ObjectHideFlags: 1
@@ -367,7 +340,7 @@ Transform:
   - {fileID: 477510}
   - {fileID: 431992}
   m_Father: {fileID: 475600}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &439330
 Transform:
   m_ObjectHideFlags: 1
@@ -439,13 +412,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -185.388489, y: -39.8471909, z: 0}
+  m_LocalPosition: {x: -1152.55237, y: 40.3339424, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 452626}
   - {fileID: 424388}
   - {fileID: 483698}
-  - {fileID: 421662}
   - {fileID: 438456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -469,7 +441,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 314, y: 330, z: 0}
+  m_LocalPosition: {x: 361, y: 308, z: 0}
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 475600}
@@ -772,7 +744,6 @@ MonoBehaviour:
   circle: {fileID: 0}
   enemies:
   - {fileID: 483698}
-  - {fileID: 421662}
   chunkEndRight: {fileID: 452626}
   chunkEndDownR: {fileID: 0}
   chunkEndDownL: {fileID: 0}
@@ -784,7 +755,7 @@ MonoBehaviour:
   position: 0000000000000000
   isFirstChunk: 0
   chunkId: 0
-  minibossChunk: 0
+  minibossChunk: 1
   isEnd: 0
 --- !u!114 &11466686
 MonoBehaviour:

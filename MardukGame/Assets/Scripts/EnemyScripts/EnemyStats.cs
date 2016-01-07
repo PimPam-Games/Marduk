@@ -482,7 +482,6 @@ public class EnemyStats : MonoBehaviour {
 		if(circlecol != null)
 			circlecol.enabled = false;
 		double e = exp + ((lvl-1) * expPerLevel);
-		Debug.Log("experiencia dada: " + e);
 		p.UpdateExp (exp + ((lvl-1) * expPerLevel));
 		if(!isBoss){
 			deathSound.Play ();

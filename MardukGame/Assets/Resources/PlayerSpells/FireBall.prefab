@@ -51,8 +51,8 @@ MonoBehaviour:
   initMinDmg: 4
   initMaxDmg: 8
   initPhysicalDmgMult: 0
-  minDmgPerLvl: 2
-  maxDmgPerLvl: 2
+  minDmgPerLvl: 0
+  maxDmgPerLvl: 0
   physicalDmgMultPerLvl: 0
 --- !u!114 &11469592
 MonoBehaviour:
@@ -138,6 +138,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: castPerSecond
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

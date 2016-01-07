@@ -57,12 +57,12 @@ public class LevelSettings : MonoBehaviour {
 		//if(Utils.Choose (prob) == 0 || minibossGenerated) //no toco el boss o ya esta generado
 		//	return;
 		minibossGenerated = true;
-		if(zoneNumber == 2){
+		//if(zoneNumber == 2){
 			Debug.Log("MINIBOSSGENERADO");
 			GameObject newEnemy = (GameObject)Instantiate (miniBoss,pos,rot);
 			DontDestroyOnLoad(newEnemy);
 			g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
-		}
+		//}
 	}
 
 	// Update is called once per frame
