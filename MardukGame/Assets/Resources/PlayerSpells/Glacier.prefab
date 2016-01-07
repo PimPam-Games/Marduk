@@ -44,7 +44,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Glacier
   nameForSave: Glacier
-  castPerSecond: 2
+  castPerSecond: 1
   type: 0
   requeriments: 04000000
   manaCost: 0
@@ -175,6 +175,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: initMaxDmg
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: castPerSecond
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

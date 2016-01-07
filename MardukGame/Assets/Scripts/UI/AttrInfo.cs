@@ -18,7 +18,7 @@ public class AttrInfo : MonoBehaviour,  IPointerEnterHandler, IPointerExitHandle
 			if(id == 2)
 				characterTooltip.GetComponentInChildren<Text>().text = "1 Dexterity \n ---------------------------------- \n +2 Accuracy \n +2 Evasiveness";
 			if(id == 4)
-				characterTooltip.GetComponentInChildren<Text>().text = "1 Spirit \n ---------------------------------- \n +3 Maximum Mana \n +0.1 Mana Regeneration per second \n +0.5% Increased Magic Damage";
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Spirit \n ---------------------------------- \n +3 Maximum Mana \n +0.1 Mana Regeneration per second \n +0.2 Magic Damage";
 		}
 	}
 	

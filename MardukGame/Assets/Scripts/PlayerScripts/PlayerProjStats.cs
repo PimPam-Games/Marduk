@@ -3,7 +3,7 @@ using System.Collections;
 using p = PlayerStats;
 using pc = PlatformerCharacter2D;
 
-public class PlayerProjStats : MonoBehaviour {
+public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyectiles de los enemigos ahora
 	
 	public Types.Element elem ;
 	public float minDmg = 1 , maxDmg = 3;
@@ -146,6 +146,7 @@ public class PlayerProjStats : MonoBehaviour {
 			}
 			else{
 				damage = Random.Range(minDmg,maxDmg);
+				damage += p.offensives[p.MagicDmg];
 				damage += damage * p.offensives[p.IncreasedMgDmg]/100;
 				/*if(col.transform.position.x < this.transform.position.x)
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
