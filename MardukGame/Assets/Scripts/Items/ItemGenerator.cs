@@ -206,6 +206,20 @@ public class ItemGenerator :MonoBehaviour{
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
 					newItem.Offensives [p.IncreasedAttackSpeed] = 10;
 				}
+				if (newItem.itemName == "Ybab Ebab"){
+					newItem.Utils [p.AllAttr] = 5;
+					newItem.Defensives [p.IncreasedEvasion] = 30;
+				}
+				if (newItem.itemName == "Abbadon's Treasure"){
+					newItem.Utils [p.AllAttr] = 15;
+					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
+					newItem.Defensives [p.AllRes] = -25;
+				}
+				if (newItem.itemName == "Nergal's Hate"){
+					newItem.Defensives [p.PoisonRes] = 30;
+					newItem.Offensives [p.IncreasedMgDmg] = 10;
+					newItem.Offensives [p.IncreasedAttackSpeed] = 10;
+				}
 			}
 
 			for (int j=0; j<numAffixes; j++) {
