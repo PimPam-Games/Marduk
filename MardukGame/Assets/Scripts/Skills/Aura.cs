@@ -10,6 +10,7 @@ public class Aura : SpellStats {
 	public float increasedMovementSpeed = 0;
 	public float increasedManaRegen = 0;
 	public float increasedMaxMana = 0;
+	private int auraSpriteIndex = -1; //indica en que  posicion esta ubicado el sprite de esta aura, -1 si no esta equipado
 
 	// Use this for initialization
 	void Start () {
@@ -29,10 +30,12 @@ public class Aura : SpellStats {
 		p.utils [p.MovementSpeed] += increasedMovementSpeed;
 		p.offensives[p.MaxMana] += increasedMaxMana;
 		p.offensives[p.ManaPerSec] += increasedManaRegen;
-		p.auraSprite.sprite = sprite;
+		ToggleAuraSprite(true);
 		equipped = true;
 		
 	}	
+
+
 
 	public override void UnequipSkill ()
 	{
@@ -43,7 +46,7 @@ public class Aura : SpellStats {
 		p.utils [p.MovementSpeed] -= increasedMovementSpeed;
 		p.offensives[p.MaxMana] -= increasedMaxMana;
 		p.offensives[p.ManaPerSec] -= increasedManaRegen;
-		p.auraSprite.sprite = null;
+		ToggleAuraSprite(false);
 		equipped = false;
 		
 	}	
@@ -56,6 +59,22 @@ public class Aura : SpellStats {
 		p.offensives[p.ManaPerSec] -= increasedManaRegen;
 		
 		base.RemoveSkill ();
+	}
+
+	private void ToggleAuraSprite(bool equip){
+		if(equip){
+			for(int i = 0; i < p.auraSprites.Length; i++){
+				if(p.auraSprites[i].sprite == null){
+					p.auraSprites[i].sprite = this.sprite;
+					auraSpriteIndex = i;
+					return;
+				}
+			}
+		}
+		else{
+			if(auraSpriteIndex > -1 && auraSpriteIndex < 4) //hay hasta 3 auras
+				p.auraSprites[auraSpriteIndex].sprite = null;
+		}
 	}
 
 	public override string ToolTip ()

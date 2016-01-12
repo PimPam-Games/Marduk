@@ -91,8 +91,8 @@ public class PlayerStats : MonoBehaviour {
 	public static float currentAnimSpeed; // guarda la velocidad de movimiento actual, es para usar en Weapon
 
 	public static bool isBlocking; // sirve para activar algunas cosas al bloquear
-	public static SpriteRenderer auraSprite;
-	public SpriteRenderer auraSpriteGO;
+	public static SpriteRenderer[] auraSprites;
+	public SpriteRenderer[] auraSpritesGO;
 
 
 	void Awake(){
@@ -103,7 +103,7 @@ public class PlayerStats : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		initAnimSpeed = anim.speed;
 		currentAnimSpeed = anim.speed;
-		auraSprite = auraSpriteGO;
+		auraSprites = auraSpritesGO;
 	}
 
 	// Use this for initialization

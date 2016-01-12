@@ -761,6 +761,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &562290323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 177720, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 562290324}
+  - 212: {fileID: 562290325}
+  m_Layer: 0
+  m_Name: auraSprite2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &562290324
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 457478, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 562290323}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.150044754, y: .309994996, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 762293752}
+  m_RootOrder: 2
+--- !u!212 &562290325
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 21298156, guid: 33a58102d10892849891ac92072bf6ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 562290323}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -354108773
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &649185336 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 124458, guid: 0984c9e45aab62d4b80b94310161c0c0, type: 2}
@@ -848,9 +903,65 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .834465027
       objectReference: {fileID: 0}
+    - target: {fileID: 177720, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_Name
+      value: auraSprite1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450924, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 487404, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 415340, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 479418, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 446682, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 471926, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 467644, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 482994, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 402726, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 476402, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 436486, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 491050, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &762293752 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 432498, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+  m_PrefabInternal: {fileID: 762293751}
 --- !u!1 &833681792 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 179514, guid: 0984c9e45aab62d4b80b94310161c0c0, type: 2}
@@ -1160,6 +1271,61 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1811383145}
   m_Script: {fileID: 11500000, guid: f6aeb6f0f68df9e4d952f1bfcbe5fe96, type: 3}
+--- !u!1 &1886147007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 177720, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1886147008}
+  - 212: {fileID: 1886147009}
+  m_Layer: 0
+  m_Name: auraSprite3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1886147008
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 457478, guid: 33a58102d10892849891ac92072bf6ee, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886147007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.150044754, y: .309994996, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 762293752}
+  m_RootOrder: 3
+--- !u!212 &1886147009
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 21298156, guid: 33a58102d10892849891ac92072bf6ee,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886147007}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -354108773
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1978720141
 Prefab:
   m_ObjectHideFlags: 0
