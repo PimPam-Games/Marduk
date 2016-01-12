@@ -446,8 +446,8 @@ MonoBehaviour:
   minDamage: 3
   maxDamage: 4
   critChance: 25
-  minDmgPerLvl: 2
-  maxDmgPerLvl: 2
+  minDmgPerLvl: 1
+  maxDmgPerLvl: 1
   healthPerLvl: 10
   armourPerLvl: 1
   coldResPerLvl: 1
@@ -571,6 +571,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: expPerLevel
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDmgPerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxDmgPerLvl
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
