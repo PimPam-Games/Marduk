@@ -6,6 +6,8 @@ public class MainMenu : MonoBehaviour {
 
 	public Image playMenuImage;
 	public Image optionsMenu;
+
+ 
 	void Awake(){
 		//Debug.Log( Screen.currentResolution.);
 		bool resolutionOk = false;

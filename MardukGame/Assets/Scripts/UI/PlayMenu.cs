@@ -13,8 +13,21 @@ public class PlayMenu : MonoBehaviour {
 	private string newCharacterName;
 	private string[] savedGames;
 
+	private bool escPressed = false;
+
 	public void Start(){
 		UpdateSavedGames ();
+	}
+
+	void OnEnable() {
+		escPressed = false;
+	}
+
+	public void Update(){
+		if (Input.GetButtonUp ("Escape") && !escPressed){
+			escPressed = true;
+			StartCoroutine(BackPush());
+		}
 	}
 
 	private void UpdateSavedGames(){
@@ -33,7 +46,8 @@ public class PlayMenu : MonoBehaviour {
 	}
 
 	public void Back(){
-		StartCoroutine(BackPush());
+		if(!escPressed)
+			StartCoroutine(BackPush());
 	}
 
 	IEnumerator BackPush(){
