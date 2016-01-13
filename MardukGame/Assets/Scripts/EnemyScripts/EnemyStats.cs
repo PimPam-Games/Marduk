@@ -116,16 +116,16 @@ public class EnemyStats : MonoBehaviour {
 	}
 
 	private void CalculateStats(){
-		minDamage = initMinDamage * 0.0150f * (lvl ^ 2);
-		maxDamage = initMaxDamage * 0.2f * lvl + 6;
-		armour = initArmour + (lvl-1) * armourPerLvl;
-		coldRes = initColdRes + (lvl-1) * coldResPerLvl;
-		fireRes = initFireRes + (lvl-1) * fireResPerLvl;
-		lightRes = initLightRes + (lvl-1) * lightResPerLvl;
-		poisonRes = initPoisonRes + (lvl-1) * poisonResPerLvl;
-		evasion = initEvasion + (lvl-1) * evasionPerLvl;
-		maxHealth = initMaxHealth + (lvl-1) * healthPerLvl;
-		accuracy = initAccuracy + (lvl-1) * accuracyPerLvl;
+		minDamage = initMinDamage + initMinDamage * 0.0250f * (lvl ^ 3);
+		maxDamage = initMaxDamage + initMaxDamage * 0.0250f * (lvl ^ 3);
+		armour = initArmour + initArmour * 0.2f * (lvl ^ 2);
+		coldRes = initColdRes + initColdRes * 0.2f * (lvl ^ 2);
+		fireRes = initFireRes + initFireRes * 0.2f * (lvl ^ 2);
+		lightRes = initLightRes + initLightRes * 0.2f * (lvl ^ 2);
+		poisonRes = initPoisonRes + initPoisonRes * 0.2f * (lvl ^ 2);
+		evasion = initEvasion + initEvasion * 0.2f * (lvl ^ 2);
+		maxHealth = initMaxHealth + initMaxHealth * 0.2f * (lvl ^ 3);
+		accuracy = initAccuracy + initAccuracy * 0.2f * (lvl ^ 2);
 		critChance = initCritChance;
 		currHealth = maxHealth;
 		if(rangedAttack != null){
