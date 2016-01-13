@@ -208,6 +208,7 @@ MonoBehaviour:
   itemForSlot: 0
   itemSound: {fileID: 8210492}
   lifeToAdd: 5
+  uniqueIndex: 8
 --- !u!212 &21218540
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -309,6 +310,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: f06a3487ea961524e913309fe28a0a65,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: uniqueIndex
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 168796}

@@ -208,6 +208,7 @@ MonoBehaviour:
   itemForSlot: 0
   itemSound: {fileID: 8222316}
   lifeToAdd: 5
+  uniqueIndex: 21
 --- !u!212 &21222636
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -308,6 +309,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: initBaseAttackPerSecond.Array.data[1]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: uniqueIndex
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

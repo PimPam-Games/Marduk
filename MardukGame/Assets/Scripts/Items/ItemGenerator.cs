@@ -4,7 +4,11 @@ using p = PlayerStats;
 
 public class ItemGenerator :MonoBehaviour{
 
-
+	public const int CantUniques = 32;
+	public const int Babeblade = 0, DeathOmen = 1, ColdZero = 2, Sandblast = 3, Viper = 4, Dracule = 5, EnlilBreath = 6, SolarEdge = 7, TitanMight = 8, GoldenChampion = 9, 
+	Berserker = 10, Untouchable = 11, DarkWill = 12, GoldenCap = 13, CrusaderWrath = 14, TemplarFaith= 15, Magi = 16, Contender = 17, IceDragon = 18, Wall = 19, Thunderstrike = 20,
+	ConquerorAmbition = 21, ViciousHunter = 22, Redeemer = 23, HeadCrusher = 24, OgreMace = 25, HolySceptre = 26, BlackSkull = 27, Raider = 28, YbabEbab = 29, AbbadonTreasure = 30,
+	NergalHate = 31;
 
 	private Object[] weaponList;
 	private Object[] uniqueList;
@@ -74,152 +78,159 @@ public class ItemGenerator :MonoBehaviour{
 				numAffixes = Random.Range (3, 5);
 			if (newItem.Rarity == RarityTypes.Unique){
 				numAffixes = 1;
-				if (newItem.itemName == "Babeblade"){
+				switch (newItem.uniqueIndex){
+				case Babeblade:
 					newItem.Defensives [p.MaxHealth] = Random.Range (50, 101);
 					newItem.Defensives [p.AllRes] = 5;
 					newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (15, 21);
-				}
-				if (newItem.itemName == "Death Omen"){
+					break;
+				case DeathOmen:
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (25, 31);
 					newItem.Defensives [p.AllRes] = -15;
 					newItem.Defensives [p.Thorns] = 5;
-				}
-				if (newItem.itemName == "Cold Zero"){
+					break;
+				case ColdZero:
 					newItem.Offensives [p.IncreasedCritChance] = 15;
 					newItem.Defensives [p.ColdRes] = 30;
 					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
-				}
-				if (newItem.itemName == "Sandblast"){
+					break;
+				case Sandblast:
 					newItem.Atributes [p.Vitality] = 15;
 					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (12, 16);
-				}
-				if (newItem.itemName == "Viper"){
+					break;
+				case Viper:
 					newItem.Atributes [p.Dextery] = 15;
 					newItem.Defensives [p.PoisonRes] = 20;
 					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (8, 11);
-				}
-				if (newItem.itemName == "Dracule"){
+					break;
+				case Dracule:
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (2f, 4f), 2);
 					newItem.Offensives [p.IncreasedMgDmg] = 15;
-				}
-				if (newItem.itemName == "Enlil's Breath"){
+					break;
+				case EnlilBreath:
 					newItem.Defensives [p.ColdRes] = 15;
 					newItem.Defensives [p.LightRes] = 15;
 					newItem.Utils [p.AllAttr] = 10;
-				}
-				if (newItem.itemName == "Solar Edge"){
+					break;
+				case SolarEdge:
 					newItem.Utils [p.AllAttr] = 10;
 					newItem.Defensives [p.FireRes] = 30;
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (15, 21);
-				}
-				if (newItem.itemName == "Titan's Might"){
+					break;
+				case TitanMight:
 					newItem.Atributes [p.Strength] = 30;
 					newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (15, 21);
-				}
-				if (newItem.itemName == "Golden Champion"){
+					break;
+				case GoldenChampion:
 					newItem.Atributes [p.Strength] = 20;
 					newItem.Offensives [p.IncreasedCritChance] = 30;
-				}
-				if (newItem.itemName == "The Berserker"){
+					break;
+				case Berserker:
 					newItem.Atributes [p.Dextery] = 30;
 					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 16);
-				}
-				if (newItem.itemName == "The Untouchable"){
+					break;
+				case Untouchable:
 					newItem.Atributes [p.Strength] = 15;
 					newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (10, 16);
 					newItem.Defensives [p.IncreasedDefense] = 25;
-				}
-				if (newItem.itemName == "Dark Will"){
+					break;
+				case DarkWill:
 					newItem.Atributes [p.Dextery] = 20;
 					newItem.Defensives [p.Thorns] = (float)Random.Range (7, 11);
-				}
-				if (newItem.itemName == "Golden Cap"){
+					break;
+				case GoldenCap:
 					newItem.Offensives [p.IncreasedMgDmg] = 20;
 					newItem.Offensives [p.IncreasedCastSpeed] = 12;
 					newItem.Defensives [p.AllRes] = 10;
-				}
-				if (newItem.itemName == "Crusader's Wrath"){
+					break;
+				case CrusaderWrath:
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 15);
 					newItem.Utils [p.AllAttr] = 10;
-				}
-				if (newItem.itemName == "Templar's Faith"){
+					break;
+				case TemplarFaith:
 					newItem.Atributes [p.Vitality] = 15;
 					newItem.Atributes [p.Spirit] = 15;
 					newItem.Defensives [p.AllRes] = 15;
-				}
-				if (newItem.itemName == "The Magi"){
+					break;
+				case Magi:
 					newItem.Offensives [p.IncreasedMgDmg] = 20;
 					newItem.Offensives [p.IncreasedCastSpeed] = 20;
-				}
-				if (newItem.itemName == "The Contender"){
+					break;
+				case Contender:
 					newItem.Atributes [p.Vitality] = 12;
 					newItem.Atributes [p.Strength] = 12;
 					newItem.Defensives[p.IncreasedEvasion] = 15;
-				}
-				if (newItem.itemName == "Ice Dragon's Defense"){
+					break;
+				case IceDragon:
 					newItem.Defensives [p.ColdRes] = 25;
 					newItem.Utils [p.AllAttr] = 5;
 					newItem.Defensives[p.IncreasedDefense] = 35;
-				}
-				if (newItem.itemName == "The Wall"){
+					break;
+				case Wall:
 					newItem.Defensives [p.MaxHealth] = Random.Range (30, 40);
 					newItem.Defensives [p.AllRes] = 15;
-				}
-				if (newItem.itemName == "Thunderstrike"){
+					break;
+				case Thunderstrike:
 					newItem.Defensives [p.LightRes] = 20;
 					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
 					newItem.Utils [p.AllAttr] = 5;
-				}
-				if (newItem.itemName == "Conqueror's Ambition"){
+					break;
+				case ConquerorAmbition:
 					newItem.Defensives [p.MaxHealth] = Random.Range (20, 30);
 					newItem.Utils [p.AllAttr] = 15;
-				}
-				if (newItem.itemName == "Vicious Hunter"){
+					break;
+				case ViciousHunter:
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16);
-				}
-				if (newItem.itemName == "The Redeemer"){
+					break;
+				case Redeemer:
 					newItem.Offensives [p.IncreasedMgDmg] = 10;
 					newItem.Atributes [p.Spirit] = 20;
 					newItem.Defensives [p.AllRes] = 10;
-				}
-				if (newItem.itemName == "Head Crusher"){
+					break;
+				case HeadCrusher:
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (20, 31);
 					newItem.Atributes [p.IncreasedDmg] = 20;
-				}
-				if (newItem.itemName == "Ogre's Mace"){
+					break;
+				case OgreMace:
 					newItem.Defensives [p.PoisonRes] = 15;
 					newItem.Defensives [p.Thorns] = 7;
-				}
-				if (newItem.itemName == "Holy Sceptre"){
+					break;
+				case HolySceptre:
 					newItem.Atributes [p.Dextery] = 20;
 					newItem.Atributes [p.Spirit] = 20;
 					newItem.Defensives [p.AllRes] = 20;
-				}
-				if (newItem.itemName == "Black Skull"){
+					break;
+				case BlackSkull:
 					newItem.Offensives [p.IncreasedMgDmg] = 10;
 					newItem.Atributes [p.Spirit] = 15;
 					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
-				}
-				if (newItem.itemName == "The Raider"){
+					break;
+				case Raider:
 					newItem.Atributes [p.Dextery] = 30;
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
 					newItem.Offensives [p.IncreasedAttackSpeed] = 10;
-				}
-				if (newItem.itemName == "Ybab Ebab"){
+					break;
+				case YbabEbab:
 					newItem.Utils [p.AllAttr] = 5;
 					newItem.Defensives [p.IncreasedEvasion] = 30;
-				}
-				if (newItem.itemName == "Abbadon's Treasure"){
+					break;
+				case AbbadonTreasure:
 					newItem.Utils [p.AllAttr] = 15;
 					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
 					newItem.Defensives [p.AllRes] = -25;
-				}
-				if (newItem.itemName == "Nergal's Hate"){
+					break;
+				case NergalHate:
 					newItem.Defensives [p.PoisonRes] = 30;
 					newItem.Offensives [p.IncreasedMgDmg] = 10;
 					newItem.Offensives [p.IncreasedAttackSpeed] = 10;
+					break;
+				default:
+					break;
 				}
+
+
+
 			}
 
 			for (int j=0; j<numAffixes; j++) {

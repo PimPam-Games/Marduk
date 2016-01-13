@@ -31,6 +31,7 @@ public class Item : MonoBehaviour {
 	public bool itemForSlot = false; //si es true es un item para poner en un slot, si no es un item de los que se pueden agarrar
 	public AudioSource itemSound;
 	public int lifeToAdd = 5; //porcentaje de la vida maxima que agrega el orbe
+	public int uniqueIndex;
 
 	void Awake(){
 

@@ -208,6 +208,7 @@ MonoBehaviour:
   itemForSlot: 0
   itemSound: {fileID: 8236880}
   lifeToAdd: 5
+  uniqueIndex: 11
 --- !u!212 &21255324
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -296,6 +297,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: uniqueIndex
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
