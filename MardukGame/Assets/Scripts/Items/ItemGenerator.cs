@@ -20,9 +20,6 @@ public class ItemGenerator :MonoBehaviour{
 		uniqueList = Resources.LoadAll ("Unique", typeof(Object));
 		skillList = Resources.LoadAll ("SkillItems", typeof(Object));
 	}
-	void Update(){
-
-	}
 
 	public void createInitWeapon(Vector3 position, Quaternion rotation){
 		Object weap =  Resources.Load("Weapons/Arming sword", typeof(UnityEngine.Object));

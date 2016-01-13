@@ -128,12 +128,12 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 		
 		if(pc.supportSkillPos > -1 && !alwaysCrit) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
 			supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
-		
-		if (col.gameObject.tag == "Enemy") {
+		EnemyStats estats = col.gameObject.GetComponent<EnemyStats>();
+		if (estats != null) {
 			if (!isAoe && alreadyHit)
 				return;
 			alreadyHit = true;
-			EnemyStats enemy = col.gameObject.GetComponent<EnemyStats>();
+			
 			if(elem == Types.Element.None){
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
 					p.currentHealth += p.defensives[p.LifePerHit];
@@ -164,10 +164,10 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 					alwaysCrit = true;
 			}
 			if (Traits.traits[Traits.ANTIAIR].isActive()){
-				if (enemy.GetComponent<EnemyStats>().enemyName == "Wraith" ||
-				    enemy.GetComponent<EnemyStats>().enemyName == "Roc" ||
-				    enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus" ||
-				    enemy.GetComponent<EnemyStats>().enemyName == "Zu")
+				if (estats.enemyName == "Wraith" ||
+				    estats.enemyName == "Roc" ||
+				    estats.enemyName == "Pirobolus" ||
+				    estats.enemyName == "Zu")
 					damage *= 1.2f;
 			}
 			//End Traits
@@ -177,25 +177,25 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 			if(isCrit){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
 				if(!alwaysCrit)
 					damage *= p.offensives[p.CritDmgMultiplier];
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, true); //si elem no es None no se esquivan
+				attackResult = estats.Hit(damage,elem, true); //si elem no es None no se esquivan
 				//Begin Traits
 				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, true);
+					estats.Hit(damage/10,Types.Element.Fire, true);
 				}
 				if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, true);
+					estats.Hit(damage/10,Types.Element.Cold, true);
 				}
 				if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, true);
+					estats.Hit(damage/10,Types.Element.Lightning, true);
 				}
 				if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, true);
+					estats.Hit(damage/10,Types.Element.Poison, true);
 				}
 				//End Traits
 				if(attackResult){
-					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, true);
+					estats.Hit(damageConverted,convertElem, true);
 					if(supportSkill != null){
-						enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, true);
+						estats.Hit(supportSkill.damageAdded,supportSkill.dmgElement, true);
 						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
 					}
 					if(!alwaysCrit)
@@ -209,27 +209,27 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				}
 			}
 			else{
-				attackResult = enemy.GetComponent<EnemyStats>().Hit(damage,elem, false);
+				attackResult = estats.Hit(damage,elem, false);
 				//Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
 					
-					enemy.GetComponent<EnemyStats>().Hit(damageConverted,convertElem, false);
+					estats.Hit(damageConverted,convertElem, false);
 					//Begin Traits
 					if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
-						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, false);
+						estats.Hit(damage/10,Types.Element.Fire, false);
 					}
 					if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
-						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, false);
+						estats.Hit(damage/10,Types.Element.Cold, false);
 					}
 					if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
-						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, false);
+						estats.Hit(damage/10,Types.Element.Lightning, false);
 					}
 					if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
-						enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, false);
+						estats.Hit(damage/10,Types.Element.Poison, false);
 					}
 					//End Traits
 					if(supportSkill != null){
-						enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, false);
+						estats.Hit(supportSkill.damageAdded,supportSkill.dmgElement, false);
 						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
 					}
 					hitEnemySound.Play();
@@ -263,7 +263,8 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 			Debug.LogError("EnemyStats not found in ProjStats");
 			return;
 		}
-		if (col.gameObject.tag == "Player" && !alreadyHit) {
+		PlayerStats pstats = col.gameObject.GetComponent<PlayerStats>();
+		if (pstats != null && !alreadyHit) {
 			bool hitConfirmed = false;
 			float dmgDealt = Random.Range(minDmg,maxDmg);
 			bool isCrit = false;
@@ -272,7 +273,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				isCrit = true;
 				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
 			}
-			hitConfirmed = col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
+			hitConfirmed = pstats.Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
 			alreadyHit = true;
 			if(hitConfirmed){
 				if(col.transform.position.x < this.transform.position.x)

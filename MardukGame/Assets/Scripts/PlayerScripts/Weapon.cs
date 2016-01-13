@@ -19,6 +19,8 @@ public class Weapon : MonoBehaviour {
 	public float animSpeed = 0;
 	public GameObject weaponProjLauncher1;
 	public GameObject weaponProjLauncher2;
+
+	public float checkAnimSpeedTimer = 0;
 	//private float normalAnimSpeed;
 	void Start () {
 		//attackTimer = 0;
@@ -28,17 +30,21 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		attackDelay = 1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));
-		if(attackDelay >= 0.8f)
-			animSpeed = 0;
-		if(attackDelay < 0.8f && attackDelay >= 0.5f)
-			animSpeed = 1;
-		if(attackDelay < 0.5f && attackDelay >= 0.3f)
-			animSpeed = 2;
-		if(attackDelay < 0.3f && attackDelay >= 0.15f)
-			animSpeed = 6;
-		if(attackDelay < 0.15f)
-			animSpeed = 8;
+		checkAnimSpeedTimer -= Time.deltaTime;
+		if(checkAnimSpeedTimer <= 0){
+			checkAnimSpeedTimer = 0.3f;
+			attackDelay = 1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));
+			if(attackDelay >= 0.8f)
+				animSpeed = 0;
+			if(attackDelay < 0.8f && attackDelay >= 0.5f)
+				animSpeed = 1;
+			if(attackDelay < 0.5f && attackDelay >= 0.3f)
+				animSpeed = 2;
+			if(attackDelay < 0.3f && attackDelay >= 0.15f)
+				animSpeed = 6;
+			if(attackDelay < 0.15f)
+				animSpeed = 8;
+		}
 		//attackingTime -= Time.deltaTime;
 		//Debug.Log("attack timer : " + attackTimer.ToString());
 		attackTimer -= Time.fixedDeltaTime;
@@ -82,8 +88,10 @@ public class Weapon : MonoBehaviour {
 
 	private void DoDamage(Collider2D col){
 		GameObject enemy = col.gameObject;
+		EnemyStats estats = col.gameObject.GetComponent<EnemyStats>();
+
 		elem = Types.Element.None;
-		if (enemy.tag == "Enemy" && isAttacking) {
+		if (estats != null && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
 			Support supportSkill = null;
 			if(p.LifePerHit > 0 ){
@@ -148,14 +156,14 @@ public class Weapon : MonoBehaviour {
 					isCrit = true;
 			}
 			if (Traits.traits[Traits.ANTIAIR].isActive()){
-				if (enemy.GetComponent<EnemyStats>().enemyName == "Wraith" ||
-				    enemy.GetComponent<EnemyStats>().enemyName == "Roc" ||
-				    enemy.GetComponent<EnemyStats>().enemyName == "Pirobolus" ||
-				    enemy.GetComponent<EnemyStats>().enemyName == "Zu")
+				if (estats.enemyName == "Wraith" ||
+				    estats.enemyName == "Roc" ||
+				    estats.enemyName == "Pirobolus" ||
+				    estats.enemyName == "Zu")
 					damage *= 1.2f;
 			}
 			//End Traits
-			bool hit = enemy.GetComponent<EnemyStats>().Hit(damage,elem, isCrit);
+			bool hit = estats.Hit(damage,elem, isCrit);
 
 			
 			if(hit){
@@ -168,21 +176,21 @@ public class Weapon : MonoBehaviour {
 
 				//Begin Traits
 				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Fire, isCrit);
+					estats.Hit(damage/10,Types.Element.Fire, isCrit);
 				}
 				if (Traits.traits[Traits.COLDDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Cold, isCrit);
+					estats.Hit(damage/10,Types.Element.Cold, isCrit);
 				}
 				if (Traits.traits[Traits.LIGHTDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Lightning, isCrit);
+					estats.Hit(damage/10,Types.Element.Lightning, isCrit);
 				}
 				if (Traits.traits[Traits.POISONDAMAGE].isActive ()) {
-					enemy.GetComponent<EnemyStats>().Hit(damage/10,Types.Element.Poison, isCrit);
+					estats.Hit(damage/10,Types.Element.Poison, isCrit);
 				}
 				//End Traits
 
 				if(supportSkill != null)
-					enemy.GetComponent<EnemyStats>().Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support
+					estats.Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support
 				if(enemy.transform.position.x < this.transform.position.x)
 					enemy.GetComponent<EnemyIAMovement>().Knock(true);
 				else

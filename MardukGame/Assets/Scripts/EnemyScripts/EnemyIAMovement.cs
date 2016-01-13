@@ -24,6 +24,9 @@ public class EnemyIAMovement : MonoBehaviour {
 	private float stopTime = 0;
 	private Animator anim;
 	private EnemyStats enemyStats;
+	private BoxCollider2D boxCol;
+	private CircleCollider2D cirCol;
+	private SpriteRenderer spriteRend;
 
 	public bool knockable = true;
 	public bool jumper = false; 
@@ -54,6 +57,8 @@ public class EnemyIAMovement : MonoBehaviour {
 	
 	public bool dontFlip = false;
 
+	private float dist = 0;
+	private float checkDistTimer = 0;
 	[SerializeField] private LayerMask whatIsGround;
 
 
@@ -69,6 +74,9 @@ public class EnemyIAMovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		enemyStats = GetComponent<EnemyStats> ();
+		spriteRend = GetComponent<SpriteRenderer>();
+		boxCol = GetComponent<BoxCollider2D>();
+		cirCol = GetComponent<CircleCollider2D>();
 		currentSpeed = maxSpeed;
 		if (hasIdleInstance)
 			anim.SetFloat ("Speed", currentSpeed);
@@ -77,8 +85,8 @@ public class EnemyIAMovement : MonoBehaviour {
 	private void FixedUpdate()
 	{
 		bool g = false;
-		foreach (Transform groundCheck in groundChecks) {
-			if (Physics2D.OverlapCircle (groundCheck.position, groundedRadius, whatIsGround)){
+		for(int i = 0; i < groundChecks.Length; i++){
+			if (Physics2D.OverlapCircle (groundChecks[i].position, groundedRadius, whatIsGround)){
 				g = true;
 				break;
 			}
@@ -88,7 +96,33 @@ public class EnemyIAMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		checkDistTimer -= Time.deltaTime;
+		if(target != null && checkDistTimer <= 0){
+			dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));			
+			if(dist > 25){ //para optimizar desabilita varios componentes del enemigo cuando el jugador esta muy lejos
+				if(boxCol != null && boxCol.enabled)
+					boxCol.enabled = false;
+				if(cirCol != null && cirCol.enabled)
+					cirCol.enabled = false;
+				if(anim != null && anim.enabled)
+					anim.enabled = false;
+				if(spriteRend != null && spriteRend.enabled)
+					spriteRend.enabled = false;
+				return;
+			}
+			else{
+				if(boxCol != null && !boxCol.enabled && !enemyStats.isDead)
+					boxCol.enabled = true;
+				if(cirCol != null && !cirCol.enabled && !enemyStats.isDead)
+					cirCol.enabled = true;
+				if(anim != null && !anim.enabled)
+					anim.enabled = true;
+				if(spriteRend != null && !spriteRend.enabled)
+					spriteRend.enabled = true;
+			}
+			checkDistTimer = 0.2f;
+		}
+		
 		if (enemyStats.isDead) {
 			rb.velocity = new Vector2 (0, rb.velocity.y);
 			return;
@@ -104,9 +138,7 @@ public class EnemyIAMovement : MonoBehaviour {
 		} else {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 		}
-		float dist = 99999;
-		if(target != null)
-			 dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));
+		
 		if(smartFly && dist < MaxDistanceFollow){ //solo para el zu por ahora
 			hflyTimer -= Time.deltaTime;  //comienza moviendose horizontalmente
 			followPlayerTimer -= Time.deltaTime;
@@ -132,12 +164,12 @@ public class EnemyIAMovement : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.gameObject.tag == "BorderJump") {
+		/*if (col.gameObject.tag == "BorderJump") {
 			EnemyJump();
 		}
 		if (col.gameObject.tag == "BorderFlip") {
 			flipDelayCount = 0;
-		}
+		}*/
 	}
 
 	private void EnemyJump () {
@@ -194,7 +226,7 @@ public class EnemyIAMovement : MonoBehaviour {
 	}
 
 	private void FollowPlayer(){
-		float dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));
+		//float dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));
 		 // calcula la direccion donde esta el jugador respecto del enemigo
 		if (common) {
 			if (dist < MaxDistanceFollow && dist >= minDistanceFollow){

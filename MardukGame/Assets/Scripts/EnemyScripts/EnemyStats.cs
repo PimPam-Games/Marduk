@@ -107,14 +107,6 @@ public class EnemyStats : MonoBehaviour {
 		CalculateStats ();
 	}
 
-	void OnEnable(){
-		//StartCoroutine (AlertSoundPlay ());
-	}
-
-	void OnDisable(){
-
-	}
-
 	private void CalculateStats(){
 		minDamage = initMinDamage + initMinDamage * 0.007f * (lvl * lvl);
 		maxDamage = initMaxDamage + initMaxDamage * 0.007f * (lvl * lvl);
@@ -147,6 +139,7 @@ public class EnemyStats : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 		t = 0;
 		if(!isBoss){
 			if (zoneSettings.enemiesLvl != lvl) {
@@ -226,9 +219,10 @@ public class EnemyStats : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col){ //si le pego al jugador le resto la vida
 		t++;
-		if(col.gameObject.tag == "Player" && p.isDead)
+		PlayerStats pstats =  col.gameObject.GetComponent<PlayerStats>();
+		if(pstats != null && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-		if (col.gameObject.tag == "Player" && !p.isDead) {
+		if (pstats != null && !p.isDead) {
 			bool isCrit = false;
 			float dmgDealt = Random.Range(minDamage,maxDamage);
 			float[] critDmgProb = {1 - critChance, critChance };
@@ -241,7 +235,7 @@ public class EnemyStats : MonoBehaviour {
 					Hit (p.defensives[p.Thorns], Types.Element.None, false);
 				}
 			}
-			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,Accuracy, isCrit);
+			pstats.Hit(dmgDealt, elem,Accuracy, isCrit);
 			//begin traits
 			if (p.isBlocking){
 				if (Traits.traits[Traits.BLOCKDMG].isActive())
