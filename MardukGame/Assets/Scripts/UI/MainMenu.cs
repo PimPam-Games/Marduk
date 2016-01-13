@@ -4,13 +4,16 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
+	public static int currentResolution = 3;
+	public static int[] ResolutionsWidth = {1280,1360,1366,1600};
+	public static int[] ResolutionsHeight = {720,768,768,900};
+
 	public Image playMenuImage;
 	public Image optionsMenu;
 
  
 	void Awake(){
-		//Debug.Log( Screen.currentResolution.);
-		bool resolutionOk = false;
+	//	bool resolutionOk = false;
 		/*resoluciones de pantalla compatibles con el juego*/
 		/*if(Screen.currentResolution.width == 1280 &&  Screen.currentResolution.height == 720) 
 			resolutionOk = true;
@@ -20,13 +23,13 @@ public class MainMenu : MonoBehaviour {
 			resolutionOk = true;
 		if(Screen.currentResolution.width == 1600 &&  Screen.currentResolution.height == 900)
 			resolutionOk = true;*/
-		Screen.SetResolution(1600,900,true);
+	//	Screen.SetResolution(ResolutionsWidth[currentResolution],ResolutionsHeight[currentResolution],true);
 		//auxtext.text = "res " + Screen.currentResolution.width.ToString() + " x " + Screen.currentResolution.height.ToString();
 	/*	if(!resolutionOk){
 			Screen.SetResolution(1280,720,true);
 		}*/
 		
-		//QualitySettings.SetQualityLevel(5); //por defecto se setea la calidad de grafricos mas alta
+	//	QualitySettings.SetQualityLevel(5); //por defecto se setea la calidad de grafricos mas alta
 	}
 	
 	public void NewGame(){
