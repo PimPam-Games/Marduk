@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &125002
+--- !u!1 &112204
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 402900}
+  - 4: {fileID: 421556}
   m_Layer: 11
   m_Name: enemyGroundCheck
   m_TagString: Untagged
@@ -15,23 +15,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &169616
+--- !u!1 &166752
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 495082}
-  - 212: {fileID: 21223436}
-  - 50: {fileID: 5061912}
-  - 61: {fileID: 6163492}
-  - 95: {fileID: 9580618}
-  - 114: {fileID: 11492448}
-  - 114: {fileID: 11446790}
-  - 114: {fileID: 11446244}
-  - 82: {fileID: 8280366}
-  - 82: {fileID: 8211714}
+  - 4: {fileID: 464196}
+  - 114: {fileID: 11492198}
+  m_Layer: 11
+  m_Name: Crow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &185872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 409388}
+  - 212: {fileID: 21213022}
+  - 50: {fileID: 5089702}
+  - 61: {fileID: 6151508}
+  - 95: {fileID: 9528980}
+  - 114: {fileID: 11453426}
+  - 114: {fileID: 11454996}
+  - 114: {fileID: 11492462}
+  - 82: {fileID: 8294368}
+  - 82: {fileID: 8209356}
   m_Layer: 11
   m_Name: Crow
   m_TagString: Enemy
@@ -39,15 +55,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &180142
+--- !u!1 &188966
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 458484}
-  - 61: {fileID: 6166970}
+  - 4: {fileID: 440520}
+  - 61: {fileID: 6199946}
   m_Layer: 15
   m_Name: EnemyGroudCol
   m_TagString: EnemyGroundCol
@@ -55,51 +71,64 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &402900
+--- !u!4 &409388
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125002}
+  m_GameObject: {fileID: 185872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 440520}
+  - {fileID: 421556}
+  m_Father: {fileID: 464196}
+  m_RootOrder: 0
+--- !u!4 &421556
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 112204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.0189999994, y: -.293000013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 495082}
+  m_Father: {fileID: 409388}
   m_RootOrder: 1
---- !u!4 &458484
+--- !u!4 &440520
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180142}
+  m_GameObject: {fileID: 188966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.0340000018, y: .0379999988, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 495082}
+  m_Father: {fileID: 409388}
   m_RootOrder: 0
---- !u!4 &495082
+--- !u!4 &464196
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 166752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.52900743, y: -1.41162932, z: 0}
+  m_LocalPosition: {x: -3.03278041, y: -1.67056155, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
-  - {fileID: 458484}
-  - {fileID: 402900}
+  - {fileID: 409388}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5061912
+--- !u!50 &5089702
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 185872}
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
@@ -109,12 +138,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6163492
+--- !u!61 &6151508
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 185872}
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 1
@@ -122,12 +151,12 @@ BoxCollider2D:
   m_Offset: {x: 6.91413879e-06, y: -.132959843}
   serializedVersion: 2
   m_Size: {x: .810000002, y: .329979956}
---- !u!61 &6166970
+--- !u!61 &6199946
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 180142}
+  m_GameObject: {fileID: 188966}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -135,12 +164,12 @@ BoxCollider2D:
   m_Offset: {x: .055075489, y: -.184930399}
   serializedVersion: 2
   m_Size: {x: .810378134, y: .185615867}
---- !u!82 &8211714
+--- !u!82 &8209356
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 185872}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -204,12 +233,12 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!82 &8280366
+--- !u!82 &8294368
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 185872}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -273,13 +302,13 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!95 &9580618
+--- !u!95 &9528980
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 185872}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f7014a27fa9d0f34bb8ea2a81273be3e, type: 2}
@@ -290,59 +319,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11446244
+--- !u!114 &11453426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxDistanceFollow: 11
-  minDistanceFollow: 0
-  maxSpeed: 2
-  initMaxSpeed: 0
-  facingRight: 0
-  currentSpeed: 0
-  rb: {fileID: 0}
-  groundChecks: []
-  jumpForce: 800
-  knockable: 1
-  jumper: 0
-  flying: 1
-  common: 0
-  hasIdleInstance: 0
-  jumpDelay: 2
-  knockbackLength: .300000012
-  knockback: 2.5
-  calcDirDelay: .600000024
-  horizontalFly: 0
-  smartFly: 0
-  upFly: 0
-  dontFlip: 0
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 1024
---- !u!114 &11446790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a83292b4168fca94dae2a95979c7f424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11492448
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 185872}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
@@ -376,8 +358,8 @@ MonoBehaviour:
   evasionPerLvl: 0
   accuracyPerLvl: 0
   blockChance: 0
-  alertSound: {fileID: 8280366}
-  deathSound: {fileID: 8211714}
+  alertSound: {fileID: 8294368}
+  deathSound: {fileID: 8209356}
   enemyName: Roc
   blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
@@ -386,12 +368,70 @@ MonoBehaviour:
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
---- !u!212 &21223436
+--- !u!114 &11454996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83292b4168fca94dae2a95979c7f424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11492198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11492462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b9b026fd11fae4cb60a2d5aac932a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDistanceFollow: 11
+  minDistanceFollow: 0
+  maxSpeed: 2
+  initMaxSpeed: 0
+  facingRight: 0
+  currentSpeed: 0
+  rb: {fileID: 0}
+  groundChecks: []
+  jumpForce: 800
+  knockable: 1
+  jumper: 0
+  flying: 1
+  common: 0
+  hasIdleInstance: 0
+  jumpDelay: 2
+  knockbackLength: .300000012
+  knockback: 2.5
+  calcDirDelay: .600000024
+  horizontalFly: 0
+  smartFly: 0
+  upFly: 0
+  dontFlip: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!212 &21213022
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169616}
+  m_GameObject: {fileID: 185872}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -418,104 +458,8 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: initMaxHealth
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: healthPerLvl
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initMaxDamage
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: minDmgPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: maxDmgPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initMinDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: enemyName
-      value: Roc
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: exp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
-    - target: {fileID: 0}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: ea96ce10b232cbf4182cb5cd5e07f2f1, type: 3}
-    - target: {fileID: 0}
-      propertyPath: deathSound
-      value: 
-      objectReference: {fileID: 8211714}
-    - target: {fileID: 0}
-      propertyPath: initArmour
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initPoisonRes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initEvasion
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: minDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: maxDamage
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: armourPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: coldResPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: fireResPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: lightResPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: poisonResPerLvl
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: expPerLevel
-      value: 1
-      objectReference: {fileID: 0}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 169616}
+  m_RootGameObject: {fileID: 166752}
   m_IsPrefabParent: 1

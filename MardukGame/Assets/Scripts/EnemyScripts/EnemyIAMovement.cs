@@ -99,7 +99,7 @@ public class EnemyIAMovement : MonoBehaviour {
 		checkDistTimer -= Time.deltaTime;
 		if(target != null && checkDistTimer <= 0){
 			dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(this.transform.position.x,this.transform.position.y));			
-			if(dist > 25){ //para optimizar desabilita varios componentes del enemigo cuando el jugador esta muy lejos
+			/*if(dist > 25){ //para optimizar desabilita varios componentes del enemigo cuando el jugador esta muy lejos
 				if(boxCol != null && boxCol.enabled)
 					boxCol.enabled = false;
 				if(cirCol != null && cirCol.enabled)
@@ -119,7 +119,7 @@ public class EnemyIAMovement : MonoBehaviour {
 					anim.enabled = true;
 				if(spriteRend != null && !spriteRend.enabled)
 					spriteRend.enabled = true;
-			}
+			}*/
 			checkDistTimer = 0.2f;
 		}
 		
