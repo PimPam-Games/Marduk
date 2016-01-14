@@ -41,6 +41,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private Weapon weaponScript;
 		public AudioSource attackSound;
 		public AudioSource walkGrassSound;
+		public AudioSource sacrificeSound;
 		
 		public GameObject bowprojectile; //para setearle la flecha al arco por las dudas que no aparezca
 		//private float normalAnimSpeed;
@@ -59,6 +60,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public static int meleeSkillPos = -1; //cuando usa algun skill de tipo melee
 		public static bool useMeleeProjLauncher = false; //si es true, se uso una habilidad melee que tiene que usar el proj launcher
 		public static bool useThunderBlow = false;
+		public static bool useSacrifice = false;
 	//	public static bool castInterruptByMovement = false;
 		public static int skillBtnPressed = -1;
 
@@ -145,7 +147,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 						MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
 						if(string.Compare(ms.nameForSave,"Sacrifice")==0){
 							if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
-								p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
+								useSacrifice = true;
+								//p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
 							}
 							else{
 								NormalAttack();
@@ -166,7 +169,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 							weapon.GetComponent<SpriteRenderer>().color = new Color(0f,0.6f,0,1);
 						}
 					}
-					attackSound.Play ();
+					if(useSacrifice)
+						sacrificeSound.Play();
+					else
+						attackSound.Play ();
 					anim.SetBool ("Attacking", true);
 				} else {
 					if (PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
@@ -537,6 +543,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			PlatformerCharacter2D.supportSkillPos = -1; 
 			PlatformerCharacter2D.useMeleeProjLauncher = false;
 			PlatformerCharacter2D.useThunderBlow = false;
+			PlatformerCharacter2D.useSacrifice = false;
 			Attack ();
 		}
 

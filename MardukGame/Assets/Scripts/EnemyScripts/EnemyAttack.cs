@@ -13,11 +13,11 @@ public class EnemyAttack : MonoBehaviour {
 	private PlayerStats playerStats;
 	private EnemyIAMovement movement;
 	private EnemyStats stats;
+
+	public AudioSource attackSound = null;
+	public bool useSacrifice = false;
 	public bool canBlock;
 
-	void Awake(){
-
-	}
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player");
@@ -60,11 +60,19 @@ public class EnemyAttack : MonoBehaviour {
 		var dir = (target.transform.position - transform.position).normalized;
 		var dot = Vector2.Dot(dir, transform.right); //negativo si player esta a su izquierda
 		float distance = Vector3.Distance (target.transform.position, transform.position);
+		if(attackSound != null)
+			attackSound.Play();
 		if (distance < attackRange)
 			if ((dot < 0 && !movement.IsFacingRight ()) || (dot > 0 && movement.IsFacingRight ())) {
 				float damage = Random.Range (stats.minDamage, stats.maxDamage);
 				bool isCrit = false;
 				float[] critDmgProb = {1 - stats.critChance, stats.critChance};
+				if(useSacrifice && stats.currHealth > (stats.initMaxHealth * 7 /100) + 1){
+					damage *= 2;
+					
+					stats.currHealth -= stats.initMaxHealth * 7 /100; //resta 7 % de vida al atacar
+					Instantiate (stats.blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation);
+				}
 				if(Utils.Choose(critDmgProb) != 0){
 					isCrit = true;
 					damage *= 2; //si es critico lo multiplico por 2 al daño del enemigo

@@ -52,13 +52,14 @@ MonoBehaviour:
   animSpeed: 0
   initManaCost: 0
   manaCostPerLvl: 0
-  initSacrifiedLife: 8
+  initSacrifiedLife: 5
   initconvertedDmg: 0
-  initDmgMultiplier: 125
+  initDmgMultiplier: 150
   sacrifiedLifePerLvl: 1
   dmgMultiplierPerLvl: 3
   elementToConvert: 0
   convertedDmg: 0
+  projectile: {fileID: 0}
 --- !u!114 &11477830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,7 +101,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -8.15436935, y: -1.61789465}
+  m_AnchoredPosition: {x: -4.33971786, y: -1.94332361}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: .5, y: .5}
 --- !u!225 &22589186
@@ -147,7 +148,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initSacrifiedLife
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: sacrifiedLifePerLvl

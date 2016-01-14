@@ -50,6 +50,7 @@ GameObject:
   - 82: {fileID: 8217268}
   - 95: {fileID: 9563092}
   - 82: {fileID: 8223574}
+  - 82: {fileID: 8209964}
   m_Layer: 11
   m_Name: Corrupted
   m_TagString: Enemy
@@ -106,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82.4615402, y: 3189.67554, z: 0}
+  m_LocalPosition: {x: -5.47159386, y: -1.2612958, z: 0}
   m_LocalScale: {x: 1.79999995, y: 1.79999995, z: 1}
   m_Children:
   - {fileID: 400384}
@@ -180,6 +181,75 @@ EdgeCollider2D:
   m_Points:
   - {x: -20.0491409, y: -2.43175936}
   - {x: -19.5306931, y: -2.43102098}
+--- !u!82 &8209964
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131240}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f0d1a5d4ea6b08f4883c8a66e461cbe1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .625
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!82 &8217268
 AudioSource:
   m_ObjectHideFlags: 1
@@ -399,6 +469,8 @@ MonoBehaviour:
   attackDelay: 3
   anim: {fileID: 9563092}
   target: {fileID: 0}
+  attackSound: {fileID: 8209964}
+  useSacrifice: 1
   canBlock: 1
 --- !u!114 &11441578
 MonoBehaviour:

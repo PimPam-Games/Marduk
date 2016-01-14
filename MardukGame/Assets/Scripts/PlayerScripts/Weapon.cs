@@ -113,11 +113,13 @@ public class Weapon : MonoBehaviour {
 					damage = damage * (float)1.25;
 			}
 			//End Traits
+			
 			if(pc.meleeSkillPos > -1){ //si la posicion es mayor a -1, significa que se esta usando un skill melee
 				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();
 				damage *= ms.DmgMultiplier/100;
 				elem = ms.elementToConvert;
-		
+				if(PlatformerCharacter2D.useSacrifice)
+					p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
 				if(pc.useMeleeProjLauncher && ms.projectile != null){
 					PlayerProjStats msProj = ms.projectile.GetComponent<PlayerProjStats>();
 					msProj.minDmg = damage * 0.55f; //por ahora es asi loco,
