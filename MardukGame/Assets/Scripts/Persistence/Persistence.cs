@@ -306,6 +306,28 @@ public class Persistence : MonoBehaviour {
 		}
 	}
 
+	public static void SavePreferences(int resolution, int quality){
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Create (Application.persistentDataPath + "/videoPreferences.dat");
+		PreferencesData data = new PreferencesData();
+		data.resolutionIndex = resolution;
+		data.quality = quality;
+		bf.Serialize (file,data);
+		file.Close ();
+	}
+
+	public static PreferencesData LoadPreferences(){
+		if(File.Exists(Application.persistentDataPath + "/videoPreferences.dat")){
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream file =  File.Open(Application.persistentDataPath + "/videoPreferences.dat", FileMode.Open);
+			PreferencesData data = null;
+			data = (PreferencesData)bf.Deserialize(file);
+			file.Close();
+			return data;
+		}
+		return null;
+	}
+
 	private static Item GenerateItem(SerializableItem i){
 
 		UnityEngine.Object obj  = Resources.Load("Weapons/" + i.itemName, typeof(UnityEngine.Object));

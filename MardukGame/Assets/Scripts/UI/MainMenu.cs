@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-	public static int currentResolution = 3;
+	public static int currentResolution = 0;
 	public static int[] ResolutionsWidth = {1280,1360,1366,1600};
 	public static int[] ResolutionsHeight = {720,768,768,900};
 
@@ -28,8 +28,19 @@ public class MainMenu : MonoBehaviour {
 	/*	if(!resolutionOk){
 			Screen.SetResolution(1280,720,true);
 		}*/
-		
-	//	QualitySettings.SetQualityLevel(5); //por defecto se setea la calidad de grafricos mas alta
+		PreferencesData prefs = null;
+		prefs = Persistence.LoadPreferences();
+		if(prefs != null){
+			currentResolution = prefs.resolutionIndex;
+			Screen.SetResolution(ResolutionsWidth[prefs.resolutionIndex],ResolutionsHeight[prefs.resolutionIndex],true);
+			QualitySettings.SetQualityLevel(prefs.quality);
+			Debug.Log("prefs: " + ResolutionsWidth[prefs.resolutionIndex]+" X "+ResolutionsHeight[prefs.resolutionIndex]);
+		}
+		else{
+			currentResolution = 0;
+			Screen.SetResolution(ResolutionsWidth[currentResolution],ResolutionsHeight[currentResolution],true);
+			QualitySettings.SetQualityLevel(0);
+		}
 	}
 	
 	public void NewGame(){

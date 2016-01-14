@@ -16,12 +16,18 @@ public class OptionsMenu : MonoBehaviour {
 	private bool escPressed = false;
 	private bool backToMain = true;
 
+	private int scrResOption;		
+	private int qualityOption;	
+
+
 	void OnEnable() {
 		mainOptions.SetActive(true);
 		videoMenu.SetActive(false);
 		controlsMenu.gameObject.SetActive(false);
-		resolutionText.text = MainMenu.ResolutionsWidth[MainMenu.currentResolution].ToString() + " X " + MainMenu.ResolutionsHeight[MainMenu.currentResolution].ToString();
-		QualityText.text = QualitySettings.GetQualityLevel().ToString();
+		scrResOption = MainMenu.currentResolution;
+		qualityOption = QualitySettings.GetQualityLevel();
+		resolutionText.text = MainMenu.ResolutionsWidth[scrResOption].ToString() + " X " + MainMenu.ResolutionsHeight[scrResOption].ToString();
+		QualityText.text = qualityOption.ToString();
 		escPressed = false;
 		backToMain = true;
 	}
@@ -42,33 +48,38 @@ public class OptionsMenu : MonoBehaviour {
 	}
 
 	public void UpResolution(){
-		if(MainMenu.currentResolution < MainMenu.ResolutionsWidth.Length-1){
-			MainMenu.currentResolution++;
-			Screen.SetResolution(MainMenu.ResolutionsWidth[MainMenu.currentResolution],MainMenu.ResolutionsHeight[MainMenu.currentResolution],true);
-			resolutionText.text = MainMenu.ResolutionsWidth[MainMenu.currentResolution].ToString() + " X " + MainMenu.ResolutionsHeight[MainMenu.currentResolution].ToString();
+		if(scrResOption < MainMenu.ResolutionsWidth.Length-1){
+			scrResOption++; 
+			resolutionText.text = MainMenu.ResolutionsWidth[scrResOption].ToString() + " X " + MainMenu.ResolutionsHeight[scrResOption].ToString();
 		}
 	}
 
 	public void DownResolution(){
-		if(MainMenu.currentResolution > 0){
-			MainMenu.currentResolution--;
-			Screen.SetResolution(MainMenu.ResolutionsWidth[MainMenu.currentResolution],MainMenu.ResolutionsHeight[MainMenu.currentResolution],true);
-			resolutionText.text = MainMenu.ResolutionsWidth[MainMenu.currentResolution].ToString() + " X " + MainMenu.ResolutionsHeight[MainMenu.currentResolution].ToString();
+		if(scrResOption > 0){
+			scrResOption--; 
+			resolutionText.text = MainMenu.ResolutionsWidth[scrResOption].ToString() + " X " + MainMenu.ResolutionsHeight[scrResOption].ToString();
 		}
 	}
 
 	public void UpQuality(){
-		if(QualitySettings.GetQualityLevel() < 5){
-			QualitySettings.SetQualityLevel(QualitySettings.GetQualityLevel()+1);
-			QualityText.text = QualitySettings.GetQualityLevel().ToString();
+		if(qualityOption < 5){
+			qualityOption++;
+			QualityText.text = qualityOption.ToString();
 		}
 	}
 	
 	public void DownQuality(){
-		if(QualitySettings.GetQualityLevel() > 0){
-			QualitySettings.SetQualityLevel(QualitySettings.GetQualityLevel()-1);
-			QualityText.text = QualitySettings.GetQualityLevel().ToString();
+		if(qualityOption > 0){
+			qualityOption--;
+			QualityText.text = qualityOption.ToString();
 		}
+	}
+
+	public void Apply(){
+		MainMenu.currentResolution = scrResOption;
+		Screen.SetResolution(MainMenu.ResolutionsWidth[scrResOption], MainMenu.ResolutionsHeight[scrResOption],true);
+		QualitySettings.SetQualityLevel(qualityOption);
+		Persistence.SavePreferences(scrResOption,qualityOption);
 	}
 
 	public void Back(){
@@ -77,17 +88,17 @@ public class OptionsMenu : MonoBehaviour {
 
 	IEnumerator ButtonPush(int btnId){
 		yield return new WaitForSeconds (0.3f);
-		if(btnId == 1){
+		if(btnId == 1){ //habilitar opciones de video
 			videoMenu.gameObject.SetActive(true);
 			mainOptions.gameObject.SetActive(false);
 			backToMain = false;
 		}
-		if(btnId == 2){
+		if(btnId == 2){ // habilitar controles
 			controlsMenu.gameObject.SetActive(true);
 			mainOptions.gameObject.SetActive(false);
 			backToMain = false;
 		}
-		if(btnId == 3){
+		if(btnId == 3){ //back
 			if(backToMain){
 				mainOptions.gameObject.SetActive(true);
 				mainMenu.gameObject.SetActive(true);
