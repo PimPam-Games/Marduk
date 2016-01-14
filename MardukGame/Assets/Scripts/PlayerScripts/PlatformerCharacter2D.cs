@@ -161,6 +161,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 							useThunderBlow = true;
 							weapon.GetComponent<SpriteRenderer>().color = new Color(0.2f,0.4f,1,1);
 						}
+						if(string.Compare(ms.nameForSave,"PlantThrust")==0){ //usa Poison blow
+							useMeleeProjLauncher = true;
+							weapon.GetComponent<SpriteRenderer>().color = new Color(0f,0.6f,0,1);
+						}
 					}
 					attackSound.Play ();
 					anim.SetBool ("Attacking", true);
