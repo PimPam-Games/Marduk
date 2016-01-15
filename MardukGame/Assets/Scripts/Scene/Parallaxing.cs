@@ -30,13 +30,6 @@ public class Parallaxing : MonoBehaviour {
 		}
 		initDone = true;
 	}
-
-
-	// Use this for initialization
-	void Start () {
-		// The previous frame had the current frame's camera position
-
-	}
 	
 	// Update is called once per frame
 	void Update () {

@@ -24,9 +24,6 @@ public class EnemyIAMovement : MonoBehaviour {
 	private float stopTime = 0;
 	private Animator anim;
 	private EnemyStats enemyStats;
-	private BoxCollider2D boxCol;
-	private CircleCollider2D cirCol;
-	private SpriteRenderer spriteRend;
 
 	public bool knockable = true;
 	public bool jumper = false; 
@@ -74,9 +71,6 @@ public class EnemyIAMovement : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		anim = GetComponent<Animator> ();
 		enemyStats = GetComponent<EnemyStats> ();
-		spriteRend = GetComponent<SpriteRenderer>();
-		boxCol = GetComponent<BoxCollider2D>();
-		cirCol = GetComponent<CircleCollider2D>();
 		currentSpeed = maxSpeed;
 		if (hasIdleInstance)
 			anim.SetFloat ("Speed", currentSpeed);

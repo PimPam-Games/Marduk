@@ -8,6 +8,7 @@ public class Fading : MonoBehaviour {
 	public static Image fadeImage;
 	private static Animator anim;
 	private static string sceneToLoad;
+	public static bool loaded = false; // se usa en el optimizador para saber cuando se termino de cargar un nibvel
 	public GameObject gameCtrlObj;
 	private GameController gameCtrl;
 	//private ChunkFactory currentChunkFactory;
@@ -20,7 +21,7 @@ public class Fading : MonoBehaviour {
 	}
 
 	public static void BeginFadeIn (string newScene)
-	{
+	{	loaded = false;
 		PlatformerCharacter2D.stopPlayer = true;
 		sceneToLoad = newScene;
 		anim.SetBool ("FadeOut",false);
@@ -36,6 +37,7 @@ public class Fading : MonoBehaviour {
 		}
 		PlatformerCharacter2D.stopPlayer = false;
 		CameraController.stopFollow = false;
+		loaded = true;
 		anim.SetBool ("FadeOut",true);
 		anim.SetBool ("FadeIn",false);
 	}
@@ -47,9 +49,6 @@ public class Fading : MonoBehaviour {
 		g.currLevelName = sceneToLoad;
 		//ChunkFactory.levelGenerated = false;
 		Application.LoadLevel (sceneToLoad);
-
-
-
 	}
 
 	public void LevelLoaded(){
@@ -65,6 +64,7 @@ public class Fading : MonoBehaviour {
 		}
 		gameCtrl.RepositionPlayerAndCamera();
 		Fading.BeginFadeOut ();
+		
 	}
 
 	void OnLevelWasLoaded (int level) {

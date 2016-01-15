@@ -9,9 +9,4 @@ public class ParticlePlaybackTime : MonoBehaviour {
 	void Start () {
 		GetComponent<ParticleSystem>().playbackSpeed = playBackSpeed;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

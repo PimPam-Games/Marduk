@@ -476,7 +476,7 @@ public class EnemyStats : MonoBehaviour {
 		if(circlecol != null)
 			circlecol.enabled = false;
 		double e = exp + ((lvl-1) * expPerLevel);
-		p.UpdateExp (exp + ((lvl-1) * expPerLevel));
+		p.UpdateExp (e);
 		if(!isBoss){
 			deathSound.Play ();
 			SpriteRenderer sprite = GetComponent<SpriteRenderer> ();

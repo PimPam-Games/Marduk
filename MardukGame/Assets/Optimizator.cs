@@ -8,6 +8,9 @@ public class Optimizator : MonoBehaviour {
 	private float checkDistTimer = 0;
 	private GameObject child;	
 
+	public bool optimizeAfterLoad = false;
+	public float maxDistance = 25;
+
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -16,6 +19,8 @@ public class Optimizator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(optimizeAfterLoad && !Fading.loaded)
+			return;
 		checkDistTimer -= Time.deltaTime;
 		if(target != null && checkDistTimer <= 0){		
 			if(child == null){
@@ -23,7 +28,7 @@ public class Optimizator : MonoBehaviour {
 				return;
 			}
 			dist = Vector2.Distance (new Vector2(target.transform.position.x,target.transform.position.y),new Vector2(child.transform.position.x,child.transform.position.y));			
-			if(dist > 25){ //deshabilita al objeto si esta muy lejos del jugador
+			if(dist > maxDistance){ //deshabilita al objeto si esta muy lejos del jugador
 				if(child.activeSelf)
 					child.SetActive(false);
 			}

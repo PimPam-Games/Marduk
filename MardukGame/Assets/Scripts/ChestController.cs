@@ -10,6 +10,7 @@ public class ChestController : MonoBehaviour {
 	private BoxCollider2D boxCol;
 	public Sprite openSprite;
 	public AudioSource chestOpenSound;
+	private float timer = 0;
 
 	void Awake(){
 		itGen = GetComponent<ItemGenerator> ();
@@ -19,19 +20,19 @@ public class ChestController : MonoBehaviour {
 		boxCol = GetComponent<BoxCollider2D> ();
 	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
-		rb.velocity = new Vector2 (0, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
-		rb.velocity = new Vector2 (0, rb.velocity.y - 00000001);
+		timer -= Time.deltaTime;
+		if(timer <= 0){
+			timer = 0.2f;
+			rb.velocity = new Vector2 (0, rb.velocity.y + 00000001); //truco para que el onTriggerStay se llame todo el tiempo
+			rb.velocity = new Vector2 (0, rb.velocity.y - 00000001);
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D coll){
-		if (coll.gameObject.tag == "Player" && Input.GetButtonUp("Grab")) {
+		if (coll.gameObject.GetComponent<PlayerStats>() != null && Input.GetButtonUp("Grab")) {
 				chestOpenSound.Play();
 				sprite.sprite = openSprite;
 				DropItem();

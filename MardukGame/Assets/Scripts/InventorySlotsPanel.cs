@@ -28,14 +28,6 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	void Start () {
 		invTooltip = invTooltipGO;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		/*if(GameController.levelLoaded && !itemsLoaded){
-			itemsLoaded = true;
-			LoadItems();	
-		}*/
-	}
 
 	/*Se invoca desde SpellsPanel */
 	public void LoadSkillAt(GameObject newSkill, int posX, int posY){

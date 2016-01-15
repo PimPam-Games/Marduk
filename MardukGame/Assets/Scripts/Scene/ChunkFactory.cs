@@ -189,10 +189,10 @@ public class ChunkFactory : MonoBehaviour {
 				}
 			
 				if(bottomUpGeneration){
-					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
+					newChunk.GetComponentInChildren<Chunk2>().chunkId = currentChunkId;
 				}
 				else
-					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
+					newChunk.GetComponentInChildren<Chunk>().chunkId = currentChunkId;
 				break;
 			case 1:
 				/*if(exit == Exits.Right)
@@ -211,7 +211,7 @@ public class ChunkFactory : MonoBehaviour {
 				if(bottomUpGeneration)
 					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
 				else
-					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
+				newChunk.GetComponentInChildren<Chunk>().chunkId = currentChunkId;
 				break;
 			case 2:
 				currentChunkId++;
@@ -238,7 +238,7 @@ public class ChunkFactory : MonoBehaviour {
 				if(bottomUpGeneration)
 					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
 				else
-					newChunk.GetComponent<Chunk>().chunkId = currentChunkId;
+					newChunk.GetComponentInChildren<Chunk>().chunkId = currentChunkId;
 				break;
 			}
 			g.chunksPerZone[g.currLevelName].Add(newChunk); //agrego el chunk a la lista de chunks de este nivel

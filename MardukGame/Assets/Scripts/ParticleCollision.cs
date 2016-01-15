@@ -24,7 +24,7 @@ public class ParticleCollision : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () { //me parece que esta clase no se usa en nada
 		if (direction == "Left") { //agranda el collider dinamicamente hacia la izquierda
 			if(col.size.x < 20 ){
 				col.size += new Vector2(0.5f,0);
@@ -49,7 +49,7 @@ public class ParticleCollision : MonoBehaviour {
 				col.offset += new Vector2 (0,-0.30f);
 			}
 		}
-	}
+	}*/
 
 	IEnumerator RemoveColAfterTime(float collLifetime) {
 		yield return new WaitForSeconds (collLifetime);

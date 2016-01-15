@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour {
 	void Update () {
 		checkAnimSpeedTimer -= Time.deltaTime;
 		if(checkAnimSpeedTimer <= 0){
-			checkAnimSpeedTimer = 0.3f;
+			checkAnimSpeedTimer = 0.4f;
 			attackDelay = 1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));
 			if(attackDelay >= 0.8f)
 				animSpeed = 0;
@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour {
 		}
 		//attackingTime -= Time.deltaTime;
 		//Debug.Log("attack timer : " + attackTimer.ToString());
-		attackTimer -= Time.fixedDeltaTime;
+	
 		if (anim.GetBool ("Attacking") == false){
 			isAttacking = false;
 			this.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1); //si no esta atacando pone el arma en su color original
@@ -60,6 +60,10 @@ public class Weapon : MonoBehaviour {
 
 		if(!GetComponent<PolygonCollider2D>().isTrigger)
 			GetComponent<PolygonCollider2D>().isTrigger = true;
+	}
+
+	private void FixedUpdate(){
+		attackTimer -= Time.fixedDeltaTime;
 	}
 
 

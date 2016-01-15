@@ -18,11 +18,11 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		doubleClickTimer -= Time.deltaTime;
 		if(doubleClickTimer <= 0)
 			clickCount = 0;
-	}
+	}*/
 
 	public GameObject item{
 		get{

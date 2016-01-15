@@ -10,9 +10,4 @@ public class PlayDelay : MonoBehaviour {
 		sound.PlayDelayed (delaySecs);	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
 }

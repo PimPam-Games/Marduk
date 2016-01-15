@@ -95,7 +95,7 @@ public class Chunk : MonoBehaviour {
 				GameObject g;
 				g = cf.GenerateChunk (chunkEndRight.position, chunkEndRight.rotation,ChunkFactory.Exits.Left,this.position,this.position[0]);
 				if(g!=null){
-					Chunk nchunk = g.GetComponent<Chunk>();
+					Chunk nchunk = g.GetComponentInChildren<Chunk>();
 					nchunk.leftUsed = true;
 					nchunk.position[0] = this.position[0]; //la posicion del nuevo chunk es la derecha del actual
 					nchunk.position[1] = this.position[1]+1;
@@ -118,7 +118,7 @@ public class Chunk : MonoBehaviour {
 				GameObject g;
 				g = cf.GenerateChunk(transform.position,transform.rotation,ChunkFactory.Exits.Right,this.position,this.position[0]);
 				if(g != null){
-					Chunk nchunk = g.GetComponent<Chunk>();
+					Chunk nchunk = g.GetComponentInChildren<Chunk>();
 					nchunk.rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
 					nchunk.position[0] = this.position[0]; //la posicion del nuevo chunk es la izq del actual
 					nchunk.position[1] = this.position[1]-1;
@@ -141,7 +141,7 @@ public class Chunk : MonoBehaviour {
 
 				GameObject g = cf.GenerateChunk(chunkEndDownL.position,chunkEndDownL.rotation,ChunkFactory.Exits.Right,this.position,this.position[0]+1);
 				if(g != null){
-					Chunk nchunk = g.GetComponent<Chunk>();
+					Chunk nchunk = g.GetComponentInChildren<Chunk>();
 					nchunk.rightUsed = true; //el nuevo chunk no tinene que generar por la derecha por que ya esta usada por el chunk que lo acaba de crear
 					nchunk.position[0] = this.position[0]+1; //la posicion del nuevo chunk es la izq del actual
 					nchunk.position[1] = this.position[1]-1;
@@ -164,7 +164,7 @@ public class Chunk : MonoBehaviour {
 				//int[] p = {this.position[0]+1,this.position[1]};
 				GameObject g = cf.GenerateChunk (chunkEndDownR.position, chunkEndDownR.rotation,ChunkFactory.Exits.Left,this.position,this.position[0]+1);
 				if(g!=null){
-					Chunk nchunk = g.GetComponent<Chunk>();
+					Chunk nchunk = g.GetComponentInChildren<Chunk>();
 					nchunk.leftUsed = true;
 					nchunk.position[0] = this.position[0]+1; //la posicion del nuevo chunk es la der del actual
 					nchunk.position[1] = this.position[1]+1;
@@ -186,7 +186,7 @@ public class Chunk : MonoBehaviour {
 
 		if (col.gameObject.tag == "Chunk") {
 
-			if(!this.isDouble && !col.GetComponent<Chunk>().isEnd && !this.isEnd){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
+			if(!this.isDouble && !col.GetComponentInChildren<Chunk>().isEnd && !this.isEnd){ //este mambo es para solucionar dramas de chunks que se superponian en la cueva
 					Debug.Log("tengo que destruir el chunk");
 					Destroy(this.gameObject);
 			}

@@ -8,11 +8,6 @@ public class DestroyAfterTime : MonoBehaviour {
 	public float colliderLifetime;
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
 		StartCoroutine (RemoveAfterTime (lifeTime));
 		if (hasBoxCollider)
 			StartCoroutine (RemoveColAfterTime(colliderLifetime));
