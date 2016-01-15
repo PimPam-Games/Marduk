@@ -1062,7 +1062,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 376696055}
   - 222: {fileID: 376696058}
-  - 114: {fileID: 376696057}
   - 82: {fileID: 376696056}
   m_Layer: 5
   m_Name: ControlsMenu
@@ -1070,7 +1069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &376696055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1159,27 +1158,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &376696057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 376696054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: .011764707, g: .011764707, b: .011764707, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!222 &376696058
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1398,7 +1376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &471183154
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3533,9 +3511,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .011764707, g: .011764707, b: .011764707, a: 1}
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: db0019fb51343c94fb77f01e21de8fdc, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4235,10 +4213,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 376696055}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .111249454}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.58280042e-05, y: -.249994278}
-  m_SizeDelta: {x: 0, y: -.5}
+  m_AnchoredPosition: {x: 5.50169989e-06, y: -.0790214539}
+  m_SizeDelta: {x: 0, y: .158000946}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1120195244
 MonoBehaviour:
@@ -4253,7 +4231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 7c5feebc9cf3c3c4daae685fec7722bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df7d8d11aa413624fa1047527bbe6739, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
