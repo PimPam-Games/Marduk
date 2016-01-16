@@ -30,7 +30,12 @@
 			
 		if (!PlayerStats.isDead && !IntroText.introVisible) {
 			// Read the inputs.
-			bool crouch = Input.GetKey (KeyCode.LeftControl);
+			bool crouch = Input.GetKey (KeyCode.S);
+			/*bool crouch = false;
+			if(Input.GetAxis ("Vertical") < 0){
+				crouch = true;
+			}*/
+			
 			float h = Input.GetAxis ("Horizontal");
 			// Pass all parameters to the character control script.
 			if(PlatformerCharacter2D.skillBtnPressed > 0) // si esta pulsando un boton de habilidad no se puede mover

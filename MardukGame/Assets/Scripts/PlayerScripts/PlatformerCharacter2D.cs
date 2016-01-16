@@ -324,7 +324,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             if ((grounded || airControl) && !movementSkillActivated)
             {
                 // Reduce the speed if crouching by the crouchSpeed multiplier
-                move = (crouch ? move*crouchSpeed : move);
+                move = (crouch ? move*0 : move);
 
                 // The Speed animator parameter is set to the absolute value of the horizontal input.
                 anim.SetFloat("Speed", Mathf.Abs(move));
