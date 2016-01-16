@@ -391,7 +391,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				bowLauncher.LaunchProjectile ();
 				multipleShots = false;
 			} else {
-				bowLauncher.force = new Vector2 (bowLauncher.force.x, Input.GetAxis ("Vertical") * 180); 					
+				bowLauncher.force = new Vector2 (bowLauncher.force.x, /*Input.GetAxis ("Vertical")*/ 1 * 60); 					
 				bowLauncher.LaunchProjectile ();
 			}
 		}
