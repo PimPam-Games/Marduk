@@ -209,9 +209,9 @@ public class ChunkFactory : MonoBehaviour {
 					doubleInRow[chunkPos[0]] = true;
 				}
 				if(bottomUpGeneration)
-					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
+					newChunk.GetComponentInChildren<Chunk2>().chunkId = currentChunkId;
 				else
-				newChunk.GetComponentInChildren<Chunk>().chunkId = currentChunkId;
+					newChunk.GetComponentInChildren<Chunk>().chunkId = currentChunkId;
 				break;
 			case 2:
 				currentChunkId++;
@@ -236,7 +236,7 @@ public class ChunkFactory : MonoBehaviour {
 						newChunk = (GameObject)Instantiate (rightEndChunks [r], pos, rot);
 				}
 				if(bottomUpGeneration)
-					newChunk.GetComponent<Chunk2>().chunkId = currentChunkId;
+					newChunk.GetComponentInChildren<Chunk2>().chunkId = currentChunkId;
 				else
 					newChunk.GetComponentInChildren<Chunk>().chunkId = currentChunkId;
 				break;
