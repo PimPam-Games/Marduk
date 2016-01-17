@@ -18,6 +18,7 @@ public class MenuInGame : MonoBehaviour {
 		g.DestroyEnemies ();
 		GameController.DestroyAllChunks ();
 		GameController.previousExit = 0;
+		ObjectsPool.ClearQueues();
 		this.gameObject.SetActive (false);
 		Time.timeScale = 1.0f;
 		Application.LoadLevel("MainMenu");

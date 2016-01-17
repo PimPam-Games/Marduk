@@ -71,7 +71,8 @@ public class EnemyAttack : MonoBehaviour {
 					damage *= 2;
 					
 					stats.currHealth -= stats.initMaxHealth * 7 /100; //resta 7 % de vida al atacar
-					Instantiate (stats.blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation);
+					//Instantiate (stats.blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation);
+					ObjectsPool.GetBlood(this.transform.position,this.transform.rotation);
 				}
 				if(Utils.Choose(critDmgProb) != 0){
 					isCrit = true;

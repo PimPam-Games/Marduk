@@ -52,7 +52,6 @@ public class EnemyStats : MonoBehaviour {
 	private Animator anim;
 	private Rigidbody2D rb;
 	public string enemyName;
-	public GameObject blood;
 	public bool isDead = false;
 	private LevelSettings zoneSettings;
 	public double exp; //experiencia que da el bicho cuando lo matan
@@ -299,7 +298,8 @@ public class EnemyStats : MonoBehaviour {
 			anim.SetBool ("Blocking", true);
 			Debug.Log ("El enemigo Bloqueo el ataque! ");
 		} else {
-			Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
+			//Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
+			ObjectsPool.GetBlood(this.transform.position,this.transform.rotation);
 			float realDmg = dmg;
 			if(shock){
 				realDmg *= 1.5f; //cuando esta shokeado aumenta el daño recibido de cualquier tipo

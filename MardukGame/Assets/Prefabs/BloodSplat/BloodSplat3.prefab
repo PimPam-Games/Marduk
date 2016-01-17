@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &434280
 Transform:
   m_ObjectHideFlags: 1
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.8252964, y: -1.38576949, z: 760.039978}
+  m_LocalPosition: {x: -82.5033035, y: 28.8501091, z: 760.039978}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,6 +61,7 @@ MonoBehaviour:
   lifeTime: .5
   hasBoxCollider: 0
   colliderLifetime: 0
+  disableAfterTime: 1
 --- !u!212 &21214302
 SpriteRenderer:
   m_ObjectHideFlags: 1
