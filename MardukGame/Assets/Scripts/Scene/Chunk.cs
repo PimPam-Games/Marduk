@@ -129,7 +129,7 @@ public class Chunk : MonoBehaviour {
 					if(nchunk.isDouble){
 						cf.cmatrix[this.position[0]+1,this.position[1]-1] = true;
 					}
-					g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
+					g.transform.position = new Vector3( g.transform.position.x -(nchunk.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
 					cf.cmatrix[this.position[0],this.position[1]-1] = true; //marco como ucupada la posision de la izq de este chunk
 					//nchunk.GenerateChunks();
 				}
@@ -152,7 +152,7 @@ public class Chunk : MonoBehaviour {
 					if(nchunk.isDouble){
 						cf.cmatrix[this.position[0]+2,this.position[1]-1] = true;
 					}
-					g.transform.position = new Vector3( g.transform.position.x -(g.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
+					g.transform.position = new Vector3( g.transform.position.x -(nchunk.transform.FindChild("ChunkEnd").position.x - g.transform.position.x),g.transform.position.y,g.transform.position.z);
 					cf.cmatrix[this.position[0]+1,this.position[1]-1] = true;
 					//nchunk.GenerateChunks();
 				}
