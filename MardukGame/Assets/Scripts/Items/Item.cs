@@ -36,10 +36,10 @@ public class Item : MonoBehaviour {
 	void Awake(){
 
 		if(!itemForSlot){
-		atributes = new float[p.CantAtributes];
-		offensives = new float[p.CantOffensives];
-		defensives = new float[p.CantDefensives];
-		utils = new float[p.CantUtils];
+			atributes = new float[p.CantAtributes];
+			offensives = new float[p.CantOffensives];
+			defensives = new float[p.CantDefensives];
+			utils = new float[p.CantUtils];
 		
 			itemSound = GetComponent<AudioSource> ();
 			rb = GetComponent<Rigidbody2D> ();

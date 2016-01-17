@@ -38,8 +38,8 @@ public class ItemGenerator :MonoBehaviour{
 
 	public void CreateItem(Vector3 position, Quaternion rotation){
 		//crea una nueva arma
-		GameObject newWeapon;
-		Item newItem;
+		GameObject newWeapon = null;
+		Item newItem = null;
 		//float[] rarityProb = {0.25f,0.25f,0.25f,0.25f};
 		//float[] rarityProb = {0.51f,0.2f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
 		//int newRarity = Utils.Choose (rarityProb); 
@@ -236,7 +236,7 @@ public class ItemGenerator :MonoBehaviour{
 					bool ok = false;
 					while (ok == false) {
 						int optionDef = Random.Range (0, p.CantDefensives);
-						if (newItem.Defensives [optionDef] > 0)
+						if (newItem.Defensives [optionDef] > 0) //si ya esta usada esta opcion en el item
 							continue;
 						ok = true;
 						if (optionDef == p.LifePerSecond)
@@ -269,6 +269,10 @@ public class ItemGenerator :MonoBehaviour{
 					bool ok = false;
 					while (ok == false) {
 						int optionOff = Random.Range (11, p.CantOffensives); //empieza desde 11 por que las  de antes son las esatadisticas basicas
+						if(newItem == null){
+							Debug.LogError("Error: new item null!!");
+							return;
+						}
 						if (newItem.Offensives [optionOff] > 0)
 							continue;
 						ok = true;
