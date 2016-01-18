@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
 
@@ -187,7 +187,7 @@ public class ItemGenerator :MonoBehaviour{
 					break;
 				case HeadCrusher:
 					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (20, 31);
-					newItem.Atributes [p.IncreasedDmg] = 20;
+					newItem.Offensives [p.IncreasedDmg] = 20;
 					break;
 				case OgreMace:
 					newItem.Defensives [p.PoisonRes] = 15;
