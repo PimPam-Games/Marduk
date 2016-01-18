@@ -232,11 +232,12 @@ public class ItemGenerator :MonoBehaviour{
 
 			for (int j=0; j<numAffixes; j++) {
 				int defAtrOff = Random.Range (0, 3);
-				if (defAtrOff == 0) { //defensive
-					bool ok = false;
+				bool ok = false;
+				switch (defAtrOff) {
+				case 0:
 					while (ok == false) {
 						int optionDef = Random.Range (0, p.CantDefensives);
-						if (newItem.Defensives [optionDef] > 0) //si ya esta usada esta opcion en el item
+						if (newItem.Defensives [optionDef] > 0 || optionDef == 1 || optionDef == 6) //si ya esta usada esta opcion en el item
 							continue;
 						ok = true;
 						if (optionDef == p.LifePerSecond)
@@ -254,9 +255,8 @@ public class ItemGenerator :MonoBehaviour{
 						if (optionDef == p.LifePerHit)
 							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.5f, 2f), 2);
 					}
-				}
-				if (defAtrOff == 1) { //attribute
-					bool ok = false;
+					break;
+				case 1:
 					while (ok == false) {
 						int optionAtr = Random.Range (0, p.CantAtributes);
 						if (newItem.Atributes [optionAtr] > 0)
@@ -264,9 +264,8 @@ public class ItemGenerator :MonoBehaviour{
 						ok = true;
 						newItem.Atributes [optionAtr] = Random.Range (5, 11);
 					}
-				}
-				if (defAtrOff == 2) { //offensive
-					bool ok = false;
+					break;
+				case 2:
 					while (ok == false) {
 						int optionOff = Random.Range (11, p.CantOffensives); //empieza desde 11 por que las  de antes son las esatadisticas basicas
 						if(newItem == null){
@@ -277,7 +276,7 @@ public class ItemGenerator :MonoBehaviour{
 							continue;
 						ok = true;
 						if (optionOff == p.IncreasedCritChance)
-							newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (3, 7); 
+							newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16); 
 						if (optionOff == p.IncreasedAttackSpeed) 
 							newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (5, 8);
 						if (optionOff == p.IncreasedCastSpeed) 
@@ -287,10 +286,13 @@ public class ItemGenerator :MonoBehaviour{
 						if (optionOff == p.IncreasedDmg)
 							newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (5, 11);
 						if (optionOff == p.IncreasedAccuracy)
-							newItem.Offensives [p.IncreasedAccuracy] = (float)Random.Range (5, 11);
-
-					}		
+							newItem.Offensives [p.IncreasedAccuracy] = (float)Random.Range (5, 11);						
+					}
+					break;
+				default:
+					break;
 				}
+
 			}
 
 		}

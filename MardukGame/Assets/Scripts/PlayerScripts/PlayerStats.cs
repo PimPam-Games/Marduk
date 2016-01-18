@@ -416,10 +416,10 @@ public class PlayerStats : MonoBehaviour {
 		switch (type){
 		case Types.Element.None:
 			//Begin Traits
-			if (Traits.traits[Traits.PDAMAGE].isActive ())
-				realDmg -= (defense*(float)0.75 / (defense*(float)0.75 + 8 * realDmg));
+			//if (Traits.traits[Traits.PDAMAGE].isActive ())
+			//	realDmg -= (defense*(float)0.75 / (defense*(float)0.75 + 8 * realDmg));
 			//End Traits
-			else
+			//else
 				realDmg -= (defense / (defense + 8 * realDmg));	
 			//Debug.Log("me pegaron man! :(");
 			break;

@@ -305,10 +305,10 @@ public class EnemyStats : MonoBehaviour {
 				realDmg *= 1.5f; //cuando esta shokeado aumenta el daño recibido de cualquier tipo
 			}
 			//Begin Traits
-			if (Traits.traits[Traits.MDAMAGE].isActive()){
-				if (type!=Types.Element.None)
-					realDmg *= 1.5f;
-			}
+			//if (Traits.traits[Traits.MDAMAGE].isActive()){
+			//	if (type!=Types.Element.None)
+			//		realDmg *= 1.5f;
+			//}
 			if (Traits.traits[Traits.SEFFECT].isActive()){
 				float[] statusProb = {0.8f, 0.2f};
 				if (Utils.Choose (statusProb) != 0) {

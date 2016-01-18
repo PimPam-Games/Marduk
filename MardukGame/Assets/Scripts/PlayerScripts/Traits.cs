@@ -67,12 +67,17 @@ public class Traits: MonoBehaviour
 			if (p.passivePoints >= traits [tName].getCost ()) {
 				p.passivePoints -= traits [tName].getCost ();
 				switch (tName) {
+				case PDAMAGE:
+					p.offensives[p.IncreasedDmg] += 50;
+					p.defensives[p.Defense] *= 0.75f;
+					break;
 				case MDAMAGE:
+					p.offensives[p.IncreasedMgDmg] += 50;
 					p.defensives[p.AllRes] -= 30;
 					break;
 				case CRITACC:
 					p.offensives[p.IncreasedAccuracy] -= 50;
-					p.offensives[p.IncreasedCritChance] += 100;
+					p.defensives[p.IncreasedCritChance] += 100;
 					break;
 				default :
 					break;
@@ -84,7 +89,12 @@ public class Traits: MonoBehaviour
 	public static void deactivate(int tName){
 		p.passivePoints += traits [tName].getCost ();
 		switch (tName) {
+		case PDAMAGE:
+			p.offensives[p.IncreasedDmg] -= 50;
+			p.defensives[p.Defense] *= 1.25f;
+			break;
 		case MDAMAGE:
+			p.offensives[p.IncreasedMgDmg] -= 50;
 			p.defensives[p.AllRes] += 30;
 			break;
 		case CRITACC:

@@ -109,9 +109,9 @@ public class Weapon : MonoBehaviour {
 			}
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
 			//Begin Traits
-			if (Traits.traits[Traits.PDAMAGE].isActive ()) {
-				damage = damage * (float)1.5;
-			}
+			//if (Traits.traits[Traits.PDAMAGE].isActive ()) {
+			//	damage = damage * (float)1.5;
+			//}
 			if (Traits.traits[Traits.LOWHPDAMAGE].isActive ()) {
 				if (p.currentHealth <= p.MaxHealth*(float)0.3)
 					damage = damage * (float)1.25;
