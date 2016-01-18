@@ -299,6 +299,7 @@ public class Persistence : MonoBehaviour {
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
 			Debug.Log(data.spellInv.ToString());
 			sp.LoadSkills(data.spellInv);
+
 			LoadCurrentPlayer.showIntro = false;
 		}
 		else{

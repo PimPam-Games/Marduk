@@ -9,12 +9,14 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 
 	public static GameObject[] projectiles = new GameObject[4];
 	public InventorySlotsPanel invPanel;
-	public Transform slots;
+	public Transform[] slots;
 	public Transform supportSlots;
 
 	private GameObject player;
 	public SpellStats[] playerSkills;
 	public SpellStats[] playerSupportSkills;
+	//public static bool mustLoadSkills = false;
+	//public static List<SerializableSpell> skillsToLoad = null;
 	// Use this for initialization
 	void Start () {
 		player =  GameObject.Find ("Player");
@@ -37,6 +39,13 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 			}*/
 		}
 	}
+
+/*	void OnEnable(){
+		if(mustLoadSkills){
+			mustLoadSkills = false;
+			LoadSkills(skillsToLoad);
+		}
+	}*/
 
 	void Update(){
 		if (player == null ){
@@ -86,7 +95,8 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 
 	public void LoadSkills(List<SerializableSpell> skillList){
 		List<SpellStats> sInvAux = new List<SpellStats>();
-		
+		if(skillList == null)
+			return;
 		HasChanged();
 		foreach(SerializableSpell skill in skillList){
 			GameObject newSpell = InstantiateSkill(skill.spellName);
@@ -103,7 +113,8 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				if(st.IdSlotEquipped > -1){ // si es mayor a -1 esta equipado en esa posicion
 					st.EquipSkill();
 					if(st.type != Types.SkillsTypes.Support){
-						newSpell.transform.SetParent(slots.GetChild(st.IdSlotEquipped));
+						//newSpell.transform.SetParent(slots.GetChild(st.IdSlotEquipped));
+						newSpell.transform.SetParent(slots[st.IdSlotEquipped]);
 						newSpell.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
 					}
 					else{
