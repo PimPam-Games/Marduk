@@ -6,19 +6,19 @@ public class ParticleCollision : MonoBehaviour {
 	public Types.Element elem = Types.Element.Fire ;
 	public float dmg = 5f;
 	public BoxCollider2D col;
-	private string direction;
+//	private string direction;
 
 	// Use this for initialization
 	void Start () {
 		//Debug.Log (transform.rotation.eulerAngles);
-		if (transform.rotation.eulerAngles.x == 270)
+		/*if (transform.rotation.eulerAngles.x == 270)
 			direction = "Up";
 		if(transform.rotation.eulerAngles.x == 90)
 			direction = "Down";
 		if(transform.rotation.eulerAngles.y == 90)
 			direction = "Right";
 		if(transform.rotation.eulerAngles.y == 270)
-			direction = "Left";
+			direction = "Left";*/
 		transform.rotation = Quaternion.Euler (0,0,0);
 		StartCoroutine (RemoveColAfterTime(1.4f));
 	}

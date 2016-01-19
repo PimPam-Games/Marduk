@@ -122,6 +122,7 @@ public class Weapon : MonoBehaviour {
 				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();
 				damage *= ms.DmgMultiplier/100;
 				elem = ms.elementToConvert;
+				supportSkill = ms.SupportSkill;
 				if(PlatformerCharacter2D.useSacrifice)
 					p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
 				if(pc.useMeleeProjLauncher && ms.projectile != null){
@@ -144,8 +145,8 @@ public class Weapon : MonoBehaviour {
 					Instantiate (msProj, weaponProjLauncher1.transform.position, weaponProjLauncher1.transform.rotation);
 				}	
 			}
-			if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
-				supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
+			/*if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
+				supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];*/
 			float critChance = p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100);
 			float[] critDmgProb = {1 - critChance, critChance };
 			bool isCrit = false;
@@ -195,8 +196,10 @@ public class Weapon : MonoBehaviour {
 				}
 				//End Traits
 
-				if(supportSkill != null)
+				if(supportSkill != null){
 					estats.Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support
+					Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
+				}
 				if(enemy.transform.position.x < this.transform.position.x)
 					enemy.GetComponent<EnemyIAMovement>().Knock(true);
 				else

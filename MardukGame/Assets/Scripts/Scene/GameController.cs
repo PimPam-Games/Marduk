@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour {
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
 		//deadEnemies = new List<string>();
+		inventoryUI.SetActive(true); //lo activo para poder cargar las skills correspondientes, despues se desactiva en InputControllerUI
 		player.GetComponent<PlatformerCharacter2D>().inventoryPanel = inventoryUI.GetComponent<InventorySlotsPanel>();
 		player.GetComponent<PlatformerCharacter2D>().spellsPanel = spellPanelUI.GetComponent<SpellsPanel>();
 		introText = introTextGo;

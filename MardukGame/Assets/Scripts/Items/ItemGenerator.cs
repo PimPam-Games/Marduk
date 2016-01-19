@@ -237,6 +237,10 @@ public class ItemGenerator :MonoBehaviour{
 				case 0:
 					while (ok == false) {
 						int optionDef = Random.Range (0, p.CantDefensives);
+						if(newItem == null){
+							Debug.LogError("Error: new item null!!");
+							return;
+						}
 						if (newItem.Defensives [optionDef] > 0 || optionDef == 1 || optionDef == 6) //si ya esta usada esta opcion en el item
 							continue;
 						ok = true;
@@ -259,6 +263,10 @@ public class ItemGenerator :MonoBehaviour{
 				case 1:
 					while (ok == false) {
 						int optionAtr = Random.Range (0, p.CantAtributes);
+						if(newItem == null){
+							Debug.LogError("Error: new item null!!");
+							return;
+						}
 						if (newItem.Atributes [optionAtr] > 0)
 							continue;
 						ok = true;

@@ -12,6 +12,7 @@ public class PlayerProjLauncher : MonoBehaviour {
 	public bool dontChangeRotation = false;
 	public float minDmg = 0;
 	public float maxDmg = 0;
+	public Support supportSkill;
 	//public PlatformerCharacter2D character;
 	private GameObject proj; //el proyectil
 	//public float castDelay = 0;
@@ -42,6 +43,7 @@ public class PlayerProjLauncher : MonoBehaviour {
 		}
 		proj.GetComponent<PlayerProjStats>().minDmg = minDmg;
 		proj.GetComponent<PlayerProjStats>().maxDmg = maxDmg;
+		proj.GetComponent<PlayerProjStats>().supportSkill = supportSkill;
 		if (!flipProjectile) {	
 			if (pc.isFacingRight ())
 				proj.GetComponent<ProjectileMovement> ().moveDirX = 1;

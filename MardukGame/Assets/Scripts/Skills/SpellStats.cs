@@ -20,9 +20,9 @@ public class SpellStats : MonoBehaviour {
 	public float manaCost;
 	public float manaReserved;     //para auras
 
-
 	public float animSpeed = 0;
 
+	protected Support supportSkill = null; //el support skill que tiene incorporado este skill
 	protected float cdTimer; 
 
 	[SerializeField] protected float initManaCost;
@@ -37,6 +37,11 @@ public class SpellStats : MonoBehaviour {
 	protected  int lvl = 1;
 	protected  double nextLevelExp;
 	protected  double oldNextLevelExp;
+
+	public Support SupportSkill{
+		get {return supportSkill;}
+		set {supportSkill = value;}
+	}
 
 	public int InventoryPositionX{
 		get {return inventoryPositionX;}
@@ -85,7 +90,7 @@ public class SpellStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected virtual void Update () {		
-		cdTimer -= Time.deltaTime;
+		cdTimer -= Time.deltaTime; 
 	}
 
 	protected virtual void CalculateStats (){
@@ -164,6 +169,11 @@ public class SpellStats : MonoBehaviour {
 					tooltip += ", ";
 			}
 			tooltip += "\n";			
+		}
+		if(supportSkill != null){
+			tooltip += "<color=grey>----------------------------------</color> \n";
+			//tooltip += "<color=grey>"+ supportSkill.spellName +"</color> \n";
+			tooltip += "Deals " + supportSkill.damageAdded +" of extra " + supportSkill.dmgElement + " damage \n";	
 		}
 		return tooltip;
 	}

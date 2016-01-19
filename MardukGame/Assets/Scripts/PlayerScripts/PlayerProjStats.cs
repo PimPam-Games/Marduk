@@ -32,9 +32,11 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 	private bool collision = false;
 	private bool alreadyHit = false;
 	private float stopCount = 0;
-
+	
 	public bool fromEnemy = false;
 	public EnemyStats enemyStats = null;
+
+	public Support supportSkill;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -124,10 +126,10 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 		//float[] critDmgProb = {0, 1f };
 		float damage;
 		float damageConverted = 0;
-		Support supportSkill = null;
+		/*Support supportSkill = null;
 		
 		if(pc.supportSkillPos > -1 && !alwaysCrit) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
-			supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];
+			supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];*/
 		EnemyStats estats = col.gameObject.GetComponent<EnemyStats>();
 		if (estats != null) {
 			if (!isAoe && alreadyHit)

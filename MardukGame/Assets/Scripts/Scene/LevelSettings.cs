@@ -8,7 +8,7 @@ public class LevelSettings : MonoBehaviour {
 	public int zoneNumber = 1;
 	public GameObject[] zoneEnemies;
 	public GameObject miniBoss;
-	private bool minibossGenerated = false;
+//	private bool minibossGenerated = false;
 	// Use this for initialization
 	void Start () {
 		ZoneName.ShowZoneName(zoneNumber);
@@ -56,7 +56,7 @@ public class LevelSettings : MonoBehaviour {
 		//float[] prob = {1 - miniBossProb, miniBossProb };
 		//if(Utils.Choose (prob) == 0 || minibossGenerated) //no toco el boss o ya esta generado
 		//	return;
-		minibossGenerated = true;
+//		minibossGenerated = true;
 		//if(zoneNumber == 2){
 			Debug.Log("MINIBOSSGENERADO");
 			GameObject newEnemy = (GameObject)Instantiate (miniBoss,pos,rot);

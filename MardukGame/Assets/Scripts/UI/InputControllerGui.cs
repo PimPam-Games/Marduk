@@ -13,10 +13,13 @@ public class InputControllerGui : MonoBehaviour {
 	public GameObject characterPanel;
 	public GameObject inventory;
 	public GameObject invTooltip;
+	public GameObject[] SpellPanelSlots;
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
 	public static bool resumePressed = false;
 	public static bool invOpen = false;
+
+	public static bool closeInventory = false; // se usa para cerrar el inventario luego de que se hallan cargando las skills al iniciar el juego 
 	//private bool gamePaused = false;
 
 	public Image menuInGame;
@@ -31,6 +34,17 @@ public class InputControllerGui : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(closeInventory){
+			closeInventory = false;
+			inventory.SetActive(false);
+			for(int i = 0; i < SpellPanelSlots.Length; i++){
+				SpellPanelSlots[i].GetComponent<Image>().enabled = false;
+				
+				if(SpellPanelSlots[i].transform.childCount > 0){
+					SpellPanelSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+				}
+			}
+		}
 		if (Input.GetButtonUp ("ToggleInventory") && !menuInGame.IsActive()) {
 			//gui.ToggleInventoryWindow();
 			if(inventory.activeSelf){
@@ -38,11 +52,24 @@ public class InputControllerGui : MonoBehaviour {
 					inventory.SetActive(false);
 					invTooltip.SetActive(false);
 					invOpen = false;
+					for(int i = 0; i < SpellPanelSlots.Length; i++){
+						SpellPanelSlots[i].GetComponent<Image>().enabled = false;
+						
+						if(SpellPanelSlots[i].transform.childCount > 0){
+							SpellPanelSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+						}
+					}
 				}
 			}
 			else{
 				inventory.SetActive(true);
 				invOpen = true;
+				for(int i = 0; i < SpellPanelSlots.Length; i++){
+					SpellPanelSlots[i].GetComponent<Image>().enabled = true;
+					if(SpellPanelSlots[i].transform.childCount > 0){
+						SpellPanelSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+					}
+				}
 			}
 			SetMouseVisible();
 		}

@@ -15,7 +15,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         public float maxSpeed; // The fastest the player can travel in the x axis.
         [SerializeField] private float jumpForce = 400f; // Amount of force added when the player jumps.	
 
-        [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f;
+    //    [Range(0, 1)] [SerializeField] private float crouchSpeed = .36f;
                                                      // Amount of maxSpeed applied to crouching movement. 1 = 100%
 
         [SerializeField] private bool airControl = false; // Whether or not a player can steer while jumping;
@@ -449,8 +449,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private void checkSkill(int i){
 
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
-			supportSkillPos = i; //la posicion del support que deberia usar, si es que hay uno
-			
+			//supportSkill = skill.SupportSkill; //la posicion del support que deberia usar, si es que hay uno
+				
 			if (skill != null) {
 				if(skill.manaCost > PlayerStats.currentMana){ //si no hay mana para el skill
 					NormalAttack();
@@ -462,8 +462,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking"))
 					return;
+	
+				supportSkillPos = i;
+				playerSupportSkills[i] = skill.SupportSkill;
 				
-				
+			
 				switch(skill.type){
 					case Types.SkillsTypes.Ranged:
 						RangedSkill rskill = (RangedSkill)skill;
@@ -493,6 +496,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 								projLaunchers[1].flipProjectile = rskill.flipProjectile;
 								projLaunchers[1].staticProjectile = rskill.staticProjectile;
 								projLaunchers[1].dontChangeRotation = rskill.dontChangeRotation;
+								projLaunchers[1].supportSkill = rskill.SupportSkill;
 							}
 							else{
 								projLaunchers[1].projectile = null;
@@ -503,6 +507,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 								projLaunchers[0].flipProjectile = rskill.flipProjectile;
 								projLaunchers[0].staticProjectile = rskill.staticProjectile;
 								projLaunchers[0].dontChangeRotation = rskill.dontChangeRotation;
+								projLaunchers[0].supportSkill = rskill.SupportSkill;
 							}
 							
 							//skillBtnPressed = true;

@@ -17,8 +17,10 @@ public class LoadCurrentPlayer : MonoBehaviour {
 		if (loadCount > 0.2f && !g.levelLoaded && g.nameToLoad.Length > 0 ){
 			Persistence.Load (g.nameToLoad);
 			g.levelLoaded = true;
-			if(showIntro) 
+			if(showIntro){ 
 				g.introText.SetActive(true);
+				InputControllerGui.closeInventory = true;
+			}
 			else
 				IntroText.introVisible = false;
 			Debug.Log ("Load Data");

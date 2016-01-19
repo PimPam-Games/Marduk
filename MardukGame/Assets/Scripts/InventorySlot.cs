@@ -8,8 +8,8 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	private const int WeaponSlotID = 1, ArmourSlotID = 2, ShieldSlotID = 3, HeadSlotID = 4, BeltSlotID = 5, RingLSlotID = 6, RingRSlotID = 7, AmuletSlotID = 8;
 
 	public int slotId = 0;
-	private float doubleClickTimer = 0;
-	private float doubleClickDelay = 0.5f;
+//	private float doubleClickTimer = 0;
+//	private float doubleClickDelay = 0.5f;
 	private int clickCount = 0;
 	
 	// Use this for initialization
@@ -147,7 +147,7 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 		{
 		case PointerEventData.InputButton.Left:
 			clickCount++;
-			doubleClickTimer = doubleClickDelay;
+//			doubleClickTimer = doubleClickDelay;
 			if(clickCount == 2){
 				clickCount = 0;
 				if(item == null)

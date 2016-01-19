@@ -9,6 +9,7 @@ public class SerializableSpell {
 	public int inventoryPositionY = -2; 
 	public int idSlotEquipped = -1;
 	public string spellName = "";
+	public string supportName = "";
 	public int lvl = 0;
 	public double currentExp = 0; 
 	public double oldNextLevelExp = 0;
@@ -21,6 +22,9 @@ public class SerializableSpell {
 		this.currentExp = spell.CurrentExp;
 		this.oldNextLevelExp = spell.OldNextLevelExp;
 		this.idSlotEquipped = spell.IdSlotEquipped;
+		if(spell.SupportSkill != null){
+			this.supportName = spell.SupportSkill.nameForSave;
+		}
 	}
 
 }

@@ -36,13 +36,13 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] public float minDmgPerLvl = 0;
 	[SerializeField] public float maxDmgPerLvl = 0;
 	[SerializeField] public float healthPerLvl = 10;
-	[SerializeField] private float armourPerLvl = 0;
+/*	[SerializeField] private float armourPerLvl = 0;
 	[SerializeField] private float coldResPerLvl = 0;
 	[SerializeField] private float fireResPerLvl = 0;
 	[SerializeField] private float lightResPerLvl = 0;
 	[SerializeField] private float poisonResPerLvl = 0;
 	[SerializeField] private float evasionPerLvl = 0;
-	[SerializeField] private float accuracyPerLvl = 0;
+	[SerializeField] private float accuracyPerLvl = 0;*/
 
 	public float blockChance = 0;
 
@@ -82,7 +82,7 @@ public class EnemyStats : MonoBehaviour {
 	private float ignitedDmg = 0;
 	private bool itemCreated = false;
 
-	private float DotSkillTimer = 0;
+//	private float DotSkillTimer = 0;
 	private int t = 0; //para soluciona bug de thorns que se llama dos veces
 
 	public bool isBoss = false;

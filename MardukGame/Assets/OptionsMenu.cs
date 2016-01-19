@@ -13,7 +13,7 @@ public class OptionsMenu : MonoBehaviour {
 	public Text resolutionText;
 	public Text QualityText;
 
-	private bool escPressed = false;
+//	private bool escPressed = false;
 	private bool backToMain = true;
 
 	private int scrResOption;		
@@ -28,7 +28,7 @@ public class OptionsMenu : MonoBehaviour {
 		qualityOption = QualitySettings.GetQualityLevel();
 		resolutionText.text = MainMenu.ResolutionsWidth[scrResOption].ToString() + " X " + MainMenu.ResolutionsHeight[scrResOption].ToString();
 		QualityText.text = qualityOption.ToString();
-		escPressed = false;
+//		escPressed = false;
 		backToMain = true;
 	}
 

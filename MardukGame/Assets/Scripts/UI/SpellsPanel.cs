@@ -95,8 +95,10 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 
 	public void LoadSkills(List<SerializableSpell> skillList){
 		List<SpellStats> sInvAux = new List<SpellStats>();
-		if(skillList == null)
+		if(skillList == null){
+			this.gameObject.SetActive(false);
 			return;
+		}
 		HasChanged();
 		foreach(SerializableSpell skill in skillList){
 			GameObject newSpell = InstantiateSkill(skill.spellName);
@@ -109,6 +111,13 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 				st.InventoryPositionX = skill.inventoryPositionX;
 				st.InventoryPositionY = skill.inventoryPositionY;
 				st.IdSlotEquipped = skill.idSlotEquipped;
+				if(!string.IsNullOrEmpty(skill.supportName)){ //cargo el support
+					GameObject supportGo = InstantiateSkill(skill.supportName);
+					Support sup = supportGo.GetComponent<Support>();
+					st.SupportSkill = sup;
+					supportGo.transform.SetParent(null);
+					supportGo.SetActive(false);				
+				}
 				sInvAux.Add(st);
 				if(st.IdSlotEquipped > -1){ // si es mayor a -1 esta equipado en esa posicion
 					st.EquipSkill();
@@ -128,6 +137,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		}
 		PlayerItems.SpellsInvetory = sInvAux;
 		HasChanged();
+		InputControllerGui.closeInventory = true;
 	}
 	
 	/*Agrega un nuevo skill despues de que se agarra, se invoca desde PlatformerCharacter2D*/
