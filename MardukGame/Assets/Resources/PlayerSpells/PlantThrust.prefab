@@ -60,15 +60,15 @@ MonoBehaviour:
   manaCost: 0
   manaReserved: 0
   animSpeed: 0
-  initManaCost: 3
+  initManaCost: 4
   manaCostPerLvl: 1
   initSacrifiedLife: 0
   initconvertedDmg: 0
-  initDmgMultiplier: 105
+  initDmgMultiplier: 120
   sacrifiedLifePerLvl: 0
   dmgMultiplierPerLvl: 1
   elementToConvert: 4
-  convertedDmg: 40
+  convertedDmg: 30
   projectile: {fileID: 181424, guid: d103b4281de4e94449b80359b38bd01d, type: 2}
 --- !u!114 &11488830
 MonoBehaviour:
@@ -127,6 +127,18 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 17a8d397758b4ce4a875afcba9310afd,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: initDmgMultiplier
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: convertedDmg
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initManaCost
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161982}

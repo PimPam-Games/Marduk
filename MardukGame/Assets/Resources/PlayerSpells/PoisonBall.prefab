@@ -39,7 +39,7 @@ MonoBehaviour:
   manaCost: 0
   manaReserved: 0
   animSpeed: 0
-  initManaCost: 5
+  initManaCost: 3
   manaCostPerLvl: 2
   force: {x: -500, y: 200}
   flipProjectile: 1
@@ -48,8 +48,8 @@ MonoBehaviour:
   dontChangeRotation: 0
   continuosRelease: 0
   drainMana: 0
-  initMinDmg: 3
-  initMaxDmg: 7
+  initMinDmg: 2
+  initMaxDmg: 9
   initPhysicalDmgMult: 0
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
@@ -161,15 +161,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initManaCost
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: initMinDmg
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: initMinDmg
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: initMaxDmg
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: manaCostPerLvl
