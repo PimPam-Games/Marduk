@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.0973034, y: 7.93666029, z: 0}
+  m_LocalPosition: {x: -1562.17432, y: -73.4980392, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 452082}
@@ -383,7 +383,7 @@ MonoBehaviour:
   initMinDamage: 2
   initMaxDamage: 5
   initArmour: 0
-  initColdRes: 0
+  initColdRes: 5
   initFireRes: 0
   initLightRes: 0
   initPoisonRes: 0
@@ -397,18 +397,10 @@ MonoBehaviour:
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
   healthPerLvl: 10
-  armourPerLvl: 5
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8216002}
   deathSound: {fileID: 8278872}
   enemyName: Wraith
-  blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 4
   expPerLevel: 1
@@ -426,6 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optimizeAfterLoad: 0
+  maxDistance: 25
 --- !u!212 &21238918
 SpriteRenderer:
   m_ObjectHideFlags: 1

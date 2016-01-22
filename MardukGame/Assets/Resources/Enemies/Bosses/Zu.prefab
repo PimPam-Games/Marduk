@@ -130,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1158, y: 48, z: 0}
+  m_LocalPosition: {x: -1556.93372, y: -95.0054169, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477844}
@@ -406,38 +406,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 1
+  lvl: 4
   currHealth: 0
-  initMaxHealth: 120
-  initMinDamage: 10
-  initMaxDamage: 15
+  initMaxHealth: 110
+  initMinDamage: 7
+  initMaxDamage: 11
   initArmour: 25
-  initColdRes: 10
-  initFireRes: 10
-  initLightRes: 30
-  initPoisonRes: 10
+  initColdRes: 0
+  initFireRes: 0
+  initLightRes: 10
+  initPoisonRes: 0
   initEvasion: 40
   initAccuracy: 45
   initCritChance: .100000001
   elem: 2
-  minDamage: 20
-  maxDamage: 30
+  minDamage: 7
+  maxDamage: 11
   critChance: 0
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8212340}
   deathSound: {fileID: 8288974}
   enemyName: Zu
-  blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 15
   expPerLevel: 0

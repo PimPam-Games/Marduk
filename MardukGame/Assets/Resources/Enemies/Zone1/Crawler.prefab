@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.02097321, y: 8.2057457, z: 0}
+  m_LocalPosition: {x: -1545.90686, y: -81.2781296, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 469626}
@@ -381,10 +381,10 @@ MonoBehaviour:
   initMinDamage: 5
   initMaxDamage: 8
   initArmour: 10
-  initColdRes: 15
+  initColdRes: 5
   initFireRes: 0
   initLightRes: 0
-  initPoisonRes: 20
+  initPoisonRes: 5
   initEvasion: 20
   initAccuracy: 25
   initCritChance: .0500000007
@@ -395,18 +395,10 @@ MonoBehaviour:
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8289620}
   deathSound: {fileID: 8259066}
   enemyName: Polypus
-  blood: {fileID: 107802, guid: 3ed5ed1124df78b4e86fe3971671868a, type: 2}
   isDead: 0
   exp: 6
   expPerLevel: 2
@@ -507,6 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optimizeAfterLoad: 0
+  maxDistance: 25
 --- !u!212 &21292030
 SpriteRenderer:
   m_ObjectHideFlags: 1

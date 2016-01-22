@@ -80,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.44000006, y: -1.33000004, z: 0}
+  m_LocalPosition: {x: -1545.67114, y: -87.6436539, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 495584}
@@ -351,6 +351,8 @@ MonoBehaviour:
   attackDelay: 3
   anim: {fileID: 9567378}
   target: {fileID: 0}
+  attackSound: {fileID: 0}
+  useSacrifice: 0
   canBlock: 0
 --- !u!114 &11460760
 MonoBehaviour:
@@ -363,6 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optimizeAfterLoad: 0
+  maxDistance: 25
 --- !u!114 &11473226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -380,10 +384,10 @@ MonoBehaviour:
   initMinDamage: 4
   initMaxDamage: 9
   initArmour: 20
-  initColdRes: 5
-  initFireRes: 5
-  initLightRes: 5
-  initPoisonRes: 5
+  initColdRes: 0
+  initFireRes: 0
+  initLightRes: 0
+  initPoisonRes: 0
   initEvasion: 10
   initAccuracy: 25
   initCritChance: .0500000007
@@ -394,18 +398,10 @@ MonoBehaviour:
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8248926}
   deathSound: {fileID: 8229528}
   enemyName: Ogre
-  blood: {fileID: 107802, guid: 3ed5ed1124df78b4e86fe3971671868a, type: 2}
   isDead: 0
   exp: 5
   expPerLevel: 2

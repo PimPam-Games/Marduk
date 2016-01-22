@@ -181,7 +181,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.08591938, y: 2.66950345, z: 0}
+  m_LocalPosition: {x: -1566.41797, y: -101.553513, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 430660}
@@ -482,38 +482,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 1
+  lvl: 2
   currHealth: 0
   initMaxHealth: 100
-  initMinDamage: 10
-  initMaxDamage: 12
+  initMinDamage: 7
+  initMaxDamage: 10
   initArmour: 10
-  initColdRes: 25
-  initFireRes: 5
-  initLightRes: 5
-  initPoisonRes: 15
+  initColdRes: 10
+  initFireRes: 0
+  initLightRes: 0
+  initPoisonRes: 5
   initEvasion: 25
   initAccuracy: 25
   initCritChance: .0500000007
   elem: 3
-  minDamage: 10
-  maxDamage: 12
+  minDamage: 7
+  maxDamage: 10
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8268948}
   deathSound: {fileID: 8258812}
   enemyName: Sumugan
-  blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 15
   expPerLevel: 0
@@ -586,6 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optimizeAfterLoad: 0
+  maxDistance: 25
 --- !u!114 &11481900
 MonoBehaviour:
   m_ObjectHideFlags: 1

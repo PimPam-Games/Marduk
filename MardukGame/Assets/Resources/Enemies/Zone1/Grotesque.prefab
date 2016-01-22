@@ -106,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1170.86816, y: 43.5687256, z: 0}
+  m_LocalPosition: {x: -1536.005, y: -85.050293, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 428328}
@@ -357,6 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optimizeAfterLoad: 0
+  maxDistance: 25
 --- !u!114 &11464406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,6 +412,8 @@ MonoBehaviour:
   attackDelay: 3
   anim: {fileID: 9573468}
   target: {fileID: 0}
+  attackSound: {fileID: 0}
+  useSacrifice: 0
   canBlock: 0
 --- !u!114 &11495468
 MonoBehaviour:
@@ -431,7 +435,7 @@ MonoBehaviour:
   initColdRes: 0
   initFireRes: 0
   initLightRes: 0
-  initPoisonRes: 10
+  initPoisonRes: 5
   initEvasion: 35
   initAccuracy: 35
   initCritChance: .0500000007
@@ -442,18 +446,10 @@ MonoBehaviour:
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8277448}
   deathSound: {fileID: 8261366}
   enemyName: Mandrake
-  blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 3
   expPerLevel: 1

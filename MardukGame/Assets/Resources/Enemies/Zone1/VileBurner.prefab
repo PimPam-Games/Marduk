@@ -197,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.50821209, y: 1.56098533, z: 0}
+  m_LocalPosition: {x: -1528.22485, y: -106.032959, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 445134}
@@ -454,7 +454,7 @@ MonoBehaviour:
   initMaxDamage: 8
   initArmour: 0
   initColdRes: 0
-  initFireRes: 20
+  initFireRes: 5
   initLightRes: 0
   initPoisonRes: 0
   initEvasion: 40
@@ -467,18 +467,10 @@ MonoBehaviour:
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8237188}
   deathSound: {fileID: 8291350}
   enemyName: Pirobolus
-  blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 3
   expPerLevel: 1
@@ -589,6 +581,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optimizeAfterLoad: 0
+  maxDistance: 25
 --- !u!114 &11471216
 MonoBehaviour:
   m_ObjectHideFlags: 1

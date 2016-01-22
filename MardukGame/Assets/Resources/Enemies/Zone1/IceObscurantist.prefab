@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82.6469345, y: 3189.53662, z: 0}
+  m_LocalPosition: {x: -1533.17578, y: -96.6025467, z: 0}
   m_LocalScale: {x: 2.20000005, y: 2.20000005, z: 1}
   m_Children:
   - {fileID: 454094}
@@ -391,11 +391,11 @@ MonoBehaviour:
   initMaxHealth: 10
   initMinDamage: 6
   initMaxDamage: 7
-  initArmour: 4
-  initColdRes: 15
-  initFireRes: 15
-  initLightRes: 15
-  initPoisonRes: 15
+  initArmour: 0
+  initColdRes: 5
+  initFireRes: 5
+  initLightRes: 5
+  initPoisonRes: 5
   initEvasion: 30
   initAccuracy: 25
   initCritChance: .0500000007
@@ -406,18 +406,10 @@ MonoBehaviour:
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8268986}
   deathSound: {fileID: 8254454}
   enemyName: Vampire
-  blood: {fileID: 101524, guid: 95e0cfa307ef93a4db9296d86c965081, type: 2}
   isDead: 0
   exp: 6
   expPerLevel: 2
@@ -454,6 +446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22844b102a0e16499a32cb905fb853e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optimizeAfterLoad: 0
+  maxDistance: 25
 --- !u!114 &11459540
 MonoBehaviour:
   m_ObjectHideFlags: 1

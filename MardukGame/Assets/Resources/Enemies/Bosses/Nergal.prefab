@@ -298,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145528}
   m_LocalRotation: {x: 0, y: 0, z: .320613027, w: .947210252}
-  m_LocalPosition: {x: -.209999993, y: 1.40999997, z: 0}
+  m_LocalPosition: {x: .409999996, y: 1.54900002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446578}
@@ -361,7 +361,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100812}
-  m_LocalRotation: {x: 0, y: 0, z: -.0298876762, w: -.999553323}
+  m_LocalRotation: {x: 0, y: 0, z: -.0298876651, w: -.999553263}
   m_LocalPosition: {x: -1.28199995, y: -.606000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -373,7 +373,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160058}
-  m_LocalRotation: {x: -0, y: 0, z: .00404149294, w: -.999991894}
+  m_LocalRotation: {x: -0, y: 0, z: .00404151017, w: -.999991894}
   m_LocalPosition: {x: -1.55599999, y: -.60799998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -386,7 +386,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.34000015, y: -5.13000011, z: 0}
+  m_LocalPosition: {x: -1562.88159, y: -96.1310272, z: 0}
   m_LocalScale: {x: 4, y: 3.5, z: 1}
   m_Children:
   - {fileID: 410516}
@@ -404,7 +404,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177904}
   m_LocalRotation: {x: 0, y: 0, z: .318711191, w: .947851896}
-  m_LocalPosition: {x: -1.26699996, y: 1.08000004, z: 0}
+  m_LocalPosition: {x: -.615999997, y: 1.20200002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446578}
@@ -480,7 +480,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117734}
   m_LocalRotation: {x: 0, y: 0, z: .263957262, w: .964534402}
-  m_LocalPosition: {x: .556999981, y: .980000019, z: 0}
+  m_LocalPosition: {x: 1.13900006, y: 1.08500004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446578}
@@ -860,40 +860,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f1c71545321f04f9e9ee7dde10cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 1
+  lvl: 10
   currHealth: 0
   initMaxHealth: 500
-  initMinDamage: 20
-  initMaxDamage: 30
-  initArmour: 100
-  initColdRes: 10
-  initFireRes: 10
-  initLightRes: 10
-  initPoisonRes: 50
+  initMinDamage: 15
+  initMaxDamage: 20
+  initArmour: 50
+  initColdRes: 5
+  initFireRes: 5
+  initLightRes: 5
+  initPoisonRes: 15
   initEvasion: 0
   initAccuracy: 25
   initCritChance: .0500000007
-  elem: 0
-  minDamage: 20
-  maxDamage: 30
+  elem: 4
+  minDamage: 15
+  maxDamage: 20
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
   healthPerLvl: 10
-  armourPerLvl: 1
-  coldResPerLvl: 1
-  fireResPerLvl: 1
-  lightResPerLvl: 1
-  poisonResPerLvl: 1
-  evasionPerLvl: 0
-  accuracyPerLvl: 0
   blockChance: 0
   alertSound: {fileID: 8242054}
   deathSound: {fileID: 0}
   enemyName: Nergal
-  blood: {fileID: 100000, guid: 80cd87e5e66b84b35b29f75198eeda8b, type: 2}
   isDead: 0
   exp: 40
+  expPerLevel: 0
   rend: {fileID: 21292624}
   spriteRend: {fileID: 21292624}
   isBoss: 1
