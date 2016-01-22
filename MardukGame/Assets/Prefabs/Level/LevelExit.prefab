@@ -25,13 +25,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.9099998, y: .180000007, z: 0}
+  m_LocalPosition: {x: 3.23000002, y: -849.710022, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5086898
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -40,11 +41,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!61 &6133056
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -55,9 +56,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -.0618028641, y: 1.30643868}
+  m_Offset: {x: .316690445, y: 1.6374526}
   serializedVersion: 2
-  m_Size: {x: 3.00955868, y: 4.823349}
+  m_Size: {x: .896323323, y: 3.82344818}
 --- !u!114 &11437942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,9 +70,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd941cd59200be4f9a67266dc6ff237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitNumber: 1
+  exitNumber: 2
   levelToLoad: level1
   enemyGenerator: {fileID: 0}
+  loadAtCollision: 1
+  jumpOnLoad: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

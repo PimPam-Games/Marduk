@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour {
 	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2, AllAttr = 3;//utils
 
 	public const float InitMoveSpeed = 5;
-	public const float InitMaxHealth = 45;
+	public const float InitMaxHealth = 60;
 	public const float InitAttacksPerSecond = 1;
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;

@@ -80,21 +80,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &146030
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 403650}
-  m_Layer: 20
-  m_Name: randomEnemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &146286
 GameObject:
   m_ObjectHideFlags: 1
@@ -357,18 +342,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &403650
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 146030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1289, y: 243, z: 0}
-  m_LocalScale: {x: 64, y: 64, z: 64}
-  m_Children: []
-  m_Father: {fileID: 482794}
-  m_RootOrder: 1
 --- !u!4 &409026
 Transform:
   m_ObjectHideFlags: 1
@@ -380,7 +353,7 @@ Transform:
   m_LocalScale: {x: 320, y: 320, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!4 &410010
 Transform:
   m_ObjectHideFlags: 1
@@ -405,7 +378,7 @@ Transform:
   m_Children:
   - {fileID: 496334}
   m_Father: {fileID: 482794}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &440360
 Transform:
   m_ObjectHideFlags: 1
@@ -417,7 +390,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &447220
 Transform:
   m_ObjectHideFlags: 1
@@ -425,11 +398,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 662, y: 577, z: 0}
+  m_LocalPosition: {x: 668, y: 822, z: 0}
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &447512
 Transform:
   m_ObjectHideFlags: 1
@@ -453,7 +426,7 @@ Transform:
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!4 &452710
 Transform:
   m_ObjectHideFlags: 1
@@ -461,7 +434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.3090343, y: 17.722187, z: 0}
+  m_LocalPosition: {x: -32.0732384, y: -.927156627, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 482794}
@@ -478,7 +451,7 @@ Transform:
   m_LocalScale: {x: 373.521515, y: 516.691406, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!4 &455560
 Transform:
   m_ObjectHideFlags: 1
@@ -490,7 +463,7 @@ Transform:
   m_LocalScale: {x: 320, y: 320, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!4 &459364
 Transform:
   m_ObjectHideFlags: 1
@@ -514,7 +487,7 @@ Transform:
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!4 &468516
 Transform:
   m_ObjectHideFlags: 1
@@ -526,7 +499,7 @@ Transform:
   m_LocalScale: {x: 320, y: 320, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!4 &477492
 Transform:
   m_ObjectHideFlags: 1
@@ -575,7 +548,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477492}
-  - {fileID: 403650}
   - {fileID: 447220}
   - {fileID: 436614}
   - {fileID: 440360}
@@ -613,7 +585,7 @@ Transform:
   - {fileID: 480858}
   - {fileID: 495862}
   m_Father: {fileID: 482794}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &495862
 Transform:
   m_ObjectHideFlags: 1
@@ -900,7 +872,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
   enemies:
-  - {fileID: 403650}
   - {fileID: 447220}
   chunkEndRight: {fileID: 477492}
   chunkEndDownR: {fileID: 0}
