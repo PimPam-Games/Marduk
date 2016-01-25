@@ -862,10 +862,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 10
   currHealth: 0
-  initMaxHealth: 500
-  initMinDamage: 15
-  initMaxDamage: 20
-  initArmour: 50
+  initMaxHealth: 300
+  initMinDamage: 12
+  initMaxDamage: 18
+  initArmour: 30
   initColdRes: 5
   initFireRes: 5
   initLightRes: 5
@@ -874,8 +874,8 @@ MonoBehaviour:
   initAccuracy: 25
   initCritChance: .0500000007
   elem: 4
-  minDamage: 15
-  maxDamage: 20
+  minDamage: 12
+  maxDamage: 18
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
@@ -1130,19 +1130,19 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: initMaxHealth
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMinDamage
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initMaxDamage
-      value: 30
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initArmour
-      value: 100
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: initColdRes
@@ -1166,11 +1166,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minDamage
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxDamage
-      value: 30
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minDmgPerLvl
