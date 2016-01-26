@@ -15,8 +15,12 @@ public class PlayMenu : MonoBehaviour {
 
 	private bool escPressed = false;
 
+	public GameObject infoMessages;
+	public Text infoTxt;
+
 	public void Start(){
 		UpdateSavedGames ();
+		inputField.characterLimit = 15;
 	}
 
 	void OnEnable() {
@@ -24,6 +28,8 @@ public class PlayMenu : MonoBehaviour {
 	}
 
 	public void Update(){
+		if(infoMessages.activeSelf)
+			return;
 		if (Input.GetButtonUp ("Escape") && !escPressed){
 			escPressed = true;
 			StartCoroutine(BackPush());
@@ -46,6 +52,8 @@ public class PlayMenu : MonoBehaviour {
 	}
 
 	public void Back(){
+		if(infoMessages.activeSelf)
+			return;
 		if(!escPressed)
 			StartCoroutine(BackPush());
 	}
@@ -56,15 +64,19 @@ public class PlayMenu : MonoBehaviour {
 		this.gameObject.SetActive(false);
 	}
 	public void Create(){
+		if(infoMessages.activeSelf)
+			return;
 		newCharacterName = inputField.text;
 		if (newCharacterName.Equals (""))
 			return;
 		if (File.Exists (Application.persistentDataPath + "/" + newCharacterName + ".dat")) {
-			Debug.Log("El nombre ya existe");
+			infoMessages.SetActive(true);
+			infoTxt.text = "Character name already exists";
 			return;
 		}
 		if (Persistence.CantSavedGames () == Persistence.CantSlots) {
-			Debug.Log("No hay mas slots");
+			infoMessages.SetActive(true);
+			infoTxt.text = "No more slots available";
 			return;
 		}
 		g.nameToLoad = null;
@@ -73,37 +85,53 @@ public class PlayMenu : MonoBehaviour {
 		UpdateSavedGames ();
 	}
 
+	public void InfoMsjButton(){
+		infoMessages.SetActive(false);
+	}
+
 	public void LoadSlot1(){
+		if(infoMessages.activeSelf)
+			return;
 		g.nameToLoad = slots[0].GetComponentInChildren<Text>().text;
 		Debug.Log (g.nameToLoad);
 		ButtonPressed (0);
 	}
 
 	public void LoadSlot2(){
+		if(infoMessages.activeSelf)
+			return;
 		g.nameToLoad = slots[1].GetComponentInChildren<Text>().text;
 		Debug.Log (g.nameToLoad);
 		ButtonPressed (1);
 	}
 
 	public void LoadSlot3(){
+		if(infoMessages.activeSelf)
+			return;
 		g.nameToLoad = slots[2].GetComponentInChildren<Text>().text;
 		Debug.Log (g.nameToLoad);
 		ButtonPressed (2);
 	}
 
 	public void LoadSlot4(){
+		if(infoMessages.activeSelf)
+			return;
 		g.nameToLoad = slots[3].GetComponentInChildren<Text>().text;
 		Debug.Log (g.nameToLoad);
 		ButtonPressed (3);
 	}
 
 	public void LoadSlot5(){
+		if(infoMessages.activeSelf)
+			return;
 		g.nameToLoad = slots[4].GetComponentInChildren<Text>().text;
 		Debug.Log (g.nameToLoad);
 		ButtonPressed (4);
 	}
 
 	private void ButtonPressed (int index){
+		if(infoMessages.activeSelf)
+			return;
 		for (int i = 0; i < slots.Length; i++) {
 			Image img = slots[i].GetComponent<Image>();
 			if(i == index)
@@ -114,6 +142,8 @@ public class PlayMenu : MonoBehaviour {
 	}
 
 	public void Delete(){
+		if(infoMessages.activeSelf)
+			return;
 		if(g.nameToLoad != null){
 			Persistence.Delete (g.nameToLoad);
 			g.nameToLoad = null;
@@ -123,6 +153,8 @@ public class PlayMenu : MonoBehaviour {
 	}
 
 	public void Play(){
+		if(infoMessages.activeSelf)
+			return;
 		if (g.nameToLoad != null) {
 			g.levelLoaded = false;
 			//Fading.BeginFadeIn("level0");
