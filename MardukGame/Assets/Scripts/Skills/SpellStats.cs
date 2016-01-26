@@ -135,7 +135,10 @@ public class SpellStats : MonoBehaviour {
 	}
 
 	public virtual string ToolTip(){
-		string tooltip = spellName + "\n";
+		string tooltip = spellName;
+		if(supportSkill != null)
+			tooltip += "<color=grey>("+ supportSkill.spellName +")</color>";
+		tooltip += "\n"; 
 		switch(type){
 			case Types.SkillsTypes.Aura:
 				tooltip += "Type: <color=#1F45FC>" + type + "</color> \n";
