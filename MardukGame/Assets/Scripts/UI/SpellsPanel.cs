@@ -155,7 +155,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 		st.Lvl = 1;	
 		st.CurrentExp = 0;
 		st.NextLevelExp = st.SpellExpFormula();
-		if(!alreadyEquipped){
+		/*if(!alreadyEquipped){ //esto esta comentado para que no se autoequipen las skills cuando se agarran
 			foreach(Transform slot in slots){ //busca un slot vacio en spell panel
 				GameObject spell = slot.GetComponent<Slot>().spell;
 				if(spell == null){
@@ -168,7 +168,7 @@ public class SpellsPanel : MonoBehaviour, IHasChanged {
 					return true;
 				}
 			}
-		}
+		}*/
 		/*Si no encuentra un slot disponible, lo intenta meter en el inventario*/
 		bool invPanelResult = false;
 		invPanelResult =  invPanel.AddSkill(newSpell);

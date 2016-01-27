@@ -102,8 +102,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 		
 		if (col.gameObject.layer == LayerMask.NameToLayer("Ground")) {
 			if(!dontDestroy){
-				if(hasSplashAnim){
-					
+				if(hasSplashAnim){				
 					anim.SetBool("hit",true);
 					rb.isKinematic = true;
 				}else{

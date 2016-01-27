@@ -103,8 +103,11 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					break;
 			}
 		}
-		if (!item)
+		if (!item){
+			if(draggedItem == null && slotId > 0)
+				return;
 			DragHandeler.itemBeingDragged.transform.SetParent (transform);
+		}
 		else {
 			InventorySlot invSlot = DragHandeler.startParent.gameObject.GetComponent<InventorySlot>();
 			

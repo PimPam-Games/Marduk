@@ -35,6 +35,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &105726
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 462308}
+  m_Layer: 0
+  m_Name: Chest (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &107074
 GameObject:
   m_ObjectHideFlags: 1
@@ -63,6 +78,7 @@ GameObject:
   - 61: {fileID: 6153506}
   - 114: {fileID: 11445856}
   - 114: {fileID: 11405850}
+  - 114: {fileID: 11410080}
   m_Layer: 0
   m_Name: castle8
   m_TagString: Chunk
@@ -281,7 +297,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.1873817, y: -831.514771, z: 0}
+  m_LocalPosition: {x: 150.284546, y: -873.507874, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 442136}
@@ -353,6 +369,7 @@ Transform:
   - {fileID: 410636}
   - {fileID: 442286}
   - {fileID: 477482}
+  - {fileID: 462308}
   m_Father: {fileID: 423240}
   m_RootOrder: 0
 --- !u!4 &442286
@@ -367,6 +384,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 442136}
   m_RootOrder: 6
+--- !u!4 &462308
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 546, y: -49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 442136}
+  m_RootOrder: 8
 --- !u!4 &467090
 Transform:
   m_ObjectHideFlags: 1
@@ -672,6 +701,19 @@ MonoBehaviour:
   traps:
   - {fileID: 137652}
   - {fileID: 105246}
+--- !u!114 &11410080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f79c837ee1c944083c06d9b6b19da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestsPositions:
+  - {fileID: 462308}
 --- !u!114 &11441054
 MonoBehaviour:
   m_ObjectHideFlags: 1
