@@ -127,8 +127,8 @@ public class Weapon : MonoBehaviour {
 					p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
 				if(pc.useMeleeProjLauncher && ms.projectile != null){
 					PlayerProjStats msProj = ms.projectile.GetComponent<PlayerProjStats>();
-					msProj.minDmg = damage * 0.55f; //por ahora es asi loco,
-					msProj.maxDmg = damage * 0.55f;
+					msProj.minDmg = damage * 0.30f; //por ahora es asi loco,
+					msProj.maxDmg = damage * 0.30f;
 					if(pc.isFacingRight()){
 						weaponProjLauncher1.transform.rotation = Quaternion.Euler(0,0,90);
 					}
@@ -139,8 +139,8 @@ public class Weapon : MonoBehaviour {
 				}	
 				if(pc.useThunderBlow && ms.projectile != null){ //thunder blow
 					PlayerProjStats msProj = ms.projectile.GetComponent<PlayerProjStats>();
-					msProj.minDmg = damage *  0.65f; //por ahora es asi loco,
-					msProj.maxDmg = damage *  0.65f;
+					msProj.minDmg = damage *  0.40f; //por ahora es asi loco,
+					msProj.maxDmg = damage *  0.40f;
 					weaponProjLauncher1.transform.rotation = Quaternion.Euler(0,0,90);
 					Instantiate (msProj, weaponProjLauncher1.transform.position, weaponProjLauncher1.transform.rotation);
 				}	

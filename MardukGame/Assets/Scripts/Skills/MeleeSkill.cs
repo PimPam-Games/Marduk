@@ -51,13 +51,13 @@ public class MeleeSkill : SpellStats {
 			tooltip += "Performs a powerful attack that costs life \n \n";
 		}
 		if(string.Compare(spellName,"Burning Blow") == 0){
-			tooltip += "Performs a fire attack that casts a heat wave that deals 55% of your damage when it hits an enemy \n \n";
+			tooltip += "Performs a fire attack that casts a heat wave that deals 30% of your damage when it hits an enemy \n \n";
 		}
 		if(string.Compare(spellName,"Thunder Blow") == 0){
-			tooltip += "Performs a lightning attack that brings down a thunder that deals 65% of your damage when it hits an enemy \n \n";
+			tooltip += "Performs a lightning attack that brings down a thunder that deals 40% of your damage when it hits an enemy \n \n";
 		}
 		if(string.Compare(spellName,"Plant Thrust") == 0){
-			tooltip += "Performs a poison attack that unleashes deadly plants that deals 55% of your damage when it hits an enemy \n \n";
+			tooltip += "Performs a poison attack that unleashes deadly plants that deals 30% of your damage when it hits an enemy \n \n";
 		}
 		if(sacrifiedLife > 0)
 			tooltip += "Sacrificed Life: %" + sacrifiedLife + "\n";
