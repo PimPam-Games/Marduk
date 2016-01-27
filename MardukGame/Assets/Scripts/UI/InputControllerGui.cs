@@ -45,6 +45,8 @@ public class InputControllerGui : MonoBehaviour {
 				}
 			}
 		}
+		if(PlayerStats.isDead)
+			return;
 		if (Input.GetButtonUp ("ToggleInventory") && !menuInGame.IsActive()) {
 			//gui.ToggleInventoryWindow();
 			if(inventory.activeSelf){

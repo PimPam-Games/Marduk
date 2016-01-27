@@ -58,7 +58,7 @@ public class PlayerStats : MonoBehaviour {
 	private static AudioSource levelUpSoundStatic;
 	
 	public static string playerName;
-	
+
 	public GameObject graphics;
 	private SpriteRenderer[] renders;
 
@@ -136,6 +136,9 @@ public class PlayerStats : MonoBehaviour {
 			chillCount = 0;
 			StartCoroutine(PlayerDying());
 			//gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false ;//esto es provisorio HAY QUE CAMBIARLO!
+		}
+		if(!isDead && anim.GetBool("IsDead")){
+			anim.SetBool("IsDead", false);
 		}
 		UpdateMana ();
 		chillUpdate ();
@@ -251,9 +254,9 @@ public class PlayerStats : MonoBehaviour {
 
 	IEnumerator PlayerDying () {
 		anim.SetBool("IsDead", true);
+		Fading.SetActiveYouDie(true);
 		playerDeathSound.Play ();
 		yield return new WaitForSeconds (2.5f);
-		anim.SetBool("IsDead", false);
 		anim.speed = initAnimSpeed;
 		readyToRespawn = true;
 		GameController.previousExit = 0;

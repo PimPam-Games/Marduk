@@ -11,10 +11,13 @@ public class Fading : MonoBehaviour {
 	public static bool loaded = false; // se usa en el optimizador para saber cuando se termino de cargar un nibvel
 	public GameObject gameCtrlObj;
 	private GameController gameCtrl;
+	public GameObject youDieGo;
+	private static GameObject youDieStatic;
 	//private ChunkFactory currentChunkFactory;
 
 
 	void Awake(){
+		youDieStatic = youDieGo;
 		anim = GetComponent<Animator> ();
 		fadeImage = GetComponent<Image> ();
 		gameCtrl = gameCtrlObj.GetComponent<GameController> ();
@@ -35,11 +38,18 @@ public class Fading : MonoBehaviour {
 			if(bs != null)
 				bs.SetActive(false); 
 		}
+		SetActiveYouDie(false);
 		PlatformerCharacter2D.stopPlayer = false;
+		
 		CameraController.stopFollow = false;
 		loaded = true;
 		anim.SetBool ("FadeOut",true);
 		anim.SetBool ("FadeIn",false);
+	}
+
+	public static void SetActiveYouDie(bool enable){
+		youDieStatic.SetActive(enable);
+		
 	}
 
 	public void LoadScene(){
@@ -59,6 +69,7 @@ public class Fading : MonoBehaviour {
 		if (gameCtrl.playerStats.readyToRespawn) {
 			gameCtrl.playerStats.RespawnStats ();
 			gameCtrl.player.GetComponent<PlatformerCharacter2D> ().RespawnPosition (); //hace que el jugador mire a la derecha
+			PlayerStats.isDead = false;
 			//gameCtrl.currentLevel = 0; //cambio al nivel 0 para que se reposicione el jugador entrando por el otro if despues
 			gameCtrl.playerStats.readyToRespawn = false;
 		}

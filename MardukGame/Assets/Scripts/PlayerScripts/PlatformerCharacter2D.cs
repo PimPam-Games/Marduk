@@ -29,6 +29,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public GameObject bowLauncherGO;
 		public SpellsPanel spellsPanel;
 		public InventorySlotsPanel inventoryPanel;		
+	
+
 
 		private Transform backforeArm;
         private Transform groundCheck; // A position marking where to check if the player is grounded.
