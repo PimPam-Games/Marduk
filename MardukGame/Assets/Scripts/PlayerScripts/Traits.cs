@@ -5,9 +5,10 @@ using p = PlayerStats;
 
 public class Traits: MonoBehaviour
 {
-	public const int CantTraits = 21;
+	public const int CantTraits = 25;
 	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 16, LOWHPDAMAGE = 7, NOFREEZE = 17, NOSHOCK = 18, 
-	NOPOISON = 19, NOBURN = 20, FIREDAMAGE = 8, COLDDAMAGE = 9,LIGHTDAMAGE = 10, POISONDAMAGE= 11, CRITACC = 6, BLOCKDMG = 12, HIGHMP = 13, LOWHPCRIT = 14, ANTIAIR = 15;
+	NOPOISON = 19, NOBURN = 20, FIREDAMAGE = 8, COLDDAMAGE = 9,LIGHTDAMAGE = 10, POISONDAMAGE= 11, CRITACC = 6, BLOCKDMG = 12, HIGHMP = 13, LOWHPCRIT = 14, ANTIAIR = 15,
+	SWORDDMG = 21, MACEDMG = 22, AXEDMG = 23, BOWDMG = 24, FIREMDMG = 25, ICEMDMG = 26, LIGHTMDMG = 27, POISONMDMG = 28;
 	public static Trait[] traits;
 
 	public static float[] atributes;
@@ -32,12 +33,20 @@ public class Traits: MonoBehaviour
 		traits [FIREDAMAGE] = new Trait("Fire Funneling",4,"10% of damage dealt is added as fire damage");
 		traits [COLDDAMAGE] = new Trait("Cold Funneling",4,"10% of damage dealt is added as cold damage");
 		traits [LIGHTDAMAGE] = new Trait("Lightning Funneling",4,"10% of damage dealt is added as lightning damage");
-		traits [POISONDAMAGE] = new Trait("Posion Funneling",4,"10% of damage dealt is added as poison damage");
+		traits [POISONDAMAGE] = new Trait("Poison Funneling",4,"10% of damage dealt is added as poison damage");
 		traits [CRITACC] = new Trait("Recklessness",2,"-50% Accuracy, +100% critical chance");
 		traits [BLOCKDMG] = new Trait("Thorned Shield",4,"Deal half of your thorns damage when blocking an attack");
 		traits [HIGHMP] = new Trait("Energy Barrier",4,"25% reduced damage taken while above 80% MP");
 		traits [LOWHPCRIT] = new Trait("Killer Instinct",4,"100% critical chance while below 15% HP");
 		traits [ANTIAIR] = new Trait("Bird Hunter",4,"+20% damage to flying enemies");
+		traits [SWORDDMG] = new Trait("Swordsman",1,"+10% physical damage when wielding a sword");
+		traits [MACEDMG] = new Trait("Maceman",2,"+10% physical damage when wielding a mace");
+		traits [AXEDMG] = new Trait("Axeman",2,"+10% physical damage when wielding a axe");
+		traits [BOWDMG] = new Trait("Bowman",2,"+10% physical damage when wielding a bow");
+		traits [FIREMDMG] = new Trait("Fire Mage",2,"+10% magic damage for fire spells");
+		traits [ICEMDMG] = new Trait("Ice Mage",2,"+10% magic damage for ice spells");
+		traits [LIGHTMDMG] = new Trait("Lightning Mage",2,"+10% magic damage for lightning spells");
+		traits [POISONMDMG] = new Trait("Poison Mage",2,"+10% magic damage for poison spells");
 		/*traits [t15] = new Trait("t15",2,"Double hit");
 		traits [t16] = new Trait("t16",2,"10% chance to counterattack with one of your skills when struck");
 		traits [t17] = new Trait("t17",2,"Attacks cause area damage");

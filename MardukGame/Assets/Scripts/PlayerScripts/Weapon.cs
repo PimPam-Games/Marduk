@@ -169,6 +169,18 @@ public class Weapon : MonoBehaviour {
 				    estats.enemyName == "Zu")
 					damage *= 1.2f;
 			}
+			if (Traits.traits[Traits.SWORDDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Sword){
+				damage *= 5.1f;
+			}
+			if (Traits.traits[Traits.AXEDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Axe){
+				damage *= 1.1f;
+			}
+			if (Traits.traits[Traits.MACEDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Mace){
+				damage *= 1.1f;
+			}
+			if (Traits.traits[Traits.BOWDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Bow){
+				damage *= 1.1f;
+			}
 			//End Traits
 			bool hit = estats.Hit(damage,elem, isCrit);
 

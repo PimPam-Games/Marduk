@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Falchion
   type: 0
+  weaponType: 7
   icon: {fileID: 2800000, guid: a0b83ca8ab2817a40a562ec672de0964, type: 3}
   sprite: {fileID: 21300000, guid: a0b83ca8ab2817a40a562ec672de0964, type: 3}
   initMinDamage:
@@ -208,6 +209,7 @@ MonoBehaviour:
   itemForSlot: 0
   itemSound: {fileID: 8206264}
   lifeToAdd: 5
+  uniqueIndex: 0
 --- !u!212 &21267110
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -321,6 +323,10 @@ Prefab:
       propertyPath: itemSound
       value: 
       objectReference: {fileID: 8206264}
+    - target: {fileID: 0}
+      propertyPath: weaponType
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 118886}

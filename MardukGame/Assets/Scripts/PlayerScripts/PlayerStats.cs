@@ -42,7 +42,7 @@ public class PlayerStats : MonoBehaviour {
 
 	public static double currentExp;
 	public static int lvl;
-	public static int passivePoints;
+	public static int passivePoints = 1;
 	public static double nextLevelExp;
 	public static double oldNextLevelExp;
 	public static int atributesPoints = 0; //puntos de atributos que quedan por poner cada vez que se pasa de nivel

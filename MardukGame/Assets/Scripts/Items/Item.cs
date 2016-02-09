@@ -8,6 +8,7 @@ public class Item : MonoBehaviour {
 	public string itemName;
 	private RarityTypes rarity;
 	public ItemTypes type;
+	public WeaponTypes weaponType;
 	public Texture2D icon;
 	public Sprite sprite;
 	private float[] atributes;
@@ -142,14 +143,15 @@ public class Item : MonoBehaviour {
 		this.itemName = "unknow Name";
 		this.rarity = RarityTypes.Normal;
 		this.type = ItemTypes.Weapon;
+		this.weaponType = WeaponTypes.None;
 	}
 
-	public Item(string name, RarityTypes rarity, Texture2D icon,ItemTypes type ){
+	public Item(string name, RarityTypes rarity, Texture2D icon,ItemTypes type, WeaponTypes wtype ){
 		this.itemName = name;
 		this.rarity = rarity;
 		this.icon = icon;
 		this.type = type;
-
+		this.weaponType = wtype;
 	}
 
 	public string Name{
@@ -170,6 +172,11 @@ public class Item : MonoBehaviour {
 	public ItemTypes Type{
 		get{return type;}
 		set{type = value;}
+	}
+
+	public WeaponTypes WeaponType{
+		get{return weaponType;}
+		set{weaponType = value;}
 	}
 
 	public string ToolTip(){
@@ -193,8 +200,7 @@ public class Item : MonoBehaviour {
 				separator = "<color=orange>----------------------------------</color> \n";
 				break;
 		}
-		tooltip += "Rarity: " + Rarity + "\n" + 
-					"Type: " + Type + "\n";
+		tooltip +=  Rarity + " " +  WeaponType + "\n";
 		if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
 			tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
 			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n";
@@ -291,4 +297,15 @@ public enum ItemTypes{
 	Spell,
 	Orb,
 	TwoHandedWeapon
+}
+
+public enum WeaponTypes{
+	None,
+	Axe,
+	Mace,
+	Bow,
+	Polearm,
+	Dagger,
+	Crossbow,
+	Sword
 }

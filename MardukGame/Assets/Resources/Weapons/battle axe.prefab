@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Battle Axe
   type: 0
+  weaponType: 1
   icon: {fileID: 2800000, guid: 5c29207d52cfc224ba1c20b7feaecd01, type: 3}
   sprite: {fileID: 21300000, guid: 5c29207d52cfc224ba1c20b7feaecd01, type: 3}
   initMinDamage:
@@ -208,6 +209,7 @@ MonoBehaviour:
   itemForSlot: 0
   itemSound: {fileID: 8280208}
   lifeToAdd: 5
+  uniqueIndex: 0
 --- !u!212 &21201948
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -298,6 +300,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: itemName
       value: Battle Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: weaponType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

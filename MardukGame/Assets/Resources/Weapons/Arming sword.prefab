@@ -186,6 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Arming Sword
   type: 0
+  weaponType: 7
   icon: {fileID: 2800000, guid: fb7c3703b28cd3244b2a00d544f1bced, type: 3}
   sprite: {fileID: 21300000, guid: fb7c3703b28cd3244b2a00d544f1bced, type: 3}
   initMinDamage:
@@ -208,6 +209,7 @@ MonoBehaviour:
   itemForSlot: 0
   itemSound: {fileID: 8227742}
   lifeToAdd: 5
+  uniqueIndex: 0
 --- !u!212 &21249648
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -302,6 +304,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: itemName
       value: Arming Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: weaponType
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
