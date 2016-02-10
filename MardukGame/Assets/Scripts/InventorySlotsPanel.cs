@@ -146,6 +146,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 		itComponent.Icon = itemOrigin.Icon;
 		itComponent.Rarity = itemOrigin.Rarity;
 		itComponent.Type = itemOrigin.Type;
+		itComponent.WeaponType = itemOrigin.WeaponType;
 		itComponent.InventoryPositionX = -1;
 		itComponent.InventoryPositionY = -1;
 		itComponent.IsEquipped = true;

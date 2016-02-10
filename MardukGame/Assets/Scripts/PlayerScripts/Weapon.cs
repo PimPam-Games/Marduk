@@ -170,7 +170,7 @@ public class Weapon : MonoBehaviour {
 					damage *= 1.2f;
 			}
 			if (Traits.traits[Traits.SWORDDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Sword){
-				damage *= 5.1f;
+				damage *= 1.1f;
 			}
 			if (Traits.traits[Traits.AXEDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Axe){
 				damage *= 1.1f;

@@ -200,7 +200,12 @@ public class Item : MonoBehaviour {
 				separator = "<color=orange>----------------------------------</color> \n";
 				break;
 		}
-		tooltip +=  Rarity + " " +  WeaponType + "\n";
+
+		if (type == ItemTypes.Weapon)
+			tooltip +=  Rarity + " " +  WeaponType + "\n";
+		else
+			tooltip +=  Rarity + " " +  Type + "\n";
+
 		if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
 			tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
 			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n";
