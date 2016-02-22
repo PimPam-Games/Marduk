@@ -65,8 +65,8 @@ public class PlayerStats : MonoBehaviour {
 	/*status ailments variables*/
 
 	public static bool ghostMode;
-	public float ghostModeTime = 1f;
-	private float ghostModeCount;
+	public float ghostModeTime = 0.9f;
+	private float ghostModeCount = 0;
 
 	private bool chill = false;
 	private bool freeze = false;
@@ -380,7 +380,7 @@ public class PlayerStats : MonoBehaviour {
 	public bool Hit(float dmg, Types.Element type, float accuracy, bool isCritical){ //se llama cuando un enemigo le pega al jugador
 
 		float defense = defensives [Defense] + defensives [IncreasedDefense];
-		if (ghostMode == true) {
+		if (ghostMode) {
 			return false;
 		}
 		if (accuracy > -1) { //si es -1 siempre le pega

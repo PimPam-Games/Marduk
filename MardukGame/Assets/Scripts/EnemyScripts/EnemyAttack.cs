@@ -78,11 +78,13 @@ public class EnemyAttack : MonoBehaviour {
 					isCrit = true;
 					damage *= 2; //si es critico lo multiplico por 2 al daño del enemigo
 				}
-				playerStats.Hit (damage, stats.elem,stats.Accuracy,isCrit); 
-				if(target.transform.position.x < this.transform.position.x)
-					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-				else
-					target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+				bool hitConfirmed = playerStats.Hit (damage, stats.elem,stats.Accuracy,isCrit); 
+				if(hitConfirmed){
+					if(target.transform.position.x < this.transform.position.x)
+						target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+					else
+						target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+				}
 				PlatformerCharacter2D.skillBtnPressed = -1;
 			}
 	}

@@ -234,7 +234,7 @@ public class EnemyStats : MonoBehaviour {
 					Hit (p.defensives[p.Thorns], Types.Element.None, false);
 				}
 			}
-			pstats.Hit(dmgDealt, elem,Accuracy, isCrit);
+			bool hitConfirmed = pstats.Hit(dmgDealt, elem,Accuracy, isCrit);
 			//begin traits
 			if (p.isBlocking){
 				if (Traits.traits[Traits.BLOCKDMG].isActive())
@@ -242,10 +242,12 @@ public class EnemyStats : MonoBehaviour {
 				p.isBlocking = false;
 			}
 			//end traits
-			if(col.transform.position.x < this.transform.position.x)
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-			else
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+			if(hitConfirmed){
+				if(col.transform.position.x < this.transform.position.x)
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+				else
+					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+			}
 			PlatformerCharacter2D.skillBtnPressed = -1; //hace que el jugador deje de castear el skill
 		}
 	}

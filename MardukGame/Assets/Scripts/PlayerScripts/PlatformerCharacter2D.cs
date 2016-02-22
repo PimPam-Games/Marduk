@@ -47,8 +47,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		
 		public GameObject bowprojectile; //para setearle la flecha al arco por las dudas que no aparezca
 		//private float normalAnimSpeed;
-		public float knockback = 15f;
-		public float knockbackLength = 0.2f;
+		private float knockback = 6.5f;
+		private float knockbackLength = 0.9f;
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
 		public static bool jumpNow = false; //para que el jugador salte, se usa para cuando se carga un nivel que entra desde un hueco
@@ -113,6 +113,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void knockBackPlayer(bool knockFromRight){
+			rb.velocity = new Vector2(rb.velocity.x,0);
+			jumpNow = false;
+			rb.AddForce(new Vector2(0f, 400));
+			
 			knockbackTimer = knockbackLength;
 			this.knockFromRight = knockFromRight;
 		}
@@ -344,11 +348,21 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 				else{
 					anim.SetFloat("Speed", 0);
+					
 					if(!PlayerStats.isDead){
+						if(knockbackTimer > 0.4f){
+							
 							if(knockFromRight)
 								rb.velocity = new Vector2(-knockback, rb.velocity.y);
 							else
 								rb.velocity = new Vector2(knockback, rb.velocity.y);
+						}
+						else{
+							//if(grounded){
+								//anim.SetBool("Crouch",true);
+								rb.velocity = new Vector2(0, rb.velocity.y);
+							//}
+						}
 					}
 					knockbackTimer -= Time.deltaTime;
 				}
@@ -362,7 +376,7 @@ public class PlatformerCharacter2D : MonoBehaviour
                     Flip();
             }
             // If the player should jump...
-            if (grounded && jump && anim.GetBool("Ground"))
+            if (grounded && jump && anim.GetBool("Ground") && knockbackTimer <= 0)
             {
                 // Add a vertical force to the player.
 				
