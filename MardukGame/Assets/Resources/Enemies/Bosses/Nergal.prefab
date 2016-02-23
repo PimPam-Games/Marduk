@@ -890,6 +890,7 @@ MonoBehaviour:
   rend: {fileID: 21292624}
   spriteRend: {fileID: 21292624}
   isBoss: 1
+  isArmored: 1
 --- !u!114 &11475680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1203,6 +1204,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: exp
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isArmored
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

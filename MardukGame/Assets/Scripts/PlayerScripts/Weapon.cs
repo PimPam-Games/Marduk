@@ -182,9 +182,16 @@ public class Weapon : MonoBehaviour {
 				damage *= 1.1f;
 			}
 			//End Traits
+
+			//weapon constraints
+			switch (PlayerItems.EquipedWeapon.WeaponType){
+			case WeaponTypes.Sword: damage *= 0.5f;break;
+			case WeaponTypes.Axe: damage *= 0.75f;break;
+			default: break;
+			}
+
 			bool hit = estats.Hit(damage,elem, isCrit);
 
-			
 			if(hit){
 				if (isCrit && !Traits.traits[Traits.ACCURACY].isActive ()){
 					criticalHitSound.Play();
