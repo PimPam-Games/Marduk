@@ -69,7 +69,8 @@ public class Weapon : MonoBehaviour {
 
 	public void Attack(){
 		if (canAttack) {
-			if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon)
+			if(PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon
+			   || PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)
 				isAttacking = true;
 			attackTimer = attackDelay;
 			canAttack = false;

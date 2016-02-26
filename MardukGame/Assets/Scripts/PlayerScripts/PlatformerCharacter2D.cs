@@ -183,7 +183,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				} else {
 					if (PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
 						attackSound.Play ();
-						anim.SetBool ("PolearmAttacking", true);
+						anim.SetBool ("Attacking", true);
 					} else {
 						supportSkillPos = -1; //es un ataque comun, no se usa una support
 						bowLauncher.projectile = bowprojectile;
