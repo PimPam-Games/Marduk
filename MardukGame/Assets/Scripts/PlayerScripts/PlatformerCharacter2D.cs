@@ -350,12 +350,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 					anim.SetFloat("Speed", 0);
 					
 					if(!PlayerStats.isDead){
-						if(knockbackTimer > 0.4f){
+						if(knockbackTimer > 0f){
 							
 							if(knockFromRight)
-								rb.velocity = new Vector2(-knockback, rb.velocity.y);
+								rb.velocity = new Vector2((-knockback * knockbackTimer) - 1, rb.velocity.y);
 							else
-								rb.velocity = new Vector2(knockback, rb.velocity.y);
+								rb.velocity = new Vector2((knockback * knockbackTimer) + 1, rb.velocity.y);
 						}
 						else{
 							//if(grounded){
