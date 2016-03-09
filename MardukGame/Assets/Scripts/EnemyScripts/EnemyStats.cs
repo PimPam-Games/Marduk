@@ -88,6 +88,8 @@ public class EnemyStats : MonoBehaviour {
 	public bool isBoss = false;
 	public bool isArmored = false;
 
+	public EnemyCombatText combatText;
+
 	public float Accuracy{
 		get {return accuracy;}
 	}
@@ -440,7 +442,9 @@ public class EnemyStats : MonoBehaviour {
 			}
 			if (realDmg < 0)
 				realDmg = 0;
+			
 			currHealth -= realDmg;
+			combatText.ShowCombatText (System.Math.Round(realDmg,0).ToString());
 			//UpdateHealthBar ();
 			if (currHealth < 0) {
 				isDead = true;
