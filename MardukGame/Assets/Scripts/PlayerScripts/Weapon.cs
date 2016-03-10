@@ -194,7 +194,7 @@ public class Weapon : MonoBehaviour {
 			bool hit = estats.Hit(damage,elem, isCrit);
 
 			if(hit){
-				if (isCrit && !Traits.traits[Traits.ACCURACY].isActive ()){
+				if (isCrit){
 					criticalHitSound.Play();
 				}
 				else{

@@ -43,10 +43,10 @@ public class Traits: MonoBehaviour
 		traits [MACEDMG] = new Trait("Maceman",2,"+10% physical damage when wielding a mace");
 		traits [AXEDMG] = new Trait("Axeman",2,"+10% physical damage when wielding a axe");
 		traits [BOWDMG] = new Trait("Bowman",2,"+10% physical damage when wielding a bow");
-		traits [FIREMDMG] = new Trait("Fire Mage",2,"+10% magic damage for fire spells");
-		traits [ICEMDMG] = new Trait("Ice Mage",2,"+10% magic damage for ice spells");
-		traits [LIGHTMDMG] = new Trait("Lightning Mage",2,"+10% magic damage for lightning spells");
-		traits [POISONMDMG] = new Trait("Poison Mage",2,"+10% magic damage for poison spells");
+		//traits [FIREMDMG] = new Trait("Fire Mage",2,"+10% magic damage for fire spells");
+		//traits [ICEMDMG] = new Trait("Ice Mage",2,"+10% magic damage for ice spells");
+		//traits [LIGHTMDMG] = new Trait("Lightning Mage",2,"+10% magic damage for lightning spells");
+		//traits [POISONMDMG] = new Trait("Poison Mage",2,"+10% magic damage for poison spells");
 		/*traits [t15] = new Trait("t15",2,"Double hit");
 		traits [t16] = new Trait("t16",2,"10% chance to counterattack with one of your skills when struck");
 		traits [t17] = new Trait("t17",2,"Attacks cause area damage");
@@ -85,7 +85,7 @@ public class Traits: MonoBehaviour
 					p.defensives[p.AllRes] -= 30;
 					break;
 				case CRITACC:
-					p.offensives[p.IncreasedAccuracy] -= 50;
+					//p.offensives[p.IncreasedAccuracy] -= 50;
 					p.defensives[p.IncreasedCritChance] += 100;
 					break;
 				default :
@@ -107,7 +107,7 @@ public class Traits: MonoBehaviour
 			p.defensives[p.AllRes] += 30;
 			break;
 		case CRITACC:
-			p.offensives[p.IncreasedAccuracy] += 50;
+			//p.offensives[p.IncreasedAccuracy] += 50;
 			p.offensives[p.IncreasedCritChance] -= 100;
 			break;
 		default :

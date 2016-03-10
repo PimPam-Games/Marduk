@@ -78,7 +78,8 @@ public class EnemyAttack : MonoBehaviour {
 					isCrit = true;
 					damage *= 2; //si es critico lo multiplico por 2 al daño del enemigo
 				}
-				bool hitConfirmed = playerStats.Hit (damage, stats.elem,stats.Accuracy,isCrit); 
+				//bool hitConfirmed = playerStats.Hit (damage, stats.elem,stats.Accuracy,isCrit); 
+				bool hitConfirmed = playerStats.Hit (damage, stats.elem,1f,isCrit);
 				if(hitConfirmed){
 					if(target.transform.position.x < this.transform.position.x)
 						target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);

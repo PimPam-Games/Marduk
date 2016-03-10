@@ -66,13 +66,13 @@ public class CharacterPanel : MonoBehaviour {
 	private void UpdateOffensives(){
 		string physicalDmg = System.Math.Round(p.offensives[p.MinDmg] + p.offensives[p.MinDmg] * p.offensives[p.IncreasedDmg]/100,1).ToString() + " - " + System.Math.Round(p.offensives[p.MaxDamge]+ p.offensives[p.MaxDamge] * p.offensives[p.IncreasedDmg]/100,1).ToString();
 		float critChance = 0;
-		if (!Traits.traits [Traits.ACCURACY].isActive ()) {
+		/*if (!Traits.traits [Traits.ACCURACY].isActive ()) {
 			critChance = ((p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100))*100);
 		}
 		string accuracy = System.Math.Round(p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy]/100,1).ToString();
-		txtOffensives.text = "Physical Damage         " + "\n"
+		*/txtOffensives.text = "Physical Damage         " + "\n"
 			+"Attacks Per Second      " + "\n"
-				+"Accuracy                \n" 
+				//+"Accuracy                \n" 
 				+"Critical Chance         \n" 
 				+"Crit Dmg Multiplier       \n" 
 				+"Mana Per Second      \n"
@@ -81,7 +81,7 @@ public class CharacterPanel : MonoBehaviour {
 				+"Thorns damage        \n";
 		txt2Offensives.text = physicalDmg + "\n"
 			+(System.Math.Round(p.offensives[p.BaseAttacksPerSecond] + p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100),2)).ToString() + "\n"
-				+ accuracy + "\n"
+				//+ accuracy + "\n"
 				+ critChance.ToString() + "%"+ "\n"
 				+ p.offensives[p.CritDmgMultiplier].ToString()+ "\n"
 				+ p.offensives[p.ManaPerSec].ToString()+ "% \n"
@@ -92,7 +92,7 @@ public class CharacterPanel : MonoBehaviour {
 
 	private void UpdateDefensives(){
 		txtDefensives.text = "Defense         " + "\n"
-							+"Evasion Rating      " + "\n"
+							//+"Evasion Rating      " + "\n"
 							+"Cold Resistance               \n" 
 							+"Fire Resistance        \n" 
 							+"Lightning Resistance       \n" 
@@ -100,7 +100,7 @@ public class CharacterPanel : MonoBehaviour {
 							+"Block Chance \n" 
 							+"Life Gained Per Hit \n" ;
 		txt2Defensives.text = (p.defensives[p.Defense] + p.defensives[p.IncreasedDefense]).ToString() + "\n"
-			+ (p.defensives[p.Evasiveness] + p.defensives[p.IncreasedEvasion]).ToString() + "\n"
+			//+ (p.defensives[p.Evasiveness] + p.defensives[p.IncreasedEvasion]).ToString() + "\n"
 				+ (p.defensives[p.ColdRes]+p.defensives[p.AllRes]).ToString() + "\n"
 				+ (p.defensives[p.FireRes]+p.defensives[p.AllRes]).ToString() + "\n"
 				+ (p.defensives[p.LightRes]+p.defensives[p.AllRes]).ToString() + "\n"

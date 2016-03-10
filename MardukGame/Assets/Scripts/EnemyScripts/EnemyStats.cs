@@ -16,8 +16,8 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] private float initFireRes = 0;
 	[SerializeField] private float initLightRes = 0;
 	[SerializeField] private float initPoisonRes = 1;
-	[SerializeField] private float initEvasion = 30; //30 
-	[SerializeField] private float initAccuracy = 25; //25 por ahi deberia ser la base
+	//[SerializeField] private float initEvasion = 30; //30 
+	//[SerializeField] private float initAccuracy = 25; //25 por ahi deberia ser la base
 	[SerializeField] private float initCritChance = 0.05f; //5% prob de critico
 	[SerializeField] public Types.Element elem ;
 
@@ -30,8 +30,8 @@ public class EnemyStats : MonoBehaviour {
 	private float fireRes = 0;
 	private float lightRes = 0;
 	private float poisonRes = 1;
-	private float evasion = 30; //30 
-	private float accuracy = 25; //25 por ahi deberia ser la base
+	//private float evasion = 30; //30 
+	//private float accuracy = 25; //25 por ahi deberia ser la base
 	public float critChance = 25; 
 	[SerializeField] public float minDmgPerLvl = 0;
 	[SerializeField] public float maxDmgPerLvl = 0;
@@ -90,9 +90,9 @@ public class EnemyStats : MonoBehaviour {
 
 	public EnemyCombatText combatText;
 
-	public float Accuracy{
+	/*public float Accuracy{
 		get {return accuracy;}
-	}
+	}*/
 
 	// Use this for initialization
 	void Start () {
@@ -118,9 +118,9 @@ public class EnemyStats : MonoBehaviour {
 		fireRes = initFireRes + initFireRes * 0.05f * (lvl * lvl);
 		lightRes = initLightRes + initLightRes * 0.05f * (lvl * lvl);
 		poisonRes = initPoisonRes + initPoisonRes * 0.05f * (lvl * lvl);
-		evasion = initEvasion + initEvasion * 0.05f * (lvl * lvl);
+		//evasion = initEvasion + initEvasion * 0.05f * (lvl * lvl);
 		maxHealth = initMaxHealth + initMaxHealth * 0.05f * (lvl * lvl);
-		accuracy = initAccuracy + initAccuracy * 0.05f * (lvl * lvl);
+		//accuracy = initAccuracy + initAccuracy * 0.05f * (lvl * lvl);
 		critChance = initCritChance;
 		currHealth = maxHealth;
 		if(rangedAttack != null){
@@ -238,7 +238,8 @@ public class EnemyStats : MonoBehaviour {
 					Hit (p.defensives[p.Thorns], Types.Element.None, false);
 				}
 			}
-			bool hitConfirmed = pstats.Hit(dmgDealt, elem,Accuracy, isCrit);
+			//bool hitConfirmed = pstats.Hit(dmgDealt, elem,Accuracy, isCrit);
+			bool hitConfirmed = pstats.Hit(dmgDealt, elem,1f, isCrit);
 			//begin traits
 			if (p.isBlocking){
 				if (Traits.traits[Traits.BLOCKDMG].isActive())
@@ -283,21 +284,21 @@ public class EnemyStats : MonoBehaviour {
 			return false;
 		}
 		//Debug.Log ("damage: " + dmg + " Type: " + type);
-		float playerAccuracy = p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy]/100;
-		float chanceToEvade = (float)System.Math.Round((float)(1 - playerAccuracy / (playerAccuracy + System.Math.Pow((double)(evasion / 4),0.8))),2 );
-		//Begin Traits
+		//float playerAccuracy = p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy]/100;
+		//float chanceToEvade = (float)System.Math.Round((float)(1 - playerAccuracy / (playerAccuracy + System.Math.Pow((double)(evasion / 4),0.8))),2 );
+		/*Begin Traits
 		if (Traits.traits[Traits.ACCURACY].isActive ()) {
 			chanceToEvade = 0;
 			isCritical = false;
 		}
-		//End Traits
+		*/ /*End Traits
 		float[] cteProbs = {1 - chanceToEvade, chanceToEvade};
 		if (Utils.Choose (cteProbs) != 0 && Types.Element.None == type) { //solamente se pueden evadir ataques fisicos
 			//anim.SetBool ("Blocking", true);
 			Debug.Log ("El enemigo Evadio el ataque! ");
 			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
 			return false;
-		}
+		}*/
 
 		float[] blockProb = {1 - blockChance, blockChance};
 		if (Utils.Choose (blockProb) != 0) { 

@@ -242,8 +242,8 @@ public class Item : MonoBehaviour {
 			tooltip += "+ " + defensives[p.LightRes] + " To Lightning Resistance" + "\n";
 		if(defensives[p.PoisonRes] > 0)
 			tooltip += "+ " + defensives[p.PoisonRes] + " To Poison Resistance" + "\n";
-		if(defensives[p.Evasiveness] > 0)
-			tooltip += "+ " + defensives[p.Evasiveness] + "% To Evasiveness" + "\n";
+		//if(defensives[p.Evasiveness] > 0)
+		//	tooltip += "+ " + defensives[p.Evasiveness] + "% To Evasiveness" + "\n";
 		if(defensives[p.Thorns] > 0)
 			tooltip += "+ " + defensives[p.Thorns] + " Thorns Damage" + "\n";
 		if(defensives[p.LifePerHit] > 0)
@@ -252,8 +252,8 @@ public class Item : MonoBehaviour {
 			tooltip +=  defensives[p.LifePerSecond] + "% Life Regenerated Per Second" + "\n";
 		if (defensives [p.IncreasedDefense] > 0)
 			tooltip += "+ " + defensives [p.IncreasedDefense] + " Defense" +"\n";
-		if (defensives [p.IncreasedEvasion] > 0)
-			tooltip += "+ " + defensives [p.IncreasedEvasion] + " Evasion Rating" +"\n";
+		//if (defensives [p.IncreasedEvasion] > 0)
+		//	tooltip += "+ " + defensives [p.IncreasedEvasion] + " Evasion Rating" +"\n";
 		if(utils[p.MovementSpeed] > 0)
 			tooltip +=  utils[p.MovementSpeed] + "% Increased Movement Speed" + "\n";
 		if(offensives[p.CritChance]>0)
@@ -266,8 +266,8 @@ public class Item : MonoBehaviour {
 			tooltip +=  offensives[p.IncreasedMgDmg] + "% Increased Magic Damage" + "\n";
 		if(offensives[p.IncreasedCastSpeed]>0)
 			tooltip +=  offensives[p.IncreasedCastSpeed] + "% Increased Cast Speed" + "\n";
-		if(offensives[p.IncreasedAccuracy]>0)
-			tooltip += offensives[p.IncreasedAccuracy] + "% Increased Accuracy" + "\n";
+		//if(offensives[p.IncreasedAccuracy]>0)
+		//	tooltip += offensives[p.IncreasedAccuracy] + "% Increased Accuracy" + "\n";
 		//if(offensives[p.BleedChance]>0)
 		//	tooltip +=  "+ " + offensives[p.BleedChance] + "% Chance Of Bleeding " + "\n";
 		//if(offensives[p.CertainStrChance]>0)

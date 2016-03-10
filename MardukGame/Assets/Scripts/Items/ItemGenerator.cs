@@ -156,7 +156,7 @@ public class ItemGenerator :MonoBehaviour{
 				case Contender:
 					newItem.Atributes [p.Vitality] = 12;
 					newItem.Atributes [p.Strength] = 12;
-					newItem.Defensives[p.IncreasedEvasion] = 15;
+					//newItem.Defensives[p.IncreasedEvasion] = 15;
 					break;
 				case IceDragon:
 					newItem.Defensives [p.ColdRes] = 25;
@@ -210,7 +210,7 @@ public class ItemGenerator :MonoBehaviour{
 					break;
 				case YbabEbab:
 					newItem.Utils [p.AllAttr] = 5;
-					newItem.Defensives [p.IncreasedEvasion] = 30;
+					//newItem.Defensives [p.IncreasedEvasion] = 30;
 					break;
 				case AbbadonTreasure:
 					newItem.Utils [p.AllAttr] = 15;
@@ -254,8 +254,8 @@ public class ItemGenerator :MonoBehaviour{
 							newItem.Defensives [optionDef] = Random.Range (5, 11);
 						if (optionDef == p.IncreasedDefense)
 							newItem.Defensives [optionDef] = Random.Range (5, 11);
-						if (optionDef == p.IncreasedEvasion)
-							newItem.Defensives [optionDef] = Random.Range (5, 11);
+						//if (optionDef == p.IncreasedEvasion)
+						//	newItem.Defensives [optionDef] = Random.Range (5, 11);
 						if (optionDef == p.LifePerHit)
 							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.5f, 2f), 2);
 					}
@@ -293,8 +293,8 @@ public class ItemGenerator :MonoBehaviour{
 							newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (5, 11);
 						if (optionOff == p.IncreasedDmg)
 							newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (5, 11);
-						if (optionOff == p.IncreasedAccuracy)
-							newItem.Offensives [p.IncreasedAccuracy] = (float)Random.Range (5, 11);						
+						//if (optionOff == p.IncreasedAccuracy)
+						//	newItem.Offensives [p.IncreasedAccuracy] = (float)Random.Range (5, 11);						
 					}
 					break;
 				default:

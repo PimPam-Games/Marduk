@@ -10,8 +10,8 @@ public class PlayerStats : MonoBehaviour {
 
 	public const int CantAtributes = 4, CantOffensives = 18, CantDefensives = 14, CantUtils = 4;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
-	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, Accuracy = 4, StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, BaseAttacksPerSecond = 10, IncreasedAttackSpeed = 11, IncreasedCritChance = 12, IncreasedDmg = 13, IncreasedMgDmg = 14, IncreasedCastSpeed = 15, IncreasedAccuracy = 16, MagicDmg = 17; //offensives
-	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, Evasiveness = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10, AllRes = 11, IncreasedEvasion = 12, IncreasedDefense = 13;  //defensives
+	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, /*Accuracy = 4,*/ StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, BaseAttacksPerSecond = 10, IncreasedAttackSpeed = 11, IncreasedCritChance = 12, IncreasedDmg = 13, IncreasedMgDmg = 14, IncreasedCastSpeed = 15, /*IncreasedAccuracy = 16,*/ MagicDmg = 17; //offensives
+	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, /*Evasiveness = 7,*/ Thorns = 8, LifePerHit = 9, LifePerSecond = 10, AllRes = 11, /*IncreasedEvasion = 12,*/ IncreasedDefense = 13;  //defensives
 	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2, AllAttr = 3;//utils
 
 	public const float InitMoveSpeed = 5;
@@ -24,8 +24,8 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitManaRegen = 1.2f;
 	public const float InitCritChance = 0.05f;
 	public const float InitCritDmgMult = 2f;
-	public const float InitAccuracy = 50;
-	public const float InitEvasion = 55;
+	//public const float InitAccuracy = 50;
+	//public const float InitEvasion = 55;
 
 	public static float currentHealth;
 	public static float currentMana;
@@ -158,8 +158,8 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
 		offensives[MagicDmg] = atributes[Spirit] * 0.2f;
 		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
-		offensives [Accuracy] = atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
-		defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
+		//offensives [Accuracy] = atributes [Dextery] * 2 + InitAccuracy; //uno de destreza 2 de accuracy
+		//defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
 		currentHealth = defensives[MaxHealth];
 		currentMana = offensives [MaxMana];
 		UpdateMana ();
@@ -234,8 +234,8 @@ public class PlayerStats : MonoBehaviour {
 				break;
 			case 1:
 				atributes [Dextery]++;
-				offensives [Accuracy] +=  2 ;
-				defensives [Evasiveness] +=  2; 
+				//offensives [Accuracy] +=  2 ;
+				//defensives [Evasiveness] +=  2; 
 				break;
 			case 2:
 				atributes [Vitality]++;
@@ -313,8 +313,8 @@ public class PlayerStats : MonoBehaviour {
 		offensives [CritDmgMultiplier] = InitCritDmgMult;
 		offensives [MaxMana] = InitMana;
 		offensives [ManaPerSec] = InitManaRegen;
-		offensives [Accuracy] = InitAccuracy;
-		defensives [Evasiveness] = InitEvasion;
+		//offensives [Accuracy] = InitAccuracy;
+		//defensives [Evasiveness] = InitEvasion;
 		offensives[MagicDmg] = 0;
 		lvl = 1;
 		currentExp = 0;
@@ -383,7 +383,7 @@ public class PlayerStats : MonoBehaviour {
 		if (ghostMode) {
 			return false;
 		}
-		if (accuracy > -1) { //si es -1 siempre le pega
+		/*if (accuracy > -1) { //si es -1 siempre le pega
 			float chanceToEvade = (float)System.Math.Round ((float)(1 - accuracy / (accuracy + System.Math.Pow ((double)((defensives [Evasiveness]+defensives[IncreasedEvasion]) / 4), 0.8))), 2);
 			float[] cteProbs = {1 - chanceToEvade, chanceToEvade};
 			if (Utils.Choose (cteProbs) != 0) {
@@ -393,7 +393,7 @@ public class PlayerStats : MonoBehaviour {
 				CombatText.ShowCombatText("Dodge");
 				return false;
 			}
-		}
+		}*/
 		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);

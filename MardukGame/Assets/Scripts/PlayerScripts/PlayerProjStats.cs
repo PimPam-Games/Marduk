@@ -274,7 +274,8 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				isCrit = true;
 				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
 			}
-			hitConfirmed = pstats.Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
+			//hitConfirmed = pstats.Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
+			hitConfirmed = pstats.Hit(dmgDealt, elem,1f,isCrit);
 			alreadyHit = true;
 			if(hitConfirmed){
 				if(col.transform.position.x < this.transform.position.x)
