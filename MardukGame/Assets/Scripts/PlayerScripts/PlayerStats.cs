@@ -53,7 +53,8 @@ public class PlayerStats : MonoBehaviour {
 
 	public AudioSource playerDeathSound;
 	public AudioSource blockSound;
-	public AudioSource levelUpSound	;
+	public AudioSource levelUpSound;
+	public AudioSource playerHitSound;
 
 	private static AudioSource levelUpSoundStatic;
 	
@@ -405,7 +406,8 @@ public class PlayerStats : MonoBehaviour {
 			Debug.Log ("Bloqueaste el ataque! " );
 			return true;
 		}
-
+		playerHitSound.Stop ();
+		playerHitSound.Play ();
 		ghostMode = true; //ghost mode
 		for(int i=0 ; i<renders.Length-1;i++){
 			renders[i].color = new Color (renders[i].color.r, renders[i].color.g, renders[i].color.b, 0.3f);
