@@ -185,10 +185,12 @@ public class Weapon : MonoBehaviour {
 			//End Traits
 
 			//weapon constraints
-			switch (PlayerItems.EquipedWeapon.WeaponType){
-			case WeaponTypes.Sword: damage *= 0.5f;break;
-			case WeaponTypes.Axe: damage *= 0.75f;break;
-			default: break;
+			if (estats.isArmored){
+				switch (PlayerItems.EquipedWeapon.WeaponType){
+				case WeaponTypes.Sword: damage *= 0.5f;break;
+				case WeaponTypes.Axe: damage *= 0.75f;break;
+				default: break;
+				}
 			}
 
 			bool hit = estats.Hit(damage,elem, isCrit);
