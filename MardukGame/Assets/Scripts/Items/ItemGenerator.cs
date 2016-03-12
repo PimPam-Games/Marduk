@@ -66,7 +66,6 @@ public class ItemGenerator :MonoBehaviour{
 		if (newItem.auraRend != null) {
 			newItem.auraRend.sprite = GameController.auraRenders[newRarity]; //el color del aura del item, dependiendo si es magico, normal , etc
 		}
-
 		if (newItem.Rarity != RarityTypes.Normal) {
 			int numAffixes = 1; 
 			if (newItem.Rarity == RarityTypes.Magic)
@@ -230,6 +229,7 @@ public class ItemGenerator :MonoBehaviour{
 
 			}
 
+			//generator of random affixes
 			for (int j=0; j<numAffixes; j++) {
 				int defAtrOff = Random.Range (0, 3);
 				bool ok = false;
@@ -254,6 +254,8 @@ public class ItemGenerator :MonoBehaviour{
 							newItem.Defensives [optionDef] = Random.Range (5, 11);
 						if (optionDef == p.IncreasedDefense)
 							newItem.Defensives [optionDef] = Random.Range (5, 11);
+						if (optionDef == p.AllRes)
+							newItem.Defensives [optionDef] = Random.Range (2, 4);
 						//if (optionDef == p.IncreasedEvasion)
 						//	newItem.Defensives [optionDef] = Random.Range (5, 11);
 						if (optionDef == p.LifePerHit)

@@ -8,10 +8,10 @@ using plat = PlatformerCharacter2D;
 public class PlayerStats : MonoBehaviour {
 
 
-	public const int CantAtributes = 4, CantOffensives = 18, CantDefensives = 14, CantUtils = 4;
+	public const int CantAtributes = 4, CantOffensives = 16, CantDefensives = 12, CantUtils = 4;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
-	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, /*Accuracy = 4,*/ StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, BaseAttacksPerSecond = 10, IncreasedAttackSpeed = 11, IncreasedCritChance = 12, IncreasedDmg = 13, IncreasedMgDmg = 14, IncreasedCastSpeed = 15, /*IncreasedAccuracy = 16,*/ MagicDmg = 17; //offensives
-	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, /*Evasiveness = 7,*/ Thorns = 8, LifePerHit = 9, LifePerSecond = 10, AllRes = 11, /*IncreasedEvasion = 12,*/ IncreasedDefense = 13;  //defensives
+	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, BaseAttacksPerSecond = 4, StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, MagicDmg = 10,  IncreasedAttackSpeed = 11, IncreasedCritChance = 12, IncreasedDmg = 13, IncreasedMgDmg = 14, IncreasedCastSpeed = 15;  //offensives
+	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, IncreasedDefense = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10, AllRes = 11;  //defensives
 	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2, AllAttr = 3;//utils
 
 	public const float InitMoveSpeed = 5;
