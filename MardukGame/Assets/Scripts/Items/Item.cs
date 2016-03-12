@@ -201,7 +201,7 @@ public class Item : MonoBehaviour {
 				break;
 		}
 
-		if (type == ItemTypes.Weapon)
+		if (type == ItemTypes.Weapon || type == ItemTypes.RangedWeapon || type == ItemTypes.TwoHandedWeapon)
 			tooltip +=  Rarity + " " +  WeaponType + "\n";
 		else
 			tooltip +=  Rarity + " " +  Type + "\n";

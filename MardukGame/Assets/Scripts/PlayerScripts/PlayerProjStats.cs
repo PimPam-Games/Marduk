@@ -135,7 +135,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				return;
 			alreadyHit = true;
 			
-			if(elem == Types.Element.None){
+			if(elem == Types.Element.None){ //presumo que estos son los ataque de arco
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
 					p.currentHealth += p.defensives[p.LifePerHit];
 				damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
@@ -144,6 +144,13 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 					damage = damage * 0.6f; 
 					damageConverted = damage * 0.4f; //al 40% del daño fisico lo convierte en otro daño
 				}
+
+				if (Traits.traits[Traits.BOWDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Bow){
+					damage *= 1.1f;
+				}
+				//******************************BOW PATCH!!!!!*********************************
+				damage *= 0.5f;
+				//******************************BOW PATCH!!!!!*********************************
 			}
 			else{
 				damage = Random.Range(minDmg,maxDmg);
@@ -171,6 +178,8 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				    estats.enemyName == "Zu")
 					damage *= 1.2f;
 			}
+
+
 			//End Traits
 			bool isCrit = false;
 			if(Utils.Choose(critDmgProb) != 0 || alwaysCrit)

@@ -179,11 +179,7 @@ public class Weapon : MonoBehaviour {
 			if (Traits.traits[Traits.MACEDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Mace){
 				damage *= 1.1f;
 			}
-			if (Traits.traits[Traits.BOWDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Bow){
-				damage *= 1.1f;
-			}
 			//End Traits
-
 			//weapon constraints
 			if (estats.isArmored){
 				switch (PlayerItems.EquipedWeapon.WeaponType){
