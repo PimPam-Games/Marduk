@@ -5,21 +5,19 @@ using UnityEngine.UI;
 public class CombatText : MonoBehaviour {
 
 	private static Text text;
-	private static float timer = 0;
+    public Animator anim;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		text = GetComponentInChildren<Text>();
 		text.text = "";
 		text.color = new Color(1,1,1,1);
 	}
 
 	void Update(){
-		timer -= Time.deltaTime;
-		if(timer <= 0 && text.enabled){
-			text.text = "";
-			text.enabled = false;
-		}
+		if(text.enabled && !anim.GetBool("DamageText")){
+            anim.SetBool("DamageText", true);
+        }
 		if(PlatformerCharacter2D.isFacingRight())
 			this.transform.rotation = Quaternion.Euler(0,0,0);
 		else
@@ -27,8 +25,14 @@ public class CombatText : MonoBehaviour {
 
 	}
 
-	public static void ShowCombatText(string txt){
-		timer = 1;
+    public void DisableText()
+    {
+        text.text = "";
+        anim.SetBool("DamageText", false);
+        text.enabled = false;
+    }
+
+    public static void ShowCombatText(string txt){
 		text.enabled = true;
 		text.text = txt;
 	}
