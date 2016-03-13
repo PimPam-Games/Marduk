@@ -110,6 +110,12 @@ public class EnemyStats : MonoBehaviour {
 		CalculateStats ();
 	}
 
+    void OnEnable()
+    {
+        if (isDead)
+            Destroy(this.gameObject);
+    }
+
 	private void CalculateStats(){
 		minDamage = initMinDamage + initMinDamage * 0.007f * (lvl * lvl);
 		maxDamage = initMaxDamage + initMaxDamage * 0.007f * (lvl * lvl);

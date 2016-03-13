@@ -65,12 +65,13 @@ public class CharacterPanel : MonoBehaviour {
 
 	private void UpdateOffensives(){
 		string physicalDmg = System.Math.Round(p.offensives[p.MinDmg] + p.offensives[p.MinDmg] * p.offensives[p.IncreasedDmg]/100,1).ToString() + " - " + System.Math.Round(p.offensives[p.MaxDamge]+ p.offensives[p.MaxDamge] * p.offensives[p.IncreasedDmg]/100,1).ToString();
-		float critChance = 0;
-		/*if (!Traits.traits [Traits.ACCURACY].isActive ()) {
-			critChance = ((p.offensives [p.CritChance] + p.offensives [p.CritChance] * (p.offensives [p.IncreasedCritChance] / 100))*100);
+		float critChance = ((p.offensives[p.CritChance] + p.offensives[p.CritChance] * (p.offensives[p.IncreasedCritChance] / 100)) * 100);
+        /*if (!Traits.traits [Traits.ACCURACY].isActive ()) {
+			critChance = 
 		}
 		string accuracy = System.Math.Round(p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy]/100,1).ToString();
-		*/txtOffensives.text = "Physical Damage         " + "\n"
+		*/
+        txtOffensives.text = "Physical Damage         " + "\n"
 			+"Attacks Per Second      " + "\n"
 				//+"Accuracy                \n" 
 				+"Critical Chance         \n" 

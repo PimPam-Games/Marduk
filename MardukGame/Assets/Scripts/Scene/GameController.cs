@@ -164,14 +164,15 @@ public class GameController : MonoBehaviour {
 			//Debug.LogError(levelName + " No encontrado!");
 			return;
 		}
-		List<GameObject> enemList = enemiesPerLevel [levelName];
-		foreach(GameObject e in enemList){
-			if(e!=null)
-				e.SetActive(active);
-			//else
-			//	enemList.Remove(e);
-		}
-	}
+        List<GameObject> enemList = enemiesPerLevel[levelName];
+        foreach (GameObject e in enemList)
+        {
+            if (e != null)
+                e.SetActive(active);
+            //else
+            //	enemList.Remove(e);
+        }
+    }
 
 	public static void SetActiveChunks(string levelName, bool active){
 		if (!chunksPerZone.ContainsKey (levelName)) {
