@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitMgDmg = 1;
 	public const float InitMana = 40; 
 	public const float InitManaRegen = 1.2f;
-	public const float InitCritChance = 0.05f;
+	public const float InitCritChance = 0;
 	public const float InitCritDmgMult = 2f;
 	//public const float InitAccuracy = 50;
 	//public const float InitEvasion = 55;

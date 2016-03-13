@@ -25,6 +25,7 @@ public class Item : MonoBehaviour {
 	public float[] initBaseAttackPerSecond = new float[2];
 	public float[] initDefense =  new float[2];
 	public float[] initBlockChance =  new float[2];
+    public float[] initCritChance = new float[2];
 	public float moveSpeedReduction = 0;
 	public SpriteRenderer auraRend;
 	private float moveTimer = 0; //son para que objeto se mueva un poco
@@ -55,7 +56,8 @@ public class Item : MonoBehaviour {
 				Offensives [p.MinDmg] = (float)System.Math.Round(Random.Range (initMinDamage[0], initMinDamage[1]),0);
 				Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
 				Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);
-			} else {
+                Offensives[p.CritChance] = (float)System.Math.Round(Random.Range(initCritChance[0], initCritChance[1]), 2);
+            } else {
 				if(type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
 					Defensives [p.Defense] = (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
 				else{ 
@@ -207,8 +209,11 @@ public class Item : MonoBehaviour {
 			tooltip +=  Rarity + " " +  Type + "\n";
 
 		if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
-			tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
-			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n";
+            float crit = (float)System.Math.Round(offensives[p.CritChance] * 100,0);
+
+            tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
+			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n" + 
+            "Critical Chance: " + crit + "%\n";
 		}
 		if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Shield || type == ItemTypes.Belt)
 			tooltip += "defense: " + defensives [p.Defense] + "\n";
@@ -256,8 +261,8 @@ public class Item : MonoBehaviour {
 		//	tooltip += "+ " + defensives [p.IncreasedEvasion] + " Evasion Rating" +"\n";
 		if(utils[p.MovementSpeed] > 0)
 			tooltip +=  utils[p.MovementSpeed] + "% Increased Movement Speed" + "\n";
-		if(offensives[p.CritChance]>0)
-			tooltip += "+ " + offensives[p.CritChance] + "% Critical Chance" + "\n";
+		//if(offensives[p.CritChance]>0)
+			//tooltip += "+ " + offensives[p.CritChance] + "% Critical Chance" + "\n";
 		if(offensives[p.IncreasedAttackSpeed]>0)
 			tooltip +=  offensives[p.IncreasedAttackSpeed] + "% Increased Attack Speed" + "\n";
 		if(offensives[p.IncreasedCritChance]>0)

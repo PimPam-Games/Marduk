@@ -451,7 +451,10 @@ public class EnemyStats : MonoBehaviour {
 				realDmg = 0;
 			
 			currHealth -= realDmg;
-			combatText.ShowCombatText (System.Math.Round(realDmg,0).ToString());
+            string cbt = System.Math.Round(realDmg, 0).ToString();
+            if (isCritical)
+                cbt = "Crit! " + cbt; 
+			combatText.ShowCombatText (cbt);
 			//UpdateHealthBar ();
 			if (currHealth < 0) {
 				isDead = true;
