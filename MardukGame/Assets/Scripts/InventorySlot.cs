@@ -42,14 +42,14 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 		if(draggedItem != null){
 			switch(slotId){
 				case WeaponSlotID:
-				if(draggedItem.type != ItemTypes.Weapon && draggedItem.type != ItemTypes.TwoHandedWeapon && draggedItem.type != ItemTypes.RangedWeapon)
-						return;
-				if((draggedItem.type == ItemTypes.RangedWeapon || draggedItem.type == ItemTypes.TwoHandedWeapon) && PlayerItems.EquipedShield != null) //no deja equipar al arco si hay un escudo equipado
-						return;
-					draggedItem.IsEquipped = true;
-					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-					PlayerItems.EquipedWeapon = draggedItem;
-					break;
+				    if(draggedItem.type != ItemTypes.Weapon && draggedItem.type != ItemTypes.TwoHandedWeapon && draggedItem.type != ItemTypes.RangedWeapon)
+						    return;
+				    if((draggedItem.type == ItemTypes.RangedWeapon || draggedItem.type == ItemTypes.TwoHandedWeapon) && PlayerItems.EquipedShield != null) //no deja equipar al arco si hay un escudo equipado
+						    return;
+					    draggedItem.IsEquipped = true;
+					    draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					    PlayerItems.EquipedWeapon = draggedItem;
+					    break;
 				case ArmourSlotID:
 					if(draggedItem.type != ItemTypes.Armour)
 						return;
@@ -164,14 +164,18 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					if(it.IsEquipped){
 						return;					
 					}
-					PlayerItems.Inventory.Remove(it);
+                    InventorySlotsPanel.itemToDelete = it;
+                    InventorySlotsPanel.deletePanel.SetActive(true);
+					//PlayerItems.Inventory.Remove(it);
 				}
 				else{
 					SpellStats sp = item.GetComponent<SpellStats>();
-					PlayerItems.SpellsInvetory.Remove(sp);
-				}
-				Destroy(item.gameObject);
-				ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
+                    InventorySlotsPanel.skillToDelete = sp;
+                    InventorySlotsPanel.deletePanel.SetActive(true);
+                        //PlayerItems.SpellsInvetory.Remove(sp);
+                    }
+				//Destroy(item.gameObject);
+				//ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
 			}
 			break;
 		}

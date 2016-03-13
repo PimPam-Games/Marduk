@@ -20,6 +20,10 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	public GameObject invTooltipGO;
 	public static GameObject invTooltip;
 	public SpellsPanel spellsPanel;
+    public GameObject deletePanelGO;
+    public static GameObject deletePanel;
+    public static Item itemToDelete = null;
+    public static SpellStats skillToDelete = null;
 	//private bool itemsLoaded = false;
 	
 	
@@ -27,10 +31,19 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 	// Use this for initialization
 	void Start () {
 		invTooltip = invTooltipGO;
+        deletePanel = deletePanelGO;
 	}
 
-	/*Se invoca desde SpellsPanel */
-	public void LoadSkillAt(GameObject newSkill, int posX, int posY){
+    void OnEnable()
+    {
+        itemToDelete = null;
+        skillToDelete = null;
+        if(deletePanel != null)
+            deletePanel.SetActive(false);
+    }
+
+    /*Se invoca desde SpellsPanel */
+    public void LoadSkillAt(GameObject newSkill, int posX, int posY){
 		if(slotsPanels[posX].GetChild(posY).GetComponent<InventorySlot>().item == null){
 			newSkill.transform.SetParent(slotsPanels[posX].GetChild(posY));
 			newSkill.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);					
@@ -316,5 +329,29 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 		}
 		return false;
 	}
+
+    /*Metodos que usan los botones del deletePanel*/
+    public void DeleteItem()
+    {
+        if (itemToDelete != null) {
+            PlayerItems.Inventory.Remove(InventorySlotsPanel.itemToDelete);
+            Destroy(InventorySlotsPanel.itemToDelete.gameObject);
+        }
+        if(skillToDelete != null)
+        {
+            PlayerItems.SpellsInvetory.Remove(skillToDelete);
+            Destroy(skillToDelete.gameObject);
+        }
+        ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
+        skillToDelete = null;
+        itemToDelete = null;
+        deletePanel.SetActive(false);
+    }
+
+    public void CancelDelete()
+    {
+        itemToDelete = null;
+        deletePanel.SetActive(false);
+    }
 
 }
