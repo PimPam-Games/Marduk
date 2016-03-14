@@ -206,10 +206,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		public void setCastAnimSpeed(){ //se llama desde la animacion de ataque para setear la velocidad
 			
-			if (currentSkill != null)
+			/*if (currentSkill != null)
 				anim.speed += currentSkill.animSpeed/2;
 			else
-				Debug.Log ("skill null");
+				Debug.Log ("skill null");*/
 		}
 
 		public void DoDamage(){ //se llama desde la animacion de ataque para que el ataque empiecwe a hacer daño
@@ -482,8 +482,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 					NormalAttack();
 					return;
 				}
-				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking"))
-					return;
+				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking") || anim.GetBool("PolearmAttacking"))
+                    return;
 	
 				supportSkillPos = i;
 				playerSupportSkills[i] = skill.SupportSkill;

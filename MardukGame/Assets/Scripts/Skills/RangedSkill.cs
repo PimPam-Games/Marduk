@@ -49,7 +49,8 @@ public class RangedSkill : SpellStats {
 	// Update is called once per frame
 	protected override void Update () {
 		base.Update ();
-		castDelay = 1 / (castPerSecond + castPerSecond * (p.offensives[p.IncreasedCastSpeed]/100)); //1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));
+        castDelay = 1 / (castPerSecond + castPerSecond * (p.offensives[p.IncreasedCastSpeed] / 100));
+        /*castDelay = 1 / (castPerSecond + castPerSecond * (p.offensives[p.IncreasedCastSpeed]/100)); //1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));
 		if(castDelay >= 0.8f)
 			animSpeed = 0;
 		if(castDelay < 0.8f && castDelay >= 0.5f)
@@ -59,8 +60,8 @@ public class RangedSkill : SpellStats {
 		if(castDelay < 0.3f && castDelay >= 0.15f)
 			animSpeed = 6;
 		if(castDelay < 0.15f)
-			animSpeed = 8;
-	}
+			animSpeed = 8;*/
+    }
 
 	public override string ToolTip ()
 	{
@@ -80,6 +81,7 @@ public class RangedSkill : SpellStats {
 		if(string.Compare(spellName,"Poison Nova") == 0){
 			tooltip += "Casts a ring of Poison around you that deals aoe damage \n \n";
 		}
+        tooltip += "Cast per second: " + System.Math.Round(1/castDelay,2).ToString() + "\n";
 		if(initPhysicalDmgMult > 0)
 			tooltip += "Deals " + projStats.physicalDmgMult + "% of Base Attack Damage \n";
 		if(initMaxDmg > 0){
