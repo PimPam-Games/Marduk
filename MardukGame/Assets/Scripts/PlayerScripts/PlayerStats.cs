@@ -380,7 +380,7 @@ public class PlayerStats : MonoBehaviour {
 	public bool Hit(float dmg, Types.Element type, float accuracy, bool isCritical){ //se llama cuando un enemigo le pega al jugador
 
 		float defense = defensives [Defense] + defensives [IncreasedDefense];
-		if (ghostMode) {
+		if (ghostMode || anim.GetBool("Blocking")){
 			return false;
 		}
 		/*if (accuracy > -1) { //si es -1 siempre le pega
@@ -403,7 +403,8 @@ public class PlayerStats : MonoBehaviour {
 				isBlocking = true;
 			//end traits
 			Debug.Log ("Bloqueaste el ataque! " );
-			return true;
+            CombatText.ShowCombatText("Block");
+            return true;
 		}
         Sounds.playerHitSound.Stop ();
         Sounds.playerHitSound.Play ();

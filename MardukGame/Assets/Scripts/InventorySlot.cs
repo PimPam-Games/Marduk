@@ -49,22 +49,25 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					    draggedItem.IsEquipped = true;
 					    draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					    PlayerItems.EquipedWeapon = draggedItem;
-					    break;
+                        Sounds.weaponSound.Play();
+                        break;
 				case ArmourSlotID:
 					if(draggedItem.type != ItemTypes.Armour)
 						return;
 					draggedItem.IsEquipped = true;
 					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					PlayerItems.EquipedArmour = draggedItem;
+                    Sounds.armourSound.Play();
 					break;
 				case ShieldSlotID:
 					if(draggedItem.type != ItemTypes.Shield)
 						return;
-				if(PlayerItems.EquipedWeapon != null && (PlayerItems.EquipedWeapon.type == ItemTypes.RangedWeapon || PlayerItems.EquipedWeapon.type == ItemTypes.TwoHandedWeapon)) //no deja equipar al escudo si hay un arco equipado
-						return;
-					draggedItem.IsEquipped = true;
-					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
-					PlayerItems.EquipedShield = draggedItem;
+				    if(PlayerItems.EquipedWeapon != null && (PlayerItems.EquipedWeapon.type == ItemTypes.RangedWeapon || PlayerItems.EquipedWeapon.type == ItemTypes.TwoHandedWeapon)) //no deja equipar al escudo si hay un arco equipado
+						    return;
+					    draggedItem.IsEquipped = true;
+					    draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
+					    PlayerItems.EquipedShield = draggedItem;
+                        Sounds.shieldSound.Play();
 					break;
 				case HeadSlotID:
 					if(draggedItem.type != ItemTypes.Helmet)
@@ -72,6 +75,7 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					draggedItem.IsEquipped = true;
 					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					PlayerItems.EquipedHelmet = draggedItem;
+                    Sounds.helmetSound.Play();
 					break;
 				case BeltSlotID:
 					if(draggedItem.type != ItemTypes.Belt)
@@ -79,6 +83,7 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					draggedItem.IsEquipped = true;
 					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					PlayerItems.EquipedBelt = draggedItem;
+                    Sounds.beltSound.Play();
 					break;
 				case RingLSlotID:
 					if(draggedItem.type != ItemTypes.Ring)
@@ -86,6 +91,7 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					draggedItem.IsEquipped = true;
 					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					PlayerItems.EquipedRingL = draggedItem;
+                    Sounds.ringSound.Play();
 					break;
 				case RingRSlotID:
 					if(draggedItem.type != ItemTypes.Ring)
@@ -93,14 +99,16 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					draggedItem.IsEquipped = true;
 					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					PlayerItems.EquipedRingR= draggedItem;
-					break;
+                    Sounds.ringSound.Play();
+                    break;
 				case AmuletSlotID:
 					if(draggedItem.type != ItemTypes.Amulet)
 						return;
 					draggedItem.IsEquipped = true;
 					draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					PlayerItems.EquipedAmulet= draggedItem;
-					break;
+                    Sounds.amuletSound.Play();
+                    break;
 			}
 		}
 		if (!item){

@@ -102,11 +102,11 @@ public class CharacterPanel : MonoBehaviour {
 							+"Life Gained Per Hit \n" ;
 		txt2Defensives.text = (p.defensives[p.Defense] + p.defensives[p.IncreasedDefense]).ToString() + "\n"
 			//+ (p.defensives[p.Evasiveness] + p.defensives[p.IncreasedEvasion]).ToString() + "\n"
-				+ (p.defensives[p.ColdRes]+p.defensives[p.AllRes]).ToString() + "\n"
-				+ (p.defensives[p.FireRes]+p.defensives[p.AllRes]).ToString() + "\n"
-				+ (p.defensives[p.LightRes]+p.defensives[p.AllRes]).ToString() + "\n"
-				+ (p.defensives[p.PoisonRes]+p.defensives[p.AllRes]).ToString() + "\n"
-				+ p.defensives[p.BlockChance].ToString() + "\n"
+				+ (p.defensives[p.ColdRes]+p.defensives[p.AllRes]).ToString() + "%\n"
+				+ (p.defensives[p.FireRes]+p.defensives[p.AllRes]).ToString() + "%\n"
+				+ (p.defensives[p.LightRes]+p.defensives[p.AllRes]).ToString() + "%\n"
+				+ (p.defensives[p.PoisonRes]+p.defensives[p.AllRes]).ToString() + "%\n"
+				+ p.defensives[p.BlockChance].ToString() + "%\n"
 				+ p.defensives[p.LifePerHit].ToString() + "\n";
 	}
 

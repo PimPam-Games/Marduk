@@ -24,13 +24,6 @@ public class InputControllerGui : MonoBehaviour {
 
 	public Image menuInGame;
 	// Use this for initialization
-	void Awake () {
-
-
-		//gui = GetComponent<MyGUI>();
-	}
-
-
 
 	// Update is called once per frame
 	void Update () {
@@ -111,6 +104,7 @@ public class InputControllerGui : MonoBehaviour {
 				invTooltip.SetActive(false);
 				invOpen = false;
 				Cursor.visible = false;
+                closeInventory = true;
 				return;
 			}
 			if(Time.timeScale == 1.0f){
