@@ -204,6 +204,9 @@ MonoBehaviour:
   initBlockChance:
   - 0
   - 0
+  initCritChance:
+  - .0500000007
+  - .0700000003
   moveSpeedReduction: 0
   auraRend: {fileID: 0}
   itemForSlot: 0
@@ -304,6 +307,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: weaponType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initCritChance.Array.data[0]
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: initCritChance.Array.data[1]
+      value: .0700000003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

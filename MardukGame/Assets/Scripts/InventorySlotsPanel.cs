@@ -256,6 +256,13 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 			PlayerItems.Inventory.Add(itComponent);
 			return true;
 		}
+		if(PlayerItems.EquipedWeapon == null && PlayerItems.EquipedShield == null && (itComponent.Type == ItemTypes.TwoHandedWeapon || itComponent.Type == ItemTypes.RangedWeapon)){
+			it.transform.SetParent(weaponSlot);
+			it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
+			PlayerItems.EquipedWeapon = itComponent;
+			PlayerItems.Inventory.Add(itComponent);
+			return true;
+		}
 		if(PlayerItems.EquipedArmour == null && itComponent.Type == ItemTypes.Armour){
 			it.transform.SetParent(armourSlot);
 			it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
@@ -264,7 +271,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 			return true;
 		}
 		if(PlayerItems.EquipedShield == null && itComponent.Type == ItemTypes.Shield){
-			if(!(PlayerItems.EquipedWeapon == null) && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){} //si hay un arco equipado no hago nada
+			if(!(PlayerItems.EquipedWeapon == null) && (PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon || PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)){} //si hay un arco equipado no hago nada
 			else{
 				it.transform.SetParent(shieldSlot);
 				it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
