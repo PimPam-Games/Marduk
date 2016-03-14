@@ -466,7 +466,7 @@ public class EnemyStats : MonoBehaviour {
 			currHealth -= realDmg;
             string cbt = System.Math.Round(realDmg, 0).ToString();
             if (isCritical)
-                cbt = "Crit! " + cbt; 
+				cbt = "<color=Yellow>" + cbt +  "</color>"; 
 			combatText.ShowCombatText (cbt);
 			//UpdateHealthBar ();
 			if (currHealth < 0) {

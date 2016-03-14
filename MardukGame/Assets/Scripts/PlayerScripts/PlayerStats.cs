@@ -512,7 +512,7 @@ public class PlayerStats : MonoBehaviour {
 		//End Traits
 		if (realDmg < 0)
 			realDmg = 0;
-        CombatText.ShowCombatText(System.Math.Round(realDmg, 0).ToString());
+		CombatText.ShowCombatText("<color=Maroon>" + System.Math.Round(realDmg, 0).ToString() +  "</color>");
         currentHealth -= realDmg;
 		ui.TakeDamage (realDmg);
 		return true;
