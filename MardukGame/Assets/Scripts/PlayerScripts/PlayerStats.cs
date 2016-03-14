@@ -51,12 +51,12 @@ public class PlayerStats : MonoBehaviour {
 	public static int spiAddedPoints = 0;
 	public static int dexAddedPoints = 0;
 
-	public AudioSource playerDeathSound;
-	public AudioSource blockSound;
-	public AudioSource levelUpSound;
-	public AudioSource playerHitSound;
+	//public AudioSource playerDeathSound;
+	//public AudioSource blockSound;
+	//public AudioSource levelUpSound;
+	//public AudioSource playerHitSound;
 
-	private static AudioSource levelUpSoundStatic;
+	//private static AudioSource levelUpSoundStatic;
 	
 	public static string playerName;
 
@@ -113,7 +113,6 @@ public class PlayerStats : MonoBehaviour {
 		isDead = false;
 		ui = this.GetComponent<PlayerUIController> ();
 		renders = graphics.GetComponentsInChildren<SpriteRenderer> ();
-		levelUpSoundStatic = levelUpSound;
 		currentHealth = defensives [MaxHealth];
 		currentMana = offensives [MaxMana];
 		UpdateMana ();
@@ -256,7 +255,7 @@ public class PlayerStats : MonoBehaviour {
 	IEnumerator PlayerDying () {
 		anim.SetBool("IsDead", true);
 		Fading.SetActiveYouDie(true);
-		playerDeathSound.Play ();
+		Sounds.playerDeathSound.Play ();
 		yield return new WaitForSeconds (2.5f);
 		anim.speed = initAnimSpeed;
 		readyToRespawn = true;
@@ -354,7 +353,7 @@ public class PlayerStats : MonoBehaviour {
 		currentExp += exp;
 		if (currentExp >= nextLevelExp) {
 			lvl++;
-			levelUpSoundStatic.Play();
+			Sounds.levelUpSound.Play();
 			CombatText.ShowCombatText("Level Up!");
 			passivePoints++;
 			oldNextLevelExp = nextLevelExp;
@@ -398,7 +397,7 @@ public class PlayerStats : MonoBehaviour {
 		float[] blockProb = {1 - defensives[BlockChance]/100 , defensives[BlockChance]/100 };
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);
-			blockSound.Play();
+			Sounds.blockSound.Play();
 			//begin traits
 			if (Traits.traits[Traits.BLOCKDMG].isActive())
 				isBlocking = true;
@@ -406,8 +405,8 @@ public class PlayerStats : MonoBehaviour {
 			Debug.Log ("Bloqueaste el ataque! " );
 			return true;
 		}
-		playerHitSound.Stop ();
-		playerHitSound.Play ();
+        Sounds.playerHitSound.Stop ();
+        Sounds.playerHitSound.Play ();
 		ghostMode = true; //ghost mode
 		for(int i=0 ; i<renders.Length-1;i++){
 			renders[i].color = new Color (renders[i].color.r, renders[i].color.g, renders[i].color.b, 0.3f);

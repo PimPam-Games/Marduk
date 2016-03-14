@@ -41,8 +41,8 @@ public class PlatformerCharacter2D : MonoBehaviour
         private Animator anim; // Reference to the player's animator component.
 		private Rigidbody2D rb;
 		private Weapon weaponScript;
-		public AudioSource attackSound;
-		public AudioSource walkGrassSound;
+		//public AudioSource attackSound;
+		//public AudioSource walkGrassSound;
 		public AudioSource sacrificeSound;
 		
 		public GameObject bowprojectile; //para setearle la flecha al arco por las dudas que no aparezca
@@ -72,8 +72,8 @@ public class PlatformerCharacter2D : MonoBehaviour
             groundCheck = transform.Find("GroundCheck");
             ceilingCheck = transform.Find("CeilingCheck");
             anim = GetComponent<Animator>();
-			walkGrassSound.pitch = 1.2f;
-			rb = GetComponent<Rigidbody2D> ();
+           // walkGrassSound.pitch = 1.2f;
+            rb = GetComponent<Rigidbody2D> ();
 			if(weapon != null)
 				weaponScript = weapon.GetComponent<Weapon> ();
 		//	normalAnimSpeed = anim.speed;
@@ -178,7 +178,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					if(useSacrifice)
 						sacrificeSound.Play();
 					else
-						attackSound.Play ();
+						Sounds.attackSound.Play ();
                     if(PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)
                         anim.SetBool("PolearmAttacking", true);
                     else
@@ -313,7 +313,8 @@ public class PlatformerCharacter2D : MonoBehaviour
         {
 			
 			if (stopPlayer) {
-				walkGrassSound.Stop();
+                Sounds.walkGrassSound.Stop();
+				//walkGrassSound.Stop();
 				return;
 			}
             // If crouching, check to see if the character can stand up
@@ -338,10 +339,10 @@ public class PlatformerCharacter2D : MonoBehaviour
                 // The Speed animator parameter is set to the absolute value of the horizontal input.
                 anim.SetFloat("Speed", Mathf.Abs(move));
 
-				if(!walkGrassSound.isPlaying && anim.GetFloat("Speed") > 0 && grounded)
-					walkGrassSound.Play();
-				if(walkGrassSound.isPlaying && (anim.GetFloat("Speed") == 0 || !grounded))
-					walkGrassSound.Stop();
+				if(!Sounds.walkGrassSound.isPlaying && anim.GetFloat("Speed") > 0 && grounded)
+                    Sounds.walkGrassSound.Play();
+				if (Sounds.walkGrassSound.isPlaying && (anim.GetFloat("Speed") == 0 || !grounded))
+                    Sounds.walkGrassSound.Stop();
                 // Move the character
 				if(knockbackTimer <= 0){
 					if((anim.GetBool("Attacking") || anim.GetBool("BowAttacking") || anim.GetBool("SpellCasting")) && move != 0)
@@ -413,6 +414,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 				bowLauncher.force = new Vector2 (bowLauncher.force.x, /*Input.GetAxis ("Vertical")*/ 1 * 60); 					
 				bowLauncher.LaunchProjectile ();
 			}
+            Sounds.arrowShootSound.Stop();
+            Sounds.arrowShootSound.Play();
 		}
 
 		public void Fall(){ //si el jugador suelta boton de saltar se llama este metodo
