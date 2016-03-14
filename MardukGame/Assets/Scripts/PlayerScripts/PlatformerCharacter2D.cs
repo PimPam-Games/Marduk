@@ -179,7 +179,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						sacrificeSound.Play();
 					else
 						Sounds.attackSound.Play ();
-                    if(PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)
+                    if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)
                         anim.SetBool("PolearmAttacking", true);
                     else
                         anim.SetBool("Attacking", true);
@@ -191,9 +191,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 						supportSkillPos = -1; //es un ataque comun, no se usa una support
 						bowLauncher.projectile = bowprojectile;
 						anim.SetBool ("BowAttacking", true);
+                        
 					//}
-				}	
-			}
+				}
+                TutorialText.attackTutorialOn = false;
+            }
 		}
 			
 		public void setAttackAnimSpeed(){ //se llama desde la animacion de ataque para setear la velocidad	
@@ -243,6 +245,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					//PlayerItems.inventoryCantItems++;
 					//string itName = item.GetComponent<Item>().Name;
 					inventoryPanel.AddItem(it);
+                    TutorialText.grabTutorialOn = false;
 				}
 				else{						
 					if(item.tag == "Spell" && item.activeSelf){			

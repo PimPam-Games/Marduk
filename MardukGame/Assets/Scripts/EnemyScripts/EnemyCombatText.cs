@@ -6,7 +6,7 @@ public class EnemyCombatText : MonoBehaviour {
 
 	private  Text text;
 	public Animator anim;
-
+    public bool reverseText = false; //se usa en los corrupted que estan al reves que el resto
 	public EnemyIAMovement eMovement;
 
 	// Use this for initialization
@@ -17,7 +17,7 @@ public class EnemyCombatText : MonoBehaviour {
 	}
 	
 	void Update(){
-		if(!eMovement.IsFacingRight())
+		if((!eMovement.IsFacingRight() && !reverseText) || (eMovement.IsFacingRight() && reverseText))
 			this.transform.rotation = Quaternion.Euler(0,0,0);
 		else
 			this.transform.rotation = Quaternion.Euler(0,180,0);

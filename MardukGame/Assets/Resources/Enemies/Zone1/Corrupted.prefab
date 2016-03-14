@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 77.24561, y: 620.0447, z: 0}
+  m_LocalPosition: {x: -14.6016445, y: -1.1459787, z: 0}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_Children:
   - {fileID: 400384}
@@ -634,7 +634,6 @@ MonoBehaviour:
   rend: {fileID: 0}
   spriteRend: {fileID: 0}
   isBoss: 0
-  isArmored: 0
   combatText: {fileID: 11486278}
 --- !u!114 &11447464
 MonoBehaviour:
@@ -682,6 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9591828}
+  reverseText: 1
   eMovement: {fileID: 11431840}
 --- !u!212 &21291208
 SpriteRenderer:

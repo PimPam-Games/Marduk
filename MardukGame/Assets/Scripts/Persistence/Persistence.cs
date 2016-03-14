@@ -301,10 +301,12 @@ public class Persistence : MonoBehaviour {
 			sp.LoadSkills(data.spellInv);
 
 			LoadCurrentPlayer.showIntro = false;
-		}
+            TutorialText.EnableTutorial(false);
+        }
 		else{
 			LoadCurrentPlayer.showIntro = true;
-		}
+            TutorialText.EnableTutorial(true);
+        }
 	}
 
 	public static void SavePreferences(int resolution, int quality){

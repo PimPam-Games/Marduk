@@ -7,6 +7,8 @@
         private PlatformerCharacter2D character;
         private bool jump;
 
+        private bool jumpPressed = false, movePressed = false;
+
         private void Awake()
         {
             character = GetComponent<PlatformerCharacter2D>();
@@ -15,20 +17,30 @@
 
         private void Update()
         {
+            if (!Fading.loaded)
+                return;
+            if(movePressed && jumpPressed)
+            {
+                TutorialText.moveTutorialOn = false;
+            }
 			if (!PlayerStats.isDead && !IntroText.introVisible) {
 				if (!jump)
 					jump = Input.GetButtonDown ("Jump");
-				if(Input.GetButtonUp("Jump"))
-					character.Fall();
+                if (Input.GetButtonUp("Jump"))
+                {
+                    character.Fall();
+                    jumpPressed = true;
+                }
 
 							
 			}
         }
 
-        private void FixedUpdate()
-        {
-			
-		if (!PlayerStats.isDead && !IntroText.introVisible) {
+    private void FixedUpdate()
+    {
+        if (!Fading.loaded)
+            return;
+        if (!PlayerStats.isDead && !IntroText.introVisible) {
 			// Read the inputs.
 			bool crouch = Input.GetKey (KeyCode.S);
 			/*bool crouch = false;
@@ -37,6 +49,10 @@
 			}*/
 			
 			float h = Input.GetAxis ("Horizontal");
+            if(h != 0)
+            {
+                movePressed = true;
+            }
 			// Pass all parameters to the character control script.
 			if(PlatformerCharacter2D.skillBtnPressed > 0) // si esta pulsando un boton de habilidad no se puede mover
 				h=0;
