@@ -18,11 +18,13 @@ public class Weapon : MonoBehaviour {
 	public Animator anim = null; 
 	public float animSpeed = 0;
 	public GameObject weaponProjLauncher1;
-	public GameObject weaponProjLauncher2;
-
+	public GameObject weaponProjLauncher2;    
 	public float checkAnimSpeedTimer = 0;
-	//private float normalAnimSpeed;
-	void Start () {
+
+    public static bool newWeaponEquipped = false; //se setea en true cada vez que se equipa un arma
+    public SpriteRenderer weaponSprite;
+    //private float normalAnimSpeed;
+    void Start () {
 		//attackTimer = 0;
 		//attackDelay = p.offensives [p.AttackSpeed];
 		//normalAnimSpeed = anim.speed;
@@ -30,6 +32,22 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (newWeaponEquipped)
+        {
+            newWeaponEquipped = false;
+            if (weaponSprite != null && weaponSprite.sprite != null)
+            {
+                if (string.Compare(weaponSprite.sprite.name, "bill") == 0)
+                {
+                    this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 331.73f));
+                    weaponSprite.sortingOrder = 6;
+                }
+                else {
+                    this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 380.69f));
+                    weaponSprite.sortingOrder = 1;
+                }
+            }
+        }
 		checkAnimSpeedTimer -= Time.deltaTime;
 		if(checkAnimSpeedTimer <= 0){
 			checkAnimSpeedTimer = 0.4f;

@@ -50,6 +50,7 @@ public class InventorySlot :  MonoBehaviour, IDropHandler, IPointerEnterHandler,
 					    draggedItem.InventoryPositionX = -1; //-1 significa que no esta en el inventario
 					    PlayerItems.EquipedWeapon = draggedItem;
                         Sounds.weaponSound.Play();
+                        Weapon.newWeaponEquipped = true;
                         break;
 				case ArmourSlotID:
 					if(draggedItem.type != ItemTypes.Armour)

@@ -72,6 +72,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 							it.transform.SetParent(weaponSlot);
 							it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
 							PlayerItems.EquipedWeapon = it.GetComponent<Item>();
+                            
 						}
 						break;
 					case ItemTypes.RangedWeapon:
@@ -143,7 +144,8 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 		}
 		PlayerItems.Inventory = ilistAux;
 		HasChanged();
-	}	
+        Weapon.newWeaponEquipped = true;
+    }	
 
 	private GameObject ItemCopy(Item itemOrigin, GameObject itemDestiny){
 		/*--- copia todo lo del item que estaba en el suelo al item que se ve en la ui del inventario ---*/
