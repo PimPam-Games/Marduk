@@ -48,11 +48,12 @@ public class Weapon : MonoBehaviour {
 		//attackingTime -= Time.deltaTime;
 		//Debug.Log("attack timer : " + attackTimer.ToString());
 	
-		if (anim.GetBool ("Attacking") == false){
+		if (anim.GetBool ("Attacking") == false && anim.GetBool("PolearmAttacking") == false)
+        {
 			isAttacking = false;
 			this.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1); //si no esta atacando pone el arma en su color original
 		}
-		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false && anim.GetBool ("SpellCasting") == false) { //anim.GetBool ("Attacking") == false && 
+		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false && anim.GetBool ("SpellCasting") == false && anim.GetBool("PolearmAttacking") == false) { //anim.GetBool ("Attacking") == false && 
 			anim.speed = p.currentAnimSpeed;
 			isAttacking = false;
 			canAttack = true;

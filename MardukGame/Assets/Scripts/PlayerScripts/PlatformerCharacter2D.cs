@@ -147,7 +147,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (weaponScript == null)
 				return;
 			if (weaponScript.canAttack) {
-				if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon) {
+				if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon || PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
 					
 					if(meleeSkillPos > -1){ //si se uso sacrifice le resta la vida
 						MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
@@ -179,16 +179,19 @@ public class PlatformerCharacter2D : MonoBehaviour
 						sacrificeSound.Play();
 					else
 						attackSound.Play ();
-					anim.SetBool ("Attacking", true);
-				} else {
-					if (PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
-						attackSound.Play ();
-						anim.SetBool ("Attacking", true);
-					} else {
+                    if(PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)
+                        anim.SetBool("PolearmAttacking", true);
+                    else
+                        anim.SetBool("Attacking", true);
+                } else {
+					//if (PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
+					//	attackSound.Play ();
+					//	anim.SetBool ("Attacking", true);
+					//} else {
 						supportSkillPos = -1; //es un ataque comun, no se usa una support
 						bowLauncher.projectile = bowprojectile;
 						anim.SetBool ("BowAttacking", true);
-					}
+					//}
 				}	
 			}
 		}
@@ -584,7 +587,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 			anim.speed = p.currentAnimSpeed;
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
-			if(skillBtnPressed < 1)	
+            anim.SetBool("PolearmAttacking", false);
+            if (skillBtnPressed < 1)	
 				anim.SetBool ("SpellCasting", false);
 			else{				
 				anim.SetBool("ContinuousCast",true);
