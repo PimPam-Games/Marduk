@@ -182,7 +182,8 @@ public class Weapon : MonoBehaviour {
 			}
 			//End Traits
 			//weapon constraints
-			if (estats.isArmored){
+			if (estats.IsArmored)
+            {
 				switch (PlayerItems.EquipedWeapon.WeaponType){
 				case WeaponTypes.Sword: damage *= 0.5f;break;
 				case WeaponTypes.Axe: damage *= 0.75f;break;

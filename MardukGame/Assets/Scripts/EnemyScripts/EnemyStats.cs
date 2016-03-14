@@ -91,10 +91,18 @@ public class EnemyStats : MonoBehaviour {
 
 	//Champion Enemy Affixes
 	public const int cantEnemyAffixes = 1;
-	public bool isArmored = false;
+	private bool isArmored = false;
+    private string eAffix = ""; //afijo del enemigo para mostrar en la barra de vida
 
-
-
+    public bool IsArmored
+    {
+        get { return isArmored; }
+        set
+        {
+            isArmored = value;
+            eAffix = "Armored";
+        }
+    }
 	/*public float Accuracy{
 		get {return accuracy;}
 	}*/
@@ -206,7 +214,7 @@ public class EnemyStats : MonoBehaviour {
 				isDead = true;	
 				StartCoroutine (EnemyDying ());
 			}
-			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
+			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix);
 		}
 		poisoned = false;
 		spriteRend.color = new Color (1f, 1f, 1f, 1f);
@@ -225,7 +233,7 @@ public class EnemyStats : MonoBehaviour {
 					StartCoroutine (EnemyDying ());	
 				}
 			}
-			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
+			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix);
 		}
 		ignited = false;
 		spriteRend.color = new Color (1f, 1f, 1f, 1f);
@@ -470,8 +478,8 @@ public class EnemyStats : MonoBehaviour {
 			if (currHealth < 0)
 				currHealth = 0;
 		}
-
-		ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
+        
+		ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix);
 		return true;
 	}
 
