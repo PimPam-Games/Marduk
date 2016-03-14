@@ -86,9 +86,14 @@ public class EnemyStats : MonoBehaviour {
 	private int t = 0; //para soluciona bug de thorns que se llama dos veces
 
 	public bool isBoss = false;
-	public bool isArmored = false;
 
 	public EnemyCombatText combatText;
+
+	//Champion Enemy Affixes
+	public const int cantEnemyAffixes = 1;
+	public bool isArmored = false;
+
+
 
 	/*public float Accuracy{
 		get {return accuracy;}
