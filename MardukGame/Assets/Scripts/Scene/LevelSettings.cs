@@ -49,6 +49,17 @@ public class LevelSettings : MonoBehaviour {
 			}
 		}
 		DontDestroyOnLoad(newEnemy);
+
+		//Champion Affixes
+		float randomPoint = Random.value;
+		if(randomPoint < 0.1f){ //10% chance of being champion
+			int randomAffix = Random.Range(1,EnemyStats.cantEnemyAffixes);
+			switch (randomAffix) {
+			case 1 : newEnemy.GetComponentInChildren<EnemyStats>().isArmored = true; break;
+			default : break;
+			}
+		}
+
 		g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
 	}
 	
