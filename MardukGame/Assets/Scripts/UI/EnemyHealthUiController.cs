@@ -39,7 +39,7 @@ public class EnemyHealthUiController : MonoBehaviour {
 			canvas.enabled = false;
 	}
 
-	public static void UpdateHealthBar(float currHealth, float maxHealth, String enemyName, int lvl, String affix)
+	public static void UpdateHealthBar(float currHealth, float maxHealth, String enemyName, int lvl, String affix, Types.EnemyTypes type)
     {
 		canvas.enabled = true;
 		activeCount = activeTime;
@@ -48,10 +48,21 @@ public class EnemyHealthUiController : MonoBehaviour {
 		healthSlider.maxValue = maxHealth;
 		healthSlider.value = currHealth;
         affixText.text = affix;
-        if (affix != string.Empty)
-            enemName.color = new Color(0, 0.3f, 1);
-        else
-            enemName.color = new Color(1, 1, 1);
+        switch (type)
+        {
+            case Types.EnemyTypes.Common:
+                enemName.color = new Color(1, 1, 1);
+                break;
+            case Types.EnemyTypes.Champion:
+                enemName.color = new Color(0, 0.3f, 1);
+                break;
+            case Types.EnemyTypes.MiniBoss:
+                enemName.color = new Color(0.9f, 0.9f, 0.1f);
+                break;
+            case Types.EnemyTypes.Boss:
+                enemName.color = new Color(1,0.4f,0.01f);
+                break;
+        }
         enemName.text = enemyName;
 
     }

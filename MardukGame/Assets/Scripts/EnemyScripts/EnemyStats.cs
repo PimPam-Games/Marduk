@@ -86,6 +86,7 @@ public class EnemyStats : MonoBehaviour {
 	private int t = 0; //para soluciona bug de thorns que se llama dos veces
 
 	public bool isBoss = false;
+    public Types.EnemyTypes enemyType = Types.EnemyTypes.Common; 
 
 	public EnemyCombatText combatText;
 
@@ -214,7 +215,7 @@ public class EnemyStats : MonoBehaviour {
 				isDead = true;	
 				StartCoroutine (EnemyDying ());
 			}
-			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix);
+			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix, enemyType);
 		}
 		poisoned = false;
 		spriteRend.color = new Color (1f, 1f, 1f, 1f);
@@ -233,7 +234,7 @@ public class EnemyStats : MonoBehaviour {
 					StartCoroutine (EnemyDying ());	
 				}
 			}
-			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix);
+			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix, enemyType);
 		}
 		ignited = false;
 		spriteRend.color = new Color (1f, 1f, 1f, 1f);
@@ -479,7 +480,7 @@ public class EnemyStats : MonoBehaviour {
 				currHealth = 0;
 		}
         
-		ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix);
+		ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix, enemyType);
 		return true;
 	}
 

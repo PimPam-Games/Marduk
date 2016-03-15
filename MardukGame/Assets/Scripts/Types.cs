@@ -20,4 +20,12 @@ public static class Types{
 		Mace,
 		None
 	}
+
+    public enum EnemyTypes
+    {
+        Common,
+        Champion,
+        MiniBoss,
+        Boss
+    }
 }

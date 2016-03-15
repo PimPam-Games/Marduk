@@ -53,7 +53,8 @@ public class LevelSettings : MonoBehaviour {
 		//Champion Affixes
 		float randomPoint = Random.value;
 		if(randomPoint < 0.1f){ //10% chance of being champion
-			int randomAffix = Random.Range(1,EnemyStats.cantEnemyAffixes);
+            newEnemy.GetComponentInChildren<EnemyStats>().enemyType = Types.EnemyTypes.Champion;
+            int randomAffix = Random.Range(1,EnemyStats.cantEnemyAffixes);
 			switch (randomAffix) {
 			case 1 : newEnemy.GetComponentInChildren<EnemyStats>().IsArmored = true; break;
 			default : break;
@@ -71,6 +72,7 @@ public class LevelSettings : MonoBehaviour {
 		//if(zoneNumber == 2){
 			Debug.Log("MINIBOSSGENERADO");
 			GameObject newEnemy = (GameObject)Instantiate (miniBoss,pos,rot);
+            newEnemy.GetComponentInChildren<EnemyStats>().enemyType = Types.EnemyTypes.MiniBoss;
 			DontDestroyOnLoad(newEnemy);
 			g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
 		//}
