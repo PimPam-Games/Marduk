@@ -194,7 +194,8 @@ public class PlatformerCharacter2D : MonoBehaviour
                         
 					//}
 				}
-                TutorialText.attackTutorialOn = false;
+                TutorialController.attackTutorialOn = false;
+                TutorialController.attackTutorialShowed = true;
             }
 		}
 			
@@ -245,8 +246,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 					//PlayerItems.inventoryCantItems++;
 					//string itName = item.GetComponent<Item>().Name;
 					inventoryPanel.AddItem(it);
-                    TutorialText.grabTutorialOn = false;
-				}
+                    TutorialController.grabTutorialOn = false;
+                    
+                    TutorialController.grabTutorialShowed = true;
+                    if(!TutorialController.invTutorialShowed)
+                        TutorialController.inventoryTutorialOn = true;
+                }
 				else{						
 					if(item.tag == "Spell" && item.activeSelf){			
 						string itName = item.GetComponent<Item>().Name;

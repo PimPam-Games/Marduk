@@ -159,28 +159,14 @@ public class Persistence : MonoBehaviour {
 		data.inventoryCantItems = pItems.inventoryCantItems;
 		data.teleporters = pItems.playerTeleporters;
 
-		/*GameObject player = GameObject.FindGameObjectWithTag("Player");
-		string[] playerSkills = new string[4];
-		int[] skillsLevels = new int[4];
-		double[] skillsCurrentExp = new double[4]; 
-		double[] skillsOldNextLevelExp = new double[4];*/
-	/*	if (player != null) { //para guardar los skills del jugador
-			for (int i = 0; i < playerSkills.Length; i++) {
-				SpellStats ps =  PlatformerCharacter2D.playerSkills[i];//player.gameObject.GetComponent<PlatformerCharacter2D>().playerSkills[i];
-				if(ps != null){
-					playerSkills[i] = ps.nameForSave;
-					skillsLevels[i] = ps.Lvl;
-					skillsCurrentExp[i] = ps.CurrentExp;
-					skillsOldNextLevelExp[i] = ps.OldNextLevelExp;
-				}else
-					playerSkills[i] = null;
-			}
-		}*/
-		//data.skillsNames = playerSkills;
-		//data.skillsLevels = skillsLevels;
-		//data.skillsCurrentExp = skillsCurrentExp;
-		//data.skillsOldNextLevelExp = skillsOldNextLevelExp;
-		bf.Serialize (file,data);
+        data.invTutorialShowed = TutorialController.invTutorialShowed;
+        data.traitsTutorialShowed = TutorialController.traitsTutorialShowed;
+        data.attributesTutorialShowed = TutorialController.attributesTutorialShowed;
+        data.attackTutorialShowed = TutorialController.attackTutorialShowed;
+        data.grabTutorialShowed = TutorialController.grabTutorialShowed;
+        data.moveTutorialShowed = TutorialController.moveTutorialShowed;
+
+        bf.Serialize (file,data);
 		file.Close ();
 		data.spellInv = null;
 		ClearPlayer();
@@ -212,9 +198,13 @@ public class Persistence : MonoBehaviour {
 		pItems.Inventory = inv;
 		pItems.SpellsInvetory = skillsInv;
 		pItems.playerTeleporters = null;
-		
-		
-		for(int i = 0; i < PlatformerCharacter2D.playerSkills.Length; i++){
+        TutorialController.invTutorialShowed = false;
+        TutorialController.traitsTutorialShowed = false;
+        TutorialController.attributesTutorialShowed = false;
+        TutorialController.attackTutorialShowed = false;
+        TutorialController.grabTutorialShowed = false;
+        TutorialController.moveTutorialShowed = false;
+        for (int i = 0; i < PlatformerCharacter2D.playerSkills.Length; i++){
 			PlatformerCharacter2D.playerSkills[i] = null;
 			PlatformerCharacter2D.playerSupportSkills[i] = null;
 		}
@@ -301,11 +291,18 @@ public class Persistence : MonoBehaviour {
 			sp.LoadSkills(data.spellInv);
 
 			LoadCurrentPlayer.showIntro = false;
-            TutorialText.EnableTutorial(false);
+            
+            TutorialController.invTutorialShowed = data.invTutorialShowed;
+            TutorialController.traitsTutorialShowed = data.traitsTutorialShowed;
+            TutorialController.attributesTutorialShowed = data.attributesTutorialShowed;
+            TutorialController.attackTutorialShowed = data.attackTutorialShowed;
+            TutorialController.grabTutorialShowed = data.grabTutorialShowed;
+            TutorialController.moveTutorialShowed = data.moveTutorialShowed;
+            TutorialController.EnableTutorial(true);
         }
 		else{
 			LoadCurrentPlayer.showIntro = true;
-            TutorialText.EnableTutorial(true);
+            TutorialController.EnableTutorial(true);
         }
 	}
 

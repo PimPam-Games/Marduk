@@ -59,7 +59,9 @@ public class InputControllerGui : MonoBehaviour {
 			else{
 				inventory.SetActive(true);
 				invOpen = true;
-				for(int i = 0; i < SpellPanelSlots.Length; i++){
+                TutorialController.inventoryTutorialOn = false;
+                TutorialController.invTutorialShowed = true;
+                for (int i = 0; i < SpellPanelSlots.Length; i++){
 					SpellPanelSlots[i].GetComponent<Image>().enabled = true;
 					if(SpellPanelSlots[i].transform.childCount > 0){
 						SpellPanelSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
@@ -68,21 +70,28 @@ public class InputControllerGui : MonoBehaviour {
 			}
 			SetMouseVisible();
 		}
-		if (Input.GetButtonUp ("ToggleCharacterWindow") && !menuInGame.IsActive()) {
-			//gui.ToggleCharacterWindow();
-			if(characterPanel.activeSelf)
-				characterPanel.SetActive(false);
-			else
-				characterPanel.SetActive(true);
-			SetMouseVisible();
+        if (Input.GetButtonUp("ToggleCharacterWindow") && !menuInGame.IsActive()) {
+            //gui.ToggleCharacterWindow();
+            if (characterPanel.activeSelf)
+                characterPanel.SetActive(false);
+            else {
+                characterPanel.SetActive(true);
+                TutorialController.attributesTutorialOn = false;
+                TutorialController.attributesTutorialShowed = true;
+            }
+            SetMouseVisible();
 		}
 		if (Input.GetButtonUp ("ToggleTraits") && !menuInGame.IsActive()) {
-			if(traitsPanel.activeSelf){
-				traitsPanel.SetActive(false);
-				traitsTooltip.SetActive(false);
-			}
-			else
-				traitsPanel.SetActive(true);
+            if (traitsPanel.activeSelf)
+            {
+                traitsPanel.SetActive(false);
+                traitsTooltip.SetActive(false);
+            }
+            else {
+                traitsPanel.SetActive(true);
+                TutorialController.traitsTutorialOn = false;
+                TutorialController.traitsTutorialShowed = true;
+            }
 			SetMouseVisible();
 		}
 		if(Input.GetButtonUp ("Save")){

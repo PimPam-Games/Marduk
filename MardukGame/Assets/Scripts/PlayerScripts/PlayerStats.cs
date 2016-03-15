@@ -359,6 +359,11 @@ public class PlayerStats : MonoBehaviour {
 			oldNextLevelExp = nextLevelExp;
 			nextLevelExp = ExpFormula();
 			atributesPoints += 5;
+            if (lvl == 2)
+            {
+                TutorialController.attributesTutorialOn = true;
+                TutorialController.traitsTutorialOn = true;
+            }
 		}
 		expUi.UpdateExpBar (currentExp,oldNextLevelExp,nextLevelExp);
 		/*for (int i = 0; i < plat.playerSkills.Length; i++) { //actualizar experiencia de las skills

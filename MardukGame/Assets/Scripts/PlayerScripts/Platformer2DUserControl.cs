@@ -21,7 +21,8 @@
                 return;
             if(movePressed && jumpPressed)
             {
-                TutorialText.moveTutorialOn = false;
+                TutorialController.moveTutorialOn = false;
+                TutorialController.moveTutorialShowed = true;
             }
 			if (!PlayerStats.isDead && !IntroText.introVisible) {
 				if (!jump)

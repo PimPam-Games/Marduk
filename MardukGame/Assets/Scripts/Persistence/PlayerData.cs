@@ -44,4 +44,11 @@ public class PlayerData{
 	public  List<SerializableItem> inventory;
 	public  int inventoryCantItems;
 
+    public  bool invTutorialShowed;
+    public  bool traitsTutorialShowed;
+    public  bool attributesTutorialShowed;
+    public  bool attackTutorialShowed;
+    public  bool grabTutorialShowed;
+    public bool moveTutorialShowed;
+
 }
