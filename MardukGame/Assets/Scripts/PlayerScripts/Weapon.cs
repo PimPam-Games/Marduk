@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour {
 	private bool isAttacking = false;
 	[SerializeField] private Types.Element elem = Types.Element.None; // falta agregar esto a los arreglos de playerStats
 	//private float attackingTime; //tiempo que dura el ataque mientras se esta realizando
-	private float attackTimer;
+	public float attackTimer;
 	public AudioSource hitEnemySound;
 	public AudioSource criticalHitSound;
 	public Animator anim = null; 
@@ -49,9 +49,9 @@ public class Weapon : MonoBehaviour {
             }
         }
 		checkAnimSpeedTimer -= Time.deltaTime;
-		if(checkAnimSpeedTimer <= 0){
-			checkAnimSpeedTimer = 0.4f;
-			attackDelay = 1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));
+        attackDelay = 1 / (p.offensives[p.BaseAttacksPerSecond] + (p.offensives[p.BaseAttacksPerSecond] * (p.offensives[p.IncreasedAttackSpeed] / 100)));
+        if (checkAnimSpeedTimer <= 0){
+			checkAnimSpeedTimer = 0.4f;			
 			if(attackDelay >= 0.8f)
 				animSpeed = 0;
 			if(attackDelay < 0.8f && attackDelay >= 0.5f)

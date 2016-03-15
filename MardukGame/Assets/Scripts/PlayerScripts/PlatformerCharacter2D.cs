@@ -594,7 +594,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void Idle(){
-
+            Debug.Log("timer "+ weaponScript.attackTimer);
 			anim.speed = p.currentAnimSpeed;
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);
