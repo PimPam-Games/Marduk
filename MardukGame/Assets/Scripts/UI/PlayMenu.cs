@@ -9,8 +9,9 @@ public class PlayMenu : MonoBehaviour {
 	public Image mainMenu;
 	public InputField inputField;
 	public Button[] slots;
+    public GameObject confirmDeleteBtn;
 
-	private string newCharacterName;
+    private string newCharacterName;
 	private string[] savedGames;
 
 	private bool escPressed = false;
@@ -25,6 +26,8 @@ public class PlayMenu : MonoBehaviour {
 
 	void OnEnable() {
 		escPressed = false;
+        g.nameToLoad = null;
+        ButtonPressed(-1);
 	}
 
 	public void Update(){
@@ -69,19 +72,30 @@ public class PlayMenu : MonoBehaviour {
 		newCharacterName = inputField.text;
 		if (newCharacterName.Equals (""))
 			return;
-		if (File.Exists (Application.persistentDataPath + "/" + newCharacterName + ".dat")) {
+	/*	if (File.Exists (Application.persistentDataPath + "/" + newCharacterName + ".dat")) {
+        
 			infoMessages.SetActive(true);
 			infoTxt.text = "Character name already exists";
+            confirmDeleteBtn.SetActive(false);
 			return;
-		}
+		}*/
 		if (Persistence.CantSavedGames () == Persistence.CantSlots) {
 			infoMessages.SetActive(true);
 			infoTxt.text = "No more slots available";
-			return;
+            confirmDeleteBtn.SetActive(false);
+            return;
 		}
-		g.nameToLoad = null;
-		Persistence.AddSavedGame (newCharacterName);
-		PlayerStats.playerName = newCharacterName;
+        if (!Persistence.AddSavedGame(newCharacterName))
+        {
+            infoMessages.SetActive(true);
+            infoTxt.text = "Character name already exists";
+            confirmDeleteBtn.SetActive(false);
+            return;
+        }
+        //g.nameToLoad = null;
+        inputField.text = "";
+       
+        PlayerStats.playerName = newCharacterName;
 		UpdateSavedGames ();
 	}
 
@@ -145,12 +159,27 @@ public class PlayMenu : MonoBehaviour {
 		if(infoMessages.activeSelf)
 			return;
 		if(g.nameToLoad != null){
-			Persistence.Delete (g.nameToLoad);
-			g.nameToLoad = null;
-		}
-		UpdateSavedGames();
-		ButtonPressed (-1);
+            infoMessages.SetActive(true);
+            infoTxt.text = "Delete " + g.nameToLoad + " ?";
+            confirmDeleteBtn.SetActive(true);
+        }		
 	}
+
+    public void DeleteConfirmed()
+    {
+        if (g.nameToLoad != null)
+        {
+            Persistence.Delete(g.nameToLoad);
+            g.nameToLoad = null;
+        }
+        UpdateSavedGames();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            Image img = slots[i].GetComponent<Image>();
+            img.color = new Color(255, 255, 255);
+        }
+        infoMessages.SetActive(false);
+    }
 
 	public void Play(){
 		if(infoMessages.activeSelf)

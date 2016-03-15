@@ -59,7 +59,7 @@ public class Persistence : MonoBehaviour {
 		}
 	}
 
-	public static void AddSavedGame(string newName ){
+	public static bool AddSavedGame(string newName ){
 		BinaryFormatter bf = new BinaryFormatter ();
 		SavedGamesData data;
 		SavedGamesData dataAux;
@@ -81,7 +81,7 @@ public class Persistence : MonoBehaviour {
 				Debug.Log("El nombre ya existe");
 				bf.Serialize (file,data);
 				file.Close ();
-				return;
+				return false;
 			}
 		}
 		data.slots [data.cantSavedGames] = newName;
@@ -89,6 +89,7 @@ public class Persistence : MonoBehaviour {
 		//Debug.Log (data.cantSavedGames);
 		bf.Serialize (file,data);
 		file.Close ();
+        return true;
 	}
 
 	public static string[] GetSavedGames(){
