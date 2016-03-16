@@ -36,15 +36,47 @@ public class ItemGenerator :MonoBehaviour{
 		DontDestroyOnLoad (newWeapon);
 	}
 
-	public void CreateItem(Vector3 position, Quaternion rotation){
+	public void CreateItem(Vector3 position, Quaternion rotation, EnemyStats eStats){
 		//crea una nueva arma
 		GameObject newWeapon = null;
 		Item newItem = null;
-		//float[] rarityProb = {0.25f,0.25f,0.25f,0.25f};
-		//float[] rarityProb = {0.51f,0.2f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
-		//int newRarity = Utils.Choose (rarityProb); 
-		int newRarity = Utils.ChooseItem(); 
-		if (newRarity != 3) { //no es unico
+        //float[] rarityProb = {0.25f,0.25f,0.25f,0.25f};
+        //float[] rarityProb = {0.51f,0.2f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
+        //int newRarity = Utils.Choose (rarityProb); 
+        float[] dropItemProb = { 0.65f, 0.35f }; //chance de tirar un item cuando no es un enemigo el que lo tira por ejemplo un cofre
+        if (eStats != null) {
+            switch (eStats.enemyType)//calcula la chance de dropear segun el tipo de enemigo
+            {
+                case Types.EnemyTypes.Common:
+                    dropItemProb[0] = 0.1f; dropItemProb[1] = 0.9f; 
+                    break;
+                case Types.EnemyTypes.Champion:
+                    dropItemProb[0] = 0.3f; dropItemProb[1] = 0.7f;
+                    break;
+                case Types.EnemyTypes.MiniBoss:
+                    dropItemProb[0] = 0.7f; dropItemProb[1] = 0.3f;
+                    break;
+                case Types.EnemyTypes.Boss:
+                    dropItemProb[0] = 0.95f; dropItemProb[1] = 0.05f;
+                    break;
+            }           
+        }
+        if (Utils.Choose(dropItemProb) != 0)
+            return;
+        int newRarity = Utils.ChooseItem();
+
+        /* calcula el nivel del item*/
+        int newItemLevel = 1;
+        if (eStats != null)
+        {
+            int minValue = eStats.lvl - 3;
+            if (minValue <= 0)
+                minValue = 1;
+            newItemLevel = Random.Range(minValue, eStats.lvl + 1); //el +1 es por que el int max es exclusivo en random.Range
+        }
+        /* -----------------------------------------*/
+        Debug.Log("item level " + newItemLevel);
+        if (newRarity != 3) { //no es unico
 			if(newRarity == 4){ // es un skill
 				int i = Random.Range (0, skillList.Length);
 				newWeapon = (GameObject)Instantiate (skillList [i], position, rotation);
@@ -56,12 +88,14 @@ public class ItemGenerator :MonoBehaviour{
 				int i = Random.Range (0, weaponList.Length);
 				newWeapon = (GameObject)Instantiate (weaponList [i], position, rotation);
 				newItem = newWeapon.GetComponent<Item> ();
+                newItem.GenerateBaseAffixes(newItemLevel);
 			}
 		} else { //es unico
 			int i = Random.Range (0, uniqueList.Length);
 			newWeapon = (GameObject)Instantiate (uniqueList [i], position, rotation);
 			newItem = newWeapon.GetComponent<Item> ();
-		}
+            newItem.GenerateBaseAffixes(newItemLevel);
+        }
 		newItem.Rarity = (RarityTypes) newRarity; // 0 = normal, 1 = magico , 2 = raro , 3 = unico
 		if (newItem.auraRend != null) {
 			newItem.auraRend.sprite = GameController.auraRenders[newRarity]; //el color del aura del item, dependiendo si es magico, normal , etc

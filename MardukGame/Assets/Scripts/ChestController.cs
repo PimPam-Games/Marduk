@@ -43,7 +43,7 @@ public class ChestController : MonoBehaviour {
 	public void DropItem(){
 		if (firstTimeOpen) {
 			firstTimeOpen = false;
-			itGen.CreateItem(this.transform.position,this.transform.rotation);
+			itGen.CreateItem(this.transform.position,this.transform.rotation, null);
 		}
 	}
 

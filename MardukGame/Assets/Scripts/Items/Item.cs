@@ -50,28 +50,38 @@ public class Item : MonoBehaviour {
 		//StartCoroutine (StopMove ());
 	}
 
-	void Start(){
-		if(!itemForSlot){
-			if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) { //el item es un arma
-				Offensives [p.MinDmg] = (float)System.Math.Round(Random.Range (initMinDamage[0], initMinDamage[1]),0);
-				Offensives [p.MaxDamge] = (float)System.Math.Round(Random.Range (initMaxDamage[0], initMaxDamage[1]),0);
-				Offensives [p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range (initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]),2);
+	// Start(){
+		
+	//}
+
+    public void GenerateBaseAffixes(int itemLvl)
+    {
+        if (!itemForSlot)
+        {
+            if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon)
+            { //el item es un arma
+                Offensives[p.MinDmg] = (float)System.Math.Round(Random.Range(initMinDamage[0], initMinDamage[1]), 0) * itemLvl;
+                Offensives[p.MaxDamge] = (float)System.Math.Round(Random.Range(initMaxDamage[0], initMaxDamage[1]), 0) * itemLvl;
+                Offensives[p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range(initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]), 2);
                 Offensives[p.CritChance] = (float)System.Math.Round(Random.Range(initCritChance[0], initCritChance[1]), 2);
-            } else {
-				if(type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
-					Defensives [p.Defense] = (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
-				else{ 
-					if(type == ItemTypes.Shield){// el item es un escudo
-						Defensives[p.Defense] =  (float)System.Math.Round(Random.Range (initDefense[0], initDefense[1]),0);
-						Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0],initBlockChance[1]),0);
-					}
-				}	
-			}
-			if(type == ItemTypes.Armour || type == ItemTypes.Shield){
-				utils[p.IncreasedMoveSpeed] = -moveSpeedReduction;
-			}
-		}
-	}
+            }
+            else {
+                if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
+                    Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * itemLvl;
+                else {
+                    if (type == ItemTypes.Shield)
+                    {// el item es un escudo
+                        Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * itemLvl;
+                        Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0], initBlockChance[1]), 0);
+                    }
+                }
+            }
+            if (type == ItemTypes.Armour || type == ItemTypes.Shield)
+            {
+                utils[p.IncreasedMoveSpeed] = -moveSpeedReduction;
+            }
+        }
+    }
 
 	void Update(){
 		if(!itemForSlot){
