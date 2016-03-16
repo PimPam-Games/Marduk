@@ -27,13 +27,16 @@ public class Trap : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if(col.gameObject.tag == "Player" && p.isDead)
 			Physics2D.IgnoreCollision(col.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-		if (col.gameObject.tag == "Player" && !p.isDead) {
+		if (col.gameObject.tag == "Player" && !p.isDead && !p.ghostMode) {
 			float dmgDealt = Random.Range(minDmg,maxDmg);
 			col.gameObject.GetComponent<PlayerStats>().Hit(dmgDealt, elem,-1, false);
-			if(col.transform.position.x < this.transform.position.x)
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
-			else
-				col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
+            if (col.transform.position.x < this.transform.position.x)
+            {
+                col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
+                Debug.Log("trap knockback");
+            }
+            else
+                col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(false);
 			PlatformerCharacter2D.skillBtnPressed = -1;
 		}
 	}

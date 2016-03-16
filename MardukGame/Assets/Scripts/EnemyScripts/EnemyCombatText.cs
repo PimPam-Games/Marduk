@@ -13,7 +13,7 @@ public class EnemyCombatText : MonoBehaviour {
 	void Start () {
 		//text = GetComponentInChildren<Text>();
 		//text.text = "";
-		text.color = new Color(1,1,1,1);
+		//text.color = new Color(1,1,1,1);
 	}
 	
 	void Update(){
