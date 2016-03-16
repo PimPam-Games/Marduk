@@ -288,7 +288,7 @@ public class Persistence : MonoBehaviour {
 			pItems.playerTeleporters = data.teleporters;
 			GameObject spGO = GameObject.FindGameObjectWithTag("SpellsPanel");
 			SpellsPanel sp = spGO.GetComponent<SpellsPanel>();
-			Debug.Log(data.spellInv.ToString());
+			//Debug.Log(data.spellInv.ToString());
 			sp.LoadSkills(data.spellInv);
 
 			LoadCurrentPlayer.showIntro = false;

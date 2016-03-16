@@ -88,7 +88,7 @@ public class EnemyStats : MonoBehaviour {
 	public bool isBoss = false;
     public Types.EnemyTypes enemyType = Types.EnemyTypes.Common; 
 
-	public EnemyCombatText combatText;
+    public Transform cbtTransform;
 
 	//Champion Enemy Affixes
 	public const int cantEnemyAffixes = 1;
@@ -468,7 +468,7 @@ public class EnemyStats : MonoBehaviour {
             string cbt = System.Math.Round(realDmg, 0).ToString();
             if (isCritical)
 				cbt = "<color=Yellow>" + cbt +  "</color>"; 
-			combatText.ShowCombatText (cbt);
+			ObjectsPool.GetCombatText(cbtTransform.position, cbtTransform.rotation,cbt);
 			//UpdateHealthBar ();
 			if (currHealth < 0) {
 				isDead = true;
