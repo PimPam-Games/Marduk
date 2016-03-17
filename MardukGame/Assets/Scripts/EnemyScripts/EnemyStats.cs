@@ -131,8 +131,8 @@ public class EnemyStats : MonoBehaviour {
     }
 
 	private void CalculateStats(){
-		minDamage = initMinDamage + initMinDamage * 0.007f * (lvl * lvl);
-		maxDamage = initMaxDamage + initMaxDamage * 0.007f * (lvl * lvl);
+		minDamage = initMinDamage + initMinDamage * 0.05f * (lvl * lvl);
+		maxDamage = initMaxDamage + initMaxDamage * 0.05f * (lvl * lvl);
 		armour = initArmour + initArmour * 0.05f * (lvl * lvl);
 		coldRes = initColdRes + initColdRes * 0.05f * (lvl * lvl);
 		fireRes = initFireRes + initFireRes * 0.05f * (lvl * lvl);

@@ -430,7 +430,7 @@ public class PlayerStats : MonoBehaviour {
 			//	realDmg -= (defense*(float)0.75 / (defense*(float)0.75 + 8 * realDmg));
 			//End Traits
 			//else
-				realDmg -= (defense / (defense + 8 * realDmg));	
+			realDmg = (10 * (realDmg * realDmg))/(defense + 10 * realDmg);	
 			//Debug.Log("me pegaron man! :(");
 			break;
 		case Types.Element.Cold:
