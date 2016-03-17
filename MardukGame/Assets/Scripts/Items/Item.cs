@@ -60,18 +60,18 @@ public class Item : MonoBehaviour {
         {
             if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon)
             { //el item es un arma
-                Offensives[p.MinDmg] = (float)System.Math.Round(Random.Range(initMinDamage[0], initMinDamage[1]), 0) * itemLvl;
-                Offensives[p.MaxDamge] = (float)System.Math.Round(Random.Range(initMaxDamage[0], initMaxDamage[1]), 0) * itemLvl;
+                Offensives[p.MinDmg] = (float)System.Math.Round(Random.Range(initMinDamage[0], initMinDamage[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
+				Offensives[p.MaxDamge] = (float)System.Math.Round(Random.Range(initMaxDamage[0], initMaxDamage[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
                 Offensives[p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range(initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]), 2);
                 Offensives[p.CritChance] = (float)System.Math.Round(Random.Range(initCritChance[0], initCritChance[1]), 2);
             }
             else {
                 if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
-                    Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * itemLvl;
+					Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
                 else {
                     if (type == ItemTypes.Shield)
                     {// el item es un escudo
-                        Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * itemLvl;
+						Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
                         Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0], initBlockChance[1]), 0);
                     }
                 }
