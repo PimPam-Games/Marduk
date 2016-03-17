@@ -908,10 +908,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 451456, guid: 9c86adfc02275b142af721f5d34d8c16, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11456068, guid: 9c86adfc02275b142af721f5d34d8c16, type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11405872, guid: 9c86adfc02275b142af721f5d34d8c16, type: 2}
+      propertyPath: upLeftCornerPos
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -944,9 +948,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 755.84, y: -116.24487}
+  m_Offset: {x: 127.84, y: -23.238}
   serializedVersion: 2
-  m_Size: {x: 1537.233, y: 253.13922}
+  m_Size: {x: 282.994, y: 67.126}
 --- !u!4 &1032013814
 Transform:
   m_ObjectHideFlags: 0
@@ -1263,8 +1267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zone: 8
-  MatrixSize: 20
-  matrixDepth: 4
+  MatrixSize: 15
+  matrixDepth: 5
   bgName: 
   sceneName: level8
   bottomUpGeneration: 0

@@ -27,6 +27,7 @@ public class Chunk : MonoBehaviour {
 	private LevelSettings ls;
 	private float timeToGenerate = 0;
 	public bool isEnd = false;
+    public bool upLeftCornerPos = false;
 	// Use this for initialization
 
 	void Awake(){
@@ -58,19 +59,40 @@ public class Chunk : MonoBehaviour {
 		if (g.chunksPerZone.ContainsKey (g.currLevelName)) {
 
 			if (g.chunksPerZone [g.currLevelName].Count == 0){ //si esta en la lista pero no hay ningun chunk, crea el primero
-				cf.cmatrix[0,cf.MatrixSize/2] = true; 
-				this.position[0] = 0;
-				this.position[1] = cf.MatrixSize/2;
-				GenerateChunks ();
-				alreadyGenerated = true;
+                if (!upLeftCornerPos)
+                {
+                    cf.cmatrix[0, cf.MatrixSize / 2] = true;
+                    this.position[0] = 0;
+                    this.position[1] = cf.MatrixSize / 2;
+                    GenerateChunks();
+                    alreadyGenerated = true;
+                }
+                else
+                {
+                    cf.cmatrix[1, 1] = true;            //  1000000
+                    this.position[0] = 1;               // 0000000 
+                    this.position[1] = 1;               //	0000000
+                    GenerateChunks();                   //	0000000 
+                    alreadyGenerated = true;
+                }
 			}
 		} else {
-
-			cf.cmatrix[cf.matrixDepth,cf.MatrixSize/2] = true; 
-			this.position[0] = 0;
-			this.position[1] = cf.MatrixSize/2;
-			GenerateChunks (); //si  no esta en la lista  crea el primero
-			alreadyGenerated = true;
+            if (!upLeftCornerPos)
+            {
+                cf.cmatrix[cf.matrixDepth, cf.MatrixSize / 2] = true;
+                this.position[0] = 0;
+                this.position[1] = cf.MatrixSize / 2;
+                GenerateChunks(); //si  no esta en la lista  crea el primero
+                alreadyGenerated = true;
+            }
+            else
+            {
+                cf.cmatrix[1, 1] = true;            //  1000000
+                this.position[0] = 1;               // 0000000 
+                this.position[1] = 1;               //	0000000
+                GenerateChunks();                   //	0000000 
+                alreadyGenerated = true;
+            }
 		}
 		foreach(Transform enemyPos in enemies){
 			/*float miniBossProb = (this.position[0]+1)/7;

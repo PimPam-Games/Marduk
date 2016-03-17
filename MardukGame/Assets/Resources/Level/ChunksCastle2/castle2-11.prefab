@@ -359,7 +359,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.3706, y: 20.146, z: 0}
+  m_LocalPosition: {x: 171.73691, y: 3234.4893, z: 0}
   m_LocalScale: {x: 0.015625, y: 0.015625, z: 0.015625}
   m_Children:
   - {fileID: 430166}
@@ -693,7 +693,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 0}
-  enemies: []
+  enemies:
+  - {fileID: 471728}
+  - {fileID: 424228}
+  - {fileID: 489910}
   chunkEndRight: {fileID: 412072}
   chunkEndDownR: {fileID: 401134}
   chunkEndDownL: {fileID: 463046}
@@ -707,6 +710,7 @@ MonoBehaviour:
   chunkId: 0
   minibossChunk: 0
   isEnd: 0
+  upLeftCornerPos: 0
 --- !u!114 &11483646
 MonoBehaviour:
   m_ObjectHideFlags: 1
