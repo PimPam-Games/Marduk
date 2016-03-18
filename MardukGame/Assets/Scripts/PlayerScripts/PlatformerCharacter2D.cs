@@ -149,8 +149,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (weaponScript.canAttack) {
 				if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon || PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
 					
-					if(meleeSkillPos > -1){ //si se uso sacrifice le resta la vida
-						MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
+					if(meleeSkillPos > -1){
+                       
+                        MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
 						if(string.Compare(ms.nameForSave,"Sacrifice")==0){
 							if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
 								useSacrifice = true;
@@ -479,10 +480,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 		private void checkSkill(int i){
 
 			SpellStats skill = playerSkills [i]; //obtengo el skill en la posicion del slot que se activo
-			//supportSkill = skill.SupportSkill; //la posicion del support que deberia usar, si es que hay uno
-				
+                                                 //supportSkill = skill.SupportSkill; //la posicion del support que deberia usar, si es que hay uno
+           
 			if (skill != null) {
-				if(skill.manaCost > PlayerStats.currentMana){ //si no hay mana para el skill
+                if (((skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking") || anim.GetBool("PolearmAttacking")))
+                    return;
+                if (skill.manaCost > PlayerStats.currentMana){ //si no hay mana para el skill
 					NormalAttack();
 					return;
 				}
@@ -490,8 +493,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 					NormalAttack();
 					return;
 				}
-				if((skill.manaCost > PlayerStats.currentMana) || (skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking") || anim.GetBool("PolearmAttacking"))
-                    return;
+				
 	
 				supportSkillPos = i;
 				playerSupportSkills[i] = skill.SupportSkill;
@@ -549,8 +551,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 					break;
 					case Types.SkillsTypes.Melee:
-						
-						meleeSkillPos = i;
+                        meleeSkillPos = i;
 						if(weaponScript.canAttack){
 							PlayerStats.currentMana -= skill.manaCost;
 							Attack();
@@ -594,7 +595,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
 		public void Idle(){
-            Debug.Log("timer "+ weaponScript.attackTimer);
+           // Debug.Log("timer "+ weaponScript.attackTimer);
 			anim.speed = p.currentAnimSpeed;
 			anim.SetBool ("Attacking",false);
 			anim.SetBool ("BowAttacking",false);

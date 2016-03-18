@@ -16,6 +16,7 @@ public class SerializableItem{
 		inventoryPositionX = it.InventoryPositionX;
 		inventoryPositionY = it.InventoryPositionY;
 		isEquipped = it.IsEquipped;
+        itemRank = it.itemRank;
 	}
 
 	public string itemName;
@@ -27,6 +28,7 @@ public class SerializableItem{
 	public float[] utils;
 	public int inventoryPositionX; //posicion del item en el inventario
 	public int inventoryPositionY;
-	public bool isEquipped; 
+	public bool isEquipped;
+    public int itemRank;
 
 }

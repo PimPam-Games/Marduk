@@ -27,10 +27,11 @@ public class ItemGenerator :MonoBehaviour{
 		Item newItem = newWeapon.GetComponent<Item> ();
 		newItem.Rarity = RarityTypes.Normal;
 		newItem.type = ItemTypes.Weapon;
-		newItem.Offensives [p.MinDmg] = 1;
-		newItem.Offensives [p.MaxDamge] = 2;	
+		newItem.Offensives [p.MinDmg] = 2;
+		newItem.Offensives [p.MaxDamge] = 4;	
 		newItem.Offensives [p.BaseAttacksPerSecond] = 1.15f;
-		if (newItem.auraRend != null) {
+        newItem.GenerateBaseAffixes(1);
+        if (newItem.auraRend != null) {
 			newItem.auraRend.sprite = GameController.auraRenders[0]; //el color del aura del item, dependiendo si es magico, normal , etc
 		}
 		DontDestroyOnLoad (newWeapon);

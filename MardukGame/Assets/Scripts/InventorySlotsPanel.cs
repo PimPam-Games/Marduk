@@ -165,6 +165,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 		itComponent.InventoryPositionX = -1;
 		itComponent.InventoryPositionY = -1;
 		itComponent.IsEquipped = true;
+        itComponent.itemRank = itemOrigin.itemRank;
 		return itemDestiny;
 	}
 

@@ -34,6 +34,7 @@ public class Item : MonoBehaviour {
 	public AudioSource itemSound;
 	public int lifeToAdd = 5; //porcentaje de la vida maxima que agrega el orbe
 	public int uniqueIndex;
+    public int itemRank = 1;
 
 	void Awake(){
 
@@ -50,28 +51,26 @@ public class Item : MonoBehaviour {
 		//StartCoroutine (StopMove ());
 	}
 
-	// Start(){
-		
-	//}
 
-    public void GenerateBaseAffixes(int itemLvl)
+    public void GenerateBaseAffixes(int rank)
     {
+        itemRank = rank;
         if (!itemForSlot)
         {
             if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon)
             { //el item es un arma
-                Offensives[p.MinDmg] = (float)System.Math.Round(Random.Range(initMinDamage[0], initMinDamage[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
-				Offensives[p.MaxDamge] = (float)System.Math.Round(Random.Range(initMaxDamage[0], initMaxDamage[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
+                Offensives[p.MinDmg] = (float)System.Math.Round(Random.Range(initMinDamage[0], initMinDamage[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
+				Offensives[p.MaxDamge] = (float)System.Math.Round(Random.Range(initMaxDamage[0], initMaxDamage[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
                 Offensives[p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range(initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]), 2);
                 Offensives[p.CritChance] = (float)System.Math.Round(Random.Range(initCritChance[0], initCritChance[1]), 2);
             }
             else {
                 if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Belt) //el item es amour o casco
-					Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
+					Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
                 else {
                     if (type == ItemTypes.Shield)
                     {// el item es un escudo
-						Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * Mathf.Floor(0.2f*itemLvl+1);
+						Defensives[p.Defense] = (float)System.Math.Round(Random.Range(initDefense[0], initDefense[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
                         Defensives[p.BlockChance] = (float)System.Math.Round(Random.Range(initBlockChance[0], initBlockChance[1]), 0);
                     }
                 }
@@ -218,7 +217,9 @@ public class Item : MonoBehaviour {
 		else
 			tooltip +=  Rarity + " " +  Type + "\n";
 
-		if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
+        tooltip += "Rank: " + itemRank.ToString() + "\n";
+
+        if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
             float crit = (float)System.Math.Round(offensives[p.CritChance] * 100,0);
 
             tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
@@ -226,11 +227,11 @@ public class Item : MonoBehaviour {
             "Critical Chance: " + crit + "%\n";
 		}
 		if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Shield || type == ItemTypes.Belt)
-			tooltip += "defense: " + defensives [p.Defense] + "\n";
+			tooltip += "Defense: " + defensives [p.Defense] + "\n";
 		if(type == ItemTypes.Shield)
-			tooltip += "block chance: " + defensives[p.BlockChance] + "% \n";
+			tooltip += "Block chance: " + defensives[p.BlockChance] + "% \n";
 		if(utils[p.IncreasedMoveSpeed] < 0)
-			tooltip += utils[p.IncreasedMoveSpeed] + "% to movement speed \n";
+			tooltip += utils[p.IncreasedMoveSpeed] + "% To movement speed \n";
 
 		tooltip += separator;
 

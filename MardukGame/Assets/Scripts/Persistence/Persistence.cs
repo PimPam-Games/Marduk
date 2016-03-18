@@ -336,7 +336,7 @@ public class Persistence : MonoBehaviour {
 			obj  = Resources.Load("Unique/" + i.itemName, typeof(UnityEngine.Object));
 		GameObject newWeapon = (GameObject)Instantiate (obj,new Vector3(-500,-500,500),new Quaternion(1,1,1,1));
 		Item newItem = newWeapon.GetComponent<Item> ();
-
+        newItem.itemRank = i.itemRank;
 		newItem.Rarity = i.rarity;
 		newItem.Type = i.type;
 		newItem.Atributes = i.atributes;
