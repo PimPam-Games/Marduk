@@ -13,8 +13,11 @@ public class CameraController : MonoBehaviour {
 	private float nextTimeToSearch = 0;
 
 	public bool isFollowing{ get; set;}
+    private Camera cam;
+    private bool maximized = false;
 
 	public void Start(){
+        cam = GetComponent<Camera>();
 		FindPlayer ();
 		isFollowing = true;
 		if (bounds != null){
@@ -64,5 +67,21 @@ public class CameraController : MonoBehaviour {
 			nextTimeToSearch = Time.time + 0.5f;
 		}
 	}
+
+    public void ToggleMinimap()
+    {
+        if (!maximized)
+        {
+            cam.orthographicSize = 40;
+            cam.rect = new Rect(0.1f, 0.42f, 0.2f, 0.22f);
+            maximized = true;
+        }
+        else
+        {
+            cam.orthographicSize = 30;
+            cam.rect = new Rect(0.79f, 0.76f, 0.2f, 0.22f);
+            maximized = false;
+        }
+    }
 }
 

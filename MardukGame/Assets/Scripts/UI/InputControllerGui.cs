@@ -14,11 +14,12 @@ public class InputControllerGui : MonoBehaviour {
 	public GameObject inventory;
 	public GameObject invTooltip;
 	public GameObject[] SpellPanelSlots;
+    public CameraController minimap;
+
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
 	public static bool resumePressed = false;
 	public static bool invOpen = false;
-
 	public static bool closeInventory = false; // se usa para cerrar el inventario luego de que se hallan cargando las skills al iniciar el juego 
 	//private bool gamePaused = false;
 
@@ -40,7 +41,12 @@ public class InputControllerGui : MonoBehaviour {
 		}
 		if(PlayerStats.isDead)
 			return;
-		if (Input.GetButtonUp ("ToggleInventory") && !menuInGame.IsActive()) {
+        if (Input.GetButtonUp("ToggleMinimap"))
+        {
+            minimap.ToggleMinimap();
+        }
+        
+        if (Input.GetButtonUp ("ToggleInventory") && !menuInGame.IsActive()) {
 			//gui.ToggleInventoryWindow();
 			if(inventory.activeSelf){
 				if(!Input.GetMouseButton(0)){
@@ -94,14 +100,14 @@ public class InputControllerGui : MonoBehaviour {
             }
 			SetMouseVisible();
 		}
-		if(Input.GetButtonUp ("Save")){
-			Persistence.Save();
-			Debug.Log("Save Data");
+		/*if(Input.GetButtonUp ("Save")){
+			//Persistence.Save();
+			//Debug.Log("Save Data");
 		}
 		if (Input.GetButtonUp ("Load")) {
-			Persistence.Load("Hola");
-			Debug.Log("Load Data");
-		}
+			//Persistence.Load("Hola");
+			//Debug.Log("Load Data");
+		}*/
 		if (Input.GetButtonUp ("Escape") || resumePressed) {
 			Debug.Log("Pause");
 			resumePressed = false;
