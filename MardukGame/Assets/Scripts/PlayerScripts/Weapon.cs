@@ -199,6 +199,10 @@ public class Weapon : MonoBehaviour {
 			if (Traits.traits[Traits.MACEDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Mace){
 				damage *= 1.1f;
 			}
+			if (Traits.traits [Traits.ACCURACY].isActive ()) {
+				if (p.currentMana >= p.MaxMana * 0.9)
+					damage += damage/10;
+			}
 			//End Traits
 			//weapon constraints
 			if (estats.IsArmored)

@@ -10,7 +10,6 @@ public class Traits: MonoBehaviour
 	NOPOISON = 19, NOBURN = 20, FIREDAMAGE = 8, COLDDAMAGE = 9,LIGHTDAMAGE = 10, POISONDAMAGE= 11, CRITACC = 6, BLOCKDMG = 12, HIGHMP = 13, LOWHPCRIT = 14, ANTIAIR = 15,
 	SWORDDMG = 21, MACEDMG = 22, AXEDMG = 23, BOWDMG = 24, FIREMDMG = 25, ICEMDMG = 26, LIGHTMDMG = 27, POISONMDMG = 28;
 	public static Trait[] traits;
-
 	public static float[] atributes;
 	public static float[] offensives;
 	public static float[] defensives;
@@ -21,7 +20,7 @@ public class Traits: MonoBehaviour
 		traits [MPDAMAGE] = new Trait("Spirit Guard",2,"25% of incoming damage applies on MP instead of HP");
 		traits [MPREGEN] = new Trait("Focus",2,"Half MP, double MP regeneration");
 		traits [MPLEECH] = new Trait("Energy Thirst",2,"Life on hit applies to MP instead of HP");
-		traits [ACCURACY] = new Trait("Restraint",2,"100% accuracy, 0% Critical hit chance");
+		traits [ACCURACY] = new Trait("Restraint",2,"10% increased damage while above 90% MP");
 		traits [PDAMAGE] = new Trait("Berserker",2,"+50% physical damage, -25% defense");
 		traits [MDAMAGE] = new Trait("Magic Overflow",2,"+50% magic damage, -30 to all resistances");
 		traits [SEFFECT] = new Trait("Pandora's Box",6,"+20% chance on hit to cause a random status effect");
@@ -34,7 +33,7 @@ public class Traits: MonoBehaviour
 		traits [COLDDAMAGE] = new Trait("Cold Funneling",4,"10% of damage dealt is added as cold damage");
 		traits [LIGHTDAMAGE] = new Trait("Lightning Funneling",4,"10% of damage dealt is added as lightning damage");
 		traits [POISONDAMAGE] = new Trait("Poison Funneling",4,"10% of damage dealt is added as poison damage");
-		traits [CRITACC] = new Trait("Recklessness",2,"-50% Accuracy, +100% critical chance");
+		traits [CRITACC] = new Trait("Anxiety",2,"-20% physical damage, +20% attack speed");
 		traits [BLOCKDMG] = new Trait("Thorned Shield",4,"Deal half of your thorns damage when blocking an attack");
 		traits [HIGHMP] = new Trait("Energy Barrier",4,"25% reduced damage taken while above 80% MP");
 		traits [LOWHPCRIT] = new Trait("Killer Instinct",4,"100% critical chance while below 15% HP");
@@ -85,8 +84,8 @@ public class Traits: MonoBehaviour
 					p.defensives[p.AllRes] -= 30;
 					break;
 				case CRITACC:
-					//p.offensives[p.IncreasedAccuracy] -= 50;
-					p.defensives[p.IncreasedCritChance] += 100;
+					p.offensives[p.IncreasedDmg] -= 20;
+					p.offensives[p.IncreasedAttackSpeed] += 20;
 					break;
 				default :
 					break;
@@ -107,8 +106,8 @@ public class Traits: MonoBehaviour
 			p.defensives[p.AllRes] += 30;
 			break;
 		case CRITACC:
-			//p.offensives[p.IncreasedAccuracy] += 50;
-			p.offensives[p.IncreasedCritChance] -= 100;
+			p.offensives[p.IncreasedDmg] += 20;
+			p.offensives[p.IncreasedAttackSpeed] -= 20;
 			break;
 		default :
 			break;

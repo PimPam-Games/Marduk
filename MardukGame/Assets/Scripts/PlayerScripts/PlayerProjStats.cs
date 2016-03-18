@@ -167,6 +167,10 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				if (p.currentHealth <= p.MaxHealth*(float)0.3)
 					damage = damage * (float)1.25;
 			}
+			if (Traits.traits [Traits.ACCURACY].isActive ()) {
+				if (p.currentMana >= p.MaxMana * 0.9)
+					damage += damage/10;
+			}
 			if (Traits.traits[Traits.LOWHPCRIT].isActive()){
 				if (p.currentHealth <= p.defensives[p.MaxHealth] * 0.15)
 					alwaysCrit = true;
