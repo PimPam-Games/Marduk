@@ -72,8 +72,8 @@ public class CameraController : MonoBehaviour {
     {
         if (!maximized)
         {
-            cam.orthographicSize = 40;
-            cam.rect = new Rect(0.1f, 0.42f, 0.2f, 0.22f);
+            cam.orthographicSize = 100;
+            cam.rect = new Rect(0.1f, 0.1f, 0.8f, 0.7f);
             maximized = true;
         }
         else

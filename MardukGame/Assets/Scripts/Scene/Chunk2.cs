@@ -23,7 +23,7 @@ public class Chunk2 : MonoBehaviour {
 	private ChunkFactory cf;
 	private LevelSettings ls;
 	private float timeToGenerate = 0;
-
+    public GameObject mapChunk;
 	// Use this for initialization
 	
 	void Awake(){
@@ -41,7 +41,12 @@ public class Chunk2 : MonoBehaviour {
 				}
 			}
 		}
-	}
+        if (mapChunk != null)
+        {
+            mapChunk.layer = LayerMask.NameToLayer("MiniMap");
+            mapChunk.SetActive(false);
+        }
+    }
 	
 	void Update(){
 		
@@ -193,7 +198,7 @@ public class Chunk2 : MonoBehaviour {
 
 		if (col.gameObject.tag == "Player") {
 			if(!layerChanged){
-				foreach(Transform child in this.transform){
+                /*foreach(Transform child in this.transform){
 					child.gameObject.layer = LayerMask.NameToLayer("Default");
 					foreach(Transform c2 in child){
 						c2.gameObject.layer = LayerMask.NameToLayer("Default");
@@ -204,8 +209,10 @@ public class Chunk2 : MonoBehaviour {
 								c3.gameObject.layer = LayerMask.NameToLayer("Ground");
 						}
 					}
-				}
-				layerChanged = true;
+				}*/
+                if (mapChunk != null)
+                    mapChunk.SetActive(true);
+                layerChanged = true;
 			}
 		}
 	}
