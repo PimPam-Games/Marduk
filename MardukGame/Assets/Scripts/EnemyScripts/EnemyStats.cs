@@ -91,8 +91,11 @@ public class EnemyStats : MonoBehaviour {
     public Transform cbtTransform;
 
 	//Champion Enemy Affixes
-	public const int cantEnemyAffixes = 1;
+	public const int cantEnemyAffixes = 4;
 	private bool isArmored = false;
+	private bool isFast = false;
+	private bool isStrong = false;
+	private bool isCursed = false;
     private string eAffix = ""; //afijo del enemigo para mostrar en la barra de vida
 
     public bool IsArmored
@@ -104,6 +107,33 @@ public class EnemyStats : MonoBehaviour {
             eAffix = "Armored";
         }
     }
+	public bool IsFast
+	{
+		get { return isFast; }
+		set
+		{
+			isFast = value;
+			eAffix = "Fast";
+		}
+	}
+	public bool IsStrong
+	{
+		get { return isStrong; }
+		set
+		{
+			isStrong = value;
+			eAffix = "Strong";
+		}
+	}
+	public bool IsCursed
+	{
+		get { return isCursed; }
+		set
+		{
+			isCursed = value;
+			eAffix = "Cursed";
+		}
+	}
 	/*public float Accuracy{
 		get {return accuracy;}
 	}*/
@@ -121,6 +151,9 @@ public class EnemyStats : MonoBehaviour {
 		enemyMove = GetComponent<EnemyIAMovement>();
 		rangedAttack = GetComponent<EnemyRangedAttack>();
 		initAnimSpeed = anim.speed;
+		if (isFast) {
+			initAnimSpeed *= 2;
+		}
 		CalculateStats ();
 	}
 
@@ -259,6 +292,10 @@ public class EnemyStats : MonoBehaviour {
 				}
 			}
 			//bool hitConfirmed = pstats.Hit(dmgDealt, elem,Accuracy, isCrit);
+			if (isStrong) {
+				dmgDealt *= 1.5f;
+			}
+
 			bool hitConfirmed = pstats.Hit(dmgDealt, elem,1f, isCrit);
 			//begin traits
 			if (p.isBlocking){
@@ -465,6 +502,10 @@ public class EnemyStats : MonoBehaviour {
 				realDmg = 0;
 			
 			currHealth -= realDmg;
+
+			if (isCursed){
+				p.currentHealth -= realDmg/5;
+			}
             string cbt = System.Math.Round(realDmg, 0).ToString();
             if (isCritical)
 				cbt = "<color=Yellow>" + cbt +  "</color>"; 

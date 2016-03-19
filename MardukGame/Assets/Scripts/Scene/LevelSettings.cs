@@ -57,6 +57,9 @@ public class LevelSettings : MonoBehaviour {
             int randomAffix = Random.Range(1,EnemyStats.cantEnemyAffixes);
 			switch (randomAffix) {
 			case 1 : newEnemy.GetComponentInChildren<EnemyStats>().IsArmored = true; break;
+			case 2 : newEnemy.GetComponentInChildren<EnemyStats>().IsFast = true; break;
+			case 3 : newEnemy.GetComponentInChildren<EnemyStats>().IsStrong = true; break;
+			case 4 : newEnemy.GetComponentInChildren<EnemyStats>().IsCursed = true; break;
 			default : break;
 			}
 		}
