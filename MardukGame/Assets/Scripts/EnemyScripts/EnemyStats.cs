@@ -93,7 +93,7 @@ public class EnemyStats : MonoBehaviour {
 	//Champion Enemy Affixes
 	public const int cantEnemyAffixes = 4;
 	private bool isArmored = false;
-	private bool isFast = false;
+	public bool isFast = false;
 	private bool isStrong = false;
 	private bool isCursed = false;
     private string eAffix = ""; //afijo del enemigo para mostrar en la barra de vida
@@ -151,9 +151,6 @@ public class EnemyStats : MonoBehaviour {
 		enemyMove = GetComponent<EnemyIAMovement>();
 		rangedAttack = GetComponent<EnemyRangedAttack>();
 		initAnimSpeed = anim.speed;
-		if (isFast) {
-			initAnimSpeed *= 2;
-		}
 		CalculateStats ();
 	}
 
@@ -181,6 +178,7 @@ public class EnemyStats : MonoBehaviour {
 				plauncher.GetComponent<ProjectileLauncher>().SetDamage(minDamage,maxDamage);
 			}
 		}
+		
 	}
 
 	/*IEnumerator AlertSoundPlay(){

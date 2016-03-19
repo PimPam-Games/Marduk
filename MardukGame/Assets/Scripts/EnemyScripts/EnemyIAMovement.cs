@@ -228,6 +228,9 @@ public class EnemyIAMovement : MonoBehaviour {
 
 				if(hasIdleInstance){
 					currentSpeed = maxSpeed;
+					if (enemyStats.IsFast) {
+						currentSpeed *= 2;
+					}
 					anim.SetFloat("Speed",currentSpeed);
 				}
 				Move ();

@@ -54,7 +54,7 @@ public class LevelSettings : MonoBehaviour {
 		float randomPoint = Random.value;
 		if(randomPoint < 0.1f){ //10% chance of being champion
             newEnemy.GetComponentInChildren<EnemyStats>().enemyType = Types.EnemyTypes.Champion;
-            int randomAffix = Random.Range(1,EnemyStats.cantEnemyAffixes);
+            int randomAffix = Random.Range(1,EnemyStats.cantEnemyAffixes+1);
 			switch (randomAffix) {
 			case 1 : newEnemy.GetComponentInChildren<EnemyStats>().IsArmored = true; break;
 			case 2 : newEnemy.GetComponentInChildren<EnemyStats>().IsFast = true; break;
@@ -63,7 +63,6 @@ public class LevelSettings : MonoBehaviour {
 			default : break;
 			}
 		}
-
 		g.enemiesPerLevel[g.currLevelName].Add(newEnemy);
 	}
 	
