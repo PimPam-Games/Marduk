@@ -115,7 +115,7 @@ public class ChunkFactory : MonoBehaviour {
 			return null;
 		}
 		int r;
-		float[] chunksProb = {0.5f,0.3f,0.2f}; //40% uno normal, 40% un doble, 20% un cierre
+		float[] chunksProb = {0.55f,0.25f,0.2f}; //55% uno normal, 25% un doble, 20% un cierre
 
 		int choice = Utils.Choose(chunksProb);
 		//Debug.Log ("chunk pos 0 " + chunkPos [0]);
