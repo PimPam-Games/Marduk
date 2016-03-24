@@ -28,9 +28,10 @@ public class Chunk : MonoBehaviour {
 	private float timeToGenerate = 0;
 	public bool isEnd = false;
     public bool upLeftCornerPos = false;
-	// Use this for initialization
+    public GameObject mapChunk;
+    // Use this for initialization
 
-	void Awake(){
+    void Awake(){
 		cf = GameObject.Find ("LevelController").GetComponent<ChunkFactory>();
 		ls = GameObject.Find ("LevelController").GetComponent<LevelSettings>();
 		foreach(Transform child in this.transform){  //el layer del chunk y de todos los hijos es miniMapIgnored para que no lo muestre el minimapa
@@ -45,7 +46,12 @@ public class Chunk : MonoBehaviour {
 				}
 			}
 		}
-	}
+        if (mapChunk != null)
+        {
+            mapChunk.layer = LayerMask.NameToLayer("MiniMap");
+            mapChunk.SetActive(false);
+        }
+    }
 
 	void Update(){
 
@@ -214,9 +220,11 @@ public class Chunk : MonoBehaviour {
 			}
 
 		}
-		if (col.gameObject.tag == "Player") {
-			if(!layerChanged){
-				foreach(Transform child in this.transform){
+        if (col.gameObject.tag == "Player")
+        {
+            if (!layerChanged)
+            {
+                /*foreach(Transform child in this.transform){
 					child.gameObject.layer = LayerMask.NameToLayer("Default");
 					foreach(Transform c2 in child){
 						c2.gameObject.layer = LayerMask.NameToLayer("Default");
@@ -227,9 +235,11 @@ public class Chunk : MonoBehaviour {
 								c3.gameObject.layer = LayerMask.NameToLayer("Ground");
 						}
 					}
-				}
-				layerChanged = true;
-			}
-		}
-	}
+				}*/
+                if (mapChunk != null)
+                    mapChunk.SetActive(true);
+                layerChanged = true;
+            }
+        }
+    }
 }
