@@ -17,7 +17,8 @@ public class EnemyIAMovement : MonoBehaviour {
 	private bool grounded;
 	private float groundedRadius = .2f;
 	public float jumpForce = 800f;
-	private float flipDelay = 1.5f ;
+    public float jumpLength = 100;
+    private float flipDelay = 1.5f ;
 	private float flipDelayCount = 0;
 	private int moveDir = 1, moveDirY;
 
@@ -204,7 +205,7 @@ public class EnemyIAMovement : MonoBehaviour {
 				rb.velocity = new Vector2 (0,rb.velocity.y);
 		if (jumpTime <= 0)
 			if (grounded) {
-				rb.AddForce (new Vector2 (moveDir * 100, jumpForce));
+				rb.AddForce (new Vector2 (moveDir * jumpLength, jumpForce));
 				jumpTime = jumpDelay;
 				groundCheckTime = 0.5f;
 			}
