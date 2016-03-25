@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (newWeaponEquipped)
+        if (newWeaponEquipped) //si se equipo un arma se fija si es de dos manos o no para ubicarla
         {
             newWeaponEquipped = false;
             if (weaponSprite != null && weaponSprite.sprite != null)

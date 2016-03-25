@@ -16,6 +16,7 @@ public class InputControllerGui : MonoBehaviour {
 	public GameObject[] SpellPanelSlots;
     public CameraController minimap;
 
+    public static bool noAttack = false; //para que el tipo no pueda atacar con algunas ventanas abiertas
 	public static bool tpOpen = false;
 	public static bool toggleTeleporterPanel;
 	public static bool resumePressed = false;
@@ -160,6 +161,10 @@ public class InputControllerGui : MonoBehaviour {
 	}
 
 	private void SetMouseVisible(){
+        if (inventory.activeSelf || characterPanel.activeSelf || menuInGame.IsActive() || traitsPanel.activeSelf)
+            noAttack = true;
+        else
+            noAttack = false;
 		if(inventory.activeSelf || characterPanel.activeSelf || menuInGame.IsActive() || traitsPanel.activeSelf || tpOpen)
 			Cursor.visible = true;
 		else

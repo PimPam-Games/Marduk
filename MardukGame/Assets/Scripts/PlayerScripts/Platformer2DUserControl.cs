@@ -60,13 +60,15 @@
 			character.Move (h, crouch, jump);
 			jump = false;
 
-			if(Input.GetButton("Spell1") && !Cursor.visible)
-				character.Spell1();
+            if (InputControllerGui.noAttack)
+                return;
+			if(Input.GetButton("Spell1"))
+                character.Spell1();
 			if(Input.GetButton("Spell2"))
 				character.Spell2();
 			if(Input.GetButton("Spell3"))
 				character.Spell3();
-			if(Input.GetButton("Spell4") && !Cursor.visible)
+			if(Input.GetButton("Spell4"))
 				character.Spell4();		
 			/*if (Input.GetButton ("Fire1")) {	
 				PlatformerCharacter2D.meleeSkillPos = -1; //es el ataque comun	

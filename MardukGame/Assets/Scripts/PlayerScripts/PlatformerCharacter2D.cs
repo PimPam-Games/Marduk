@@ -48,7 +48,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		public GameObject bowprojectile; //para setearle la flecha al arco por las dudas que no aparezca
 		//private float normalAnimSpeed;
 		private float knockback = 6.5f;
-		private float knockbackLength = 0.9f;
+		private float knockbackLength = 0.7f; //antes estaba en 0.9
 		private float knockbackTimer = 0;
 		private bool knockFromRight = true;
 		public static bool jumpNow = false; //para que el jugador salte, se usa para cuando se carga un nivel que entra desde un hueco
@@ -141,8 +141,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 		public void Attack(){
 			if (stopPlayer)
-				return;
-			if (MyGUI.CharacterWindowOpen () || MyGUI.InventoryOpen ())
 				return;
 			if (weaponScript == null)
 				return;

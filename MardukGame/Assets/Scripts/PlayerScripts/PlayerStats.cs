@@ -385,7 +385,8 @@ public class PlayerStats : MonoBehaviour {
 	public bool Hit(float dmg, Types.Element type, float accuracy, bool isCritical){ //se llama cuando un enemigo le pega al jugador
 
 		float defense = defensives [Defense] + defensives [IncreasedDefense];
-		if (ghostMode || anim.GetBool("Blocking")){
+		if (ghostMode || anim.GetBool("Blocking") || isDead)
+        {
 			return false;
 		}
 		/*if (accuracy > -1) { //si es -1 siempre le pega

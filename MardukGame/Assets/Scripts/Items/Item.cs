@@ -47,8 +47,17 @@ public class Item : MonoBehaviour {
 			itemSound = GetComponent<AudioSource> ();
 			rb = GetComponent<Rigidbody2D> ();
 			auraRend = transform.GetChild(0).GetComponent<SpriteRenderer>();
-            if(auraRend != null)
+            SpriteRenderer itemRend = this.GetComponent<SpriteRenderer>();
+            if (itemRend != null)
+            {
+                itemRend.sortingLayerName = "Player";
+                itemRend.sortingOrder = 1;
+            }
+            if (auraRend != null)
+            {
                 auraRend.sortingLayerName = "Player";
+                auraRend.sortingOrder = 0;
+            }
 		}
 		//StartCoroutine (StopMove ());
 	}

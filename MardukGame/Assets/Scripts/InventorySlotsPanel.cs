@@ -144,7 +144,8 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 		}
 		PlayerItems.Inventory = ilistAux;
 		HasChanged();
-        Weapon.newWeaponEquipped = true;
+        PlayerStats.currentHealth = PlayerStats.defensives[PlayerStats.MaxHealth]; // actualizo la vida del jugador para sumarle la vida que le pueden dar los items
+        Weapon.newWeaponEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
     }	
 
 	private GameObject ItemCopy(Item itemOrigin, GameObject itemDestiny){
