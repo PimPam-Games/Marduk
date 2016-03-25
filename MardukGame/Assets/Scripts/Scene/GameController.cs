@@ -34,10 +34,13 @@ public class GameController : MonoBehaviour {
 	public GameObject[] lifeOrbsGameCtrl = new GameObject[3];
 	public static GameObject[] lifeOrbs;
 	private bool inventoryItemsLoaded = false; //true si ya se cargaron los items en el inventario
+    public PhysicsMaterial2D groundMaterialGo;
+    public static PhysicsMaterial2D groundMaterial;
 	void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
-		//deadEnemies = new List<string>();
-		inventoryUI.SetActive(true); //lo activo para poder cargar las skills correspondientes, despues se desactiva en InputControllerUI
+        //deadEnemies = new List<string>();
+        groundMaterial = groundMaterialGo;
+        inventoryUI.SetActive(true); //lo activo para poder cargar las skills correspondientes, despues se desactiva en InputControllerUI
 		player.GetComponent<PlatformerCharacter2D>().inventoryPanel = inventoryUI.GetComponent<InventorySlotsPanel>();
 		player.GetComponent<PlatformerCharacter2D>().spellsPanel = spellPanelUI.GetComponent<SpellsPanel>();
 		introText = introTextGo;

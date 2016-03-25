@@ -243,6 +243,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &191136
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 438678}
+  - 212: {fileID: 21217478}
+  - 61: {fileID: 6157198}
+  - 50: {fileID: 5087766}
+  m_Layer: 10
+  m_Name: door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &409238
 Transform:
   m_ObjectHideFlags: 1
@@ -285,6 +303,7 @@ Transform:
   - {fileID: 468530}
   - {fileID: 435444}
   - {fileID: 409238}
+  - {fileID: 438678}
   m_Father: {fileID: 483232}
   m_RootOrder: 0
 --- !u!4 &434004
@@ -325,6 +344,18 @@ Transform:
   - {fileID: 459592}
   m_Father: {fileID: 424060}
   m_RootOrder: 2
+--- !u!4 &438678
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 570.14966, y: -8.603516, z: 0}
+  m_LocalScale: {x: 102.4, y: 64, z: 64}
+  m_Children: []
+  m_Father: {fileID: 425818}
+  m_RootOrder: 5
 --- !u!4 &443830
 Transform:
   m_ObjectHideFlags: 1
@@ -417,7 +448,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.613762, y: 5.499912, z: 0}
+  m_LocalPosition: {x: -57.587067, y: 31.821222, z: 0}
   m_LocalScale: {x: 0.015625, y: 0.015625, z: 0.015625}
   m_Children:
   - {fileID: 425818}
@@ -513,8 +544,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1093696345
+  m_SortingOrder: 5
 --- !u!33 &3326104
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -570,6 +601,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!50 &5087766
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191136}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &6061474
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -578,7 +626,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 100962}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -646,6 +694,20 @@ PolygonCollider2D:
       - {x: 1984, y: -1408}
       - {x: 1920, y: -1408}
       - {x: 1920, y: -1280}
+--- !u!61 &6157198
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191136}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 32fba66943e2f0f458be73fc1da90bf5, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 2.79, y: 0.6}
 --- !u!61 &6175604
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -743,6 +805,7 @@ MonoBehaviour:
   minibossChunk: 0
   isEnd: 0
   upLeftCornerPos: 0
+  mapChunk: {fileID: 0}
 --- !u!114 &11451266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -781,6 +844,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1874989c5e2da094ea00112c6a895694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &21217478
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191136}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 8e6898265e3e31448935c68b95d8993d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

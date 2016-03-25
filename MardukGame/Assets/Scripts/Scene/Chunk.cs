@@ -39,10 +39,14 @@ public class Chunk : MonoBehaviour {
 			foreach(Transform c2 in child){
 				c2.gameObject.layer = LayerMask.NameToLayer("MiniMapIgnored");
 				foreach(Transform c3 in c2){
-					if(c3.gameObject.name != "Collision")
-						c3.gameObject.layer = LayerMask.NameToLayer("MiniMapIgnored");
-					else
-						c3.gameObject.layer = LayerMask.NameToLayer("Ground"); //el de collision tiene que ser ground si o si
+                    if (c3.gameObject.name != "Collision")
+                        c3.gameObject.layer = LayerMask.NameToLayer("MiniMapIgnored");
+                    else {
+                        c3.gameObject.layer = LayerMask.NameToLayer("Ground"); //el de collision tiene que ser ground si o si
+                        PolygonCollider2D ChunkCol= c3.gameObject.GetComponent<PolygonCollider2D>();
+                        if (ChunkCol != null)
+                            ChunkCol.sharedMaterial = g.groundMaterial;
+                    }
 				}
 			}
 		}
