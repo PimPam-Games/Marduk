@@ -164,7 +164,13 @@ public class Weapon : MonoBehaviour {
 					msProj.maxDmg = damage *  0.40f;
 					weaponProjLauncher1.transform.rotation = Quaternion.Euler(0,0,90);
 					Instantiate (msProj, weaponProjLauncher1.transform.position, weaponProjLauncher1.transform.rotation);
-				}	
+				}
+
+				//Begin Traits
+				if (Traits.traits[Traits.MSKILLDMG].isActive()){
+					damage *= 1.2f;
+				}
+				//End Traits
 			}
 			/*if(pc.supportSkillPos > -1) //cargo el support del skill que se utilizo, si es -1 es por que no se uso ningun skill
 				supportSkill = (Support)pc.playerSupportSkills[pc.supportSkillPos];*/

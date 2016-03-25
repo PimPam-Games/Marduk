@@ -5,10 +5,11 @@ using p = PlayerStats;
 
 public class Traits: MonoBehaviour
 {
-	public const int CantTraits = 25;
+	public const int CantTraits = 34;
 	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 16, LOWHPDAMAGE = 7, NOFREEZE = 17, NOSHOCK = 18, 
 	NOPOISON = 19, NOBURN = 20, FIREDAMAGE = 8, COLDDAMAGE = 9,LIGHTDAMAGE = 10, POISONDAMAGE= 11, CRITACC = 6, BLOCKDMG = 12, HIGHMP = 13, LOWHPCRIT = 14, ANTIAIR = 15,
-	SWORDDMG = 21, MACEDMG = 22, AXEDMG = 23, BOWDMG = 24, FIREMDMG = 25, ICEMDMG = 26, LIGHTMDMG = 27, POISONMDMG = 28;
+	SWORDDMG = 21, MACEDMG = 22, AXEDMG = 23, BOWDMG = 24, FIREMDMG = 25, ICEMDMG = 26, LIGHTMDMG = 27, POISONMDMG = 28, MSKILLDMG = 29, RSKILLDMG = 30, MSKILLCOST = 31,
+	RSKILLCOST = 32, DMGXMP = 33;
 	public static Trait[] traits;
 	public static float[] atributes;
 	public static float[] offensives;
@@ -42,20 +43,15 @@ public class Traits: MonoBehaviour
 		traits [MACEDMG] = new Trait("Maceman",2,"+10% physical damage when wielding a mace");
 		traits [AXEDMG] = new Trait("Axeman",2,"+10% physical damage when wielding a axe");
 		traits [BOWDMG] = new Trait("Bowman",2,"+10% physical damage when wielding a bow");
-		//traits [FIREMDMG] = new Trait("Fire Mage",2,"+10% magic damage for fire spells");
-		//traits [ICEMDMG] = new Trait("Ice Mage",2,"+10% magic damage for ice spells");
-		//traits [LIGHTMDMG] = new Trait("Lightning Mage",2,"+10% magic damage for lightning spells");
-		//traits [POISONMDMG] = new Trait("Poison Mage",2,"+10% magic damage for poison spells");
-		/*traits [t15] = new Trait("t15",2,"Double hit");
-		traits [t16] = new Trait("t16",2,"10% chance to counterattack with one of your skills when struck");
-		traits [t17] = new Trait("t17",2,"Attacks cause area damage");
-		traits [t18] = new Trait("t18",2,"Your thorns damage causes bleeding");
-		traits [t19] = new Trait("t19",2,"Half HP, critical hit chance applies to certain damage chance");*/
-
-		/*atributes = new float[p.CantAtributes];
-		offensives = new float[p.CantOffensives];
-		defensives = new float[p.CantDefensives];
-		utils = new float[p.CantUtils]; */
+		traits [FIREMDMG] = new Trait("Fire Mage",2,"+10% magic damage for fire spells");
+		traits [ICEMDMG] = new Trait("Ice Mage",2,"+10% magic damage for ice spells");
+		traits [LIGHTMDMG] = new Trait("Lightning Mage",2,"+10% magic damage for lightning spells");
+		traits [POISONMDMG] = new Trait("Poison Mage",2,"+10% magic damage for poison spells");
+		traits [MSKILLDMG] = new Trait("War God",4,"+20% damage for melee skills");
+		traits [RSKILLDMG] = new Trait("Supremacy",4,"+20% damage for ranged skills");
+		traits [MSKILLCOST] = new Trait("Martial Artist",4,"Melee skills cost 20% less MP");
+		traits [RSKILLCOST] = new Trait("Unreachable",4,"Ranged skills cost 20% less MP");
+		traits [DMGXMP] = new Trait("Adrenaline Rush",4,"Restores MP equivalent to 25% of damage taken");
 	}
 
 	public static void init(){

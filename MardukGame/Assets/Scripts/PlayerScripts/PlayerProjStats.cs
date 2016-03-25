@@ -156,6 +156,20 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				damage = Random.Range(minDmg,maxDmg);
 				damage += p.offensives[p.MagicDmg];
 				damage += damage * p.offensives[p.IncreasedMgDmg]/100;
+				//Begin Traits
+				if (elem == Types.Element.Poison && Traits.traits[Traits.POISONMDMG].isActive()){
+					damage *= 1.1f;
+				}
+				if (elem == Types.Element.Cold && Traits.traits[Traits.ICEMDMG].isActive()){
+					damage *= 1.1f;
+				}
+				if (elem == Types.Element.Fire && Traits.traits[Traits.FIREMDMG].isActive()){
+					damage *= 1.1f;
+				}
+				if (elem == Types.Element.Lightning && Traits.traits[Traits.LIGHTMDMG].isActive()){
+					damage *= 1.1f;
+				}
+				//End Traits
 				/*if(col.transform.position.x < this.transform.position.x)
 					col.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);
 				else
@@ -181,6 +195,9 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				    estats.enemyName == "Pirobolus" ||
 				    estats.enemyName == "Zu")
 					damage *= 1.2f;
+			}
+			if (Traits.traits[Traits.RSKILLDMG].isActive()){
+				damage *= 1.2f;
 			}
 
 

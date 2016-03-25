@@ -507,6 +507,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 								multipleShots = true;							
 							if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
 								if(weaponScript.canAttack){
+									float cost = skill.manaCost;
+									//Begin Traits
+									if (Traits.traits[Traits.RSKILLCOST].isActive()){
+										cost *= 0.8f;
+									}
+									//End Traits
 									PlayerStats.currentMana -= skill.manaCost;
 									anim.SetBool ("BowAttacking", true);
 								}
@@ -514,6 +520,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 						}
 						else{
 							//magias
+							float cost = skill.manaCost;
+							//Begin Traits
+							if (Traits.traits[Traits.RSKILLCOST].isActive()){
+								cost *= 0.8f;
+							}
+							//End Traits
 							PlayerStats.currentMana -= skill.manaCost;
 							if(rskill.continuosRelease)
 								skillBtnPressed = i+1;
@@ -551,6 +563,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 					case Types.SkillsTypes.Melee:
                         meleeSkillPos = i;
 						if(weaponScript.canAttack){
+							float cost = skill.manaCost;
+							//Begin Traits
+							if (Traits.traits[Traits.MSKILLCOST].isActive()){
+								cost *= 0.8f;
+							}
+							//End Traits
 							PlayerStats.currentMana -= skill.manaCost;
 							Attack();
 						}

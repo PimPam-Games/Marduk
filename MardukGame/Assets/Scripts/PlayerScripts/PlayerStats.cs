@@ -515,6 +515,12 @@ public class PlayerStats : MonoBehaviour {
 			if (currentMana >= MaxMana * 0.8)
 				realDmg -= realDmg/4;
 		}
+		if (Traits.traits [Traits.DMGXMP].isActive ()) {
+			if (currentMana + realDmg/4 >= MaxMana)
+				currentMana = MaxMana;
+			else
+				currentMana += realDmg/4;
+		}
 		//End Traits
 		if (realDmg < 0)
 			realDmg = 0;
