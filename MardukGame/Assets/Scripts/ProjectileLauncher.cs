@@ -10,10 +10,10 @@ public class ProjectileLauncher : MonoBehaviour {
 	public EnemyIAMovement ia;
 	public bool flipProjectile = false;
 	private GameObject p;
-	public EnemyStats stats;
+	//public EnemyStats stats;
 	PlayerProjStats projStats = null;
 	public bool dontChangeRotation = false;
-	
+    public bool isTrap = false; // si es una trampa que no tiene ia
 	// Use this for initialization
 	void Awake () {
 		projStats = projectile.GetComponent<PlayerProjStats>();
@@ -39,7 +39,7 @@ public class ProjectileLauncher : MonoBehaviour {
 			//proj = (GameObject)Instantiate (projectile, transform.position, Quaternion.Euler(0,0,0));
 			p = (GameObject)Instantiate (projectile, transform.position, projectile.transform.rotation);
 		}
-		p.GetComponent<PlayerProjStats> ().enemyStats = stats;
+		//p.GetComponent<PlayerProjStats> ().enemyStats = stats;
 		p.GetComponent<PlayerProjStats> ().fromEnemy = true;
 		if (toTargetDir && target != null) {
 			if(target.transform.position.x < transform.position.x){
@@ -49,9 +49,16 @@ public class ProjectileLauncher : MonoBehaviour {
 			else
 				p.GetComponent<ProjectileMovement>().moveDirX = 1;
 		}
-		if (flipProjectile && ia.facingRight)
-			p.GetComponent<Rigidbody2D> ().AddForce (new Vector2 (force.x * -1, force.y));
-		else
-			p.GetComponent<Rigidbody2D> ().AddForce (force);
+        if (!isTrap)
+        {
+            if (flipProjectile && ia.facingRight)
+                p.GetComponent<Rigidbody2D>().AddForce(new Vector2(force.x * -1, force.y));
+            else
+                p.GetComponent<Rigidbody2D>().AddForce(force);
+        }
+        else
+        {
+            p.GetComponent<Rigidbody2D>().AddForce(force);
+        }
 	}
 }

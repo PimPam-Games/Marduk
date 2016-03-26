@@ -34,7 +34,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 	private float stopCount = 0;
 	
 	public bool fromEnemy = false;
-	public EnemyStats enemyStats = null;
+	//public EnemyStats enemyStats = null;
 
 	public Support supportSkill;
 	// Use this for initialization
@@ -290,20 +290,20 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 	}
 
 	private void EnemyProj(Collider2D col){
-		if(enemyStats == null){
+	/*	if(enemyStats == null){
 			Debug.LogError("EnemyStats not found in ProjStats");
 			return;
-		}
+		}*/
 		PlayerStats pstats = col.gameObject.GetComponent<PlayerStats>();
 		if (pstats != null && !alreadyHit) {
 			bool hitConfirmed = false;
 			float dmgDealt = Random.Range(minDmg,maxDmg);
 			bool isCrit = false;
-			float[] critDmgProb = {1 - enemyStats.critChance, enemyStats.critChance};
+		/*	float[] critDmgProb = {1 - enemyStats.critChance, enemyStats.critChance};
 			if(Utils.Choose(critDmgProb) != 0){
 				isCrit = true;
 				dmgDealt *= 2; //si es critico lo multiplico por 2 al daño del enemigo
-			}
+			}*/
 			//hitConfirmed = pstats.Hit(dmgDealt, elem,enemyStats.Accuracy,isCrit);
 			hitConfirmed = pstats.Hit(dmgDealt, elem,1f,isCrit);
 			alreadyHit = true;
