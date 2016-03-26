@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.080653, y: -1.9004624, z: 0}
+  m_LocalPosition: {x: -16.855234, y: -2.1763706, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 428328}
@@ -422,6 +422,7 @@ MonoBehaviour:
   groundChecks:
   - {fileID: 411634}
   jumpForce: 800
+  jumpLength: 100
   knockable: 1
   jumper: 1
   flying: 0
@@ -473,15 +474,16 @@ MonoBehaviour:
   initMaxHealth: 10
   initMinDamage: 4
   initMaxDamage: 5
+  initMinProjDamage: 2
+  initMaxProjDamage: 5
   initArmour: 5
   initColdRes: 0
   initFireRes: 0
   initLightRes: 0
   initPoisonRes: 5
   initCritChance: 0.05
-  elem: 4
-  minDamage: 4
-  maxDamage: 5
+  elem: 0
+  meleeAttackElem: 4
   critChance: 25
   minDmgPerLvl: 1
   maxDmgPerLvl: 1
@@ -498,6 +500,7 @@ MonoBehaviour:
   isBoss: 0
   enemyType: 0
   cbtTransform: {fileID: 460194}
+  isFast: 0
 --- !u!212 &21290572
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -64,7 +64,7 @@ public class EnemyAttack : MonoBehaviour {
 			attackSound.Play();
 		if (distance < attackRange)
 			if ((dot < 0 && !movement.IsFacingRight ()) || (dot > 0 && movement.IsFacingRight ())) {
-				float damage = Random.Range (stats.minDamage, stats.maxDamage);
+				float damage = Random.Range (stats.MinDamage, stats.MaxDamage) * stats.meleeAttackMultiplier;
 				bool isCrit = false;
 				float[] critDmgProb = {1 - stats.critChance, stats.critChance};
 				if(useSacrifice && stats.currHealth > (stats.initMaxHealth * 7 /100) + 1){
@@ -79,7 +79,7 @@ public class EnemyAttack : MonoBehaviour {
 					damage *= 2; //si es critico lo multiplico por 2 al daño del enemigo
 				}
 				//bool hitConfirmed = playerStats.Hit (damage, stats.elem,stats.Accuracy,isCrit); 
-				bool hitConfirmed = playerStats.Hit (damage, stats.elem,1f,isCrit);
+				bool hitConfirmed = playerStats.Hit (damage, stats.meleeAttackElem,1f,isCrit);
 				if(hitConfirmed){
 					if(target.transform.position.x < this.transform.position.x)
 						target.gameObject.GetComponent<PlatformerCharacter2D>().knockBackPlayer(true);

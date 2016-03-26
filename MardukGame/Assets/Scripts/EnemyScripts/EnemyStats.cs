@@ -10,8 +10,9 @@ public class EnemyStats : MonoBehaviour {
 	[SerializeField] public float initMaxHealth = 10;
 	[SerializeField] public float initMinDamage = 2;
 	[SerializeField] public float initMaxDamage = 5;
-
-	[SerializeField] private float initArmour = 4;
+    [SerializeField] public float initMinProjDamage = 2; //daño del proyectil que dispara, si es que tiene
+    [SerializeField] public float initMaxProjDamage = 5;
+    [SerializeField] private float initArmour = 4;
 	[SerializeField] private float initColdRes = 0;
 	[SerializeField] private float initFireRes = 0;
 	[SerializeField] private float initLightRes = 0;
@@ -20,12 +21,15 @@ public class EnemyStats : MonoBehaviour {
 	//[SerializeField] private float initAccuracy = 25; //25 por ahi deberia ser la base
 	[SerializeField] private float initCritChance = 0.05f; //5% prob de critico
 	[SerializeField] public Types.Element elem ;
-
+    [SerializeField] public Types.Element meleeAttackElem;
+    public float meleeAttackMultiplier = 1.4f; //el daño del ataque es su daño comun multiplicado por esto
     private float maxHealth = 10;
-	public float minDamage = 2;
-	public float maxDamage = 5;
-	
-	private float armour = 4;
+	private float minDamage = 2;
+    private float maxDamage = 5;
+    private float minProjDamage = 2;
+    private float maxProjDamage = 5;
+
+    private float armour = 4;
 	private float coldRes = 0;
 	private float fireRes = 0;
 	private float lightRes = 0;
@@ -98,6 +102,16 @@ public class EnemyStats : MonoBehaviour {
 	private bool isCursed = false;
     private string eAffix = ""; //afijo del enemigo para mostrar en la barra de vida
 
+    public float MinDamage
+    {
+        get { return minDamage; }
+    }
+
+    public float MaxDamage
+    {
+        get { return maxDamage; }
+    }
+
     public bool IsArmored
     {
         get { return isArmored; }
@@ -163,7 +177,9 @@ public class EnemyStats : MonoBehaviour {
 	private void CalculateStats(){
 		minDamage = initMinDamage + initMinDamage * 0.05f * (lvl * lvl);
 		maxDamage = initMaxDamage + initMaxDamage * 0.05f * (lvl * lvl);
-		armour = initArmour + initArmour * 0.05f * (lvl * lvl);
+        minProjDamage = initMinProjDamage + initMinProjDamage * 0.05f * (lvl * lvl);
+        maxProjDamage = initMaxProjDamage + initMaxProjDamage * 0.05f * (lvl * lvl);
+        armour = initArmour + initArmour * 0.05f * (lvl * lvl);
 		coldRes = initColdRes + initColdRes * 0.05f * (lvl * lvl);
 		fireRes = initFireRes + initFireRes * 0.05f * (lvl * lvl);
 		lightRes = initLightRes + initLightRes * 0.05f * (lvl * lvl);
@@ -175,7 +191,7 @@ public class EnemyStats : MonoBehaviour {
 		currHealth = maxHealth;
 		if(rangedAttack != null){
 			foreach(GameObject plauncher in rangedAttack.pLaunchers){
-				plauncher.GetComponent<ProjectileLauncher>().SetDamage(minDamage,maxDamage);
+				plauncher.GetComponent<ProjectileLauncher>().SetDamage(minProjDamage,maxProjDamage);
 			}
 		}
 		
