@@ -6,7 +6,6 @@ using g = GameController;
 public class Chunk : MonoBehaviour {
 
 	//public GameObject[] chunkPool;
-	public Transform circle;
 	public List<Transform> enemies;
 	
 	public Transform chunkEndRight; // chunkEndLeft es la posicion del chunk
