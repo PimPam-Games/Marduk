@@ -398,7 +398,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 668, y: 822, z: 0}
+  m_LocalPosition: {x: 689, y: 650, z: 0}
   m_LocalScale: {x: 64, y: 64, z: 64}
   m_Children: []
   m_Father: {fileID: 482794}
@@ -434,7 +434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 112.27204, y: 3.135661, z: 0}
+  m_LocalPosition: {x: 24.403025, y: -2.6082592, z: 0}
   m_LocalScale: {x: 0.015625, y: 0.015625, z: 0.015625}
   m_Children:
   - {fileID: 482794}
@@ -882,7 +882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f1fa99e0707434abb60c00c4c5ca3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circle: {fileID: 0}
   enemies:
   - {fileID: 447220}
   chunkEndRight: {fileID: 477492}
@@ -898,6 +897,8 @@ MonoBehaviour:
   chunkId: 0
   minibossChunk: 0
   isEnd: 0
+  upLeftCornerPos: 0
+  mapChunk: {fileID: 0}
 --- !u!114 &11449388
 MonoBehaviour:
   m_ObjectHideFlags: 1

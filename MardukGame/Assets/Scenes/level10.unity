@@ -400,7 +400,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1001 &1575158220
+--- !u!1001 &1663344254
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -439,10 +439,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11440630, guid: 5a5ebe7817bfa8949a7c9b83861d81a7, type: 2}
-      propertyPath: levelToLoad
-      value: level2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a5ebe7817bfa8949a7c9b83861d81a7, type: 2}
   m_IsPrefabParent: 0
@@ -474,12 +470,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7333171f134d0a0479ff46cd6871d0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesLvl: 3
+  enemiesLvl: 12
   zoneNumber: 10
   zoneEnemies:
-  - {fileID: 196242, guid: fe3aee0fdaaa9904db9afab9317bea65, type: 2}
-  - {fileID: 116910, guid: 35e3af2e9bdcc2047aaa7c0d45118a88, type: 2}
-  - {fileID: 106710, guid: 76d759a9c41366043aa647564ce8a3bc, type: 2}
+  - {fileID: 188284, guid: 59da364e5ea85f7419ca5ae6bb689d55, type: 2}
+  - {fileID: 108686, guid: 70ae862dcf4194f44ba761eb1d185315, type: 2}
+  - {fileID: 147770, guid: e29c9be2d63b57847912740088a889a1, type: 2}
   - {fileID: 117332, guid: eeff8d61bf1e71249b79e8704a8395df, type: 2}
   - {fileID: 122946, guid: 4454645b1e017154881ef989d44a9cc2, type: 2}
   miniBoss: {fileID: 0}
