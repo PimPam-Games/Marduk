@@ -149,7 +149,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 					damage *= 1.1f;
 				}
 				//******************************BOW PATCH!!!!!*********************************
-				damage *= 0.5f;
+				//damage *= 0.5f;
 				//******************************BOW PATCH!!!!!*********************************
 			}
 			else{
