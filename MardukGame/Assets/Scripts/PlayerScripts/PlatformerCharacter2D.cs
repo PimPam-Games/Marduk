@@ -623,7 +623,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		   // anim.SetBool ("PolearmAttacking", false);
 		}
-		
+
+        public void UpdateWeaponRotation() {
+            weaponScript.UpdateRotation(); 
+        }
+
 		public void StopSpellCast(){
 			anim.SetBool ("SpellCasting", false);
 		}

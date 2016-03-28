@@ -24,30 +24,42 @@ public class Weapon : MonoBehaviour {
     public static bool newWeaponEquipped = false; //se setea en true cada vez que se equipa un arma
     public SpriteRenderer weaponSprite;
     //private float normalAnimSpeed;
-    void Start () {
-		//attackTimer = 0;
-		//attackDelay = p.offensives [p.AttackSpeed];
-		//normalAnimSpeed = anim.speed;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    Quaternion rotation;
+    void Awake()
+    {
+        rotation = transform.rotation;
+        Debug.Log("rotation " + rotation);
+    }
+
+    public void UpdateRotation() {
         if (newWeaponEquipped) //si se equipo un arma se fija si es de dos manos o no para ubicarla
         {
+
             newWeaponEquipped = false;
             if (weaponSprite != null && weaponSprite.sprite != null)
             {
-                if (string.Compare(weaponSprite.sprite.name, "bill") == 0)
-                {
-                    this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 331.73f));
-                    weaponSprite.sortingOrder = 6;
-                }
-                else {
-                    this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 380.69f));
+                 if (string.Compare(weaponSprite.sprite.name, "bill") == 0)
+                 {
+                    // this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -0.29f));
+                     rotation = new Quaternion(0.0f,0.0f,-0.33f,1.0f);
+                     weaponSprite.sortingOrder = 4;
+                 }
+                 else {
+                    //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0.149f));
+                    rotation = Quaternion.Euler(new Vector3(0, 0, 370.69f));
+                   // rotation = new Quaternion(0.0f, 0.0f, -0.1f, 1.0f);
+                    this.transform.rotation = rotation;
+                    //rotation = Quaternion.Euler(new Vector3(0, 0, 0.149f));
                     weaponSprite.sortingOrder = 1;
                 }
             }
         }
+    }
+
+    // Update is called once per frame
+    void Update () {
+        
+      
 		checkAnimSpeedTimer -= Time.deltaTime;
         attackDelay = 1 / (p.offensives[p.BaseAttacksPerSecond] + (p.offensives[p.BaseAttacksPerSecond] * (p.offensives[p.IncreasedAttackSpeed] / 100)));
         if (checkAnimSpeedTimer <= 0){
@@ -68,7 +80,12 @@ public class Weapon : MonoBehaviour {
 	
 		if (anim.GetBool ("Attacking") == false && anim.GetBool("PolearmAttacking") == false)
         {
-			isAttacking = false;
+            if (weaponSprite != null && weaponSprite.sprite != null)
+            {
+                if (string.Compare(weaponSprite.sprite.name, "bill") == 0 && !anim.GetBool("Crouch"))
+                    this.transform.rotation = rotation;
+            }
+            isAttacking = false;
 			this.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1); //si no esta atacando pone el arma en su color original
 		}
 		if (attackTimer <= 0 && anim.GetBool ("Attacking") == false && anim.GetBool ("BowAttacking") == false && anim.GetBool ("SpellCasting") == false && anim.GetBool("PolearmAttacking") == false) { //anim.GetBool ("Attacking") == false && 
