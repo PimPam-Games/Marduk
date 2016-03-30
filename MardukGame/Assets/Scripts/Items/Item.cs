@@ -58,9 +58,10 @@ public class Item : MonoBehaviour {
                 auraRend.sortingLayerName = "Player";
                 auraRend.sortingOrder = 0;
             }
-		}
-		//StartCoroutine (StopMove ());
-	}
+            GenerateBaseAffixes(1); //si los rangos dejan de andar, comentar esto
+        }
+       
+    }
 
 
     public void GenerateBaseAffixes(int rank)
