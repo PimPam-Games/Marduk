@@ -145,41 +145,44 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (weaponScript == null)
 				return;
 			if (weaponScript.canAttack) {
-				if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon || PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
-					
-					if(meleeSkillPos > -1){
-                       
+                if (PlayerItems.EquipedWeapon == null || PlayerItems.EquipedWeapon.Type == ItemTypes.Weapon || PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon) {
+
+                    if (meleeSkillPos > -1) {
+
                         MeleeSkill ms = (MeleeSkill)playerSkills[meleeSkillPos];
-						if(string.Compare(ms.nameForSave,"Sacrifice")==0){
-							if(p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100){
-								useSacrifice = true;
-								//p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
-							}
-							else{
-								NormalAttack();
-								return;
-							}
-							weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f,0,0,1);
-						}
-						if(string.Compare(ms.nameForSave,"BurningBlow")==0){ //usa burning blow
-							useMeleeProjLauncher = true;
-							weapon.GetComponent<SpriteRenderer>().color = new Color(1f,0.5f,0,1);
-						}
-						if(string.Compare(ms.nameForSave,"ThunderBlow")==0){ //usa Poison blow
-							useThunderBlow = true;
-							weapon.GetComponent<SpriteRenderer>().color = new Color(0.2f,0.4f,1,1);
-						}
-						if(string.Compare(ms.nameForSave,"PlantThrust")==0){ //usa Poison blow
-							useMeleeProjLauncher = true;
-							weapon.GetComponent<SpriteRenderer>().color = new Color(0f,0.6f,0,1);
-						}
-					}
-					if(useSacrifice)
-						sacrificeSound.Play();
-					else
-						Sounds.attackSound.Play ();
-                    if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)
+                        if (string.Compare(ms.nameForSave, "Sacrifice") == 0) {
+                            if (p.currentHealth > (p.defensives[p.MaxHealth] * ms.SacrifiedLife) / 100) {
+                                useSacrifice = true;
+                                //p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
+                            }
+                            else {
+                                NormalAttack();
+                                return;
+                            }
+                            weapon.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0, 0, 1);
+                        }
+                        if (string.Compare(ms.nameForSave, "BurningBlow") == 0) { //usa burning blow
+                            useMeleeProjLauncher = true;
+                            weapon.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0, 1);
+                        }
+                        if (string.Compare(ms.nameForSave, "ThunderBlow") == 0) { //usa Poison blow
+                            useThunderBlow = true;
+                            weapon.GetComponent<SpriteRenderer>().color = new Color(0.2f, 0.4f, 1, 1);
+                        }
+                        if (string.Compare(ms.nameForSave, "PlantThrust") == 0) { //usa Poison blow
+                            useMeleeProjLauncher = true;
+                            weapon.GetComponent<SpriteRenderer>().color = new Color(0f, 0.6f, 0, 1);
+                        }
+                    }
+                    if (useSacrifice)
+                        sacrificeSound.Play();
+                    else
+                        Sounds.attackSound.Play();
+                    if (PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.TwoHandedWeapon)
+                    {
                         anim.SetBool("PolearmAttacking", true);
+                            
+                    }
                     else
                         anim.SetBool("Attacking", true);
                 } else {

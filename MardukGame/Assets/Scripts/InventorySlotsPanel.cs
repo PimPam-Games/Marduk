@@ -145,6 +145,7 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 		PlayerItems.Inventory = ilistAux;
 		HasChanged();
         PlayerStats.currentHealth = PlayerStats.defensives[PlayerStats.MaxHealth]; // actualizo la vida del jugador para sumarle la vida que le pueden dar los items
+        Weapon.newWeaponRecentlyEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
         Weapon.newWeaponEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
     }	
 
@@ -256,7 +257,9 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 			it.GetComponent<RectTransform>().localScale = new Vector3(2.5f,2.5f,1);
 			PlayerItems.EquipedWeapon = itComponent;
 			PlayerItems.Inventory.Add(itComponent);
-			return true;
+            Weapon.newWeaponRecentlyEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
+            Weapon.newWeaponEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
+            return true;
 		}
 		if(PlayerItems.EquipedWeapon == null && PlayerItems.EquipedShield == null && (itComponent.Type == ItemTypes.TwoHandedWeapon || itComponent.Type == ItemTypes.RangedWeapon)){
 			it.transform.SetParent(weaponSlot);
