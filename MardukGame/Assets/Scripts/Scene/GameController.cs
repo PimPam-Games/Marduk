@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour {
 		}
 		//Debug.Log ("voy a cargar " + nameToLoad);
 		music1.Play ();
+        StartCoroutine(changeWeaponRotation());
 	}
 
 	void OnApplicationQuit(){
@@ -190,4 +191,15 @@ public class GameController : MonoBehaviour {
 			//	enemList.Remove(e);
 		}
 	}
+
+     IEnumerator changeWeaponRotation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        while (!Fading.loaded) { 
+            yield return new WaitForSeconds(0.3f);
+        }
+        Weapon.newWeaponRecentlyEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
+        Weapon.newWeaponEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
+
+    }
 }

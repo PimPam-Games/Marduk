@@ -176,7 +176,7 @@ public class SpellStats : MonoBehaviour {
 		if(supportSkill != null){
 			tooltip += "<color=grey>----------------------------------</color> \n";
 			//tooltip += "<color=grey>"+ supportSkill.spellName +"</color> \n";
-			tooltip += "Deals " + supportSkill.damageAdded +" of extra " + supportSkill.dmgElement + " damage \n";	
+			tooltip += "Deals " + supportSkill.damageAdded +"% of extra " + supportSkill.dmgElement + " damage \n";	
 		}
 		return tooltip;
 	}

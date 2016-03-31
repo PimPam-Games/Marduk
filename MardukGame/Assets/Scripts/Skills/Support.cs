@@ -18,9 +18,9 @@ public class Support : SpellStats {
 			tooltip += "Adds ice damage to one skill \n \n";
 		}
 		if(damageAdded > 0 && dmgElement != Types.Element.None)
-			tooltip += "Adds " + damageAdded + " of " + dmgElement + " Damage \n";
+			tooltip += "Adds " + damageAdded + "% of " + dmgElement + " Damage \n";
 		if(damageAdded > 0 && dmgElement == Types.Element.None)
-			tooltip += "Adds " + damageAdded + " of Physical Damage \n";
+			tooltip += "Adds " + damageAdded + "% of Physical Damage \n";
 		return tooltip;
 	}
 

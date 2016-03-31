@@ -145,11 +145,11 @@ public class InventorySlotsPanel : MonoBehaviour, IHasChanged {
 		PlayerItems.Inventory = ilistAux;
 		HasChanged();
         PlayerStats.currentHealth = PlayerStats.defensives[PlayerStats.MaxHealth]; // actualizo la vida del jugador para sumarle la vida que le pueden dar los items
-        Weapon.newWeaponRecentlyEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
-        Weapon.newWeaponEquipped = true; //para que se chequee el tipo de arma y se ubique en la mano
-    }	
+    }
 
-	private GameObject ItemCopy(Item itemOrigin, GameObject itemDestiny){
+    
+
+    private GameObject ItemCopy(Item itemOrigin, GameObject itemDestiny){
 		/*--- copia todo lo del item que estaba en el suelo al item que se ve en la ui del inventario ---*/
 		Item itComponent = itemDestiny.GetComponent<Item>(); 
 		itemDestiny.GetComponent<Image>().sprite = itemOrigin.sprite;

@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour {
                  }
                  else {
                     //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0.149f));
-                   
+                    Debug.Log("rotation updated");
                      rotation = Quaternion.Euler(new Vector3(0, 0, 370.69f));
 
                     // rotation = new Quaternion(0.0f, 0.0f, -0.1f, 1.0f);
@@ -61,10 +61,8 @@ public class Weapon : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-        if (newWeaponRecentlyEquipped) //si se equipo un arma se fija si es de dos manos o no para ubicarla
+        if (newWeaponRecentlyEquipped && newWeaponEquipped) //si se equipo un arma se fija si es de dos manos o no para ubicarla
         {
-
             newWeaponRecentlyEquipped = false;
             if (weaponSprite != null && weaponSprite.sprite != null)
             {
@@ -75,6 +73,7 @@ public class Weapon : MonoBehaviour {
                     weaponSprite.sortingOrder = 4;
                 }
                 else {
+                    Debug.Log("recentrly Equipped updated");
                     //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0.149f));
                     rotation = Quaternion.Euler(new Vector3(0, 0, 370.69f));
                     // rotation = new Quaternion(0.0f, 0.0f, -0.1f, 1.0f);
@@ -289,8 +288,8 @@ public class Weapon : MonoBehaviour {
 				//End Traits
 
 				if(supportSkill != null){
-					estats.Hit(supportSkill.damageAdded,supportSkill.dmgElement, isCrit); //le pego con el support
-					Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
+					estats.Hit((damage * supportSkill.damageAdded) / 100, supportSkill.dmgElement, isCrit); //le pego con el support
+					Debug.Log("daño agregado: " + (damage * supportSkill.damageAdded) / 100 + "tipo: " + supportSkill.dmgElement);
 				}
 				if(enemy.transform.position.x < this.transform.position.x)
 					enemy.GetComponent<EnemyIAMovement>().Knock(true);

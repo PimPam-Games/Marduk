@@ -228,8 +228,8 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				if(attackResult){
 					estats.Hit(damageConverted,convertElem, true);
 					if(supportSkill != null){
-						estats.Hit(supportSkill.damageAdded,supportSkill.dmgElement, true);
-						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
+						estats.Hit((damage* supportSkill.damageAdded)/100,supportSkill.dmgElement, true);
+						Debug.Log("daño agregado: " + (damage * supportSkill.damageAdded) / 100 + "tipo: " + supportSkill.dmgElement);
 					}
 					if(!alwaysCrit)
 						criticalHitSound.Play();
@@ -262,8 +262,8 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 					}
 					//End Traits
 					if(supportSkill != null){
-						estats.Hit(supportSkill.damageAdded,supportSkill.dmgElement, false);
-						Debug.Log("daño agregado: " + supportSkill.damageAdded + "tipo: " + supportSkill.dmgElement);
+						estats.Hit((damage * supportSkill.damageAdded) / 100, supportSkill.dmgElement, false);
+						Debug.Log("daño agregado: " + (damage * supportSkill.damageAdded) / 100 + "tipo: " + supportSkill.dmgElement);
 					}
 					hitEnemySound.Play();
 					if(projRequirements == Types.SkillsRequirements.Bow)
