@@ -49,23 +49,26 @@ public class ItemGenerator :MonoBehaviour{
             switch (eStats.enemyType)//calcula la chance de dropear segun el tipo de enemigo
             {
                 case Types.EnemyTypes.Common:
-                    dropItemProb[0] = 0.1f; dropItemProb[1] = 0.9f; 
+                    dropItemProb[0] = 0.18f; dropItemProb[1] = 0.82f; 
                     break;
                 case Types.EnemyTypes.Champion:
-                    dropItemProb[0] = 0.3f; dropItemProb[1] = 0.7f;
+                    dropItemProb[0] = 0.4f; dropItemProb[1] = 0.6f;
                     break;
                 case Types.EnemyTypes.MiniBoss:
-                    dropItemProb[0] = 0.7f; dropItemProb[1] = 0.3f;
+                    dropItemProb[0] = 0.85f; dropItemProb[1] = 0.15f;
                     break;
                 case Types.EnemyTypes.Boss:
-                    dropItemProb[0] = 0.95f; dropItemProb[1] = 0.05f;
+                    dropItemProb[0] = 0.99f; dropItemProb[1] = 0.01f;
                     break;
             }           
         }
         if (Utils.Choose(dropItemProb) != 0)
             return;
-        int newRarity = Utils.ChooseItem();
-
+        int newRarity = 0; // 0 = normal, 1 = magico , 2 = raro , 3 = unico
+        if (eStats != null)
+            newRarity = Utils.ChooseItem(eStats.enemyType);
+        else
+            newRarity = Utils.ChooseItem(Types.EnemyTypes.Champion); // si es un cofre es como si fuera un enemigo tipo champion
         /* calcula el nivel del item*/
         int newItemLevel = 1;
         if (eStats != null)

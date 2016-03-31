@@ -88,7 +88,7 @@ public class CharacterPanel : MonoBehaviour {
 				//+ accuracy + "\n"
 				+ critChance.ToString() + "%"+ "\n"
 				+ p.offensives[p.CritDmgMultiplier].ToString()+ "\n"
-				+ p.offensives[p.ManaPerSec].ToString()+ "% \n"
+				+ (System.Math.Round(p.offensives[p.ManaPerSec],1)).ToString()+ "% \n"
 				+ p.offensives[p.IncreasedMgDmg].ToString() + "% \n"
 				+ p.offensives[p.IncreasedCastSpeed].ToString() + "%" + "\n"
 				+ p.defensives[p.Thorns].ToString() + "\n";	
