@@ -367,10 +367,9 @@ public class PlayerItems: MonoBehaviour {
 			p.offensives [p.MinDmg] -= oldItem.Atributes [p.Strength] * 0.25f;
 			p.offensives [p.MaxDamge] -= oldItem.Atributes [p.Strength] * 0.25f;
 			p.offensives [p.MaxMana] -= oldItem.Atributes [p.Spirit] * 3;
-			//p.offensives[p.MagicDmg] -= oldItem.Atributes[p.Spirit] * 0.2f;
-			p.offensives[p.ManaPerSec] -= oldItem.Atributes[p.Spirit] * 0.1f;
-            //p.defensives[p.Evasiveness] -= oldItem.Atributes[p.Dextery] * 2;
-            //p.offensives[p.Accuracy] -= oldItem.Atributes[p.Dextery] * 2;
+			p.offensives[p.MinMagicDmg] -= oldItem.Atributes[p.Spirit] * 0.2f;
+            p.offensives[p.MaxMagicDmg] -= oldItem.Atributes[p.Spirit] * 0.2f;
+            p.offensives[p.ManaPerSec] -= oldItem.Atributes[p.Spirit] * 0.1f;
             p.offensives[p.CritDmgMultiplier] -= oldItem.Atributes[p.Dextery] * 0.1f;
         }
 		if (newItem != null) {
@@ -378,10 +377,9 @@ public class PlayerItems: MonoBehaviour {
 			p.offensives [p.MinDmg] += newItem.Atributes [p.Strength] * 0.25f;
 			p.offensives [p.MaxDamge] += newItem.Atributes [p.Strength] * 0.25f; //4 de fuerza aumenta uno de daño fisico
 			p.offensives [p.MaxMana] += newItem.Atributes [p.Spirit] * 3; // uno de espiritu da 3 de mana
-			//p.offensives[p.MagicDmg] += newItem.Atributes[p.Spirit] * 0.2f; // 5 de espiritu da 1 de daño magico
-			p.offensives[p.ManaPerSec] += newItem.Atributes[p.Spirit] * 0.1f; // cada 10 de espiritu 1 de mana regen por segundo
-			//p.defensives[p.Evasiveness] += newItem.Atributes[p.Dextery] * 2;
-			//p.offensives[p.Accuracy] += newItem.Atributes[p.Dextery] * 2;
+			p.offensives[p.MinMagicDmg] += newItem.Atributes[p.Spirit] * 0.2f; // 5 de espiritu da 1 de daño magico
+            p.offensives[p.MaxMagicDmg] += newItem.Atributes[p.Spirit] * 0.2f;
+            p.offensives[p.ManaPerSec] += newItem.Atributes[p.Spirit] * 0.1f; // cada 10 de espiritu 1 de mana regen por segundo
               p.offensives[p.CritDmgMultiplier] += newItem.Atributes[p.Dextery] * 0.1f;
 			//utils [MovementSpeed] = InitMoveSpeed + (InitMoveSpeed * porcentaje / 100 )
 		}
