@@ -8,9 +8,9 @@ using plat = PlatformerCharacter2D;
 public class PlayerStats : MonoBehaviour {
 
 
-	public const int CantAtributes = 4, CantOffensives = 16, CantDefensives = 12, CantUtils = 4;
+	public const int CantAtributes = 4, CantOffensives = 17, CantDefensives = 12, CantUtils = 4;
 	public const int Strength = 0, Dextery = 1, Vitality = 2, Spirit = 3; //atributes
-	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, BaseAttacksPerSecond = 4, StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, MagicDmg = 10,  IncreasedAttackSpeed = 11, IncreasedCritChance = 12, IncreasedDmg = 13, IncreasedMgDmg = 14, IncreasedCastSpeed = 15;  //offensives
+	public const int MinDmg = 0, MaxDamge = 1 ,CritChance = 2, CritDmgMultiplier = 3, BaseAttacksPerSecond = 4, StunChance = 5, BleedChance = 6, CertainStrChance = 7, ManaPerSec = 8, MaxMana = 9, MinMagicDmg = 10, MaxMagicDmg = 11,  IncreasedAttackSpeed = 12, IncreasedCritChance = 13, IncreasedDmg = 14, IncreasedMgDmg = 15, IncreasedCastSpeed = 16;  //offensives
 	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, IncreasedDefense = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10, AllRes = 11;  //defensives
 	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2, AllAttr = 3;//utils
 
@@ -19,13 +19,14 @@ public class PlayerStats : MonoBehaviour {
 	public const float InitAttacksPerSecond = 1;
 	public const float InitMinDmg = 1;
 	public const float InitMaxDmg = 2;
-	public const float InitMgDmg = 1;
+    public const float InitMinMagicDmg = 1;
+    public const float InitMaxMagicDmg = 2;
+    public const float InitMgDmg = 1;
 	public const float InitMana = 40; 
 	public const float InitManaRegen = 1.2f;
 	public const float InitCritChance = 0;
 	public const float InitCritDmgMult = 2f;
-	//public const float InitAccuracy = 50;
-	//public const float InitEvasion = 55;
+
 
 	public static float currentHealth;
 	public static float currentMana;
@@ -156,7 +157,7 @@ public class PlayerStats : MonoBehaviour {
 		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
 		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
 		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
-		offensives[MagicDmg] = atributes[Spirit] * 0.2f;
+		//offensives[MagicDmg] = atributes[Spirit] * 0.2f;
 		offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
 		offensives [CritDmgMultiplier] = atributes [Dextery] * 0.1f + InitCritDmgMult; //uno de destreza 0.1 de critdamaemult
 		//defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
@@ -244,7 +245,7 @@ public class PlayerStats : MonoBehaviour {
 			case 3:
 				atributes [Spirit]++;
 				offensives[MaxMana] += 3;
-				offensives[MagicDmg] += 0.2f;
+				//offensives[MagicDmg] += 0.2f;
 				offensives[ManaPerSec] += 0.1f;
 				break;
 		}
@@ -313,10 +314,9 @@ public class PlayerStats : MonoBehaviour {
 		offensives [CritDmgMultiplier] = InitCritDmgMult;
 		offensives [MaxMana] = InitMana;
 		offensives [ManaPerSec] = InitManaRegen;
-		//offensives [Accuracy] = InitAccuracy;
-		//defensives [Evasiveness] = InitEvasion;
-		offensives[MagicDmg] = 0;
-		lvl = 1;
+		offensives[MinMagicDmg] = InitMinMagicDmg;
+        offensives[MaxMagicDmg] = InitMaxMagicDmg;
+        lvl = 1;
 		currentExp = 0;
 		oldNextLevelExp = 0;
 

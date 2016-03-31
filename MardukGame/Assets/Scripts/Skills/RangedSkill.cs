@@ -13,9 +13,10 @@ public class RangedSkill : SpellStats {
 	public bool continuosRelease = false; // true si el poder se tira continuamente como incinerate
 	public bool drainMana = false; //si debe drenar el mana o gastarlo de una
 
-	public float initMinDmg;
-	public float initMaxDmg;
+	//public float initMinDmg;
+	//public float initMaxDmg;
 	[SerializeField] private float initPhysicalDmgMult;
+    [SerializeField] private float magicDmgMult;
 
 	[SerializeField] private float minDmgPerLvl;
 	[SerializeField] private float maxDmgPerLvl;
@@ -36,7 +37,8 @@ public class RangedSkill : SpellStats {
 			/*projStats.minDmg = initMinDmg; //+ (lvl - 1) * minDmgPerLvl; //en arcos no se usa
 			projStats.maxDmg = initMaxDmg; //+ (lvl - 1) * maxDmgPerLvl;	//en arcos no se usa*/ // habia un drama con el daño de los projectiles
 			projStats.physicalDmgMult = initPhysicalDmgMult + (lvl-1) * physicalDmgMultPerLvl;
-		}
+            projStats.magicDmgMult = magicDmgMult;
+        }
 	}
 
 	// Use this for initialization
@@ -84,12 +86,16 @@ public class RangedSkill : SpellStats {
         tooltip += "Cast per second: " + System.Math.Round(1/castDelay,2).ToString() + "\n";
 		if(initPhysicalDmgMult > 0)
 			tooltip += "Deals " + projStats.physicalDmgMult + "% of Base Attack Damage \n";
-		if(initMaxDmg > 0){
-			double mindmg = initMinDmg + p.offensives[p.MagicDmg];
-			mindmg = System.Math.Round(mindmg + mindmg * p.offensives[p.IncreasedMgDmg]/100,1);
-			double maxdmg = initMaxDmg + p.offensives[p.MagicDmg];
+        if (magicDmgMult > 0)
+            tooltip += "Deals " + projStats.magicDmgMult + "% of Base Magic Damage \n";
+        if (magicDmgMult > 0){
+			double mindmg = p.offensives[p.MinMagicDmg]; //daño base
+			mindmg = System.Math.Round(mindmg + mindmg * p.offensives[p.IncreasedMgDmg]/100,1); // + daño agregado por afijo
+            mindmg = System.Math.Round(mindmg * projStats.magicDmgMult / 100, 1); //daño modificado por el multiplicador del skill
+            double maxdmg = p.offensives[p.MaxMagicDmg];
 			maxdmg = System.Math.Round(maxdmg + maxdmg * p.offensives[p.IncreasedMgDmg]/100,1);
-			tooltip += "Damage: " + mindmg.ToString() +  " - " + maxdmg.ToString() + "\n";
+            maxdmg = System.Math.Round(maxdmg * projStats.magicDmgMult / 100, 1); //daño modificado por el multiplicador del skill
+            tooltip += "Damage: " + mindmg.ToString() +  " - " + maxdmg.ToString() + "\n";
 		}
 		return tooltip;
 	}

@@ -536,8 +536,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 								projLaunchers[0].projectile = null;
 								projLaunchers[1].projectile = rskill.projectile;
 								projLaunchers[1].force = rskill.force;
-								projLaunchers[1].minDmg = rskill.initMinDmg;
-								projLaunchers[1].maxDmg = rskill.initMaxDmg;
+								//projLaunchers[1].minDmg = rskill.initMinDmg;
+								//projLaunchers[1].maxDmg = rskill.initMaxDmg;
 								projLaunchers[1].flipProjectile = rskill.flipProjectile;
 								projLaunchers[1].staticProjectile = rskill.staticProjectile;
 								projLaunchers[1].dontChangeRotation = rskill.dontChangeRotation;
@@ -547,8 +547,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 								projLaunchers[1].projectile = null;
 								projLaunchers[0].projectile = rskill.projectile;
 								projLaunchers[0].force = rskill.force;
-								projLaunchers[0].minDmg = rskill.initMinDmg;
-								projLaunchers[0].maxDmg = rskill.initMaxDmg;
+								//projLaunchers[0].minDmg = rskill.initMinDmg;
+								//projLaunchers[0].maxDmg = rskill.initMaxDmg;
 								projLaunchers[0].flipProjectile = rskill.flipProjectile;
 								projLaunchers[0].staticProjectile = rskill.staticProjectile;
 								projLaunchers[0].dontChangeRotation = rskill.dontChangeRotation;

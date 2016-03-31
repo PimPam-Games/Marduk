@@ -65,14 +65,16 @@ public class CharacterPanel : MonoBehaviour {
 
 	private void UpdateOffensives(){
 		string physicalDmg = System.Math.Round(p.offensives[p.MinDmg] + p.offensives[p.MinDmg] * p.offensives[p.IncreasedDmg]/100,1).ToString() + " - " + System.Math.Round(p.offensives[p.MaxDamge]+ p.offensives[p.MaxDamge] * p.offensives[p.IncreasedDmg]/100,1).ToString();
-		float critChance = ((p.offensives[p.CritChance] + p.offensives[p.CritChance] * (p.offensives[p.IncreasedCritChance] / 100)) * 100);
+        string magicDamage = System.Math.Round(p.offensives[p.MinMagicDmg] + p.offensives[p.MinMagicDmg] * p.offensives[p.IncreasedMgDmg] / 100, 1).ToString() + " - " + System.Math.Round(p.offensives[p.MaxMagicDmg] + p.offensives[p.MaxMagicDmg] * p.offensives[p.IncreasedMgDmg] / 100, 1).ToString();
+        float critChance = ((p.offensives[p.CritChance] + p.offensives[p.CritChance] * (p.offensives[p.IncreasedCritChance] / 100)) * 100);
         /*if (!Traits.traits [Traits.ACCURACY].isActive ()) {
 			critChance = 
 		}
 		string accuracy = System.Math.Round(p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy]/100,1).ToString();
 		*/
         txtOffensives.text = "Physical Damage         " + "\n"
-			+"Attacks Per Second      " + "\n"
+            + "Magic Damage      " + "\n"
+            + "Attacks Per Second      " + "\n"
 				//+"Accuracy                \n" 
 				+"Critical Chance         \n" 
 				+"Crit Dmg Multiplier       \n" 
@@ -81,7 +83,8 @@ public class CharacterPanel : MonoBehaviour {
 				+"Increased Cast Speed \n"
 				+"Thorns damage        \n";
 		txt2Offensives.text = physicalDmg + "\n"
-			+(System.Math.Round(p.offensives[p.BaseAttacksPerSecond] + p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100),2)).ToString() + "\n"
+            + magicDamage + "\n"
+            + (System.Math.Round(p.offensives[p.BaseAttacksPerSecond] + p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100),2)).ToString() + "\n"
 				//+ accuracy + "\n"
 				+ critChance.ToString() + "%"+ "\n"
 				+ p.offensives[p.CritDmgMultiplier].ToString()+ "\n"

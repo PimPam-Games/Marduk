@@ -22,7 +22,9 @@ public class Item : MonoBehaviour {
 	private int soundCount = 0; //para que el sonido no se reproduzca 2 veces
 	public float[] initMinDamage = new float[2];
 	public float[] initMaxDamage =  new float[2];
-	public float[] initBaseAttackPerSecond = new float[2];
+    public float[] initMinMagicDmg = new float[2];
+    public float[] initMaxMagicDmg = new float[2];
+    public float[] initBaseAttackPerSecond = new float[2];
 	public float[] initDefense =  new float[2];
 	public float[] initBlockChance =  new float[2];
     public float[] initCritChance = new float[2];
@@ -71,8 +73,15 @@ public class Item : MonoBehaviour {
         {
             if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon)
             { //el item es un arma
-                Offensives[p.MinDmg] = (float)System.Math.Round(Random.Range(initMinDamage[0], initMinDamage[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
-				Offensives[p.MaxDamge] = (float)System.Math.Round(Random.Range(initMaxDamage[0], initMaxDamage[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
+                if(weaponType != WeaponTypes.Wand) { 
+                    Offensives[p.MinDmg] = (float)System.Math.Round(Random.Range(initMinDamage[0], initMinDamage[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
+				    Offensives[p.MaxDamge] = (float)System.Math.Round(Random.Range(initMaxDamage[0], initMaxDamage[1]), 0) * Mathf.Floor(0.2f* itemRank + 1);
+                }
+                else
+                { //si es una varita le pone daño magico
+                    Offensives[p.MinMagicDmg] = (float)System.Math.Round(Random.Range(initMinMagicDmg[0], initMinMagicDmg[1]), 0) * Mathf.Floor(0.2f * itemRank + 1);
+                    Offensives[p.MaxMagicDmg] = (float)System.Math.Round(Random.Range(initMaxMagicDmg[0], initMaxMagicDmg[1]), 0) * Mathf.Floor(0.2f * itemRank + 1);
+                }
                 Offensives[p.BaseAttacksPerSecond] = (float)System.Math.Round(Random.Range(initBaseAttackPerSecond[0], initBaseAttackPerSecond[1]), 2);
                 Offensives[p.CritChance] = (float)System.Math.Round(Random.Range(initCritChance[0], initCritChance[1]), 2);
             }
@@ -233,11 +242,18 @@ public class Item : MonoBehaviour {
 
         if (type == ItemTypes.Weapon || type == ItemTypes.TwoHandedWeapon || type == ItemTypes.RangedWeapon) {
             float crit = (float)System.Math.Round(offensives[p.CritChance] * 100,0);
-
-            tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
-			"Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n" + 
-            "Critical Chance: " + crit + "%\n";
-		}
+            if(weaponType != WeaponTypes.Wand) {
+                tooltip += "Damage: " + offensives [p.MinDmg] + " - " + offensives [p.MaxDamge] + "\n" +
+			    "Attacks per Second: " + offensives [p.BaseAttacksPerSecond] + "\n" + 
+                "Critical Chance: " + crit + "%\n";
+            }
+            else
+            {
+                tooltip += "MagicDamage: " + offensives[p.MinMagicDmg] + " - " + offensives[p.MaxMagicDmg] + "\n" +
+               "Attacks per Second: " + offensives[p.BaseAttacksPerSecond] + "\n" +
+               "Critical Chance: " + crit + "%\n";
+            }
+        }
 		if (type == ItemTypes.Armour || type == ItemTypes.Helmet || type == ItemTypes.Shield || type == ItemTypes.Belt)
 			tooltip += "Defense: " + defensives [p.Defense] + "\n";
 		if(type == ItemTypes.Shield)
@@ -340,5 +356,6 @@ public enum WeaponTypes{
 	Polearm,
 	Dagger,
 	Crossbow,
-	Sword
+	Sword,
+    Wand
 }

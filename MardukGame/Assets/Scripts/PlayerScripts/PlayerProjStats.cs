@@ -8,7 +8,8 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 	public Types.Element elem ;
 	public float minDmg = 1 , maxDmg = 3;
 	public float physicalDmgMult = 100f; //se usa para aumentar el daño de ataque fisicos
-	public float duration = 5;
+    public float magicDmgMult = 100f; //se usa para aumentar el daño de ataque magicos
+    public float duration = 5;
 	private float lifeTime = 0;
 	public float particleSpeed;
 	public bool isParticle;
@@ -139,7 +140,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
 					p.currentHealth += p.defensives[p.LifePerHit];
 				damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-				damage += damage * physicalDmgMult/100;  //aumenta el daño en un porcentaje dependiendo de la habilidad	
+				damage *=  physicalDmgMult/100;  //aumenta el daño en un porcentaje dependiendo de la habilidad	
 				if(convertElem != Types.Element.None){
 					damage = damage * 0.6f; 
 					damageConverted = damage * 0.4f; //al 40% del daño fisico lo convierte en otro daño
@@ -153,11 +154,12 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				//******************************BOW PATCH!!!!!*********************************
 			}
 			else{
-				damage = Random.Range(minDmg,maxDmg);
-				damage += p.offensives[p.MagicDmg];
+				//damage = Random.Range(minDmg,maxDmg);
+				damage = Random.Range(p.offensives[p.MinMagicDmg], p.offensives[p.MaxMagicDmg]);
 				damage += damage * p.offensives[p.IncreasedMgDmg]/100;
-				//Begin Traits
-				if (elem == Types.Element.Poison && Traits.traits[Traits.POISONMDMG].isActive()){
+                damage *= magicDmgMult / 100;
+                //Begin Traits
+                if (elem == Types.Element.Poison && Traits.traits[Traits.POISONMDMG].isActive()){
 					damage *= 1.1f;
 				}
 				if (elem == Types.Element.Cold && Traits.traits[Traits.ICEMDMG].isActive()){
