@@ -330,8 +330,52 @@ public class Persistence : MonoBehaviour {
 	}
 
 	private static Item GenerateItem(SerializableItem i){
-
-		UnityEngine.Object obj  = Resources.Load("Weapons/" + i.itemName, typeof(UnityEngine.Object));
+        UnityEngine.Object obj = null;
+        switch (i.type)
+        {
+            case ItemTypes.Helmet:
+                obj = Resources.Load("ItemPrefabs/Helmets/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+            case ItemTypes.Weapon:
+                switch (i.weaponType)
+                {
+                    case WeaponTypes.Sword:
+                        obj = Resources.Load("ItemPrefabs/Swords/" + i.itemName, typeof(UnityEngine.Object));
+                        break;
+                    case WeaponTypes.Axe:
+                        obj = Resources.Load("ItemPrefabs/Axes/" + i.itemName, typeof(UnityEngine.Object));
+                        break;
+                    case WeaponTypes.Mace:
+                        obj = Resources.Load("ItemPrefabs/Maces/" + i.itemName, typeof(UnityEngine.Object));
+                        break;
+                    case WeaponTypes.Wand:
+                        obj = Resources.Load("ItemPrefabs/MagicWeapons/" + i.itemName, typeof(UnityEngine.Object));
+                        break;
+                }
+                break;
+            case ItemTypes.TwoHandedWeapon:
+                obj = Resources.Load("ItemPrefabs/Polearms/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+            case ItemTypes.Belt:
+                obj = Resources.Load("ItemPrefabs/Belts/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+            case ItemTypes.RangedWeapon:
+                obj = Resources.Load("ItemPrefabs/Bows/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+            case ItemTypes.Ring:
+                obj = Resources.Load("ItemPrefabs/AmuletsAndRings/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+            case ItemTypes.Amulet:
+                obj = Resources.Load("ItemPrefabs/AmuletsAndRings/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+            case ItemTypes.Shield:
+                obj = Resources.Load("ItemPrefabs/Shields/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+            case ItemTypes.Armour:
+                obj = Resources.Load("ItemPrefabs/Armours/" + i.itemName, typeof(UnityEngine.Object));
+                break;
+        }
+		 
 		if(obj == null)
 			obj  = Resources.Load("Unique/" + i.itemName, typeof(UnityEngine.Object));
 		GameObject newWeapon = (GameObject)Instantiate (obj,new Vector3(-500,-500,500),new Quaternion(1,1,1,1));

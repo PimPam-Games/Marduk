@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using p = PlayerStats;
+using g = GameController;
 
 public class ItemGenerator :MonoBehaviour{
 
@@ -10,19 +11,17 @@ public class ItemGenerator :MonoBehaviour{
 	ConquerorAmbition = 21, ViciousHunter = 22, Redeemer = 23, HeadCrusher = 24, OgreMace = 25, HolySceptre = 26, BlackSkull = 27, Raider = 28, YbabEbab = 29, AbbadonTreasure = 30,
 	NergalHate = 31;
 
-	private Object[] weaponList;
 	private Object[] uniqueList;
 	private Object[] skillList;
 
 
 	void Awake(){
-		weaponList = Resources.LoadAll("Weapons", typeof(Object));
 		uniqueList = Resources.LoadAll ("Unique", typeof(Object));
 		skillList = Resources.LoadAll ("SkillItems", typeof(Object));
 	}
 
 	public void createInitWeapon(Vector3 position, Quaternion rotation){
-		Object weap =  Resources.Load("Weapons/Arming sword", typeof(UnityEngine.Object));
+		/*Object weap =  Resources.Load("Weapons/Arming sword", typeof(UnityEngine.Object));
 		GameObject newWeapon = (GameObject)Instantiate (weap,position,rotation);
 		Item newItem = newWeapon.GetComponent<Item> ();
 		newItem.Rarity = RarityTypes.Normal;
@@ -34,7 +33,7 @@ public class ItemGenerator :MonoBehaviour{
         if (newItem.auraRend != null) {
 			newItem.auraRend.sprite = GameController.auraRenders[0]; //el color del aura del item, dependiendo si es magico, normal , etc
 		}
-		DontDestroyOnLoad (newWeapon);
+		DontDestroyOnLoad (newWeapon);*/
 	}
 	//Calcula un afijo de acuerdo al nivel del item
 	private float calculateStat(float baseStat, int rank){
@@ -92,8 +91,9 @@ public class ItemGenerator :MonoBehaviour{
 				return;
 			}
 			else{ //no es skill
-				int i = Random.Range (0, weaponList.Length);
-				newWeapon = (GameObject)Instantiate (weaponList [i], position, rotation);
+				int i = Random.Range (0, g.ItemsList.Length); //tira un random para elegir el tipo de item
+                int j = Random.Range(0, g.ItemsList[i].Length); //elige el item dentro del tipo elegido
+                newWeapon = (GameObject)Instantiate (g.ItemsList[i][j], position, rotation);
 				newItem = newWeapon.GetComponent<Item> ();
                 newItem.GenerateBaseAffixes(newItemLevel);
 			}

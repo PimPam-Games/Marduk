@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
-	public static int CantLevels = 11;
+    public const int AmulRings = 0, Belts = 1, Swords = 2, Maces = 3, Axes = 4, Bows = 5, MagicWeapons = 6, Helmets = 7, Polearms = 8, Armours = 9, Shields = 10;
+    public const int CantItems = 11;
+    public static int CantLevels = 11;
 	public static string nameToLoad = ""; //nombre del personaje a cargar, null si es un nuevo personaje
 	public static int previousExit = 0; // si la salida es 1, tiene que entrar por la entrada 1
 	public GameObject player;
@@ -36,7 +38,9 @@ public class GameController : MonoBehaviour {
 	private bool inventoryItemsLoaded = false; //true si ya se cargaron los items en el inventario
     public PhysicsMaterial2D groundMaterialGo;
     public static PhysicsMaterial2D groundMaterial;
-	void Awake(){
+
+    public static Object[][] ItemsList;
+    void Awake(){
 		player = (GameObject)Instantiate (player, this.transform.position,this.transform.rotation);
         //deadEnemies = new List<string>();
         groundMaterial = groundMaterialGo;
@@ -59,7 +63,20 @@ public class GameController : MonoBehaviour {
 		DontDestroyOnLoad (gui);
 		DontDestroyOnLoad (miniMap);
 		DontDestroyOnLoad (miniMapPos.gameObject);
-		if (hudCanvas != null)
+        ItemsList = new Object[CantItems][];
+        ItemsList[AmulRings] = Resources.LoadAll("ItemPrefabs/AmuletsAndRings", typeof(Object));
+        ItemsList[Belts] = Resources.LoadAll("ItemPrefabs/Belts", typeof(Object));
+        ItemsList[Swords] = Resources.LoadAll("ItemPrefabs/Swords", typeof(Object));
+        ItemsList[Maces] = Resources.LoadAll("ItemPrefabs/Maces", typeof(Object));
+        ItemsList[Axes] = Resources.LoadAll("ItemPrefabs/Axes", typeof(Object));
+        ItemsList[Bows] = Resources.LoadAll("ItemPrefabs/Bows", typeof(Object));
+        ItemsList[MagicWeapons] = Resources.LoadAll("ItemPrefabs/MagicWeapons", typeof(Object));
+        ItemsList[Helmets] = Resources.LoadAll("ItemPrefabs/Helmets", typeof(Object));
+        ItemsList[Polearms] = Resources.LoadAll("ItemPrefabs/Polearms", typeof(Object));
+        ItemsList[Armours] = Resources.LoadAll("ItemPrefabs/Armours", typeof(Object));
+        ItemsList[Shields] = Resources.LoadAll("ItemPrefabs/Shields", typeof(Object));
+        Debug.Log("itemlsita " + ItemsList.Length);
+        if (hudCanvas != null)
 			DontDestroyOnLoad(hudCanvas);
 		else
 			Debug.LogError ("HUDCanvas not found");

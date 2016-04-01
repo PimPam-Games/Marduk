@@ -17,11 +17,13 @@ public class SerializableItem{
 		inventoryPositionY = it.InventoryPositionY;
 		isEquipped = it.IsEquipped;
         itemRank = it.itemRank;
+        weaponType = it.weaponType;
 	}
 
 	public string itemName;
 	public RarityTypes rarity;
 	public ItemTypes type;
+    public WeaponTypes weaponType;
 	public float[] atributes;
 	public float[] offensives;
 	public float[] defensives;
