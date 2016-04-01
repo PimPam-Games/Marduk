@@ -396,60 +396,57 @@ public class EnemyStats : MonoBehaviour {
 			if (Traits.traits[Traits.SEFFECT].isActive()){
 				float[] statusProb = {0.8f, 0.2f};
 				if (Utils.Choose (statusProb) != 0) {
-					float[] effectProb = {0.25f, 0.25f, 0.25f, 0.25f};
+					float[] effectProb = {0.20f, 0.20f, 0.20f, 0.20f, 0.20f};
 					//int i = Random.Range (0, 3);
 					int i = Utils.Choose (effectProb);
 					switch (i) {
 					case 0:
 						//Debug.Log ("cold damage");
 						Debug.Log("cold Damage");
-						realDmg -= Mathf.Abs ((realDmg * (coldRes/100)));
 						chillCount = chillTimer;
 						if(!chill){
 							if(enemyMove != null){
-								if(isCritical){
-									enemyMove.StopWalk();
-								}else{
-									enemyMove.currentSpeed = enemyMove.maxSpeed / 2; //algunos enemigos usan current speed y otros maxSpeed
-									enemyMove.maxSpeed = enemyMove.maxSpeed / 2;     //asi que actualizo las dos
-								}
+								enemyMove.currentSpeed = enemyMove.maxSpeed / 2; //algunos enemigos usan current speed y otros maxSpeed
+								enemyMove.maxSpeed = enemyMove.maxSpeed / 2;     //asi que actualizo las dos
 							}
-							if(isCritical)
-								anim.speed = 0; // se congela si es critico
-							else{
-								anim.speed -= 0.5f;
-								//Debug.Log(anim.speed);
-							}
+							anim.speed -= 0.5f;
 						}
 						chill = true;
 						//for(int i=0 ; i<renders.Length-1;i++){
 						spriteRend.color = new Color (0f, 1f, 1f, 1f);
 						break;
 					case 1:
-						realDmg -= Mathf.Abs ((realDmg * (fireRes/100)));
-						if(isCritical){
-							ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
-							ignitedCount = ignitedTime;
-							if(!ignited)
-								StartCoroutine(IgnitedUpdate());
-							ignited = true;
-						}
+						ignitedDmg = (0.2f * (realDmg-Mathf.Abs ((realDmg * (fireRes/100)))))/5; // 20% del daño infligido en 1 seg
+						ignitedCount = ignitedTime;
+						if(!ignited)
+							StartCoroutine(IgnitedUpdate());
+						ignited = true;
 						break;
 					case 2:
-						realDmg -= Mathf.Abs ((realDmg * (poisonRes/100)));
-						poisonedDmg = (0.10f * realDmg)/5; // 10% del daño infligido en 1 seg
+						poisonedDmg = (0.10f * (realDmg-Mathf.Abs ((realDmg * (poisonRes/100)))))/5; // 10% del daño infligido en 1 seg
 						poisonedCount = poisonedTime;
 						if(!poisoned)
 							StartCoroutine(PoisonedUpdate());
 						poisoned = true;
 						break;
 					case 3:
-						realDmg -= Mathf.Abs ((realDmg * (lightRes/100)));
-						if(isCritical){
-							spriteRend.color = new Color (0.75f, 0.6f, 1f, 1f);
-							shockCount = shockTimer;
-							shock = true;
+						spriteRend.color = new Color (0.75f, 0.6f, 1f, 1f);
+						shockCount = shockTimer;
+						shock = true;
+						break;
+					case 4:
+						//Debug.Log ("cold damage");
+						Debug.Log("frozen");
+						chillCount = chillTimer;
+						if(!chill){
+							if(enemyMove != null){
+								enemyMove.StopWalk();					
+							}
+							anim.speed = 0; // se congela si es critico
 						}
+						chill = true;
+						//for(int i=0 ; i<renders.Length-1;i++){
+						spriteRend.color = new Color (0f, 1f, 1f, 1f);
 						break;
 					default:
 						Debug.LogError ("todo maaaal");
