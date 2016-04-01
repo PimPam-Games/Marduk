@@ -350,7 +350,7 @@ public class EnemyStats : MonoBehaviour {
 		}
 	}
 
-	public bool Hit(float dmg, Types.Element type, bool isCritical){
+	public bool Hit(float dmg, Types.Element type, bool isCritical, Support supportSkill = null){
 		if (dmg == 0 || isDead) {
 			return false;
 		}
@@ -378,7 +378,13 @@ public class EnemyStats : MonoBehaviour {
 		} else {
 			//Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
 			ObjectsPool.GetBlood(this.transform.position,this.transform.rotation);
-			float realDmg = dmg;
+
+            float supportDmg = 0;
+            if(supportSkill != null) {
+                supportDmg = (dmg * supportSkill.damageAdded) / 100; 
+            }
+
+            float realDmg = dmg;
 			if(shock){
 				realDmg *= 1.5f; //cuando esta shokeado aumenta el daño recibido de cualquier tipo
 			}
@@ -451,76 +457,26 @@ public class EnemyStats : MonoBehaviour {
 					}
 				}
 			}
-			//End Traits
+            //End Traits
 
-			switch (type) {
-			case Types.Element.None:
-				realDmg -= (armour / (armour + 8 * realDmg));	
-				break;
-			case Types.Element.Cold:
-				//Debug.Log ("cold damage");
-				Debug.Log("cold Damage");
-				realDmg -= Mathf.Abs ((realDmg * (coldRes/100)));
-				chillCount = chillTimer;
-				if(!chill){
-					if(enemyMove != null){
-						if(isCritical){
-							enemyMove.StopWalk();
-						}else{
-							enemyMove.currentSpeed = enemyMove.maxSpeed / 2; //algunos enemigos usan current speed y otros maxSpeed
-							enemyMove.maxSpeed = enemyMove.maxSpeed / 2;     //asi que actualizo las dos
-						}
-					}
-					if(isCritical)
-						anim.speed = 0; // se congela si es critico
-					else{
-						anim.speed -= 0.5f;
-						//Debug.Log(anim.speed);
-					}
-				}
-				chill = true;
-				//for(int i=0 ; i<renders.Length-1;i++){
-				spriteRend.color = new Color (0f, 1f, 1f, 1f);
-				break;
-			case Types.Element.Fire:
-				realDmg -= Mathf.Abs ((realDmg * (fireRes/100)));
-				if(isCritical){
-					ignitedDmg = (0.2f * realDmg)/5; // 20% del daño infligido en 1 seg
-					ignitedCount = ignitedTime;
-					if(!ignited)
-						StartCoroutine(IgnitedUpdate());
-					ignited = true;
-				}
-				break;
-			case Types.Element.Poison:
-				realDmg -= Mathf.Abs ((realDmg * (poisonRes/100)));
-				poisonedDmg = (0.10f * realDmg)/5; // 10% del daño infligido en 1 seg
-				poisonedCount = poisonedTime;
-				if(!poisoned)
-					StartCoroutine(PoisonedUpdate());
-				poisoned = true;
-				break;
-			case Types.Element.Lightning:
-				realDmg -= Mathf.Abs ((realDmg * (lightRes/100)));
-				if(isCritical){
-					spriteRend.color = new Color (0.75f, 0.6f, 1f, 1f);
-					shockCount = shockTimer;
-					shock = true;
-				}
-				break;
-			default:
-				Debug.LogError ("todo maaaal");
-				break;
-			}
-			if (realDmg < 0)
-				realDmg = 0;
-			
-			currHealth -= realDmg;
+            realDmg = CheckDmgType(realDmg, type, isCritical);
+            if (realDmg < 0)
+                realDmg = 0;
+            currHealth -= realDmg;
+
+            if (supportSkill != null)
+            {
+                supportDmg = CheckDmgType(supportDmg, supportSkill.dmgElement, isCritical);
+                if (supportDmg < 0)
+                    supportDmg = 0;
+                currHealth -= supportDmg;
+                Debug.Log("daño agregado: " + supportDmg + "tipo: " + supportSkill.dmgElement);
+            }
 
 			if (isCursed){
 				p.currentHealth -= realDmg/5;
 			}
-            string cbt = System.Math.Round(realDmg, 0).ToString();
+            string cbt = System.Math.Round(realDmg + supportDmg, 0).ToString();
             if (isCritical)
 				cbt = "<color=Yellow>" + cbt +  "</color>"; 
 			ObjectsPool.GetCombatText(cbtTransform.position, cbtTransform.rotation,cbt);
@@ -538,6 +494,77 @@ public class EnemyStats : MonoBehaviour {
 		ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix, enemyType);
 		return true;
 	}
+
+    private float CheckDmgType(float realDmg, Types.Element type, bool isCritical) // aplica el daño que le hace una support al enemigo si es que hay
+    {
+        switch (type)
+        {
+            case Types.Element.None:
+                realDmg -= (armour / (armour + 8 * realDmg));
+                break;
+            case Types.Element.Cold:
+                //Debug.Log ("cold damage");
+                Debug.Log("cold Damage");
+                realDmg -= Mathf.Abs((realDmg * (coldRes / 100)));
+                chillCount = chillTimer;
+                if (!chill)
+                {
+                    if (enemyMove != null)
+                    {
+                        if (isCritical)
+                        {
+                            enemyMove.StopWalk();
+                        }
+                        else {
+                            enemyMove.currentSpeed = enemyMove.maxSpeed / 2; //algunos enemigos usan current speed y otros maxSpeed
+                            enemyMove.maxSpeed = enemyMove.maxSpeed / 2;     //asi que actualizo las dos
+                        }
+                    }
+                    if (isCritical)
+                        anim.speed = 0; // se congela si es critico
+                    else {
+                        anim.speed -= 0.5f;
+                        //Debug.Log(anim.speed);
+                    }
+                }
+                chill = true;
+                //for(int i=0 ; i<renders.Length-1;i++){
+                spriteRend.color = new Color(0f, 1f, 1f, 1f);
+                break;
+            case Types.Element.Fire:
+                realDmg -= Mathf.Abs((realDmg * (fireRes / 100)));
+                if (isCritical)
+                {
+                    ignitedDmg = (0.2f * realDmg) / 5; // 20% del daño infligido en 1 seg
+                    ignitedCount = ignitedTime;
+                    if (!ignited)
+                        StartCoroutine(IgnitedUpdate());
+                    ignited = true;
+                }
+                break;
+            case Types.Element.Poison:
+                realDmg -= Mathf.Abs((realDmg * (poisonRes / 100)));
+                poisonedDmg = (0.10f * realDmg) / 5; // 10% del daño infligido en 1 seg
+                poisonedCount = poisonedTime;
+                if (!poisoned)
+                    StartCoroutine(PoisonedUpdate());
+                poisoned = true;
+                break;
+            case Types.Element.Lightning:
+                realDmg -= Mathf.Abs((realDmg * (lightRes / 100)));
+                if (isCritical)
+                {
+                    spriteRend.color = new Color(0.75f, 0.6f, 1f, 1f);
+                    shockCount = shockTimer;
+                    shock = true;
+                }
+                break;
+            default:
+                Debug.LogError("todo maaaal");
+                break;
+        }
+        return realDmg;
+    }
 
 	IEnumerator EnemyDying () {
 		

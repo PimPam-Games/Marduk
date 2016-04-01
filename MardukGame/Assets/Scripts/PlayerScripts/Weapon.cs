@@ -262,7 +262,7 @@ public class Weapon : MonoBehaviour {
 				}
 			}
 
-			bool hit = estats.Hit(damage,elem, isCrit);
+			bool hit = estats.Hit(damage,elem, isCrit,supportSkill);
 
 			if(hit){
 				if (isCrit){
@@ -287,10 +287,10 @@ public class Weapon : MonoBehaviour {
 				}
 				//End Traits
 
-				if(supportSkill != null){
+				/*if(supportSkill != null){
 					estats.Hit((damage * supportSkill.damageAdded) / 100, supportSkill.dmgElement, isCrit); //le pego con el support
 					Debug.Log("daño agregado: " + (damage * supportSkill.damageAdded) / 100 + "tipo: " + supportSkill.dmgElement);
-				}
+				}*/
 				if(enemy.transform.position.x < this.transform.position.x)
 					enemy.GetComponent<EnemyIAMovement>().Knock(true);
 				else

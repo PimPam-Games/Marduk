@@ -210,7 +210,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 			if(isCrit){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
 				if(!alwaysCrit)
 					damage *= p.offensives[p.CritDmgMultiplier];
-				attackResult = estats.Hit(damage,elem, true); //si elem no es None no se esquivan
+				attackResult = estats.Hit(damage,elem, true,supportSkill); 
 				//Begin Traits
 				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
 					estats.Hit(damage/10,Types.Element.Fire, true);
@@ -227,10 +227,10 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				//End Traits
 				if(attackResult){
 					estats.Hit(damageConverted,convertElem, true);
-					if(supportSkill != null){
+					/*if(supportSkill != null){
 						estats.Hit((damage* supportSkill.damageAdded)/100,supportSkill.dmgElement, true);
 						Debug.Log("daño agregado: " + (damage * supportSkill.damageAdded) / 100 + "tipo: " + supportSkill.dmgElement);
-					}
+					}*/
 					if(!alwaysCrit)
 						criticalHitSound.Play();
 					Debug.Log("Critical Dmg: " + damage);
@@ -242,7 +242,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				}
 			}
 			else{
-				attackResult = estats.Hit(damage,elem, false);
+				attackResult = estats.Hit(damage,elem, false,supportSkill);
 				//Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
 					
@@ -261,10 +261,10 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 						estats.Hit(damage/10,Types.Element.Poison, false);
 					}
 					//End Traits
-					if(supportSkill != null){
+					/*if(supportSkill != null){
 						estats.Hit((damage * supportSkill.damageAdded) / 100, supportSkill.dmgElement, false);
 						Debug.Log("daño agregado: " + (damage * supportSkill.damageAdded) / 100 + "tipo: " + supportSkill.dmgElement);
-					}
+					}*/
 					hitEnemySound.Play();
 					if(projRequirements == Types.SkillsRequirements.Bow)
 						collision = true;
