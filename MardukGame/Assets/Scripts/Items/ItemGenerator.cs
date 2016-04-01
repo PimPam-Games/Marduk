@@ -36,7 +36,10 @@ public class ItemGenerator :MonoBehaviour{
 		}
 		DontDestroyOnLoad (newWeapon);
 	}
-
+	//Calcula un afijo de acuerdo al nivel del item
+	private float calculateStat(float baseStat, int rank){
+		return (baseStat * Mathf.Floor (0.2f * rank + 1));
+	}
 	public void CreateItem(Vector3 position, Quaternion rotation, EnemyStats eStats){
 		//crea una nueva arma
 		GameObject newWeapon = null;
@@ -104,6 +107,7 @@ public class ItemGenerator :MonoBehaviour{
 		if (newItem.auraRend != null) {
 			newItem.auraRend.sprite = GameController.auraRenders[newRarity]; //el color del aura del item, dependiendo si es magico, normal , etc
 		}
+		int rank = newItem.itemRank;
 		if (newItem.Rarity != RarityTypes.Normal) {
 			int numAffixes = 1; 
 			if (newItem.Rarity == RarityTypes.Magic)
@@ -114,150 +118,150 @@ public class ItemGenerator :MonoBehaviour{
 				numAffixes = 1;
 				switch (newItem.uniqueIndex){
 				case Babeblade:
-					newItem.Defensives [p.MaxHealth] = Random.Range (50, 101);
-					newItem.Defensives [p.AllRes] = 5;
-					newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (15, 21);
+					newItem.Defensives [p.MaxHealth] = calculateStat(Random.Range (50, 101),rank);
+					newItem.Defensives [p.AllRes] = calculateStat(5,rank);
+					newItem.Offensives [p.IncreasedMgDmg] = calculateStat((float)Random.Range (15, 21),rank);
 					break;
 				case DeathOmen:
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (25, 31);
-					newItem.Defensives [p.AllRes] = -15;
-					newItem.Defensives [p.Thorns] = 5;
+					newItem.Offensives [p.IncreasedCritChance] = calculateStat((float)Random.Range (25, 31),rank);
+					newItem.Defensives [p.AllRes] = calculateStat(-15,rank);
+					newItem.Defensives [p.Thorns] = calculateStat(5,rank);
 					break;
 				case ColdZero:
-					newItem.Offensives [p.IncreasedCritChance] = 15;
-					newItem.Defensives [p.ColdRes] = 30;
-					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
+					newItem.Offensives [p.IncreasedCritChance] = calculateStat(15,rank);
+					newItem.Defensives [p.ColdRes] = calculateStat(30,rank);
+					newItem.Offensives [p.IncreasedCastSpeed] = calculateStat((float)Random.Range (10, 21),rank);
 					break;
 				case Sandblast:
-					newItem.Atributes [p.Vitality] = 15;
-					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (12, 16);
+					newItem.Atributes [p.Vitality] = calculateStat(15,rank);
+					newItem.Offensives [p.IncreasedAttackSpeed] = calculateStat ((float)Random.Range (12, 16),rank);
 					break;
 				case Viper:
-					newItem.Atributes [p.Dextery] = 15;
-					newItem.Defensives [p.PoisonRes] = 20;
-					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (8, 11);
+					newItem.Atributes [p.Dextery] = calculateStat(15,rank);
+					newItem.Defensives [p.PoisonRes] = calculateStat(20,rank);
+					newItem.Offensives [p.IncreasedAttackSpeed] = calculateStat ((float)Random.Range (8, 11),rank);
 					break;
 				case Dracule:
-					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (2f, 4f), 2);
-					newItem.Offensives [p.IncreasedMgDmg] = 15;
+					newItem.Defensives [p.LifePerHit] = calculateStat ((float)System.Math.Round (Random.Range (2f, 4f), 2),rank);
+					newItem.Offensives [p.IncreasedMgDmg] = calculateStat(15,rank);
 					break;
 				case EnlilBreath:
-					newItem.Defensives [p.ColdRes] = 15;
-					newItem.Defensives [p.LightRes] = 15;
-					newItem.Utils [p.AllAttr] = 10;
+					newItem.Defensives [p.ColdRes] = calculateStat(15,rank);
+					newItem.Defensives [p.LightRes] = calculateStat(15,rank);
+					newItem.Utils [p.AllAttr] = calculateStat(10,rank);
 					break;
 				case SolarEdge:
-					newItem.Utils [p.AllAttr] = 10;
-					newItem.Defensives [p.FireRes] = 30;
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (15, 21);
+					newItem.Utils [p.AllAttr] = calculateStat(10,rank);
+					newItem.Defensives [p.FireRes] = calculateStat(30,rank);
+					newItem.Offensives [p.IncreasedCritChance] = calculateStat((float)Random.Range (15, 21),rank);
 					break;
 				case TitanMight:
-					newItem.Atributes [p.Strength] = 30;
-					newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (15, 21);
+					newItem.Atributes [p.Strength] = calculateStat(30,rank);
+					newItem.Offensives [p.IncreasedDmg] = calculateStat((float)Random.Range (15, 21),rank);
 					break;
 				case GoldenChampion:
-					newItem.Atributes [p.Strength] = 20;
-					newItem.Offensives [p.IncreasedCritChance] = 30;
+					newItem.Atributes [p.Strength] = calculateStat(20,rank);
+					newItem.Offensives [p.IncreasedCritChance] = calculateStat(30,rank);
 					break;
 				case Berserker:
-					newItem.Atributes [p.Dextery] = 30;
-					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 16);
+					newItem.Atributes [p.Dextery] = calculateStat(30,rank);
+					newItem.Offensives [p.IncreasedAttackSpeed] = calculateStat((float)Random.Range (10, 16),rank);
 					break;
 				case Untouchable:
-					newItem.Atributes [p.Strength] = 15;
-					newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (10, 16);
-					newItem.Defensives [p.IncreasedDefense] = 25;
+					newItem.Atributes [p.Strength] = calculateStat(15,rank);
+					newItem.Offensives [p.IncreasedDmg] = calculateStat((float)Random.Range (10, 16),rank);
+					newItem.Defensives [p.IncreasedDefense] = calculateStat(25,rank);
 					break;
 				case DarkWill:
-					newItem.Atributes [p.Dextery] = 20;
-					newItem.Defensives [p.Thorns] = (float)Random.Range (7, 11);
+					newItem.Atributes [p.Dextery] = calculateStat(20,rank);
+					newItem.Defensives [p.Thorns] = calculateStat((float)Random.Range (7, 11),rank);
 					break;
 				case GoldenCap:
-					newItem.Offensives [p.IncreasedMgDmg] = 20;
-					newItem.Offensives [p.IncreasedCastSpeed] = 12;
-					newItem.Defensives [p.AllRes] = 10;
+					newItem.Offensives [p.IncreasedMgDmg] = calculateStat(20,rank);
+					newItem.Offensives [p.IncreasedCastSpeed] = calculateStat(12,rank);
+					newItem.Defensives [p.AllRes] = calculateStat(10,rank);
 					break;
 				case CrusaderWrath:
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 15);
-					newItem.Utils [p.AllAttr] = 10;
+					newItem.Offensives [p.IncreasedCritChance] = calculateStat((float)Random.Range (10, 15),rank);
+					newItem.Utils [p.AllAttr] = calculateStat(10,rank);
 					break;
 				case TemplarFaith:
-					newItem.Atributes [p.Vitality] = 15;
-					newItem.Atributes [p.Spirit] = 15;
-					newItem.Defensives [p.AllRes] = 15;
+					newItem.Atributes [p.Vitality] = calculateStat(15,rank);
+					newItem.Atributes [p.Spirit] = calculateStat(15,rank);
+					newItem.Defensives [p.AllRes] = calculateStat(15,rank);
 					break;
 				case Magi:
-					newItem.Offensives [p.IncreasedMgDmg] = 20;
-					newItem.Offensives [p.IncreasedCastSpeed] = 20;
+					newItem.Offensives [p.IncreasedMgDmg] = calculateStat(20,rank);
+					newItem.Offensives [p.IncreasedCastSpeed] = calculateStat(20,rank);
 					break;
 				case Contender:
-					newItem.Atributes [p.Vitality] = 12;
-					newItem.Atributes [p.Strength] = 12;
+					newItem.Atributes [p.Vitality] = calculateStat(12,rank);
+					newItem.Atributes [p.Strength] = calculateStat(12,rank);
 					//newItem.Defensives[p.IncreasedEvasion] = 15;
 					break;
 				case IceDragon:
-					newItem.Defensives [p.ColdRes] = 25;
-					newItem.Utils [p.AllAttr] = 5;
-					newItem.Defensives[p.IncreasedDefense] = 35;
+					newItem.Defensives [p.ColdRes] = calculateStat(25,rank);
+					newItem.Utils [p.AllAttr] = calculateStat(5,rank);
+					newItem.Defensives[p.IncreasedDefense] = calculateStat(35,rank);
 					break;
 				case Wall:
-					newItem.Defensives [p.MaxHealth] = Random.Range (30, 40);
-					newItem.Defensives [p.AllRes] = 15;
+					newItem.Defensives [p.MaxHealth] = calculateStat(Random.Range (30, 40),rank);
+					newItem.Defensives [p.AllRes] = calculateStat(15,rank);
 					break;
 				case Thunderstrike:
-					newItem.Defensives [p.LightRes] = 20;
-					newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (10, 15);
-					newItem.Utils [p.AllAttr] = 5;
+					newItem.Defensives [p.LightRes] = calculateStat(20,rank);
+					newItem.Offensives [p.IncreasedAttackSpeed] = calculateStat((float)Random.Range (10, 15),rank);
+					newItem.Utils [p.AllAttr] = calculateStat(5,rank);
 					break;
 				case ConquerorAmbition:
-					newItem.Defensives [p.MaxHealth] = Random.Range (20, 30);
-					newItem.Utils [p.AllAttr] = 15;
+					newItem.Defensives [p.MaxHealth] = calculateStat(Random.Range (20, 30),rank);
+					newItem.Utils [p.AllAttr] = calculateStat(15,rank);
 					break;
 				case ViciousHunter:
-					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16);
+					newItem.Defensives [p.LifePerHit] = calculateStat((float)System.Math.Round (Random.Range (1f, 2f), 2),rank);
+					newItem.Offensives [p.IncreasedCritChance] = calculateStat((float)Random.Range (10, 16),rank);
 					break;
 				case Redeemer:
-					newItem.Offensives [p.IncreasedMgDmg] = 10;
-					newItem.Atributes [p.Spirit] = 20;
-					newItem.Defensives [p.AllRes] = 10;
+					newItem.Offensives [p.IncreasedMgDmg] = calculateStat(10,rank);
+					newItem.Atributes [p.Spirit] = calculateStat(20,rank);
+					newItem.Defensives [p.AllRes] = calculateStat(10,rank);
 					break;
 				case HeadCrusher:
-					newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (20, 31);
-					newItem.Offensives [p.IncreasedDmg] = 20;
+					newItem.Offensives [p.IncreasedCritChance] = calculateStat((float)Random.Range (20, 31),rank);
+					newItem.Offensives [p.IncreasedDmg] = calculateStat(20,rank);
 					break;
 				case OgreMace:
-					newItem.Defensives [p.PoisonRes] = 15;
-					newItem.Defensives [p.Thorns] = 7;
+					newItem.Defensives [p.PoisonRes] = calculateStat(15,rank);
+					newItem.Defensives [p.Thorns] = calculateStat(7,rank);
 					break;
 				case HolySceptre:
-					newItem.Atributes [p.Dextery] = 20;
-					newItem.Atributes [p.Spirit] = 20;
-					newItem.Defensives [p.AllRes] = 20;
+					newItem.Atributes [p.Dextery] = calculateStat(20,rank);
+					newItem.Atributes [p.Spirit] = calculateStat(20,rank);
+					newItem.Defensives [p.AllRes] = calculateStat(20,rank);
 					break;
 				case BlackSkull:
-					newItem.Offensives [p.IncreasedMgDmg] = 10;
-					newItem.Atributes [p.Spirit] = 15;
-					newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (10, 21);
+					newItem.Offensives [p.IncreasedMgDmg] = calculateStat(10,rank);
+					newItem.Atributes [p.Spirit] = calculateStat(15,rank);
+					newItem.Offensives [p.IncreasedCastSpeed] = calculateStat((float)Random.Range (10, 21),rank);
 					break;
 				case Raider:
 					newItem.Atributes [p.Dextery] = 30;
-					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
-					newItem.Offensives [p.IncreasedAttackSpeed] = 10;
+					newItem.Defensives [p.LifePerHit] = calculateStat((float)System.Math.Round (Random.Range (1f, 2f), 2),rank);
+					newItem.Offensives [p.IncreasedAttackSpeed] = calculateStat(10,rank);
 					break;
 				case YbabEbab:
-					newItem.Utils [p.AllAttr] = 5;
+					newItem.Utils [p.AllAttr] = calculateStat(20,rank);
 					//newItem.Defensives [p.IncreasedEvasion] = 30;
 					break;
 				case AbbadonTreasure:
-					newItem.Utils [p.AllAttr] = 15;
-					newItem.Defensives [p.LifePerHit] = (float)System.Math.Round (Random.Range (1f, 2f), 2);
-					newItem.Defensives [p.AllRes] = -25;
+					newItem.Utils [p.AllAttr] = calculateStat(15,rank);
+					newItem.Defensives [p.LifePerHit] = calculateStat((float)System.Math.Round (Random.Range (1f, 2f), 2),rank);
+					newItem.Defensives [p.AllRes] = calculateStat(-25,rank);
 					break;
 				case NergalHate:
-					newItem.Defensives [p.PoisonRes] = 30;
-					newItem.Offensives [p.IncreasedMgDmg] = 10;
-					newItem.Offensives [p.IncreasedAttackSpeed] = 10;
+					newItem.Defensives [p.PoisonRes] = calculateStat(30,rank);
+					newItem.Offensives [p.IncreasedMgDmg] = calculateStat(10,rank);
+					newItem.Offensives [p.IncreasedAttackSpeed] = calculateStat(10,rank);
 					break;
 				default:
 					break;
@@ -283,21 +287,21 @@ public class ItemGenerator :MonoBehaviour{
 							continue;
 						ok = true;
 						if (optionDef == p.LifePerSecond)
-							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.4f, 1f), 2);
+							newItem.Defensives [optionDef] = calculateStat((float)System.Math.Round (Random.Range (0.4f, 1f), 2),rank);
 						if (optionDef == p.Thorns)
-							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.2f, 2f), 2);
+							newItem.Defensives [optionDef] = calculateStat((float)System.Math.Round (Random.Range (0.2f, 2f), 2),rank);
 						if (optionDef >= p.ColdRes && optionDef <= p.PoisonRes)
-							newItem.Defensives [optionDef] = Random.Range (2, 6);
+							newItem.Defensives [optionDef] = calculateStat(Random.Range (2, 6),rank);
 						if (optionDef == p.MaxHealth)
-							newItem.Defensives [optionDef] = Random.Range (5, 11);
+							newItem.Defensives [optionDef] = calculateStat(Random.Range (5, 11),rank);
 						if (optionDef == p.IncreasedDefense)
-							newItem.Defensives [optionDef] = Random.Range (5, 11);
+							newItem.Defensives [optionDef] = calculateStat(Random.Range (5, 11),rank);
 						if (optionDef == p.AllRes)
-							newItem.Defensives [optionDef] = Random.Range (2, 4);
+							newItem.Defensives [optionDef] = calculateStat(Random.Range (2, 4),rank);
 						//if (optionDef == p.IncreasedEvasion)
 						//	newItem.Defensives [optionDef] = Random.Range (5, 11);
 						if (optionDef == p.LifePerHit)
-							newItem.Defensives [optionDef] = (float)System.Math.Round (Random.Range (0.5f, 2f), 2);
+							newItem.Defensives [optionDef] = calculateStat((float)System.Math.Round (Random.Range (0.5f, 2f), 2),rank);
 					}
 					break;
 				case 1:
@@ -310,7 +314,7 @@ public class ItemGenerator :MonoBehaviour{
 						if (newItem.Atributes [optionAtr] > 0)
 							continue;
 						ok = true;
-						newItem.Atributes [optionAtr] = Random.Range (5, 11);
+						newItem.Atributes [optionAtr] = calculateStat(Random.Range (5, 11),rank);
 					}
 					break;
 				case 2:
@@ -324,15 +328,15 @@ public class ItemGenerator :MonoBehaviour{
 							continue;
 						ok = true;
 						if (optionOff == p.IncreasedCritChance)
-							newItem.Offensives [p.IncreasedCritChance] = (float)Random.Range (10, 16); 
+							newItem.Offensives [p.IncreasedCritChance] = calculateStat((float)Random.Range (10, 16),rank); 
 						if (optionOff == p.IncreasedAttackSpeed) 
-							newItem.Offensives [p.IncreasedAttackSpeed] = (float)Random.Range (5, 8);
+							newItem.Offensives [p.IncreasedAttackSpeed] = calculateStat((float)Random.Range (5, 8),rank);
 						if (optionOff == p.IncreasedCastSpeed) 
-							newItem.Offensives [p.IncreasedCastSpeed] = (float)Random.Range (5, 8); 
+							newItem.Offensives [p.IncreasedCastSpeed] = calculateStat((float)Random.Range (5, 8),rank); 
 						if (optionOff == p.IncreasedMgDmg)
-							newItem.Offensives [p.IncreasedMgDmg] = (float)Random.Range (5, 11);
+							newItem.Offensives [p.IncreasedMgDmg] = calculateStat((float)Random.Range (5, 11),rank);
 						if (optionOff == p.IncreasedDmg)
-							newItem.Offensives [p.IncreasedDmg] = (float)Random.Range (5, 11);
+							newItem.Offensives [p.IncreasedDmg] = calculateStat((float)Random.Range (5, 11),rank);
 						//if (optionOff == p.IncreasedAccuracy)
 						//	newItem.Offensives [p.IncreasedAccuracy] = (float)Random.Range (5, 11);						
 					}
