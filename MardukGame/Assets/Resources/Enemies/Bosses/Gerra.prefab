@@ -521,6 +521,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   groundChecks: []
   jumpForce: 800
+  jumpLength: 100
   knockable: 1
   jumper: 0
   flying: 1
@@ -554,8 +555,8 @@ MonoBehaviour:
   staticProjectile: 0
   ia: {fileID: 0}
   flipProjectile: 0
-  stats: {fileID: 11478014}
   dontChangeRotation: 0
+  isTrap: 0
 --- !u!114 &11461306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -573,8 +574,8 @@ MonoBehaviour:
   staticProjectile: 0
   ia: {fileID: 0}
   flipProjectile: 0
-  stats: {fileID: 11478014}
   dontChangeRotation: 0
+  isTrap: 0
 --- !u!114 &11464822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -611,8 +612,8 @@ MonoBehaviour:
   staticProjectile: 0
   ia: {fileID: 0}
   flipProjectile: 0
-  stats: {fileID: 11478014}
   dontChangeRotation: 0
+  isTrap: 0
 --- !u!114 &11478014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -626,9 +627,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 5
   currHealth: 0
-  initMaxHealth: 125
+  initMaxHealth: 100
   initMinDamage: 9
   initMaxDamage: 10
+  initMinProjDamage: 2
+  initMaxProjDamage: 5
   initArmour: 0
   initColdRes: 0
   initFireRes: 10
@@ -636,8 +639,8 @@ MonoBehaviour:
   initPoisonRes: 0
   initCritChance: 0.05
   elem: 1
-  minDamage: 9
-  maxDamage: 10
+  meleeAttackElem: 0
+  meleeAttackMultiplier: 1.4
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
@@ -654,6 +657,7 @@ MonoBehaviour:
   isBoss: 0
   enemyType: 2
   cbtTransform: {fileID: 447280}
+  isFast: 0
 --- !u!114 &11479776
 MonoBehaviour:
   m_ObjectHideFlags: 1
