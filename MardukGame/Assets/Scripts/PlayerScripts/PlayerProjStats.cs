@@ -38,6 +38,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 	//public EnemyStats enemyStats = null;
 
 	public Support supportSkill;
+    public GameObject castProjWhenHit = null; //objeto que instancia cuando choca, por ahora se usa para explosive arrow
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -150,6 +151,10 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				if (Traits.traits[Traits.BOWDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Bow){
 					damage *= 1.1f;
 				}
+                if(castProjWhenHit != null)
+                {
+                    Instantiate(castProjWhenHit, this.transform.position, this.transform.rotation);
+                }
 				//******************************BOW PATCH!!!!!*********************************
 				//damage *= 0.5f;
 				//******************************BOW PATCH!!!!!*********************************

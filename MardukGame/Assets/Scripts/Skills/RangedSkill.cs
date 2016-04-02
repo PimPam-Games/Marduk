@@ -8,6 +8,7 @@ public class RangedSkill : SpellStats {
 	public bool flipProjectile;
 	public bool staticProjectile = false;
 	public GameObject projectile;
+    public GameObject ProjWhenHit; //proyectil que tira cuando pega
 	private PlayerProjStats projStats;
 	public bool dontChangeRotation = false; // para que la rotacion no se ajuste a la rotacion del lanzador
 	public bool continuosRelease = false; // true si el poder se tira continuamente como incinerate
