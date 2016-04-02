@@ -486,7 +486,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			if (skill != null) {
                 if (((skill.CDtimer > 0) || anim.GetBool("SpellCasting") || anim.GetBool("BowAttacking") || anim.GetBool("Attacking") || anim.GetBool("PolearmAttacking")))
                     return;
-                if (skill.manaCost > PlayerStats.currentMana){ //si no hay mana para el skill
+                if (skill.ManaCost > PlayerStats.currentMana){ //si no hay mana para el skill
 					NormalAttack();
 					return;
 				}
@@ -510,26 +510,26 @@ public class PlatformerCharacter2D : MonoBehaviour
 								multipleShots = true;							
 							if(PlayerItems.EquipedWeapon != null && PlayerItems.EquipedWeapon.Type == ItemTypes.RangedWeapon){
 								if(weaponScript.canAttack){
-									float cost = skill.manaCost;
+									float cost = skill.ManaCost;
 									//Begin Traits
 									if (Traits.traits[Traits.RSKILLCOST].isActive()){
 										cost *= 0.8f;
 									}
 									//End Traits
-									PlayerStats.currentMana -= skill.manaCost;
+									PlayerStats.currentMana -= skill.ManaCost;
 									anim.SetBool ("BowAttacking", true);
 								}
 							}
 						}
 						else{
 							//magias
-							float cost = skill.manaCost;
+							float cost = skill.ManaCost;
 							//Begin Traits
-							if (Traits.traits[Traits.RSKILLCOST].isActive()){
+						/*	if (Traits.traits[Traits.RSKILLCOST].isActive()){
 								cost *= 0.8f;
-							}
+							}*/
 							//End Traits
-							PlayerStats.currentMana -= skill.manaCost;
+							PlayerStats.currentMana -= skill.ManaCost;
 							if(rskill.continuosRelease)
 								skillBtnPressed = i+1;
 							if(rskill.staticProjectile){
@@ -557,7 +557,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 							
 							//skillBtnPressed = true;
 							if(rskill.drainMana){
-								StartCoroutine(ManaDrain(rskill.manaCost));
+								StartCoroutine(ManaDrain(rskill.ManaCost));
 							}
 							currentSkill = skill;
 							anim.SetBool("SpellCasting", true);
@@ -566,18 +566,18 @@ public class PlatformerCharacter2D : MonoBehaviour
 					case Types.SkillsTypes.Melee:
                         meleeSkillPos = i;
 						if(weaponScript.canAttack){
-							float cost = skill.manaCost;
+							float cost = skill.ManaCost;
 							//Begin Traits
-							if (Traits.traits[Traits.MSKILLCOST].isActive()){
+							/*if (Traits.traits[Traits.MSKILLCOST].isActive()){
 								cost *= 0.8f;
-							}
+							}*/
 							//End Traits
-							PlayerStats.currentMana -= skill.manaCost;
+							PlayerStats.currentMana -= skill.ManaCost;
 							Attack();
 						}
 					break;
 					case Types.SkillsTypes.Utility:
-						PlayerStats.currentMana -= skill.manaCost;
+						PlayerStats.currentMana -= skill.ManaCost;
 						skill.ActivateCoolDown();
 						UtilitySkill uskill = (UtilitySkill) skill;	
 						moveSkillTimer = uskill.moveTime;

@@ -17,7 +17,7 @@ public class SpellStats : MonoBehaviour {
 
 	public Types.SkillsTypes type;
 	public Types.SkillsRequirements[] requeriments;
-	public float manaCost;
+	//public float manaCost;
 	public float manaReserved;     //para auras
 
 	public float animSpeed = 0;
@@ -29,7 +29,7 @@ public class SpellStats : MonoBehaviour {
 
 	//[SerializeField] private float initLifeRegen;
 
-	[SerializeField] protected float manaCostPerLvl;
+	//[SerializeField] protected float manaCostPerLvl;
 
 	//[SerializeField] private float lifeRegenPerLvl;
 
@@ -74,8 +74,27 @@ public class SpellStats : MonoBehaviour {
 		get {return oldNextLevelExp;}
 		set {oldNextLevelExp = value;}
 	}
+    public float ManaCost
+    {
+        get {
+            float cost = initManaCost + (p.lvl - 1) * (initManaCost * 50 / 100);
+            //Begin Traits
+            if (Traits.traits[Traits.MSKILLCOST].isActive() && type == Types.SkillsTypes.Melee)
+            {
+                cost *= 0.8f;
+            }
+            //Begin Traits
+            if (Traits.traits[Traits.RSKILLCOST].isActive() && type == Types.SkillsTypes.Ranged)
+            {
+                cost *= 0.8f;
+            }
+            //End Traits
+            //End Traits
+            return cost;
+        } //formula para calcular el mana
+    }
 
-	protected virtual void Awake(){
+    protected virtual void Awake(){
 		lvl = 1;
 		currentExp = 0;
 		oldNextLevelExp = 0;
@@ -95,7 +114,7 @@ public class SpellStats : MonoBehaviour {
 
 	protected virtual void CalculateStats (){
 
-		manaCost = initManaCost + (lvl - 1) * manaCostPerLvl;
+		//manaCost = initManaCost + (lvl - 1) * manaCostPerLvl;
 	}
 
 	public void UpdateExp(double exp){
@@ -161,8 +180,8 @@ public class SpellStats : MonoBehaviour {
 			CalculateStats();
 		}
 		//tooltip += "level: " + Lvl.ToString() + "\n";
-		if(manaCost > 0){
-			tooltip += "Mana cost: " + manaCost + "\n";
+		if(ManaCost > 0){
+			tooltip += "Mana cost: " + System.Math.Round(ManaCost,1) + "\n";
 		}
 		if(requeriments != null && requeriments.Length > 0 && requeriments[0] != Types.SkillsRequirements.None){ 
 			tooltip += "Only works with ";

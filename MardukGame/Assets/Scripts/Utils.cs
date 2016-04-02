@@ -46,7 +46,6 @@ public class Utils{
                 rarelItemLimit = 0.82f;
                 break;
         }
-        Debug.Log("normalItemLImit " + normalItemLimit);
         float randomPoint = Random.value; // valor entre 0.0 y 1.0 inclusive
 		if(randomPoint < normalItemLimit)
         {

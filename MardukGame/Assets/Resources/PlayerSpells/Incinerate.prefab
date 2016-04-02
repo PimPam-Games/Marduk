@@ -36,11 +36,9 @@ MonoBehaviour:
   castPerSecond: 1
   type: 0
   requeriments: 04000000
-  manaCost: 0
   manaReserved: 0
   animSpeed: 0
-  initManaCost: .800000012
-  manaCostPerLvl: .400000006
+  initManaCost: 0.8
   force: {x: 0, y: 0}
   flipProjectile: 1
   staticProjectile: 1
@@ -48,11 +46,10 @@ MonoBehaviour:
   dontChangeRotation: 0
   continuosRelease: 1
   drainMana: 1
-  initMinDmg: 3
-  initMaxDmg: 4
   initPhysicalDmgMult: 0
-  minDmgPerLvl: .300000012
-  maxDmgPerLvl: .300000012
+  magicDmgMult: 70
+  minDmgPerLvl: 0.3
+  maxDmgPerLvl: 0.3
   physicalDmgMultPerLvl: 0
 --- !u!114 &11454542
 MonoBehaviour:
@@ -78,6 +75,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 4acca41238ef29d468813256b92dfecb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -106,9 +109,9 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -13.4297066, y: 1.8427732}
+  m_AnchoredPosition: {x: -13.429707, y: 1.8427732}
   m_SizeDelta: {x: 25, y: 25}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &22578788
 CanvasGroup:
   m_ObjectHideFlags: 1
