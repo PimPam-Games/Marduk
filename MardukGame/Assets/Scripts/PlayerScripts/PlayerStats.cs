@@ -14,7 +14,10 @@ public class PlayerStats : MonoBehaviour {
 	public const int MaxHealth = 0 ,Defense = 1, ColdRes = 2, FireRes = 3, LightRes = 4, PoisonRes = 5, BlockChance = 6, IncreasedDefense = 7, Thorns = 8, LifePerHit = 9, LifePerSecond = 10, AllRes = 11;  //defensives
 	public const int MovementSpeed = 0, IncreasedMoveSpeed = 1, MagicFind = 2, AllAttr = 3;//utils
 
-	public const float InitMoveSpeed = 5;
+    public const float ManaRegenPerSpiritP = 0.05f, MaxManaPerSpiritP = 3, HealthPerVitalityP = 3, DmgPerStrengthP = 0.25f, MgDmgPerSpiritP = 0.2f, CritMultPerDexterityP = 0.02f, CritChancePerDexterityP = 0.001f; //0.1%
+
+
+    public const float InitMoveSpeed = 5;
 	public const float InitMaxHealth = 60;
 	public const float InitAttacksPerSecond = 1;
 	public const float InitMinDmg = 1;
@@ -153,16 +156,16 @@ public class PlayerStats : MonoBehaviour {
 		atributes [Spirit] = spiAddedPoints;
 		atributes [Dextery] = dexAddedPoints;
 
-		defensives [MaxHealth] = atributes [Vitality] * 3 + InitMaxHealth; 
-		offensives [MinDmg] = atributes [Strength] * 0.25f + InitMinDmg;
-		offensives [MaxDamge] = atributes [Strength] * 0.25f + InitMaxDmg;
-		offensives [MaxMana] = atributes [Spirit] * 3 + InitMana;
-		offensives[MinMagicDmg] = atributes[Spirit] * 0.2f + InitMinMagicDmg;
-        offensives[MaxMagicDmg] = atributes[Spirit] * 0.2f + InitMaxMagicDmg;
-        offensives[ManaPerSec] = atributes[Spirit] * 0.1f + InitManaRegen;
-		offensives [CritDmgMultiplier] = atributes [Dextery] * 0.1f + InitCritDmgMult; //uno de destreza 0.1 de critdamaemult
-		//defensives [Evasiveness] = atributes [Dextery] * 2 + InitEvasion;
-		currentHealth = defensives[MaxHealth];
+		defensives [MaxHealth] = atributes [Vitality] * HealthPerVitalityP + InitMaxHealth; 
+		offensives [MinDmg] = atributes [Strength] * DmgPerStrengthP + InitMinDmg;
+		offensives [MaxDamge] = atributes [Strength] * DmgPerStrengthP + InitMaxDmg;
+		offensives [MaxMana] = atributes [Spirit] * MaxManaPerSpiritP + InitMana;
+		offensives[MinMagicDmg] = atributes[Spirit] * MgDmgPerSpiritP + InitMinMagicDmg;
+        offensives[MaxMagicDmg] = atributes[Spirit] * MgDmgPerSpiritP + InitMaxMagicDmg;
+        offensives[ManaPerSec] = atributes[Spirit] * ManaRegenPerSpiritP + InitManaRegen;
+		offensives [CritDmgMultiplier] = atributes [Dextery] * CritMultPerDexterityP + InitCritDmgMult; 
+        offensives[CritChance] = atributes[Dextery] * CritChancePerDexterityP + InitCritChance;                                                                                            
+        currentHealth = defensives[MaxHealth];
 		currentMana = offensives [MaxMana];
 		UpdateMana ();
 	}
@@ -231,25 +234,25 @@ public class PlayerStats : MonoBehaviour {
 		switch (atribute) {
 			case 0:
 				atributes [Strength]++;
-				offensives [MinDmg] += 0.25f;
-				offensives [MaxDamge] += 0.25f;
+				offensives [MinDmg] += DmgPerStrengthP;
+				offensives [MaxDamge] +=DmgPerStrengthP;
 				break;
 			case 1:
 				atributes [Dextery]++;
-				offensives [CritDmgMultiplier] +=  0.1f ;
-				//defensives [Evasiveness] +=  2; 
-				break;
+				offensives [CritDmgMultiplier] += CritMultPerDexterityP ;
+                offensives[CritChance] += CritChancePerDexterityP;
+                break;
 			case 2:
 				atributes [Vitality]++;
-				defensives [MaxHealth] += 3;
+				defensives [MaxHealth] += HealthPerVitalityP;
 				break;
 			case 3:
 				atributes [Spirit]++;
-				offensives[MaxMana] += 3;
-                offensives[MinMagicDmg] += 0.2f;
-                offensives[MaxMagicDmg] += 0.2f;
+				offensives[MaxMana] += MaxManaPerSpiritP;
+                offensives[MinMagicDmg] += MgDmgPerSpiritP;
+                offensives[MaxMagicDmg] += MgDmgPerSpiritP;
                 //offensives[MagicDmg] += 0.2f;
-                offensives[ManaPerSec] += 0.1f;
+                offensives[ManaPerSec] += ManaRegenPerSpiritP;
 				break;
 		}
 

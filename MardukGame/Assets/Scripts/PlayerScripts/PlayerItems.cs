@@ -363,26 +363,28 @@ public class PlayerItems: MonoBehaviour {
 
 	private static void UpdateStats(Item oldItem, Item newItem){
 		if (oldItem != null) {
-			p.defensives [p.MaxHealth] -= oldItem.Atributes [p.Vitality] * 3; //resta la vitalidad vieja
-			p.offensives [p.MinDmg] -= oldItem.Atributes [p.Strength] * 0.25f;
-			p.offensives [p.MaxDamge] -= oldItem.Atributes [p.Strength] * 0.25f;
-			p.offensives [p.MaxMana] -= oldItem.Atributes [p.Spirit] * 3;
-			p.offensives[p.MinMagicDmg] -= oldItem.Atributes[p.Spirit] * 0.2f;
-            p.offensives[p.MaxMagicDmg] -= oldItem.Atributes[p.Spirit] * 0.2f;
-            p.offensives[p.ManaPerSec] -= oldItem.Atributes[p.Spirit] * 0.1f;
-            p.offensives[p.CritDmgMultiplier] -= oldItem.Atributes[p.Dextery] * 0.1f;
+			p.defensives [p.MaxHealth] -= oldItem.Atributes [p.Vitality] * p.HealthPerVitalityP; //resta la vitalidad vieja
+			p.offensives [p.MinDmg] -= oldItem.Atributes [p.Strength] * p.DmgPerStrengthP;
+			p.offensives [p.MaxDamge] -= oldItem.Atributes [p.Strength] * p.DmgPerStrengthP;
+			p.offensives [p.MaxMana] -= oldItem.Atributes [p.Spirit] * p.MaxManaPerSpiritP;
+			p.offensives[p.MinMagicDmg] -= oldItem.Atributes[p.Spirit] * p.MgDmgPerSpiritP;
+            p.offensives[p.MaxMagicDmg] -= oldItem.Atributes[p.Spirit] * p.MgDmgPerSpiritP;
+            p.offensives[p.ManaPerSec] -= oldItem.Atributes[p.Spirit] * p.ManaRegenPerSpiritP;
+            p.offensives[p.CritDmgMultiplier] -= oldItem.Atributes[p.Dextery] * p.CritMultPerDexterityP;
+            p.offensives[p.CritChance] -= oldItem.Atributes[p.Dextery] * p.CritChancePerDexterityP;
         }
 		if (newItem != null) {
-			p.defensives [p.MaxHealth] += newItem.Atributes [p.Vitality] * 3; //un putno de vitalidad son 3 de vida
-			p.offensives [p.MinDmg] += newItem.Atributes [p.Strength] * 0.25f;
-			p.offensives [p.MaxDamge] += newItem.Atributes [p.Strength] * 0.25f; //4 de fuerza aumenta uno de daño fisico
-			p.offensives [p.MaxMana] += newItem.Atributes [p.Spirit] * 3; // uno de espiritu da 3 de mana
-			p.offensives[p.MinMagicDmg] += newItem.Atributes[p.Spirit] * 0.2f; // 5 de espiritu da 1 de daño magico
-            p.offensives[p.MaxMagicDmg] += newItem.Atributes[p.Spirit] * 0.2f;
-            p.offensives[p.ManaPerSec] += newItem.Atributes[p.Spirit] * 0.1f; // cada 10 de espiritu 1 de mana regen por segundo
-              p.offensives[p.CritDmgMultiplier] += newItem.Atributes[p.Dextery] * 0.1f;
-			//utils [MovementSpeed] = InitMoveSpeed + (InitMoveSpeed * porcentaje / 100 )
-		}
+			p.defensives [p.MaxHealth] += newItem.Atributes [p.Vitality] * p.HealthPerVitalityP; //un putno de vitalidad son 3 de vida
+			p.offensives [p.MinDmg] += newItem.Atributes [p.Strength] * p.DmgPerStrengthP;
+			p.offensives [p.MaxDamge] += newItem.Atributes [p.Strength] * p.DmgPerStrengthP; //4 de fuerza aumenta uno de daño fisico
+			p.offensives [p.MaxMana] += newItem.Atributes [p.Spirit] * p.MaxManaPerSpiritP; // uno de espiritu da 3 de mana
+			p.offensives[p.MinMagicDmg] += newItem.Atributes[p.Spirit] * p.MgDmgPerSpiritP; // 5 de espiritu da 1 de daño magico
+            p.offensives[p.MaxMagicDmg] += newItem.Atributes[p.Spirit] * p.MgDmgPerSpiritP;
+            p.offensives[p.ManaPerSec] += newItem.Atributes[p.Spirit] * p.ManaRegenPerSpiritP; // cada 10 de espiritu 1 de mana regen por segundo
+            p.offensives[p.CritDmgMultiplier] += newItem.Atributes[p.Dextery] * p.CritMultPerDexterityP;
+            p.offensives[p.CritChance] += newItem.Atributes[p.Dextery] * p.CritChancePerDexterityP;
+            //utils [MovementSpeed] = InitMoveSpeed + (InitMoveSpeed * porcentaje / 100 )
+        }
 	}
 
 

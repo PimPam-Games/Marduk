@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using p = PlayerStats;
 public class AttrInfo : MonoBehaviour,  IPointerEnterHandler, IPointerExitHandler{
 
 	public GameObject characterTooltip;
@@ -12,13 +12,13 @@ public class AttrInfo : MonoBehaviour,  IPointerEnterHandler, IPointerExitHandle
 		if(!characterTooltip.activeSelf){
 			characterTooltip.SetActive(true);
 			if(id == 1)
-				characterTooltip.GetComponentInChildren<Text>().text = "1 Strength \n ---------------------------------- \n +0.25 of base physical damage";
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Strength \n ---------------------------------- \n +" +p.DmgPerStrengthP +" of base physical damage";
 			if(id == 3)
-				characterTooltip.GetComponentInChildren<Text>().text = "1 Vitality \n ---------------------------------- \n +3 Maximum HP";
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Vitality \n ---------------------------------- \n +"+p.HealthPerVitalityP +" Maximum HP";
 			if(id == 2)
-				characterTooltip.GetComponentInChildren<Text>().text = "1 Dexterity \n ---------------------------------- \n +0.1 Crit Dmg Multiplier";
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Dexterity \n ---------------------------------- \n +" + p.CritMultPerDexterityP + " Crit Dmg Multiplier \n +" + System.Math.Round(p.CritChancePerDexterityP * 100,1) + "% of Critical Chance";
 			if(id == 4)
-				characterTooltip.GetComponentInChildren<Text>().text = "1 Spirit \n ---------------------------------- \n +3 Maximum Mana \n +0.1 Mana Regeneration per second \n +0.2 Magic Damage";
+				characterTooltip.GetComponentInChildren<Text>().text = "1 Spirit \n ---------------------------------- \n +"+ p.MaxManaPerSpiritP +" Maximum Mana \n +" + p.ManaRegenPerSpiritP +" Mana Regeneration per second \n +"+p.MgDmgPerSpiritP+" Magic Damage";
 		}
 	}
 	
