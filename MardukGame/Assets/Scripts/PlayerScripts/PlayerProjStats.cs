@@ -140,7 +140,8 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
 					p.currentHealth += p.defensives[p.LifePerHit];
 				damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-				damage *=  physicalDmgMult/100;  //aumenta el daño en un porcentaje dependiendo de la habilidad	
+                if(physicalDmgMult != 0)
+				    damage *= physicalDmgMult / 100;  //aumenta el daño en un porcentaje dependiendo de la habilidad, si el arco deja de andar seguro esta aca el drama	
 				if(convertElem != Types.Element.None){
 					damage = damage * 0.6f; 
 					damageConverted = damage * 0.4f; //al 40% del daño fisico lo convierte en otro daño

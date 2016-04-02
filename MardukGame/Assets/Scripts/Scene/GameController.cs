@@ -75,7 +75,6 @@ public class GameController : MonoBehaviour {
         ItemsList[Polearms] = Resources.LoadAll("ItemPrefabs/Polearms", typeof(Object));
         ItemsList[Armours] = Resources.LoadAll("ItemPrefabs/Armours", typeof(Object));
         ItemsList[Shields] = Resources.LoadAll("ItemPrefabs/Shields", typeof(Object));
-        Debug.Log("itemlsita " + ItemsList.Length);
         if (hudCanvas != null)
 			DontDestroyOnLoad(hudCanvas);
 		else

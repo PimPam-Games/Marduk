@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour {
     void Awake()
     {
         rotation = transform.rotation;
-        Debug.Log("rotation " + rotation);
+       // Debug.Log("rotation " + rotation);
     }
 
     public void UpdateRotation() {

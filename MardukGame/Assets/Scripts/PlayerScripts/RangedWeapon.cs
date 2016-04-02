@@ -2,6 +2,7 @@
 using System.Collections;
 using p = PlayerStats;
 
+/*##################### CREO QUE ESTE SCRIPT NO SE USA  ##################*/
 public class RangedWeapon : MonoBehaviour {
 
 	private float attackDelay; // tiempo de espera entre cada ataque
@@ -15,6 +16,7 @@ public class RangedWeapon : MonoBehaviour {
 	
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
 		attackDelay = 1 / (p.offensives [p.BaseAttacksPerSecond] + (p.offensives [p.BaseAttacksPerSecond] * (p.offensives [p.IncreasedAttackSpeed]/100)));

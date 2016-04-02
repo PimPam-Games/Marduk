@@ -46,7 +46,7 @@ public class ItemGenerator :MonoBehaviour{
         //float[] rarityProb = {0.25f,0.25f,0.25f,0.25f};
         //float[] rarityProb = {0.51f,0.2f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
         //int newRarity = Utils.Choose (rarityProb); 
-        float[] dropItemProb = { 0.65f, 0.35f }; //chance de tirar un item cuando no es un enemigo el que lo tira por ejemplo un cofre
+        float[] dropItemProb = { 0.7f, 0.3f }; //chance de tirar un item cuando no es un enemigo el que lo tira por ejemplo un cofre
         if (eStats != null) {
             switch (eStats.enemyType)//calcula la chance de dropear segun el tipo de enemigo
             {
