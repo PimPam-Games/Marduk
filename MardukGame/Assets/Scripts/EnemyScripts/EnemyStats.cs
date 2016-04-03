@@ -350,14 +350,14 @@ public class EnemyStats : MonoBehaviour {
 		}
 	}
 
-	public bool Hit(float dmg, Types.Element type, bool isCritical, Support supportSkill = null){
+    public bool Hit(float dmg, Types.Element type, bool isCritical, Support supportSkill = null, float dmgConverted = -1f, Types.Element convertType = Types.Element.None){
 		if (dmg == 0 || isDead) {
 			return false;
 		}
-		//Debug.Log ("damage: " + dmg + " Type: " + type);
-		//float playerAccuracy = p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy]/100;
-		//float chanceToEvade = (float)System.Math.Round((float)(1 - playerAccuracy / (playerAccuracy + System.Math.Pow((double)(evasion / 4),0.8))),2 );
-		/*Begin Traits
+        //Debug.Log ("damage: " + dmg + " Type: " + type);
+        //float playerAccuracy = p.offensives [p.Accuracy] + p.offensives [p.Accuracy] * p.offensives [p.IncreasedAccuracy]/100;
+        //float chanceToEvade = (float)System.Math.Round((float)(1 - playerAccuracy / (playerAccuracy + System.Math.Pow((double)(evasion / 4),0.8))),2 );
+        /*Begin Traits
 		if (Traits.traits[Traits.ACCURACY].isActive ()) {
 			chanceToEvade = 0;
 			isCritical = false;
@@ -370,7 +370,6 @@ public class EnemyStats : MonoBehaviour {
 			ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl);
 			return false;
 		}*/
-
 		float[] blockProb = {1 - blockChance, blockChance};
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);
@@ -461,7 +460,7 @@ public class EnemyStats : MonoBehaviour {
                 realDmg = 0;
             currHealth -= realDmg;
 
-            if (supportSkill != null)
+            if (supportSkill != null) //daño del support si es que hay
             {
                 supportDmg = CheckDmgType(supportDmg, supportSkill.dmgElement, isCritical);
                 if (supportDmg < 0)
@@ -469,11 +468,20 @@ public class EnemyStats : MonoBehaviour {
                 currHealth -= supportDmg;
                 Debug.Log("daño agregado: " + supportDmg + "tipo: " + supportSkill.dmgElement);
             }
+            float dmgC = 0;
+            if (dmgConverted > 0) //daño convertido de un elemeto a otro si es que un skill lo convierte
+            {
+                dmgC = CheckDmgType(dmgConverted, convertType, isCritical);
+                if (dmgC < 0)
+                    dmgC = 0;
+                currHealth -= dmgC;
+                //Debug.Log("daño convertido: " + dmgC + "tipo: " + convertType);
+            }
 
 			if (isCursed){
 				p.currentHealth -= realDmg/5;
 			}
-            string cbt = System.Math.Round(realDmg + supportDmg, 0).ToString();
+            string cbt = System.Math.Round(realDmg + supportDmg + dmgC, 0).ToString();
             if (isCritical)
 				cbt = "<color=Yellow>" + cbt +  "</color>"; 
 			ObjectsPool.GetCombatText(cbtTransform.position, cbtTransform.rotation,cbt);
@@ -492,7 +500,7 @@ public class EnemyStats : MonoBehaviour {
 		return true;
 	}
 
-    private float CheckDmgType(float realDmg, Types.Element type, bool isCritical) // aplica el daño que le hace una support al enemigo si es que hay
+    private float CheckDmgType(float realDmg, Types.Element type, bool isCritical) // aplica otros daños como support io daño convertido
     {
         switch (type)
         {

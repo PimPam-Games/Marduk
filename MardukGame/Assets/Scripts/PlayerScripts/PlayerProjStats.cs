@@ -7,6 +7,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 	
 	public Types.Element elem ;
 	public float minDmg = 1 , maxDmg = 3;
+    public bool useMinAndMAxDmg = false; // cuando es un poder que se tira con algun golpe fisico, el daño no se calcula en base al daño magico
 	public float physicalDmgMult = 100f; //se usa para aumentar el daño de ataque fisicos
     public float magicDmgMult = 100f; //se usa para aumentar el daño de ataque magicos
     public float duration = 5;
@@ -137,33 +138,42 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				return;
 			alreadyHit = true;
 			
-			if(elem == Types.Element.None){ //presumo que estos son los ataque de arco
+			if(elem == Types.Element.None){ //estos son los ataque de arco
 				if(p.LifePerHit > 0) //solo los ataques fisicos roban vida
 					p.currentHealth += p.defensives[p.LifePerHit];
-				damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-                if(physicalDmgMult != 0)
+				damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]); //random entre daño min y max
+                damage += damage * p.offensives[p.IncreasedDmg] / 100; // aumenta con el incremento de daño fisico que tenga el jugador
+                if (physicalDmgMult != 0)
 				    damage *= physicalDmgMult / 100;  //aumenta el daño en un porcentaje dependiendo de la habilidad, si el arco deja de andar seguro esta aca el drama	
-				if(convertElem != Types.Element.None){
-					damage = damage * 0.6f; 
-					damageConverted = damage * 0.4f; //al 40% del daño fisico lo convierte en otro daño
-				}
-
+				
 				if (Traits.traits[Traits.BOWDMG].isActive() && PlayerItems.EquipedWeapon.WeaponType == WeaponTypes.Bow){
 					damage *= 1.1f;
 				}
                 if(castProjWhenHit != null)
                 {
+                    castProjWhenHit.GetComponent<PlayerProjStats>().minDmg = damage * 0.40f; //por ahora es asi loco,
+                    castProjWhenHit.GetComponent<PlayerProjStats>().maxDmg = damage * 0.40f;
+                  
                     Instantiate(castProjWhenHit, this.transform.position, this.transform.rotation);
                 }
-				//******************************BOW PATCH!!!!!*********************************
-				//damage *= 0.5f;
-				//******************************BOW PATCH!!!!!*********************************
-			}
+                if (convertElem != Types.Element.None)
+                {
+                    damage = damage * 0.6f;
+                    damageConverted = damage * 0.4f; //al 40% del daño fisico lo convierte en otro daño
+                }
+                //******************************BOW PATCH!!!!!*********************************
+                //damage *= 0.5f;
+                //******************************BOW PATCH!!!!!*********************************
+            }
 			else{
-				//damage = Random.Range(minDmg,maxDmg);
-				damage = Random.Range(p.offensives[p.MinMagicDmg], p.offensives[p.MaxMagicDmg]);
-				damage += damage * p.offensives[p.IncreasedMgDmg]/100;
-                damage *= magicDmgMult / 100;
+                if (useMinAndMAxDmg) { //es un skill que sale de una flecha o un golpe fisico
+				    damage = Random.Range(minDmg,maxDmg);
+                }
+                else { 
+                    damage = Random.Range(p.offensives[p.MinMagicDmg], p.offensives[p.MaxMagicDmg]);
+				    damage += damage * p.offensives[p.IncreasedMgDmg]/100;
+                    damage *= magicDmgMult / 100;
+                }
                 //Begin Traits
                 if (elem == Types.Element.Poison && Traits.traits[Traits.POISONMDMG].isActive()){
 					damage *= 1.1f;
@@ -216,7 +226,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 			if(isCrit){ //si el ataque es critico lo multiplico y dependiendo de si golpea o no, se larga el sonido
 				if(!alwaysCrit)
 					damage *= p.offensives[p.CritDmgMultiplier];
-				attackResult = estats.Hit(damage,elem, true,supportSkill); 
+				attackResult = estats.Hit(damage,elem, true,supportSkill,damageConverted,convertElem); 
 				//Begin Traits
 				if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
 					estats.Hit(damage/10,Types.Element.Fire, true);
@@ -232,7 +242,7 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				}
 				//End Traits
 				if(attackResult){
-					estats.Hit(damageConverted,convertElem, true);
+					//estats.Hit(damageConverted,convertElem, true);
 					/*if(supportSkill != null){
 						estats.Hit((damage* supportSkill.damageAdded)/100,supportSkill.dmgElement, true);
 						Debug.Log("daño agregado: " + (damage * supportSkill.damageAdded) / 100 + "tipo: " + supportSkill.dmgElement);
@@ -248,11 +258,11 @@ public class PlayerProjStats : MonoBehaviour { //esto tambien es para los proyec
 				}
 			}
 			else{
-				attackResult = estats.Hit(damage,elem, false,supportSkill);
+				attackResult = estats.Hit(damage,elem, false,supportSkill,damageConverted,convertElem);
 				//Debug.Log("damage: " + damage);
 				if(attackResult){  //si no es critico tira el sonido comun
 					
-					estats.Hit(damageConverted,convertElem, false);
+					//estats.Hit(damageConverted,convertElem, false);
 					//Begin Traits
 					if (Traits.traits[Traits.FIREDAMAGE].isActive ()) {
 						estats.Hit(damage/10,Types.Element.Fire, false);

@@ -158,7 +158,9 @@ public class Weapon : MonoBehaviour {
 		EnemyStats estats = col.gameObject.GetComponent<EnemyStats>();
 
 		elem = Types.Element.None;
-		if (estats != null && isAttacking) {
+        Types.Element convertedElem = Types.Element.None;
+        float convertDmg = 0;
+        if (estats != null && isAttacking) {
 			//Debug.Log ("Le pegue a " + enemy.name);
 			Support supportSkill = null;
 			if(p.LifePerHit > 0 ){
@@ -171,11 +173,12 @@ public class Weapon : MonoBehaviour {
 				
 			}
 			float damage = Random.Range (p.offensives[p.MinDmg], p.offensives[p.MaxDamge]);
-			//Begin Traits
-			//if (Traits.traits[Traits.PDAMAGE].isActive ()) {
-			//	damage = damage * (float)1.5;
-			//}
-			if (Traits.traits[Traits.LOWHPDAMAGE].isActive ()) {
+            damage += damage * p.offensives[p.IncreasedDmg] / 100;
+            //Begin Traits
+            //if (Traits.traits[Traits.PDAMAGE].isActive ()) {
+            //	damage = damage * (float)1.5;
+            //}
+            if (Traits.traits[Traits.LOWHPDAMAGE].isActive ()) {
 				if (p.currentHealth <= p.MaxHealth*(float)0.3)
 					damage = damage * (float)1.25;
 			}
@@ -185,11 +188,14 @@ public class Weapon : MonoBehaviour {
                
 				MeleeSkill ms = pc.playerSkills[pc.meleeSkillPos].GetComponent<MeleeSkill>();
 				damage *= ms.DmgMultiplier/100;
-				elem = ms.elementToConvert;
+                convertedElem = ms.elementToConvert;
+                convertDmg = (damage * ms.convertedDmg) / 100; //porcentaje de daño convertido del skill
+                damage -= convertDmg;
+                
 				supportSkill = ms.SupportSkill;
 				if(PlatformerCharacter2D.useSacrifice)
 					p.currentHealth -= (p.defensives[p.MaxHealth] * ms.SacrifiedLife) /100;
-				if(pc.useMeleeProjLauncher && ms.projectile != null){
+				if(pc.useMeleeProjLauncher && ms.projectile != null){//plant thrust y burningBLow
 					PlayerProjStats msProj = ms.projectile.GetComponent<PlayerProjStats>();
 					msProj.minDmg = damage * 0.30f; //por ahora es asi loco,
 					msProj.maxDmg = damage * 0.30f;
@@ -226,7 +232,7 @@ public class Weapon : MonoBehaviour {
 				isCrit = true;
 				Debug.Log("Critical Dmg: " + damage);
 			}
-			damage += damage * p.offensives[p.IncreasedDmg]/100;
+			
 			//Begin Traits
 			if (Traits.traits[Traits.LOWHPCRIT].isActive()){
 				if (p.currentHealth <= p.defensives[p.MaxHealth] * 0.15)
@@ -263,7 +269,7 @@ public class Weapon : MonoBehaviour {
 				}
 			}
 
-			bool hit = estats.Hit(damage,elem, isCrit,supportSkill);
+			bool hit = estats.Hit(damage,elem, isCrit,supportSkill,convertDmg,convertedElem);
 
 			if(hit){
 				if (isCrit){
