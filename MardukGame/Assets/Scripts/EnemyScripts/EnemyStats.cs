@@ -93,9 +93,11 @@ public class EnemyStats : MonoBehaviour {
     public Types.EnemyTypes enemyType = Types.EnemyTypes.Common; 
 
     public Transform cbtTransform;
+    private float cbtTimer = 0;
+    private float cbtTimer2 = 0;
 
-	//Champion Enemy Affixes
-	public const int cantEnemyAffixes = 4;
+    //Champion Enemy Affixes
+    public const int cantEnemyAffixes = 4;
 	private bool isArmored = false;
 	public bool isFast = false;
 	private bool isStrong = false;
@@ -209,8 +211,9 @@ public class EnemyStats : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
-		t = 0;
+        cbtTimer -= Time.deltaTime;
+        cbtTimer2 -= Time.deltaTime;
+        t = 0;
 		if(!isBoss){
 			if (zoneSettings.enemiesLvl != lvl) {
 				lvl = zoneSettings.enemiesLvl;
@@ -373,8 +376,22 @@ public class EnemyStats : MonoBehaviour {
 		float[] blockProb = {1 - blockChance, blockChance};
 		if (Utils.Choose (blockProb) != 0) { 
 			anim.SetBool ("Blocking", true);
-			Debug.Log ("El enemigo Bloqueo el ataque! ");
-		} else {
+            if (cbtTimer <= 0)
+            {
+                ObjectsPool.GetCombatText(cbtTransform.position, cbtTransform.rotation, "Block");
+                cbtTimer = 0.5f;
+            }
+            else {
+                if (cbtTimer2 <= 0) {
+                    ObjectsPool.GetCombatText(new Vector3(cbtTransform.position.x + 0.5f, cbtTransform.position.y + 0.5f, cbtTransform.position.z), cbtTransform.rotation, "Block");
+                    cbtTimer2 = 0.5f;
+                }
+                else
+                {
+                    ObjectsPool.GetCombatText(new Vector3(cbtTransform.position.x - 0.1f, cbtTransform.position.y + 0.6f, cbtTransform.position.z), cbtTransform.rotation, "Block");
+                }
+            }
+        } else {
 			//Instantiate (blood, new Vector3(transform.position.x,transform.position.y,-4), transform.rotation); // lo creo mas cerca de la camara para que no lo tape el background
 			ObjectsPool.GetBlood(this.transform.position,this.transform.rotation);
 
@@ -483,10 +500,25 @@ public class EnemyStats : MonoBehaviour {
 			}
             string cbt = System.Math.Round(realDmg + supportDmg + dmgC, 0).ToString();
             if (isCritical)
-				cbt = "<color=Yellow>" + cbt +  "</color>"; 
-			ObjectsPool.GetCombatText(cbtTransform.position, cbtTransform.rotation,cbt);
-			//UpdateHealthBar ();
-			if (currHealth < 0) {
+				cbt = "<color=Yellow>" + cbt +  "</color>";
+            if (cbtTimer <= 0)
+            {
+                ObjectsPool.GetCombatText(cbtTransform.position, cbtTransform.rotation, cbt);
+                cbtTimer = 0.5f;
+            }
+            else {
+                if (cbtTimer2 <= 0)
+                {
+                    ObjectsPool.GetCombatText(new Vector3(cbtTransform.position.x + 0.5f, cbtTransform.position.y + 0.5f, cbtTransform.position.z), cbtTransform.rotation, cbt);
+                    cbtTimer2 = 0.5f;
+                }
+                else
+                {
+                    ObjectsPool.GetCombatText(new Vector3(cbtTransform.position.x - 0.1f, cbtTransform.position.y + 0.6f, cbtTransform.position.z), cbtTransform.rotation,cbt);
+                }
+            }
+            //UpdateHealthBar ();
+            if (currHealth < 0) {
 				isDead = true;
 
 				StartCoroutine (EnemyDying ());
