@@ -28,11 +28,7 @@ public class Item : MonoBehaviour {
 	public float[] initDefense =  new float[2];
 	public float[] initBlockChance =  new float[2];
     public float[] initCritChance = new float[2];
-    public float[] initStrength = new float[2];
-    public float[] initDexterity = new float[2];
-    public float[] initSpirit = new float[2];
-    public float[] initVitality = new float[2];
-    public float moveSpeedReduction = 0;
+	public float moveSpeedReduction = 0;
 	public SpriteRenderer auraRend;
 	private float moveTimer = 0; //son para que objeto se mueva un poco
 	private float moveSpeed = 0.1f;
@@ -103,13 +99,6 @@ public class Item : MonoBehaviour {
             if (type == ItemTypes.Armour || type == ItemTypes.Shield)
             {
                 utils[p.IncreasedMoveSpeed] = -moveSpeedReduction;
-            }
-            if (type == ItemTypes.Amulet)
-            {
-                atributes[p.Strength] = (float)System.Math.Round(Random.Range(initStrength[0], initStrength[1]), 0) * Mathf.Floor(0.2f * itemRank + 1);
-                atributes[p.Dextery] = (float)System.Math.Round(Random.Range(initDexterity[0], initDexterity[1]), 0) * Mathf.Floor(0.2f * itemRank + 1);
-                atributes[p.Vitality] = (float)System.Math.Round(Random.Range(initVitality[0], initVitality[1]), 0) * Mathf.Floor(0.2f * itemRank + 1);
-                atributes[p.Spirit] = (float)System.Math.Round(Random.Range(initSpirit[0], initSpirit[1]), 0) * Mathf.Floor(0.2f * itemRank + 1);
             }
         }
     }
@@ -269,31 +258,19 @@ public class Item : MonoBehaviour {
 			tooltip += "Defense: " + defensives [p.Defense] + "\n";
 		if(type == ItemTypes.Shield)
 			tooltip += "Block chance: " + defensives[p.BlockChance] + "% \n";
-        if (type == ItemTypes.Amulet)
-        {
-            if (string.Compare(itemName, "Power Amulet") == 0)
-                tooltip += "+ " + atributes[p.Strength] + " To Strength" + "\n";
-            if (string.Compare(itemName, "Life Amulet") == 0)
-                tooltip += "+ " + atributes[p.Vitality] + " To Vitality" + "\n";
-            if (string.Compare(itemName, "Magic Amulet") == 0)
-                tooltip += "+ " + atributes[p.Spirit] + " To Spirit" + "\n";
-            if (string.Compare(itemName, "Skill Amulet") == 0)
-                tooltip += "+ " + atributes[p.Dextery] + " To Dexterity" + "\n";         
-        }
-        if (utils[p.IncreasedMoveSpeed] < 0)
+		if(utils[p.IncreasedMoveSpeed] < 0)
 			tooltip += utils[p.IncreasedMoveSpeed] + "% To movement speed \n";
 
 		tooltip += separator;
 
-
-        if (atributes[p.Strength] > 0 && string.Compare(itemName, "Power Amulet") != 0)
-            tooltip += "+ " + atributes[p.Strength] + " To Strength" + "\n";
-        if (atributes[p.Vitality] > 0 && string.Compare(itemName, "Life Amulet") != 0)
-            tooltip += "+ " + atributes[p.Vitality] + " To Vitality" + "\n";
-        if (atributes[p.Spirit] > 0 && string.Compare(itemName, "Magic Amulet") != 0)
-            tooltip += "+ " + atributes[p.Spirit] + " To Spirit" + "\n";
-        if (atributes[p.Dextery] > 0 && string.Compare(itemName, "Skill Amulet") != 0)
-            tooltip += "+ " + atributes[p.Dextery] + " To Dexterity" + "\n";
+		if (atributes [p.Strength] > 0)
+			tooltip += "+ " + atributes[p.Strength] + " To Strength" + "\n";
+		if (atributes [p.Vitality] > 0)
+			tooltip += "+ " + atributes[p.Vitality] + " To Vitality" + "\n";
+		if (atributes [p.Spirit] > 0)
+			tooltip += "+ " + atributes[p.Spirit] + " To Spirit" + "\n";
+		if (atributes [p.Dextery] > 0)
+			tooltip += "+ " + atributes[p.Dextery] + " To Dexterity" + "\n";
 		if(defensives[p.MaxHealth] > 0)
 			tooltip += "+ " + defensives[p.MaxHealth] + " To Maximum Life" + "\n";
 		if(defensives[p.ColdRes] > 0)
