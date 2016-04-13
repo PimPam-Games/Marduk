@@ -46,7 +46,7 @@ public class ItemGenerator :MonoBehaviour{
         //float[] rarityProb = {0.25f,0.25f,0.25f,0.25f};
         //float[] rarityProb = {0.51f,0.2f,0.08f,0.01f}; // 61% normal, %30 magico, %8 raro , %1 unico hay que ver que onda aca
         //int newRarity = Utils.Choose (rarityProb); 
-        float[] dropItemProb = { 0.7f, 0.3f }; //chance de tirar un item cuando no es un enemigo el que lo tira por ejemplo un cofre
+        float[] dropItemProb = { 0.75f, 0.25f }; //chance de tirar un item cuando no es un enemigo el que lo tira por ejemplo un cofre
         if (eStats != null) {
             switch (eStats.enemyType)//calcula la chance de dropear segun el tipo de enemigo
             {
@@ -81,7 +81,7 @@ public class ItemGenerator :MonoBehaviour{
             newItemLevel = Random.Range(minValue, eStats.lvl + 1); //el +1 es por que el int max es exclusivo en random.Range
         }
         /* -----------------------------------------*/
-        Debug.Log("item level " + newItemLevel);
+       // Debug.Log("item level " + newItemLevel);
         if (newRarity != 3) { //no es unico
 			if(newRarity == 4){ // es un skill
 				int i = Random.Range (0, skillList.Length);
@@ -95,6 +95,9 @@ public class ItemGenerator :MonoBehaviour{
                 int j = Random.Range(0, g.ItemsList[i].Length); //elige el item dentro del tipo elegido
                 newWeapon = (GameObject)Instantiate (g.ItemsList[i][j], position, rotation);
 				newItem = newWeapon.GetComponent<Item> ();
+				if ((newItem.Type == ItemTypes.Amulet || newItem.Type == ItemTypes.Ring) && newRarity == 0) {
+					newRarity = 1; // 1 = magic., Los anillos y amuletos no son nunca normales
+				}
                 newItem.GenerateBaseAffixes(newItemLevel);
 			}
 		} else { //es unico
