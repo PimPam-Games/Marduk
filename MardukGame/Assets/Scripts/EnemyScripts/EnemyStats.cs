@@ -90,6 +90,7 @@ public class EnemyStats : MonoBehaviour {
 	private int t = 0; //para soluciona bug de thorns que se llama dos veces
 
 	public bool isBoss = false;
+	public int doorToOpenId = -1; // puerta que abre si se muere, -1 no abre ninguna puerta
     public Types.EnemyTypes enemyType = Types.EnemyTypes.Common; 
 
     public Transform cbtTransform;
@@ -606,6 +607,11 @@ public class EnemyStats : MonoBehaviour {
 	IEnumerator EnemyDying () {
 		
 		rb.gravityScale = 3;
+		switch (doorToOpenId) { // abre la puerta que tenga que abrir cuando muere el enemigo
+			case 0:
+				p.depthsEntranceOpened = true;
+				break;
+		}
 		if (!itemCreated) {
 			itemCreated = true;			
 			GetComponent<ItemGenerator> ().CreateItem (transform.position, transform.rotation,this);

@@ -44,11 +44,15 @@ public class PlayerData{
 	public  List<SerializableItem> inventory;
 	public  int inventoryCantItems;
 
+	/* tutorials showed */
     public  bool invTutorialShowed;
     public  bool traitsTutorialShowed;
     public  bool attributesTutorialShowed;
     public  bool attackTutorialShowed;
     public  bool grabTutorialShowed;
     public bool moveTutorialShowed;
+
+	/* doors opened */
+	public bool depthsEntranceOpened;
 
 }

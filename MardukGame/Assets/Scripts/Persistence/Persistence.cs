@@ -160,12 +160,17 @@ public class Persistence : MonoBehaviour {
 		data.inventoryCantItems = pItems.inventoryCantItems;
 		data.teleporters = pItems.playerTeleporters;
 
+		/* tutorials */
         data.invTutorialShowed = TutorialController.invTutorialShowed;
         data.traitsTutorialShowed = TutorialController.traitsTutorialShowed;
         data.attributesTutorialShowed = TutorialController.attributesTutorialShowed;
         data.attackTutorialShowed = TutorialController.attackTutorialShowed;
         data.grabTutorialShowed = TutorialController.grabTutorialShowed;
         data.moveTutorialShowed = TutorialController.moveTutorialShowed;
+
+		/*doors*/
+		data.depthsEntranceOpened = p.depthsEntranceOpened;
+		/*END  doors*/
 
         bf.Serialize (file,data);
 		file.Close ();
@@ -205,6 +210,9 @@ public class Persistence : MonoBehaviour {
         TutorialController.attackTutorialShowed = false;
         TutorialController.grabTutorialShowed = false;
         TutorialController.moveTutorialShowed = false;
+
+		p.depthsEntranceOpened = false;
+
         for (int i = 0; i < PlatformerCharacter2D.playerSkills.Length; i++){
 			PlatformerCharacter2D.playerSkills[i] = null;
 			PlatformerCharacter2D.playerSupportSkills[i] = null;
@@ -300,6 +308,10 @@ public class Persistence : MonoBehaviour {
             TutorialController.grabTutorialShowed = data.grabTutorialShowed;
             TutorialController.moveTutorialShowed = data.moveTutorialShowed;
             TutorialController.EnableTutorial(true);
+
+			/*doors*/
+			p.depthsEntranceOpened = data.depthsEntranceOpened;
+			/*END  doors*/
         }
 		else{
 			LoadCurrentPlayer.showIntro = true;

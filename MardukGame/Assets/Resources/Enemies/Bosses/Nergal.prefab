@@ -350,7 +350,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101294}
-  m_LocalRotation: {x: 0, y: 0, z: 0.56776196, w: -0.8231928}
+  m_LocalRotation: {x: 0, y: 0, z: 0.56767815, w: -0.82325065}
   m_LocalPosition: {x: -0.293, y: -0.459, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -363,7 +363,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109956}
-  m_LocalRotation: {x: 0, y: 0, z: 0.5428211, w: 0.83984834}
+  m_LocalRotation: {x: 0, y: 0, z: 0.542761, w: 0.8398872}
   m_LocalPosition: {x: 0.848, y: -0.056, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -388,7 +388,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100812}
-  m_LocalRotation: {x: 0, y: 0, z: -0.029987516, w: -0.9995503}
+  m_LocalRotation: {x: 0, y: 0, z: -0.029957265, w: -0.99955124}
   m_LocalPosition: {x: -1.282, y: -0.606, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -400,7 +400,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160058}
-  m_LocalRotation: {x: -0, y: 0, z: 0.0039952695, w: -0.999992}
+  m_LocalRotation: {x: -0, y: 0, z: 0.0040068924, w: -0.999992}
   m_LocalPosition: {x: -1.556, y: -0.608, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -413,7 +413,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3895483, y: 1.6492186, z: 0}
+  m_LocalPosition: {x: 16.185192, y: -7.5614142, z: 0}
   m_LocalScale: {x: 4, y: 3.5, z: 1}
   m_Children:
   - {fileID: 410516}
@@ -443,7 +443,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194354}
-  m_LocalRotation: {x: 0, y: 0, z: 0.61273044, w: 0.79029197}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6122749, w: 0.79064494}
   m_LocalPosition: {x: -0.946, y: 0.111, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -494,7 +494,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111494}
-  m_LocalRotation: {x: 0, y: 0, z: 0.6095681, w: -0.79273367}
+  m_LocalRotation: {x: 0, y: 0, z: 0.60910195, w: -0.79309195}
   m_LocalPosition: {x: -0.26, y: -0.471, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -816,8 +816,8 @@ MonoBehaviour:
   staticProjectile: 0
   ia: {fileID: 0}
   flipProjectile: 0
-  stats: {fileID: 11446216}
   dontChangeRotation: 0
+  isTrap: 0
 --- !u!114 &11425106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -838,6 +838,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   groundChecks: []
   jumpForce: 800
+  jumpLength: 100
   knockable: 0
   jumper: 0
   flying: 0
@@ -890,8 +891,8 @@ MonoBehaviour:
   staticProjectile: 0
   ia: {fileID: 0}
   flipProjectile: 0
-  stats: {fileID: 11446216}
   dontChangeRotation: 0
+  isTrap: 0
 --- !u!114 &11446216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -908,6 +909,8 @@ MonoBehaviour:
   initMaxHealth: 300
   initMinDamage: 12
   initMaxDamage: 18
+  initMinProjDamage: 2
+  initMaxProjDamage: 5
   initArmour: 30
   initColdRes: 5
   initFireRes: 5
@@ -915,8 +918,8 @@ MonoBehaviour:
   initPoisonRes: 15
   initCritChance: 0.05
   elem: 4
-  minDamage: 12
-  maxDamage: 18
+  meleeAttackElem: 0
+  meleeAttackMultiplier: 1.4
   critChance: 25
   minDmgPerLvl: 2
   maxDmgPerLvl: 2
@@ -931,8 +934,10 @@ MonoBehaviour:
   rend: {fileID: 21292624}
   spriteRend: {fileID: 21292624}
   isBoss: 1
+  doorToOpenId: 0
   enemyType: 3
   cbtTransform: {fileID: 401844}
+  isFast: 0
 --- !u!114 &11475680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -950,8 +955,8 @@ MonoBehaviour:
   staticProjectile: 1
   ia: {fileID: 0}
   flipProjectile: 0
-  stats: {fileID: 11446216}
   dontChangeRotation: 0
+  isTrap: 0
 --- !u!114 &11480362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -969,8 +974,8 @@ MonoBehaviour:
   staticProjectile: 0
   ia: {fileID: 0}
   flipProjectile: 0
-  stats: {fileID: 11446216}
   dontChangeRotation: 0
+  isTrap: 0
 --- !u!114 &11483464
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -112,7 +112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &118570
 GameObject:
   m_ObjectHideFlags: 1
@@ -287,6 +287,7 @@ GameObject:
   - 212: {fileID: 21217478}
   - 61: {fileID: 6157198}
   - 50: {fileID: 5087766}
+  - 114: {fileID: 11430068}
   m_Layer: 10
   m_Name: door
   m_TagString: Untagged
@@ -502,7 +503,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.948371, y: 90.24145, z: 0}
+  m_LocalPosition: {x: 25.186241, y: -2.3258622, z: 0}
   m_LocalScale: {x: 0.015625, y: 0.015625, z: 0.015625}
   m_Children:
   - {fileID: 425818}
@@ -935,6 +936,18 @@ MonoBehaviour:
   isEnd: 0
   upLeftCornerPos: 0
   mapChunk: {fileID: 115042}
+--- !u!114 &11430068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf29ba738a35e740b519ad6b5edd6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!114 &11449908
 MonoBehaviour:
   m_ObjectHideFlags: 1

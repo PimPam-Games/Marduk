@@ -68,7 +68,6 @@ public class PlayerStats : MonoBehaviour {
 	private SpriteRenderer[] renders;
 
 	/*status ailments variables*/
-
 	public static bool ghostMode;
 	public float ghostModeTime = 0.9f;
 	private float ghostModeCount = 0;
@@ -91,6 +90,11 @@ public class PlayerStats : MonoBehaviour {
 	private float shockTimer = 2f;
 	private float shockCount = 0; 
 	private bool shock = false; 
+	/*END status ailments variables*/
+
+	/* doors opened */
+	public static bool depthsEntranceOpened = false;
+	/*END doors opened */
 
 	private float initAnimSpeed;
 	public static float currentAnimSpeed; // guarda la velocidad de movimiento actual, es para usar en Weapon
