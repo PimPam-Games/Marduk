@@ -52,7 +52,7 @@ public class Traits: MonoBehaviour
 		traits [MSKILLCOST] = new Trait("Martial Artist",4,"Melee skills cost 20% less MP");
 		traits [RSKILLCOST] = new Trait("Unreachable",4,"Ranged skills cost 20% less MP");
 		traits [DMGXMP] = new Trait("Adrenaline Rush",4,"Restores MP equivalent to 25% of damage taken");
-		traits [STACKDMG] = new Trait("Brutality",6,"Stacks 5% added damage per hit to a single enemy");
+		traits [STACKDMG] = new Trait("Brutality",6,"Stacks 10% added damage per hit to a single enemy");
 	}
 
 	public static void init(){

@@ -67,6 +67,7 @@ public class EnemyStats : MonoBehaviour {
 	EnemyIAMovement enemyMove;
 	EnemyRangedAttack rangedAttack;				
 	/* status ailments variables */
+	private int hitCount = 0;
 	private bool chill = false;
 	private float chillTimer = 1f;
 	private float chillCount = 0;
@@ -471,6 +472,9 @@ public class EnemyStats : MonoBehaviour {
 					}
 				}
 			}
+			if (Traits.traits[Traits.STACKDMG].isActive()){
+				realDmg += (realDmg * 0.1f) * hitCount;
+			}
             //End Traits
 
             realDmg = CheckDmgType(realDmg, type, isCritical);
@@ -530,6 +534,7 @@ public class EnemyStats : MonoBehaviour {
 		}
         
 		ui.UpdateHealthBar (currHealth,maxHealth,enemyName,lvl, eAffix, enemyType);
+		hitCount++;
 		return true;
 	}
 
