@@ -5,11 +5,11 @@ using p = PlayerStats;
 
 public class Traits: MonoBehaviour
 {
-	public const int CantTraits = 34;
+	public const int CantTraits = 35;
 	public const int MPDAMAGE = 0, MPREGEN = 1, MPLEECH = 2, ACCURACY = 3, PDAMAGE = 4, MDAMAGE= 5, SEFFECT = 16, LOWHPDAMAGE = 7, NOFREEZE = 17, NOSHOCK = 18, 
 	NOPOISON = 19, NOBURN = 20, FIREDAMAGE = 8, COLDDAMAGE = 9,LIGHTDAMAGE = 10, POISONDAMAGE= 11, CRITACC = 6, BLOCKDMG = 12, HIGHMP = 13, LOWHPCRIT = 14, ANTIAIR = 15,
 	SWORDDMG = 21, MACEDMG = 22, AXEDMG = 23, BOWDMG = 24, FIREMDMG = 25, ICEMDMG = 26, LIGHTMDMG = 27, POISONMDMG = 28, MSKILLDMG = 29, RSKILLDMG = 30, MSKILLCOST = 31,
-	RSKILLCOST = 32, DMGXMP = 33;
+	RSKILLCOST = 32, DMGXMP = 33, STACKDMG = 34;
 	public static Trait[] traits;
 	public static float[] atributes;
 	public static float[] offensives;
@@ -52,6 +52,7 @@ public class Traits: MonoBehaviour
 		traits [MSKILLCOST] = new Trait("Martial Artist",4,"Melee skills cost 20% less MP");
 		traits [RSKILLCOST] = new Trait("Unreachable",4,"Ranged skills cost 20% less MP");
 		traits [DMGXMP] = new Trait("Adrenaline Rush",4,"Restores MP equivalent to 25% of damage taken");
+		traits [STACKDMG] = new Trait("Brutality",6,"Stacks 5% added damage per hit to a single enemy");
 	}
 
 	public static void init(){
