@@ -161,8 +161,10 @@ public class InputControllerGui : MonoBehaviour {
 	}
 
 	private void SetMouseVisible(){
-        if (inventory.activeSelf || characterPanel.activeSelf || menuInGame.IsActive() || traitsPanel.activeSelf)
-            noAttack = true;
+		if (inventory.activeSelf || characterPanel.activeSelf || menuInGame.IsActive () || traitsPanel.activeSelf) {
+			noAttack = true;
+			Sounds.walkGrassSound.Stop ();
+		}
         else
             noAttack = false;
 		if(inventory.activeSelf || characterPanel.activeSelf || menuInGame.IsActive() || traitsPanel.activeSelf || tpOpen)
