@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="64" tileheight="64" nextobjectid="1">
+ <properties>
+  <property name="unity:layer" value="Ground"/>
+  <property name="unity:scale" value="0.015625"/>
+  <property name="unity:tag" value="Ground"/>
+ </properties>
+ <tileset firstgid="1" name="basic_tileset" tilewidth="64" tileheight="64">
+  <image source="tileset.png" width="1024" height="1024"/>
+  <tile id="0">
+   <objectgroup draworder="index"/>
+  </tile>
+  <tile id="1">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="2">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="3">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="4">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="5">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 64,64 0,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="6">
+   <objectgroup draworder="index">
+    <object id="0" x="64" y="0">
+     <polygon points="0,0 0,64 -64,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="7">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="8">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="9">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="10">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 64,64 64,0"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="11">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 64,0 0,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="12">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="13">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="16">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="17">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="18">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="19">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="20">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="21">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 0,64 64,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="22">
+   <objectgroup draworder="index">
+    <object id="0" x="64" y="0">
+     <polygon points="0,0 -64,64 0,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="23">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="24">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="25">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="26">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 64,64 64,0"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="27">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 64,0 0,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="28">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="29">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="30">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="31">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="49">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="50">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="51">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="52">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="53">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 0,64 64,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="54">
+   <objectgroup draworder="index">
+    <object id="0" x="64" y="0">
+     <polygon points="0,0 -64,64 0,64"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="55">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="56">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="57">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="32"/>
+   </objectgroup>
+  </tile>
+  <tile id="58">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 64,64 64,0"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="59">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0">
+     <polygon points="0,0 0,64 64,0"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="60">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="61">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="62">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="63">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="64">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="65">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="66">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+  <tile id="67">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="257" name="big_tileset" tilewidth="128" tileheight="128">
+  <image source="bigtileset.png" width="2048" height="2048"/>
+ </tileset>
+ <layer name="minimap" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2U0OwiAQgFHufyt/z2VcEE1TKCjQWbyXsLILM1/S2jElAACg12XQYQw9YtEjFj3ieSQtovmnCXP80oS5eptwnm2r+7lfh/RpogUAxPF+Nl8Lnz2/TnZLfvfOlOdZalK6Xo85emerx1w9sy3dq/QYp3W2tRZ6jNMy26MWeozTMlt7xXW2c93bS+kRS62DveI6+V1Qi1j87wH7+yqA6PbeyVt3wIxV249oslbLrkqTeVp2IfYl6+gRix6x6AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ0wvM/Awc
+  </data>
+ </layer>
+ <layer name="BackGround" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0UEJADAMwMDKqX+FM9FHGHcQBZkBAAAAfrVHccOPFj9a/Gjxo8WPFj9a/Gjxo8WPFj9a/Gjxo8WPFj9a/Gjxo8WPFj9a/Gjxo8WPFj9a/Gjxo8WPFj9a/Gjxo8WPFj9a/GjxAwAAAAAAAAAAAAAAAAAAAAAAAAAAAKDpAUV+XNE=
+  </data>
+ </layer>
+ <layer name="MiddleGround" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2U0KwjAQBtD2aFbRgkfwCJ7CH9BjSyCBglUxVDvie5su0kWZjyRlpmkAAADgcxbt3F8AMO7Z+ZTWury+zM9Ve/8O03u3rnKI5yoT/pB743eUHLbygId29kcY/SCLg1wm1VfWcy+Hjzjlup7VN5SNPKDa0f6BUe4W0COMoiaH0v/tZDgb90gMaQ9cBjMRc0Egotr+L9NKcw1ZxCWb70h9wjLjezXrW+f18t8rIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiOUGuw8PXQ==
+  </data>
+ </layer>
+ <layer name="Ground" width="100" height="100">
+  <properties>
+   <property name="unity:layer" value="Ground"/>
+   <property name="unity:tag" value="Ground"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2llqwzAUQFFtqU3nKSl0/2uqBTEYYcUDz7Yg54B+0jqY3MpNnpMSAACw1EPQIoYebdGjLaduXdL6DufrcxDnM61v8rz/6d6FNU3y3vg74FzvxdIm9sb2cpNTZV2SHi0Z7p98rfo69GzI+v2jBQC047FbL5WfvXfrrVsfg8der8eUixj5vet3qjcpPSXzxC31r2dukv/Ofyd+X49tLZmB5GvVz8gxesSZ2+NWCz3izOkx1UKPOHN61P5n6BGvnOGOzaVu9XB/cH+1Hma8++o/D5Y9+j2hxTHKe1Q6cI/G5lUArRubq8+dAROrNh9ZMpcnxtSsSpNtldekqbnh8F6J+4Px1nyH2jxxO3q0RQ8AAAAAAAAAAAAAAAAAAAAAAAAAAACANv0DZZxGvg==
+  </data>
+ </layer>
+</map>

@@ -47,6 +47,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &148834
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 448056}
+  - 60: {fileID: 6049912}
+  m_Layer: 0
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &175686
 GameObject:
   m_ObjectHideFlags: 1
@@ -113,22 +129,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &195296
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 429464}
-  - 60: {fileID: 6025582}
-  m_Layer: 0
-  m_Name: Collision
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &407740
 Transform:
   m_ObjectHideFlags: 1
@@ -140,7 +140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 420170}
-  - {fileID: 429464}
+  - {fileID: 448056}
   m_Father: {fileID: 499260}
   m_RootOrder: 1
 --- !u!4 &420170
@@ -155,18 +155,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 407740}
   m_RootOrder: 0
---- !u!4 &429464
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 407740}
-  m_RootOrder: 1
 --- !u!4 &434518
 Transform:
   m_ObjectHideFlags: 1
@@ -193,6 +181,18 @@ Transform:
   - {fileID: 434518}
   m_Father: {fileID: 499260}
   m_RootOrder: 2
+--- !u!4 &448056
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148834}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 407740}
+  m_RootOrder: 1
 --- !u!4 &480216
 Transform:
   m_ObjectHideFlags: 1
@@ -224,7 +224,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -102.098343, y: 50.4137001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .015625, y: .015625, z: .015625}
   m_Children:
   - {fileID: 484096}
@@ -294,27 +294,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175686}
   m_Mesh: {fileID: 4300002, guid: c5e95f27822548546a42a1fff1f77517, type: 3}
---- !u!60 &6025582
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195296}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: 1408, y: -1088}
-      - {x: 2304, y: -1088}
-      - {x: 2304, y: -1024}
-      - {x: 1408, y: -1024}
-    - - {x: 1408, y: -1408}
-      - {x: 2304, y: -1408}
-      - {x: 2304, y: -1344}
-      - {x: 1408, y: -1344}
 --- !u!60 &6044386
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -396,6 +375,27 @@ PolygonCollider2D:
       - {x: 2432, y: -1472}
       - {x: 2432, y: -1408}
       - {x: 1408, y: -1408}
+--- !u!60 &6049912
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148834}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 1408, y: -1088}
+      - {x: 2304, y: -1088}
+      - {x: 2304, y: -1024}
+      - {x: 1408, y: -1024}
+    - - {x: 1408, y: -1408}
+      - {x: 2304, y: -1408}
+      - {x: 2304, y: -1344}
+      - {x: 1408, y: -1344}
 --- !u!114 &11411276
 MonoBehaviour:
   m_ObjectHideFlags: 1

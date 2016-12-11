@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_1_2;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_1_2;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\EnemyRandomGenerator.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyBarController.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\EnemyCombatText.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyIAMovement.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyRangedAttack.cs" />
      <Compile Include="Assets\Scripts\EnemyScripts\EnemyStats.cs" />
@@ -94,11 +95,13 @@
      <Compile Include="Assets\Scripts\ProjectileLauncher.cs" />
      <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\ProjectileStats.cs" />
+     <Compile Include="Assets\Scripts\RangedTrap.cs" />
      <Compile Include="Assets\Scripts\ReSkinAnimation.cs" />
      <Compile Include="Assets\Scripts\Scene\ChangeLevel.cs" />
      <Compile Include="Assets\Scripts\Scene\Chunk.cs" />
      <Compile Include="Assets\Scripts\Scene\Chunk2.cs" />
      <Compile Include="Assets\Scripts\Scene\ChunkFactory.cs" />
+     <Compile Include="Assets\Scripts\Scene\Door.cs" />
      <Compile Include="Assets\Scripts\Scene\Fading.cs" />
      <Compile Include="Assets\Scripts\Scene\GameController.cs" />
      <Compile Include="Assets\Scripts\Scene\LevelSettings.cs" />
@@ -110,9 +113,12 @@
      <Compile Include="Assets\Scripts\Skills\SpellStats.cs" />
      <Compile Include="Assets\Scripts\Skills\Support.cs" />
      <Compile Include="Assets\Scripts\Skills\UtilitySkill.cs" />
+     <Compile Include="Assets\Scripts\Sounds.cs" />
      <Compile Include="Assets\Scripts\Teleporter.cs" />
      <Compile Include="Assets\Scripts\Tiling.cs" />
      <Compile Include="Assets\Scripts\Tuple.cs" />
+     <Compile Include="Assets\Scripts\TutorialController.cs" />
+     <Compile Include="Assets\Scripts\TutorialText.cs" />
      <Compile Include="Assets\Scripts\Types.cs" />
      <Compile Include="Assets\Scripts\UI\AttrInfo.cs" />
      <Compile Include="Assets\Scripts\UI\CharacterPanel.cs" />
@@ -142,10 +148,14 @@
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
      <Compile Include="Assets\Trap.cs" />
      <Compile Include="Assets\TrapGenerator.cs" />
+     <None Include="Assets\Tiled2Unity\Imported\depths2.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveplatform3.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveChunk6.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths6.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths9.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevel5.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\castle2.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\dungeon10.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevelplatform1.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\dungeon12.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\dungeon7.tiled2unity.xml" />
@@ -161,6 +171,7 @@
      <None Include="Assets\Tiled2Unity\Imported\sublevel12.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\dungeon4.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\castle4.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\dungeon11.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk14.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevel11.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveplatform1.tiled2unity.xml" />
@@ -173,8 +184,10 @@
      <None Include="Assets\Tiled2Unity\Imported\caveChunk11.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\CourtyardChunk5.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk10.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths7.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveChunk7.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevel10.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths4.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\castle10.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\level8.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevelsBG.tiled2unity.xml" />
@@ -196,6 +209,8 @@
      <None Include="Assets\Tiled2Unity\Imported\dungeon14.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\castleplatform2.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveminichunk4.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\MAPSINGLECHUNK.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths5.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\level7.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\dungeon1.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveplatform2.tiled2unity.xml" />
@@ -217,11 +232,15 @@
      <None Include="Assets\Tiled2Unity\Imported\sublevel2.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\outcastleexit.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk5.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\MAPCLOSECHUNK.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk15.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk3.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths1.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\level5.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveminichunk2.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\level2.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depthsEntrance.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\MAPDOUBLECHUNK.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk12.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk9.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveChunk12.tiled2unity.xml" />
@@ -245,6 +264,7 @@
      <None Include="Assets\Tiled2Unity\Imported\sublevel7.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\dungeon3.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevel14.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths3.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveChunk2.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\level10.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk11.tiled2unity.xml" />
@@ -260,6 +280,7 @@
      <None Include="Assets\Tiled2Unity\Imported\CourtyardChunk2.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevel13.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\outcastle4.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\dungeon2.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\outcastle3.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveChunk17.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\caveChunk5.tiled2unity.xml" />
@@ -272,6 +293,7 @@
      <None Include="Assets\Tiled2Unity\Imported\castle8.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\level3.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\dungeon9.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\depths8.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk6.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\levelChunk7.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\sublevel9.tiled2unity.xml" />
